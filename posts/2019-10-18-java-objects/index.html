@@ -1,58 +1,98 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en-us">
+
 <head>
-  <link href="https://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>《Thinking in Java》--  对象 // qinry&#39;s blog</title>
+  <meta charset="utf-8" />
   <meta name="generator" content="Hugo 0.60.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="qinry" />
+  <meta name="description"
+    content="" />
+  <link rel="stylesheet" href="https://qinry.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
 
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《Thinking in Java》--  对象"/>
+<meta name="twitter:description" content="对象 对象及内存分布   在Java中一切都被视为对象，但操纵的标识符实际上是对象的“引用”
+  字符串可以用带引号的初始值， 如： String s = &quot;sdf&quot;;
+  关键字 new 用来创建一个新对象，存在于堆中
+  对象在内存中的分布
+  寄存器 最快存储区（Java中是按需在这里分配，程序员不直接管理）
+  堆栈 位于通用RAM。比较快速有效的分配内存，次于寄存器
+  堆 一种通用的内存池。（大部分对象存储在这），有较高的灵活性
+  常量储存 常量直接存用程序代码内部；有时在嵌入式系统，常量与其他部分分离，一般存于ROM中
+  非RAM存储 数据存活于之外。常例：流对象、持久化对象
+     数据类型 基本类型 基本数据类型 boolean, char, byte, short, int, long, float, double , void
+注： boolean 有两个字面量常量true和false； 基本类型有对应的包装器类型，并在堆上创建对象以表示相应的基本类型。两者可以相互转换（自动包装） 2个高精度的类似包装器类型的计算类（没有有对应的基本类型）： BigInteger 和 BigDecimal  运算速度相较于其他基本算术类型及其相应的包装器类型要慢，但精度高支持任何精度 BigInteger 支持整数 BigDecimal 支持定点数（不是浮点数），可用于货币运算  数组 Java中数组被确保初始化， 且不能越界访问，为此增加了开销换来安全性和效率的提高。如果数组存放对象，实际上数组为一个引用数组（C&#43;&#43;是不允许的），元素引用初始值为null，未指定对象；存放的是基本数据类型，初始化为0"/>
 
-  <title>《Thinking in Java》--  对象 &middot; qinry&#39;s blog</title>
-  <meta name="description" content="" />
+  <meta property="og:title" content="《Thinking in Java》--  对象" />
+<meta property="og:description" content="对象 对象及内存分布   在Java中一切都被视为对象，但操纵的标识符实际上是对象的“引用”
+  字符串可以用带引号的初始值， 如： String s = &quot;sdf&quot;;
+  关键字 new 用来创建一个新对象，存在于堆中
+  对象在内存中的分布
+  寄存器 最快存储区（Java中是按需在这里分配，程序员不直接管理）
+  堆栈 位于通用RAM。比较快速有效的分配内存，次于寄存器
+  堆 一种通用的内存池。（大部分对象存储在这），有较高的灵活性
+  常量储存 常量直接存用程序代码内部；有时在嵌入式系统，常量与其他部分分离，一般存于ROM中
+  非RAM存储 数据存活于之外。常例：流对象、持久化对象
+     数据类型 基本类型 基本数据类型 boolean, char, byte, short, int, long, float, double , void
+注： boolean 有两个字面量常量true和false； 基本类型有对应的包装器类型，并在堆上创建对象以表示相应的基本类型。两者可以相互转换（自动包装） 2个高精度的类似包装器类型的计算类（没有有对应的基本类型）： BigInteger 和 BigDecimal  运算速度相较于其他基本算术类型及其相应的包装器类型要慢，但精度高支持任何精度 BigInteger 支持整数 BigDecimal 支持定点数（不是浮点数），可用于货币运算  数组 Java中数组被确保初始化， 且不能越界访问，为此增加了开销换来安全性和效率的提高。如果数组存放对象，实际上数组为一个引用数组（C&#43;&#43;是不允许的），元素引用初始值为null，未指定对象；存放的是基本数据类型，初始化为0" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://qinry.github.io/posts/2019-10-18-java-objects/" />
+<meta property="article:published_time" content="2019-10-18T20:41:27+08:00" />
+<meta property="article:modified_time" content="2019-10-18T20:41:27+08:00" />
 
-  
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/poole.css">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/syntax.css">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/hyde.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
-
-  
-  
 </head>
 
-  <body class="theme-base-0b ">
-  <aside class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="https://qinry.github.io"><h1>qinry&#39;s blog</h1></a>
-      <p class="lead">
-       在此写下学习日志，努力充电中～ 
-      </p>
+<body>
+  <header class="app-header">
+    <a href="https://qinry.github.io"><img class="app-header-avatar"
+        src="/avatar.jpg"
+        alt="qinry" /></a>
+    <h1>qinry&#39;s blog</h1>
+    <p>
+      在此写下学习日志，努力充电中～
+    </p>
+    <div class="app-header-social">
+      
+      <a target="_blank" href="https://github.com/qinry"
+        rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+      
     </div>
-
-    <nav>
-      <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io">Home</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/tags/"> tags </a></li>
-      </ul>
-    </nav>
-
-    <p>&copy; 2019. All rights reserved. </p>
-  </div>
-</aside>
-
-    <main class="content container">
-    <div class="post">
-  <h1>《Thinking in Java》--  对象</h1>
-  <time datetime=2019-10-18T20:41:27&#43;0800 class="post-date">Fri, Oct 18, 2019</time>
-  <h1 id="heading">对象</h1>
+  </header>
+  <main class="app-container">
+    
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">《Thinking in Java》--  对象</h1>
+    <div class="post-meta">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+        Oct 18, 2019
+      </div>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+        2 min read
+      </div><div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+        <a class="tag" href="https://qinry.github.io/tags/java/">java</a></div></div>
+  </header>
+  <div class="post-content">
+    <h1 id="heading">对象</h1>
 <h2 id="heading1">对象及内存分布</h2>
 <ol>
 <li>
@@ -180,11 +220,13 @@
 </code></pre><h2 id="--1">编码风格 &mdash; 驼峰风格</h2>
 <p>驼峰风格： 类名首字母大写；有几个单词组成要并在一起，每个单词首字母大写(如： HelloDate)；标识符第一个字母小写，其他与类名相同 (如：toUpperCase)</p>
 
-</div>
-
-
-    </main>
-
+  </div>
+  <div class="post-footer">
     
-  </body>
+  </div>
+</article>
+
+  </main>
+</body>
+
 </html>

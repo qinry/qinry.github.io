@@ -1,58 +1,86 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en-us">
+
 <head>
-  <link href="https://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>数据结构与算法分析(笔记) -- 开始 // qinry&#39;s blog</title>
+  <meta charset="utf-8" />
   <meta name="generator" content="Hugo 0.60.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="qinry" />
+  <meta name="description"
+    content="" />
+  <link rel="stylesheet" href="https://qinry.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
 
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="数据结构与算法分析(笔记) -- 开始"/>
+<meta name="twitter:description" content="递归使用的基本法则  基准情形：要有退出条件 不断推进：从初始条件趋向退出条件 设计准则 ：假设递归准确执行 合成效益法则：防止重复工作，比如生成斐波那契数列的递归实现使用双递归，导致一些工作的重复，进而影响效率  递归符合前三个法则才能正确进行，符合第四法则递归的使用才有意义。虽然递归的代码逻辑清晰，不过效率不高。在用迭代同样能方便解决问题时，还是采用迭代。
+算法分析 4种描述算法效率的数学模型，常用的有大O记法
+大O记法：时间T(N) = O( f( N ) ), 意思是T( N ) 的相对增长率小于 f(N)
+计算运行时间 一般法则
+ FOR循环 嵌套的FOR循环 顺序语句 IF/ELSE语句   最大子序列和问题解 算法1（嵌套3层for循环） int MaxSubsequenceSum(const int A[], int N) { int ThisSum, MaxSum, i, j, k; MaxSum = 0; for (i = 0; i &lt; N; i&#43;&#43;) for (j = i; j &lt; N; j&#43;&#43;) { ThisSum = 0; for (k = i; k &lt;= j; k&#43;&#43;) ThisSum &#43;= A[k]; if (ThisSum &gt; MaxSum) MaxSum = ThisSum; } return MaxSum; } 算法2（嵌套2层for循环） int MaxSubsequenceSum(const int A[], int N) { int ThisSum, MaxSum, i, j; MaxSum = 0; for (i = 0; i &lt; N; i&#43;&#43;) { ThisSum = 0; for (j = i; j &lt; N; j&#43;&#43;) { ThisSum &#43;= A[j]; if (ThisSum &gt; MaxSum) MaxSum = ThisSum; } } return MaxSum; } 算法3（分治） int Max3(int x, int y, int z) { return (x &gt; y ?"/>
 
-  <title>数据结构与算法分析(笔记) -- 开始 &middot; qinry&#39;s blog</title>
-  <meta name="description" content="" />
+  <meta property="og:title" content="数据结构与算法分析(笔记) -- 开始" />
+<meta property="og:description" content="递归使用的基本法则  基准情形：要有退出条件 不断推进：从初始条件趋向退出条件 设计准则 ：假设递归准确执行 合成效益法则：防止重复工作，比如生成斐波那契数列的递归实现使用双递归，导致一些工作的重复，进而影响效率  递归符合前三个法则才能正确进行，符合第四法则递归的使用才有意义。虽然递归的代码逻辑清晰，不过效率不高。在用迭代同样能方便解决问题时，还是采用迭代。
+算法分析 4种描述算法效率的数学模型，常用的有大O记法
+大O记法：时间T(N) = O( f( N ) ), 意思是T( N ) 的相对增长率小于 f(N)
+计算运行时间 一般法则
+ FOR循环 嵌套的FOR循环 顺序语句 IF/ELSE语句   最大子序列和问题解 算法1（嵌套3层for循环） int MaxSubsequenceSum(const int A[], int N) { int ThisSum, MaxSum, i, j, k; MaxSum = 0; for (i = 0; i &lt; N; i&#43;&#43;) for (j = i; j &lt; N; j&#43;&#43;) { ThisSum = 0; for (k = i; k &lt;= j; k&#43;&#43;) ThisSum &#43;= A[k]; if (ThisSum &gt; MaxSum) MaxSum = ThisSum; } return MaxSum; } 算法2（嵌套2层for循环） int MaxSubsequenceSum(const int A[], int N) { int ThisSum, MaxSum, i, j; MaxSum = 0; for (i = 0; i &lt; N; i&#43;&#43;) { ThisSum = 0; for (j = i; j &lt; N; j&#43;&#43;) { ThisSum &#43;= A[j]; if (ThisSum &gt; MaxSum) MaxSum = ThisSum; } } return MaxSum; } 算法3（分治） int Max3(int x, int y, int z) { return (x &gt; y ?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://qinry.github.io/posts/2019-10-17-algorithm-beginning/" />
+<meta property="article:published_time" content="2019-10-17T23:29:10+08:00" />
+<meta property="article:modified_time" content="2019-10-17T23:29:10+08:00" />
 
-  
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/poole.css">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/syntax.css">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/hyde.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
-
-  
-  
 </head>
 
-  <body class="theme-base-0b ">
-  <aside class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="https://qinry.github.io"><h1>qinry&#39;s blog</h1></a>
-      <p class="lead">
-       在此写下学习日志，努力充电中～ 
-      </p>
+<body>
+  <header class="app-header">
+    <a href="https://qinry.github.io"><img class="app-header-avatar"
+        src="/avatar.jpg"
+        alt="qinry" /></a>
+    <h1>qinry&#39;s blog</h1>
+    <p>
+      在此写下学习日志，努力充电中～
+    </p>
+    <div class="app-header-social">
+      
+      <a target="_blank" href="https://github.com/qinry"
+        rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+      
     </div>
-
-    <nav>
-      <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io">Home</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/tags/"> tags </a></li>
-      </ul>
-    </nav>
-
-    <p>&copy; 2019. All rights reserved. </p>
-  </div>
-</aside>
-
-    <main class="content container">
-    <div class="post">
-  <h1>数据结构与算法分析(笔记) -- 开始</h1>
-  <time datetime=2019-10-17T23:29:10&#43;0800 class="post-date">Thu, Oct 17, 2019</time>
-  <h2 id="heading">递归使用的基本法则</h2>
+  </header>
+  <main class="app-container">
+    
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">数据结构与算法分析(笔记) -- 开始</h1>
+    <div class="post-meta">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+        Oct 17, 2019
+      </div>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+        3 min read
+      </div><div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+        <a class="tag" href="https://qinry.github.io/tags/algorithm/">algorithm</a></div></div>
+  </header>
+  <div class="post-content">
+    <h2 id="heading">递归使用的基本法则</h2>
 <ol>
 <li>基准情形：要有退出条件</li>
 <li>不断推进：从初始条件趋向退出条件</li>
@@ -209,11 +237,13 @@
         <span style="color:#66d9ef">return</span> Pow(X <span style="color:#f92672">*</span> X, N <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">*</span> X;
 }
 </code></pre></div>
-</div>
-
-
-    </main>
-
+  </div>
+  <div class="post-footer">
     
-  </body>
+  </div>
+</article>
+
+  </main>
+</body>
+
 </html>

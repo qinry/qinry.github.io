@@ -1,58 +1,106 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en-us">
+
 <head>
-  <link href="https://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>《Thinking in Java》 -- 接口 // qinry&#39;s blog</title>
+  <meta charset="utf-8" />
   <meta name="generator" content="Hugo 0.60.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="qinry" />
+  <meta name="description"
+    content="" />
+  <link rel="stylesheet" href="https://qinry.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
 
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《Thinking in Java》 -- 接口"/>
+<meta name="twitter:description" content="接口 抽象类和抽象方法   抽象方法：仅有声明而没有方法体。 如： abstract void f();  抽象类： 包含抽象方法的类。
+  如果一个类包含一个或多个抽象方法，该类必须限定为抽象的。 如： abstract class A {} 继承抽象类，如果不把抽象方法提供定义， 那么导出类也是抽象类，所以要创建抽象类的子类的对象，必须在子类为基类提供方法的定义。有时，我们也可能创建一个没有任何抽象方法的抽象类，比如不想创建该类的对象，可声明为abstract。
+抽象类还是很有用的重构1工具，因为它们使得我们可以很容易地将公共方法沿继承层次结构上移动。
+接口 使用关键字interface 产生一个完全抽象的类，它根本就没有提供任何具体实现。 interface Instrument { void play(); String what(); void adjust(); } 接口只提供形式，不提供具体实现。可在interface前添加public（但仅限于该接口在与其同名文件中被定义）。如果不添加public，它只有包访问权限。包也可以包含域，但是这些域隐式地是static和final的；方法如果没声明为public，是会自动转换为public的
+implements关键字让一个类遵循某个特定的接口，实现接口的功能。 如：
+class Wind implements Instrument { void play() {} String what() {} void adjust() {} } 通过适配器模式，将接口从具体实现中解耦使得接口可以应用于多种不同的具体实现，因此代码也就更具可复用性
+多重继承 在C&#43;&#43;中，组合多个类的接口的行为称作多重继承。每个类都有具体的实现，这样代码量会大的多，编写相较麻烦。
+在Java中，你可以执行相同的行为，但只有一个类可以有具体的实现。代码量比C&#43;&#43;少了不少。
+如果要从一个非接口的类继承，那么只能从一个类去继承。其余基元素必须是接口。需要将所有接口名都置于implements关键字之后，用逗号将它们一一隔开。将具体类和多个接口组合在一起，此具体类必须放在前面，后面跟着的才是接口（否则编译器报错）
+使用接口的核心原因：为了能够向上转型为多个基类型（以及由此带来的灵活性）。还有与使用抽象基类相同，防止客户端程序员创建该类对象，并确保这仅仅是接口。允许同一个类有多个具体的实现
+应该使用接口还是抽象类？ 如果要创建不带任何方法定义和成员变量的基类，那么应该选择接口而不是抽象类型。
+接口继承 一般情况下，只可以将extends 用于单一类，但是接口可以引用多个基类接口。
+组合接口时的命名冲突 在打算组合的不同接口中使用相同的方法名通常会造成代码可读性的混乱，请尽量避免这种情况。重载方法仅通过返回类型是分不开的。
+接口中的域 接口中的域默认是static，final的，所以接口是成为一种很便捷的用来创建常量组的工具。过去JavaSE5，用它来产生C和C&#43;&#43;的enum类型效果。
+嵌套接口 接口可以嵌套于接口或类中。 嵌套于接口的接口是不能声明为private，必须是public，在此会严格执行。实现一个接口时，并不需要实现嵌套在其内部的任何接口。而且，private接口不能在定义它的 类 之外被发现，只能被类自身所使用。"/>
 
-  <title>《Thinking in Java》 -- 接口 &middot; qinry&#39;s blog</title>
-  <meta name="description" content="" />
+  <meta property="og:title" content="《Thinking in Java》 -- 接口" />
+<meta property="og:description" content="接口 抽象类和抽象方法   抽象方法：仅有声明而没有方法体。 如： abstract void f();  抽象类： 包含抽象方法的类。
+  如果一个类包含一个或多个抽象方法，该类必须限定为抽象的。 如： abstract class A {} 继承抽象类，如果不把抽象方法提供定义， 那么导出类也是抽象类，所以要创建抽象类的子类的对象，必须在子类为基类提供方法的定义。有时，我们也可能创建一个没有任何抽象方法的抽象类，比如不想创建该类的对象，可声明为abstract。
+抽象类还是很有用的重构1工具，因为它们使得我们可以很容易地将公共方法沿继承层次结构上移动。
+接口 使用关键字interface 产生一个完全抽象的类，它根本就没有提供任何具体实现。 interface Instrument { void play(); String what(); void adjust(); } 接口只提供形式，不提供具体实现。可在interface前添加public（但仅限于该接口在与其同名文件中被定义）。如果不添加public，它只有包访问权限。包也可以包含域，但是这些域隐式地是static和final的；方法如果没声明为public，是会自动转换为public的
+implements关键字让一个类遵循某个特定的接口，实现接口的功能。 如：
+class Wind implements Instrument { void play() {} String what() {} void adjust() {} } 通过适配器模式，将接口从具体实现中解耦使得接口可以应用于多种不同的具体实现，因此代码也就更具可复用性
+多重继承 在C&#43;&#43;中，组合多个类的接口的行为称作多重继承。每个类都有具体的实现，这样代码量会大的多，编写相较麻烦。
+在Java中，你可以执行相同的行为，但只有一个类可以有具体的实现。代码量比C&#43;&#43;少了不少。
+如果要从一个非接口的类继承，那么只能从一个类去继承。其余基元素必须是接口。需要将所有接口名都置于implements关键字之后，用逗号将它们一一隔开。将具体类和多个接口组合在一起，此具体类必须放在前面，后面跟着的才是接口（否则编译器报错）
+使用接口的核心原因：为了能够向上转型为多个基类型（以及由此带来的灵活性）。还有与使用抽象基类相同，防止客户端程序员创建该类对象，并确保这仅仅是接口。允许同一个类有多个具体的实现
+应该使用接口还是抽象类？ 如果要创建不带任何方法定义和成员变量的基类，那么应该选择接口而不是抽象类型。
+接口继承 一般情况下，只可以将extends 用于单一类，但是接口可以引用多个基类接口。
+组合接口时的命名冲突 在打算组合的不同接口中使用相同的方法名通常会造成代码可读性的混乱，请尽量避免这种情况。重载方法仅通过返回类型是分不开的。
+接口中的域 接口中的域默认是static，final的，所以接口是成为一种很便捷的用来创建常量组的工具。过去JavaSE5，用它来产生C和C&#43;&#43;的enum类型效果。
+嵌套接口 接口可以嵌套于接口或类中。 嵌套于接口的接口是不能声明为private，必须是public，在此会严格执行。实现一个接口时，并不需要实现嵌套在其内部的任何接口。而且，private接口不能在定义它的 类 之外被发现，只能被类自身所使用。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://qinry.github.io/posts/2019-10-22-java-interfaces/" />
+<meta property="article:published_time" content="2019-10-22T16:29:48+08:00" />
+<meta property="article:modified_time" content="2019-10-22T16:29:48+08:00" />
 
-  
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/poole.css">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/syntax.css">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/hyde.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
-
-  
-  
 </head>
 
-  <body class="theme-base-0b ">
-  <aside class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="https://qinry.github.io"><h1>qinry&#39;s blog</h1></a>
-      <p class="lead">
-       在此写下学习日志，努力充电中～ 
-      </p>
+<body>
+  <header class="app-header">
+    <a href="https://qinry.github.io"><img class="app-header-avatar"
+        src="/avatar.jpg"
+        alt="qinry" /></a>
+    <h1>qinry&#39;s blog</h1>
+    <p>
+      在此写下学习日志，努力充电中～
+    </p>
+    <div class="app-header-social">
+      
+      <a target="_blank" href="https://github.com/qinry"
+        rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+      
     </div>
-
-    <nav>
-      <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io">Home</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/tags/"> tags </a></li>
-      </ul>
-    </nav>
-
-    <p>&copy; 2019. All rights reserved. </p>
-  </div>
-</aside>
-
-    <main class="content container">
-    <div class="post">
-  <h1>《Thinking in Java》 -- 接口</h1>
-  <time datetime=2019-10-22T16:29:48&#43;0800 class="post-date">Tue, Oct 22, 2019</time>
-  <h1 id="heading">接口</h1>
+  </header>
+  <main class="app-container">
+    
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">《Thinking in Java》 -- 接口</h1>
+    <div class="post-meta">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+        Oct 22, 2019
+      </div>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+        1 min read
+      </div><div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+        <a class="tag" href="https://qinry.github.io/tags/java/">java</a></div></div>
+  </header>
+  <div class="post-content">
+    <h1 id="heading">接口</h1>
 <h2 id="heading1">抽象类和抽象方法</h2>
 <ul>
 <li>
@@ -128,11 +176,13 @@
 </ol>
 </section>
 
-</div>
-
-
-    </main>
-
+  </div>
+  <div class="post-footer">
     
-  </body>
+  </div>
+</article>
+
+  </main>
+</body>
+
 </html>
