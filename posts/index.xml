@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on learning log</title>
+    <title>Posts on qinry&#39;s blog</title>
     <link>https://qinry.github.io/posts/</link>
-    <description>Recent content in Posts on learning log</description>
+    <description>Recent content in Posts on qinry&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 28 Nov 2019 18:25:37 +0800</lastBuildDate>
     
@@ -18,7 +18,7 @@
       <guid>https://qinry.github.io/posts/2019-11-28-java-typeinfo/</guid>
       <description>类型信息 Class对象 每个类都存在包含类型信息的Class对象，Class对象属于Java类中Class类型。有两种方法获得某类型的Class 对象，一种是使用Class.forName()静态方法，接受包含完整类名的字符串参数，创建对应类型的Class对象;第二种类字面量，&amp;lt;ClassName&amp;gt;.class。forName()方法必须放在try语句块，而类字面量不需要，故效率更高。
 例子：
-class Rock { static { System.out.println(&amp;#34;Hi, I&amp;#39;m a Rock!&amp;#34;); } public String toString() { return &amp;#34;I don&amp;#39;t like water&amp;#34;; } } public class PlayRock { static void play(Rock rc) { System.out.println(rc); } public static void main(String[] args) { try { Class&amp;lt;?&amp;gt; type = Class.forName(&amp;#34;Rock&amp;#34;); // ?是通配符表示任何事物  } catch(ClassNotFoundException e) { System.out.println(&amp;#34;No find Rock&amp;#34;); } Rock rc = null; try { rc = (Rock)type.newInstance(); // 实例化得到却是Object引用，所以要强制类型转换  play(rc); } catch(InstantiationException e) { System.</description>
+class Rock {static { System.out.println(&amp;#34;Hi, I&amp;#39;m a Rock!&amp;#34;); } public String toString() {return &amp;#34;I don&amp;#39;t like water&amp;#34;;}}public class PlayRock {static void play(Rock rc) {System.out.println(rc);} public static void main(String[] args) {try {Class&amp;lt;?&amp;gt; type = Class.forName(&amp;#34;Rock&amp;#34;); // ?是通配符表示任何事物 } catch(ClassNotFoundException e) {System.out.println(&amp;#34;No find Rock&amp;#34;);}Rock rc = null;try {rc = (Rock)type.newInstance(); // 实例化得到却是Object引用，所以要强制类型转换 play(rc);} catch(InstantiationException e) {System.</description>
     </item>
     
     <item>
@@ -29,8 +29,8 @@ class Rock { static { System.out.println(&amp;#34;Hi, I&amp;#39;m a Rock!&amp;#3
       <guid>https://qinry.github.io/posts/2019-11-25-java-strings/</guid>
       <description>字符串 String对象不可变 String对象被创建后不可修改，某些方法看似是修改源字符串，其实是重新创建新字符串来代替。
 StringBuilder 在循环体中对String对象反复使用 &amp;ldquo;+=&amp;rdquo;, &amp;ldquo;+&amp;rdquo; 运算符，以达字符串的拼接,其实效率不高。因为&amp;quot;+&amp;rdquo;,&amp;ldquo;+=&amp;quot;工作实际上虚拟机会自动创建StringBuilder来起到拼接效果，每次循环建立一个StringBuilder,这将导致资源的浪费。可以在循环体外创建一个StringBuilder，每次调用append()方法拼接字符串，最后toString()返回字符串。如下:
-import java.util.*; public class Mango { public static void main(String[] args) { Random rand = new Random(47); StringBuilder result = new StringBuilder(&amp;#34;[&amp;#34;); for (int i = 0; i &amp;lt; 10; i++) { result.append(rand.nextInt(100)); result.appen(&amp;#34;, &amp;#34;); } result.delete(result.length() - 2, result.length()); result.append(&amp;#34;]&amp;#34;); String s = result.toString(); System.out.println(s); } } String的常用方法 以下方法改变内容返回的String都是新的String, 没有改变内容返回的String都是原始字符串的引用
-构造器 String(String) String(StringBuilder) String(StringBuffer) String(char[]) String(byte[]) 长度 int length() 索引 char charAt(int) 复制 char[] getChars(int, int, char[], int) // 参数:起始和终止索引, 数组，数组的起始索引 byte[] getBytes(int, int, byte[], int) 生成Char数组 char[] toCharArray() 匹配 比较 boolean equals(String) // 内容上的比较是否相等 boolean equalsIgnoreCase(String) // 忽略大小写比较内容是否相等 int compareTo(String) // 大小写不等价 区域比较 boolean regionMatches(int, String, int, int) // 参数:索引，模式字符串，串的偏移量， 比较长度 开头比较 boolean startsWith(String) boolean startsWith(String, int) // 参数: 模式字符串，串的偏移量 末尾比较 boolean endsWith(String) boolean endsWith(String, int) 包含 boolean contains(CharSequence) 取索引 // 从头到尾搜索 失败返回 -1 int indexOf(String) int indexOf(char) int indexOf(char, int) // 参数: 字符, 起始索引 int indexOf(String, int) // 参数: 字符串， 起始索引 // 从尾向前搜索 失败返归 -1 int lastIndexOf(String) int lastIndexOf(char) int lastIndexOf(char, int) int lastIndexOf(String, int) 子字符串 String subString(int) // 参数:起始索引 String subString(int, int) // 参数: 起始和终止索引  拼接 String concat(String) 替换 String replace(char, char) String replace(CharSequence, CharSequence) 大小写转换 String toLowerCase() String toUpperCase() 转变为字符串 static String valueOf(Object|char|boolean|int|long|float|double) static String valueOf(char[]) static String valueOf(char[], int, int) // 数组， 数组偏移量， 个数  去两端空白 String trim() 为字符序列生成String唯一引用 String intern() 格式化输出 System.</description>
+import java.util.*;public class Mango {public static void main(String[] args) {Random rand = new Random(47);StringBuilder result = new StringBuilder(&amp;#34;[&amp;#34;);for (int i = 0; i &amp;lt; 10; i++) {result.append(rand.nextInt(100));result.appen(&amp;#34;, &amp;#34;);}result.delete(result.length() - 2, result.length());result.append(&amp;#34;]&amp;#34;);String s = result.toString();System.out.println(s);}}String的常用方法 以下方法改变内容返回的String都是新的String, 没有改变内容返回的String都是原始字符串的引用
+构造器String(String)String(StringBuilder)String(StringBuffer)String(char[])String(byte[])长度int length()索引char charAt(int)复制char[] getChars(int, int, char[], int) // 参数:起始和终止索引, 数组，数组的起始索引byte[] getBytes(int, int, byte[], int)生成Char数组char[] toCharArray()匹配比较boolean equals(String) // 内容上的比较是否相等boolean equalsIgnoreCase(String) // 忽略大小写比较内容是否相等int compareTo(String) // 大小写不等价区域比较boolean regionMatches(int, String, int, int) // 参数:索引，模式字符串，串的偏移量， 比较长度开头比较boolean startsWith(String)boolean startsWith(String, int) // 参数: 模式字符串，串的偏移量末尾比较boolean endsWith(String)boolean endsWith(String, int)包含boolean contains(CharSequence)取索引// 从头到尾搜索 失败返回 -1int indexOf(String)int indexOf(char)int indexOf(char, int) // 参数: 字符, 起始索引int indexOf(String, int) // 参数: 字符串， 起始索引// 从尾向前搜索 失败返归 -1int lastIndexOf(String)int lastIndexOf(char)int lastIndexOf(char, int)int lastIndexOf(String, int)子字符串String subString(int) // 参数:起始索引String subString(int, int) // 参数: 起始和终止索引拼接String concat(String)替换String replace(char, char)String replace(CharSequence, CharSequence)大小写转换String toLowerCase()String toUpperCase()转变为字符串static String valueOf(Object|char|boolean|int|long|float|double)static String valueOf(char[])static String valueOf(char[], int, int) // 数组， 数组偏移量， 个数去两端空白String trim()为字符序列生成String唯一引用String intern()格式化输出 System.</description>
     </item>
     
     <item>
@@ -43,13 +43,13 @@ import java.util.*; public class Mango { public static void main(String[] args) 
 语法: throw new NullPointerException, 关键字throw之后，和创建普通对象一样创建异常对象, new &amp;lt;异常类&amp;gt;。
 异常捕获 try块中执行代码，遇到异常抛出，交给catch捕获, 然后进行异常处理。将try-catch语句可以放入while循环，由于try中抛出异常，会在catch中匹配，是不会回到原来的地方，在while帮助下，会恢复原来之前地方继续执行，这是一种恢复模型（不太实用，尽量少用，因为它会导致耦合），不然就是终止模型。
 语法:
-try { // 这里抛出异常 } catch(Exception e) { // 这里匹配后处理 } 异常说明 为了让调用者能知道方法可以抛出异常，以便于捕获它们，使用异常说明，作为方法声明的一部分,在参数列表之后，花括号之前。可以声明方法将抛出异常，实际不抛出，为异常先占个位子，对于定义抽象基类和接口时比较重要，其派生类或接口实现将能抛出预声明的异常
+try {// 这里抛出异常} catch(Exception e) {// 这里匹配后处理}异常说明 为了让调用者能知道方法可以抛出异常，以便于捕获它们，使用异常说明，作为方法声明的一部分,在参数列表之后，花括号之前。可以声明方法将抛出异常，实际不抛出，为异常先占个位子，对于定义抽象基类和接口时比较重要，其派生类或接口实现将能抛出预声明的异常
 语法:
-void f() throws Exception { /// 会抛出异常 } finally子句 用finally子句进行清理，不仅限于内存清理，还有资源恢复初始态，如把打开的文件关闭等等。常常将finally放在catch之后。
+void f() throws Exception {/// 会抛出异常}finally子句 用finally子句进行清理，不仅限于内存清理，还有资源恢复初始态，如把打开的文件关闭等等。常常将finally放在catch之后。
 语法:
-try { // 抛出异常 } catch(Exception e) { // 处理异常 } finally { // 清理 } finally能保证总是执行的。在它之前有return，也会在方法结束前，执行finally子句。
+try {// 抛出异常} catch(Exception e) {// 处理异常} finally {// 清理}finally能保证总是执行的。在它之前有return，也会在方法结束前，执行finally子句。
 注意：finally有缺陷，会导致一些异常被忽略,如下:
-// 在某个类内部 static void f() throws FirstException {} static void g() throws SecondException {} public static void main(String[] args) { try { try { f(); } finally { g(); } } catch(Exception e) { } } 这里导致 f( ) 的FirstException被忽略。</description>
+// 在某个类内部static void f() throws FirstException {}static void g() throws SecondException {}public static void main(String[] args) {try {try {f();} finally {g();}} catch(Exception e) {}}这里导致 f( ) 的FirstException被忽略。</description>
     </item>
     
     <item>
@@ -59,7 +59,7 @@ try { // 抛出异常 } catch(Exception e) { // 处理异常 } finally { // 清�
       
       <guid>https://qinry.github.io/posts/2019-10-24-innerclass/</guid>
       <description>内部类 创建内部类 直接将内部类置于外围类中
-// innerclasses/Parcel1.java // Creating inner classes public class Parcel1 { class Contents { private int i = 11; public int value() { return i; } } class Destination { private String label; Destination(String whereTo) { label = whereTo; } String readLabel() { return label; } } // Using inner classes looks just like 	// using any other class, within Parcel1; 	public void ship(String dest) { Contents c = new Contents(); Destination d = new Destination(dest); System.</description>
+// innerclasses/Parcel1.java// Creating inner classespublic class Parcel1 {class Contents {private int i = 11;public int value() { return i; }}class Destination {private String label;Destination(String whereTo) {label = whereTo;}String readLabel() { return label; }}// Using inner classes looks just like	// using any other class, within Parcel1;	public void ship(String dest) {Contents c = new Contents();Destination d = new Destination(dest);System.</description>
     </item>
     
     <item>
@@ -71,9 +71,9 @@ try { // 抛出异常 } catch(Exception e) { // 处理异常 } finally { // 清�
       <description>接口 抽象类和抽象方法   抽象方法：仅有声明而没有方法体。 如： abstract void f();  抽象类： 包含抽象方法的类。
   如果一个类包含一个或多个抽象方法，该类必须限定为抽象的。 如： abstract class A {} 继承抽象类，如果不把抽象方法提供定义， 那么导出类也是抽象类，所以要创建抽象类的子类的对象，必须在子类为基类提供方法的定义。有时，我们也可能创建一个没有任何抽象方法的抽象类，比如不想创建该类的对象，可声明为abstract。
 抽象类还是很有用的重构1工具，因为它们使得我们可以很容易地将公共方法沿继承层次结构上移动。
-接口 使用关键字interface 产生一个完全抽象的类，它根本就没有提供任何具体实现。 interface Instrument { void play(); String what(); void adjust(); } 接口只提供形式，不提供具体实现。可在interface前添加public（但仅限于该接口在与其同名文件中被定义）。如果不添加public，它只有包访问权限。包也可以包含域，但是这些域隐式地是static和final的；方法如果没声明为public，是会自动转换为public的
+接口 使用关键字interface 产生一个完全抽象的类，它根本就没有提供任何具体实现。 interface Instrument { void play(); String what(); void adjust(); }接口只提供形式，不提供具体实现。可在interface前添加public（但仅限于该接口在与其同名文件中被定义）。如果不添加public，它只有包访问权限。包也可以包含域，但是这些域隐式地是static和final的；方法如果没声明为public，是会自动转换为public的
 implements关键字让一个类遵循某个特定的接口，实现接口的功能。 如：
-class Wind implements Instrument { void play() {} String what() {} void adjust() {} } 通过适配器模式，将接口从具体实现中解耦使得接口可以应用于多种不同的具体实现，因此代码也就更具可复用性
+class Wind implements Instrument {void play() {}String what() {}void adjust() {}}通过适配器模式，将接口从具体实现中解耦使得接口可以应用于多种不同的具体实现，因此代码也就更具可复用性
 多重继承 在C++中，组合多个类的接口的行为称作多重继承。每个类都有具体的实现，这样代码量会大的多，编写相较麻烦。
 在Java中，你可以执行相同的行为，但只有一个类可以有具体的实现。代码量比C++少了不少。
 如果要从一个非接口的类继承，那么只能从一个类去继承。其余基元素必须是接口。需要将所有接口名都置于implements关键字之后，用逗号将它们一一隔开。将具体类和多个接口组合在一起，此具体类必须放在前面，后面跟着的才是接口（否则编译器报错）
@@ -164,16 +164,16 @@ final关键字 可以使用在数据（域），方法， 类
       
       <guid>https://qinry.github.io/posts/2019-10-20-git-simple-usage/</guid>
       <description>Git的使用 配置Git 提供Git用户名和邮箱
-$ git config --global user.name &amp;quot;username&amp;quot; $ git config --global user.email &amp;quot;usernaem@example.com&amp;quot; 忽略文件 创建文件 .gitignore ，让Git忽略某目录中的所有文件(不跟踪这些文件)，使用它可以避免项目混乱
-初始化仓库 $ git init 仓库是程序中被Git主动跟踪的一组文件。Git用来管理仓库的文件都存储在隐藏的.git/中，你根本不需要与这个目录打交道，但千万不要删除这个目录，否则将丢弃项目的所有历史记录。
-检查状态 $ git status 在Git中，分支 是项目的一个版本。提交 是项目在特定时间点的快照。
-文件添加到仓库 $ git add [&amp;lt;file&amp;gt; | &amp;lt;path&amp;gt;] 只是让Git开始关注指定文件或目录中的文件。但未提交。
-执行提交 $ git commit -m &amp;lt;message&amp;gt; 标志-m 让Git将接下来的消息记录到项目的历史记录中
-$ git commit -am &amp;lt;message&amp;gt; 标志-am中 a 让Git将仓库中所有修改了的文件都加入到当前提交中，m同上是提交记录信息
+$ git config --global user.name &amp;quot;username&amp;quot;$ git config --global user.email &amp;quot;usernaem@example.com&amp;quot;忽略文件 创建文件 .gitignore ，让Git忽略某目录中的所有文件(不跟踪这些文件)，使用它可以避免项目混乱
+初始化仓库 $ git init仓库是程序中被Git主动跟踪的一组文件。Git用来管理仓库的文件都存储在隐藏的.git/中，你根本不需要与这个目录打交道，但千万不要删除这个目录，否则将丢弃项目的所有历史记录。
+检查状态 $ git status在Git中，分支 是项目的一个版本。提交 是项目在特定时间点的快照。
+文件添加到仓库 $ git add [&amp;lt;file&amp;gt; | &amp;lt;path&amp;gt;]只是让Git开始关注指定文件或目录中的文件。但未提交。
+执行提交 $ git commit -m &amp;lt;message&amp;gt;标志-m 让Git将接下来的消息记录到项目的历史记录中
+$ git commit -am &amp;lt;message&amp;gt;标志-am中 a 让Git将仓库中所有修改了的文件都加入到当前提交中，m同上是提交记录信息
 保证最后的工作目录是干净的，否则很有可能忘记添加文件
-查看提交历史 $ git log 每次提交时，Git都会生成一个包含40字符的独一无二的引用ID。它记录提交是谁执行的、提交的时间以及提交时指定的消息。并非在任何情况下你都需要所有这些信息，因此 Git提供了一个选项，让你能够打印提交历史条目的更简单的版本：
-$ git log --pretty=oneline 将显示提交的引用ID及提交记录的信息
-撤销修改 $ git checkout -- &amp;lt;file&amp;gt; 命令git checkout 让你能够恢复到以前的任何提交。命令git checkout .</description>
+查看提交历史 $ git log每次提交时，Git都会生成一个包含40字符的独一无二的引用ID。它记录提交是谁执行的、提交的时间以及提交时指定的消息。并非在任何情况下你都需要所有这些信息，因此 Git提供了一个选项，让你能够打印提交历史条目的更简单的版本：
+$ git log --pretty=oneline将显示提交的引用ID及提交记录的信息
+撤销修改 $ git checkout -- &amp;lt;file&amp;gt;命令git checkout 让你能够恢复到以前的任何提交。命令git checkout .</description>
     </item>
     
     <item>
@@ -185,11 +185,11 @@ $ git log --pretty=oneline 将显示提交的引用ID及提交记录的信息
       <description>控制流程 关键词：if-else, while, do-while, for, return, break, continue, switch
  条件判断 (if-else) 判断某个条件是否为真，若为真，则执行 if 后的语句;为假执行else后的语句
 例如:
-int i = 47; if (i % 2 == 0) System.out.println(&amp;#34;The number is even!&amp;#34;); else System.out.println(&amp;#34;The number is odd!&amp;#34;); while循环 进口循环 (while) 先判断条件是否为真才执行循环动作，条件为真就执行代码；直到为假，才停止循环
+int i = 47;if (i % 2 == 0)System.out.println(&amp;#34;The number is even!&amp;#34;);elseSystem.out.println(&amp;#34;The number is odd!&amp;#34;);while循环 进口循环 (while) 先判断条件是否为真才执行循环动作，条件为真就执行代码；直到为假，才停止循环
 例如
-int i = 0; while ( i &amp;gt; 0) { System.out.println(i--); } output: 没有输出!!! 出口循环 (do-while) 先执行一次代码再判断条件是否为真才继续执行代码，直到假才停止
+int i = 0;while ( i &amp;gt; 0) {System.out.println(i--);}output:没有输出!!!出口循环 (do-while) 先执行一次代码再判断条件是否为真才继续执行代码，直到假才停止
 例如：
-int i = 0; do { System.out.println(i--); } while(i &amp;gt; 0); output: -1 注：do-while执行判断的次数比while少一次</description>
+int i = 0;do {System.out.println(i--);} while(i &amp;gt; 0);output:-1注：do-while执行判断的次数比while少一次</description>
     </item>
     
     <item>
@@ -242,7 +242,7 @@ System.out.println() 内含+, 其前是String，其后操作对象非String会�
 算法分析 4种描述算法效率的数学模型，常用的有大O记法
 大O记法：时间T(N) = O( f( N ) ), 意思是T( N ) 的相对增长率小于 f(N)
 计算运行时间 一般法则
- FOR循环 嵌套的FOR循环 顺序语句 IF/ELSE语句   最大子序列和问题解 算法1（嵌套3层for循环） int MaxSubsequenceSum(const int A[], int N) { int ThisSum, MaxSum, i, j, k; MaxSum = 0; for (i = 0; i &amp;lt; N; i++) for (j = i; j &amp;lt; N; j++) { ThisSum = 0; for (k = i; k &amp;lt;= j; k++) ThisSum += A[k]; if (ThisSum &amp;gt; MaxSum) MaxSum = ThisSum; } return MaxSum; } 算法2（嵌套2层for循环） int MaxSubsequenceSum(const int A[], int N) { int ThisSum, MaxSum, i, j; MaxSum = 0; for (i = 0; i &amp;lt; N; i++) { ThisSum = 0; for (j = i; j &amp;lt; N; j++) { ThisSum += A[j]; if (ThisSum &amp;gt; MaxSum) MaxSum = ThisSum; } } return MaxSum; } 算法3（分治） int Max3(int x, int y, int z) { return (x &amp;gt; y ?</description>
+ FOR循环 嵌套的FOR循环 顺序语句 IF/ELSE语句   最大子序列和问题解 算法1（嵌套3层for循环） int MaxSubsequenceSum(const int A[], int N){int ThisSum, MaxSum, i, j, k;MaxSum = 0;for (i = 0; i &amp;lt; N; i++)for (j = i; j &amp;lt; N; j++){ThisSum = 0;for (k = i; k &amp;lt;= j; k++)ThisSum += A[k];if (ThisSum &amp;gt; MaxSum)MaxSum = ThisSum;}return MaxSum;} 算法2（嵌套2层for循环） int MaxSubsequenceSum(const int A[], int N){int ThisSum, MaxSum, i, j;MaxSum = 0;for (i = 0; i &amp;lt; N; i++){ThisSum = 0;for (j = i; j &amp;lt; N; j++){ThisSum += A[j];if (ThisSum &amp;gt; MaxSum)MaxSum = ThisSum;}}return MaxSum;}算法3（分治） int Max3(int x, int y, int z){return (x &amp;gt; y ?</description>
     </item>
     
   </channel>

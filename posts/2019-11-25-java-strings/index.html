@@ -1,84 +1,58 @@
-<!doctype html>
-<html lang="en-us">
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>《Thinking in Java》--  字符串 // learning log</title>
-  <meta charset="utf-8" />
-  <meta name="generator" content="Hugo 0.60.0" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="author" content="qinry" />
-  <meta name="description"
-    content="" />
-  <link rel="stylesheet" href="https://qinry.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.62.0" />
 
   
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="《Thinking in Java》--  字符串"/>
-<meta name="twitter:description" content="字符串 String对象不可变 String对象被创建后不可修改，某些方法看似是修改源字符串，其实是重新创建新字符串来代替。
-StringBuilder 在循环体中对String对象反复使用 &ldquo;&#43;=&rdquo;, &ldquo;&#43;&rdquo; 运算符，以达字符串的拼接,其实效率不高。因为&quot;&#43;&rdquo;,&ldquo;&#43;=&quot;工作实际上虚拟机会自动创建StringBuilder来起到拼接效果，每次循环建立一个StringBuilder,这将导致资源的浪费。可以在循环体外创建一个StringBuilder，每次调用append()方法拼接字符串，最后toString()返回字符串。如下:
-import java.util.*; public class Mango { public static void main(String[] args) { Random rand = new Random(47); StringBuilder result = new StringBuilder(&#34;[&#34;); for (int i = 0; i &lt; 10; i&#43;&#43;) { result.append(rand.nextInt(100)); result.appen(&#34;, &#34;); } result.delete(result.length() - 2, result.length()); result.append(&#34;]&#34;); String s = result.toString(); System.out.println(s); } } String的常用方法 以下方法改变内容返回的String都是新的String, 没有改变内容返回的String都是原始字符串的引用
-构造器 String(String) String(StringBuilder) String(StringBuffer) String(char[]) String(byte[]) 长度 int length() 索引 char charAt(int) 复制 char[] getChars(int, int, char[], int) // 参数:起始和终止索引, 数组，数组的起始索引 byte[] getBytes(int, int, byte[], int) 生成Char数组 char[] toCharArray() 匹配 比较 boolean equals(String) // 内容上的比较是否相等 boolean equalsIgnoreCase(String) // 忽略大小写比较内容是否相等 int compareTo(String) // 大小写不等价 区域比较 boolean regionMatches(int, String, int, int) // 参数:索引，模式字符串，串的偏移量， 比较长度 开头比较 boolean startsWith(String) boolean startsWith(String, int) // 参数: 模式字符串，串的偏移量 末尾比较 boolean endsWith(String) boolean endsWith(String, int) 包含 boolean contains(CharSequence) 取索引 // 从头到尾搜索 失败返回 -1 int indexOf(String) int indexOf(char) int indexOf(char, int) // 参数: 字符, 起始索引 int indexOf(String, int) // 参数: 字符串， 起始索引 // 从尾向前搜索 失败返归 -1 int lastIndexOf(String) int lastIndexOf(char) int lastIndexOf(char, int) int lastIndexOf(String, int) 子字符串 String subString(int) // 参数:起始索引 String subString(int, int) // 参数: 起始和终止索引  拼接 String concat(String) 替换 String replace(char, char) String replace(CharSequence, CharSequence) 大小写转换 String toLowerCase() String toUpperCase() 转变为字符串 static String valueOf(Object|char|boolean|int|long|float|double) static String valueOf(char[]) static String valueOf(char[], int, int) // 数组， 数组偏移量， 个数  去两端空白 String trim() 为字符序列生成String唯一引用 String intern() 格式化输出 System."/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta property="og:title" content="《Thinking in Java》--  字符串" />
-<meta property="og:description" content="字符串 String对象不可变 String对象被创建后不可修改，某些方法看似是修改源字符串，其实是重新创建新字符串来代替。
-StringBuilder 在循环体中对String对象反复使用 &ldquo;&#43;=&rdquo;, &ldquo;&#43;&rdquo; 运算符，以达字符串的拼接,其实效率不高。因为&quot;&#43;&rdquo;,&ldquo;&#43;=&quot;工作实际上虚拟机会自动创建StringBuilder来起到拼接效果，每次循环建立一个StringBuilder,这将导致资源的浪费。可以在循环体外创建一个StringBuilder，每次调用append()方法拼接字符串，最后toString()返回字符串。如下:
-import java.util.*; public class Mango { public static void main(String[] args) { Random rand = new Random(47); StringBuilder result = new StringBuilder(&#34;[&#34;); for (int i = 0; i &lt; 10; i&#43;&#43;) { result.append(rand.nextInt(100)); result.appen(&#34;, &#34;); } result.delete(result.length() - 2, result.length()); result.append(&#34;]&#34;); String s = result.toString(); System.out.println(s); } } String的常用方法 以下方法改变内容返回的String都是新的String, 没有改变内容返回的String都是原始字符串的引用
-构造器 String(String) String(StringBuilder) String(StringBuffer) String(char[]) String(byte[]) 长度 int length() 索引 char charAt(int) 复制 char[] getChars(int, int, char[], int) // 参数:起始和终止索引, 数组，数组的起始索引 byte[] getBytes(int, int, byte[], int) 生成Char数组 char[] toCharArray() 匹配 比较 boolean equals(String) // 内容上的比较是否相等 boolean equalsIgnoreCase(String) // 忽略大小写比较内容是否相等 int compareTo(String) // 大小写不等价 区域比较 boolean regionMatches(int, String, int, int) // 参数:索引，模式字符串，串的偏移量， 比较长度 开头比较 boolean startsWith(String) boolean startsWith(String, int) // 参数: 模式字符串，串的偏移量 末尾比较 boolean endsWith(String) boolean endsWith(String, int) 包含 boolean contains(CharSequence) 取索引 // 从头到尾搜索 失败返回 -1 int indexOf(String) int indexOf(char) int indexOf(char, int) // 参数: 字符, 起始索引 int indexOf(String, int) // 参数: 字符串， 起始索引 // 从尾向前搜索 失败返归 -1 int lastIndexOf(String) int lastIndexOf(char) int lastIndexOf(char, int) int lastIndexOf(String, int) 子字符串 String subString(int) // 参数:起始索引 String subString(int, int) // 参数: 起始和终止索引  拼接 String concat(String) 替换 String replace(char, char) String replace(CharSequence, CharSequence) 大小写转换 String toLowerCase() String toUpperCase() 转变为字符串 static String valueOf(Object|char|boolean|int|long|float|double) static String valueOf(char[]) static String valueOf(char[], int, int) // 数组， 数组偏移量， 个数  去两端空白 String trim() 为字符序列生成String唯一引用 String intern() 格式化输出 System." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://qinry.github.io/posts/2019-11-25-java-strings/" />
-<meta property="article:published_time" content="2019-11-25T09:46:16+08:00" />
-<meta property="article:modified_time" content="2019-11-25T09:46:16+08:00" />
+  <title>《Thinking in Java》--  字符串 &middot; qinry&#39;s blog</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
 </head>
 
-<body>
-  <header class="app-header">
-    <a href="https://qinry.github.io"><img class="app-header-avatar"
-        src="/avatar.jpg"
-        alt="qinry" /></a>
-    <h1>learning log</h1>
-    <p>
-      在此写下学习日志，努力充电中～
-    </p>
-    <div class="app-header-social">
-      
-      <a target="_blank" href="https://github.com/qinry"
-        rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
-  <title>github</title>
-  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-</svg></a>
-      
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io"><h1>qinry&#39;s blog</h1></a>
+      <p class="lead">
+       在此写下学习日志，努力充电中～ 
+      </p>
     </div>
-  </header>
-  <main class="app-container">
-    
-<article class="post">
-  <header class="post-header">
-    <h1 class="post-title">《Thinking in Java》--  字符串</h1>
-    <div class="post-meta">
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
-  <title>calendar</title>
-  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
-</svg>
-        Nov 25, 2019
-      </div>
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
-  <title>clock</title>
-  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
-</svg>
-        2 min read
-      </div><div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
-  <title>tag</title>
-  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
-</svg>
-        <a class="tag" href="https://qinry.github.io/tags/java/">java</a></div></div>
-  </header>
-  <div class="post-content">
-    <h1 id="heading">字符串</h1>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>《Thinking in Java》--  字符串</h1>
+  <time datetime=2019-11-25T09:46:16&#43;0800 class="post-date">Mon, Nov 25, 2019</time>
+  <h1 id="heading">字符串</h1>
 <h2 id="string">String对象不可变</h2>
 <p>String对象被创建后不可修改，某些方法看似是修改源字符串，其实是重新创建新字符串来代替。</p>
 <h2 id="stringbuilder">StringBuilder</h2>
@@ -98,7 +72,7 @@ import java.util.*; public class Mango { public static void main(String[] args) 
         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>s<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h2 id="string1">String的常用方法</h2>
+</code></pre></div><h2 id="string-1">String的常用方法</h2>
 <p>以下方法改变内容返回的String都是新的String, 没有改变内容返回的String都是原始字符串的引用</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java">构造器
 <span style="color:#a6e22e">String</span><span style="color:#f92672">(</span>String<span style="color:#f92672">)</span>
@@ -176,10 +150,10 @@ String <span style="color:#a6e22e">trim</span><span style="color:#f92672">(</spa
 为字符序列生成String唯一引用
 String <span style="color:#a6e22e">intern</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
 
-</code></pre></div><h2 id="heading1">格式化输出</h2>
+</code></pre></div><h2 id="heading-1">格式化输出</h2>
 <p>System.out.printf() 与 C的printf类似
 System.out.format() 也是如此</p>
-<h4 id="heading2">格式化说明符</h4>
+<h4 id="heading-2">格式化说明符</h4>
 <p>%[argument_index$][flags][width][.precision]conversion
 注：其中[.precision]不能用于整数类型，否则触发异常</p>
 <h4 id="formatter">Formatter类</h4>
@@ -192,7 +166,7 @@ f<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><s
 </code></pre></div><p>解释: Formatter类会将format()内的参数打印到System.out</p>
 <p>String.format方法是静态方法，内部创建Formatter对象，将传入的参数，传给
 Formatter。</p>
-<h2 id="heading3">扫描输入</h2>
+<h2 id="heading-3">扫描输入</h2>
 <p>使用java.io.Scanner，扫描输入， 减少分割字符串操作
 例子:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#f92672">import</span> java.io.*<span style="color:#f92672">;</span>
@@ -216,13 +190,11 @@ Formatter。</p>
 <span style="color:#f92672">}</span>
 
 </code></pre></div>
-  </div>
-  <div class="post-footer">
+</div>
+
+
+    </main>
+
     
-  </div>
-</article>
-
-  </main>
-</body>
-
+  </body>
 </html>

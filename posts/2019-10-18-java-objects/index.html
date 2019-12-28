@@ -1,99 +1,59 @@
-<!doctype html>
-<html lang="en-us">
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>《Thinking in Java》--  对象 // learning log</title>
-  <meta charset="utf-8" />
-  <meta name="generator" content="Hugo 0.60.0" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="author" content="qinry" />
-  <meta name="description"
-    content="" />
-  <link rel="stylesheet" href="https://qinry.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.62.0" />
 
   
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="《Thinking in Java》--  对象"/>
-<meta name="twitter:description" content="对象 对象及内存分布   在Java中一切都被视为对象，但操纵的标识符实际上是对象的“引用”
-  字符串可以用带引号的初始值， 如： String s = &quot;sdf&quot;;
-  关键字 new 用来创建一个新对象，存在于堆中
-  对象在内存中的分布
-  寄存器 最快存储区（Java中是按需在这里分配，程序员不直接管理）
-  堆栈 位于通用RAM。比较快速有效的分配内存，次于寄存器
-  堆 一种通用的内存池。（大部分对象存储在这），有较高的灵活性
-  常量储存 常量直接存用程序代码内部；有时在嵌入式系统，常量与其他部分分离，一般存于ROM中
-  非RAM存储 数据存活于之外。常例：流对象、持久化对象
-     数据类型 基本类型 基本数据类型 boolean, char, byte, short, int, long, float, double , void
-注： boolean 有两个字面量常量true和false； 基本类型有对应的包装器类型，并在堆上创建对象以表示相应的基本类型。两者可以相互转换（自动包装） 2个高精度的类似包装器类型的计算类（没有有对应的基本类型）： BigInteger 和 BigDecimal  运算速度相较于其他基本算术类型及其相应的包装器类型要慢，但精度高支持任何精度 BigInteger 支持整数 BigDecimal 支持定点数（不是浮点数），可用于货币运算  数组 Java中数组被确保初始化， 且不能越界访问，为此增加了开销换来安全性和效率的提高。如果数组存放对象，实际上数组为一个引用数组（C&#43;&#43;是不允许的），元素引用初始值为null，未指定对象；存放的是基本数据类型，初始化为0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta property="og:title" content="《Thinking in Java》--  对象" />
-<meta property="og:description" content="对象 对象及内存分布   在Java中一切都被视为对象，但操纵的标识符实际上是对象的“引用”
-  字符串可以用带引号的初始值， 如： String s = &quot;sdf&quot;;
-  关键字 new 用来创建一个新对象，存在于堆中
-  对象在内存中的分布
-  寄存器 最快存储区（Java中是按需在这里分配，程序员不直接管理）
-  堆栈 位于通用RAM。比较快速有效的分配内存，次于寄存器
-  堆 一种通用的内存池。（大部分对象存储在这），有较高的灵活性
-  常量储存 常量直接存用程序代码内部；有时在嵌入式系统，常量与其他部分分离，一般存于ROM中
-  非RAM存储 数据存活于之外。常例：流对象、持久化对象
-     数据类型 基本类型 基本数据类型 boolean, char, byte, short, int, long, float, double , void
-注： boolean 有两个字面量常量true和false； 基本类型有对应的包装器类型，并在堆上创建对象以表示相应的基本类型。两者可以相互转换（自动包装） 2个高精度的类似包装器类型的计算类（没有有对应的基本类型）： BigInteger 和 BigDecimal  运算速度相较于其他基本算术类型及其相应的包装器类型要慢，但精度高支持任何精度 BigInteger 支持整数 BigDecimal 支持定点数（不是浮点数），可用于货币运算  数组 Java中数组被确保初始化， 且不能越界访问，为此增加了开销换来安全性和效率的提高。如果数组存放对象，实际上数组为一个引用数组（C&#43;&#43;是不允许的），元素引用初始值为null，未指定对象；存放的是基本数据类型，初始化为0" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://qinry.github.io/posts/2019-10-18-java-objects/" />
-<meta property="article:published_time" content="2019-10-18T20:41:27+08:00" />
-<meta property="article:modified_time" content="2019-10-18T20:41:27+08:00" />
+  <title>《Thinking in Java》--  对象 &middot; qinry&#39;s blog</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
 </head>
 
-<body>
-  <header class="app-header">
-    <a href="https://qinry.github.io"><img class="app-header-avatar"
-        src="/avatar.jpg"
-        alt="qinry" /></a>
-    <h1>learning log</h1>
-    <p>
-      在此写下学习日志，努力充电中～
-    </p>
-    <div class="app-header-social">
-      
-      <a target="_blank" href="https://github.com/qinry"
-        rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
-  <title>github</title>
-  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-</svg></a>
-      
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io"><h1>qinry&#39;s blog</h1></a>
+      <p class="lead">
+       在此写下学习日志，努力充电中～ 
+      </p>
     </div>
-  </header>
-  <main class="app-container">
-    
-<article class="post">
-  <header class="post-header">
-    <h1 class="post-title">《Thinking in Java》--  对象</h1>
-    <div class="post-meta">
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
-  <title>calendar</title>
-  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
-</svg>
-        Oct 18, 2019
-      </div>
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
-  <title>clock</title>
-  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
-</svg>
-        2 min read
-      </div><div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
-  <title>tag</title>
-  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
-</svg>
-        <a class="tag" href="https://qinry.github.io/tags/java/">java</a></div></div>
-  </header>
-  <div class="post-content">
-    <h1 id="heading">对象</h1>
-<h2 id="heading1">对象及内存分布</h2>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>《Thinking in Java》--  对象</h1>
+  <time datetime=2019-10-18T20:41:27&#43;0800 class="post-date">Fri, Oct 18, 2019</time>
+  <h1 id="heading">对象</h1>
+<h2 id="heading-1">对象及内存分布</h2>
 <ol>
 <li>
 <p>在Java中一切都被视为对象，但操纵的标识符实际上是对象的“引用”</p>
@@ -131,8 +91,8 @@
 </li>
 </ol>
 <hr>
-<h2 id="heading2">数据类型</h2>
-<h3 id="heading3">基本类型</h3>
+<h2 id="heading-2">数据类型</h2>
+<h3 id="heading-3">基本类型</h3>
 <p>基本数据类型
 <code>boolean</code>, <code>char</code>, <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code> , <code>void</code></p>
 <p>注： boolean 有两个字面量常量true和false；
@@ -144,15 +104,15 @@
 <li>BigInteger  支持整数</li>
 <li>BigDecimal  支持定点数（不是浮点数），可用于货币运算</li>
 </ul>
-<h4 id="heading4">数组</h4>
+<h4 id="heading-4">数组</h4>
 <p>Java中数组被确保初始化， 且不能越界访问，为此增加了开销换来安全性和效率的提高。如果数组存放对象，实际上数组为一个引用数组（C++是不允许的），元素引用初始值为null，未指定对象；存放的是基本数据类型，初始化为0</p>
 <p>关键字 <strong>null</strong>, 表示引用未指向任何对象  注： 未指定对象的引用不可使用；使用指定null的引用，运行是报错</p>
-<h4 id="heading5">作用域</h4>
+<h4 id="heading-5">作用域</h4>
 <p>作用域由花括号（{}）位置决定， 与C，C++类似。不过Java不允许屏蔽外部作用域变量，若在内部作用域重用外部作用域变量，编译器报告变量已定义，以防止程序混乱.</p>
 <p>对象在作用域中的可见，可存活于作用域外。若对象引用唯一，在作用域外，尽管对象存在，却无法访问，Java会有垃圾回收机制，自动清理对象，但不保证一定发生。清理动作发生，会释放所在内存空间，这就避免像C++的内存泄漏问题</p>
 <h4 id="-class">关键字 <strong>class</strong></h4>
 <p>class 创建一个类， 来引入自定义新类型并指明类型名，用 <strong>new</strong> 创建</p>
-<h3 id="--">自定义数据类型 &mdash; 类</h3>
+<h3 id="-----">自定义数据类型 &mdash; 类</h3>
 <p>包含字段（数据成员）和方法（成员函数）两个部分， 抽象实际对象的外观和行为</p>
 <p>注意： Java确保默认初始化，但不适合局部变量，即在某个方法定义的变量</p>
 <p>方法组成 = 名称+参数列表+返回值+方法体</p>
@@ -163,7 +123,7 @@
 <p>参数列表要指定传递对象类型和名称，看似传对象实则传递是引用</p>
 <p>关键字 <strong>Return</strong> ， 在方法体中，表示停止方法和返回值，如果返回类型void，只有退出方法</p>
 <hr>
-<h3 id="heading6">名字可见性</h3>
+<h3 id="heading-6">名字可见性</h3>
 <p>使用Internet域名避免命名冲突（org, net. com, edu等）;包用小写；列如： net.mindview.utility.foibles(句点表示子目录划分)</p>
 <h3 id="import-">import 导入类（预定义好的类）</h3>
 <ul>
@@ -189,7 +149,7 @@
 <span style="color:#f92672">}</span>
 </code></pre></div><p>使用 <em>javac</em> 和 <em>java</em> 工具命令编译和运行Java程序 或 <em>ant</em> 构建 Java项目（最近流行<em>Maven</em>和<em>Gradle</em>）</p>
 <hr>
-<h2 id="heading7">注释与嵌入式文档</h2>
+<h2 id="heading-7">注释与嵌入式文档</h2>
 <p>注释形式: (1). 嵌入式HTML; (2). 文档标签</p>
 <p>3种类型注释文档在类、域和方法后。</p>
 <p>javadoc， 用于提取注释为html文档的工具。doclet操作javadoc处理过的信息。javadoc 使用 -private 来提取private和包访问权限成员注释</p>
@@ -217,16 +177,14 @@
 
 {@inheritDoc} 从当前类的最直接基类的继承文档
 
-</code></pre><h2 id="--1">编码风格 &mdash; 驼峰风格</h2>
+</code></pre><h2 id="------1">编码风格 &mdash; 驼峰风格</h2>
 <p>驼峰风格： 类名首字母大写；有几个单词组成要并在一起，每个单词首字母大写(如： HelloDate)；标识符第一个字母小写，其他与类名相同 (如：toUpperCase)</p>
 
-  </div>
-  <div class="post-footer">
+</div>
+
+
+    </main>
+
     
-  </div>
-</article>
-
-  </main>
-</body>
-
+  </body>
 </html>

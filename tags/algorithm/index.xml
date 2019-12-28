@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>algorithm on learning log</title>
+    <title>algorithm on qinry&#39;s blog</title>
     <link>https://qinry.github.io/tags/algorithm/</link>
-    <description>Recent content in algorithm on learning log</description>
+    <description>Recent content in algorithm on qinry&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 17 Oct 2019 23:29:10 +0800</lastBuildDate>
     
@@ -20,7 +20,7 @@
 算法分析 4种描述算法效率的数学模型，常用的有大O记法
 大O记法：时间T(N) = O( f( N ) ), 意思是T( N ) 的相对增长率小于 f(N)
 计算运行时间 一般法则
- FOR循环 嵌套的FOR循环 顺序语句 IF/ELSE语句   最大子序列和问题解 算法1（嵌套3层for循环） int MaxSubsequenceSum(const int A[], int N) { int ThisSum, MaxSum, i, j, k; MaxSum = 0; for (i = 0; i &amp;lt; N; i++) for (j = i; j &amp;lt; N; j++) { ThisSum = 0; for (k = i; k &amp;lt;= j; k++) ThisSum += A[k]; if (ThisSum &amp;gt; MaxSum) MaxSum = ThisSum; } return MaxSum; } 算法2（嵌套2层for循环） int MaxSubsequenceSum(const int A[], int N) { int ThisSum, MaxSum, i, j; MaxSum = 0; for (i = 0; i &amp;lt; N; i++) { ThisSum = 0; for (j = i; j &amp;lt; N; j++) { ThisSum += A[j]; if (ThisSum &amp;gt; MaxSum) MaxSum = ThisSum; } } return MaxSum; } 算法3（分治） int Max3(int x, int y, int z) { return (x &amp;gt; y ?</description>
+ FOR循环 嵌套的FOR循环 顺序语句 IF/ELSE语句   最大子序列和问题解 算法1（嵌套3层for循环） int MaxSubsequenceSum(const int A[], int N){int ThisSum, MaxSum, i, j, k;MaxSum = 0;for (i = 0; i &amp;lt; N; i++)for (j = i; j &amp;lt; N; j++){ThisSum = 0;for (k = i; k &amp;lt;= j; k++)ThisSum += A[k];if (ThisSum &amp;gt; MaxSum)MaxSum = ThisSum;}return MaxSum;} 算法2（嵌套2层for循环） int MaxSubsequenceSum(const int A[], int N){int ThisSum, MaxSum, i, j;MaxSum = 0;for (i = 0; i &amp;lt; N; i++){ThisSum = 0;for (j = i; j &amp;lt; N; j++){ThisSum += A[j];if (ThisSum &amp;gt; MaxSum)MaxSum = ThisSum;}}return MaxSum;}算法3（分治） int Max3(int x, int y, int z){return (x &amp;gt; y ?</description>
     </item>
     
   </channel>

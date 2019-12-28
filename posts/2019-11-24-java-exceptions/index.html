@@ -1,102 +1,62 @@
-<!doctype html>
-<html lang="en-us">
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>《Thinking in Java》 --  异常处理 // learning log</title>
-  <meta charset="utf-8" />
-  <meta name="generator" content="Hugo 0.60.0" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="author" content="qinry" />
-  <meta name="description"
-    content="" />
-  <link rel="stylesheet" href="https://qinry.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.62.0" />
 
   
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="《Thinking in Java》 --  异常处理"/>
-<meta name="twitter:description" content="异常处理 异常抛出 创建一个异常对象，然后从当前环境对象抛出，阻止当前方法或作用域的执行。
-语法: throw new NullPointerException, 关键字throw之后，和创建普通对象一样创建异常对象, new &lt;异常类&gt;。
-异常捕获 try块中执行代码，遇到异常抛出，交给catch捕获, 然后进行异常处理。将try-catch语句可以放入while循环，由于try中抛出异常，会在catch中匹配，是不会回到原来的地方，在while帮助下，会恢复原来之前地方继续执行，这是一种恢复模型（不太实用，尽量少用，因为它会导致耦合），不然就是终止模型。
-语法:
-try { // 这里抛出异常 } catch(Exception e) { // 这里匹配后处理 } 异常说明 为了让调用者能知道方法可以抛出异常，以便于捕获它们，使用异常说明，作为方法声明的一部分,在参数列表之后，花括号之前。可以声明方法将抛出异常，实际不抛出，为异常先占个位子，对于定义抽象基类和接口时比较重要，其派生类或接口实现将能抛出预声明的异常
-语法:
-void f() throws Exception { /// 会抛出异常 } finally子句 用finally子句进行清理，不仅限于内存清理，还有资源恢复初始态，如把打开的文件关闭等等。常常将finally放在catch之后。
-语法:
-try { // 抛出异常 } catch(Exception e) { // 处理异常 } finally { // 清理 } finally能保证总是执行的。在它之前有return，也会在方法结束前，执行finally子句。
-注意：finally有缺陷，会导致一些异常被忽略,如下:
-// 在某个类内部 static void f() throws FirstException {} static void g() throws SecondException {} public static void main(String[] args) { try { try { f(); } finally { g(); } } catch(Exception e) { } } 这里导致 f( ) 的FirstException被忽略。"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta property="og:title" content="《Thinking in Java》 --  异常处理" />
-<meta property="og:description" content="异常处理 异常抛出 创建一个异常对象，然后从当前环境对象抛出，阻止当前方法或作用域的执行。
-语法: throw new NullPointerException, 关键字throw之后，和创建普通对象一样创建异常对象, new &lt;异常类&gt;。
-异常捕获 try块中执行代码，遇到异常抛出，交给catch捕获, 然后进行异常处理。将try-catch语句可以放入while循环，由于try中抛出异常，会在catch中匹配，是不会回到原来的地方，在while帮助下，会恢复原来之前地方继续执行，这是一种恢复模型（不太实用，尽量少用，因为它会导致耦合），不然就是终止模型。
-语法:
-try { // 这里抛出异常 } catch(Exception e) { // 这里匹配后处理 } 异常说明 为了让调用者能知道方法可以抛出异常，以便于捕获它们，使用异常说明，作为方法声明的一部分,在参数列表之后，花括号之前。可以声明方法将抛出异常，实际不抛出，为异常先占个位子，对于定义抽象基类和接口时比较重要，其派生类或接口实现将能抛出预声明的异常
-语法:
-void f() throws Exception { /// 会抛出异常 } finally子句 用finally子句进行清理，不仅限于内存清理，还有资源恢复初始态，如把打开的文件关闭等等。常常将finally放在catch之后。
-语法:
-try { // 抛出异常 } catch(Exception e) { // 处理异常 } finally { // 清理 } finally能保证总是执行的。在它之前有return，也会在方法结束前，执行finally子句。
-注意：finally有缺陷，会导致一些异常被忽略,如下:
-// 在某个类内部 static void f() throws FirstException {} static void g() throws SecondException {} public static void main(String[] args) { try { try { f(); } finally { g(); } } catch(Exception e) { } } 这里导致 f( ) 的FirstException被忽略。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://qinry.github.io/posts/2019-11-24-java-exceptions/" />
-<meta property="article:published_time" content="2019-11-24T08:47:23+08:00" />
-<meta property="article:modified_time" content="2019-11-24T08:47:23+08:00" />
+  <title>《Thinking in Java》 --  异常处理 &middot; qinry&#39;s blog</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
 </head>
 
-<body>
-  <header class="app-header">
-    <a href="https://qinry.github.io"><img class="app-header-avatar"
-        src="/avatar.jpg"
-        alt="qinry" /></a>
-    <h1>learning log</h1>
-    <p>
-      在此写下学习日志，努力充电中～
-    </p>
-    <div class="app-header-social">
-      
-      <a target="_blank" href="https://github.com/qinry"
-        rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
-  <title>github</title>
-  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-</svg></a>
-      
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io"><h1>qinry&#39;s blog</h1></a>
+      <p class="lead">
+       在此写下学习日志，努力充电中～ 
+      </p>
     </div>
-  </header>
-  <main class="app-container">
-    
-<article class="post">
-  <header class="post-header">
-    <h1 class="post-title">《Thinking in Java》 --  异常处理</h1>
-    <div class="post-meta">
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
-  <title>calendar</title>
-  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
-</svg>
-        Nov 24, 2019
-      </div>
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
-  <title>clock</title>
-  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
-</svg>
-        2 min read
-      </div><div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
-  <title>tag</title>
-  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
-</svg>
-        <a class="tag" href="https://qinry.github.io/tags/java/">java</a></div></div>
-  </header>
-  <div class="post-content">
-    <h1 id="heading">异常处理</h1>
-<h2 id="heading1">异常抛出</h2>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>《Thinking in Java》 --  异常处理</h1>
+  <time datetime=2019-11-24T08:47:23&#43;0800 class="post-date">Sun, Nov 24, 2019</time>
+  <h1 id="heading">异常处理</h1>
+<h2 id="heading-1">异常抛出</h2>
 <p>创建一个异常对象，然后从当前环境对象抛出，阻止当前方法或作用域的执行。</p>
 <p>语法: <code>throw new NullPointerException</code>, 关键字<code>throw</code>之后，和创建普通对象一样创建异常对象, <code>new &lt;异常类&gt;</code>。</p>
-<h2 id="heading2">异常捕获</h2>
+<h2 id="heading-2">异常捕获</h2>
 <p>try块中执行代码，遇到异常抛出，交给catch捕获, 然后进行异常处理。将try-catch语句可以放入while循环，由于try中抛出异常，会在catch中匹配，是不会回到原来的地方，在while帮助下，会恢复原来之前地方继续执行，这是一种恢复模型（不太实用，尽量少用，因为它会导致耦合），不然就是终止模型。</p>
 <p>语法:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
@@ -104,7 +64,7 @@ try { // 抛出异常 } catch(Exception e) { // 处理异常 } finally { // 清�
 </span><span style="color:#75715e"></span><span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
     <span style="color:#75715e">// 这里匹配后处理
 </span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
-</code></pre></div><h2 id="heading3">异常说明</h2>
+</code></pre></div><h2 id="heading-3">异常说明</h2>
 <p>为了让调用者能知道方法可以抛出异常，以便于捕获它们，使用异常说明，作为方法声明的一部分,在参数列表之后，花括号之前。可以声明方法将抛出异常，实际不抛出，为异常先占个位子，对于定义抽象基类和接口时比较重要，其派生类或接口实现将能抛出预声明的异常</p>
 <p>语法:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
@@ -159,10 +119,10 @@ try { // 抛出异常 } catch(Exception e) { // 处理异常 } finally { // 清�
         <span style="color:#f92672">}</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h2 id="heading4">异常的限制</h2>
+</code></pre></div><h2 id="heading-4">异常的限制</h2>
 <p>当覆盖方法的时候，只能抛出在基类方法的异常说明列出异常及其派生的异常。</p>
 <p>注意：某个类继承它的基类，和实现它的接口，其中基类和接口有同名方法，分别有不同的异常说明，接口的不能改变基类方法的异常说明接口；异常限制对构造器不起作用，派生类构造器不能捕获基类构造器抛出的异常，所以派生构造器必须包括基类构造器的异常说明；一个出现在基类的异常说明不一定在派生类方法的异常说明出现，说明某个特定方法的“异常说明接口”可能是变小，这和类接口在继承的情况相反。</p>
-<h2 id="heading5">异常匹配</h2>
+<h2 id="heading-5">异常匹配</h2>
 <p>抛出异常后，会根据代码书写顺序找出最前的catch子句处理后，不再向下查找catch子句。还有不要求完全匹配，可以是基类异常。</p>
 <p>注意:应该把派生类异常放在前，基类放在后面，否则报告错误。如下:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#75715e">// 这样做如果成功，会导致派生异常屏蔽，故不允许，报错.
@@ -173,7 +133,7 @@ try { // 抛出异常 } catch(Exception e) { // 处理异常 } finally { // 清�
 </span><span style="color:#75715e"></span><span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>DerivedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
     <span style="color:#75715e">// ...
 </span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
-</code></pre></div><h2 id="heading6">异常类的方法</h2>
+</code></pre></div><h2 id="heading-6">异常类的方法</h2>
 <p>Java标准库异常类的基类是Throwable。</p>
 <p>方法如下:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#75715e">// 获取详细信息，或本地语言表示信息
@@ -190,7 +150,7 @@ String <span style="color:#a6e22e">getLocalizedMessage</span><span style="color:
 
 <span style="color:#75715e">// 在Throwable对象内部记录栈帧的当前(新)状态
 </span><span style="color:#75715e"></span>Throwable <span style="color:#a6e22e">fillInStackTrace</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> 
-</code></pre></div><h2 id="heading7">异常链</h2>
+</code></pre></div><h2 id="heading-7">异常链</h2>
 <p>定义：捕获异常后抛出另一个异常，并把原始异常信息保存下来。</p>
 <p>Throwable子类包括Error（报告系统错误）, Exception（最常用的异常）以及RuntimeException（运行时异常，又称未检查异常）的构造器，有接受Cause参数(表示原始异常对象)的构造器,把原始异常传递给新异常。有同等效果的一个方法,initCause()也能传递原始异常。</p>
 <p>如下:</p>
@@ -203,7 +163,7 @@ String <span style="color:#a6e22e">getLocalizedMessage</span><span style="color:
 </span><span style="color:#75715e"></span>OneException e <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> OneException<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span> <span style="color:#75715e">// 自定义继承Exception的异常类
 </span><span style="color:#75715e"></span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">initCause</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> NullPointerException<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
 <span style="color:#66d9ef">throw</span> e<span style="color:#f92672">;</span>
-</code></pre></div><h4 id="heading8">把异常传递给控制台</h4>
+</code></pre></div><h4 id="heading-8">把异常传递给控制台</h4>
 <p>给main()声明异常说明Exception, 把它传递个控制台</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#f92672">import</span> java.io.*<span style="color:#f92672">;</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainException</span> <span style="color:#f92672">{</span>
@@ -217,7 +177,7 @@ String <span style="color:#a6e22e">getLocalizedMessage</span><span style="color:
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>这样就不必在main()中写try-catch语句。</p>
-<h4 id="heading9">把被检查异常转换为不检查类型</h4>
+<h4 id="heading-9">把被检查异常转换为不检查类型</h4>
 <p>异常链保证把被检查异常的检查屏蔽掉，又不丢失它的信息。用getCause()找回原始异常类的信息。如下:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#f92672">import</span> java.io.*<span style="color:#f92672">;</span>
 
@@ -265,13 +225,11 @@ String <span style="color:#a6e22e">getLocalizedMessage</span><span style="color:
 <span style="color:#f92672">}</span>
 
 </code></pre></div>
-  </div>
-  <div class="post-footer">
+</div>
+
+
+    </main>
+
     
-  </div>
-</article>
-
-  </main>
-</body>
-
+  </body>
 </html>

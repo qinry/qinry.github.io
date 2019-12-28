@@ -1,82 +1,58 @@
-<!doctype html>
-<html lang="en-us">
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>《Thinking in Java》 --  类型信息 // learning log</title>
-  <meta charset="utf-8" />
-  <meta name="generator" content="Hugo 0.60.0" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="author" content="qinry" />
-  <meta name="description"
-    content="" />
-  <link rel="stylesheet" href="https://qinry.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.62.0" />
 
   
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="《Thinking in Java》 --  类型信息"/>
-<meta name="twitter:description" content="类型信息 Class对象 每个类都存在包含类型信息的Class对象，Class对象属于Java类中Class类型。有两种方法获得某类型的Class 对象，一种是使用Class.forName()静态方法，接受包含完整类名的字符串参数，创建对应类型的Class对象;第二种类字面量，&lt;ClassName&gt;.class。forName()方法必须放在try语句块，而类字面量不需要，故效率更高。
-例子：
-class Rock { static { System.out.println(&#34;Hi, I&#39;m a Rock!&#34;); } public String toString() { return &#34;I don&#39;t like water&#34;; } } public class PlayRock { static void play(Rock rc) { System.out.println(rc); } public static void main(String[] args) { try { Class&lt;?&gt; type = Class.forName(&#34;Rock&#34;); // ?是通配符表示任何事物  } catch(ClassNotFoundException e) { System.out.println(&#34;No find Rock&#34;); } Rock rc = null; try { rc = (Rock)type.newInstance(); // 实例化得到却是Object引用，所以要强制类型转换  play(rc); } catch(InstantiationException e) { System."/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta property="og:title" content="《Thinking in Java》 --  类型信息" />
-<meta property="og:description" content="类型信息 Class对象 每个类都存在包含类型信息的Class对象，Class对象属于Java类中Class类型。有两种方法获得某类型的Class 对象，一种是使用Class.forName()静态方法，接受包含完整类名的字符串参数，创建对应类型的Class对象;第二种类字面量，&lt;ClassName&gt;.class。forName()方法必须放在try语句块，而类字面量不需要，故效率更高。
-例子：
-class Rock { static { System.out.println(&#34;Hi, I&#39;m a Rock!&#34;); } public String toString() { return &#34;I don&#39;t like water&#34;; } } public class PlayRock { static void play(Rock rc) { System.out.println(rc); } public static void main(String[] args) { try { Class&lt;?&gt; type = Class.forName(&#34;Rock&#34;); // ?是通配符表示任何事物  } catch(ClassNotFoundException e) { System.out.println(&#34;No find Rock&#34;); } Rock rc = null; try { rc = (Rock)type.newInstance(); // 实例化得到却是Object引用，所以要强制类型转换  play(rc); } catch(InstantiationException e) { System." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://qinry.github.io/posts/2019-11-28-java-typeinfo/" />
-<meta property="article:published_time" content="2019-11-28T18:25:37+08:00" />
-<meta property="article:modified_time" content="2019-11-28T18:25:37+08:00" />
+  <title>《Thinking in Java》 --  类型信息 &middot; qinry&#39;s blog</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.iocss/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
 </head>
 
-<body>
-  <header class="app-header">
-    <a href="https://qinry.github.io"><img class="app-header-avatar"
-        src="/avatar.jpg"
-        alt="qinry" /></a>
-    <h1>learning log</h1>
-    <p>
-      在此写下学习日志，努力充电中～
-    </p>
-    <div class="app-header-social">
-      
-      <a target="_blank" href="https://github.com/qinry"
-        rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
-  <title>github</title>
-  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-</svg></a>
-      
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io"><h1>qinry&#39;s blog</h1></a>
+      <p class="lead">
+       在此写下学习日志，努力充电中～ 
+      </p>
     </div>
-  </header>
-  <main class="app-container">
-    
-<article class="post">
-  <header class="post-header">
-    <h1 class="post-title">《Thinking in Java》 --  类型信息</h1>
-    <div class="post-meta">
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
-  <title>calendar</title>
-  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
-</svg>
-        Nov 28, 2019
-      </div>
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
-  <title>clock</title>
-  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
-</svg>
-        5 min read
-      </div><div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
-  <title>tag</title>
-  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
-</svg>
-        <a class="tag" href="https://qinry.github.io/tags/java/">java</a></div></div>
-  </header>
-  <div class="post-content">
-    <h1 id="heading">类型信息</h1>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>《Thinking in Java》 --  类型信息</h1>
+  <time datetime=2019-11-28T18:25:37&#43;0800 class="post-date">Thu, Nov 28, 2019</time>
+  <h1 id="heading">类型信息</h1>
 <h2 id="class">Class对象</h2>
 <p>每个类都存在包含类型信息的Class对象，Class对象属于Java类中Class类型。有两种方法获得某类型的Class 对象，一种是使用<code>Class.forName()</code>静态方法，接受包含完整类名的字符串参数，创建对应类型的Class对象;第二种类字面量，<code>&lt;ClassName&gt;.class</code>。forName()方法必须放在try语句块，而类字面量不需要，故效率更高。</p>
 <p>例子：</p>
@@ -131,7 +107,7 @@ I don't like water
 </span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>如果类型转换出错了，回抛出 <code>ClassCastException</code> 异常</p>
-<h2 id="heading1">类型检查</h2>
+<h2 id="heading-1">类型检查</h2>
 <p>它们都是用来检查某个对象是否是某个类型的实例对象，类型检查用在类型转换之前。</p>
 <h4 id="instanceof">关键字instanceof</h4>
 <p>它会返回boolean类型值。不过其之后必须跟类型名，否则报错。</p>
@@ -144,14 +120,14 @@ I don't like water
     <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t<span style="color:#f92672">.</span><span style="color:#a6e22e">isInstance</span><span style="color:#f92672">(</span>obj<span style="color:#f92672">)</span><span style="color:#f92672">)</span>
         <span style="color:#75715e">// 执行一些操作
 </span></code></pre></div><p>解释:types是Class数组，obj实例对象，检查obj是否是types数组中所指类型。</p>
-<h2 id="heading2">反射机制</h2>
+<h2 id="heading-2">反射机制</h2>
 <p>由java.lang.reflect类库提供支持，包含实现Member接口的Field, Method, Constructor类，分别表示未知类型的域，方法，构造器。getFields( )得到Field数组,
 同理getMethods( )和 getConstructors( )是Method数组，Constructor数组。比较常用的是对Method对象调用invoke()使用Method关联的方法, 对Field对象
 用get( )读取字段，set( ) 设置字段。</p>
 <h4 id="rtti">与RTTI的区别</h4>
 <p>对于 RTTI，编译器在编译时打开和检查.class文件，而反射机制是在运行时进行的，还有要知道Class.forName( )生成结果在编译时是不知道的。</p>
 <p>反射机制提供足够的支持，使得能够创建一个编译时期完全未知的对象，并调用该对象的方法。还支持对象序列化和JavaBean。</p>
-<h4 id="heading3">类方法提取器</h4>
+<h4 id="heading-3">类方法提取器</h4>
 <p>通过反射机制能很好帮助我们了解某个类的完整接口。
 例程：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// e.g {java ShowMethods ShowMethods}
@@ -205,7 +181,7 @@ public final native java.lang.Class java.lang.Object.getClass()
 public final native void java.lang.Object.notify()
 public final native void java.lang.Object.notifyAll()
 public ShowMethods()
-</code></pre><h2 id="heading4">动态代理</h2>
+</code></pre><h2 id="heading-4">动态代理</h2>
 <p>例程:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.lang.reflect.*<span style="color:#f92672">;</span>
 
@@ -268,7 +244,7 @@ Interfaces.somethingElse(java.lang.String), args:
  bonobo
 somethingElse : bonobo
 </code></pre><p>静态方法Proxy.newProxyInstance()可以创建动态代理，它接受三个参数，一、类加载器,通过已经加载的对象获取，如上的Interfaces.class.getClassLoader( );二、希望代理实现的接口列表不包括类或者抽象类;三、InvocationHandler接口的实现。动态代理将所有方法的调用重定向给调用处理器，所以常常向调用处理器的构造器传入“实际”对象的引用，以便调用处理器请求转发任务。</p>
-<h2 id="heading5">空对象</h2>
+<h2 id="heading-5">空对象</h2>
 <p>内置null表示缺少对象，每次使用引用是都必须检测是否为null，使用null会引发NullPointerException异常;而使用空对象就可以不检查null，但同样来表示为空值，可以简单理解为通过实际对象虚拟的空值对象，来替代null，变得更智能。不过如果需要测试其为空，只要创建一个标记接口就行了。如：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Null.java
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Null</span> <span style="color:#f92672">{</span> <span style="color:#f92672">}</span>
@@ -391,9 +367,9 @@ title : Novel NullBook
 count: 0, price: 0.0
 total price: 0.0
 
-</code></pre><h4 id="heading6">模拟对象和桩</h4>
+</code></pre><h4 id="heading-6">模拟对象和桩</h4>
 <p>空对象的逻辑变体是模拟对象和桩，它们都假扮可以传递实际信息的存活对象。模拟对象应用与轻量级和自测试，通常为了处理不同的测试情况被创建;桩返回桩数据，是重量级的，在测试之间被复用。</p>
-<h2 id="heading7">接口与类型的信息</h2>
+<h2 id="heading-7">接口与类型的信息</h2>
 <p>通过反射机制几乎可以访问类的任何成员，无论是private成员还是包访问权限的成员，抑或是内部类，匿名类。</p>
 <p>举个简单例程：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.lang.reflect.*<span style="color:#f92672">;</span>
@@ -439,13 +415,11 @@ f.get(pf): Am I safe?
 i = 47, I'm totally safe, No, you're not
 </code></pre><p>不过final域是不能修改的，尽管遭到修改，运行系统会在不抛出异常的情况下接受任何修改的尝试，但是实际上不会发生任何修改。</p>
 
-  </div>
-  <div class="post-footer">
+</div>
+
+
+    </main>
+
     
-  </div>
-</article>
-
-  </main>
-</body>
-
+  </body>
 </html>
