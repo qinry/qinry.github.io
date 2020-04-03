@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>algorithm on qinry&#39;s blog</title>
-    <link>https://qinry.top/tags/algorithm/</link>
+    <link>https://www.qinry.github.io/tags/algorithm/</link>
     <description>Recent content in algorithm on qinry&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 17 Oct 2019 23:29:10 +0800</lastBuildDate>
     
-	<atom:link href="https://qinry.top/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.qinry.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>数据结构与算法分析(笔记) -- 开始</title>
-      <link>https://qinry.top/posts/2019-10-17-algorithm-beginning/</link>
+      <link>https://www.qinry.github.io/posts/2019-10-17-algorithm-beginning/</link>
       <pubDate>Thu, 17 Oct 2019 23:29:10 +0800</pubDate>
       
-      <guid>https://qinry.top/posts/2019-10-17-algorithm-beginning/</guid>
+      <guid>https://www.qinry.github.io/posts/2019-10-17-algorithm-beginning/</guid>
       <description>递归使用的基本法则  基准情形：要有退出条件 不断推进：从初始条件趋向退出条件 设计准则 ：假设递归准确执行 合成效益法则：防止重复工作，比如生成斐波那契数列的递归实现使用双递归，导致一些工作的重复，进而影响效率  递归符合前三个法则才能正确进行，符合第四法则递归的使用才有意义。虽然递归的代码逻辑清晰，不过效率不高。在用迭代同样能方便解决问题时，还是采用迭代。
 算法分析 4种描述算法效率的数学模型，常用的有大O记法
 大O记法：时间T(N) = O( f( N ) ), 意思是T( N ) 的相对增长率小于 f(N)
