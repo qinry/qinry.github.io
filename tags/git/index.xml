@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>git on qinry&#39;s blog</title>
-    <link>https://www.qinry.top/tags/git/</link>
+    <link>https://qinry.github.io/tags/git/</link>
     <description>Recent content in git on qinry&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 20 Oct 2019 08:50:01 +0800</lastBuildDate>
     
-	<atom:link href="https://www.qinry.top/tags/git/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://qinry.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>git入门使用</title>
-      <link>https://www.qinry.top/posts/2019-10-20-git-simple-usage/</link>
+      <link>https://qinry.github.io/posts/2019-10-20-git-simple-usage/</link>
       <pubDate>Sun, 20 Oct 2019 08:50:01 +0800</pubDate>
       
-      <guid>https://www.qinry.top/posts/2019-10-20-git-simple-usage/</guid>
+      <guid>https://qinry.github.io/posts/2019-10-20-git-simple-usage/</guid>
       <description>Git的使用 配置Git 提供Git用户名和邮箱
 $ git config --global user.name &amp;quot;username&amp;quot;$ git config --global user.email &amp;quot;usernaem@example.com&amp;quot;忽略文件 创建文件 .gitignore ，让Git忽略某目录中的所有文件(不跟踪这些文件)，使用它可以避免项目混乱
 初始化仓库 $ git init仓库是程序中被Git主动跟踪的一组文件。Git用来管理仓库的文件都存储在隐藏的.git/中，你根本不需要与这个目录打交道，但千万不要删除这个目录，否则将丢弃项目的所有历史记录。
