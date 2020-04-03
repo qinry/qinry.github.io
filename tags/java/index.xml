@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>java on qinry&#39;s blog</title>
-    <link>https://qinry.github.io/tags/java/</link>
+    <link>https://github.io/qinry.github.io/tags/java/</link>
     <description>Recent content in java on qinry&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 28 Nov 2019 18:25:37 +0800</lastBuildDate>
     
-	<atom:link href="https://qinry.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://github.io/qinry.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>《Thinking in Java》 --  类型信息</title>
-      <link>https://qinry.github.io/posts/2019-11-28-java-typeinfo/</link>
+      <link>https://github.io/qinry.github.io/posts/2019-11-28-java-typeinfo/</link>
       <pubDate>Thu, 28 Nov 2019 18:25:37 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2019-11-28-java-typeinfo/</guid>
+      <guid>https://github.io/qinry.github.io/posts/2019-11-28-java-typeinfo/</guid>
       <description>类型信息 Class对象 每个类都存在包含类型信息的Class对象，Class对象属于Java类中Class类型。有两种方法获得某类型的Class 对象，一种是使用Class.forName()静态方法，接受包含完整类名的字符串参数，创建对应类型的Class对象;第二种类字面量，&amp;lt;ClassName&amp;gt;.class。forName()方法必须放在try语句块，而类字面量不需要，故效率更高。
 例子：
 class Rock {static { System.out.println(&amp;#34;Hi, I&amp;#39;m a Rock!&amp;#34;); } public String toString() {return &amp;#34;I don&amp;#39;t like water&amp;#34;;}}public class PlayRock {static void play(Rock rc) {System.out.println(rc);} public static void main(String[] args) {try {Class&amp;lt;?&amp;gt; type = Class.forName(&amp;#34;Rock&amp;#34;); // ?是通配符表示任何事物 } catch(ClassNotFoundException e) {System.out.println(&amp;#34;No find Rock&amp;#34;);}Rock rc = null;try {rc = (Rock)type.newInstance(); // 实例化得到却是Object引用，所以要强制类型转换 play(rc);} catch(InstantiationException e) {System.</description>
@@ -23,10 +23,10 @@ class Rock {static { System.out.println(&amp;#34;Hi, I&amp;#39;m a Rock!&amp;#3
     
     <item>
       <title>《Thinking in Java》--  字符串</title>
-      <link>https://qinry.github.io/posts/2019-11-25-java-strings/</link>
+      <link>https://github.io/qinry.github.io/posts/2019-11-25-java-strings/</link>
       <pubDate>Mon, 25 Nov 2019 09:46:16 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2019-11-25-java-strings/</guid>
+      <guid>https://github.io/qinry.github.io/posts/2019-11-25-java-strings/</guid>
       <description>字符串 String对象不可变 String对象被创建后不可修改，某些方法看似是修改源字符串，其实是重新创建新字符串来代替。
 StringBuilder 在循环体中对String对象反复使用 &amp;ldquo;+=&amp;rdquo;, &amp;ldquo;+&amp;rdquo; 运算符，以达字符串的拼接,其实效率不高。因为&amp;quot;+&amp;rdquo;,&amp;ldquo;+=&amp;quot;工作实际上虚拟机会自动创建StringBuilder来起到拼接效果，每次循环建立一个StringBuilder,这将导致资源的浪费。可以在循环体外创建一个StringBuilder，每次调用append()方法拼接字符串，最后toString()返回字符串。如下:
 import java.util.*;public class Mango {public static void main(String[] args) {Random rand = new Random(47);StringBuilder result = new StringBuilder(&amp;#34;[&amp;#34;);for (int i = 0; i &amp;lt; 10; i++) {result.append(rand.nextInt(100));result.appen(&amp;#34;, &amp;#34;);}result.delete(result.length() - 2, result.length());result.append(&amp;#34;]&amp;#34;);String s = result.toString();System.out.println(s);}}String的常用方法 以下方法改变内容返回的String都是新的String, 没有改变内容返回的String都是原始字符串的引用
@@ -35,10 +35,10 @@ import java.util.*;public class Mango {public static void main(String[] args) 
     
     <item>
       <title>《Thinking in Java》 --  异常处理</title>
-      <link>https://qinry.github.io/posts/2019-11-24-java-exceptions/</link>
+      <link>https://github.io/qinry.github.io/posts/2019-11-24-java-exceptions/</link>
       <pubDate>Sun, 24 Nov 2019 08:47:23 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2019-11-24-java-exceptions/</guid>
+      <guid>https://github.io/qinry.github.io/posts/2019-11-24-java-exceptions/</guid>
       <description>异常处理 异常抛出 创建一个异常对象，然后从当前环境对象抛出，阻止当前方法或作用域的执行。
 语法: throw new NullPointerException, 关键字throw之后，和创建普通对象一样创建异常对象, new &amp;lt;异常类&amp;gt;。
 异常捕获 try块中执行代码，遇到异常抛出，交给catch捕获, 然后进行异常处理。将try-catch语句可以放入while循环，由于try中抛出异常，会在catch中匹配，是不会回到原来的地方，在while帮助下，会恢复原来之前地方继续执行，这是一种恢复模型（不太实用，尽量少用，因为它会导致耦合），不然就是终止模型。
@@ -54,20 +54,20 @@ try {// 抛出异常} catch(Exception e) {// 处理异常} finally {// 清�
     
     <item>
       <title>《Thinking in Java》 -- 内部类</title>
-      <link>https://qinry.github.io/posts/2019-10-24-innerclass/</link>
+      <link>https://github.io/qinry.github.io/posts/2019-10-24-innerclass/</link>
       <pubDate>Thu, 24 Oct 2019 16:48:18 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2019-10-24-innerclass/</guid>
+      <guid>https://github.io/qinry.github.io/posts/2019-10-24-innerclass/</guid>
       <description>内部类 创建内部类 直接将内部类置于外围类中
 // innerclasses/Parcel1.java// Creating inner classespublic class Parcel1 {class Contents {private int i = 11;public int value() { return i; }}class Destination {private String label;Destination(String whereTo) {label = whereTo;}String readLabel() { return label; }}// Using inner classes looks just like	// using any other class, within Parcel1;	public void ship(String dest) {Contents c = new Contents();Destination d = new Destination(dest);System.</description>
     </item>
     
     <item>
       <title>《Thinking in Java》 -- 接口</title>
-      <link>https://qinry.github.io/posts/2019-10-22-java-interfaces/</link>
+      <link>https://github.io/qinry.github.io/posts/2019-10-22-java-interfaces/</link>
       <pubDate>Tue, 22 Oct 2019 16:29:48 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2019-10-22-java-interfaces/</guid>
+      <guid>https://github.io/qinry.github.io/posts/2019-10-22-java-interfaces/</guid>
       <description>接口 抽象类和抽象方法   抽象方法：仅有声明而没有方法体。 如： abstract void f();  抽象类： 包含抽象方法的类。
   如果一个类包含一个或多个抽象方法，该类必须限定为抽象的。 如： abstract class A {} 继承抽象类，如果不把抽象方法提供定义， 那么导出类也是抽象类，所以要创建抽象类的子类的对象，必须在子类为基类提供方法的定义。有时，我们也可能创建一个没有任何抽象方法的抽象类，比如不想创建该类的对象，可声明为abstract。
 抽象类还是很有用的重构1工具，因为它们使得我们可以很容易地将公共方法沿继承层次结构上移动。
@@ -87,10 +87,10 @@ class Wind implements Instrument {void play() {}String what() {}void adjust()
     
     <item>
       <title>《Thinking in Java》-- 多态</title>
-      <link>https://qinry.github.io/posts/2019-10-21-java-polymorphism/</link>
+      <link>https://github.io/qinry.github.io/posts/2019-10-21-java-polymorphism/</link>
       <pubDate>Mon, 21 Oct 2019 17:01:44 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2019-10-21-java-polymorphism/</guid>
+      <guid>https://github.io/qinry.github.io/posts/2019-10-21-java-polymorphism/</guid>
       <description>多态 多态的作用  消除类型间的耦合关系 改善代码的组织结构和可读性，还能够创建可扩展程序  绑定 将一个方法调用同一个方法主体关联起来称为绑定。若在程序执行前进行绑定，叫做前期绑定；而在运行时根据对象的类型进行绑定，叫后期绑定。有了后期绑定，多态的特性才能够呈现，编译器无法知道对象类型，只能通过安置类型信息来鉴别，这就要程序运行时方法调用基于类型信息匹配正确的方法主体。Java除了final方法和static方法外，都是后期绑定。
  注：域和静态方法不支持多态；覆盖private（隐式final）方法，虽然编译器不报错，但是不要这么做，会出现混淆。（之前第七章有提过）  构造器内部的多态方法行为 初始化（此处未考虑基类构造器调用之前基类静态成员和基类非静态成员的指定初始化）
  分配给对象的存储空间初始化为二进制的0(某些特殊类型中与0等价的值) 调用基类的构造器 按声明顺序调用成员初始化。 调用导出类构造器主体   注：避免在构造器调用其他类内方法，唯一安全的方法是基类的final方法  向下转型 用圆括号里面放入你想转换的类型，Java会自动做类型检查和转换。如: (type)object。有误会报错。
@@ -99,10 +99,10 @@ class Wind implements Instrument {void play() {}String what() {}void adjust()
     
     <item>
       <title>《Thinking in Java》 -- 复用类</title>
-      <link>https://qinry.github.io/posts/2019-10-21-java-reuse/</link>
+      <link>https://github.io/qinry.github.io/posts/2019-10-21-java-reuse/</link>
       <pubDate>Mon, 21 Oct 2019 12:54:56 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2019-10-21-java-reuse/</guid>
+      <guid>https://github.io/qinry.github.io/posts/2019-10-21-java-reuse/</guid>
       <description>复用类 从现有类生成新类型  组合： 一般将现有类型作为新类型底层实现一部分来加以复用 继承：仅仅复用接口 用到 extends关键字  继承 继承中的初始化 在构造器中调用基类构造器来执行初始化来执行初始化。对象包含基类的子对象，它的正确初始化很重要
 清理 必须显式编写特殊方法，还必须将这清理动作置于finally子句（异常处理的内容，以后再谈，只知道异常与否都会最后执行的代码）中，以防异常，最好不适用finalize()。
 继承和组合的选择 一般最后选择组合，因为编程更为灵活。当类型有向上转型的需求是，则使用继承
@@ -117,10 +117,10 @@ final关键字 可以使用在数据（域），方法， 类
     
     <item>
       <title>《Thinking in Java》 -- 访问权限</title>
-      <link>https://qinry.github.io/posts/2019-10-21-java-access/</link>
+      <link>https://github.io/qinry.github.io/posts/2019-10-21-java-access/</link>
       <pubDate>Mon, 21 Oct 2019 09:06:40 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2019-10-21-java-access/</guid>
+      <guid>https://github.io/qinry.github.io/posts/2019-10-21-java-access/</guid>
       <description>访问权限 访问权限控制  public （公共访问权限, 谁都可以访问） private （类内私有，用户无法访问） protected （继承访问权限，也提供包内访问） 包访问权限（没有关键词修饰，供包内使用）  类访问权限，除内部类外，仅有两种选择：public和包访问权限
   每个编译单元只能有一个public类
   public名称必须完全与编译单元文件名相匹配，包括大小写
@@ -134,10 +134,10 @@ final关键字 可以使用在数据（域），方法， 类
     
     <item>
       <title>《Thinking in Java》 -- 初始化和清理</title>
-      <link>https://qinry.github.io/posts/2019-10-20-java-initialization/</link>
+      <link>https://github.io/qinry.github.io/posts/2019-10-20-java-initialization/</link>
       <pubDate>Sun, 20 Oct 2019 09:28:44 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2019-10-20-java-initialization/</guid>
+      <guid>https://github.io/qinry.github.io/posts/2019-10-20-java-initialization/</guid>
       <description>初始化和清理 构造器确保初始化 构造器确保初始化，名字与类名一致，允许重载，且是特殊的无返回值(与void不同)的方法。
 在Java中，初始化与创建绑定在一起的
 区别重载方法 通过不一样参数列表区分
@@ -159,10 +159,10 @@ final关键字 可以使用在数据（域），方法， 类
     
     <item>
       <title>《Thinking in Java》 -- 控制流程</title>
-      <link>https://qinry.github.io/posts/2019-10-19-java-control-flow/</link>
+      <link>https://github.io/qinry.github.io/posts/2019-10-19-java-control-flow/</link>
       <pubDate>Sat, 19 Oct 2019 20:27:47 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2019-10-19-java-control-flow/</guid>
+      <guid>https://github.io/qinry.github.io/posts/2019-10-19-java-control-flow/</guid>
       <description>控制流程 关键词：if-else, while, do-while, for, return, break, continue, switch
  条件判断 (if-else) 判断某个条件是否为真，若为真，则执行 if 后的语句;为假执行else后的语句
 例如:
@@ -175,10 +175,10 @@ int i = 0;do {System.out.println(i--);} while(i &amp;gt; 0);output:-1注�
     
     <item>
       <title>《Thinking in Java》 --  操作符</title>
-      <link>https://qinry.github.io/posts/2019-10-18-java-operator/</link>
+      <link>https://github.io/qinry.github.io/posts/2019-10-18-java-operator/</link>
       <pubDate>Fri, 18 Oct 2019 21:55:03 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2019-10-18-java-operator/</guid>
+      <guid>https://github.io/qinry.github.io/posts/2019-10-18-java-operator/</guid>
       <description>操作符 静态导入 通过封装，自建类库已到达更简短语句答应字符串。可以静态导入（import static LibraryName）类库中静态对象
 表达式 副作用：有些运算符可能会改变操作对象的值
 一个表达式有多个操作符时，它们的优先级影响计算顺序，一般规则先乘除后加减，括号最先进行
@@ -196,10 +196,10 @@ System.out.println() 内含+, 其前是String，其后操作对象非String会�
     
     <item>
       <title>《Thinking in Java》--  对象</title>
-      <link>https://qinry.github.io/posts/2019-10-18-java-objects/</link>
+      <link>https://github.io/qinry.github.io/posts/2019-10-18-java-objects/</link>
       <pubDate>Fri, 18 Oct 2019 20:41:27 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2019-10-18-java-objects/</guid>
+      <guid>https://github.io/qinry.github.io/posts/2019-10-18-java-objects/</guid>
       <description>对象 对象及内存分布   在Java中一切都被视为对象，但操纵的标识符实际上是对象的“引用”
   字符串可以用带引号的初始值， 如： String s = &amp;quot;sdf&amp;quot;;
   关键字 new 用来创建一个新对象，存在于堆中

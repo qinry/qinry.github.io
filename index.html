@@ -12,10 +12,10 @@
   <meta name="description" content="在此写下学习日志，努力充电中～" />
 
   
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://github.io/qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://github.io/qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://github.io/qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://github.io/qinry.github.io/css/hyde.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -24,7 +24,7 @@
   <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="https://qinry.github.io/index.xml" rel="alternate" type="application/rss+xml" title="qinry's blog" />
+  <link href="https://github.io/qinry.github.io/index.xml" rel="alternate" type="application/rss+xml" title="qinry's blog" />
   
 </head>
 
@@ -32,7 +32,7 @@
   <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-      <a href="https://qinry.github.io"><h1>qinry&#39;s blog</h1></a>
+      <a href="https://github.io/qinry.github.io"><h1>qinry&#39;s blog</h1></a>
       <p class="lead">
        在此写下学习日志，努力充电中～ 
       </p>
@@ -40,12 +40,12 @@
 
     <nav>
       <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io">Home</a> </li>
+        <li><a href="https://github.io/qinry.github.io">Home</a> </li>
         <li><a href="https://github.com/qinry"> Github </a></li>
       </ul>
     </nav>
 
-    <p>&copy; 2019. All rights reserved. </p>
+    <p>&copy; 2020. All rights reserved. </p>
   </div>
 </aside>
 
@@ -53,7 +53,7 @@
     <div class="posts">
 <article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-11-28-java-typeinfo/">《Thinking in Java》 --  类型信息</a>
+    <a href="https://github.io/qinry.github.io/posts/2019-11-28-java-typeinfo/">《Thinking in Java》 --  类型信息</a>
   </h1>
   <time datetime="2019-11-28T18:25:37&#43;0800" class="post-date">Thu, Nov 28, 2019</time>
   类型信息 Class对象 每个类都存在包含类型信息的Class对象，Class对象属于Java类中Class类型。有两种方法获得某类型的Class 对象，一种是使用Class.forName()静态方法，接受包含完整类名的字符串参数，创建对应类型的Class对象;第二种类字面量，&lt;ClassName&gt;.class。forName()方法必须放在try语句块，而类字面量不需要，故效率更高。
@@ -61,12 +61,12 @@
 class Rock {static { System.out.println(&#34;Hi, I&#39;m a Rock!&#34;); } public String toString() {return &#34;I don&#39;t like water&#34;;}}public class PlayRock {static void play(Rock rc) {System.out.println(rc);} public static void main(String[] args) {try {Class&lt;?&gt; type = Class.forName(&#34;Rock&#34;); // ?是通配符表示任何事物 } catch(ClassNotFoundException e) {System.out.println(&#34;No find Rock&#34;);}Rock rc = null;try {rc = (Rock)type.newInstance(); // 实例化得到却是Object引用，所以要强制类型转换 play(rc);} catch(InstantiationException e) {System.
   
   <div class="read-more-link">
-    <a href="/posts/2019-11-28-java-typeinfo/">Read More…</a>
+    <a href="/qinry.github.io/posts/2019-11-28-java-typeinfo/">Read More…</a>
   </div>
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-11-25-java-strings/">《Thinking in Java》--  字符串</a>
+    <a href="https://github.io/qinry.github.io/posts/2019-11-25-java-strings/">《Thinking in Java》--  字符串</a>
   </h1>
   <time datetime="2019-11-25T09:46:16&#43;0800" class="post-date">Mon, Nov 25, 2019</time>
   字符串 String对象不可变 String对象被创建后不可修改，某些方法看似是修改源字符串，其实是重新创建新字符串来代替。
@@ -75,12 +75,12 @@ import java.util.*;public class Mango {public static void main(String[] args) 
 构造器String(String)String(StringBuilder)String(StringBuffer)String(char[])String(byte[])长度int length()索引char charAt(int)复制char[] getChars(int, int, char[], int) // 参数:起始和终止索引, 数组，数组的起始索引byte[] getBytes(int, int, byte[], int)生成Char数组char[] toCharArray()匹配比较boolean equals(String) // 内容上的比较是否相等boolean equalsIgnoreCase(String) // 忽略大小写比较内容是否相等int compareTo(String) // 大小写不等价区域比较boolean regionMatches(int, String, int, int) // 参数:索引，模式字符串，串的偏移量， 比较长度开头比较boolean startsWith(String)boolean startsWith(String, int) // 参数: 模式字符串，串的偏移量末尾比较boolean endsWith(String)boolean endsWith(String, int)包含boolean contains(CharSequence)取索引// 从头到尾搜索 失败返回 -1int indexOf(String)int indexOf(char)int indexOf(char, int) // 参数: 字符, 起始索引int indexOf(String, int) // 参数: 字符串， 起始索引// 从尾向前搜索 失败返归 -1int lastIndexOf(String)int lastIndexOf(char)int lastIndexOf(char, int)int lastIndexOf(String, int)子字符串String subString(int) // 参数:起始索引String subString(int, int) // 参数: 起始和终止索引拼接String concat(String)替换String replace(char, char)String replace(CharSequence, CharSequence)大小写转换String toLowerCase()String toUpperCase()转变为字符串static String valueOf(Object|char|boolean|int|long|float|double)static String valueOf(char[])static String valueOf(char[], int, int) // 数组， 数组偏移量， 个数去两端空白String trim()为字符序列生成String唯一引用String intern()格式化输出 System.
   
   <div class="read-more-link">
-    <a href="/posts/2019-11-25-java-strings/">Read More…</a>
+    <a href="/qinry.github.io/posts/2019-11-25-java-strings/">Read More…</a>
   </div>
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-11-24-java-exceptions/">《Thinking in Java》 --  异常处理</a>
+    <a href="https://github.io/qinry.github.io/posts/2019-11-24-java-exceptions/">《Thinking in Java》 --  异常处理</a>
   </h1>
   <time datetime="2019-11-24T08:47:23&#43;0800" class="post-date">Sun, Nov 24, 2019</time>
   异常处理 异常抛出 创建一个异常对象，然后从当前环境对象抛出，阻止当前方法或作用域的执行。
@@ -96,24 +96,24 @@ try {// 抛出异常} catch(Exception e) {// 处理异常} finally {// 清�
 // 在某个类内部static void f() throws FirstException {}static void g() throws SecondException {}public static void main(String[] args) {try {try {f();} finally {g();}} catch(Exception e) {}}这里导致 f( ) 的FirstException被忽略。
   
   <div class="read-more-link">
-    <a href="/posts/2019-11-24-java-exceptions/">Read More…</a>
+    <a href="/qinry.github.io/posts/2019-11-24-java-exceptions/">Read More…</a>
   </div>
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-24-innerclass/">《Thinking in Java》 -- 内部类</a>
+    <a href="https://github.io/qinry.github.io/posts/2019-10-24-innerclass/">《Thinking in Java》 -- 内部类</a>
   </h1>
   <time datetime="2019-10-24T16:48:18&#43;0800" class="post-date">Thu, Oct 24, 2019</time>
   内部类 创建内部类 直接将内部类置于外围类中
 // innerclasses/Parcel1.java// Creating inner classespublic class Parcel1 {class Contents {private int i = 11;public int value() { return i; }}class Destination {private String label;Destination(String whereTo) {label = whereTo;}String readLabel() { return label; }}// Using inner classes looks just like	// using any other class, within Parcel1;	public void ship(String dest) {Contents c = new Contents();Destination d = new Destination(dest);System.
   
   <div class="read-more-link">
-    <a href="/posts/2019-10-24-innerclass/">Read More…</a>
+    <a href="/qinry.github.io/posts/2019-10-24-innerclass/">Read More…</a>
   </div>
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-22-java-interfaces/">《Thinking in Java》 -- 接口</a>
+    <a href="https://github.io/qinry.github.io/posts/2019-10-22-java-interfaces/">《Thinking in Java》 -- 接口</a>
   </h1>
   <time datetime="2019-10-22T16:29:48&#43;0800" class="post-date">Tue, Oct 22, 2019</time>
   接口 抽象类和抽象方法   抽象方法：仅有声明而没有方法体。 如： abstract void f();  抽象类： 包含抽象方法的类。
@@ -133,12 +133,12 @@ class Wind implements Instrument {void play() {}String what() {}void adjust()
 嵌套接口 接口可以嵌套于接口或类中。 嵌套于接口的接口是不能声明为private，必须是public，在此会严格执行。实现一个接口时，并不需要实现嵌套在其内部的任何接口。而且，private接口不能在定义它的 类 之外被发现，只能被类自身所使用。
   
   <div class="read-more-link">
-    <a href="/posts/2019-10-22-java-interfaces/">Read More…</a>
+    <a href="/qinry.github.io/posts/2019-10-22-java-interfaces/">Read More…</a>
   </div>
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-21-java-polymorphism/">《Thinking in Java》-- 多态</a>
+    <a href="https://github.io/qinry.github.io/posts/2019-10-21-java-polymorphism/">《Thinking in Java》-- 多态</a>
   </h1>
   <time datetime="2019-10-21T17:01:44&#43;0800" class="post-date">Mon, Oct 21, 2019</time>
   多态 多态的作用  消除类型间的耦合关系 改善代码的组织结构和可读性，还能够创建可扩展程序  绑定 将一个方法调用同一个方法主体关联起来称为绑定。若在程序执行前进行绑定，叫做前期绑定；而在运行时根据对象的类型进行绑定，叫后期绑定。有了后期绑定，多态的特性才能够呈现，编译器无法知道对象类型，只能通过安置类型信息来鉴别，这就要程序运行时方法调用基于类型信息匹配正确的方法主体。Java除了final方法和static方法外，都是后期绑定。
@@ -148,7 +148,7 @@ class Wind implements Instrument {void play() {}String what() {}void adjust()
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-21-java-reuse/">《Thinking in Java》 -- 复用类</a>
+    <a href="https://github.io/qinry.github.io/posts/2019-10-21-java-reuse/">《Thinking in Java》 -- 复用类</a>
   </h1>
   <time datetime="2019-10-21T12:54:56&#43;0800" class="post-date">Mon, Oct 21, 2019</time>
   复用类 从现有类生成新类型  组合： 一般将现有类型作为新类型底层实现一部分来加以复用 继承：仅仅复用接口 用到 extends关键字  继承 继承中的初始化 在构造器中调用基类构造器来执行初始化来执行初始化。对象包含基类的子对象，它的正确初始化很重要
@@ -164,7 +164,7 @@ final关键字 可以使用在数据（域），方法， 类
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-21-java-access/">《Thinking in Java》 -- 访问权限</a>
+    <a href="https://github.io/qinry.github.io/posts/2019-10-21-java-access/">《Thinking in Java》 -- 访问权限</a>
   </h1>
   <time datetime="2019-10-21T09:06:40&#43;0800" class="post-date">Mon, Oct 21, 2019</time>
   访问权限 访问权限控制  public （公共访问权限, 谁都可以访问） private （类内私有，用户无法访问） protected （继承访问权限，也提供包内访问） 包访问权限（没有关键词修饰，供包内使用）  类访问权限，除内部类外，仅有两种选择：public和包访问权限
@@ -179,7 +179,7 @@ final关键字 可以使用在数据（域），方法， 类
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-20-java-initialization/">《Thinking in Java》 -- 初始化和清理</a>
+    <a href="https://github.io/qinry.github.io/posts/2019-10-20-java-initialization/">《Thinking in Java》 -- 初始化和清理</a>
   </h1>
   <time datetime="2019-10-20T09:28:44&#43;0800" class="post-date">Sun, Oct 20, 2019</time>
   初始化和清理 构造器确保初始化 构造器确保初始化，名字与类名一致，允许重载，且是特殊的无返回值(与void不同)的方法。
@@ -201,12 +201,12 @@ final关键字 可以使用在数据（域），方法， 类
  全部代码编译，缺点就是费时，可执行代码加长，导致页面调度，影响性能 惰性评估（必要时才编译）  成员初始化  指定初始化 构造器初始化（给编程带来更大的灵活性） 自动初始化发生在调用构造器之前  注：static可用于域，不可用于局部变量 初始化顺序：先静态后非静态对象
   
   <div class="read-more-link">
-    <a href="/posts/2019-10-20-java-initialization/">Read More…</a>
+    <a href="/qinry.github.io/posts/2019-10-20-java-initialization/">Read More…</a>
   </div>
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-20-git-simple-usage/">git入门使用</a>
+    <a href="https://github.io/qinry.github.io/posts/2019-10-20-git-simple-usage/">git入门使用</a>
   </h1>
   <time datetime="2019-10-20T08:50:01&#43;0800" class="post-date">Sun, Oct 20, 2019</time>
   Git的使用 配置Git 提供Git用户名和邮箱
@@ -222,12 +222,12 @@ $ git log --pretty=oneline将显示提交的引用ID及提交记录的信息
 撤销修改 $ git checkout -- &lt;file&gt;命令git checkout 让你能够恢复到以前的任何提交。命令git checkout .
   
   <div class="read-more-link">
-    <a href="/posts/2019-10-20-git-simple-usage/">Read More…</a>
+    <a href="/qinry.github.io/posts/2019-10-20-git-simple-usage/">Read More…</a>
   </div>
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-19-java-control-flow/">《Thinking in Java》 -- 控制流程</a>
+    <a href="https://github.io/qinry.github.io/posts/2019-10-19-java-control-flow/">《Thinking in Java》 -- 控制流程</a>
   </h1>
   <time datetime="2019-10-19T20:27:47&#43;0800" class="post-date">Sat, Oct 19, 2019</time>
   控制流程 关键词：if-else, while, do-while, for, return, break, continue, switch
@@ -240,12 +240,12 @@ int i = 0;while ( i &gt; 0) {System.out.println(i--);}output:没有输出!!
 int i = 0;do {System.out.println(i--);} while(i &gt; 0);output:-1注：do-while执行判断的次数比while少一次
   
   <div class="read-more-link">
-    <a href="/posts/2019-10-19-java-control-flow/">Read More…</a>
+    <a href="/qinry.github.io/posts/2019-10-19-java-control-flow/">Read More…</a>
   </div>
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-18-java-operator/">《Thinking in Java》 --  操作符</a>
+    <a href="https://github.io/qinry.github.io/posts/2019-10-18-java-operator/">《Thinking in Java》 --  操作符</a>
   </h1>
   <time datetime="2019-10-18T21:55:03&#43;0800" class="post-date">Fri, Oct 18, 2019</time>
   操作符 静态导入 通过封装，自建类库已到达更简短语句答应字符串。可以静态导入（import static LibraryName）类库中静态对象
@@ -263,12 +263,12 @@ System.out.println() 内含+, 其前是String，其后操作对象非String会�
 关系运算符 运算结果是boolean类型值(非false即true), 分别有 &gt; , &lt;, ==, !=, &gt;=, &lt;=。等于和不等于适合所有的基本类型，其他比较运算符 对于boolean不适用
   
   <div class="read-more-link">
-    <a href="/posts/2019-10-18-java-operator/">Read More…</a>
+    <a href="/qinry.github.io/posts/2019-10-18-java-operator/">Read More…</a>
   </div>
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-18-java-objects/">《Thinking in Java》--  对象</a>
+    <a href="https://github.io/qinry.github.io/posts/2019-10-18-java-objects/">《Thinking in Java》--  对象</a>
   </h1>
   <time datetime="2019-10-18T20:41:27&#43;0800" class="post-date">Fri, Oct 18, 2019</time>
   对象 对象及内存分布   在Java中一切都被视为对象，但操纵的标识符实际上是对象的“引用”
@@ -284,12 +284,12 @@ System.out.println() 内含+, 其前是String，其后操作对象非String会�
 注： boolean 有两个字面量常量true和false； 基本类型有对应的包装器类型，并在堆上创建对象以表示相应的基本类型。两者可以相互转换（自动包装） 2个高精度的类似包装器类型的计算类（没有有对应的基本类型）： BigInteger 和 BigDecimal  运算速度相较于其他基本算术类型及其相应的包装器类型要慢，但精度高支持任何精度 BigInteger 支持整数 BigDecimal 支持定点数（不是浮点数），可用于货币运算  数组 Java中数组被确保初始化， 且不能越界访问，为此增加了开销换来安全性和效率的提高。如果数组存放对象，实际上数组为一个引用数组（C++是不允许的），元素引用初始值为null，未指定对象；存放的是基本数据类型，初始化为0
   
   <div class="read-more-link">
-    <a href="/posts/2019-10-18-java-objects/">Read More…</a>
+    <a href="/qinry.github.io/posts/2019-10-18-java-objects/">Read More…</a>
   </div>
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-17-algorithm-beginning/">数据结构与算法分析(笔记) -- 开始</a>
+    <a href="https://github.io/qinry.github.io/posts/2019-10-17-algorithm-beginning/">数据结构与算法分析(笔记) -- 开始</a>
   </h1>
   <time datetime="2019-10-17T23:29:10&#43;0800" class="post-date">Thu, Oct 17, 2019</time>
   递归使用的基本法则  基准情形：要有退出条件 不断推进：从初始条件趋向退出条件 设计准则 ：假设递归准确执行 合成效益法则：防止重复工作，比如生成斐波那契数列的递归实现使用双递归，导致一些工作的重复，进而影响效率  递归符合前三个法则才能正确进行，符合第四法则递归的使用才有意义。虽然递归的代码逻辑清晰，不过效率不高。在用迭代同样能方便解决问题时，还是采用迭代。
@@ -299,7 +299,7 @@ System.out.println() 内含+, 其前是String，其后操作对象非String会�
  FOR循环 嵌套的FOR循环 顺序语句 IF/ELSE语句   最大子序列和问题解 算法1（嵌套3层for循环） int MaxSubsequenceSum(const int A[], int N){int ThisSum, MaxSum, i, j, k;MaxSum = 0;for (i = 0; i &lt; N; i++)for (j = i; j &lt; N; j++){ThisSum = 0;for (k = i; k &lt;= j; k++)ThisSum += A[k];if (ThisSum &gt; MaxSum)MaxSum = ThisSum;}return MaxSum;} 算法2（嵌套2层for循环） int MaxSubsequenceSum(const int A[], int N){int ThisSum, MaxSum, i, j;MaxSum = 0;for (i = 0; i &lt; N; i++){ThisSum = 0;for (j = i; j &lt; N; j++){ThisSum += A[j];if (ThisSum &gt; MaxSum)MaxSum = ThisSum;}}return MaxSum;}算法3（分治） int Max3(int x, int y, int z){return (x &gt; y ?
   
   <div class="read-more-link">
-    <a href="/posts/2019-10-17-algorithm-beginning/">Read More…</a>
+    <a href="/qinry.github.io/posts/2019-10-17-algorithm-beginning/">Read More…</a>
   </div>
   
 </article>
