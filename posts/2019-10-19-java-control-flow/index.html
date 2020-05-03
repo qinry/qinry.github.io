@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>《Thinking in Java》 -- 控制流程 &middot; qinry&#39;s blog</title>
+  <title>控制流程 &middot; qinry&#39;s blog</title>
   <meta name="description" content="" />
 
   
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://www.qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://www.qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://www.qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://www.qinry.github.io/css/hyde.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -31,7 +31,7 @@
   <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-      <a href="https://qinry.github.io"><h1>qinry&#39;s blog</h1></a>
+      <a href="https://www.qinry.github.io"><h1>qinry&#39;s blog</h1></a>
       <p class="lead">
        在此写下学习日志，努力充电中～ 
       </p>
@@ -39,7 +39,6 @@
 
     <nav>
       <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io">Home</a> </li>
         <li><a href="https://github.com/qinry"> Github </a></li>
       </ul>
     </nav>
@@ -50,12 +49,10 @@
 
     <main class="content container">
     <div class="post">
-  <h1>《Thinking in Java》 -- 控制流程</h1>
+  <h1>控制流程</h1>
   <time datetime=2019-10-19T20:27:47&#43;0800 class="post-date">Sat, Oct 19, 2019</time>
-  <h1 id="heading">控制流程</h1>
-<p><strong>关键词：if-else, while, do-while, for, return, break, continue, switch</strong></p>
-<hr>
-<h3 id="-if-else">条件判断 (if-else)</h3>
+  <p><strong>关键词</strong>：<strong>if-else</strong>, <strong>while</strong>, <strong>do-while</strong>, <strong>for</strong>, <strong>return</strong>, <strong>break</strong>, <strong>continue</strong>, <strong>switch</strong></p>
+<h2 id="-if-else">条件判断 (if-else)</h2>
 <p>判断某个条件是否为真，若为真，则执行 if 后的语句;为假执行else后的语句</p>
 <p>例如:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 47<span style="color:#f92672">;</span>
@@ -78,7 +75,7 @@ output:
 <p>先执行一次代码再判断条件是否为真才继续执行代码，直到假才停止</p>
 <p>例如：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-<span style="color:#66d9ef">do</span> 
+<span style="color:#66d9ef">do</span>
 <span style="color:#f92672">{</span>
     System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>i<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
 <span style="color:#f92672">}</span> <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>i <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
@@ -87,7 +84,7 @@ output:
 <span style="color:#f92672">-</span>1
 </code></pre></div><p>注：do-while执行判断的次数比while少一次</p>
 <h2 id="for">for语句</h2>
-<h3 id="heading-1">计数器</h3>
+<h3 id="heading">计数器</h3>
 <p>有三个部分组成：初始变量， 布尔表达式， 变量递增
 当表达式为真，执行代码同时递增变量，直到为假停止
 for (initializer; boolean-exp; increment )</p>
@@ -98,7 +95,7 @@ output:
 1
 2
 3
-</code></pre></div><h4 id="for-1">for范围循环</h4>
+</code></pre></div><h3 id="for-1">for范围循环</h3>
 <p>常用于遍历容器元素</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span><span style="color:#f92672">[</span><span style="color:#f92672">]</span> f <span style="color:#f92672">=</span> <span style="color:#f92672">{</span> 3<span style="color:#f92672">,</span> 2<span style="color:#f92672">,</span> 4<span style="color:#f92672">,</span> 6<span style="color:#f92672">}</span><span style="color:#f92672">;</span>
 <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> e <span style="color:#f92672">:</span> f<span style="color:#f92672">)</span>

@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>《Thinking in Java》 -- 复用类 &middot; qinry&#39;s blog</title>
+  <title>复用类 &middot; qinry&#39;s blog</title>
   <meta name="description" content="" />
 
   
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://www.qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://www.qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://www.qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://www.qinry.github.io/css/hyde.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -31,7 +31,7 @@
   <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-      <a href="https://qinry.github.io"><h1>qinry&#39;s blog</h1></a>
+      <a href="https://www.qinry.github.io"><h1>qinry&#39;s blog</h1></a>
       <p class="lead">
        在此写下学习日志，努力充电中～ 
       </p>
@@ -39,7 +39,6 @@
 
     <nav>
       <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io">Home</a> </li>
         <li><a href="https://github.com/qinry"> Github </a></li>
       </ul>
     </nav>
@@ -50,20 +49,19 @@
 
     <main class="content container">
     <div class="post">
-  <h1>《Thinking in Java》 -- 复用类</h1>
+  <h1>复用类</h1>
   <time datetime=2019-10-21T12:54:56&#43;0800 class="post-date">Mon, Oct 21, 2019</time>
-  <h1 id="heading">复用类</h1>
-<h2 id="heading-1">从现有类生成新类型</h2>
+  <h2 id="heading">从现有类生成新类型</h2>
 <ul>
 <li>组合： 一般将现有类型作为新类型底层实现一部分来加以复用</li>
 <li>继承：仅仅复用接口 用到 extends关键字</li>
 </ul>
-<h2 id="heading-2">继承</h2>
-<h3 id="heading-3">继承中的初始化</h3>
+<h2 id="heading-1">继承</h2>
+<h3 id="heading-2">继承中的初始化</h3>
 <p>在构造器中调用基类构造器来执行初始化来执行初始化。对象包含基类的子对象，它的正确初始化很重要</p>
-<h3 id="heading-4">清理</h3>
+<h3 id="heading-3">清理</h3>
 <p>必须显式编写特殊方法，还必须将这清理动作置于finally子句（异常处理的内容，以后再谈，只知道异常与否都会最后执行的代码）中，以防异常，最好不适用finalize()。</p>
-<h2 id="heading-5">继承和组合的选择</h2>
+<h2 id="heading-4">继承和组合的选择</h2>
 <p>一般最后选择组合，因为编程更为灵活。当类型有向上转型的需求是，则使用继承</p>
 <p>有时允许类用户直接访问新类中的组合成分（将成员对象声明为public）如果成员对象自身隐藏了实现，这么做是安全的</p>
 <p>@Override 注解表示方法要覆写（如果重载，报错）</p>
