@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>algorithm on qinry&#39;s blog</title>
-    <link>https://www.qinry.github.io/tags/algorithm/</link>
+    <link>https://qinry.github.io/tags/algorithm/</link>
     <description>Recent content in algorithm on qinry&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 27 Apr 2020 20:21:23 +0800</lastBuildDate>
     
-	<atom:link href="https://www.qinry.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://qinry.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>简简单单知道递归</title>
-      <link>https://www.qinry.github.io/posts/2020-04-27-algorithm-recursion/</link>
+      <link>https://qinry.github.io/posts/2020-04-27-algorithm-recursion/</link>
       <pubDate>Mon, 27 Apr 2020 20:21:23 +0800</pubDate>
       
-      <guid>https://www.qinry.github.io/posts/2020-04-27-algorithm-recursion/</guid>
+      <guid>https://qinry.github.io/posts/2020-04-27-algorithm-recursion/</guid>
       <description>递归的含义 递归就是函数或方法通过调用自己本身来达到解决问题的目的，这种解法形式叫递归。用欧几里得算法的Java描述说明问题：
 任意一对非负整数p，q(p &amp;gt; q),设r是p与q相除的余数。p，q的最大公约数等于q，p的最大公约数。
 public static int gcd(int p, int q) {if(q == 0) return p;int r = p % q;return gcd(q, r);}为什么使用递归   面对某些复杂的问题使用递归可以很好的描述并有效解决，例如汉诺塔问题、二叉树的遍历、查询目录等等。
@@ -30,10 +30,10 @@ public static int gcd(int p, int q) {if(q == 0) return p;int r = p % q;return
     
     <item>
       <title>数据结构与算法分析(笔记) -- 开始</title>
-      <link>https://www.qinry.github.io/posts/2019-10-17-algorithm-beginning/</link>
+      <link>https://qinry.github.io/posts/2019-10-17-algorithm-beginning/</link>
       <pubDate>Thu, 17 Oct 2019 23:29:10 +0800</pubDate>
       
-      <guid>https://www.qinry.github.io/posts/2019-10-17-algorithm-beginning/</guid>
+      <guid>https://qinry.github.io/posts/2019-10-17-algorithm-beginning/</guid>
       <description>递归使用的基本法则  基准情形：要有退出条件 不断推进：从初始条件趋向退出条件 设计准则 ：假设递归准确执行 合成效益法则：防止重复工作，比如生成斐波那契数列的递归实现使用双递归，导致一些工作的重复，进而影响效率  递归符合前三个法则才能正确进行，符合第四法则递归的使用才有意义。虽然递归的代码逻辑清晰，不过某些情况效率不高。当递归不能很好解决问题时，可能考虑采用迭代。
 算法分析 4种描述算法效率的数学模型，常用的有大O记法
 大O记法：时间T(N) = O( f( N ) ), 意思是T( N ) 的相对增长率小于 f(N)
