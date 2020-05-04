@@ -55,15 +55,35 @@
     <a href="https://qinry.github.io/posts/2020-05-04-java-generics/">泛型</a>
   </h1>
   <time datetime="2020-05-03T23:29:33&#43;0800" class="post-date">Sun, May 3, 2020</time>
-  泛型方法和泛型接口 通配符 自限定类型 混型 鸭子类型 
+  有些一些方法处理不同类型，这些方法之间只有操作的类型的不同，方法名相同，方法的行为相似甚至相同，那么可以使用参数化类型，也叫泛型，用一个方法就能处理不同类型，大大地减少了代码的重复，提高它的重用性。泛型能使问题的解决对类型能更加宽泛，即使是未来创建的类型，此方法依然运行。
+泛型类如何表示类名后跟上尖括号，括号里面就是类型参数。
+简单定义泛型：
+class Generic&lt;T&gt; {public T a;public void set(T b) { a = b; }public T get() { return a; }public void print() { System.out.println(a); }public static void main(String[] args) {Generic&lt;String&gt; gs = new Generic&lt;String&gt;();gs.set(&#34;String&#34;);gs.print();Generic&lt;Integer&gt; gi = new Generic&lt;Integer&gt;();gs.set(17);gs.set(new Integer(47));gs.print();}}基本类型不能赋予泛型，所以基本类型对应的包装类来赋予解决基本数据类型的问题
+泛型方法和泛型接口 有时需要定义类的某些方法需要类型参数，而类不使用类型参数：
+class GenericMethod {public &lt;T&gt; void f(T t) {System.out.println(t.getClass().getName());}}在方法的返回类型前声明参数化类型，加括号里面有类型参数。由于static方法无法访问泛型类的类型参数，也要像泛型方法的定义获得泛型能力。
+  
+  <div class="read-more-link">
+    <a href="/posts/2020-05-04-java-generics/">Read More…</a>
+  </div>
   
 </article><article class="post">
   <h1 class="post-title">
     <a href="https://qinry.github.io/posts/2020-05-02-java-containers/">容器</a>
   </h1>
   <time datetime="2020-05-02T21:30:16&#43;0800" class="post-date">Sat, May 2, 2020</time>
-  首先展示集合类库较为完整图
-List Queue Iterator Set Map hashCode() 实用工具类Collections 旧式不建议使用的容器 
+  留意 此文列出一些有可能常用的api，肯定没有文档列的全也没必要全面，还有旨在会用这些操作容器的方法即可，要了解更多回看《Thinking in Java》4th的持有对象和容器深入研究那两章。
+首先展示集合类库较为完整图,实线代表具体的类，点线代表接口，短虚线代表抽象类。粗线框代表的类是最常用：
+Interface Collection&lt; E &gt; api:
+List、Set、Queue都支持以下操作
+  boolean add(E e) (可选) 添加一个元素
+  boolean addAll(Collection&lt;? extends E&gt; c) (可选) 添加另一个Collection所有元素
+    void clear() (可选) 清除元素     boolean contains(Object o) 是否包含某个元素
+  boolean containsAll(Collection&lt;?&gt; c) 是否包含另一个Collection所有的元素
+    boolean isEmpty() 检查是否为空    Iterator&lt; E &gt; iterator() 返回迭代器     boolean remove(Object o) (可选) 移除一个元素
+  
+  <div class="read-more-link">
+    <a href="/posts/2020-05-02-java-containers/">Read More…</a>
+  </div>
   
 </article><article class="post">
   <h1 class="post-title">
@@ -81,7 +101,7 @@ Peel&lt;Banana&gt;[] peels = new Peel&lt;Banana&gt;[10]; // illegal
 数组是协变类型，List&lt; String &gt; [ ] 也是Object[ ] ，故可以Object[] objects = ls，泛型数组可以向上转型为Object[ ]，不建议向上转型，因为如果类型转换有误不会在编译期抛出错误，在运行时类型检查才抛出错误，类型是不安全，泛型数组对Object[ ]来说是类型安全，毕竟持有具体泛型。
 现实是泛型容器是比泛型数组更优的选择，泛型会进行编译期检查防止不合理的类型的加入和抽取来保证类型安全，不需要创建时非泛型容器转型为泛型容器。
 Arrays实用功能 以下参数中的数组一词指 注：数组指基本数据类型数组或Object的数组
-填充   public static void fill(数组 a, 数组 val) 只能用一个值进行填充，如果是对象其实是复制同一个对象填充
+ public static List&lt; T &gt; asList(T[] a) 将数组转变为List，但底层依旧是数组，不能增加或移除元素  填充   public static void fill(数组 a, 数组 val) 只能用一个值进行填充，如果是对象其实是复制同一个对象填充
   
   <div class="read-more-link">
     <a href="/posts/2020-05-02-java-arrays/">Read More…</a>
