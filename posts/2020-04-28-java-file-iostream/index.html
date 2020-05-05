@@ -247,16 +247,16 @@
 <p>过滤器还有读写基本数据类型的过滤器DataInputStream和DataOutputStream</p>
 <p>非常适合文件有搜寻方法的RandomAccessFilem,同时具备读写基本数据类型和UTF-8字符能力。</p>
 <h3 id="heading">常用的读写方法</h3>
-<p>InputStream或Reader都有<code>int read()</code>方法,OutputStream或Writer都有<code>write(int)</code>。</p>
+<p>InputStream或Reader都有<code>int read()</code>方法,OutputStream或Writer都有<code>void write(int)</code>。</p>
 <p>基本读写操作:</p>
 <ol>
 <li>缓冲输入: BufferedReader的<code>String readLine()</code>(读取一行字符串，除去换行符&rsquo;\n&rsquo;)</li>
 <li>数据格式化输入: DataInputStream、RandomAccessFile的<code>byte readByte()</code>、<code>String readUTF()</code>等</li>
-<li>打印输出:PrintWriter、PrintStream的<code>print()</code>、<code>println()</code>、<code>printf()</code>的各种重载方法</li>
+<li>打印输出:PrintWriter、PrintStream的<code>print()</code>、<code>println()</code>、<code>void printf()</code>的各种重载方法</li>
 <li>数据格式化输出:DataOutputStream、RandomAccessFile的<code>writeDouble(double)</code>、<code>writeUTF(String)</code>等</li>
 </ol>
 <h3 id="randomaccessfile">RandomAccessFile类</h3>
-<p>其构造器第一个参数文件路径名,第二参数是&quot;r&quot;表示只读或&quot;rw&quot;读写。<code>getFilePointer()</code>获得文件位置,<code>seek()</code>移动文件位置,<code>length()</code>表示文件最大尺寸。它绝大功能已被nio存储映射文件取代。</p>
+<p>其构造器第一个参数文件路径名,第二参数是&quot;r&quot;表示只读或&quot;rw&quot;读写。<code>long getFilePointer()</code>获得文件位置,<code>seek(long)</code>移动文件位置,<code>long length()</code>表示文件最大尺寸。它绝大功能已被nio存储映射文件取代。</p>
 <h2 id="io-1">标准I/O</h2>
 <p>简单说,在操作系统中的程序与系统的交互方式。程序的输入来自标准输入流,程序输出到标准输出流可以作为另一个程序的输入流,还有用于打印错误消息的标准错误流。System.in、System.out、System.err分别是标准输入流、标准输出流和标准错误流。System.out和System.err是PrintStream且已经被包装过了,所以可以直接使用。而System.in使用前必须进行包装</p>
 <h3 id="heading-1">重定向</h3>
