@@ -250,10 +250,10 @@
 <p>InputStream或Reader都有<code>int read()</code>方法,OutputStream或Writer都有<code>write(int)</code>。</p>
 <p>基本读写操作:</p>
 <ol>
-<li>缓冲输入: BufferedReader的<code>String readLine()</code></li>
-<li>数据格式化输入: DataInputStream、RandomAccessFile的<code>byte readByte()</code>、<code>char readUTF()</code>等</li>
+<li>缓冲输入: BufferedReader的<code>String readLine()</code>(读取一行字符串，除去换行符&rsquo;\n&rsquo;)</li>
+<li>数据格式化输入: DataInputStream、RandomAccessFile的<code>byte readByte()</code>、<code>String readUTF()</code>等</li>
 <li>打印输出:PrintWriter、PrintStream的<code>print()</code>、<code>println()</code>、<code>printf()</code>的各种重载方法</li>
-<li>数据格式化输出:DataOutputStream、RandomAccessFile的<code>writeDouble(double)</code>、<code>writeUTF(char)</code>等</li>
+<li>数据格式化输出:DataOutputStream、RandomAccessFile的<code>writeDouble(double)</code>、<code>writeUTF(String)</code>等</li>
 </ol>
 <h3 id="randomaccessfile">RandomAccessFile类</h3>
 <p>其构造器第一个参数文件路径名,第二参数是&quot;r&quot;表示只读或&quot;rw&quot;读写。<code>getFilePointer()</code>获得文件位置,<code>seek()</code>移动文件位置,<code>length()</code>表示文件最大尺寸。它绝大功能已被nio存储映射文件取代。</p>
