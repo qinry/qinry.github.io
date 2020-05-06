@@ -5,10 +5,24 @@
     <link>https://qinry.github.io/posts/</link>
     <description>Recent content in Posts on qinry&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 03 May 2020 23:29:33 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2020 08:24:50 +0800</lastBuildDate>
     
 	<atom:link href="https://qinry.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>背包、栈、队列实现</title>
+      <link>https://qinry.github.io/posts/2020-05-06-algorithm-basic-datastructure/</link>
+      <pubDate>Wed, 06 May 2020 08:24:50 +0800</pubDate>
+      
+      <guid>https://qinry.github.io/posts/2020-05-06-algorithm-basic-datastructure/</guid>
+      <description>API:
+背包
+public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;
+   方法 功能描述     Bag() 创建一个空包   void add(Item item) 添加一个元素   boolean isEmpty() 背包是否为空   int size() 背包中的元素数量     先进先出队列(FIFO)
+public class Queue&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;
+   方法 功能描述     Queue() 创建一个空队列   void enqueue(Item item) 添加一个元素   Item dequeue() 删除最早添加的元素   boolean isEmpty() 队列是否为空   int size() 队列中的元素数量     下压栈(LIFO)</description>
+    </item>
     
     <item>
       <title>泛型</title>
