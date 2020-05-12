@@ -52,6 +52,17 @@
     <div class="posts">
 <article class="post">
   <h1 class="post-title">
+    <a href="https://qinry.github.io/posts/2020-05-12-java-annotation/">注解</a>
+  </h1>
+  <time datetime="2020-05-12T22:06:42&#43;0800" class="post-date">Tue, May 12, 2020</time>
+  定义注解 import java.lang.annotation.*;@Target(ElementType.METHOND)@Retention(RetentPolicy.RUNTIME)public @interface UseCase {int id();String description() default &#34;no description&#34;;}使用注解 import java.util.*;public class PasswordUtils {@UseCase(id = 47, description =&#34;Passwords must contain at least one numeric&#34;)public boolean validatePassword(String passwd) {return (passwd.matches(&#34;\\w*\\d\\w*&#34;));}@UseCase(id = 48)public String encryptPassword(String passwd) {return new StringBuilder(passwd).reverse().toString();}@UseCase(id = 49, description =&#34;New passwords can&#39;t equal previously used ones&#34;)public boolean checkForNewPassword(List&lt;String&gt; prevPasswords, String passwd) {return !
+  
+  <div class="read-more-link">
+    <a href="/posts/2020-05-12-java-annotation/">Read More…</a>
+  </div>
+  
+</article><article class="post">
+  <h1 class="post-title">
     <a href="https://qinry.github.io/posts/2020-05-06-algorithm-basic-datastructure/">背包、栈、队列实现</a>
   </h1>
   <time datetime="2020-05-06T08:24:50&#43;0800" class="post-date">Wed, May 6, 2020</time>
