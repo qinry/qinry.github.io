@@ -3,7 +3,7 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.62.0" />
+  <meta name="generator" content="Hugo 0.72.0" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,6 +39,7 @@
 
     <nav>
       <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io">Home</a> </li>
         <li><a href="https://github.com/qinry"> Github </a></li>
       </ul>
     </nav>
@@ -51,7 +52,7 @@
     <div class="post">
   <h1>容器</h1>
   <time datetime=2020-05-02T21:30:16&#43;0800 class="post-date">Sat, May 2, 2020</time>
-  <h2 id="heading">留意</h2>
+  <h2 id="留意">留意</h2>
 <p>此文列出一些有可能常用的api，肯定没有文档列的全也没必要全面，还有旨在会用这些操作容器的方法即可，要了解更多回看《Thinking in Java》4th的持有对象和容器深入研究那两章。</p>
 <p>首先展示集合类库较为完整图,实线代表具体的类，点线代表接口，短虚线代表抽象类。粗线框代表的类是最常用：</p>
 <p><img src="https://qinry.github.io/images/containers.png" alt="picture"></p>
@@ -396,7 +397,7 @@ Interface ListIterator&lt; E &gt; api:</p>
 <p>SortedMap&lt; K,V &gt; tailMap(K fromKey)</p>
 </li>
 </ul>
-<h2 id="hashcodeequals">hashCode()和equals()</h2>
+<h2 id="hashcode和equals">hashCode()和equals()</h2>
 <p>如果使用自己定义的类作为HashMap的键，要覆写hashCode()的同时一定要覆写equals()，正确的equals()满足5个条件:</p>
 <ol>
 <li>
@@ -473,7 +474,7 @@ Interface ListIterator&lt; E &gt; api:</p>
 <p>检查hashCode()最后生成结果，确保相同对象有相同的散列。</p>
 </li>
 </ol>
-<h2 id="collections">实用工具类Collections</h2>
+<h2 id="实用工具类collections">实用工具类Collections</h2>
 <p>Class Collections api:</p>
 <p>往集合添加元素</p>
 <ul>
@@ -671,9 +672,9 @@ src)</li>
 <ul>
 <li>public static &lt; T &gt; Enumeration&lt; T &gt; enumeration(Collection&lt; T &gt; c)</li>
 </ul>
-<h2 id="heading-1">旧式不建议使用的容器</h2>
+<h2 id="旧式不建议使用的容器">旧式不建议使用的容器</h2>
 <p>Hashtable&lt; K, V &gt;用法与HashMap&lt; K, V&gt;相似</p>
-<h3 id="vectorenumeration">Vector和Enumeration</h3>
+<h3 id="vector和enumeration">Vector和Enumeration</h3>
 <p>Class Vector&lt; E &gt; api:</p>
 <p>构造器</p>
 <ul>
@@ -758,6 +759,8 @@ src)</li>
 
     </main>
 
+    
+      
     
   </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.62.0" />
+  <meta name="generator" content="Hugo 0.72.0" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,6 +39,7 @@
 
     <nav>
       <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io">Home</a> </li>
         <li><a href="https://github.com/qinry"> Github </a></li>
       </ul>
     </nav>
@@ -52,7 +53,7 @@
   <h1>新I/O</h1>
   <time datetime=2020-04-28T20:16:54&#43;0800 class="post-date">Tue, Apr 28, 2020</time>
   <p>通道是数据存储的地方，缓冲器充当着通道与外部数据交换的媒介</p>
-<h2 id="channel">通道Channel</h2>
+<h2 id="通道channel">通道Channel</h2>
 <p>FileChannel可以通过FileOutputStream、FileInputStream、RandomAccessFile三个类的getChannel()获得，这些都是字节操纵流。在通道上有读写，访问通道大小,关闭通道，更改所在位置等操作。</p>
 <p>FileChannel api:</p>
 <ul>
@@ -72,7 +73,7 @@
 <p>public void close() throws IOException 关闭通道</p>
 </li>
 </ul>
-<h2 id="buffer">缓冲器Buffer</h2>
+<h2 id="缓冲器buffer">缓冲器Buffer</h2>
 <p>最基本的缓冲器ByteBuffer，可以从某个特定的基本数据类型的视窗查看底层的ByteBuffer。视窗缓冲器有CharBuffer、DoubleBuffer、IntBuffer等等，通过 <strong>as数据类型Buffer()</strong> 转换相应数据类型视图的Buffer</p>
 <p>Buffer有四个索引：mark(标记)、position(位置)、limit(界限)、capacity(容量)</p>
 <p>不同数据类型的Buffer api:</p>
@@ -160,12 +161,12 @@
 <p>public static 数据类型的Buffer allocate(int capacity)</p>
 </li>
 </ul>
-<h2 id="mappedbytebuffer">内存映射文件MappedByteBuffer</h2>
+<h2 id="内存映射文件mappedbytebuffer">内存映射文件MappedByteBuffer</h2>
 <p>以下是创建MappedByteBuffer的方法，内存映射文件开一个创建和修改太大的文件，可以方便想数组一样访问文件，如put(byte data)加入数据，get(int index)访问数据，它继承ByteBuffer，拥有父类所有的方法。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">MappedByteBuffer buff <span style="color:#f92672">=</span>
-    <span style="color:#66d9ef">new</span> RandomAccessFile<span style="color:#f92672">(</span>文件名<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;rw&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getChannel</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-        <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>FileChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">MapMode</span><span style="color:#f92672">.</span><span style="color:#a6e22e">READ_WRITE</span><span style="color:#f92672">,</span> POSITION<span style="color:#f92672">,</span> SIZE<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-</code></pre></div><h2 id="charset">字符集CharSet</h2>
+    <span style="color:#66d9ef">new</span> RandomAccessFile<span style="color:#f92672">(</span>文件名<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;rw&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">getChannel</span><span style="color:#f92672">()</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>FileChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">MapMode</span><span style="color:#f92672">.</span><span style="color:#a6e22e">READ_WRITE</span><span style="color:#f92672">,</span> POSITION<span style="color:#f92672">,</span> SIZE<span style="color:#f92672">);</span>
+</code></pre></div><h2 id="字符集charset">字符集CharSet</h2>
 <p>CharSet api:</p>
 <ul>
 <li>
@@ -197,17 +198,17 @@
 <ul>
 <li>public final ByteBuffer encode(CharBuffer cb)) 编码 (CharBuffer -&gt; ByteBuffer)</li>
 </ul>
-<h2 id="filelock">文件加锁FileLock</h2>
+<h2 id="文件加锁filelock">文件加锁FileLock</h2>
 <p>以下方式给文件加锁,release()可以释放suo</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">FileOuuputStream fos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>文件名<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-FileLock fl <span style="color:#f92672">=</span> fos<span style="color:#f92672">.</span><span style="color:#a6e22e">tryLock</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>fl <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
-    fl<span style="color:#f92672">.</span><span style="color:#a6e22e">release</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-fos<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">FileOuuputStream fos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>文件名<span style="color:#f92672">);</span>
+FileLock fl <span style="color:#f92672">=</span> fos<span style="color:#f92672">.</span><span style="color:#a6e22e">tryLock</span><span style="color:#f92672">();</span>
+<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>fl <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
+    fl<span style="color:#f92672">.</span><span style="color:#a6e22e">release</span><span style="color:#f92672">();</span>
+fos<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
 </code></pre></div><ul>
 <li>public FileLock tryLock(long position, long size, boolean shared) 对文件部分加非阻塞(共享/独享)锁，还有阻塞式的lock(),二者区别是lock()一定要获取锁，那怕阻塞别的线程，tryLock()是尝试获取。</li>
 </ul>
-<h2 id="heading">字节存放的次序</h2>
+<h2 id="字节存放的次序">字节存放的次序</h2>
 <p>Big endian - 高位优先，最重要的字节存放到地址最低的存储单元(ByteOrder.BIG_ENDIAN), 常用在网络的数据传输</p>
 <p>Little endian - 低位优先，最重要的字节存放到地址最高的存储单元(ByteOrder.LITTLE_ENDIAN)</p>
 <ul>
@@ -224,6 +225,8 @@ fos<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><
 
     </main>
 
+    
+      
     
   </body>
 </html>

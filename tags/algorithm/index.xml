@@ -5,10 +5,30 @@
     <link>https://qinry.github.io/tags/algorithm/</link>
     <description>Recent content in algorithm on qinry&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 06 May 2020 08:24:50 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2020 07:34:59 +0800</lastBuildDate>
     
 	<atom:link href="https://qinry.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>并查集</title>
+      <link>https://qinry.github.io/posts/2020-07-06-algorithm-union-find/</link>
+      <pubDate>Mon, 06 Jul 2020 07:34:59 +0800</pubDate>
+      
+      <guid>https://qinry.github.io/posts/2020-07-06-algorithm-union-find/</guid>
+      <description>参考于《算法》第4版第一章第五节
+问题描述：输入一对整数p、q，程序判断它们是否相连，如果相连，忽略这对数并处理下对数；否则将它们相连。p和q相连具有一种等价关系,说明：
+  p和p本身相连；
+  如果p和q相连，那么q和p也相连；
+  如果p和q相连且q和r相连，那么p和r也相连。
+  这个问题是个动态连通性问题，常应用于计算机网络上表示结点的连接，可能需要处理数百万的对象和数十亿的连接。
+数据结构 解决问题用到了数学抽象的集合，为了简化问题，用整数来表示对象，而不是用整数标识符和任意名称关联表示对象。将p和q是否相连问题转换为p和q是否在同一个集合。
+使用术语 对象用触点表示，整数对用连接表示。等价类，即相连的一系列对象称为连通分量，甚至可以为分量。
+定义抽象数据类型 —— UF（union-find，并查集）
+API：
+   方法 描述     UF(int N) 以整数标识(0~N-1)初始化N个触点   void union(int p, int q) 在p和q之间添加一个连接   int find(int p) p所在的分量标识符   boolean connected(int p, int q) p和q是否相连，是返回true   int count() 连通分量的数量    初步实现：
+public class UF { private int[] id; // 分量id（以触点作为索引）  private int count; // 分量数量  public UF(int N) { count = N; id = new int[N]; for(int i = 0; i &amp;lt; N; i++) id[i] = i; } public int count() { return count; } public boolean connected(int p, int q) { return find(p) == find(q); } // 以下方法，不同算法，实现各不同  public int find(int p) public void union(int p, int q) } 不同算法实现并查集，性能各不同，因为在数据存放形式和数据的操作上有所不一样，或许是细微的差别。有简单的算法及其改进的算法，如：quick-find算法、quick-union算法、加权quick-union算法、路径压缩的加权quick-union算法。</description>
+    </item>
     
     <item>
       <title>背包、栈、队列实现</title>
@@ -32,14 +52,14 @@ public class Queue&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;
       <guid>https://qinry.github.io/posts/2020-04-27-algorithm-recursion/</guid>
       <description>递归的含义 递归就是函数或方法通过调用自己本身来达到解决问题的目的，这种解法形式叫递归。用欧几里得算法的Java描述说明问题：
 任意一对非负整数p，q(p &amp;gt; q),设r是p与q相除的余数。p，q的最大公约数等于q，p的最大公约数。
-public static int gcd(int p, int q) {if(q == 0) return p;int r = p % q;return gcd(q, r);}为什么使用递归   面对某些复杂的问题使用递归可以很好的描述并有效解决，例如汉诺塔问题、二叉树的遍历、查询目录等等。
+public static int gcd(int p, int q) { if(q == 0) return p; int r = p % q; return gcd(q, r); } 为什么使用递归   面对某些复杂的问题使用递归可以很好的描述并有效解决，例如汉诺塔问题、二叉树的遍历、查询目录等等。
   递归使算法实现的代码更加简洁，而且易懂。
   误区——迭代一定比递归的效率高 当递归使用的是尾递归本质其是就是迭代，效率不亚于普通迭代(不考虑函数的开销，递归比迭代更好)。如果使用使用双递归、三递归等等，才会算法极度低效，这是用之不当所致
 如何使用递归 使用数学归纳法诠释重要三点：
   递归总有一个最简单的情况——方法的第一句总是包含return的条件语句
   递归调用总是尝试解决一个规模更小的子问题，递归才能收敛到最简单的情况。
   递归调用的父问题和尝试解决的子问题之间不应该有交集。
-  一些递归的例子 阶乘 public static int fact(int N) {if(N == 0) return 1;return N * fact(N - 1);}典型的尾递归，效率最高的递归形式</description>
+  一些递归的例子 阶乘 public static int fact(int N) { if(N == 0) return 1; return N * fact(N - 1); } 典型的尾递归，效率最高的递归形式</description>
     </item>
     
     <item>
@@ -52,7 +72,7 @@ public static int gcd(int p, int q) {if(q == 0) return p;int r = p % q;return
 算法分析 4种描述算法效率的数学模型，常用的有大O记法
 大O记法：时间T(N) = O( f( N ) ), 意思是T( N ) 的相对增长率小于 f(N)
 计算运行时间 一般法则
- FOR循环 嵌套的FOR循环 顺序语句 IF/ELSE语句   最大子序列和问题解 算法1（嵌套3层for循环） intMaxSubsequenceSum(const int A[], int N){int ThisSum, MaxSum, i, j, k;MaxSum = 0;for (i = 0; i &amp;lt; N; i++)for (j = i; j &amp;lt; N; j++){ThisSum = 0;for (k = i; k &amp;lt;= j; k++)ThisSum += A[k];if (ThisSum &amp;gt; MaxSum)MaxSum = ThisSum;}return MaxSum;}算法2（嵌套2层for循环） intMaxSubsequenceSum(const int A[], int N){int ThisSum, MaxSum, i, j;MaxSum = 0;for (i = 0; i &amp;lt; N; i++){ThisSum = 0;for (j = i; j &amp;lt; N; j++){ThisSum += A[j];if (ThisSum &amp;gt; MaxSum)MaxSum = ThisSum;}}return MaxSum;}算法3（分治） int Max3(int x, int y, int z){return (x &amp;gt; y?</description>
+ FOR循环 嵌套的FOR循环 顺序语句 IF/ELSE语句   最大子序列和问题解 算法1（嵌套3层for循环） int MaxSubsequenceSum(const int A[], int N) { int ThisSum, MaxSum, i, j, k; MaxSum = 0; for (i = 0; i &amp;lt; N; i++) for (j = i; j &amp;lt; N; j++) { ThisSum = 0; for (k = i; k &amp;lt;= j; k++) ThisSum += A[k]; if (ThisSum &amp;gt; MaxSum) MaxSum = ThisSum; } return MaxSum; } 算法2（嵌套2层for循环） int MaxSubsequenceSum(const int A[], int N) { int ThisSum, MaxSum, i, j; MaxSum = 0; for (i = 0; i &amp;lt; N; i++) { ThisSum = 0; for (j = i; j &amp;lt; N; j++) { ThisSum += A[j]; if (ThisSum &amp;gt; MaxSum) MaxSum = ThisSum; } } return MaxSum; } 算法3（分治） int Max3(int x, int y, int z) { return (x &amp;gt; y ?</description>
     </item>
     
   </channel>
