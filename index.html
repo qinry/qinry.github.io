@@ -12,10 +12,10 @@
   <meta name="description" content="在此写下学习日志，努力充电中～" />
 
   
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
-  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="/css/hyde.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -32,7 +32,7 @@
   <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-      <a href="https://qinry.github.io"><h1>qinry&#39;s blog</h1></a>
+      <a href="/"><h1>qinry&#39;s blog</h1></a>
       <p class="lead">
        在此写下学习日志，努力充电中～ 
       </p>
@@ -40,8 +40,8 @@
 
     <nav>
       <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io">Home</a> </li>
-        <li><a href="https://qinry.github.io/tags">tags</a> </li>
+        <li><a href="/">Home</a> </li>
+        <li><a href="/tags">tags</a> </li>
         <li><a href="https://github.com/qinry"> Github </a></li>
       </ul>
     </nav>
@@ -54,7 +54,7 @@
     <div class="posts">
 <article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2020-08-06-algorithm-priority-queue/">优先队列的实现</a>
+    <a href="/posts/2020-08-06-algorithm-priority-queue/">优先队列的实现</a>
   </h1>
   <time datetime="2020-08-06T21:36:55&#43;0800" class="post-date">Thu, Aug 6, 2020</time>
   参考于《算法》第四版第二章第四节
@@ -68,7 +68,7 @@ public class MaxPQ&lt;Key extends Comparable&lt;Key&gt;&gt;
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2020-08-06-algorithm-sort/">排序</a>
+    <a href="/posts/2020-08-06-algorithm-sort/">排序</a>
   </h1>
   <time datetime="2020-08-06T08:00:11&#43;0800" class="post-date">Thu, Aug 6, 2020</time>
   参考于《算法》第四版第二章
@@ -80,7 +80,7 @@ public class MaxPQ&lt;Key extends Comparable&lt;Key&gt;&gt;
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2020-07-06-algorithm-union-find/">并查集的实现</a>
+    <a href="/posts/2020-07-06-algorithm-union-find/">并查集的实现</a>
   </h1>
   <time datetime="2020-07-06T07:34:59&#43;0800" class="post-date">Mon, Jul 6, 2020</time>
   参考于《算法》第4版第一章第五节
@@ -102,7 +102,7 @@ public class UF { private int[] id; // 分量id（以触点作为索引）  priv
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2020-05-12-java-annotation/">注解</a>
+    <a href="/posts/2020-05-12-java-annotation/">注解</a>
   </h1>
   <time datetime="2020-05-12T22:06:42&#43;0800" class="post-date">Tue, May 12, 2020</time>
   定义注解 import java.lang.annotation.*; @Target(ElementType.METHOND) @Retention(RetentPolicy.RUNTIME) public @interface UseCase { int id(); String description() default &#34;no description&#34;; } 使用注解 import java.util.*; public class PasswordUtils { @UseCase(id = 47, description = &#34;Passwords must contain at least one numeric&#34;) public boolean validatePassword(String passwd) { return (passwd.matches(&#34;\\w*\\d\\w*&#34;)); } @UseCase(id = 48) public String encryptPassword(String passwd) { return new StringBuilder(passwd) .reverse().toString(); } @UseCase(id = 49, description = &#34;New passwords can&#39;t equal previously used ones&#34;) public boolean checkForNewPassword( List&lt;String&gt; prevPasswords, String passwd) { return !
@@ -113,7 +113,7 @@ public class UF { private int[] id; // 分量id（以触点作为索引）  priv
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2020-05-06-algorithm-basic-datastructure/">背包、栈、队列实现</a>
+    <a href="/posts/2020-05-06-algorithm-basic-datastructure/">背包、栈、队列实现</a>
   </h1>
   <time datetime="2020-05-06T08:24:50&#43;0800" class="post-date">Wed, May 6, 2020</time>
   API:
@@ -129,7 +129,7 @@ public class Queue&lt;Item&gt; implements Iterable&lt;Item&gt;
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2020-05-04-java-generics/">泛型</a>
+    <a href="/posts/2020-05-04-java-generics/">泛型</a>
   </h1>
   <time datetime="2020-05-03T23:29:33&#43;0800" class="post-date">Sun, May 3, 2020</time>
   有些一些方法处理不同类型，这些方法之间只有操作的类型的不同，方法名相同，方法的行为相似甚至相同，那么可以使用参数化类型，也叫泛型，用一个方法就能处理不同类型，大大地减少了代码的重复，提高它的重用性。泛型能使问题的解决对类型能更加宽泛，即使是未来创建的类型，此方法依然运行。
@@ -145,7 +145,7 @@ class GenericMethod { public &lt;T&gt; void f(T t) { System.out.println(t.getCla
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2020-05-02-java-containers/">容器</a>
+    <a href="/posts/2020-05-02-java-containers/">容器</a>
   </h1>
   <time datetime="2020-05-02T21:30:16&#43;0800" class="post-date">Sat, May 2, 2020</time>
   留意 此文列出一些有可能常用的api，肯定没有文档列的全也没必要全面，还有旨在会用这些操作容器的方法即可，要了解更多回看《Thinking in Java》4th的持有对象和容器深入研究那两章。
@@ -164,7 +164,7 @@ List、Set、Queue都支持以下操作
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2020-05-02-java-arrays/">数组</a>
+    <a href="/posts/2020-05-02-java-arrays/">数组</a>
   </h1>
   <time datetime="2020-05-02T21:27:15&#43;0800" class="post-date">Sat, May 2, 2020</time>
   数组的优势，在于它存储和执行的效率，支持随机访问元素。不过，数组对象使用前它的大小是固定，不可改变。这意味着创建固定大小的数组，以后要扩大其容量是不可能的，在多数情况下ArrayList是更有的选择，在效率和弹性开销的需求方面更令人满意，除非考虑非常高的性能问题，一般减少使用。数组随机访问有可能越界访问，越界会抛出RuntimeException。数组的创建是持有具体类型，不会将持有的对象当作Object看待，通过编译期检查防止插入错误的类型和抽取不当类型。
@@ -186,7 +186,7 @@ Arrays实用功能 以下参数中的数组一词指 注：数组指基本数据
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2020-04-28-java-newio/">新I/O</a>
+    <a href="/posts/2020-04-28-java-newio/">新I/O</a>
   </h1>
   <time datetime="2020-04-28T20:16:54&#43;0800" class="post-date">Tue, Apr 28, 2020</time>
   通道是数据存储的地方，缓冲器充当着通道与外部数据交换的媒介
@@ -211,7 +211,7 @@ Buffer有四个索引：mark(标记)、position(位置)、limit(界限)、capaci
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2020-04-28-java-file-iostream/">文件路径与I/O流</a>
+    <a href="/posts/2020-04-28-java-file-iostream/">文件路径与I/O流</a>
   </h1>
   <time datetime="2020-04-28T17:42:29&#43;0800" class="post-date">Tue, Apr 28, 2020</time>
   File类 File类作用和它的名字不太相符，File除了可以代表一个特定的文件，还可以表示一个目录（包含一组文件），最准确认为是“路径”。还一个与之相关的接口FilenameFilter，用来筛选路径的目录或文件。它们在java.io包中。
@@ -224,7 +224,7 @@ import java.util.regex.*; import java.util.*; import java.io.*; public class Dir
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2020-04-28-java-serialize/">对象序列化</a>
+    <a href="/posts/2020-04-28-java-serialize/">对象序列化</a>
   </h1>
   <time datetime="2020-04-28T16:01:24&#43;0800" class="post-date">Tue, Apr 28, 2020</time>
   持久性 如果对象能够在程序不运行还能保存其状态信息。可以通过将信息写入文件或数据库来达到程序下次执行时，对象重建后与上次拥有一致的信息。在Java中一切都是对象的思想下，把对象声明为“持久性”，可以省去一些细节，对程序员是种方便。对象的序列化，可以理解为把对象导入到文件中，通过Serialize接口实现。通过导入文件能够反序列化还原对象，达到持久性的目的。该特性支持计算机的远程方法调用，还有帮助Java Bean在设计阶段保存配置信息，并在启动程序后恢复配置信息。如果要把一个对象序列化，实现Serialize接口就可以了，此接口只是标记接口，不含方法。
@@ -236,7 +236,7 @@ import java.util.regex.*; import java.util.*; import java.io.*; public class Dir
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2020-04-28-java-zip/">压缩类</a>
+    <a href="/posts/2020-04-28-java-zip/">压缩类</a>
   </h1>
   <time datetime="2020-04-28T14:50:00&#43;0800" class="post-date">Tue, Apr 28, 2020</time>
   Java I/O库提供压缩功能输入、输出流，这些类是按字节方式处理，常用的压缩类有DeflaterOutputStream和它的子类ZipOutputStream、GZIPOutputStream、CheckedOutputStream，这些是用于压缩的，相应地，有解压的的InflaterInputStream和它的子类ZipInputStrea、GZIPInputStream、CheckedInputStream。
@@ -249,7 +249,7 @@ import java.util.zip.*; // 导入压缩格式的数据流类 import java.io.*; p
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2020-04-27-algorithm-recursion/">简简单单知道递归</a>
+    <a href="/posts/2020-04-27-algorithm-recursion/">简简单单知道递归</a>
   </h1>
   <time datetime="2020-04-27T20:21:23&#43;0800" class="post-date">Mon, Apr 27, 2020</time>
   递归的含义 递归就是函数或方法通过调用自己本身来达到解决问题的目的，这种解法形式叫递归。用欧几里得算法的Java描述说明问题：
@@ -269,7 +269,7 @@ public static int gcd(int p, int q) { if(q == 0) return p; int r = p % q; return
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-11-28-java-typeinfo/">类型信息</a>
+    <a href="/posts/2019-11-28-java-typeinfo/">类型信息</a>
   </h1>
   <time datetime="2019-11-28T18:25:37&#43;0800" class="post-date">Thu, Nov 28, 2019</time>
   Class对象 每个类都存在包含类型信息的Class对象，Class对象属于Java类中Class类型。有两种方法获得某类型的Class 对象，一种是使用Class.forName()静态方法，接受包含完整类名的字符串参数，创建对应类型的Class对象;第二种类字面量，&lt;ClassName&gt;.class。forName()方法必须放在try语句块，而类字面量不需要，故效率更高。
@@ -282,7 +282,7 @@ class Rock { static { System.out.println(&#34;Hi, I&#39;m a Rock!&#34;); } publi
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-11-25-java-strings/">字符串</a>
+    <a href="/posts/2019-11-25-java-strings/">字符串</a>
   </h1>
   <time datetime="2019-11-25T09:46:16&#43;0800" class="post-date">Mon, Nov 25, 2019</time>
   String对象不可变 String对象被创建后不可修改，某些方法看似是修改源字符串，其实是重新创建新字符串来代替。
@@ -296,7 +296,7 @@ import java.util.*; public class Mango { public static void main(String[] args) 
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-11-24-java-exceptions/">异常处理</a>
+    <a href="/posts/2019-11-24-java-exceptions/">异常处理</a>
   </h1>
   <time datetime="2019-11-24T08:47:23&#43;0800" class="post-date">Sun, Nov 24, 2019</time>
   异常抛出 创建一个异常对象，然后从当前环境对象抛出，阻止当前方法或作用域的执行。
@@ -317,7 +317,7 @@ try { // 抛出异常 } catch(Exception e) { // 处理异常 } finally { // 清�
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-24-java-innerclass/">内部类</a>
+    <a href="/posts/2019-10-24-java-innerclass/">内部类</a>
   </h1>
   <time datetime="2019-10-24T16:48:18&#43;0800" class="post-date">Thu, Oct 24, 2019</time>
   创建内部类 直接将内部类置于外围类中
@@ -329,7 +329,7 @@ try { // 抛出异常 } catch(Exception e) { // 处理异常 } finally { // 清�
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-22-java-interfaces/">接口</a>
+    <a href="/posts/2019-10-22-java-interfaces/">接口</a>
   </h1>
   <time datetime="2019-10-22T16:29:48&#43;0800" class="post-date">Tue, Oct 22, 2019</time>
   抽象类和抽象方法   抽象方法：仅有声明而没有方法体。 如： abstract void f();
@@ -358,7 +358,7 @@ class Wind implements Instrument { void play() {} String what() {} void adjust()
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-21-java-polymorphism/">多态</a>
+    <a href="/posts/2019-10-21-java-polymorphism/">多态</a>
   </h1>
   <time datetime="2019-10-21T17:01:44&#43;0800" class="post-date">Mon, Oct 21, 2019</time>
   多态的作用  消除类型间的耦合关系 改善代码的组织结构和可读性，还能够创建可扩展程序  绑定 将一个方法调用同一个方法主体关联起来称为绑定。若在程序执行前进行绑定，叫做前期绑定；而在运行时根据对象的类型进行绑定，叫后期绑定。有了后期绑定，多态的特性才能够呈现，编译器无法知道对象类型，只能通过安置类型信息来鉴别，这就要程序运行时方法调用基于类型信息匹配正确的方法主体。Java除了final方法和static方法外，都是后期绑定。
@@ -368,7 +368,7 @@ class Wind implements Instrument { void play() {} String what() {} void adjust()
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-21-java-reuse/">复用类</a>
+    <a href="/posts/2019-10-21-java-reuse/">复用类</a>
   </h1>
   <time datetime="2019-10-21T12:54:56&#43;0800" class="post-date">Mon, Oct 21, 2019</time>
   从现有类生成新类型  组合： 一般将现有类型作为新类型底层实现一部分来加以复用 继承：仅仅复用接口 用到 extends关键字  继承 继承中的初始化 在构造器中调用基类构造器来执行初始化来执行初始化。对象包含基类的子对象，它的正确初始化很重要
@@ -384,7 +384,7 @@ final关键字 可以使用在数据（域），方法， 类
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-21-java-access/">访问权限</a>
+    <a href="/posts/2019-10-21-java-access/">访问权限</a>
   </h1>
   <time datetime="2019-10-21T09:06:40&#43;0800" class="post-date">Mon, Oct 21, 2019</time>
   访问权限控制  public （公共访问权限, 谁都可以访问） private （类内私有，用户无法访问） protected （继承访问权限，也提供包内访问） 包访问权限（没有关键词修饰，供包内使用）  类访问权限，除内部类外，仅有两种选择：public和包访问权限
@@ -399,7 +399,7 @@ final关键字 可以使用在数据（域），方法， 类
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-20-java-initialization/">初始化和清理</a>
+    <a href="/posts/2019-10-20-java-initialization/">初始化和清理</a>
   </h1>
   <time datetime="2019-10-20T09:28:44&#43;0800" class="post-date">Sun, Oct 20, 2019</time>
   构造器确保初始化 构造器确保初始化，名字与类名一致，允许重载，且是特殊的无返回值(与void不同)的方法。
@@ -428,7 +428,7 @@ static方法 static方法一般不能调用非static方法，反过来却可以�
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-20-git-simple-usage/">git入门使用</a>
+    <a href="/posts/2019-10-20-git-simple-usage/">git入门使用</a>
   </h1>
   <time datetime="2019-10-20T08:50:01&#43;0800" class="post-date">Sun, Oct 20, 2019</time>
   配置Git 提供Git用户名和邮箱
@@ -450,7 +450,7 @@ static方法 static方法一般不能调用非static方法，反过来却可以�
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-19-java-control-flow/">控制流程</a>
+    <a href="/posts/2019-10-19-java-control-flow/">控制流程</a>
   </h1>
   <time datetime="2019-10-19T20:27:47&#43;0800" class="post-date">Sat, Oct 19, 2019</time>
   关键词：if-else, while, do-while, for, return, break, continue, switch
@@ -468,7 +468,7 @@ int i = 0; do { System.out.println(i--); } while(i &gt; 0); output: -1 注：do-
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-18-java-operator/">操作符</a>
+    <a href="/posts/2019-10-18-java-operator/">操作符</a>
   </h1>
   <time datetime="2019-10-18T21:55:03&#43;0800" class="post-date">Fri, Oct 18, 2019</time>
   静态导入 通过封装，自建类库已到达更简短语句答应字符串。可以静态导入（import static LibraryName）类库中静态对象
@@ -491,7 +491,7 @@ System.out.println() 内含+, 其前是String，其后操作对象非String会�
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-18-java-objects/">一切都是对象</a>
+    <a href="/posts/2019-10-18-java-objects/">一切都是对象</a>
   </h1>
   <time datetime="2019-10-18T20:41:27&#43;0800" class="post-date">Fri, Oct 18, 2019</time>
   对象及内存分布   在Java中一切都被视为对象，但操纵的标识符实际上是对象的“引用”
@@ -513,7 +513,7 @@ System.out.println() 内含+, 其前是String，其后操作对象非String会�
   
 </article><article class="post">
   <h1 class="post-title">
-    <a href="https://qinry.github.io/posts/2019-10-17-algorithm-beginning/">数据结构与算法分析(笔记) -- 开始</a>
+    <a href="/posts/2019-10-17-algorithm-beginning/">数据结构与算法分析(笔记) -- 开始</a>
   </h1>
   <time datetime="2019-10-17T23:29:10&#43;0800" class="post-date">Thu, Oct 17, 2019</time>
   递归使用的基本法则  基准情形：要有退出条件 不断推进：从初始条件趋向退出条件 设计准则 ：假设递归准确执行 合成效益法则：防止重复工作，比如生成斐波那契数列的递归实现使用双递归，导致一些工作的重复，进而影响效率  递归符合前三个法则才能正确进行，符合第四法则递归的使用才有意义。虽然递归的代码逻辑清晰，不过某些情况效率不高。当递归不能很好解决问题时，可能考虑采用迭代。
