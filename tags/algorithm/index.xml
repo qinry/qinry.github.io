@@ -5,11 +5,7 @@
     <link>https://qinry.github.io/tags/algorithm/</link>
     <description>Recent content in algorithm on qinry&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 06 Aug 2020 21:36:55 +0800</lastBuildDate>
-    
-	<atom:link href="https://qinry.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 06 Aug 2020 21:36:55 +0800</lastBuildDate><atom:link href="https://qinry.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>优先队列的实现</title>
       <link>https://qinry.github.io/posts/2020-08-06-algorithm-priority-queue/</link>

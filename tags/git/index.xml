@@ -5,11 +5,7 @@
     <link>https://qinry.github.io/tags/git/</link>
     <description>Recent content in git on qinry&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 20 Oct 2019 08:50:01 +0800</lastBuildDate>
-    
-	<atom:link href="https://qinry.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 20 Oct 2019 08:50:01 +0800</lastBuildDate><atom:link href="https://qinry.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>git入门使用</title>
       <link>https://qinry.github.io/posts/2019-10-20-git-simple-usage/</link>

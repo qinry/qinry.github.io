@@ -1,59 +1,60 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-  <link href="https://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.72.0" />
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="generator" content="Hugo 0.78.0" />
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>优先队列的实现 &middot; qinry&#39;s blog</title>
-  <meta name="description" content="" />
+    <title>优先队列的实现 &middot; qinry&#39;s blog</title>
+    <meta name="description" content=""/>
 
-  
-  <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="/css/poole.css">
-  <link type="text/css" rel="stylesheet" href="/css/syntax.css">
-  <link type="text/css" rel="stylesheet" href="/css/hyde.css">
+    
+    <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
+    <link type="text/css" rel="stylesheet" href="/css/poole.css">
+    <link type="text/css" rel="stylesheet" href="/css/syntax.css">
+    <link type="text/css" rel="stylesheet" href="/css/hyde.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
 
-  
-  
+    
+    
 </head>
 
-  <body class=" ">
-  <aside class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="/"><h1>qinry&#39;s blog</h1></a>
-      <p class="lead">
-       在此写下学习日志，努力充电中～ 
-      </p>
+<body class=" ">
+<aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+            <a href="/"><h1>qinry&#39;s blog</h1></a>
+            <p class="lead">
+                 在此写下学习日志，努力充电中～ 
+            </p>
+        </div>
+
+        <nav>
+            <ul class="sidebar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/tags">tags</a></li>
+                <li><a href="https://github.com/qinry"> Github </a></li>
+            </ul>
+        </nav>
+
+        <p>&copy; 2020. All rights reserved.
+            </p>
     </div>
-
-    <nav>
-      <ul class="sidebar-nav">
-        <li><a href="/">Home</a> </li>
-        <li><a href="/tags">tags</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
-      </ul>
-    </nav>
-
-    <p>&copy; 2020. All rights reserved. </p>
-  </div>
 </aside>
 
-    <main class="content container">
+<main class="content container">
     <div class="post">
-  <h1>优先队列的实现</h1>
-  <time datetime=2020-08-06T21:36:55&#43;0800 class="post-date">Thu, Aug 6, 2020</time>
-  <p><em>参考于《算法》第四版第二章第四节</em></p>
+    <h1>优先队列的实现</h1>
+    <time datetime=2020-08-06T21:36:55&#43;0800 class="post-date">Thu, Aug 6, 2020</time>
+    <p><em>参考于《算法》第四版第二章第四节</em></p>
 <h2 id="基于堆的优先队列">基于堆的优先队列</h2>
 <p>API:
 最大优先队列</p>
@@ -62,29 +63,29 @@
 <thead>
 <tr>
 <th>方法</th>
-<th align="center">功能描述</th>
+<th style="text-align:center">功能描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>MaxPQ(int max)</td>
-<td align="center">创建一个初始容量为max的优先队列</td>
+<td style="text-align:center">创建一个初始容量为max的优先队列</td>
 </tr>
 <tr>
 <td>void insert(Key x)</td>
-<td align="center">向优先队列插入一个元素</td>
+<td style="text-align:center">向优先队列插入一个元素</td>
 </tr>
 <tr>
 <td>Key delMax()</td>
-<td align="center">删除最大元素并返回最大元素</td>
+<td style="text-align:center">删除最大元素并返回最大元素</td>
 </tr>
 <tr>
 <td>boolean isEmpty()</td>
-<td align="center">返回队列是否为空</td>
+<td style="text-align:center">返回队列是否为空</td>
 </tr>
 <tr>
 <td>int size()</td>
-<td align="center">返回优先队列的元素个数</td>
+<td style="text-align:center">返回优先队列的元素个数</td>
 </tr>
 </tbody>
 </table>
@@ -160,29 +161,29 @@ API:</p>
 <thead>
 <tr>
 <th>方法</th>
-<th align="center">功能描述</th>
+<th style="text-align:center">功能描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>MinPQ(int max)</td>
-<td align="center">创建一个初始容量为max的优先队列</td>
+<td style="text-align:center">创建一个初始容量为max的优先队列</td>
 </tr>
 <tr>
 <td>void insert(Key x)</td>
-<td align="center">向优先队列插入一个元素</td>
+<td style="text-align:center">向优先队列插入一个元素</td>
 </tr>
 <tr>
 <td>Key delMin()</td>
-<td align="center">删除最小元素并返回最小元素</td>
+<td style="text-align:center">删除最小元素并返回最小元素</td>
 </tr>
 <tr>
 <td>boolean isEmpty()</td>
-<td align="center">返回队列是否为空</td>
+<td style="text-align:center">返回队列是否为空</td>
 </tr>
 <tr>
 <td>int size()</td>
-<td align="center">返回优先队列的元素个数</td>
+<td style="text-align:center">返回优先队列的元素个数</td>
 </tr>
 </tbody>
 </table>
@@ -232,49 +233,49 @@ API:</p>
 <thead>
 <tr>
 <th>方法</th>
-<th align="center">功能描述</th>
+<th style="text-align:center">功能描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>IndexMinPQ(int maxN)</td>
-<td align="center">创建一个初始容量为max的优先队列</td>
+<td style="text-align:center">创建一个初始容量为max的优先队列</td>
 </tr>
 <tr>
 <td>void insert(int k, Item item)</td>
-<td align="center">插入一个元素，将它和索引k相关联</td>
+<td style="text-align:center">插入一个元素，将它和索引k相关联</td>
 </tr>
 <tr>
 <td>void change(int k, Item item)</td>
-<td align="center">将索引k的元素设备item</td>
+<td style="text-align:center">将索引k的元素设备item</td>
 </tr>
 <tr>
 <td>boolean contains(int k)</td>
-<td align="center">是否存在索引为k的元素</td>
+<td style="text-align:center">是否存在索引为k的元素</td>
 </tr>
 <tr>
 <td>void delete(int k)</td>
-<td align="center">删去索引k及其相关联的元素</td>
+<td style="text-align:center">删去索引k及其相关联的元素</td>
 </tr>
 <tr>
 <td>Item min()</td>
-<td align="center">返回最小元素</td>
+<td style="text-align:center">返回最小元素</td>
 </tr>
 <tr>
 <td>int minIndex()</td>
-<td align="center">返回最小元素的索引</td>
+<td style="text-align:center">返回最小元素的索引</td>
 </tr>
 <tr>
 <td>int delMin()</td>
-<td align="center">删除最大元素并返回它的索引</td>
+<td style="text-align:center">删除最大元素并返回它的索引</td>
 </tr>
 <tr>
 <td>boolean isEmpty()</td>
-<td align="center">返回队列是否为空</td>
+<td style="text-align:center">返回队列是否为空</td>
 </tr>
 <tr>
 <td>int size()</td>
-<td align="center">返回优先队列的元素个数</td>
+<td style="text-align:center">返回优先队列的元素个数</td>
 </tr>
 </tbody>
 </table>
@@ -378,49 +379,49 @@ API:</p>
 <thead>
 <tr>
 <th>方法</th>
-<th align="center">功能描述</th>
+<th style="text-align:center">功能描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>IndexMaxPQ(int maxN)</td>
-<td align="center">创建一个初始容量为max的优先队列</td>
+<td style="text-align:center">创建一个初始容量为max的优先队列</td>
 </tr>
 <tr>
 <td>void insert(int k, Item item)</td>
-<td align="center">插入一个元素，将它和索引k相关联</td>
+<td style="text-align:center">插入一个元素，将它和索引k相关联</td>
 </tr>
 <tr>
 <td>void change(int k, Item item)</td>
-<td align="center">将索引k的元素设备item</td>
+<td style="text-align:center">将索引k的元素设备item</td>
 </tr>
 <tr>
 <td>boolean contains(int k)</td>
-<td align="center">是否存在索引为k的元素</td>
+<td style="text-align:center">是否存在索引为k的元素</td>
 </tr>
 <tr>
 <td>void delete(int k)</td>
-<td align="center">删去索引k及其相关联的元素</td>
+<td style="text-align:center">删去索引k及其相关联的元素</td>
 </tr>
 <tr>
 <td>Item max()</td>
-<td align="center">返回最小元素</td>
+<td style="text-align:center">返回最小元素</td>
 </tr>
 <tr>
 <td>int maxIndex()</td>
-<td align="center">返回最小元素的索引</td>
+<td style="text-align:center">返回最小元素的索引</td>
 </tr>
 <tr>
 <td>int delMax()</td>
-<td align="center">删除最大元素并返回它的索引</td>
+<td style="text-align:center">删除最大元素并返回它的索引</td>
 </tr>
 <tr>
 <td>boolean isEmpty()</td>
-<td align="center">返回队列是否为空</td>
+<td style="text-align:center">返回队列是否为空</td>
 </tr>
 <tr>
 <td>int size()</td>
-<td align="center">返回优先队列的元素个数</td>
+<td style="text-align:center">返回优先队列的元素个数</td>
 </tr>
 </tbody>
 </table>
@@ -482,10 +483,10 @@ API:</p>
 </div>
 
 
-    </main>
+</main>
 
-    
-      
-    
-  </body>
+
+
+
+</body>
 </html>

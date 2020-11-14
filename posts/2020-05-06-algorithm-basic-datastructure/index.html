@@ -1,84 +1,85 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-  <link href="https://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.72.0" />
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="generator" content="Hugo 0.78.0" />
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>背包、栈、队列实现 &middot; qinry&#39;s blog</title>
-  <meta name="description" content="" />
+    <title>背包、栈、队列实现 &middot; qinry&#39;s blog</title>
+    <meta name="description" content=""/>
 
-  
-  <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="/css/poole.css">
-  <link type="text/css" rel="stylesheet" href="/css/syntax.css">
-  <link type="text/css" rel="stylesheet" href="/css/hyde.css">
+    
+    <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
+    <link type="text/css" rel="stylesheet" href="/css/poole.css">
+    <link type="text/css" rel="stylesheet" href="/css/syntax.css">
+    <link type="text/css" rel="stylesheet" href="/css/hyde.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
 
-  
-  
+    
+    
 </head>
 
-  <body class=" ">
-  <aside class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="/"><h1>qinry&#39;s blog</h1></a>
-      <p class="lead">
-       在此写下学习日志，努力充电中～ 
-      </p>
+<body class=" ">
+<aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+            <a href="/"><h1>qinry&#39;s blog</h1></a>
+            <p class="lead">
+                 在此写下学习日志，努力充电中～ 
+            </p>
+        </div>
+
+        <nav>
+            <ul class="sidebar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/tags">tags</a></li>
+                <li><a href="https://github.com/qinry"> Github </a></li>
+            </ul>
+        </nav>
+
+        <p>&copy; 2020. All rights reserved.
+            </p>
     </div>
-
-    <nav>
-      <ul class="sidebar-nav">
-        <li><a href="/">Home</a> </li>
-        <li><a href="/tags">tags</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
-      </ul>
-    </nav>
-
-    <p>&copy; 2020. All rights reserved. </p>
-  </div>
 </aside>
 
-    <main class="content container">
+<main class="content container">
     <div class="post">
-  <h1>背包、栈、队列实现</h1>
-  <time datetime=2020-05-06T08:24:50&#43;0800 class="post-date">Wed, May 6, 2020</time>
-  <p>API:</p>
+    <h1>背包、栈、队列实现</h1>
+    <time datetime=2020-05-06T08:24:50&#43;0800 class="post-date">Wed, May 6, 2020</time>
+    <p>API:</p>
 <p>背包</p>
 <p><code>public class Bag&lt;Item&gt; implements Iterable&lt;Item&gt;</code></p>
 <table>
 <thead>
 <tr>
 <th>方法</th>
-<th align="center">功能描述</th>
+<th style="text-align:center">功能描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Bag()</td>
-<td align="center">创建一个空包</td>
+<td style="text-align:center">创建一个空包</td>
 </tr>
 <tr>
 <td>void add(Item item)</td>
-<td align="center">添加一个元素</td>
+<td style="text-align:center">添加一个元素</td>
 </tr>
 <tr>
 <td>boolean isEmpty()</td>
-<td align="center">背包是否为空</td>
+<td style="text-align:center">背包是否为空</td>
 </tr>
 <tr>
 <td>int size()</td>
-<td align="center">背包中的元素数量</td>
+<td style="text-align:center">背包中的元素数量</td>
 </tr>
 </tbody>
 </table>
@@ -89,29 +90,29 @@
 <thead>
 <tr>
 <th>方法</th>
-<th align="center">功能描述</th>
+<th style="text-align:center">功能描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Queue()</td>
-<td align="center">创建一个空队列</td>
+<td style="text-align:center">创建一个空队列</td>
 </tr>
 <tr>
 <td>void enqueue(Item item)</td>
-<td align="center">添加一个元素</td>
+<td style="text-align:center">添加一个元素</td>
 </tr>
 <tr>
 <td>Item dequeue()</td>
-<td align="center">删除最早添加的元素</td>
+<td style="text-align:center">删除最早添加的元素</td>
 </tr>
 <tr>
 <td>boolean isEmpty()</td>
-<td align="center">队列是否为空</td>
+<td style="text-align:center">队列是否为空</td>
 </tr>
 <tr>
 <td>int size()</td>
-<td align="center">队列中的元素数量</td>
+<td style="text-align:center">队列中的元素数量</td>
 </tr>
 </tbody>
 </table>
@@ -122,29 +123,29 @@
 <thead>
 <tr>
 <th>方法</th>
-<th align="center">功能描述</th>
+<th style="text-align:center">功能描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Stack()</td>
-<td align="center">创建一个空栈</td>
+<td style="text-align:center">创建一个空栈</td>
 </tr>
 <tr>
 <td>void push(Item item)</td>
-<td align="center">添加一个元素</td>
+<td style="text-align:center">添加一个元素</td>
 </tr>
 <tr>
 <td>Item pop()</td>
-<td align="center">删除最近添加的元素</td>
+<td style="text-align:center">删除最近添加的元素</td>
 </tr>
 <tr>
 <td>boolean isEmpty()</td>
-<td align="center">栈是否为空</td>
+<td style="text-align:center">栈是否为空</td>
 </tr>
 <tr>
 <td>int size()</td>
-<td align="center">栈中的元素数量</td>
+<td style="text-align:center">栈中的元素数量</td>
 </tr>
 </tbody>
 </table>
@@ -755,10 +756,10 @@
 </div>
 
 
-    </main>
+</main>
 
-    
-      
-    
-  </body>
+
+
+
+</body>
 </html>

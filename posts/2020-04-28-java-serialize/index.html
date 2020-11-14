@@ -1,59 +1,60 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-  <link href="https://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.72.0" />
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="generator" content="Hugo 0.78.0" />
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>对象序列化 &middot; qinry&#39;s blog</title>
-  <meta name="description" content="" />
+    <title>对象序列化 &middot; qinry&#39;s blog</title>
+    <meta name="description" content=""/>
 
-  
-  <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="/css/poole.css">
-  <link type="text/css" rel="stylesheet" href="/css/syntax.css">
-  <link type="text/css" rel="stylesheet" href="/css/hyde.css">
+    
+    <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
+    <link type="text/css" rel="stylesheet" href="/css/poole.css">
+    <link type="text/css" rel="stylesheet" href="/css/syntax.css">
+    <link type="text/css" rel="stylesheet" href="/css/hyde.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
 
-  
-  
+    
+    
 </head>
 
-  <body class=" ">
-  <aside class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="/"><h1>qinry&#39;s blog</h1></a>
-      <p class="lead">
-       在此写下学习日志，努力充电中～ 
-      </p>
+<body class=" ">
+<aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+            <a href="/"><h1>qinry&#39;s blog</h1></a>
+            <p class="lead">
+                 在此写下学习日志，努力充电中～ 
+            </p>
+        </div>
+
+        <nav>
+            <ul class="sidebar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/tags">tags</a></li>
+                <li><a href="https://github.com/qinry"> Github </a></li>
+            </ul>
+        </nav>
+
+        <p>&copy; 2020. All rights reserved.
+            </p>
     </div>
-
-    <nav>
-      <ul class="sidebar-nav">
-        <li><a href="/">Home</a> </li>
-        <li><a href="/tags">tags</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
-      </ul>
-    </nav>
-
-    <p>&copy; 2020. All rights reserved. </p>
-  </div>
 </aside>
 
-    <main class="content container">
+<main class="content container">
     <div class="post">
-  <h1>对象序列化</h1>
-  <time datetime=2020-04-28T16:01:24&#43;0800 class="post-date">Tue, Apr 28, 2020</time>
-  <h2 id="持久性">持久性</h2>
+    <h1>对象序列化</h1>
+    <time datetime=2020-04-28T16:01:24&#43;0800 class="post-date">Tue, Apr 28, 2020</time>
+    <h2 id="持久性">持久性</h2>
 <p>如果对象能够在程序不运行还能保存其状态信息。可以通过将信息写入文件或数据库来达到程序下次执行时，对象重建后与上次拥有一致的信息。在Java中一切都是对象的思想下，把对象声明为“持久性”，可以省去一些细节，对程序员是种方便。对象的序列化，可以理解为把对象导入到文件中，通过<code>Serialize</code>接口实现。通过导入文件能够反序列化还原对象，达到持久性的目的。该特性支持计算机的远程方法调用，还有帮助Java Bean在设计阶段保存配置信息，并在启动程序后恢复配置信息。如果要把一个对象序列化，实现<code>Serialize</code>接口就可以了，此接口只是标记接口，不含方法。</p>
 <h2 id="序列化写入文件">序列化写入文件</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">//: io/StoreCADState.java
@@ -202,10 +203,10 @@
 </div>
 
 
-    </main>
+</main>
 
-    
-      
-    
-  </body>
+
+
+
+</body>
 </html>

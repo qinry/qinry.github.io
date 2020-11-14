@@ -1,59 +1,60 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-  <link href="https://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.72.0" />
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="generator" content="Hugo 0.78.0" />
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>新I/O &middot; qinry&#39;s blog</title>
-  <meta name="description" content="" />
+    <title>新I/O &middot; qinry&#39;s blog</title>
+    <meta name="description" content=""/>
 
-  
-  <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="/css/poole.css">
-  <link type="text/css" rel="stylesheet" href="/css/syntax.css">
-  <link type="text/css" rel="stylesheet" href="/css/hyde.css">
+    
+    <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
+    <link type="text/css" rel="stylesheet" href="/css/poole.css">
+    <link type="text/css" rel="stylesheet" href="/css/syntax.css">
+    <link type="text/css" rel="stylesheet" href="/css/hyde.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
 
-  
-  
+    
+    
 </head>
 
-  <body class=" ">
-  <aside class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="/"><h1>qinry&#39;s blog</h1></a>
-      <p class="lead">
-       在此写下学习日志，努力充电中～ 
-      </p>
+<body class=" ">
+<aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+            <a href="/"><h1>qinry&#39;s blog</h1></a>
+            <p class="lead">
+                 在此写下学习日志，努力充电中～ 
+            </p>
+        </div>
+
+        <nav>
+            <ul class="sidebar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/tags">tags</a></li>
+                <li><a href="https://github.com/qinry"> Github </a></li>
+            </ul>
+        </nav>
+
+        <p>&copy; 2020. All rights reserved.
+            </p>
     </div>
-
-    <nav>
-      <ul class="sidebar-nav">
-        <li><a href="/">Home</a> </li>
-        <li><a href="/tags">tags</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
-      </ul>
-    </nav>
-
-    <p>&copy; 2020. All rights reserved. </p>
-  </div>
 </aside>
 
-    <main class="content container">
+<main class="content container">
     <div class="post">
-  <h1>新I/O</h1>
-  <time datetime=2020-04-28T20:16:54&#43;0800 class="post-date">Tue, Apr 28, 2020</time>
-  <p>通道是数据存储的地方，缓冲器充当着通道与外部数据交换的媒介</p>
+    <h1>新I/O</h1>
+    <time datetime=2020-04-28T20:16:54&#43;0800 class="post-date">Tue, Apr 28, 2020</time>
+    <p>通道是数据存储的地方，缓冲器充当着通道与外部数据交换的媒介</p>
 <h2 id="通道channel">通道Channel</h2>
 <p>FileChannel可以通过FileOutputStream、FileInputStream、RandomAccessFile三个类的getChannel()获得，这些都是字节操纵流。在通道上有读写，访问通道大小,关闭通道，更改所在位置等操作。</p>
 <p>FileChannel api:</p>
@@ -201,7 +202,7 @@
 </ul>
 <h2 id="文件加锁filelock">文件加锁FileLock</h2>
 <p>以下方式给文件加锁,release()可以释放suo</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">FileOuuputStream fos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>文件名<span style="color:#f92672">);</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">FileOutputStream fos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>文件名<span style="color:#f92672">);</span>
 FileLock fl <span style="color:#f92672">=</span> fos<span style="color:#f92672">.</span><span style="color:#a6e22e">tryLock</span><span style="color:#f92672">();</span>
 <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>fl <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
     fl<span style="color:#f92672">.</span><span style="color:#a6e22e">release</span><span style="color:#f92672">();</span>
@@ -224,10 +225,10 @@ fos<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><
 </div>
 
 
-    </main>
+</main>
 
-    
-      
-    
-  </body>
+
+
+
+</body>
 </html>

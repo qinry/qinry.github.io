@@ -1,62 +1,63 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-  <link href="https://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.72.0" />
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="generator" content="Hugo 0.78.0" />
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>容器 &middot; qinry&#39;s blog</title>
-  <meta name="description" content="" />
+    <title>容器 &middot; qinry&#39;s blog</title>
+    <meta name="description" content=""/>
 
-  
-  <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="/css/poole.css">
-  <link type="text/css" rel="stylesheet" href="/css/syntax.css">
-  <link type="text/css" rel="stylesheet" href="/css/hyde.css">
+    
+    <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
+    <link type="text/css" rel="stylesheet" href="/css/poole.css">
+    <link type="text/css" rel="stylesheet" href="/css/syntax.css">
+    <link type="text/css" rel="stylesheet" href="/css/hyde.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
 
-  
-  
+    
+    
 </head>
 
-  <body class=" ">
-  <aside class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="/"><h1>qinry&#39;s blog</h1></a>
-      <p class="lead">
-       在此写下学习日志，努力充电中～ 
-      </p>
+<body class=" ">
+<aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+            <a href="/"><h1>qinry&#39;s blog</h1></a>
+            <p class="lead">
+                 在此写下学习日志，努力充电中～ 
+            </p>
+        </div>
+
+        <nav>
+            <ul class="sidebar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/tags">tags</a></li>
+                <li><a href="https://github.com/qinry"> Github </a></li>
+            </ul>
+        </nav>
+
+        <p>&copy; 2020. All rights reserved.
+            </p>
     </div>
-
-    <nav>
-      <ul class="sidebar-nav">
-        <li><a href="/">Home</a> </li>
-        <li><a href="/tags">tags</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
-      </ul>
-    </nav>
-
-    <p>&copy; 2020. All rights reserved. </p>
-  </div>
 </aside>
 
-    <main class="content container">
+<main class="content container">
     <div class="post">
-  <h1>容器</h1>
-  <time datetime=2020-05-02T21:30:16&#43;0800 class="post-date">Sat, May 2, 2020</time>
-  <h2 id="留意">留意</h2>
+    <h1>容器</h1>
+    <time datetime=2020-05-02T21:30:16&#43;0800 class="post-date">Sat, May 2, 2020</time>
+    <h2 id="留意">留意</h2>
 <p>此文列出一些有可能常用的api，肯定没有文档列的全也没必要全面，还有旨在会用这些操作容器的方法即可，要了解更多回看《Thinking in Java》4th的持有对象和容器深入研究那两章。</p>
 <p>首先展示集合类库较为完整图,实线代表具体的类，点线代表接口，短虚线代表抽象类。粗线框代表的类是最常用：</p>
-<p><img src="https://qinry.top/images/containers.png" alt="picture"></p>
+<p><img src="/images/containers.png" alt="picture"></p>
 <p>Interface Collection&lt; E &gt; api:</p>
 <p>List、Set、Queue都支持以下操作</p>
 <ul>
@@ -429,38 +430,38 @@ Interface ListIterator&lt; E &gt; api:</p>
 <table>
 <thead>
 <tr>
-<th align="center">域类型</th>
-<th align="center">计算</th>
+<th style="text-align:center">域类型</th>
+<th style="text-align:center">计算</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">boolean</td>
-<td align="center"><code>c = (f ? 0 : 1)</code></td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center"><code>c = (f ? 0 : 1)</code></td>
 </tr>
 <tr>
-<td align="center">byte、char、short或int</td>
-<td align="center"><code>c = (int)f</code></td>
+<td style="text-align:center">byte、char、short或int</td>
+<td style="text-align:center"><code>c = (int)f</code></td>
 </tr>
 <tr>
-<td align="center">long</td>
-<td align="center"><code>c = (int)(f ^ f &gt;&gt;&gt; 32)</code></td>
+<td style="text-align:center">long</td>
+<td style="text-align:center"><code>c = (int)(f ^ f &gt;&gt;&gt; 32)</code></td>
 </tr>
 <tr>
-<td align="center">float</td>
-<td align="center"><code>c = Float.floatToIntBits(f);</code></td>
+<td style="text-align:center">float</td>
+<td style="text-align:center"><code>c = Float.floatToIntBits(f);</code></td>
 </tr>
 <tr>
-<td align="center">double</td>
-<td align="center"><code>long l = Double.doubleToLongBits(f);c = (int)(l ^ l &gt;&gt;&gt; 32)</code></td>
+<td style="text-align:center">double</td>
+<td style="text-align:center"><code>long l = Double.doubleToLongBits(f);c = (int)(l ^ l &gt;&gt;&gt; 32)</code></td>
 </tr>
 <tr>
-<td align="center">Object、其equals调用这个域的equals()</td>
-<td align="center"><code>c = f.hashCode()</code></td>
+<td style="text-align:center">Object、其equals调用这个域的equals()</td>
+<td style="text-align:center"><code>c = f.hashCode()</code></td>
 </tr>
 <tr>
-<td align="center">数组</td>
-<td align="center">每个元素应用上述规则</td>
+<td style="text-align:center">数组</td>
+<td style="text-align:center">每个元素应用上述规则</td>
 </tr>
 </tbody>
 </table>
@@ -758,10 +759,10 @@ src)</li>
 </div>
 
 
-    </main>
+</main>
 
-    
-      
-    
-  </body>
+
+
+
+</body>
 </html>

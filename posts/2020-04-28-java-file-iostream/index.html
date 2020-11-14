@@ -1,59 +1,60 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-  <link href="https://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.72.0" />
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="generator" content="Hugo 0.78.0" />
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>文件路径与I/O流 &middot; qinry&#39;s blog</title>
-  <meta name="description" content="" />
+    <title>文件路径与I/O流 &middot; qinry&#39;s blog</title>
+    <meta name="description" content=""/>
 
-  
-  <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="/css/poole.css">
-  <link type="text/css" rel="stylesheet" href="/css/syntax.css">
-  <link type="text/css" rel="stylesheet" href="/css/hyde.css">
+    
+    <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
+    <link type="text/css" rel="stylesheet" href="/css/poole.css">
+    <link type="text/css" rel="stylesheet" href="/css/syntax.css">
+    <link type="text/css" rel="stylesheet" href="/css/hyde.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
 
-  
-  
+    
+    
 </head>
 
-  <body class=" ">
-  <aside class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="/"><h1>qinry&#39;s blog</h1></a>
-      <p class="lead">
-       在此写下学习日志，努力充电中～ 
-      </p>
+<body class=" ">
+<aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+            <a href="/"><h1>qinry&#39;s blog</h1></a>
+            <p class="lead">
+                 在此写下学习日志，努力充电中～ 
+            </p>
+        </div>
+
+        <nav>
+            <ul class="sidebar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/tags">tags</a></li>
+                <li><a href="https://github.com/qinry"> Github </a></li>
+            </ul>
+        </nav>
+
+        <p>&copy; 2020. All rights reserved.
+            </p>
     </div>
-
-    <nav>
-      <ul class="sidebar-nav">
-        <li><a href="/">Home</a> </li>
-        <li><a href="/tags">tags</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
-      </ul>
-    </nav>
-
-    <p>&copy; 2020. All rights reserved. </p>
-  </div>
 </aside>
 
-    <main class="content container">
+<main class="content container">
     <div class="post">
-  <h1>文件路径与I/O流</h1>
-  <time datetime=2020-04-28T17:42:29&#43;0800 class="post-date">Tue, Apr 28, 2020</time>
-  <h2 id="file类">File类</h2>
+    <h1>文件路径与I/O流</h1>
+    <time datetime=2020-04-28T17:42:29&#43;0800 class="post-date">Tue, Apr 28, 2020</time>
+    <h2 id="file类">File类</h2>
 <p><code>File</code>类作用和它的名字不太相符，File除了可以代表一个特定的文件，还可以表示一个目录（包含一组文件），最准确认为是“路径”。还一个与之相关的接口<code>FilenameFilter</code>，用来筛选路径的目录或文件。它们在java.io包中。</p>
 <p>用例：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.regex.*<span style="color:#f92672">;</span>
@@ -160,58 +161,58 @@
 <table>
 <thead>
 <tr>
-<th align="center">Java1.0</th>
-<th align="center">Java1.1</th>
+<th style="text-align:center">Java1.0</th>
+<th style="text-align:center">Java1.1</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">InputStream(基类)</td>
-<td align="center">Reader(基类)</td>
+<td style="text-align:center">InputStream(基类)</td>
+<td style="text-align:center">Reader(基类)</td>
 </tr>
 <tr>
-<td align="center">(空)</td>
-<td align="center">InputStreamReader，将InputStream转换为Reader</td>
+<td style="text-align:center">(空)</td>
+<td style="text-align:center">InputStreamReader，将InputStream转换为Reader</td>
 </tr>
 <tr>
-<td align="center">OutputStream(基类)</td>
-<td align="center">Writer(基类)</td>
+<td style="text-align:center">OutputStream(基类)</td>
+<td style="text-align:center">Writer(基类)</td>
 </tr>
 <tr>
-<td align="center">(空)</td>
-<td align="center">OutputStreamWriter，将OutputStream转换为Writer</td>
+<td style="text-align:center">(空)</td>
+<td style="text-align:center">OutputStreamWriter，将OutputStream转换为Writer</td>
 </tr>
 <tr>
-<td align="center">FileInputStream</td>
-<td align="center">FileReader</td>
+<td style="text-align:center">FileInputStream</td>
+<td style="text-align:center">FileReader</td>
 </tr>
 <tr>
-<td align="center">FileOutputStream</td>
-<td align="center">FileWriter</td>
+<td style="text-align:center">FileOutputStream</td>
+<td style="text-align:center">FileWriter</td>
 </tr>
 <tr>
-<td align="center">StringBufferInputStream(弃用)</td>
-<td align="center">StringReader</td>
+<td style="text-align:center">StringBufferInputStream(弃用)</td>
+<td style="text-align:center">StringReader</td>
 </tr>
 <tr>
-<td align="center">(无)</td>
-<td align="center">StringWriter</td>
+<td style="text-align:center">(无)</td>
+<td style="text-align:center">StringWriter</td>
 </tr>
 <tr>
-<td align="center">ByteArrayInputStream</td>
-<td align="center">CharArrayReader</td>
+<td style="text-align:center">ByteArrayInputStream</td>
+<td style="text-align:center">CharArrayReader</td>
 </tr>
 <tr>
-<td align="center">ByteArrayOutputStream</td>
-<td align="center">CharArrayWriter</td>
+<td style="text-align:center">ByteArrayOutputStream</td>
+<td style="text-align:center">CharArrayWriter</td>
 </tr>
 <tr>
-<td align="center">PipedInputStream</td>
-<td align="center">PipedReader</td>
+<td style="text-align:center">PipedInputStream</td>
+<td style="text-align:center">PipedReader</td>
 </tr>
 <tr>
-<td align="center">PipedOutputStream</td>
-<td align="center">PipedWriter</td>
+<td style="text-align:center">PipedOutputStream</td>
+<td style="text-align:center">PipedWriter</td>
 </tr>
 </tbody>
 </table>
@@ -219,30 +220,30 @@
 <table>
 <thead>
 <tr>
-<th align="center">过滤器</th>
+<th style="text-align:center">过滤器</th>
 <th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">FilterInputStream(基类)</td>
-<td align="center">FilterReader</td>
+<td style="text-align:center">FilterInputStream(基类)</td>
+<td style="text-align:center">FilterReader</td>
 </tr>
 <tr>
-<td align="center">FilterOutputStream(基类)</td>
-<td align="center">FilterWriter(抽象类，无子类)</td>
+<td style="text-align:center">FilterOutputStream(基类)</td>
+<td style="text-align:center">FilterWriter(抽象类，无子类)</td>
 </tr>
 <tr>
-<td align="center">BufferedInputStream</td>
-<td align="center">BufferedReader</td>
+<td style="text-align:center">BufferedInputStream</td>
+<td style="text-align:center">BufferedReader</td>
 </tr>
 <tr>
-<td align="center">BufferedOutputstream</td>
-<td align="center">BufferedWriter</td>
+<td style="text-align:center">BufferedOutputstream</td>
+<td style="text-align:center">BufferedWriter</td>
 </tr>
 <tr>
-<td align="center">PrintStream</td>
-<td align="center">PrintWriter</td>
+<td style="text-align:center">PrintStream</td>
+<td style="text-align:center">PrintWriter</td>
 </tr>
 </tbody>
 </table>
@@ -252,7 +253,7 @@
 <p>InputStream或Reader都有<code>int read()</code>方法,OutputStream或Writer都有<code>void write(int)</code>。</p>
 <p>基本读写操作:</p>
 <ol>
-<li>缓冲输入: BufferedReader的<code>String readLine()</code>(读取一行字符串，除去换行符&rsquo;\n&rsquo;)</li>
+<li>缓冲输入: BufferedReader的<code>String readLine()</code>(读取一行字符串，除去换行符'\n')</li>
 <li>数据格式化输入: DataInputStream、RandomAccessFile的<code>byte readByte()</code>、<code>String readUTF()</code>等</li>
 <li>打印输出:PrintWriter、PrintStream的<code>print()</code>、<code>println()</code>、<code>void printf()</code>的各种重载方法</li>
 <li>数据格式化输出:DataOutputStream、RandomAccessFile的<code>writeDouble(double)</code>、<code>writeUTF(String)</code>等</li>
@@ -291,10 +292,10 @@
 </div>
 
 
-    </main>
+</main>
 
-    
-      
-    
-  </body>
+
+
+
+</body>
 </html>

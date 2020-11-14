@@ -1,60 +1,61 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-  <link href="https://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.72.0" />
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="generator" content="Hugo 0.78.0" />
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>数组 &middot; qinry&#39;s blog</title>
-  <meta name="description" content="" />
+    <title>数组 &middot; qinry&#39;s blog</title>
+    <meta name="description" content=""/>
 
-  
-  <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="/css/poole.css">
-  <link type="text/css" rel="stylesheet" href="/css/syntax.css">
-  <link type="text/css" rel="stylesheet" href="/css/hyde.css">
+    
+    <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
+    <link type="text/css" rel="stylesheet" href="/css/poole.css">
+    <link type="text/css" rel="stylesheet" href="/css/syntax.css">
+    <link type="text/css" rel="stylesheet" href="/css/hyde.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
 
-  
-  
+    
+    
 </head>
 
-  <body class=" ">
-  <aside class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="/"><h1>qinry&#39;s blog</h1></a>
-      <p class="lead">
-       在此写下学习日志，努力充电中～ 
-      </p>
+<body class=" ">
+<aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+            <a href="/"><h1>qinry&#39;s blog</h1></a>
+            <p class="lead">
+                 在此写下学习日志，努力充电中～ 
+            </p>
+        </div>
+
+        <nav>
+            <ul class="sidebar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/tags">tags</a></li>
+                <li><a href="https://github.com/qinry"> Github </a></li>
+            </ul>
+        </nav>
+
+        <p>&copy; 2020. All rights reserved.
+            </p>
     </div>
-
-    <nav>
-      <ul class="sidebar-nav">
-        <li><a href="/">Home</a> </li>
-        <li><a href="/tags">tags</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
-      </ul>
-    </nav>
-
-    <p>&copy; 2020. All rights reserved. </p>
-  </div>
 </aside>
 
-    <main class="content container">
+<main class="content container">
     <div class="post">
-  <h1>数组</h1>
-  <time datetime=2020-05-02T21:27:15&#43;0800 class="post-date">Sat, May 2, 2020</time>
-  <p>数组的优势，在于它存储和执行的效率，支持随机访问元素。不过，数组对象使用前它的大小是固定，不可改变。这意味着创建固定大小的数组，以后要扩大其容量是不可能的，在多数情况下ArrayList是更有的选择，在效率和弹性开销的需求方面更令人满意，除非考虑非常高的性能问题，一般减少使用。数组随机访问有可能越界访问，越界会抛出RuntimeException。数组的创建是持有具体类型，不会将持有的对象当作Object看待，通过编译期检查防止插入错误的类型和抽取不当类型。</p>
-<p>数组的标识符其实只是引用，所谓的安全指针，指向在堆中创建的一个真实对象，这个数组对象用于保存指向其他对象的引用，它有唯一的域length表示数组的大小，通过&rdquo;[]&ldquo;来随机访问数组的元素。</p>
+    <h1>数组</h1>
+    <time datetime=2020-05-02T21:27:15&#43;0800 class="post-date">Sat, May 2, 2020</time>
+    <p>数组的优势，在于它存储和执行的效率，支持随机访问元素。不过，数组对象使用前它的大小是固定，不可改变。这意味着创建固定大小的数组，以后要扩大其容量是不可能的，在多数情况下ArrayList是更有的选择，在效率和弹性开销的需求方面更令人满意，除非考虑非常高的性能问题，一般减少使用。数组随机访问有可能越界访问，越界会抛出RuntimeException。数组的创建是持有具体类型，不会将持有的对象当作Object看待，通过编译期检查防止插入错误的类型和抽取不当类型。</p>
+<p>数组的标识符其实只是引用，所谓的安全指针，指向在堆中创建的一个真实对象，这个数组对象用于保存指向其他对象的引用，它有唯一的域length表示数组的大小，通过&quot;[]&ldquo;来随机访问数组的元素。</p>
 <h2 id="一维数组和多维数组">一维数组和多维数组</h2>
 <p>数组类型的声明：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> direct<span style="color:#f92672">;</span> <span style="color:#75715e">// 一维数组
@@ -169,10 +170,10 @@
 </div>
 
 
-    </main>
+</main>
 
-    
-      
-    
-  </body>
+
+
+
+</body>
 </html>
