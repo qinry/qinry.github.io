@@ -45,7 +45,7 @@
       </ul>
     </nav>
 
-    <p>&copy; 2020. qinry.github.io</p>
+    <p>&copy; 2020. All rights reserved. </p>
   </div>
 </aside>
 
@@ -56,7 +56,8 @@
     <a href="http://qinry.github.io/posts/2020-11-16-designpatterns-singleton/">设计模式——单件模式</a>
   </h1>
   <time datetime="2020-11-16T08:08:26&#43;0800" class="post-date">Mon, Nov 16, 2020</time>
-  单件模式 什么是单件模式 单件模式是在设计模式中常用的一种需要为类只实例化唯一对象的设计方案。意思是说，对于某个类来说，其对象只能创建一个，且每次使用这个类的时候，用到的都是同一个对象。在有些场景下，有些对象我们只需要一个，比如：线程池、缓存、对话框、处理偏好设置和注册表的对象、日志对象、打印机、显
+  单件模式 什么是单件模式 单件模式是在设计模式中常用的一种需要为类只实例化唯一对象的设计方案。意思是说，对于某个类来说，其对象只能创建一个，且每次使用这个类的时候，用到的都是同一个对象。在有些场景下，有些对象我们只需要一个，比如：线程池、缓存、对话框、处理偏好设置和注册表的对象、日志对象、打印机、显卡等表示设备某些资源的对象。也常常用来管理共享的资源，比如数据库连接池等。
+看看单件模式的官方定义：
   
   <div class="read-more-link">
     <a href="/posts/2020-11-16-designpatterns-singleton/">Read More…</a>
@@ -68,7 +69,7 @@
   </h1>
   <time datetime="2020-08-06T21:36:55&#43;0800" class="post-date">Thu, Aug 6, 2020</time>
   最大优先队列¶ API: public class MaxPQ&amp;lt;Key extends Comparable&amp;lt;Key&amp;gt;&amp;gt;
-   方法 功能描述     MaxPQ(int max) 创建一个初始容量为max的优先队列   void insert(Key x) 向优先队列插入一
+   方法 功能描述     MaxPQ(int max) 创建一个初始容量为max的优先队列   void insert(Key x) 向优先队列插入一个元素   Key delMax() 删除最大元素并返回最大元素   boolean isEmpty
   
   <div class="read-more-link">
     <a href="/posts/2020-08-06-algorithm-priority-queue/">Read More…</a>
@@ -80,7 +81,7 @@
   </h1>
   <time datetime="2020-08-06T08:00:11&#43;0800" class="post-date">Thu, Aug 6, 2020</time>
   参考于《算法》第四版第二章
-排序算法类的模板 public class Example { public static void sort(Comparable[] a){ // ... 见下面详解  } private static boolean less(Comparable v, Compa
+排序算法类的模板 public class Example { public static void sort(Comparable[] a){ // ... 见下面详解  } private static boolean less(Comparable v, Comparable w) { return v.compareTo(w) &amp;lt; 0; } private
   
   <div class="read-more-link">
     <a href="/posts/2020-08-06-algorithm-sort/">Read More…</a>
@@ -96,7 +97,8 @@
   p和p本身相连；
   如果p和q相连，那么q和p也相连；
   如果p和q相连且q和r相连，那么p和r也相连。
-  这个问题是
+  这个问题是个动态连通性问题，常应用于计算机网络上表示结点的连接，可能需要处理数百万的对象和数十亿的连接。
+数据
   
   <div class="read-more-link">
     <a href="/posts/2020-07-06-algorithm-union-find/">Read More…</a>
@@ -107,7 +109,7 @@
     <a href="http://qinry.github.io/posts/2020-05-12-java-annotation/">注解</a>
   </h1>
   <time datetime="2020-05-12T22:06:42&#43;0800" class="post-date">Tue, May 12, 2020</time>
-  定义注解 import java.lang.annotation.*; @Target(ElementType.METHOND) @Retention(RetentionPolicy.RUNTIME) public @interface UseCase { int id(); String desc
+  定义注解 import java.lang.annotation.*; @Target(ElementType.METHOND) @Retention(RetentionPolicy.RUNTIME) public @interface UseCase { int id(); String description() default &amp;#34;no description&amp;#34;; } 使用注解
   
   <div class="read-more-link">
     <a href="/posts/2020-05-12-java-annotation/">Read More…</a>
@@ -121,7 +123,8 @@
   API:
 背包
 public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;
-   方法 功能描述     Bag() 创建一个空包   void add(Item item) 添加一个元素   boolean isEmpty() 背包是否
+   方法 功能描述     Bag() 创建一个空包   void add(Item item) 添加一个元素   boolean isEmpty() 背包是否为空   int size() 背包中的元素数量     先进先出队列(FIFO)
+public c
   
   <div class="read-more-link">
     <a href="/posts/2020-05-06-algorithm-basic-datastructure/">Read More…</a>
@@ -133,7 +136,9 @@ public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;
   </h1>
   <time datetime="2020-05-03T23:29:33&#43;0800" class="post-date">Sun, May 3, 2020</time>
   有些一些方法处理不同类型，这些方法之间只有操作的类型的不同，方法名相同，方法的行为相似甚至相同，那么可以使用参数化类型，也叫泛型，用一个方法就能处理不同类型，大大地减少了代码的重复，提高它的重用性。泛型能使问题的解决对类型能更加宽泛，即使是未来创建的类型，此方法依然运行。
-泛型类如何表示类名后跟上尖
+泛型类如何表示类名后跟上尖括号，括号里面就是类型参数。
+简单定义泛型：
+class Generic&amp;lt;T&amp;gt; { pu
   
   <div class="read-more-link">
     <a href="/posts/2020-05-04-java-generics/">Read More…</a>
@@ -146,7 +151,8 @@ public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;
   <time datetime="2020-05-02T21:30:16&#43;0800" class="post-date">Sat, May 2, 2020</time>
   留意 此文列出一些有可能常用的api，肯定没有文档列的全也没必要全面，还有旨在会用这些操作容器的方法即可，要了解更多回看《Thinking in Java》4th的持有对象和容器深入研究那两章。
 首先展示集合类库较为完整图,实线代表具体的类，点线代表接口，短虚线代表抽象类。粗线框代表的类是最常用：
-
+Interface Collection&amp;lt; E &amp;gt; api:
+List、Set、Queu
   
   <div class="read-more-link">
     <a href="/posts/2020-05-02-java-containers/">Read More…</a>
@@ -157,7 +163,7 @@ public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;
     <a href="http://qinry.github.io/posts/2020-05-02-java-arrays/">数组</a>
   </h1>
   <time datetime="2020-05-02T21:27:15&#43;0800" class="post-date">Sat, May 2, 2020</time>
-  数组的优势，在于它存储和执行的效率，支持随机访问元素。不过，数组对象使用前它的大小是固定，不可改变。这意味着创建固定大小的数组，以后要扩大其容量是不可能的，在多数情况下ArrayList是更有的选择，在效率和弹性开销的需求方面更令人满意，除非考虑非常高的性能问题，一般减少使用。数组随机访问有可能越界
+  数组的优势，在于它存储和执行的效率，支持随机访问元素。不过，数组对象使用前它的大小是固定，不可改变。这意味着创建固定大小的数组，以后要扩大其容量是不可能的，在多数情况下ArrayList是更有的选择，在效率和弹性开销的需求方面更令人满意，除非考虑非常高的性能问题，一般减少使用。数组随机访问有可能越界访问，越界会抛出RuntimeException。数组的创建是持有具体类型，不会将持有的对象当作Ob
   
   <div class="read-more-link">
     <a href="/posts/2020-05-02-java-arrays/">Read More…</a>
@@ -169,7 +175,9 @@ public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;
   </h1>
   <time datetime="2020-04-28T20:16:54&#43;0800" class="post-date">Tue, Apr 28, 2020</time>
   通道是数据存储的地方，缓冲器充当着通道与外部数据交换的媒介
-通道Channel FileChannel可以通过FileOutputStream、FileInputStream、RandomAccessFile三个类的getChannel()获得，这些都是字节操纵流。在通道上有读写，访问通道大小,关闭
+通道Channel FileChannel可以通过FileOutputStream、FileInputStream、RandomAccessFile三个类的getChannel()获得，这些都是字节操纵流。在通道上有读写，访问通道大小,关闭通道，更改所在位置等操作。
+FileChannel api:
+  public int read(B
   
   <div class="read-more-link">
     <a href="/posts/2020-04-28-java-newio/">Read More…</a>
@@ -182,7 +190,7 @@ public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;
   <time datetime="2020-04-28T17:42:29&#43;0800" class="post-date">Tue, Apr 28, 2020</time>
   File类 File类作用和它的名字不太相符，File除了可以代表一个特定的文件，还可以表示一个目录（包含一组文件），最准确认为是“路径”。还一个与之相关的接口FilenameFilter，用来筛选路径的目录或文件。它们在java.io包中。
 用例：
-import java.util.regex.*
+import java.util.regex.*; import java.util.*; import java.io.*; public cla
   
   <div class="read-more-link">
     <a href="/posts/2020-04-28-java-file-iostream/">Read More…</a>
@@ -193,7 +201,7 @@ import java.util.regex.*
     <a href="http://qinry.github.io/posts/2020-04-28-java-serialize/">对象序列化</a>
   </h1>
   <time datetime="2020-04-28T16:01:24&#43;0800" class="post-date">Tue, Apr 28, 2020</time>
-  持久性 如果对象能够在程序不运行还能保存其状态信息。可以通过将信息写入文件或数据库来达到程序下次执行时，对象重建后与上次拥有一致的信息。在Java中一切都是对象的思想下，把对象声明为“持久性”，可以省去一些细节，对程序员是种方便。对象的序列化，可以理解为把对象导入到文件中，通过Serialize接口
+  持久性 如果对象能够在程序不运行还能保存其状态信息。可以通过将信息写入文件或数据库来达到程序下次执行时，对象重建后与上次拥有一致的信息。在Java中一切都是对象的思想下，把对象声明为“持久性”，可以省去一些细节，对程序员是种方便。对象的序列化，可以理解为把对象导入到文件中，通过Serialize接口实现。通过导入文件能够反序列化还原对象，达到持久性的目的。该特性支持计算机的远程方法调用，还有帮助J
   
   <div class="read-more-link">
     <a href="/posts/2020-04-28-java-serialize/">Read More…</a>
@@ -204,7 +212,7 @@ import java.util.regex.*
     <a href="http://qinry.github.io/posts/2020-04-28-java-zip/">压缩类</a>
   </h1>
   <time datetime="2020-04-28T14:50:00&#43;0800" class="post-date">Tue, Apr 28, 2020</time>
-  Java I/O库提供压缩功能输入、输出流，这些类是按字节方式处理，常用的压缩类有DeflaterOutputStream和它的子类ZipOutputStream、GZIPOutputStream、CheckedOutputStream，这些是用于压缩的，相应地，有解压的的InflaterInput
+  Java I/O库提供压缩功能输入、输出流，这些类是按字节方式处理，常用的压缩类有DeflaterOutputStream和它的子类ZipOutputStream、GZIPOutputStream、CheckedOutputStream，这些是用于压缩的，相应地，有解压的的InflaterInputStream和它的子类ZipInputStrea、GZIPInputStream、CheckedIn
   
   <div class="read-more-link">
     <a href="/posts/2020-04-28-java-zip/">Read More…</a>
@@ -217,7 +225,7 @@ import java.util.regex.*
   <time datetime="2020-04-27T20:21:23&#43;0800" class="post-date">Mon, Apr 27, 2020</time>
   递归的含义 递归就是函数或方法通过调用自己本身来达到解决问题的目的，这种解法形式叫递归。用欧几里得算法的Java描述说明问题：
 任意一对非负整数p，q(p &amp;gt; q),设r是p与q相除的余数。p，q的最大公约数等于q，p的最大公约数。
-public static int gcd(int p, i
+public static int gcd(int p, int q) { if(q == 0) return p; int r = p % q; return
   
   <div class="read-more-link">
     <a href="/posts/2020-04-27-algorithm-recursion/">Read More…</a>
@@ -228,7 +236,8 @@ public static int gcd(int p, i
     <a href="http://qinry.github.io/posts/2019-11-28-java-typeinfo/">类型信息</a>
   </h1>
   <time datetime="2019-11-28T18:25:37&#43;0800" class="post-date">Thu, Nov 28, 2019</time>
-  Class对象 每个类都存在包含类型信息的Class对象，Class对象属于Java类中Class类型。有两种方法获得某类型的Class 对象，一种是使用Class.forName()静态方法，接受包含完整类名的字符串参数，创建对应类型的Class对象;第二种类字面量，&amp;lt;ClassName&amp;g
+  Class对象 每个类都存在包含类型信息的Class对象，Class对象属于Java类中Class类型。有两种方法获得某类型的Class 对象，一种是使用Class.forName()静态方法，接受包含完整类名的字符串参数，创建对应类型的Class对象;第二种类字面量，&amp;lt;ClassName&amp;gt;.class。forName()方法必须放在try语句块，而类字面量不需要，故效率更高。
+例子：
   
   <div class="read-more-link">
     <a href="/posts/2019-11-28-java-typeinfo/">Read More…</a>
@@ -240,7 +249,7 @@ public static int gcd(int p, i
   </h1>
   <time datetime="2019-11-25T09:46:16&#43;0800" class="post-date">Mon, Nov 25, 2019</time>
   String对象不可变 String对象被创建后不可修改，某些方法看似是修改源字符串，其实是重新创建新字符串来代替。
-StringBuilder 在循环体中对String对象反复使用 &amp;ldquo;&#43;=&amp;rdquo;, &amp;ldquo;&#43;&amp;rdquo; 运算符，以达字符串的拼接,其实效率不高。因为&amp;q
+StringBuilder 在循环体中对String对象反复使用 &amp;ldquo;&#43;=&amp;rdquo;, &amp;ldquo;&#43;&amp;rdquo; 运算符，以达字符串的拼接,其实效率不高。因为&amp;quot;&#43;&amp;quot;,&amp;quot;&#43;=&amp;ldquo;工作实际上虚拟机会自动创建StringBuil
   
   <div class="read-more-link">
     <a href="/posts/2019-11-25-java-strings/">Read More…</a>
@@ -253,7 +262,7 @@ StringBuilder 在循环体中对String对象反复使用 &amp;ldquo;&#43;=&amp;r
   <time datetime="2019-11-24T08:47:23&#43;0800" class="post-date">Sun, Nov 24, 2019</time>
   异常抛出 创建一个异常对象，然后从当前环境对象抛出，阻止当前方法或作用域的执行。
 语法: throw new NullPointerException, 关键字throw之后，和创建普通对象一样创建异常对象, new &amp;lt;异常类&amp;gt;。
-异常捕获 try块中执行代码，遇到异常抛出，交给catc
+异常捕获 try块中执行代码，遇到异常抛出，交给catch捕获, 然后进行异常处理。将try-catch语句可以放入while循环，由于try中抛出异常，会
   
   <div class="read-more-link">
     <a href="/posts/2019-11-24-java-exceptions/">Read More…</a>
@@ -265,7 +274,7 @@ StringBuilder 在循环体中对String对象反复使用 &amp;ldquo;&#43;=&amp;r
   </h1>
   <time datetime="2019-10-24T16:48:18&#43;0800" class="post-date">Thu, Oct 24, 2019</time>
   创建内部类 直接将内部类置于外围类中
-// innerclasses/Parcel1.java // Creating inner classes public class Parcel1 { class Contents { private int i = 11; public int value
+// innerclasses/Parcel1.java // Creating inner classes public class Parcel1 { class Contents { private int i = 11; public int value() { return i; } } class Destination { private Str
   
   <div class="read-more-link">
     <a href="/posts/2019-10-24-java-innerclass/">Read More…</a>
@@ -279,7 +288,7 @@ StringBuilder 在循环体中对String对象反复使用 &amp;ldquo;&#43;=&amp;r
   抽象类和抽象方法   抽象方法：仅有声明而没有方法体。 如： abstract void f();
   抽象类： 包含抽象方法的类。
   如果一个类包含一个或多个抽象方法，该类必须限定为抽象的。如：abstract class A {}
-继承抽象类，如果不把抽象方法提供定义， 那么导出类也是抽象类，
+继承抽象类，如果不把抽象方法提供定义， 那么导出类也是抽象类，所以要创建抽象类的子类的对象，必须在子类为基类提供方法的定义。有时，我们也可能创建一个没有任何抽象方
   
   <div class="read-more-link">
     <a href="/posts/2019-10-22-java-interfaces/">Read More…</a>
@@ -290,7 +299,7 @@ StringBuilder 在循环体中对String对象反复使用 &amp;ldquo;&#43;=&amp;r
     <a href="http://qinry.github.io/posts/2019-10-21-java-polymorphism/">多态</a>
   </h1>
   <time datetime="2019-10-21T17:01:44&#43;0800" class="post-date">Mon, Oct 21, 2019</time>
-  多态的作用  消除类型间的耦合关系 改善代码的组织结构和可读性，还能够创建可扩展程序  绑定 将一个方法调用同一个方法主体关联起来称为绑定。若在程序执行前进行绑定，叫做前期绑定；而在运行时根据对象的类型进行绑定，叫后期绑定。有了后期绑定，多态的特性才能够呈现，编译器无法知道对象类型，只能通过安置类型
+  多态的作用  消除类型间的耦合关系 改善代码的组织结构和可读性，还能够创建可扩展程序  绑定 将一个方法调用同一个方法主体关联起来称为绑定。若在程序执行前进行绑定，叫做前期绑定；而在运行时根据对象的类型进行绑定，叫后期绑定。有了后期绑定，多态的特性才能够呈现，编译器无法知道对象类型，只能通过安置类型信息来鉴别，这就要程序运行时方法调用基于类型信息匹配正确的方法主体。Java除了final方法和st
   
 </article><article class="post">
   <h1 class="post-title">
@@ -298,7 +307,7 @@ StringBuilder 在循环体中对String对象反复使用 &amp;ldquo;&#43;=&amp;r
   </h1>
   <time datetime="2019-10-21T12:54:56&#43;0800" class="post-date">Mon, Oct 21, 2019</time>
   从现有类生成新类型  组合： 一般将现有类型作为新类型底层实现一部分来加以复用 继承：仅仅复用接口 用到 extends关键字  继承 继承中的初始化 在构造器中调用基类构造器来执行初始化来执行初始化。对象包含基类的子对象，它的正确初始化很重要
-清理 必须显式编写特殊方法，还必须将这清理动作置于fi
+清理 必须显式编写特殊方法，还必须将这清理动作置于finally子句（异常处理的内容，以后再谈，只知道异常与否都会最后执行的代码）中，以防异常，最好不适用
   
 </article><article class="post">
   <h1 class="post-title">
@@ -306,7 +315,9 @@ StringBuilder 在循环体中对String对象反复使用 &amp;ldquo;&#43;=&amp;r
   </h1>
   <time datetime="2019-10-21T09:06:40&#43;0800" class="post-date">Mon, Oct 21, 2019</time>
   访问权限控制  public （公共访问权限, 谁都可以访问） private （类内私有，用户无法访问） protected （继承访问权限，也提供包内访问） 包访问权限（没有关键词修饰，供包内使用）  类访问权限，除内部类外，仅有两种选择：public和包访问权限
-  每个编译单元只能有一个pu
+  每个编译单元只能有一个public类
+  public名称必须完全与编译单元文件名相匹配，包括大小写
+  关键词：import
   
 </article><article class="post">
   <h1 class="post-title">
@@ -317,7 +328,8 @@ StringBuilder 在循环体中对String对象反复使用 &amp;ldquo;&#43;=&amp;r
 在Java中，初始化与创建绑定在一起的
 区别重载方法 通过不一样参数列表区分
 整型常数值传入方法被当做int, char类型值如果没有匹配char参数方法，char会提升为int
-默认构造器 
+默认构造器 就是指没有参数列表的构造器，如果未定义此方法，编译器会自动合成；若有定义，则不会自动创建
+关键词th
   
   <div class="read-more-link">
     <a href="/posts/2019-10-20-java-initialization/">Read More…</a>
@@ -330,7 +342,8 @@ StringBuilder 在循环体中对String对象反复使用 &amp;ldquo;&#43;=&amp;r
   <time datetime="2019-10-20T08:50:01&#43;0800" class="post-date">Sun, Oct 20, 2019</time>
   配置Git 提供Git用户名和邮箱
  $ git config &amp;ndash;global user.name &amp;ldquo;username&amp;rdquo;
-  $ git config &amp;ndash;global user.email &amp;ldquo;usernaem@example.com&amp;rdq
+  $ git config &amp;ndash;global user.email &amp;ldquo;usernaem@example.com&amp;rdquo;
+ 忽略文件 创建文件 .gitignore ，让Git忽略某目录中的所有文件(不跟踪这些文件
   
   <div class="read-more-link">
     <a href="/posts/2019-10-20-git-simple-usage/">Read More…</a>
@@ -344,7 +357,7 @@ StringBuilder 在循环体中对String对象反复使用 &amp;ldquo;&#43;=&amp;r
   关键词：if-else, while, do-while, for, return, break, continue, switch
 条件判断 (if-else) 判断某个条件是否为真，若为真，则执行 if 后的语句;为假执行else后的语句
 例如:
-int i = 47; if (i % 2 ==
+int i = 47; if (i % 2 == 0) System.out.println(&amp;#34;The number is even!&amp;#3
   
   <div class="read-more-link">
     <a href="/posts/2019-10-19-java-control-flow/">Read More…</a>
@@ -358,7 +371,7 @@ int i = 47; if (i % 2 ==
   静态导入 通过封装，自建类库已到达更简短语句答应字符串。可以静态导入（import static LibraryName）类库中静态对象
 表达式 副作用：有些运算符可能会改变操作对象的值
 一个表达式有多个操作符时，它们的优先级影响计算顺序，一般规则先乘除后加减，括号最先进行
-System.out.p
+System.out.println() 内含&#43;, 其前是String，其后操作对象非String会转换成String，如果
   
   <div class="read-more-link">
     <a href="/posts/2019-10-18-java-operator/">Read More…</a>
@@ -373,7 +386,9 @@ System.out.p
   字符串可以用带引号的初始值， 如： String s = &amp;quot;sdf&amp;quot;;
   关键字 new 用来创建一个新对象，存在于堆中
   对象在内存中的分布
-  寄存器 最快存储区（Java中是按需
+  寄存器 最快存储区（Java中是按需在这里分配，程序员不直接管理）
+  堆栈 位于通用RAM。比较快速有效的分配内存，次于寄存器
+  堆
   
   <div class="read-more-link">
     <a href="/posts/2019-10-18-java-objects/">Read More…</a>
@@ -384,7 +399,8 @@ System.out.p
     <a href="http://qinry.github.io/posts/2019-10-17-algorithm-beginning/">数据结构与算法分析(笔记) -- 开始</a>
   </h1>
   <time datetime="2019-10-17T23:29:10&#43;0800" class="post-date">Thu, Oct 17, 2019</time>
-  递归使用的基本法则  基准情形：要有退出条件 不断推进：从初始条件趋向退出条件 设计准则 ：假设递归准确执行 合成效益法则：防止重复工作，比如生成斐波那契数列的递归实现使用双递归，导致一些工作的重复，进而影响效率  递归符合前三个法则才能正确进行，符合第四法则递归的使用才有意义。虽然递归的代码逻辑清
+  递归使用的基本法则  基准情形：要有退出条件 不断推进：从初始条件趋向退出条件 设计准则 ：假设递归准确执行 合成效益法则：防止重复工作，比如生成斐波那契数列的递归实现使用双递归，导致一些工作的重复，进而影响效率  递归符合前三个法则才能正确进行，符合第四法则递归的使用才有意义。虽然递归的代码逻辑清晰，不过某些情况效率不高。当递归不能很好解决问题时，可能考虑采用迭代。
+算法分析 4种描述算法效率的
   
   <div class="read-more-link">
     <a href="/posts/2019-10-17-algorithm-beginning/">Read More…</a>
