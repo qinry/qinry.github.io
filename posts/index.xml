@@ -5,16 +5,29 @@
     <link>http://qinry.github.io/posts/</link>
     <description>Recent content in Posts on qinry&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 06 Aug 2020 21:36:55 +0800</lastBuildDate><atom:link href="http://qinry.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Nov 2020 08:08:26 +0800</lastBuildDate><atom:link href="http://qinry.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>设计模式——单件模式</title>
+      <link>http://qinry.github.io/posts/2020-11-16-designpatterns-singleton/</link>
+      <pubDate>Mon, 16 Nov 2020 08:08:26 +0800</pubDate>
+      
+      <guid>http://qinry.github.io/posts/2020-11-16-designpatterns-singleton/</guid>
+      <description>单件模式 什么是单件模式 单件模式是在设计模式中常用的一种需要为类只实例化唯一对象的设计方案。意思是说，对于某个类来说，其对象只能创建一个，且每次使用这个类的时候，用到的都是同一个对象。在有些场景下，有些对象我们只需要一个，比如：线程池、缓存、对话框、处理偏好设置和注册表的对象、日志对象、打印机、显卡等表示设备某些资源的对象。也常常用来管理共享的资源，比如数据库连接池等。
+看看单件模式的官方定义：单件模式 确保一个类只有一个实例，并提供一个全局访问点。
+单件模式的优点 单件模式除了可以确保只有一个实例会被创建，还提供与全局变量一样方便的访问。全局变量，它可能必须在程序一开始就要创建好，如果这个对象很耗资源，而程序偏偏没有使用到它，这对资源就是一种实实在在的浪费，所以应该在需要时才被创建就可以解决这个问题，正好单件模式能够做到。
+如何做到只实例化和管理唯一的对象 在Java中通过new表达式公开创建对象，我们必须隐藏这个创建动作，只能由类自己进行，对外禁止使用new。那么客户如何获得对象呢？首先类内管理一个私有成员实例变量，这成员类型就是本身，由于要求对象唯一，声明为static变量，再可以通过一个公共静态方法，叫getInstance()好了，向类发出请求访问并获得这个实例变量即可，为什么要用静态方法？避免外部显式直接获取对象导致硬编码。还有获取对象的构造器对外是严令禁止，实例方法无法使用，借助类方法或者叫静态方法不用实例化就可以直接使用的方法获得对象。对象的创建其实就封装在这个静态方法getInstance()，通过条件判断实例变量是否为空，为空则创建对象再返回；不为空直接返回对象。这种在需要时创建的对象叫做延迟实例化。
+public class Singleton { private static Singleton uniqueInstance; private Singleton() {} public static getInstance() { if(uniqueInstance == null) { uniqueInstance = new Singleton(); } return uniqueInstance; } }  需要注意的问题 在使用单件模式需要考虑多线程多次调用getInstance()方法获取对象可能导致创建对象不唯一的问题，那这还算单件吗？就如同前面的代码就是线程不安全的单件，如果有两个线程同时交替执行通过了if(uniqueInstance == null)语句,接下来就会导致new使用了两次，实例化了两个不同的对象。
+使用synchronized方法解决 将getInstance()方法声明为synchronized，给这个方法加了锁，确保只有一个线程访问这个方法。虽然解决了线程安全问题，但是执行效率下去了，因为只有第一次调用getInstance()才需要同步，之后的同步是累赘，拖慢程序。
+public class Singleton { private static Singleton uniqueInstance; private Singleton() {} public synchronized static getInstance() { if(uniqueInstance == null) { uniqueInstance = new Singleton(); } return uniqueInstance; } } 不考虑性能时，synchronized方法解决最直接。</description>
+    </item>
+    
     <item>
       <title>优先队列的实现</title>
       <link>http://qinry.github.io/posts/2020-08-06-algorithm-priority-queue/</link>
       <pubDate>Thu, 06 Aug 2020 21:36:55 +0800</pubDate>
       
       <guid>http://qinry.github.io/posts/2020-08-06-algorithm-priority-queue/</guid>
-      <description>参考于《算法》第四版第二章第四节
-基于堆的优先队列 API: 最大优先队列
-public class MaxPQ&amp;lt;Key extends Comparable&amp;lt;Key&amp;gt;&amp;gt;
+      <description>最大优先队列¶ API: public class MaxPQ&amp;lt;Key extends Comparable&amp;lt;Key&amp;gt;&amp;gt;
    方法 功能描述     MaxPQ(int max) 创建一个初始容量为max的优先队列   void insert(Key x) 向优先队列插入一个元素   Key delMax() 删除最大元素并返回最大元素   boolean isEmpty() 返回队列是否为空   int size() 返回优先队列的元素个数    public class MaxPQ&amp;lt;Key extends Comparable&amp;lt;Key&amp;gt;&amp;gt; { private Key[] pq; // 基于堆的完全二叉树  private int N = 0; // 存储于pq[1..N]中，pq[0]没有使用  public MaxPQ(int maxN) { pq = (Key[]) new Comparable[maxN + 1]; } public boolean isEmpty() { return n == 0; } public int size() { return N; } public Key max() { if (isEmpty()) throw new NoSuchElementException(&amp;#34;Priority queue underflow&amp;#34;); return pq[1]; } public void insert(Key x) { pq[++n] = x; swim(n); } public Key delMax() { Key max = pq[1]; // 从根结点得到最大元素  exch(1, N--); // 将其和最后一个结点交换  pq[n+1] = null; //防止对象游离  sink(1); // 恢复堆的有序性  return max; } // 辅助方法  private void swim(int k) { while (k &amp;gt; 1 &amp;amp;&amp;amp; less(k/2, k)) { exch(k, k/2); k = k/2; } } private void sink(int k) { while (2*k &amp;lt;= n) { int j = 2*k; if (j &amp;lt; n &amp;amp;&amp;amp; less(j, j+1)) j++; if (!</description>
     </item>
     

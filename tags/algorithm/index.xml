@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>algorithm on qinry&#39;s blog</title>
-    <link>https://qinry.github.io/tags/algorithm/</link>
-    <description>Recent content in algorithm on qinry&#39;s blog</description>
+    <title>Algorithm on qinry&#39;s blog</title>
+    <link>http://qinry.github.io/tags/algorithm/</link>
+    <description>Recent content in Algorithm on qinry&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 06 Aug 2020 21:36:55 +0800</lastBuildDate><atom:link href="https://qinry.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Aug 2020 21:36:55 +0800</lastBuildDate><atom:link href="http://qinry.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>优先队列的实现</title>
-      <link>https://qinry.github.io/posts/2020-08-06-algorithm-priority-queue/</link>
+      <link>http://qinry.github.io/posts/2020-08-06-algorithm-priority-queue/</link>
       <pubDate>Thu, 06 Aug 2020 21:36:55 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2020-08-06-algorithm-priority-queue/</guid>
-      <description>参考于《算法》第四版第二章第四节
-基于堆的优先队列 API: 最大优先队列
-public class MaxPQ&amp;lt;Key extends Comparable&amp;lt;Key&amp;gt;&amp;gt;
+      <guid>http://qinry.github.io/posts/2020-08-06-algorithm-priority-queue/</guid>
+      <description>最大优先队列¶ API: public class MaxPQ&amp;lt;Key extends Comparable&amp;lt;Key&amp;gt;&amp;gt;
    方法 功能描述     MaxPQ(int max) 创建一个初始容量为max的优先队列   void insert(Key x) 向优先队列插入一个元素   Key delMax() 删除最大元素并返回最大元素   boolean isEmpty() 返回队列是否为空   int size() 返回优先队列的元素个数    public class MaxPQ&amp;lt;Key extends Comparable&amp;lt;Key&amp;gt;&amp;gt; { private Key[] pq; // 基于堆的完全二叉树  private int N = 0; // 存储于pq[1..N]中，pq[0]没有使用  public MaxPQ(int maxN) { pq = (Key[]) new Comparable[maxN + 1]; } public boolean isEmpty() { return n == 0; } public int size() { return N; } public Key max() { if (isEmpty()) throw new NoSuchElementException(&amp;#34;Priority queue underflow&amp;#34;); return pq[1]; } public void insert(Key x) { pq[++n] = x; swim(n); } public Key delMax() { Key max = pq[1]; // 从根结点得到最大元素  exch(1, N--); // 将其和最后一个结点交换  pq[n+1] = null; //防止对象游离  sink(1); // 恢复堆的有序性  return max; } // 辅助方法  private void swim(int k) { while (k &amp;gt; 1 &amp;amp;&amp;amp; less(k/2, k)) { exch(k, k/2); k = k/2; } } private void sink(int k) { while (2*k &amp;lt;= n) { int j = 2*k; if (j &amp;lt; n &amp;amp;&amp;amp; less(j, j+1)) j++; if (!</description>
     </item>
     
     <item>
       <title>排序</title>
-      <link>https://qinry.github.io/posts/2020-08-06-algorithm-sort/</link>
+      <link>http://qinry.github.io/posts/2020-08-06-algorithm-sort/</link>
       <pubDate>Thu, 06 Aug 2020 08:00:11 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2020-08-06-algorithm-sort/</guid>
+      <guid>http://qinry.github.io/posts/2020-08-06-algorithm-sort/</guid>
       <description>参考于《算法》第四版第二章
 排序算法类的模板 public class Example { public static void sort(Comparable[] a){ // ... 见下面详解  } private static boolean less(Comparable v, Comparable w) { return v.compareTo(w) &amp;lt; 0; } private static void exch(Comparable[] a, int i, int j) { Comparable t = a[i];a[i] = a[j];a[j] = t; } private static void show(Comparable[] a) { for(int i = 0; i &amp;lt; a.length; i++) { System.out.print(a[i] + &amp;#34; &amp;#34;); } System.out.println(); } public static boolean isSorted(Comparable[] a) { for(int i = 1; i &amp;lt; a.</description>
     </item>
     
     <item>
       <title>并查集的实现</title>
-      <link>https://qinry.github.io/posts/2020-07-06-algorithm-union-find/</link>
+      <link>http://qinry.github.io/posts/2020-07-06-algorithm-union-find/</link>
       <pubDate>Mon, 06 Jul 2020 07:34:59 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2020-07-06-algorithm-union-find/</guid>
+      <guid>http://qinry.github.io/posts/2020-07-06-algorithm-union-find/</guid>
       <description>参考于《算法》第4版第一章第五节
 问题描述：输入一对整数p、q，程序判断它们是否相连，如果相连，忽略这对数并处理下对数；否则将它们相连。p和q相连具有一种等价关系,说明：
   p和p本身相连；
@@ -50,10 +48,10 @@ public class UF { private int[] id; // 分量id（以触点作为索引）  priv
     
     <item>
       <title>背包、栈、队列实现</title>
-      <link>https://qinry.github.io/posts/2020-05-06-algorithm-basic-datastructure/</link>
+      <link>http://qinry.github.io/posts/2020-05-06-algorithm-basic-datastructure/</link>
       <pubDate>Wed, 06 May 2020 08:24:50 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2020-05-06-algorithm-basic-datastructure/</guid>
+      <guid>http://qinry.github.io/posts/2020-05-06-algorithm-basic-datastructure/</guid>
       <description>API:
 背包
 public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;
@@ -64,10 +62,10 @@ public class Queue&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;
     
     <item>
       <title>简简单单知道递归</title>
-      <link>https://qinry.github.io/posts/2020-04-27-algorithm-recursion/</link>
+      <link>http://qinry.github.io/posts/2020-04-27-algorithm-recursion/</link>
       <pubDate>Mon, 27 Apr 2020 20:21:23 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2020-04-27-algorithm-recursion/</guid>
+      <guid>http://qinry.github.io/posts/2020-04-27-algorithm-recursion/</guid>
       <description>递归的含义 递归就是函数或方法通过调用自己本身来达到解决问题的目的，这种解法形式叫递归。用欧几里得算法的Java描述说明问题：
 任意一对非负整数p，q(p &amp;gt; q),设r是p与q相除的余数。p，q的最大公约数等于q，p的最大公约数。
 public static int gcd(int p, int q) { if(q == 0) return p; int r = p % q; return gcd(q, r); } 为什么使用递归   面对某些复杂的问题使用递归可以很好的描述并有效解决，例如汉诺塔问题、二叉树的遍历、查询目录等等。
@@ -82,10 +80,10 @@ public static int gcd(int p, int q) { if(q == 0) return p; int r = p % q; return
     
     <item>
       <title>数据结构与算法分析(笔记) -- 开始</title>
-      <link>https://qinry.github.io/posts/2019-10-17-algorithm-beginning/</link>
+      <link>http://qinry.github.io/posts/2019-10-17-algorithm-beginning/</link>
       <pubDate>Thu, 17 Oct 2019 23:29:10 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2019-10-17-algorithm-beginning/</guid>
+      <guid>http://qinry.github.io/posts/2019-10-17-algorithm-beginning/</guid>
       <description>递归使用的基本法则  基准情形：要有退出条件 不断推进：从初始条件趋向退出条件 设计准则 ：假设递归准确执行 合成效益法则：防止重复工作，比如生成斐波那契数列的递归实现使用双递归，导致一些工作的重复，进而影响效率  递归符合前三个法则才能正确进行，符合第四法则递归的使用才有意义。虽然递归的代码逻辑清晰，不过某些情况效率不高。当递归不能很好解决问题时，可能考虑采用迭代。
 算法分析 4种描述算法效率的数学模型，常用的有大O记法
 大O记法：时间T(N) = O( f( N ) ), 意思是T( N ) 的相对增长率小于 f(N)
