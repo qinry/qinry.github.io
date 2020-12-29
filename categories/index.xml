@@ -2,43 +2,43 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on qinry&#39;s blog</title>
-    <link>http://qinry.github.io/categories/</link>
+    <link>https://qinry.github.io/categories/</link>
     <description>Recent content in Categories on qinry&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 16 Nov 2020 08:08:26 +0800</lastBuildDate><atom:link href="http://qinry.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Nov 2020 08:08:26 +0800</lastBuildDate><atom:link href="https://qinry.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>design pattern</title>
-      <link>http://qinry.github.io/categories/design-pattern/</link>
+      <title>Design Pattern</title>
+      <link>https://qinry.github.io/categories/design-pattern/</link>
       <pubDate>Mon, 16 Nov 2020 08:08:26 +0800</pubDate>
       
-      <guid>http://qinry.github.io/categories/design-pattern/</guid>
+      <guid>https://qinry.github.io/categories/design-pattern/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Algorithm</title>
-      <link>http://qinry.github.io/categories/algorithm/</link>
+      <link>https://qinry.github.io/categories/algorithm/</link>
       <pubDate>Thu, 06 Aug 2020 21:36:55 +0800</pubDate>
       
-      <guid>http://qinry.github.io/categories/algorithm/</guid>
+      <guid>https://qinry.github.io/categories/algorithm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
-      <link>http://qinry.github.io/categories/java/</link>
+      <link>https://qinry.github.io/categories/java/</link>
       <pubDate>Tue, 12 May 2020 22:06:42 +0800</pubDate>
       
-      <guid>http://qinry.github.io/categories/java/</guid>
+      <guid>https://qinry.github.io/categories/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git</title>
-      <link>http://qinry.github.io/categories/git/</link>
+      <link>https://qinry.github.io/categories/git/</link>
       <pubDate>Sun, 20 Oct 2019 08:50:01 +0800</pubDate>
       
-      <guid>http://qinry.github.io/categories/git/</guid>
+      <guid>https://qinry.github.io/categories/git/</guid>
       <description></description>
     </item>
     
