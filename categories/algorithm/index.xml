@@ -12,8 +12,7 @@
       <pubDate>Thu, 06 Aug 2020 21:36:55 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2020-08-06-algorithm-priority-queue/</guid>
-      <description>最大优先队列¶ API: public class MaxPQ&amp;lt;Key extends Comparable&amp;lt;Key&amp;gt;&amp;gt;
-   方法 功能描述     MaxPQ(int max) 创建一个初始容量为max的优先队列   void insert(Key x) 向优先队列插入一个元素   Key delMax() 删除最大元素并返回最大元素   boolean isEmpty() 返回队列是否为空   int size() 返回优先队列的元素个数    public class MaxPQ&amp;lt;Key extends Comparable&amp;lt;Key&amp;gt;&amp;gt; { private Key[] pq; // 基于堆的完全二叉树  private int N = 0; // 存储于pq[1..N]中，pq[0]没有使用  public MaxPQ(int maxN) { pq = (Key[]) new Comparable[maxN + 1]; } public boolean isEmpty() { return n == 0; } public int size() { return N; } public Key max() { if (isEmpty()) throw new NoSuchElementException(&amp;#34;Priority queue underflow&amp;#34;); return pq[1]; } public void insert(Key x) { pq[++n] = x; swim(n); } public Key delMax() { Key max = pq[1]; // 从根结点得到最大元素  exch(1, N--); // 将其和最后一个结点交换  pq[n+1] = null; //防止对象游离  sink(1); // 恢复堆的有序性  return max; } // 辅助方法  private void swim(int k) { while (k &amp;gt; 1 &amp;amp;&amp;amp; less(k/2, k)) { exch(k, k/2); k = k/2; } } private void sink(int k) { while (2*k &amp;lt;= n) { int j = 2*k; if (j &amp;lt; n &amp;amp;&amp;amp; less(j, j+1)) j++; if (!</description>
+      <description>最大优先队列¶ API: public class MaxPQ&amp;lt;Key extends Comparable&amp;lt;Key&amp;gt;&amp;gt; 方法 功能描述 MaxPQ(int max) 创建一个初始容量为max的优先队列 void insert(Key x) 向优先队列插入一个元素 Key delMax() 删除最大元素并返回最大元素 boolean isEmpty() 返</description>
     </item>
     
     <item>
@@ -22,8 +21,7 @@
       <pubDate>Thu, 06 Aug 2020 08:00:11 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2020-08-06-algorithm-sort/</guid>
-      <description>参考于《算法》第四版第二章
-排序算法类的模板 public class Example { public static void sort(Comparable[] a){ // ... 见下面详解  } private static boolean less(Comparable v, Comparable w) { return v.compareTo(w) &amp;lt; 0; } private static void exch(Comparable[] a, int i, int j) { Comparable t = a[i];a[i] = a[j];a[j] = t; } private static void show(Comparable[] a) { for(int i = 0; i &amp;lt; a.length; i++) { System.out.print(a[i] + &amp;#34; &amp;#34;); } System.out.println(); } public static boolean isSorted(Comparable[] a) { for(int i = 1; i &amp;lt; a.</description>
+      <description>参考于《算法》第四版第二章 排序算法类的模板 public class Example { public static void sort(Comparable[] a){ // ... 见下面详解 } private static boolean less(Comparable v, Comparable w) { return v.compareTo(w) &amp;lt; 0; } private static void exch(Comparable[] a, int i, int j) { Comparable t = a[i];a[i] = a[j];a[j] = t; }</description>
     </item>
     
     <item>
@@ -32,18 +30,7 @@
       <pubDate>Mon, 06 Jul 2020 07:34:59 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2020-07-06-algorithm-union-find/</guid>
-      <description>参考于《算法》第4版第一章第五节
-问题描述：输入一对整数p、q，程序判断它们是否相连，如果相连，忽略这对数并处理下对数；否则将它们相连。p和q相连具有一种等价关系,说明：
-  p和p本身相连；
-  如果p和q相连，那么q和p也相连；
-  如果p和q相连且q和r相连，那么p和r也相连。
-  这个问题是个动态连通性问题，常应用于计算机网络上表示结点的连接，可能需要处理数百万的对象和数十亿的连接。
-数据结构 解决问题用到了数学抽象的集合，为了简化问题，用整数来表示对象，而不是用整数标识符和任意名称关联表示对象。将p和q是否相连问题转换为p和q是否在同一个集合。
-使用术语 对象用触点表示，整数对用连接表示。等价类，即相连的一系列对象称为连通分量，甚至可以为分量。
-定义抽象数据类型 —— UF（union-find，并查集）
-API：
-   方法 描述     UF(int N) 以整数标识(0~N-1)初始化N个触点   void union(int p, int q) 在p和q之间添加一个连接   int find(int p) p所在的分量标识符   boolean connected(int p, int q) p和q是否相连，是返回true   int count() 连通分量的数量    初步实现：
-public class UF { private int[] id; // 分量id（以触点作为索引）  private int count; // 分量数量  public UF(int N) { count = N; id = new int[N]; for(int i = 0; i &amp;lt; N; i++) id[i] = i; } public int count() { return count; } public boolean connected(int p, int q) { return find(p) == find(q); } // 以下方法，不同算法，实现各不同  public int find(int p) public void union(int p, int q) } 不同算法实现并查集，性能各不同，因为在数据存放形式和数据的操作上有所不一样，或许是细微的差别。有简单的算法及其改进的算法，如：quick-find算法、quick-union算法、加权quick-union算法、路径压缩的加权quick-union算法。</description>
+      <description>参考于《算法》第4版第一章第五节 问题描述：输入一对整数p、q，程序判断它们是否相连，如果相连，忽略这对数并处理下对数；否则将它们相连。p和q</description>
     </item>
     
     <item>
@@ -52,12 +39,7 @@ public class UF { private int[] id; // 分量id（以触点作为索引）  priv
       <pubDate>Wed, 06 May 2020 08:24:50 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2020-05-06-algorithm-basic-datastructure/</guid>
-      <description>API:
-背包
-public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;
-   方法 功能描述     Bag() 创建一个空包   void add(Item item) 添加一个元素   boolean isEmpty() 背包是否为空   int size() 背包中的元素数量     先进先出队列(FIFO)
-public class Queue&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;
-   方法 功能描述     Queue() 创建一个空队列   void enqueue(Item item) 添加一个元素   Item dequeue() 删除最早添加的元素   boolean isEmpty() 队列是否为空   int size() 队列中的元素数量     下压栈(LIFO)</description>
+      <description>API: 背包 public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt; 方法 功能描述 Bag() 创建一个空包 void add(Item item) 添加一个元素 boolean isEmpty() 背包是否为空 int size() 背包中的元素数量 先进先出队列(FIFO) public class Queue&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt; 方法 功能描</description>
     </item>
     
     <item>
@@ -66,16 +48,7 @@ public class Queue&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;
       <pubDate>Mon, 27 Apr 2020 20:21:23 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2020-04-27-algorithm-recursion/</guid>
-      <description>递归的含义 递归就是函数或方法通过调用自己本身来达到解决问题的目的，这种解法形式叫递归。用欧几里得算法的Java描述说明问题：
-任意一对非负整数p，q(p &amp;gt; q),设r是p与q相除的余数。p，q的最大公约数等于q，p的最大公约数。
-public static int gcd(int p, int q) { if(q == 0) return p; int r = p % q; return gcd(q, r); } 为什么使用递归   面对某些复杂的问题使用递归可以很好的描述并有效解决，例如汉诺塔问题、二叉树的遍历、查询目录等等。
-  递归使算法实现的代码更加简洁，而且易懂。
-  误区——迭代一定比递归的效率高 当递归使用的是尾递归本质其是就是迭代，效率不亚于普通迭代(不考虑函数的开销，递归比迭代更好)。如果使用使用双递归、三递归等等，才会算法极度低效，这是用之不当所致
-如何使用递归 使用数学归纳法诠释重要三点：
-  递归总有一个最简单的情况——方法的第一句总是包含return的条件语句
-  递归调用总是尝试解决一个规模更小的子问题，递归才能收敛到最简单的情况。
-  递归调用的父问题和尝试解决的子问题之间不应该有交集。
-  一些递归的例子 阶乘 public static int fact(int N) { if(N == 0) return 1; return N * fact(N - 1); } 典型的尾递归，效率最高的递归形式</description>
+      <description>递归的含义 递归就是函数或方法通过调用自己本身来达到解决问题的目的，这种解法形式叫递归。用欧几里得算法的Java描述说明问题： 任意一对非负整数</description>
     </item>
     
     <item>
@@ -84,11 +57,7 @@ public static int gcd(int p, int q) { if(q == 0) return p; int r = p % q; return
       <pubDate>Thu, 17 Oct 2019 23:29:10 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2019-10-17-algorithm-beginning/</guid>
-      <description>递归使用的基本法则  基准情形：要有退出条件 不断推进：从初始条件趋向退出条件 设计准则 ：假设递归准确执行 合成效益法则：防止重复工作，比如生成斐波那契数列的递归实现使用双递归，导致一些工作的重复，进而影响效率  递归符合前三个法则才能正确进行，符合第四法则递归的使用才有意义。虽然递归的代码逻辑清晰，不过某些情况效率不高。当递归不能很好解决问题时，可能考虑采用迭代。
-算法分析 4种描述算法效率的数学模型，常用的有大O记法
-大O记法：时间T(N) = O( f( N ) ), 意思是T( N ) 的相对增长率小于 f(N)
-计算运行时间 一般法则
- FOR循环 嵌套的FOR循环 顺序语句 IF/ELSE语句   最大子序列和问题解 算法1（嵌套3层for循环） int MaxSubsequenceSum(const int A[], int N) { int ThisSum, MaxSum, i, j, k; MaxSum = 0; for (i = 0; i &amp;lt; N; i++) for (j = i; j &amp;lt; N; j++) { ThisSum = 0; for (k = i; k &amp;lt;= j; k++) ThisSum += A[k]; if (ThisSum &amp;gt; MaxSum) MaxSum = ThisSum; } return MaxSum; } 算法2（嵌套2层for循环） int MaxSubsequenceSum(const int A[], int N) { int ThisSum, MaxSum, i, j; MaxSum = 0; for (i = 0; i &amp;lt; N; i++) { ThisSum = 0; for (j = i; j &amp;lt; N; j++) { ThisSum += A[j]; if (ThisSum &amp;gt; MaxSum) MaxSum = ThisSum; } } return MaxSum; } 算法3（分治） int Max3(int x, int y, int z) { return (x &amp;gt; y ?</description>
+      <description>递归使用的基本法则 基准情形：要有退出条件 不断推进：从初始条件趋向退出条件 设计准则 ：假设递归准确执行 合成效益法则：防止重复工作，比如生成斐波那</description>
     </item>
     
   </channel>
