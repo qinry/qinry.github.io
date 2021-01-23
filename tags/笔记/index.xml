@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>笔记 on 欢迎来到槎城小子的博客！</title>
+    <link>https://qinry.github.io/tags/%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 笔记 on 欢迎来到槎城小子的博客！</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 17 Oct 2019 23:29:10 +0800</lastBuildDate><atom:link href="https://qinry.github.io/tags/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据结构与算法分析笔记——基础</title>
+      <link>https://qinry.github.io/posts/2019/10/algorithm-beginning/</link>
+      <pubDate>Thu, 17 Oct 2019 23:29:10 +0800</pubDate>
+      
+      <guid>https://qinry.github.io/posts/2019/10/algorithm-beginning/</guid>
+      <description>表征性能的两个指标 时间复杂度：算法在运行时的花费时间。 空间复杂度：算法在运行过程中临时占用存储空间大小的量度 性能非常关注程序运行的速度和内存</description>
+    </item>
+    
+  </channel>
+</rss>
