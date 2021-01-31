@@ -91,12 +91,12 @@
 <h4 id="泛型接口">泛型接口</h4>
 <p>定义泛型接口：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Callable</span><span style="color:#f92672">&lt;</span>V<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
-    V <span style="color:#a6e22e">get</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception<span style="color:#f92672">;</span>
+    V <span style="color:#a6e22e">call</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception<span style="color:#f92672">;</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>实现泛型接口，指定类型：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StringCaller</span> <span style="color:#66d9ef">implements</span> Callable<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
    <span style="color:#a6e22e">@Override</span>
-   <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">get</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+   <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">call</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;String&#34;</span><span style="color:#f92672">;</span>
    <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
@@ -135,7 +135,9 @@
 </code></pre></div><p>由于static方法无法访问泛型类的类型参数，static的泛型方法必须在返回值类型前加上<code>&lt;类型参数&gt;</code>这个类型参数的声明。非静态方法如果是在泛型类内部，其实已经隐含了声明，所以不用特别写出来，但如果是普通类中，一定要写。</p>
 <h4 id="泛型限制类型">泛型限制类型</h4>
 <p>在使用泛型时， 可以指定泛型的限定区域 ，</p>
-<p>- 例如： 必须是某某类的子类或 某某接口的实现类，格式：</p>
+<ul>
+<li>例如： 必须是某某类的子类或 某某接口的实现类，格式：</li>
+</ul>
 <pre><code>&lt;T extends 类或接口1 &amp; 接口2&gt; 
 </code></pre><h4 id="泛型的通配符">泛型的通配符</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Demo</span> <span style="color:#f92672">{</span>
