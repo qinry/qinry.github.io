@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.79.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>泛型 &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="泛型类，泛型接口，泛型方法，泛型通配符以及类型擦除" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/java.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/vim.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+  <body class="theme-base-0d ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io/">家</a></li>
+		<li><a href="https://qinry.github.io//categories">分类</a></li>
+        <li><a href="https://github.com/qinry"> Github </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright (c) 2021 槎城小子</p>
+	
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>泛型</h1>
+  <time datetime=2021-01-31T17:09:15&#43;0800 class="post-date">2021-01-31 17:09:15</time>
+  <h3 id="理解泛型">理解泛型</h3>
+<p>泛型是将类型参数化，类定义时一些成员变量和一些方法形式参数的类型成为变量，在使用时再传入一个具体类型，进一步抽象了变量的类型。好像是给方法或类写了一个模板，根据模板赋予不同的类型参数，就会生成不同的类。将那些类似方法或类都集中在一起编写，也就是将相同的部分都封装起来，不同的部分参数化。某种程度，减少编写只因类型不同，逻辑大部分相同的多个类的代码量，使这部分代码耦合度降低，提高了代码的复用率。在Java中的泛型使用时指定类型但不需要强制类型转换，不必担心，类型是安全的，编译器会检查。</p>
+<h3 id="使用泛型">使用泛型</h3>
+<h4 id="泛型类">泛型类</h4>
+<p>定义泛型类：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Stack</span><span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">implements</span> Iterable <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> Node first<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Node</span> <span style="color:#f92672">{</span>
+ 		<span style="color:#66d9ef">private</span> E element<span style="color:#f92672">;</span>
+  		<span style="color:#66d9ef">private</span> Node next<span style="color:#f92672">;</span>
+  		<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Node</span><span style="color:#f92672">(</span>E e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        	<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">element</span> <span style="color:#f92672">=</span> e<span style="color:#f92672">;</span>
+        	next <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+  		<span style="color:#f92672">}</span>
+    	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Node</span><span style="color:#f92672">(</span>Node x<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    		element <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span><span style="color:#a6e22e">element</span><span style="color:#f92672">;</span>
+  			<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>x<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+     			next <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Node<span style="color:#f92672">(</span>x<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">);</span>
+    		<span style="color:#f92672">}</span>
+  		<span style="color:#f92672">}</span>
+	<span style="color:#f92672">}</span>
+    <span style="color:#75715e">// 其他方法省略
+</span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+</code></pre></div><p>创建泛型类的对象：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Stack stack <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Stack<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;();</span>
+</code></pre></div><p>成员内部类是可以使用外部类的类型参数，静态内部类却不能。</p>
+<h4 id="泛型接口">泛型接口</h4>
+<p>定义泛型接口：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Callable</span><span style="color:#f92672">&lt;</span>V<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+    V <span style="color:#a6e22e">get</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>实现泛型接口，指定类型：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StringCaller</span> <span style="color:#66d9ef">implements</span> Callable<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+   <span style="color:#a6e22e">@Override</span>
+   <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">get</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+       <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;String&#34;</span><span style="color:#f92672">;</span>
+   <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>实现泛型接口，不指定类型：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Caller</span><span style="color:#f92672">&lt;</span>V<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">implements</span> Callable<span style="color:#f92672">&lt;</span>V<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> V val<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> V <span style="color:#a6e22e">call</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> val<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setVal</span><span style="color:#f92672">(</span>V val<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">val</span> <span style="color:#f92672">=</span> val<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="泛型方法">泛型方法</h4>
+<p>一个普通类的方法可以使用泛型。形式大致：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">权限修饰符 <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> T <span style="color:#a6e22e">方法名</span><span style="color:#f92672">(</span>T a<span style="color:#f92672">,</span> T b<span style="color:#f92672">)</span> <span style="color:#f92672">{}</span>
+</code></pre></div><p>非静态方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GenericMethod</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f</span><span style="color:#f92672">(</span>T t<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>t<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">());</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>静态方法：</p>
+<p>例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.lang.reflect.*<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.util.regex.*<span style="color:#f92672">;</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StaticGenericMethod</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f</span><span style="color:#f92672">(</span>T t<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        Pattern p <span style="color:#f92672">=</span> Pattern<span style="color:#f92672">.</span><span style="color:#a6e22e">compile</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;\\w+\\.&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span>Method m <span style="color:#f92672">:</span> t<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getMethods</span><span style="color:#f92672">())</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
+                p<span style="color:#f92672">.</span><span style="color:#a6e22e">matcher</span><span style="color:#f92672">(</span>
+                    m<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">replaceAll</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>由于static方法无法访问泛型类的类型参数，static的泛型方法必须在返回值类型前加上<code>&lt;类型参数&gt;</code>这个类型参数的声明。非静态方法如果是在泛型类内部，其实已经隐含了声明，所以不用特别写出来，但如果是普通类中，一定要写。</p>
+<h4 id="泛型限制类型">泛型限制类型</h4>
+<p>在使用泛型时， 可以指定泛型的限定区域 ，</p>
+<p>- 例如： 必须是某某类的子类或 某某接口的实现类，格式：</p>
+<pre><code>&lt;T extends 类或接口1 &amp; 接口2&gt; 
+</code></pre><h4 id="泛型的通配符">泛型的通配符</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Demo</span> <span style="color:#f92672">{</span>
+   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+       ArrayList<span style="color:#f92672">&lt;</span>Fruit<span style="color:#f92672">&gt;</span> fruits <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;</span>Apple<span style="color:#f92672">&gt;();</span>
+   <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Fruit</span> <span style="color:#f92672">{}</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Apple</span> <span style="color:#66d9ef">extends</span> Fruit <span style="color:#f92672">{}</span>
+</code></pre></div><p>上面的main方法，编译器是无法通过运行的。不同于方法的多态，是可以传入变量参数时，实际参数时可以为形参的子类。但泛型的使用不允许这么做，这里可以理解，类型ArrayList&lt;Fruit&gt;和ArrayList&lt;Apple&gt;是完全不同的类型，之间更没父子关系。Java为了更好的使用泛型，提出了泛型的通配符。</p>
+<p>类型通配符是使用？代替方法具体的类型实参。</p>
+<p>无界通配符&lt;?&gt;表示某种特定类型，创建对象时传入的类型参数可以是任意类型，对象一旦传入创建好了，类型就确定，它方法使用类型参数也就跟着确定了。与&lt;Object&gt;是不同的意思，类型参数确定为Object，只不过使用这个类型参数的方法是可以传入任何类型的变量（因为Object是所有类共同的基类，Java是走单继承体系的）;</p>
+<p>超类通配符&lt;? super T&gt;或&lt;? super 具体类&gt;,由T或具体类的基类来界定类型参数，它规定类型的下界;</p>
+<p>子类通配符&lt;? extends T&gt;或&lt;? extends 具体类&gt;，由T或具体类的子类来界定类型参数，规定了类型的上界。通配符用在方法的泛型类参数或泛型类变量声明上。</p>
+<p>就如:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#f92672">&lt;?&gt;</span> fruits <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;</span>Fruit<span style="color:#f92672">&gt;();</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 假设定义好类Fruit及其子类Apple,下面的代码在某个类内部
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>List<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> Fruit<span style="color:#f92672">&gt;</span> fruit<span style="color:#f92672">,</span> Fruit newFruit<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    fruit<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>newFruit<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+
+Fruit <span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>List<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> Fruit<span style="color:#f92672">&gt;</span> fruit<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> i<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> fruit<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>i<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="泛型擦除">泛型擦除</h4>
+<p>在编译之后程序会采取去泛型化的措施。</p>
+<p>也就是说Java中的泛型，只在编译阶段有效。</p>
+<p>在编译过程中，正确检验泛型结果后，会将泛型的相关信息擦除，并且在对象进入和离开方法的边界处添加 类型检查和类型转换的方法。也就是说，泛型信息不会进入到运行时阶段</p>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>
