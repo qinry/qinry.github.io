@@ -94,7 +94,7 @@
 <li><a href="#%E4%B9%9D%E8%A1%A5%E5%85%85">九、补充</a>
 <ul>
 <li><a href="#91-arraylist%E5%92%8Cvector%E5%8C%BA%E5%88%AB">9.1 ArrayList和Vector区别</a></li>
-<li><a href="#92-hashmap-hashtable-concurrenthashmap%E7%9A%84%E5%8C%BA%E5%88%AB">9.2 HashMap、Hashtable、ConcurrentHashMap的区别</a></li>
+<li><a href="#92-hashmaphashtableconcurrenthashmap%E7%9A%84%E5%8C%BA%E5%88%AB">9.2 HashMap、Hashtable、ConcurrentHashMap的区别</a></li>
 <li><a href="#93-hashcode%E7%BA%A6%E6%9D%9F">9.3 hashCode约束</a></li>
 <li><a href="#94-treemaptreeset%E7%9A%84%E9%94%AE">9.4 TreeMap/TreeSet的键</a></li>
 </ul>
@@ -1428,12 +1428,42 @@ Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">shuff
 </tbody>
 </table>
 <h3 id="92-hashmaphashtableconcurrenthashmap的区别">9.2 HashMap、Hashtable、ConcurrentHashMap的区别</h3>
-<p>|区别|HashMap|Hashtable|ConcurrentHashMap|
-|:&mdash;:|:&mdash;:|:&mdash;:||:&mdash;:|
-|推出时间|JDK1.2之后|JDK1.0|JDK5.0|
-|性能|异步处理，性能高|同步处理，性能低|使用分段锁机制，性能较高，但不如HashMap|
-|线程安全|普通方法，线程不安全|同步方法，线程安全|使用分段锁机制，线程安全|
-|null|允许设置null|不允许设置null，否则出现空指针异常|不允许有null|</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">区别</th>
+<th style="text-align:center">HashMap</th>
+<th style="text-align:center">Hashtable</th>
+<th style="text-align:center">ConcurrentHashMap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">推出时间</td>
+<td style="text-align:center">JDK1.2之后</td>
+<td style="text-align:center">JDK1.0</td>
+<td style="text-align:center">JDK5.0</td>
+</tr>
+<tr>
+<td style="text-align:center">性能</td>
+<td style="text-align:center">异步处理，性能高</td>
+<td style="text-align:center">同步处理，性能低</td>
+<td style="text-align:center">使用分段锁机制，性能较高，但不如HashMap</td>
+</tr>
+<tr>
+<td style="text-align:center">线程安全</td>
+<td style="text-align:center">普通方法，线程不安全</td>
+<td style="text-align:center">同步方法，线程安全</td>
+<td style="text-align:center">使用分段锁机制，线程安全</td>
+</tr>
+<tr>
+<td style="text-align:center">null</td>
+<td style="text-align:center">允许设置null</td>
+<td style="text-align:center">不允许设置null，否则出现空指针异常</td>
+<td style="text-align:center">不允许有null</td>
+</tr>
+</tbody>
+</table>
 <h3 id="93-hashcode约束">9.3 hashCode约束</h3>
 <p>Object.hashCode方法实际调用的是System.identityHashCode方法得到通过对象内存地址计算的散列值。自定义类型要作为HashMap或HashSet的键时，equals与hashCode两个方法必须重写。</p>
 <p>java.lang.Object 中对 hashCode 的约定：</p>
