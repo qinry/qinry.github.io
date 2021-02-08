@@ -343,7 +343,7 @@ Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">sort</span
 System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">compare</span><span style="color:#f92672">(</span>a<span style="color:#f92672">,</span> b<span style="color:#f92672">));</span>
 </code></pre></div><p>输出：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">-</span>1
-</code></pre></div><p>System.arraycopy见下节的<a href="#63-System.arraycopy">6.3 System.arraycopy</a></p>
+</code></pre></div><p>System.arraycopy见下节的<a href="#63-systemarraycopy">6.3 System.arraycopy</a></p>
 <p>compare源码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">compare</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">==</span> b<span style="color:#f92672">)</span>
@@ -470,7 +470,7 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Fri Jan 22 05<span style="color:#f92672">:</span>50<span style="color:#f92672">:</span>30 CST 1999 <span style="color:#f92672">~</span> 916955430000
 </code></pre></div><h5 id="523-日期和时间的模式">5.2.3 日期和时间的模式</h5>
 <p>有些可以充当转义为日期和时间的特殊字符，如下：
-<img src="../../../../1.png" alt="picture"></p>
+<img src="../../../../images/tutorial/2021/01/java-common-class-library/1.png" alt="picture"></p>
 <h4 id="53-javautilcalendar">5.3 java.util.Calendar</h4>
 <p>Calendar是个抽象类，不能直接new获得，但提供了静态方法getInstance()获取Calendar的子类对象。提供了getTime方法获取Date对象。</p>
 <p>get方法用来获取日历中日期某一字段的信息，像年份、月份、当月几号等等，这些字段信息是储存在int数组fields中，为了方便检索日期某一字段的信息,Calendar内定义许多int常量，比如Calendar.YEAR，这些常量在设置日历，对日历做运算都有要使用，有了它们就不用记住哪个下标的元素代表哪个字段的信息，若是要获得年份可以get(Calendar.YEAR)，要获取其他信息只要使用定义好的常量就行。注意get方法得到月份的信息，是0到11，0表示1月，真正月份是得到信息再加1.</p>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.79.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JSON解析 &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="JSON在Java中的使用，将Java对象转换为JSON用于语言无关的数据交换在网络传输中帮助非常大" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/java.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/vim.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+  <body class="theme-base-0d ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io/">家</a></li>
+		<li><a href="https://qinry.github.io//categories">分类</a></li>
+        <li><a href="https://github.com/qinry"> Github </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright (c) 2021 槎城小子</p>
+	
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>JSON解析</h1>
+  <time datetime=2021-02-08T12:47:14&#43;0800 class="post-date">2021-02-08 12:47:14</time>
+  <h3 id="一json概述">一、JSON概述</h3>
+<p>JSON(JavaScriptObject Notation, JS 对象简谱) 是一种轻量级的数据交换格式。它基于 ECMAScript (欧洲计算机协会制定的js规范)的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。已经替代了过去使用的XML，作为流行的数据传输格式。</p>
+<h3 id="二语法">二、语法</h3>
+<p>实例：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;约翰克里斯托夫&#34;</span>,
+    <span style="color:#f92672">&#34;info&#34;</span>: <span style="color:#e6db74">&#34;德国批判主义音乐家的一生&#34;</span>,
+    <span style="color:#f92672">&#34;price&#34;</span>: <span style="color:#ae81ff">102</span>
+}
+</code></pre></div><p>一对<code>{}</code>表示一个对象，对象里面可以有很多属性，用键值对表示。键必须是用<code>&quot;&quot;</code>包围的字符串，值可以是字符串、对象、数字、布尔值（true/false）、null和数组。</p>
+<p>一对<code>[]</code>表示一个数组，里面可以包含任何类型，比如字符串、数字、对象、布尔值、null，还可以内嵌一个数组，它们之间用<code>,</code>分开就可以了，例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#ae81ff">1</span>, { <span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;zhangsan&#34;</span>, <span style="color:#f92672">&#34;age&#34;</span>:<span style="color:#ae81ff">18</span> }, [<span style="color:#ae81ff">3</span>, <span style="color:#66d9ef">true</span>, <span style="color:#66d9ef">null</span>, <span style="color:#ae81ff">3.14</span>]]
+</code></pre></div><p>特殊地，单独的数组、数字、字符串都是合法的。例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[<span style="color:#e6db74">&#34;佳得乐&#34;</span>, <span style="color:#e6db74">&#34;可乐&#34;</span>, <span style="color:#e6db74">&#34;尖叫&#34;</span>]
+<span style="color:#ae81ff">3.14</span>
+<span style="color:#ae81ff">3</span>
+<span style="color:#66d9ef">true</span>
+<span style="color:#e6db74">&#34;hello json&#34;</span>
+</code></pre></div><h3 id="三解析">三、解析</h3>
+<p>Java由于官方没有提供解析JSON的类库，但有两个知名的第三方库，Gson和Fastjson。Gson 是 Google 提供的用来在 Java 对象和 JSON 数据之间进行映射的 Java 类库。Fastjson 是一个性能很好的 Java 语言实现的 JSON 解析器和生成器，来自阿里巴巴的工程师开发。</p>
+<h4 id="gson的使用">Gson的使用</h4>
+<ol>
+<li>根据Gson的github地址https://github.com/google/gson/，下载jar包并导入到自己的项目中。</li>
+</ol>
+<p><img src="../../../../images/tutorial/2021/02/java-json-parse/1.png" alt="picture"></p>
+<p>点击Gson jar downloads进入下一个页面</p>
+<p><img src="../../../../images/tutorial/2021/02/java-json-parse/2.png" alt="picture"></p>
+<p>点击Downloads&gt;jar下载。</p>
+<ol start="2">
+<li>导入IDEA</li>
+</ol>
+<p>在项目的根目录添加新文件夹<code>lib</code>，把包添加到这里。如下一系列图所示：</p>
+<p><img src="../../../../images/tutorial/2021/02/java-json-parse/3.png" alt="picture"></p>
+<p><img src="../../../../images/tutorial/2021/02/java-json-parse/4.png" alt="picture"></p>
+<p><img src="../../../../images/tutorial/2021/02/java-json-parse/5.png" alt="picture"></p>
+<p><img src="../../../../images/tutorial/2021/02/java-json-parse/6.png" alt="picture"></p>
+<p>如果模块有你导入的模块，可以忽略这一步，没有如下进行：</p>
+<p><img src="../../../../images/tutorial/2021/02/java-json-parse/7.png" alt="picture"></p>
+<p><img src="../../../../images/tutorial/2021/02/java-json-parse/8.png" alt="picture"></p>
+<p><img src="../../../../images/tutorial/2021/02/java-json-parse/9.png" alt="picture"></p>
+<ol start="3">
+<li>使用Gson</li>
+</ol>
+<p>gson有两个常用的方法，解析json的fromJson方法，生成json的toJson方法。</p>
+<p>用法示例：</p>
+<p>定义JSON解析和生成会用到的类型：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.Objects<span style="color:#f92672">;</span>
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> * @Author: lixiaoqin
+</span><span style="color:#75715e"> * @Description:
+</span><span style="color:#75715e"> * @Date Created in 2021-02 23:56
+</span><span style="color:#75715e"> * @Modified By:
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Book</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String id<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> String name<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> String info<span style="color:#f92672">;</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">toString</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Book{&#34;</span> <span style="color:#f92672">+</span>
+                <span style="color:#e6db74">&#34;id=&#39;&#34;</span> <span style="color:#f92672">+</span> id <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;\&#39;&#39;</span> <span style="color:#f92672">+</span>
+                <span style="color:#e6db74">&#34;, name=&#39;&#34;</span> <span style="color:#f92672">+</span> name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;\&#39;&#39;</span> <span style="color:#f92672">+</span>
+                <span style="color:#e6db74">&#34;, info=&#39;&#34;</span> <span style="color:#f92672">+</span> info <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;\&#39;&#39;</span> <span style="color:#f92672">+</span>
+                <span style="color:#e6db74">&#39;}&#39;</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Book</span><span style="color:#f92672">(</span>String id<span style="color:#f92672">,</span> String name<span style="color:#f92672">,</span> String info<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> id<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">info</span> <span style="color:#f92672">=</span> info<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Book</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getId</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> id<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setId</span><span style="color:#f92672">(</span>String id<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> id<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getName</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> name<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setName</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getInfo</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> info<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setInfo</span><span style="color:#f92672">(</span>String info<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">info</span> <span style="color:#f92672">=</span> info<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>Object o<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span> <span style="color:#f92672">==</span> o<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>o <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> getClass<span style="color:#f92672">()</span> <span style="color:#f92672">!=</span> o<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">())</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+        Book book <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Book<span style="color:#f92672">)</span> o<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">return</span> id<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>book<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span>
+                name<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>book<span style="color:#f92672">.</span><span style="color:#a6e22e">name</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span>
+                info<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>book<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> Objects<span style="color:#f92672">.</span><span style="color:#a6e22e">hash</span><span style="color:#f92672">(</span>id<span style="color:#f92672">,</span> name<span style="color:#f92672">,</span> info<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><hr>
+<p>解析json，生成对象</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> com.google.gson.Gson<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.util.HashMap<span style="color:#f92672">;</span>
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> * @Author: lixiaoqin
+</span><span style="color:#75715e"> * @Description:
+</span><span style="color:#75715e"> * @Date Created in 2021-02 23:54
+</span><span style="color:#75715e"> * @Modified By:
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResolveJSONByGson</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        Gson g <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Gson<span style="color:#f92672">();</span>
+        <span style="color:#75715e">// {&#34;id&#34;:&#34;1001&#34;,&#34;info&#34;:&#34;德国批判主义音乐家的一生&#34;,&#34;name&#34;:&#34;约翰克里斯托弗&#34;}
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// {&#34;drink&#34;: [&#34;佳得乐&#34;, &#34;可乐&#34;, &#34;尖叫&#34;]}
+</span><span style="color:#75715e"></span>        Book book <span style="color:#f92672">=</span> g<span style="color:#f92672">.</span><span style="color:#a6e22e">fromJson</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{\&#34;id\&#34;:\&#34;1001\&#34;,\&#34;info\&#34;:\&#34;德国批判主义音乐家的一生\&#34;,\&#34;name\&#34;:\&#34;约翰克里斯托弗\&#34;}&#34;</span><span style="color:#f92672">,</span> Book<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>book<span style="color:#f92672">.</span><span style="color:#a6e22e">getId</span><span style="color:#f92672">());</span>
+
+        HashMap hashMap <span style="color:#f92672">=</span> g<span style="color:#f92672">.</span><span style="color:#a6e22e">fromJson</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{\&#34;drink\&#34;: [\&#34;佳得乐\&#34;, \&#34;可乐\&#34;, \&#34;尖叫\&#34;]}&#34;</span><span style="color:#f92672">,</span> HashMap<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>hashMap<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;drink&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">());</span>
+
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">1001
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">java</span><span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ArrayList</span>
+</code></pre></div><p>生成json</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> com.google.gson.Gson<span style="color:#f92672">;</span>
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> * @Author: lixiaoqin
+</span><span style="color:#75715e"> * @Description:
+</span><span style="color:#75715e"> * @Date Created in 2021-02 23:52
+</span><span style="color:#75715e"> * @Modified By:
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreateSJONByGson</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        Book book <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Book<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;1001&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;约翰克里斯托弗&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;德国批判主义音乐家的一生&#34;</span><span style="color:#f92672">);</span>
+        Gson g <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Gson<span style="color:#f92672">();</span>
+        String json <span style="color:#f92672">=</span> g<span style="color:#f92672">.</span><span style="color:#a6e22e">toJson</span><span style="color:#f92672">(</span>book<span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>json<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;1001&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;约翰克里斯托弗&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;info&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;德国批判主义音乐家的一生&#34;</span><span style="color:#f92672">}</span>
+</code></pre></div><hr>
+<h4 id="fastjson的使用">Fastjson的使用</h4>
+<p>Fastjson的用法与Gson类似，下载和导包如上所述，这里就不过多赘述。</p>
+<p>解析json</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> com.alibaba.fastjson.JSON<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.util.List<span style="color:#f92672">;</span>
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> * @Author: lixiaoqin
+</span><span style="color:#75715e"> * @Description:
+</span><span style="color:#75715e"> * @Date Created in 2021-02 23:54
+</span><span style="color:#75715e"> * @Modified By:
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResolveJSONByFastJson</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// {&#34;id&#34;:&#34;1001&#34;,&#34;info&#34;:&#34;德国批判主义音乐家的一生&#34;,&#34;name&#34;:&#34;约翰克里斯托弗&#34;}
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// {&#34;drink&#34;: [&#34;佳得乐&#34;, &#34;可乐&#34;, &#34;尖叫&#34;]}
+</span><span style="color:#75715e"></span>
+        Book book <span style="color:#f92672">=</span> JSON<span style="color:#f92672">.</span><span style="color:#a6e22e">parseObject</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{\&#34;id\&#34;:\&#34;1001\&#34;,\&#34;info\&#34;:\&#34;德国批判主义音乐家的一生\&#34;,\&#34;name\&#34;:\&#34;约翰克里斯托弗\&#34;}&#34;</span><span style="color:#f92672">,</span> Book<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>book<span style="color:#f92672">.</span><span style="color:#a6e22e">getId</span><span style="color:#f92672">());</span>
+
+        List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> strings <span style="color:#f92672">=</span> JSON<span style="color:#f92672">.</span><span style="color:#a6e22e">parseArray</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;[\&#34;佳得乐\&#34;, \&#34;可乐\&#34;, \&#34;尖叫\&#34;]&#34;</span><span style="color:#f92672">,</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>strings<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">1001
+<span style="color:#f92672">[</span>佳得乐<span style="color:#f92672">,</span> 可乐<span style="color:#f92672">,</span> 尖叫<span style="color:#f92672">]</span>
+</code></pre></div><p>Gson和Fastjson一样解析json数组生成的是java的ArrayList对象。</p>
+<p>生成json</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> com.alibaba.fastjson.JSON<span style="color:#f92672">;</span>
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> * @Author: lixiaoqin
+</span><span style="color:#75715e"> * @Description:
+</span><span style="color:#75715e"> * @Date Created in 2021-02 23:53
+</span><span style="color:#75715e"> * @Modified By:
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreateJSONByFastJson</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        Book book <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Book<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;1001&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;约翰克里斯托弗&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;德国批判主义音乐家的一生&#34;</span><span style="color:#f92672">);</span>
+        String json <span style="color:#f92672">=</span> JSON<span style="color:#f92672">.</span><span style="color:#a6e22e">toJSONString</span><span style="color:#f92672">(</span>book<span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>json<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;1001&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;info&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;德国批判主义音乐家的一生&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;约翰克里斯托弗&#34;</span><span style="color:#f92672">}</span>
+</code></pre></div>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>
