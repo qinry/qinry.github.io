@@ -4,31 +4,51 @@
   
   <url>
     <loc>https://softhunter.gitee.io/categories/</loc>
-    <lastmod>2021-03-01T19:43:53+08:00</lastmod>
+    <lastmod>2021-04-02T19:44:50+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://softhunter.gitee.io/posts/2021/03/transaction/</loc>
-    <lastmod>2021-03-01T19:43:53+08:00</lastmod>
+    <loc>https://softhunter.gitee.io/tags/java/</loc>
+    <lastmod>2021-04-02T19:44:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://softhunter.gitee.io/categories/java/</loc>
+    <lastmod>2021-04-02T19:44:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://softhunter.gitee.io/posts/2021/04/java-jdbc/</loc>
+    <lastmod>2021-04-02T19:44:50+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://softhunter.gitee.io/posts/</loc>
-    <lastmod>2021-03-01T19:43:53+08:00</lastmod>
+    <lastmod>2021-04-02T19:44:50+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://softhunter.gitee.io/tags/</loc>
-    <lastmod>2021-03-01T19:43:53+08:00</lastmod>
+    <lastmod>2021-04-02T19:44:50+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://softhunter.gitee.io/tags/%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2021-03-01T19:43:53+08:00</lastmod>
+    <loc>https://softhunter.gitee.io/</loc>
+    <lastmod>2021-04-02T19:44:50+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://softhunter.gitee.io/categories/%E5%BC%80%E5%8F%91/</loc>
+    <loc>https://softhunter.gitee.io/tags/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2021-04-02T19:44:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://softhunter.gitee.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2021-04-02T19:44:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://softhunter.gitee.io/posts/2021/03/transaction/</loc>
     <lastmod>2021-03-01T19:43:53+08:00</lastmod>
   </url>
   
@@ -43,52 +63,12 @@
   </url>
   
   <url>
-    <loc>https://softhunter.gitee.io/</loc>
-    <lastmod>2021-03-01T19:43:53+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://softhunter.gitee.io/tags/java/</loc>
+    <loc>https://softhunter.gitee.io/posts/2021/02/java-json-parse/</loc>
     <lastmod>2021-02-08T12:47:14+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://softhunter.gitee.io/categories/java/</loc>
-    <lastmod>2021-02-08T12:47:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://softhunter.gitee.io/tutorial/2021/02/java-json-parse/</loc>
-    <lastmod>2021-02-08T12:47:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://softhunter.gitee.io/tutorial/</loc>
-    <lastmod>2021-02-08T12:47:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://softhunter.gitee.io/tags/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2021-02-08T12:47:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://softhunter.gitee.io/categories/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2021-02-08T12:47:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://softhunter.gitee.io/tags/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2021-02-08T12:47:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://softhunter.gitee.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2021-02-08T12:47:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://softhunter.gitee.io/tutorial/2021/02/java-concurrent/</loc>
+    <loc>https://softhunter.gitee.io/posts/2021/02/java-concurrent/</loc>
     <lastmod>2021-02-05T22:00:32+08:00</lastmod>
   </url>
   
@@ -103,37 +83,37 @@
   </url>
   
   <url>
-    <loc>https://softhunter.gitee.io/tutorial/2021/01/algorithm-list/</loc>
+    <loc>https://softhunter.gitee.io/posts/2021/01/algorithm-list/</loc>
     <lastmod>2021-01-31T22:14:45+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://softhunter.gitee.io/tutorial/2021/01/java-collection/</loc>
+    <loc>https://softhunter.gitee.io/posts/2021/01/java-collection/</loc>
     <lastmod>2021-01-31T22:14:16+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://softhunter.gitee.io/tutorial/2021/01/java-generics/</loc>
+    <loc>https://softhunter.gitee.io/posts/2021/01/java-generics/</loc>
     <lastmod>2021-01-31T17:09:15+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://softhunter.gitee.io/tutorial/2021/01/java-common-class-library/</loc>
+    <loc>https://softhunter.gitee.io/posts/2021/01/java-common-class-library/</loc>
     <lastmod>2021-01-31T17:08:58+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://softhunter.gitee.io/tutorial/2021/01/java-oriented-object/</loc>
+    <loc>https://softhunter.gitee.io/posts/2021/01/java-oriented-object/</loc>
     <lastmod>2021-01-21T14:27:16+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://softhunter.gitee.io/tutorial/2021/01/java-basic-grammar/</loc>
+    <loc>https://softhunter.gitee.io/posts/2021/01/java-basic-grammar/</loc>
     <lastmod>2021-01-21T14:26:51+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://softhunter.gitee.io/tutorial/2021/01/java-setup-development-environment/</loc>
+    <loc>https://softhunter.gitee.io/posts/2021/01/java-setup-development-environment/</loc>
     <lastmod>2021-01-16T19:11:45+08:00</lastmod>
   </url>
   
@@ -148,7 +128,7 @@
   </url>
   
   <url>
-    <loc>https://softhunter.gitee.io/tutorial/2020/11/singleton/</loc>
+    <loc>https://softhunter.gitee.io/posts/2020/11/singleton/</loc>
     <lastmod>2020-11-16T08:08:26+08:00</lastmod>
   </url>
   
@@ -178,7 +158,7 @@
   </url>
   
   <url>
-    <loc>https://softhunter.gitee.io/tutorial/2019/10/git-simple-usage/</loc>
+    <loc>https://softhunter.gitee.io/posts/2019/10/git-simple-usage/</loc>
     <lastmod>2019-10-20T08:50:01+08:00</lastmod>
   </url>
   

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.79.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JDBC的使用 &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="使用JDBC连接MySQL数据库，创建SQL以及执行，批处理还有开启事务，入门c3p0和druid连接池" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://softhunter.gitee.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://softhunter.gitee.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://softhunter.gitee.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://softhunter.gitee.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/django.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/vim.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/gradle.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
+...
+
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+  <body class="theme-base-0d ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://softhunter.gitee.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://softhunter.gitee.io/">家</a></li>
+		<li><a href="https://softhunter.gitee.io//categories">分类</a></li>
+        <li><a href="https://github.com/qinry"> Github </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright (c) 2021 槎城小子</p>
+	
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>JDBC的使用</h1>
+  <time datetime=2021-04-02T19:44:50&#43;0800 class="post-date">2021-04-02 19:44:50</time>
+  <h2 id="jdbc的使用">JDBC的使用</h2>
+<h3 id="什么是jdbc">什么是JDBC</h3>
+<p>JDBC是执行SQL的java API，为关系型数据库提供访问。JDBC可以在更大平台使用像Windows、Mac、Unix等等</p>
+<p>JDBC体系由JDBC驱动和JDBC API构成。通过驱动管理器可以连接不同结构的数据库管理系统。</p>
+<h3 id="jdbc可以做什么">JDBC可以做什么</h3>
+<ol>
+<li>创建数据库连接</li>
+<li>创建SQL语句</li>
+<li>执行SQL查询</li>
+<li>查看或修改记录</li>
+</ol>
+<h3 id="jdbc的核心组件">JDBC的核心组件</h3>
+<ol>
+<li>DriverManager:通过适合的通讯子协议，Java应用程序和相应数据库驱动程序匹配连接</li>
+<li>Driver:处理与数据库服务器的连接，客户端程序很少使用</li>
+<li>Connection:通讯的上下文，可以获取连接信息，可以设置MySQL非自动提交开启事务</li>
+<li>Statement:将SQL语句提交到数据库</li>
+<li>ResultSet:执行查询语句得到的结果集，通过它可以检索数据</li>
+<li>SQLException:处理数据相关的异常</li>
+</ol>
+<h4 id="jdbc基本使用">JDBC基本使用</h4>
+<p>使用前需要，导包</p>
+<ol>
+<li>注册JDBC驱动</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Class<span style="color:#f92672">.</span><span style="color:#a6e22e">forName</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;com.mysql.jdbc.cj.Driver&#34;</span><span style="color:#f92672">);</span>
+</code></pre></div><p>这里举了MySQL驱动程序，其他的可以网上搜索</p>
+<ol start="2">
+<li>数据库配置</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;jdbc:mysql://localhost:3306/demodb?ServerTimezone=UTC&#34;</span><span style="color:#f92672">;</span>
+String username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mysql&#34;</span><span style="color:#f92672">;</span>
+String password <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#34;password&#34;</span><span style="color:#f92672">;</span>
+</code></pre></div><p>假定mysql服务器监听3306端口，数据库为demodb，服务器时区为UTC。用户名为username，密码为password。</p>
+<ol start="3">
+<li>打开连接</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Connection conn <span style="color:#f92672">=</span> DriverManager<span style="color:#f92672">.</span><span style="color:#a6e22e">getConnection</span><span style="color:#f92672">(</span>url<span style="color:#f92672">,</span> username<span style="color:#f92672">,</span> password<span style="color:#f92672">);</span>
+</code></pre></div><p>打开连接用到上面的三个配置信息</p>
+<ol start="4">
+<li>创建语句通道</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Statement stmt <span style="color:#f92672">=</span> conn<span style="color:#f92672">.</span><span style="color:#a6e22e">createStatement</span><span style="color:#f92672">();</span>
+</code></pre></div><ol start="5">
+<li>执行语句</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select id,name from user&#34;</span><span style="color:#f92672">;</span>
+
+ResultSet rs <span style="color:#f92672">=</span> stmt<span style="color:#f92672">.</span><span style="color:#a6e22e">executeQuery</span><span style="color:#f92672">(</span>sql<span style="color:#f92672">);</span>
+<span style="color:#75715e">// 或
+</span><span style="color:#75715e">// String name = &#34;xiaoming&#34;;
+</span><span style="color:#75715e">// String sql2 = &#34;insert into user(name) values(&#34; + name + &#34;)&#34;;
+</span><span style="color:#75715e">// int count = stmt.executeUpdate(sql2);
+</span></code></pre></div><p>select语句使用executeQuery，update、insert、delete语句使用executeUpdate</p>
+<ol start="6">
+<li>得到结果</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>rs<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">int</span> id <span style="color:#f92672">=</span> rs<span style="color:#f92672">.</span><span style="color:#a6e22e">getInt</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">);</span>
+    String name <span style="color:#f92672">=</span> rs<span style="color:#f92672">.</span><span style="color:#a6e22e">getString</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">);</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>id <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; - &#34;</span> <span style="color:#f92672">+</span> name<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+<span style="color:#75715e">// 或
+</span><span style="color:#75715e">// System.out.println(&#34;改变的行数：&#34;+count);
+</span></code></pre></div><p>select语句得到使ResultSet的结果，其他语句得到是int类型表示，影响数据库的行数</p>
+<ol start="7">
+<li>关闭连接</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>SQLException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+    conn<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="使用与状态通道避免sql注入">使用与状态通道避免SQL注入</h4>
+<p>PreparedStatement是Statement的子类，支持参数化查询，来防止SQL注入攻击。PreparedStatement还可以预编译SQL语句，使执行SQL的效率更高点</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> id <span style="color:#f92672">=</span> 2<span style="color:#f92672">;</span>
+String sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select id, name from user where id=?&#34;</span><span style="color:#f92672">;</span>
+PreparedStatement pstmt <span style="color:#f92672">=</span> conn<span style="color:#f92672">.</span><span style="color:#a6e22e">prepareStatement</span><span style="color:#f92672">(</span>sql<span style="color:#f92672">);</span>
+pstmt<span style="color:#f92672">.</span><span style="color:#a6e22e">setInt</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> id<span style="color:#f92672">);</span>
+rs <span style="color:#f92672">=</span> pstmt<span style="color:#f92672">.</span><span style="color:#a6e22e">executeQuery</span><span style="color:#f92672">();</span>
+</code></pre></div><h4 id="jdbc的事务">JDBC的事务</h4>
+<p>事务常常见于转账</p>
+<ol>
+<li>开启事务</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">conn<span style="color:#f92672">.</span><span style="color:#a6e22e">setAutoCommit</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+</code></pre></div><p>关闭自动提交</p>
+<ol start="2">
+<li>回滚</li>
+</ol>
+<p>遇到异常需要回滚</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">conn<span style="color:#f92672">.</span><span style="color:#a6e22e">rollback</span><span style="color:#f92672">();</span>
+<span style="color:#75715e">// 或 设置安全点
+</span><span style="color:#75715e">// Savepoint s1 = conn.setSavepoint(&#34;s1&#34;);
+</span><span style="color:#75715e">// ...
+</span><span style="color:#75715e">// 归滚到安全点
+</span><span style="color:#75715e">// conn.rollback(s1);
+</span></code></pre></div><ol start="3">
+<li>提交</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">conn<span style="color:#f92672">.</span><span style="color:#a6e22e">commit</span><span style="color:#f92672">();</span>
+</code></pre></div><h4 id="jdbc批处理">JDBC批处理</h4>
+<p>一次请求，执行多条语句，使用批处理效率更高</p>
+<ol>
+<li>Statement的批处理</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Statement stmt <span style="color:#f92672">=</span> conn<span style="color:#f92672">.</span><span style="color:#a6e22e">createStatement</span><span style="color:#f92672">(</span>sql<span style="color:#f92672">);</span>
+conn<span style="color:#f92672">.</span><span style="color:#a6e22e">setAutoCommit</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+
+stmt<span style="color:#f92672">.</span><span style="color:#a6e22e">addBatch</span><span style="color:#f92672">(</span>INSERT_SQL<span style="color:#f92672">);</span>
+
+stmt<span style="color:#f92672">.</span><span style="color:#a6e22e">addBatch</span><span style="color:#f92672">(</span>INSERT_SQL_2<span style="color:#f92672">);</span>
+
+<span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> count <span style="color:#f92672">=</span> stmt<span style="color:#f92672">.</span><span style="color:#a6e22e">executeBatch</span><span style="color:#f92672">();</span>
+
+conn<span style="color:#f92672">.</span><span style="color:#a6e22e">commit</span><span style="color:#f92672">();</span>
+
+</code></pre></div><ol start="2">
+<li>PreparedStatement的批处理</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">conn<span style="color:#f92672">.</span><span style="color:#a6e22e">setAutoCommit</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+String sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;insert into user(name) values(?)&#34;</span><span style="color:#f92672">;</span>
+PreparedStatement pstmt <span style="color:#f92672">=</span> conn<span style="color:#f92672">.</span><span style="color:#a6e22e">prepareStatement</span><span style="color:#f92672">(</span>sql<span style="color:#f92672">);</span>
+
+pstmt<span style="color:#f92672">.</span><span style="color:#a6e22e">setString</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;xiaohong&#34;</span><span style="color:#f92672">);</span>
+pstmt<span style="color:#f92672">.</span><span style="color:#a6e22e">addBatch</span><span style="color:#f92672">();</span>
+
+pstmt<span style="color:#f92672">.</span><span style="color:#a6e22e">setString</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;xiaolei&#34;</span><span style="color:#f92672">);</span>
+pstmt<span style="color:#f92672">.</span><span style="color:#a6e22e">addBatch</span><span style="color:#f92672">();</span>
+
+conn<span style="color:#f92672">.</span><span style="color:#a6e22e">commit</span><span style="color:#f92672">();</span>
+</code></pre></div><h3 id="数据库连接池">数据库连接池</h3>
+<p>连接池：系统初始化，将连接作为对象存储在内存中，当有用户需要连接数据库时，第一时间不是创建连接，而是查看连接池是否由空闲的连接，如果有直接使用。使用连接完毕，不是马上关闭资源，而是暂时放回连接池，以便下一次请求使用。</p>
+<p>连接池几个重要的参数：</p>
+<ol>
+<li>初始连接数:连接池启动时的连接数</li>
+<li>最小连接数:不管释放空闲连接，数据库至少保持的连接数</li>
+<li>最大连接数:大于它的连接排队等待</li>
+<li>最大等待时间:池中没有可用连接时，连接池等待连接回归的最大时间</li>
+</ol>
+<p>有三个常用的连接池</p>
+<ol>
+<li>c3p0</li>
+<li>druid</li>
+<li>HikariCP</li>
+</ol>
+<h4 id="c3p0">c3p0</h4>
+<p>首先，导入数据库驱动相关的jar包和c3p0的jar包.
+例如：
+mysql-connector-java-5.0.8.jar
+c3p0-0.9.1.2.jar</p>
+<p>c3p0要使用一个默认的配置文件c3p0-config.xml:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+<span style="color:#f92672">&lt;c3p0-config&gt;</span>
+    <span style="color:#75715e">&lt;!-- 默认配置，如果没有指定则使用这个配置 --&gt;</span>
+    <span style="color:#f92672">&lt;default-config&gt;</span> <span style="color:#75715e">&lt;!-- 基本配置 --&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;driverClass&#34;</span><span style="color:#f92672">&gt;</span>com.mysql.jdbc.Driver<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;jdbcUrl&#34;</span><span style="color:#f92672">&gt;</span>jdbc:mysql://localhost:3306/lxq?serverTimezone=UTC<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;user&#34;</span><span style="color:#f92672">&gt;</span>root<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;password&#34;</span><span style="color:#f92672">&gt;</span>password<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#75715e">&lt;!--扩展配置--&gt;</span> <span style="color:#75715e">&lt;!-- 连接超过30秒报错--&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;checkoutTimeout&#34;</span><span style="color:#f92672">&gt;</span>30000<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#75715e">&lt;!--30秒检查空闲连接 --&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;idleConnectionTestPeriod&#34;</span><span style="color:#f92672">&gt;</span>30<span style="color:#f92672">&lt;/property&gt;</span> <span style="color:#75715e">&lt;!-- 30秒不使用丢弃--&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;initialPoolSize&#34;</span><span style="color:#f92672">&gt;</span>10<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;maxIdleTime&#34;</span><span style="color:#f92672">&gt;</span>30<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;maxPoolSize&#34;</span><span style="color:#f92672">&gt;</span>100<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;minPoolSize&#34;</span><span style="color:#f92672">&gt;</span>10<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;maxStatements&#34;</span><span style="color:#f92672">&gt;</span>200<span style="color:#f92672">&lt;/property&gt;</span>
+    <span style="color:#f92672">&lt;/default-config&gt;</span>
+    <span style="color:#75715e">&lt;!-- 命名的配置 --&gt;</span>
+    <span style="color:#f92672">&lt;named-config</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;abc&#34;</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;driverClass&#34;</span><span style="color:#f92672">&gt;</span>com.mysql.jdbc.Driver<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;jdbcUrl&#34;</span><span style="color:#f92672">&gt;</span>jdbc:mysql://localhost:3306/lxq?serverTimezone=UTC<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;user&#34;</span><span style="color:#f92672">&gt;</span>root<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;password&#34;</span><span style="color:#f92672">&gt;</span>111<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#75715e">&lt;!-- 如果池中数据连接不够时一次增长多少个 --&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;acquireIncrement&#34;</span><span style="color:#f92672">&gt;</span>5<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;initialPoolSize&#34;</span><span style="color:#f92672">&gt;</span>20<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;minPoolSize&#34;</span><span style="color:#f92672">&gt;</span>10<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;maxPoolSize&#34;</span><span style="color:#f92672">&gt;</span>40<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;maxStatements&#34;</span><span style="color:#f92672">&gt;</span>20<span style="color:#f92672">&lt;/property&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;maxStatementsPerConnection&#34;</span><span style="color:#f92672">&gt;</span>5<span style="color:#f92672">&lt;/property&gt;</span>
+    <span style="color:#f92672">&lt;/named-config&gt;</span>
+<span style="color:#f92672">&lt;/c3p0-config&gt;</span>
+</code></pre></div><p>加载配置文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 加载c3p0-config.xml中的default-config
+</span><span style="color:#75715e"></span>ComboPooledDataSource dataSource <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ComboPooledDataSource<span style="color:#f92672">();</span>
+<span style="color:#75715e">// 加载c3p0-config.xml中的named-config
+</span><span style="color:#75715e">// ComboPooledDataSource dataSource = new ComboPooledDataSource(&#34;abc&#34;);
+</span><span style="color:#75715e"></span>
+</code></pre></div><p>从数据源中获取连接</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Connection conn <span style="color:#f92672">=</span> dataSource<span style="color:#f92672">.</span><span style="color:#a6e22e">getConnection</span><span style="color:#f92672">();</span>
+</code></pre></div><p>其他与JDBC操作无差别</p>
+<h4 id="druid">druid</h4>
+<p>首先，同样导入数据库驱动相关的jar包和druid的jar包.
+例如：
+mysql-connector-java-5.0.8.jar
+druid-1.0.9.jar</p>
+<p>需要数据库配置相关的properties后缀的文件，比如db.properties</p>
+<pre><code># 驱动类名
+driverClassName = com.mysql.cj.jdbc.Driver
+# 数据库URL
+url = jdbc:mysql://localhost:3306/lxq?serverTimezone=UTC
+# 数据库用户名
+username = root
+# 数据用户密码
+password = password
+# 初始连接数
+initialSize=5
+# 最大活跃连接数
+maxActive = 10
+# 最小空闲连接数
+minIdle = 5
+# 最大等待连接时间，单位毫秒
+maxWait = 3000
+# 是否测试空闲连接
+testWhileIdle = false
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">InputStream in <span style="color:#f92672">=</span> JDBCUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getClassLoader</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getResourceAsStream</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;db.properties&#34;</span><span style="color:#f92672">);</span>
+Properties properties <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Properties<span style="color:#f92672">();</span>
+properties<span style="color:#f92672">.</span><span style="color:#a6e22e">load</span><span style="color:#f92672">(</span>in<span style="color:#f92672">);</span>
+DruidDataSource dataSource <span style="color:#f92672">=</span> DruidDataSourceFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">createDataSource</span><span style="color:#f92672">(</span>properties<span style="color:#f92672">);</span>
+
+</code></pre></div>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

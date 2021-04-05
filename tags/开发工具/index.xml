@@ -8,10 +8,10 @@
     <lastBuildDate>Sun, 20 Oct 2019 08:50:01 +0800</lastBuildDate><atom:link href="https://softhunter.gitee.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>git入门使用</title>
-      <link>https://softhunter.gitee.io/tutorial/2019/10/git-simple-usage/</link>
+      <link>https://softhunter.gitee.io/posts/2019/10/git-simple-usage/</link>
       <pubDate>Sun, 20 Oct 2019 08:50:01 +0800</pubDate>
       
-      <guid>https://softhunter.gitee.io/tutorial/2019/10/git-simple-usage/</guid>
+      <guid>https://softhunter.gitee.io/posts/2019/10/git-simple-usage/</guid>
       <description>配置Git 提供Git用户名和邮箱 $ git config --global user.name &amp;quot;username&amp;quot; $ git config --global user.email &amp;quot;usernaem@example.com&amp;quot; 忽略文件 创建文件 .gitignore ，让Git忽略某目录中的所有文件(不跟踪这些文件)，使用它可以避免</description>
     </item>
     
