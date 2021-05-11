@@ -3,13 +3,13 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>简简单单知道递归 &middot; 欢迎来到槎城小子的博客！</title>
-  <meta name="description" content="" />
+  <meta name="description" content="简简单单知道递归" />
 
   
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
@@ -20,22 +20,11 @@
 
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="../../../../favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/django.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/vim.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/gradle.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
-...
-
-<script>hljs.initHighlightingOnLoad();</script>
+  
 </head>
 
   <body class="theme-base-0d ">
@@ -50,21 +39,19 @@
 
     <nav>
       <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io/">家</a></li>
-		<li><a href="https://qinry.github.io//categories">分类</a></li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/categories"> 分类 </a></li>
       </ul>
     </nav>
 
-    <p>Copyright (c) 2021 槎城小子</p>
-	
+    <p>Copyright © 2021 槎城小子</p>
   </div>
 </aside>
 
     <main class="content container">
     <div class="post">
   <h1>简简单单知道递归</h1>
-  <time datetime=2020-04-27T20:21:23&#43;0800 class="post-date">2020-04-27 20:21:23</time>
+  <time datetime=2020-04-27T20:21:23&#43;0800 class="post-date">Mon, Apr 27, 2020</time>
   <h3 id="递归的含义">递归的含义</h3>
 <p>递归就是函数或方法通过调用自己本身来达到解决问题的目的，这种解法形式叫递归。用欧几里得算法的Java描述说明问题：</p>
 <p>任意一对非负整数p，q(p &gt; q),设r是p与q相除的余数。p，q的最大公约数等于q，p的最大公约数。</p>
@@ -83,7 +70,7 @@
 </li>
 </ul>
 <h3 id="误区迭代一定比递归的效率高">误区——迭代一定比递归的效率高</h3>
-<p>当递归使用的是尾递归很多时候其实等同于迭代，效率不亚于普通迭代(不考虑函数的开销，递归的代码比迭代更加简洁，直面问题核心)。如果使用使用双递归、三递归等等，解法之间存在交集，导致重复作业，才会使算法极度低效，这是不当的用法。</p>
+<p>当递归使用的是尾递归本质其是就是迭代，效率不亚于普通迭代(不考虑函数的开销，递归比迭代更好)。如果使用使用双递归、三递归等等，才会算法极度低效，这是用之不当所致</p>
 <h3 id="如何使用递归">如何使用递归</h3>
 <p>使用数学归纳法诠释重要三点：</p>
 <ol>
@@ -143,10 +130,6 @@
 p和q往p能被q整除的情况收敛，它们的最大公约数一直等于原始p, q的最大公约数。</p>
 <p>(3).最后p能被q整除,再令p = q，q = r = 0，p值的为上一次转换的除数，q为余数。
 故最终p的值等于原始p, q的最大公约数。</p>
-<h3 id="参考">参考</h3>
-<ul>
-<li>算法第四版 人民邮电出版社 Robert Sedgewick/Kevin Wayne</li>
-</ul>
 
 </div>
 

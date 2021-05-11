@@ -3,7 +3,7 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,22 +20,11 @@
 
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="../../../../favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/django.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/vim.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/gradle.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
-...
-
-<script>hljs.initHighlightingOnLoad();</script>
+  
 </head>
 
   <body class="theme-base-0d ">
@@ -50,24 +39,23 @@
 
     <nav>
       <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io/">家</a></li>
-		<li><a href="https://qinry.github.io//categories">分类</a></li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/categories"> 分类 </a></li>
       </ul>
     </nav>
 
-    <p>Copyright (c) 2021 槎城小子</p>
-	
+    <p>Copyright © 2021 槎城小子</p>
   </div>
 </aside>
 
     <main class="content container">
     <div class="post">
   <h1>集合框架</h1>
-  <time datetime=2021-01-31T22:14:16&#43;0800 class="post-date">2021-01-31 22:14:16</time>
+  <time datetime=2021-01-31T22:14:16&#43;0800 class="post-date">Sun, Jan 31, 2021</time>
   <p>文章目录</p>
 <ul>
-<li><a href="#%E4%B8%80%E9%9B%86%E5%90%88">一、集合</a>
+<li>
+<p><a href="#%E4%B8%80%E9%9B%86%E5%90%88">一、集合</a></p>
 <ul>
 <li><a href="#11-collection%E6%8E%A5%E5%8F%A3">1.1 Collection接口</a></li>
 <li><a href="#12-%E8%BF%AD%E4%BB%A3%E5%99%A8">1.2 迭代器</a></li>
@@ -77,24 +65,37 @@
 <li><a href="#16-%E9%98%9F%E5%88%97%E4%B8%8E%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97">1.6 队列与双端队列</a></li>
 </ul>
 </li>
-<li><a href="#%E4%BA%8C%E6%98%A0%E5%B0%84">二、 映射</a>
+<li>
+<p><a href="#%E4%BA%8C%E6%98%A0%E5%B0%84">二、 映射</a></p>
 <ul>
 <li><a href="#21-%E5%9F%BA%E6%9C%AC%E6%98%A0%E5%B0%84%E6%93%8D%E4%BD%9C">2.1 基本映射操作</a></li>
 <li><a href="#22-%E6%98%A0%E5%B0%84%E8%A7%86%E5%9B%BE">2.2 映射视图</a></li>
 </ul>
 </li>
-<li><a href="#%E4%B8%89%E5%B0%8F%E9%9B%86%E5%90%88">三、小集合</a></li>
-<li><a href="#%E5%9B%9B%E5%AD%90%E8%8C%83%E5%9B%B4">四、子范围</a></li>
-<li><a href="#%E4%BA%94%E4%B8%8D%E5%8F%AF%E4%BF%AE%E6%94%B9%E7%9A%84%E8%A7%86%E5%9B%BE">五、不可修改的视图</a></li>
-<li><a href="#%E5%85%AD%E5%90%8C%E6%AD%A5%E8%A7%86%E5%9B%BE">六、同步视图</a></li>
-<li><a href="#%E4%B8%83%E6%A3%80%E6%9F%A5%E5%9E%8B%E8%A7%86%E5%9B%BE">七、检查型视图</a></li>
-<li><a href="#%E5%85%AB%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95">八、泛型算法</a>
+<li>
+<p><a href="#%E4%B8%89%E5%B0%8F%E9%9B%86%E5%90%88">三、小集合</a></p>
+</li>
+<li>
+<p><a href="#%E5%9B%9B%E5%AD%90%E8%8C%83%E5%9B%B4">四、子范围</a></p>
+</li>
+<li>
+<p><a href="#%E4%BA%94%E4%B8%8D%E5%8F%AF%E4%BF%AE%E6%94%B9%E7%9A%84%E8%A7%86%E5%9B%BE">五、不可修改的视图</a></p>
+</li>
+<li>
+<p><a href="#%E5%85%AD%E5%90%8C%E6%AD%A5%E8%A7%86%E5%9B%BE">六、同步视图</a></p>
+</li>
+<li>
+<p><a href="#%E4%B8%83%E6%A3%80%E6%9F%A5%E5%9E%8B%E8%A7%86%E5%9B%BE">七、检查型视图</a></p>
+</li>
+<li>
+<p><a href="#%E5%85%AB%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95">八、泛型算法</a></p>
 <ul>
 <li><a href="#81-%E6%8E%92%E5%BA%8F%E4%B8%8E%E6%B7%B7%E6%8E%92">8.1 排序与混排</a></li>
 <li><a href="#82-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE">8.2 二分查找</a></li>
 </ul>
 </li>
-<li><a href="#%E4%B9%9D%E8%A1%A5%E5%85%85">九、补充</a>
+<li>
+<p><a href="#%E4%B9%9D%E8%A1%A5%E5%85%85">九、补充</a></p>
 <ul>
 <li><a href="#91-arraylist%E5%92%8Cvector%E5%8C%BA%E5%88%AB">9.1 ArrayList和Vector区别</a></li>
 <li><a href="#92-hashmaphashtableconcurrenthashmap%E7%9A%84%E5%8C%BA%E5%88%AB">9.2 HashMap、Hashtable、ConcurrentHashMap的区别</a></li>
@@ -102,10 +103,12 @@
 <li><a href="#94-treemaptreeset%E7%9A%84%E9%94%AE">9.4 TreeMap/TreeSet的键</a></li>
 </ul>
 </li>
-<li><a href="#%E5%8D%81%E5%8F%82%E8%80%83">十、参考</a></li>
+<li>
+<p><a href="#%E5%8D%81%E5%8F%82%E8%80%83">十、参考</a></p>
+</li>
 </ul>
 <p>集合框架图：</p>
-<p><img src="../../../../images/tutorial/2021/01/java-collection/1.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/01/java-collection/1.png" alt="picture"></p>
 <p>集合框架提供两个基本的接口：Collection和Map。Collection聚集的数据是独立的，没有关联值。Map聚集的数据是键值对，一个键与一个值存在关联。</p>
 <h2 id="一集合">一、集合</h2>
 <p>这里的集合指Collection及其子类，存储的数据是独立的，没有关联值。</p>
@@ -181,70 +184,64 @@
 </code></pre></div><p><strong>java.util.Collection</strong></p>
 <ul>
 <li>
-<p>Iterator<!-- raw HTML omitted --> iterator()</p>
-<p>返回此集合中元素的迭代器</p>
+<p>Iterator  iterator()
+返回此集合中元素的迭代器</p>
 </li>
 <li>
-<p>int size()</p>
-<p>返回此集合中的元素数。</p>
+<p>int size()
+返回此集合中的元素数。</p>
 </li>
 <li>
-<p>boolean isEmpty()</p>
-<p>如果此集合不包含任何元素，则返回 true 。</p>
+<p>boolean isEmpty()
+如果此集合不包含任何元素，则返回 true 。</p>
 </li>
 <li>
-<p>boolean contains​(Object o)</p>
-<p>如果此collection包含指定的元素，则返回 true 。</p>
+<p>boolean contains​(Object o)
+如果此collection包含指定的元素，则返回 true 。</p>
 </li>
 <li>
-<p>boolean containsAll​(Collection&lt;?&gt; c)</p>
-<p>如果此集合包含指定集合中的所有元素，则返回 true 。</p>
+<p>boolean containsAll​(Collection&lt;?&gt; c)
+如果此集合包含指定集合中的所有元素，则返回 true 。</p>
 </li>
 <li>
-<p>boolean add​(E e)</p>
-<p>确保此集合包含指定的元素（可选操作）。</p>
+<p>boolean add​(E e)
+确保此集合包含指定的元素（可选操作）。</p>
 </li>
 <li>
-<p>boolean addAll​(Collection&lt;? extends E&gt; c)</p>
-<p>将指定集合中的所有元素添加到此集合中（可选操作）。</p>
+<p>boolean addAll​(Collection&lt;? extends E&gt; c)
+将指定集合中的所有元素添加到此集合中（可选操作）。</p>
 </li>
 <li>
-<p>boolean remove​(Object o)</p>
-<p>从此集合中移除指定元素的单个实例（如果存在）（可选操作）。</p>
+<p>boolean remove​(Object o)
+从此集合中移除指定元素的单个实例（如果存在）（可选操作）。</p>
 </li>
 <li>
-<p>boolean removeAll​(Collection&lt;?&gt; c)</p>
-<p>删除此集合的所有元素，这些元素也包含在指定的集合中（可选操作）。</p>
+<p>boolean removeAll​(Collection&lt;?&gt; c)
+删除此集合的所有元素，这些元素也包含在指定的集合中（可选操作）。</p>
 </li>
 <li>
-<p>boolean retainAll​(Collection&lt;?&gt; c)</p>
-<p>仅保留此集合中包含在指定集合中的元素（可选操作）。</p>
+<p>boolean retainAll​(Collection&lt;?&gt; c)
+仅保留此集合中包含在指定集合中的元素（可选操作）。</p>
 </li>
 <li>
-<p>Object[] toArray()</p>
-<p>返回包含此集合中所有元素的数组。</p>
+<p>Object[] toArray()
+返回包含此集合中所有元素的数组。</p>
 </li>
 <li>
-<p><!-- raw HTML omitted --> T[] toArray​(T[] a)</p>
-<p>返回一个包含此collection中所有元素的数组; 返回数组的运行时类型是指定数组的运行时类型。</p>
+<p>T[] toArray​(T[] a)
+返回一个包含此collection中所有元素的数组; 返回数组的运行时类型是指定数组的运行时类型。</p>
+<hr>
 </li>
 </ul>
-<hr>
 <h3 id="12-迭代器">1.2 迭代器</h3>
-<p><strong>java.util.Iterator<!-- raw HTML omitted --></strong></p>
+<p><strong>java.util.Iterator</strong></p>
 <ul>
-<li>
-<p>boolean hasNext()</p>
-<p>如果迭代具有更多元素，则返回 true 。</p>
-</li>
-<li>
-<p>E next()</p>
-<p>返回迭代中的下一个元素。</p>
-</li>
-<li>
-<p>default void remove()</p>
-<p>从底层集合中移除此迭代器返回的最后一个元素（可选操作）。</p>
-</li>
+<li>boolean hasNext()
+如果迭代具有更多元素，则返回 true 。</li>
+<li>E next()
+返回迭代中的下一个元素。</li>
+<li>default void remove()
+从底层集合中移除此迭代器返回的最后一个元素（可选操作）。</li>
 </ul>
 <hr>
 <h3 id="13-链表">1.3 链表</h3>
@@ -417,104 +414,60 @@
         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">getLast</span><span style="color:#f92672">());</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><p><strong>java.util.List<!-- raw HTML omitted --></strong></p>
+</code></pre></div><p><strong>java.util.List</strong></p>
 <ul>
-<li>
-<p>ListIterator<!-- raw HTML omitted --> listIterator()</p>
-<p>返回此列表中元素的列表迭代器（按适当顺序）。</p>
-</li>
-<li>
-<p>ListIterator<!-- raw HTML omitted --> listIterator​(int index)</p>
-<p>从列表中的指定位置开始，返回列表中元素的列表迭代器（按正确顺序）。</p>
-</li>
-<li>
-<p>void add​(int index, E element)</p>
-<p>将指定元素插入此列表中的指定位置（可选操作）。</p>
-</li>
-<li>
-<p>boolean addAll​(int index, Collection&lt;? extends E&gt; c)</p>
-<p>将指定集合中的所有元素插入到指定位置的此列表中（可选操作）。</p>
-</li>
-<li>
-<p>E remove​(int index)</p>
-<p>删除此列表中指定位置的元素（可选操作）。</p>
-</li>
-<li>
-<p>E get​(int index)</p>
-<p>返回此列表中指定位置的元素。</p>
-</li>
-<li>
-<p>E set​(int index, E element)</p>
-<p>用指定的元素替换此列表中指定位置的元素（可选操作）。</p>
-</li>
-<li>
-<p>int indexOf​(Object o)</p>
-<p>返回此列表中第一次出现的指定元素的索引，如果此列表不包含该元素，则返回-1。</p>
-</li>
-<li>
-<p>int lastIndexOf​(Object o)</p>
-<p>返回此列表中指定元素最后一次出现的索引，如果此列表不包含该元素，则返回-1。</p>
-</li>
+<li>ListIterator listIterator()
+返回此列表中元素的列表迭代器（按适当顺序）。</li>
+<li>ListIterator listIterator​(int index)
+从列表中的指定位置开始，返回列表中元素的列表迭代器（按正确顺序）。</li>
+<li>void add​(int index, E element)
+将指定元素插入此列表中的指定位置（可选操作）。</li>
+<li>boolean addAll​(int index, Collection&lt;? extends E&gt; c)
+将指定集合中的所有元素插入到指定位置的此列表中（可选操作）。</li>
+<li>E remove​(int index)
+删除此列表中指定位置的元素（可选操作）。</li>
+<li>E get​(int index)
+返回此列表中指定位置的元素。</li>
+<li>E set​(int index, E element)
+用指定的元素替换此列表中指定位置的元素（可选操作）。</li>
+<li>int indexOf​(Object o)
+返回此列表中第一次出现的指定元素的索引，如果此列表不包含该元素，则返回-1。</li>
+<li>int lastIndexOf​(Object o)
+返回此列表中指定元素最后一次出现的索引，如果此列表不包含该元素，则返回-1。</li>
 </ul>
 <hr>
-<p><strong>java.util.ListIterator<!-- raw HTML omitted --></strong></p>
+<p><strong>java.util.ListIterator</strong></p>
 <ul>
-<li>
-<p>void add​(E e)</p>
-<p>将指定的元素插入列表（可选操作）。</p>
-</li>
-<li>
-<p>boolean hasPrevious()</p>
-<p>如果此列表迭代器在反向遍历列表时具有更多元素，则返回 true 。</p>
-</li>
-<li>
-<p>E previous()</p>
-<p>返回列表中的上一个元素并向后移动光标位置。</p>
-</li>
-<li>
-<p>int nextIndex()</p>
-<p>返回后续调用 next()将返回的元素的索引。</p>
-</li>
-<li>
-<p>int previousIndex()</p>
-<p>返回后续调用 previous()将返回的元素的索引。</p>
-</li>
+<li>void add​(E e)
+将指定的元素插入列表（可选操作）。</li>
+<li>boolean hasPrevious()
+如果此列表迭代器在反向遍历列表时具有更多元素，则返回 true 。</li>
+<li>E previous()
+返回列表中的上一个元素并向后移动光标位置。</li>
+<li>int nextIndex()
+返回后续调用 next()将返回的元素的索引。</li>
+<li>int previousIndex()
+返回后续调用 previous()将返回的元素的索引。</li>
 </ul>
 <hr>
-<p><strong>java.util.LinkedList<!-- raw HTML omitted --></strong></p>
+<p><strong>java.util.LinkedList</strong></p>
 <ul>
-<li>
-<p>LinkedList()</p>
-<p>构造一个空列表。</p>
-</li>
-<li>
-<p>LinkedList​(Collection&lt;? extends E&gt; c)</p>
-<p>按照集合的迭代器返回的顺序构造一个包含指定集合元素的列表。</p>
-</li>
-<li>
-<p>void addFirst​(E e)</p>
-<p>在此列表的开头插入指定的元素。</p>
-</li>
-<li>
-<p>void addLast​(E e)</p>
-<p>将指定的元素追加到此列表的末尾。</p>
-</li>
-<li>
-<p>E getFirst()</p>
-<p>返回此列表中的第一个元素。</p>
-</li>
-<li>
-<p>E getLast()</p>
-<p>返回此列表中的最后一个元素。</p>
-</li>
-<li>
-<p>E removeFirst()</p>
-<p>从此列表中删除并返回第一个元素。</p>
-</li>
-<li>
-<p>E removeLast()</p>
-<p>从此列表中删除并返回最后一个元素。</p>
-</li>
+<li>LinkedList()
+构造一个空列表。</li>
+<li>LinkedList​(Collection&lt;? extends E&gt; c)
+按照集合的迭代器返回的顺序构造一个包含指定集合元素的列表。</li>
+<li>void addFirst​(E e)
+在此列表的开头插入指定的元素。</li>
+<li>void addLast​(E e)
+将指定的元素追加到此列表的末尾。</li>
+<li>E getFirst()
+返回此列表中的第一个元素。</li>
+<li>E getLast()
+返回此列表中的最后一个元素。</li>
+<li>E removeFirst()
+从此列表中删除并返回第一个元素。</li>
+<li>E removeLast()
+从此列表中删除并返回最后一个元素。</li>
 </ul>
 <hr>
 <h3 id="14-散列集">1.4 散列集</h3>
@@ -568,24 +521,16 @@
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 
-</code></pre></div><p><strong>java.util.HasthSet<!-- raw HTML omitted --></strong>**</p>
+</code></pre></div><p><strong>java.util.HasthSet</strong></p>
 <ul>
-<li>
-<p>HashSet()</p>
-<p>构造一个新的空集; 支持HashMap实例具有默认初始容量（16）和加载因子（0.75）。</p>
-</li>
-<li>
-<p>HashSet​(int initialCapacity)</p>
-<p>构造一个新的空集; 支持HashMap实例具有指定的初始容量和默认加载因子（0.75）。</p>
-</li>
-<li>
-<p>HashSet​(int initialCapacity, float loadFactor)</p>
-<p>构造一个新的空集; 支持HashMap实例具有指定的初始容量和指定的加载因子。</p>
-</li>
-<li>
-<p>HashSet​(Collection&lt;? extends E&gt; c)</p>
-<p>构造一个包含指定集合中元素的新集合。</p>
-</li>
+<li>HashSet()
+构造一个新的空集; 支持HashMap实例具有默认初始容量（16）和加载因子（0.75）。</li>
+<li>HashSet​(int initialCapacity)
+构造一个新的空集; 支持HashMap实例具有指定的初始容量和默认加载因子（0.75）。</li>
+<li>HashSet​(int initialCapacity, float loadFactor)
+构造一个新的空集; 支持HashMap实例具有指定的初始容量和指定的加载因子。</li>
+<li>HashSet​(Collection&lt;? extends E&gt; c)
+构造一个包含指定集合中元素的新集合。</li>
 </ul>
 <hr>
 <h3 id="15-树集">1.5 树集</h3>
@@ -661,165 +606,99 @@
         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">());</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><p><strong>java.util.TreeSet<!-- raw HTML omitted --></strong></p>
+</code></pre></div><p><strong>java.util.TreeSet</strong></p>
 <ul>
-<li>
-<p>TreeSet()</p>
-<p>构造一个新的空树集，根据其元素的自然顺序进行排序。</p>
-</li>
-<li>
-<p>TreeSet​(Collection&lt;? extends E&gt; c)</p>
-<p>构造一个新的树集，其中包含指定集合中的元素，并根据其元素的 自然顺序进行排序 。</p>
-</li>
-<li>
-<p>TreeSet​(Comparator&lt;? super E&gt; comparator)</p>
-<p>构造一个新的空树集，根据指定的比较器进行排序。</p>
-</li>
-<li>
-<p>TreeSet​(SortedSet<!-- raw HTML omitted --> s)</p>
-<p>构造一个包含相同元素并使用与指定有序集相同排序的新树集。</p>
-</li>
+<li>TreeSet()
+构造一个新的空树集，根据其元素的自然顺序进行排序。</li>
+<li>TreeSet​(Collection&lt;? extends E&gt; c)
+构造一个新的树集，其中包含指定集合中的元素，并根据其元素的 自然顺序进行排序 。</li>
+<li>TreeSet​(Comparator&lt;? super E&gt; comparator)
+构造一个新的空树集，根据指定的比较器进行排序。</li>
+<li>TreeSet​(SortedSet s)
+构造一个包含相同元素并使用与指定有序集相同排序的新树集。</li>
 </ul>
 <hr>
-<p><strong>java.util.SortedSet<!-- raw HTML omitted --></strong></p>
+<p><strong>java.util.SortedSet</strong></p>
 <ul>
-<li>
-<p>Comparator&lt;? super E&gt; comparator()</p>
-<p>返回用于为了在这个组中的元素，或比较null如果这个集使用natural ordering的元素。</p>
-</li>
-<li>
-<p>E first()</p>
-<p>返回此集合中当前的第一个（最低）元素。</p>
-</li>
-<li>
-<p>E last()</p>
-<p>返回此集合中当前的最后一个（最高）元素。</p>
-</li>
+<li>Comparator&lt;? super E&gt; comparator()
+返回用于为了在这个组中的元素，或比较null如果这个集使用natural ordering的元素。</li>
+<li>E first()
+返回此集合中当前的第一个（最低）元素。</li>
+<li>E last()
+返回此集合中当前的最后一个（最高）元素。</li>
 </ul>
 <hr>
-<p><strong>java.util.NavigableSet<!-- raw HTML omitted --></strong></p>
+<p><strong>java.util.NavigableSet</strong></p>
 <ul>
-<li>
-<p>E higher​(E e)</p>
-<p>返回此集合中的最小元素严格大于给定元素，如果没有这样的元素，则 null 。</p>
-</li>
-<li>
-<p>E lower​(E e)</p>
-<p>返回此集合中的最大元素严格小于给定元素，如果没有这样的元素，则 null 。</p>
-</li>
-<li>
-<p>E ceiling​(E e)</p>
-<p>返回此set中大于或等于给定元素的 null元素，如果没有这样的元素，则 null 。</p>
-</li>
-<li>
-<p>E floor​(E e)</p>
-<p>返回此set中小于或等于给定元素的最大元素，如果没有这样的元素，则 null 。</p>
-</li>
-<li>
-<p>E pollFirst()</p>
-<p>检索并删除第一个（最低）元素，如果此组为空，则返回 null 。</p>
-</li>
-<li>
-<p>E pollLast()</p>
-<p>检索并删除最后一个（最高）元素，如果此集合为空，则返回 null 。</p>
-</li>
-<li>
-<p>Iterator<!-- raw HTML omitted --> descendingIterator()</p>
-<p>以降序返回此集合中元素的迭代器。</p>
-</li>
+<li>E higher​(E e)
+返回此集合中的最小元素严格大于给定元素，如果没有这样的元素，则 null 。</li>
+<li>E lower​(E e)
+返回此集合中的最大元素严格小于给定元素，如果没有这样的元素，则 null 。</li>
+<li>E ceiling​(E e)
+返回此set中大于或等于给定元素的 null元素，如果没有这样的元素，则 null 。</li>
+<li>E floor​(E e)
+返回此set中小于或等于给定元素的最大元素，如果没有这样的元素，则 null 。</li>
+<li>E pollFirst()
+检索并删除第一个（最低）元素，如果此组为空，则返回 null 。</li>
+<li>E pollLast()
+检索并删除最后一个（最高）元素，如果此集合为空，则返回 null 。</li>
+<li>Iterator descendingIterator()
+以降序返回此集合中元素的迭代器。</li>
 </ul>
 <hr>
 <h3 id="16-队列与双端队列">1.6 队列与双端队列</h3>
 <p><strong>java.util.Queue</strong></p>
 <ul>
-<li>
-<p>boolean add​(E e)</p>
-<p>如果可以在不违反容量限制的情况下立即执行此操作，则将指定的元素插入此队列，成功时返回 true ，如果当前没有空间，则抛出 IllegalStateException 。</p>
-</li>
-<li>
-<p>boolean offer​(E e)</p>
-<p>如果可以在不违反容量限制的情况下立即执行此操作，则将指定的元素插入此队列。</p>
-</li>
-<li>
-<p>E remove()</p>
-<p>检索并删除此队列的头部。</p>
-</li>
-<li>
-<p>E poll()</p>
-<p>检索并删除此队列的头部，如果此队列为空，则返回 null 。</p>
-</li>
-<li>
-<p>E element()</p>
-<p>检索但不删除此队列的头部。</p>
-</li>
-<li>
-<p>E peek()</p>
-<p>检索但不删除此队列的头部，如果此队列为空，则返回 null 。</p>
-</li>
+<li>boolean add​(E e)
+如果可以在不违反容量限制的情况下立即执行此操作，则将指定的元素插入此队列，成功时返回 true ，如果当前没有空间，则抛出 IllegalStateException 。</li>
+<li>boolean offer​(E e)
+如果可以在不违反容量限制的情况下立即执行此操作，则将指定的元素插入此队列。</li>
+<li>E remove()
+检索并删除此队列的头部。</li>
+<li>E poll()
+检索并删除此队列的头部，如果此队列为空，则返回 null 。</li>
+<li>E element()
+检索但不删除此队列的头部。</li>
+<li>E peek()
+检索但不删除此队列的头部，如果此队列为空，则返回 null 。</li>
 </ul>
 <hr>
-<p><strong>java.util.Deque<!-- raw HTML omitted --></strong></p>
+<p><strong>java.util.Deque</strong></p>
 <ul>
-<li>
-<p>void addFirst​(E e)</p>
-<p>如果可以在不违反容量限制的情况下立即插入指定元素，则在此双端队列的前面插入指定元素，如果当前没有可用空间，则抛出 IllegalStateException 。</p>
-</li>
-<li>
-<p>void addLast​(E e)</p>
-<p>如果可以在不违反容量限制的情况下立即插入指定元素，则在此双端队列的末尾插入指定元素，如果当前没有可用空间，则抛出 IllegalStateException 。</p>
-</li>
-<li>
-<p>boolean offerFirst​(E e)</p>
-<p>将指定元素插入此双端队列的前面，除非它违反容量限制。</p>
-</li>
-<li>
-<p>boolean offerLast​(E e)</p>
-<p>在此双端队列的末尾插入指定的元素，除非它违反容量限制。</p>
-</li>
-<li>
-<p>E removeFirst()</p>
-<p>检索并删除此双端队列的第一个元素。</p>
-</li>
-<li>
-<p>E removeLast()</p>
-<p>检索并删除此双端队列的最后一个元素。</p>
-</li>
-<li>
-<p>E pollFirst()</p>
-<p>检索并删除此双端队列的第一个元素，如果此双端队列为空，则返回 null 。</p>
-</li>
-<li>
-<p>E pollLast()</p>
-<p>检索并删除此双端队列的最后一个元素，如果此双端队列为空，则返回 null 。</p>
-</li>
+<li>void addFirst​(E e)
+如果可以在不违反容量限制的情况下立即插入指定元素，则在此双端队列的前面插入指定元素，如果当前没有可用空间，则抛出 IllegalStateException 。</li>
+<li>void addLast​(E e)
+如果可以在不违反容量限制的情况下立即插入指定元素，则在此双端队列的末尾插入指定元素，如果当前没有可用空间，则抛出 IllegalStateException 。</li>
+<li>boolean offerFirst​(E e)
+将指定元素插入此双端队列的前面，除非它违反容量限制。</li>
+<li>boolean offerLast​(E e)
+在此双端队列的末尾插入指定的元素，除非它违反容量限制。</li>
+<li>E removeFirst()
+检索并删除此双端队列的第一个元素。</li>
+<li>E removeLast()
+检索并删除此双端队列的最后一个元素。</li>
+<li>E pollFirst()
+检索并删除此双端队列的第一个元素，如果此双端队列为空，则返回 null 。</li>
+<li>E pollLast()
+检索并删除此双端队列的最后一个元素，如果此双端队列为空，则返回 null 。</li>
 </ul>
 <hr>
-<p><strong>java.util.ArrayDeque<!-- raw HTML omitted --></strong></p>
+<p><strong>java.util.ArrayDeque</strong></p>
 <ul>
-<li>
-<p>ArrayDeque()</p>
-<p>构造一个空数组deque，其初始容量足以容纳16个元素。</p>
-</li>
-<li>
-<p>ArrayDeque​(int numElements)</p>
-<p>构造一个空数组deque，其初始容量足以容纳指定数量的元素。</p>
-</li>
+<li>ArrayDeque()
+构造一个空数组deque，其初始容量足以容纳16个元素。</li>
+<li>ArrayDeque​(int numElements)
+构造一个空数组deque，其初始容量足以容纳指定数量的元素。</li>
 </ul>
 <hr>
-<p><strong>java.util.PPriorityQueue<!-- raw HTML omitted --></strong></p>
+<p><strong>java.util.PPriorityQueue</strong></p>
 <ul>
-<li>
-<p>PriorityQueue()</p>
-<p>使用默认初始容量（11）创建PriorityQueue ，根据其natural ordering对其元素进行排序 。</p>
-</li>
-<li>
-<p>PriorityQueue​(int initialCapacity)</p>
-<p>创建具有指定初始容量的PriorityQueue ，该容量根据其natural ordering对其元素进行排序 。</p>
-</li>
-<li>
-<p>PriorityQueue​(int initialCapacity, Comparator&lt;? super E&gt; comparator)</p>
-<p>创建具有指定初始容量的 PriorityQueue ，该容量根据指定的比较器对其元素进行排序。</p>
-</li>
+<li>PriorityQueue()
+使用默认初始容量（11）创建PriorityQueue ，根据其natural ordering对其元素进行排序 。</li>
+<li>PriorityQueue​(int initialCapacity)
+创建具有指定初始容量的PriorityQueue ，该容量根据其natural ordering对其元素进行排序 。</li>
+<li>PriorityQueue​(int initialCapacity, Comparator&lt;? super E&gt; comparator)
+创建具有指定初始容量的 PriorityQueue ，该容量根据指定的比较器对其元素进行排序。</li>
 </ul>
 <hr>
 <h2 id="二映射">二、映射</h2>
@@ -883,7 +762,6 @@
         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>entrySet<span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-
 </code></pre></div><p>TreeMap用例：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.TreeMap<span style="color:#f92672">;</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UseTreeMap</span> <span style="color:#f92672">{</span>
@@ -919,138 +797,85 @@
         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">ceilingEntry</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;C&#34;</span><span style="color:#f92672">));</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-
 </code></pre></div><p><strong>java.util.Map&lt;K, V&gt;</strong></p>
 <ul>
-<li>
-<p>V get​(Object key)</p>
-<p>返回指定键映射到的值，如果此映射不包含键的映射，则返回 null 。</p>
-</li>
-<li>
-<p>default V getOrDefault​(Object key, V defaultValue)</p>
-<p>返回指定键映射到的值，如果此映射不包含键的映射，则返回 defaultValue  。</p>
-</li>
-<li>
-<p>V put​(K key, V value)</p>
-<p>将指定的值与此映射中的指定键相关联（可选操作）。</p>
-</li>
-<li>
-<p>boolean containsKey​(Object key)</p>
-<p>如果此映射包含指定键的映射，则返回 true 。</p>
-</li>
-<li>
-<p>boolean containsValue​(Object value)</p>
-<p>如果此映射将一个或多个键映射到指定值，则返回 true 。</p>
-</li>
+<li>V get​(Object key)
+返回指定键映射到的值，如果此映射不包含键的映射，则返回 null 。</li>
+<li>default V getOrDefault​(Object key, V defaultValue)
+返回指定键映射到的值，如果此映射不包含键的映射，则返回 defaultValue  。</li>
+<li>V put​(K key, V value)
+将指定的值与此映射中的指定键相关联（可选操作）。</li>
+<li>boolean containsKey​(Object key)
+如果此映射包含指定键的映射，则返回 true 。</li>
+<li>boolean containsValue​(Object value)
+如果此映射将一个或多个键映射到指定值，则返回 true 。</li>
 </ul>
 <hr>
 <p><strong>java.util.HashMap&lt;K, V&gt;</strong></p>
 <ul>
-<li>
-<p>HashMap()</p>
-<p>使用默认初始容量（16）和默认加载因子（0.75）构造一个空 HashMap 。</p>
-</li>
-<li>
-<p>HashMap​(int initialCapacity)</p>
-<p>使用指定的初始容量和默认加载因子（0.75）构造一个空 HashMap 。</p>
-</li>
-<li>
-<p>HashMap​(int initialCapacity, float loadFactor)</p>
-<p>使用指定的初始容量和加载因子构造一个空 HashMap 。</p>
-</li>
-<li>
-<p>HashMap​(Map&lt;? extends K,​? extends V&gt; m)</p>
-<p>构造一个新的 HashMap ，其映射与指定的 Map相同。</p>
-</li>
+<li>HashMap()
+使用默认初始容量（16）和默认加载因子（0.75）构造一个空 HashMap 。</li>
+<li>HashMap​(int initialCapacity)
+使用指定的初始容量和默认加载因子（0.75）构造一个空 HashMap 。</li>
+<li>HashMap​(int initialCapacity, float loadFactor)
+使用指定的初始容量和加载因子构造一个空 HashMap 。</li>
+<li>HashMap​(Map&lt;? extends K,​? extends V&gt; m)
+构造一个新的 HashMap ，其映射与指定的 Map相同。</li>
 </ul>
 <hr>
 <p><strong>java.util.TreeMap&lt;K, V&gt;</strong></p>
 <ul>
-<li>
-<p>TreeMap()</p>
-<p>使用其键的自然顺序构造一个新的空树图。</p>
-</li>
-<li>
-<p>TreeMap​(Comparator&lt;? super K&gt; comparator)</p>
-<p>构造一个新的空树图，根据给定的比较器排序。</p>
-</li>
-<li>
-<p>TreeMap​(Map&lt;? extends K,​? extends V&gt; m)</p>
-<p>构造一个新的树映射，其中包含与给定映射相同的映射，根据其键的 自然顺序排序 。</p>
-</li>
-<li>
-<p>TreeMap​(SortMap&lt;? extends K,​? extends V&gt; m)</p>
-<p>构造一个包含相同映射的新树映射，并使用与指定有序映射相同的顺序。</p>
-</li>
+<li>TreeMap()
+使用其键的自然顺序构造一个新的空树图。</li>
+<li>TreeMap​(Comparator&lt;? super K&gt; comparator)
+构造一个新的空树图，根据给定的比较器排序。</li>
+<li>TreeMap​(Map&lt;? extends K,​? extends V&gt; m)
+构造一个新的树映射，其中包含与给定映射相同的映射，根据其键的 自然顺序排序 。</li>
+<li>TreeMap​(SortMap&lt;? extends K,​? extends V&gt; m)
+构造一个包含相同映射的新树映射，并使用与指定有序映射相同的顺序。</li>
 </ul>
 <hr>
 <p><strong>java.util.SortedMap&lt;K, V&gt;</strong></p>
 <ul>
-<li>
-<p>Comparator&lt;? super K&gt; comparator()</p>
-<p>返回用于为了在这个映射中的键，或比较null如果此映射使用natural ordering的钥匙。</p>
-</li>
-<li>
-<p>K firstKey()</p>
-<p>返回此映射中当前的第一个（最低）键。</p>
-</li>
-<li>
-<p>K lastKey()</p>
-<p>返回此映射中当前的最后一个（最高）键。</p>
-</li>
+<li>Comparator&lt;? super K&gt; comparator()
+返回用于为了在这个映射中的键，或比较null如果此映射使用natural ordering的钥匙。</li>
+<li>K firstKey()
+返回此映射中当前的第一个（最低）键。</li>
+<li>K lastKey()
+返回此映射中当前的最后一个（最高）键。</li>
 </ul>
 <hr>
 <p><strong>java.util.NavigableMap&lt;K, V&gt;</strong></p>
 <ul>
-<li>
-<p>K higherKey​(K key)</p>
-<p>返回严格大于给定键的最小键，如果没有这样的键，则返回 null 。</p>
-</li>
-<li>
-<p>K lowerKey​(K key)</p>
-<p>返回严格小于给定键的最大键，如果没有这样键，则返回 null 。</p>
-</li>
-<li>
-<p>K ceilingKey​(K key)</p>
-<p>返回大于或等于给定键的 null键，如果没有这样的键，则 null 。</p>
-</li>
-<li>
-<p>K floorKey​(K key)</p>
-<p>返回小于或等于给定键的最大键，如果没有这样的键，则 null 。</p>
-</li>
+<li>K higherKey​(K key)
+返回严格大于给定键的最小键，如果没有这样的键，则返回 null 。</li>
+<li>K lowerKey​(K key)
+返回严格小于给定键的最大键，如果没有这样键，则返回 null 。</li>
+<li>K ceilingKey​(K key)
+返回大于或等于给定键的 null键，如果没有这样的键，则 null 。</li>
+<li>K floorKey​(K key)
+返回小于或等于给定键的最大键，如果没有这样的键，则 null 。</li>
 </ul>
 <hr>
 <h3 id="22-映射视图">2.2 映射视图</h3>
 <p><strong>java.util.Map</strong></p>
 <ul>
-<li>
-<p>Set&lt;Map.Entry&lt;K,​V&raquo; entrySet()</p>
-<p>返回此映射中包含的映射的Set视图。</p>
-</li>
-<li>
-<p>Set<!-- raw HTML omitted --> keySet()</p>
-<p>返回此映射中包含的键的Set视图。</p>
-</li>
-<li>
-<p>Collection<!-- raw HTML omitted --> values()</p>
-<p>返回此映射中包含的值的Collection视图。</p>
-</li>
+<li>Set&lt;Map.Entry&lt;K,​V» entrySet()
+返回此映射中包含的映射的Set视图。</li>
+<li>Set keySet()
+返回此映射中包含的键的Set视图。</li>
+<li>Collection values()
+返回此映射中包含的值的Collection视图。</li>
 </ul>
 <hr>
 <p><strong>java.util.Map.Entry&lt;K, V&gt;</strong></p>
 <ul>
-<li>
-<p>V getValue()</p>
-<p>返回与此条目对应的值。</p>
-</li>
-<li>
-<p>int hashCode()</p>
-<p>返回此映射条目的哈希码值。</p>
-</li>
-<li>
-<p>V setValue​(V value)</p>
-<p>用指定的值替换此条目对应的值（可选操作）。</p>
-</li>
+<li>V getValue()
+返回与此条目对应的值。</li>
+<li>int hashCode()
+返回此映射条目的哈希码值。</li>
+<li>V setValue​(V value)
+用指定的值替换此条目对应的值（可选操作）。</li>
 </ul>
 <h2 id="三小集合">三、小集合</h2>
 <p>Java9提供了一些静态方法，可以生成给定元素的集或列表，以及映射。</p>
@@ -1071,128 +896,76 @@ Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</s
 <h2 id="四子范围">四、子范围</h2>
 <p>例如：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list2 <span style="color:#f92672">=</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">subList</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 10<span style="color:#f92672">);</span>
-</code></pre></div><p><strong>java.util.List<!-- raw HTML omitted --></strong></p>
+</code></pre></div><p><strong>java.util.List</strong></p>
 <ul>
-<li>
-<p>List<!-- raw HTML omitted --> subList​(int fromIndex, int toIndex)</p>
-<p>返回指定的 fromIndex （包含）和 toIndex （不包括）之间的此列表部分的视图。</p>
-</li>
+<li>List subList​(int fromIndex, int toIndex)
+返回指定的 fromIndex （包含）和 toIndex （不包括）之间的此列表部分的视图。</li>
 </ul>
-<p><strong>java.util.SortedSet<!-- raw HTML omitted --></strong></p>
+<p><strong>java.util.SortedSet</strong></p>
 <ul>
-<li>
-<p>SortedSet<!-- raw HTML omitted --> subSet​(E fromElement, E toElement)</p>
-<p>返回此set的部分视图，其元素范围从 fromElement （包括 toElement ）到 toElement （独占）。</p>
-</li>
-<li>
-<p>SortedSet<!-- raw HTML omitted --> headSet​(E toElement)</p>
-<p>返回此set的部分视图，其元素严格小于 toElement 。</p>
-</li>
-<li>
-<p>SortedSet<!-- raw HTML omitted --> tailSet​(E fromElement)</p>
-<p>返回此set的部分视图，其元素大于或等于 fromElement 。</p>
-</li>
-<li>
-<p>NavigableSet<!-- raw HTML omitted --> subSet​(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive)</p>
-<p>返回此set的部分视图，其元素范围为 fromElement到 toElement 。</p>
-</li>
-<li>
-<p>NavigableSet<!-- raw HTML omitted --> headSet​(E toElement, boolean inclusive)</p>
-<p>返回此set的部分视图，其元素小于（或等于，如果 inclusive为true） toElement 。</p>
-</li>
-<li>
-<p>NavigableSet<!-- raw HTML omitted --> tailSet​(E fromElement, boolean inclusive)</p>
-<p>返回此set的部分视图，其元素大于（或等于，如果 inclusive为true） fromElement 。</p>
-</li>
+<li>SortedSet subSet​(E fromElement, E toElement)
+返回此set的部分视图，其元素范围从 fromElement （包括 toElement ）到 toElement （独占）。</li>
+<li>SortedSet headSet​(E toElement)
+返回此set的部分视图，其元素严格小于 toElement 。</li>
+<li>SortedSet tailSet​(E fromElement)
+返回此set的部分视图，其元素大于或等于 fromElement 。</li>
+<li>NavigableSet subSet​(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive)
+返回此set的部分视图，其元素范围为 fromElement到 toElement 。</li>
+<li>NavigableSet headSet​(E toElement, boolean inclusive)
+返回此set的部分视图，其元素小于（或等于，如果 inclusive为true） toElement 。</li>
+<li>NavigableSet tailSet​(E fromElement, boolean inclusive)
+返回此set的部分视图，其元素大于（或等于，如果 inclusive为true） fromElement 。</li>
 </ul>
 <p><strong>java.util.SortedMap&lt;K, V&gt;</strong></p>
 <ul>
-<li>
-<p>SortedMap&lt;K,​V&gt; subMap​(K fromKey, K toKey)</p>
-<p>返回此映射部分的视图，其键的范围从 fromKey （包括 toKey ）到 toKey （独占）。</p>
-</li>
-<li>
-<p>SortedMap&lt;K,​V&gt; headMap​(K toKey)</p>
-<p>返回此映射的部分视图，其键严格小于 toKey 。</p>
-</li>
-<li>
-<p>SortedMap&lt;K,​V&gt; tailMap​(K fromKey)</p>
-<p>返回此映射部分的视图，其键大于或等于 fromKey 。</p>
-</li>
+<li>SortedMap&lt;K,​V&gt; subMap​(K fromKey, K toKey)
+返回此映射部分的视图，其键的范围从 fromKey （包括 toKey ）到 toKey （独占）。</li>
+<li>SortedMap&lt;K,​V&gt; headMap​(K toKey)
+返回此映射的部分视图，其键严格小于 toKey 。</li>
+<li>SortedMap&lt;K,​V&gt; tailMap​(K fromKey)
+返回此映射部分的视图，其键大于或等于 fromKey 。</li>
 </ul>
 <h2 id="五不可修改的视图">五、不可修改的视图</h2>
 <p>Collections这个工具类可以生成不可修改的视图。得到的集合可以调用它们所有的方法，但会更改集合方法被调用会抛出UnsupportedOperationException。</p>
 <p><strong>java.util.Collections</strong></p>
 <ul>
-<li>
-<p>static <!-- raw HTML omitted --> Collection<!-- raw HTML omitted --> unmodifiableCollection​(Collection&lt;? extends T&gt; c)</p>
-<p>返回指定集合的 unmodifiable view 。</p>
-</li>
-<li>
-<p>static <!-- raw HTML omitted --> List<!-- raw HTML omitted --> unmodifiableList​(List&lt;? extends T&gt; list)</p>
-<p>返回指定列表的 unmodifiable view 。</p>
-</li>
-<li>
-<p>static &lt;K,​V&gt; Map&lt;K,​V&gt; unmodifiableMap​(Map&lt;? extends K,​? extends V&gt; m)</p>
-<p>返回指定映射的 unmodifiable view 。</p>
-</li>
-<li>
-<p>static &lt;K,​V&gt;NavigableMap&lt;K,​V&gt; unmodifiableNavigableMap​(NavigableMap&lt;K,​? extends V&gt; m)</p>
-<p>返回指定的可导航地图的 unmodifiable view 。</p>
-</li>
-<li>
-<p>static <!-- raw HTML omitted --> NavigableSet<!-- raw HTML omitted --> unmodifiableNavigableSet​(NavigableSet<!-- raw HTML omitted --> s)</p>
-<p>返回指定的可导航集的 unmodifiable view 。</p>
-</li>
-<li>
-<p>static <!-- raw HTML omitted --> Set<!-- raw HTML omitted --> unmodifiableSet​(Set&lt;? extends T&gt; s)</p>
-<p>返回指定集的 unmodifiable view 。</p>
-</li>
-<li>
-<p>static &lt;K,​V&gt;SortedMap&lt;K,​V&gt; unmodifiableSortedMap​(SortedMap&lt;K,​? extends V&gt; m)</p>
-<p>返回指定有序映射的 unmodifiable view 。</p>
-</li>
-<li>
-<p>static <!-- raw HTML omitted --> SortedSet<!-- raw HTML omitted --> unmodifiableSortedSet​(SortedSet<!-- raw HTML omitted --> s)</p>
-<p>返回指定有序集的 unmodifiable view 。</p>
-</li>
+<li>static Collection  unmodifiableCollection​(Collection&lt;? extends T&gt; c)
+返回指定集合的 unmodifiable view 。</li>
+<li>static  List  unmodifiableList​(List&lt;? extends T&gt; list)
+返回指定列表的 unmodifiable view 。</li>
+<li>static &lt;K,​V&gt; Map&lt;K,​V&gt; unmodifiableMap​(Map&lt;? extends K,​? extends V&gt; m)
+返回指定映射的 unmodifiable view 。</li>
+<li>static &lt;K,​V&gt;NavigableMap&lt;K,​V&gt; unmodifiableNavigableMap​(NavigableMap&lt;K,​? extends V&gt; m)
+返回指定的可导航地图的 unmodifiable view 。</li>
+<li>static   NavigableSet  unmodifiableNavigableSet​(NavigableSet  s)
+返回指定的可导航集的 unmodifiable view 。</li>
+<li>static   Set  unmodifiableSet​(Set&lt;? extends T&gt; s)
+返回指定集的 unmodifiable view 。</li>
+<li>static &lt;K,​V&gt;SortedMap&lt;K,​V&gt; unmodifiableSortedMap​(SortedMap&lt;K,​? extends V&gt; m)
+返回指定有序映射的 unmodifiable view 。</li>
+<li>static   SortedSet  unmodifiableSortedSet​(SortedSet  s)
+返回指定有序集的 unmodifiable view 。</li>
 </ul>
 <h2 id="六同步视图">六、同步视图</h2>
 <p>Collections提供了一些方法确保集合并不被多线程破坏。</p>
 <p><strong>java.util.Collections</strong></p>
 <ul>
-<li>
-<p>static <!-- raw HTML omitted --> Collection<!-- raw HTML omitted --> synchronizedCollection​(Collection<!-- raw HTML omitted --> c)</p>
-<p>返回由指定集合支持的同步（线程安全）集合。</p>
-</li>
-<li>
-<p>static <!-- raw HTML omitted --> List<!-- raw HTML omitted --> synchronizedList​(List<!-- raw HTML omitted --> list)</p>
-<p>返回由指定列表支持的同步（线程安全）列表。</p>
-</li>
-<li>
-<p>static &lt;K,​V&gt; Map&lt;K,​V&gt; synchronizedMap​(Map&lt;K,​V&gt; m)</p>
-<p>返回由指定映射支持的同步（线程安全）映射。</p>
-</li>
-<li>
-<p>static &lt;K,​V&gt; NavigableMap&lt;K,​V&gt; synchronizedNavigableMap​(NavigableMap&lt;K,​V&gt; m)</p>
-<p>返回由指定的可导航映射支持的同步（线程安全）可导航映射。</p>
-</li>
-<li>
-<p>static <!-- raw HTML omitted --> NavigableSet<!-- raw HTML omitted --> synchronizedNavigableSet​(NavigableSet<!-- raw HTML omitted --> s)</p>
-<p>返回由指定的可导航集支持的同步（线程安全）可导航集。</p>
-</li>
-<li>
-<p>static <!-- raw HTML omitted --> Set<!-- raw HTML omitted --> synchronizedSet​(Set<!-- raw HTML omitted --> s)</p>
-<p>返回由指定集支持的同步（线程安全）集。</p>
-</li>
-<li>
-<p>static &lt;K,​V&gt; SortedMap&lt;K,​V&gt; synchronizedSortedMap​(SortedMap&lt;K,​V&gt; m)</p>
-<p>返回由指定的有序映射支持的同步（线程安全）有序映射。</p>
-</li>
-<li>
-<p>static <!-- raw HTML omitted --> SortedSet<!-- raw HTML omitted --> synchronizedSortedSet​(SortedSet<!-- raw HTML omitted --> s)</p>
-<p>返回由指定有序集支持的同步（线程安全）有序集。</p>
-</li>
+<li>static   Collection  synchronizedCollection​(Collection  c)
+返回由指定集合支持的同步（线程安全）集合。</li>
+<li>static   List  synchronizedList​(List  list)
+返回由指定列表支持的同步（线程安全）列表。</li>
+<li>static &lt;K,​V&gt; Map&lt;K,​V&gt; synchronizedMap​(Map&lt;K,​V&gt; m)
+返回由指定映射支持的同步（线程安全）映射。</li>
+<li>static &lt;K,​V&gt; NavigableMap&lt;K,​V&gt; synchronizedNavigableMap​(NavigableMap&lt;K,​V&gt; m)
+返回由指定的可导航映射支持的同步（线程安全）可导航映射。</li>
+<li>static   NavigableSet  synchronizedNavigableSet​(NavigableSet  s)
+返回由指定的可导航集支持的同步（线程安全）可导航集。</li>
+<li>static   Set  synchronizedSet​(Set  s)
+返回由指定集支持的同步（线程安全）集。</li>
+<li>static &lt;K,​V&gt; SortedMap&lt;K,​V&gt; synchronizedSortedMap​(SortedMap&lt;K,​V&gt; m)
+返回由指定的有序映射支持的同步（线程安全）有序映射。</li>
+<li>static   SortedSet  synchronizedSortedSet​(SortedSet  s)
+返回由指定有序集支持的同步（线程安全）有序集。</li>
 </ul>
 <h2 id="七检查型视图">七、检查型视图</h2>
 <p>检查型视图用来对泛型类型可能出现问题提供调试支持。如果没有它，可能导致错误的类型元素混入泛型集合中。例如：</p>
@@ -1207,42 +980,24 @@ ArrayList rawList <span style="color:#f92672">=</span> safeStrings<span style="c
 rawList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Date<span style="color:#f92672">());</span> <span style="color:#75715e">// 此时检查型列表会抛出ClassCastException
 </span></code></pre></div><p><strong>java.util.Collections</strong></p>
 <ul>
-<li>
-<p>static <!-- raw HTML omitted --> Collection<!-- raw HTML omitted --> checkedCollection​(Collection<!-- raw HTML omitted --> c, Class<!-- raw HTML omitted --> type)</p>
-<p>返回指定集合的动态类型安全视图。</p>
-</li>
-<li>
-<p>static <!-- raw HTML omitted --> List<!-- raw HTML omitted --> checkedList​(List<!-- raw HTML omitted --> list, Class<!-- raw HTML omitted --> type)</p>
-<p>返回指定列表的动态类型安全视图。</p>
-</li>
-<li>
-<p>static &lt;K,​V&gt; Map&lt;K,​V&gt; checkedMap​(Map&lt;K,​V&gt; m, Class<!-- raw HTML omitted --> keyType, Class<!-- raw HTML omitted --> valueType)</p>
-<p>返回指定映射的动态类型安全视图。</p>
-</li>
-<li>
-<p>static &lt;K,​V&gt; NavigableMap&lt;K,​V&gt; checkedNavigableMap​(NavigableMap&lt;K,​V&gt; m, Class<!-- raw HTML omitted --> keyType, Class<!-- raw HTML omitted --> valueType)</p>
-<p>返回指定可导航映射的动态类型安全视图。</p>
-</li>
-<li>
-<p>static <!-- raw HTML omitted --> NavigableSet<!-- raw HTML omitted --> checkedNavigableSet​(NavigableSet<!-- raw HTML omitted --> s, Class<!-- raw HTML omitted --> type)</p>
-<p>返回指定可导航集的动态类型安全视图。</p>
-</li>
-<li>
-<p>static <!-- raw HTML omitted --> Queue<!-- raw HTML omitted --> checkedQueue​(Queue<!-- raw HTML omitted --> queue, Class<!-- raw HTML omitted --> type)</p>
-<p>返回指定队列的动态类型安全视图。</p>
-</li>
-<li>
-<p>static <!-- raw HTML omitted --> Set<!-- raw HTML omitted --> checkedSet​(Set<!-- raw HTML omitted --> s, Class<!-- raw HTML omitted --> type)</p>
-<p>返回指定集的动态类型安全视图。</p>
-</li>
-<li>
-<p>static &lt;K,​V&gt; SortedMap&lt;K,​V&gt; checkedSortedMap​(SortedMap&lt;K,​V&gt; m, Class<!-- raw HTML omitted --> keyType, Class<!-- raw HTML omitted --> valueType)</p>
-<p>返回指定有序映射的动态类型安全视图。</p>
-</li>
-<li>
-<p>static <!-- raw HTML omitted --> SortedSet<!-- raw HTML omitted --> checkedSortedSet​(SortedSet<!-- raw HTML omitted --> s, Class<!-- raw HTML omitted --> type)</p>
-<p>返回指定有序集的动态类型安全视图。</p>
-</li>
+<li>static   Collection  checkedCollection​(Collection  c, Class  type)
+返回指定集合的动态类型安全视图。</li>
+<li>static   List  checkedList​(List  list, Class  type)
+返回指定列表的动态类型安全视图。</li>
+<li>static &lt;K,​V&gt; Map&lt;K,​V&gt; checkedMap​(Map&lt;K,​V&gt; m, Class  keyType, Class  valueType)
+返回指定映射的动态类型安全视图。</li>
+<li>static &lt;K,​V&gt; NavigableMap&lt;K,​V&gt; checkedNavigableMap​(NavigableMap&lt;K,​V&gt; m, Class  keyType, Class  valueType)
+返回指定可导航映射的动态类型安全视图。</li>
+<li>static   NavigableSet  checkedNavigableSet​(NavigableSet  s, Class  type)
+返回指定可导航集的动态类型安全视图。</li>
+<li>static   Queue  checkedQueue​(Queue queue, Class type)
+返回指定队列的动态类型安全视图。</li>
+<li>static  Set checkedSet​(Set s, Class type)
+返回指定集的动态类型安全视图。</li>
+<li>static &lt;K,​V&gt; SortedMap&lt;K,​V&gt; checkedSortedMap​(SortedMap&lt;K,​V&gt; m, Class keyType, Class valueType)
+返回指定有序映射的动态类型安全视图。</li>
+<li>static  SortedSet checkedSortedSet​(SortedSet s, Class type)
+返回指定有序集的动态类型安全视图。</li>
 </ul>
 <h2 id="八泛型算法">八、泛型算法</h2>
 <h3 id="81-排序与混排">8.1 排序与混排</h3>
@@ -1262,42 +1017,29 @@ staff<span style="color:#f92672">.</span><span style="color:#a6e22e">sort</span>
 </code></pre></div><p>混排其实就是把元素打乱， 例如：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">shuffle</span><span style="color:#f92672">(</span>staff<span style="color:#f92672">);</span>
 Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">shuffle</span><span style="color:#f92672">(</span>staff<span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> Random<span style="color:#f92672">());</span>
+
 </code></pre></div><p><strong>java.util.Collections</strong></p>
 <ul>
-<li>
-<p>static &lt;T extends Comparable&lt;? super T&raquo; void sort​(List<!-- raw HTML omitted --> list)</p>
-<p>根据其元素的natural ordering ，将指定列表按升序排序。</p>
-</li>
-<li>
-<p>static <!-- raw HTML omitted --> void sort​(List<!-- raw HTML omitted --> list, Comparator&lt;? super T&gt; c)</p>
-<p>根据指定比较器引发的顺序对指定列表进行排序。</p>
-</li>
-<li>
-<p>static void shuffle​(List&lt;?&gt; list)</p>
-<p>使用默认的随机源随机置换指定的列表。</p>
-</li>
-<li>
-<p>static void shuffle​(List&lt;?&gt; list, Random rnd)
-使用指定的随机源随机置换指定的列表。</p>
-</li>
+<li>static &lt;T extends Comparable&lt;? super T» void sort​(List list)
+根据其元素的natural ordering ，将指定列表按升序排序。</li>
+<li>static  void sort​(List list, Comparator&lt;? super T&gt; c)
+根据指定比较器引发的顺序对指定列表进行排序。</li>
+<li>static void shuffle​(List&lt;?&gt; list)
+使用默认的随机源随机置换指定的列表。</li>
+<li>static void shuffle​(List&lt;?&gt; list, Random rnd)
+使用指定的随机源随机置换指定的列表。</li>
 </ul>
-<p><strong>java.util.List<!-- raw HTML omitted --></strong></p>
+<p><strong>java.util.List</strong></p>
 <ul>
-<li>
-<p>default void sort​(Comparator&lt;? super E&gt; c)</p>
-<p>根据指定的Comparator引发的顺序对此列表进行排序。</p>
-</li>
+<li>default void sort​(Comparator&lt;? super E&gt; c)
+根据指定的Comparator引发的顺序对此列表进行排序。</li>
 </ul>
-<p><strong>java.util.Comparator<!-- raw HTML omitted --></strong></p>
+<p><strong>java.util.Comparator</strong></p>
 <ul>
-<li>
-<p>static &lt;T extends Comparable&lt;? super T&raquo; Comparator<!-- raw HTML omitted --> reverseOrder()</p>
-<p>返回一个比较器，逆置Comparable接口提供的顺序。</p>
-</li>
-<li>
-<p>default Comparator<!-- raw HTML omitted --> reversed()</p>
-<p>返回一个比较器，它强制执行此比较器的反向排序。</p>
-</li>
+<li>static &lt;T extends Comparable&lt;? super T» Comparator reverseOrder()
+返回一个比较器，逆置Comparable接口提供的顺序。</li>
+<li>default Comparator reversed()
+返回一个比较器，它强制执行此比较器的反向排序。</li>
 </ul>
 <h3 id="82-二分查找">8.2 二分查找</h3>
 <p>集合c、查找element，比较器comparator:</p>
@@ -1305,14 +1047,10 @@ Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">shuff
 <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">binarySearch</span><span style="color:#f92672">(</span>c<span style="color:#f92672">,</span> element<span style="color:#f92672">,</span> comparator<span style="color:#f92672">);</span>
 </code></pre></div><p><strong>java.util.Collections</strong></p>
 <ul>
-<li>
-<p>static <!-- raw HTML omitted --> int binarySearch​(List&lt;? extends Comparable&lt;? super T&raquo; list, T key)</p>
-<p>使用二进制搜索算法在指定列表中搜索指定对象。</p>
-</li>
-<li>
-<p>static <!-- raw HTML omitted --> int binarySearch​(List&lt;? extends T&gt; list, T key, Comparator&lt;? super T&gt; c)</p>
-<p>使用二进制搜索算法在指定列表中搜索指定对象。</p>
-</li>
+<li>static  int binarySearch​(List&lt;? extends Comparable&lt;? super T» list, T key)
+使用二进制搜索算法在指定列表中搜索指定对象。</li>
+<li>static  int binarySearch​(List&lt;? extends T&gt; list, T key, Comparator&lt;? super T&gt; c)
+使用二进制搜索算法在指定列表中搜索指定对象。</li>
 </ul>
 <p>如果为binarySearch方法提供一个链表，它自动退化为线性查找。查找前必须保证列表是有序的。</p>
 <h2 id="九补充">九、补充</h2>
@@ -1399,87 +1137,16 @@ Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">shuff
 <span style="color:#f92672">}</span>
 
 </code></pre></div><h3 id="91-arraylist和vector区别">9.1 ArrayList和Vector区别</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">区别</th>
-<th style="text-align:center">ArrayList</th>
-<th style="text-align:center">Vector</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">时间</td>
-<td style="text-align:center">JDK1.2后推出</td>
-<td style="text-align:center">JDK1.0定义的</td>
-</tr>
-<tr>
-<td style="text-align:center">性能</td>
-<td style="text-align:center">性能高，采用异步处理</td>
-<td style="text-align:center">性能低，采用同步处理</td>
-</tr>
-<tr>
-<td style="text-align:center">线程安全</td>
-<td style="text-align:center">普通方法，线程不安全</td>
-<td style="text-align:center">同步方法，线程安全</td>
-</tr>
-<tr>
-<td style="text-align:center">输出</td>
-<td style="text-align:center">支持Iterator、ListIterator</td>
-<td style="text-align:center">支持Iterator、ListIterator,还支持Enumeration</td>
-</tr>
-</tbody>
-</table>
+<!-- raw HTML omitted -->
 <h3 id="92-hashmaphashtableconcurrenthashmap的区别">9.2 HashMap、Hashtable、ConcurrentHashMap的区别</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">区别</th>
-<th style="text-align:center">HashMap</th>
-<th style="text-align:center">Hashtable</th>
-<th style="text-align:center">ConcurrentHashMap</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">推出时间</td>
-<td style="text-align:center">JDK1.2之后</td>
-<td style="text-align:center">JDK1.0</td>
-<td style="text-align:center">JDK5.0</td>
-</tr>
-<tr>
-<td style="text-align:center">性能</td>
-<td style="text-align:center">异步处理，性能高</td>
-<td style="text-align:center">同步处理，性能低</td>
-<td style="text-align:center">使用分段锁机制，性能较高，但不如HashMap</td>
-</tr>
-<tr>
-<td style="text-align:center">线程安全</td>
-<td style="text-align:center">普通方法，线程不安全</td>
-<td style="text-align:center">同步方法，线程安全</td>
-<td style="text-align:center">使用分段锁机制，线程安全</td>
-</tr>
-<tr>
-<td style="text-align:center">null</td>
-<td style="text-align:center">允许设置null</td>
-<td style="text-align:center">不允许设置null，否则出现空指针异常</td>
-<td style="text-align:center">不允许有null</td>
-</tr>
-</tbody>
-</table>
+<!-- raw HTML omitted -->
 <h3 id="93-hashcode约束">9.3 hashCode约束</h3>
 <p>Object.hashCode方法实际调用的是System.identityHashCode方法得到通过对象内存地址计算的散列值。自定义类型要作为HashMap或HashSet的键时，equals与hashCode两个方法必须重写。</p>
 <p>java.lang.Object 中对 hashCode 的约定：</p>
 <ol>
-<li>
-<p>在一个应用程序执行期间，如果一个对象的 equals 方法做比较所用到的信息没有被修改的话，则对该对象调用 hashCode 方法多次，它必须始终如一地返回同一个整数。</p>
-</li>
-<li>
-<p>如果两个对象根据 equals(Object o)方法是相等的，则调用这两个对象中任一对象的 hashCode 方法必须产生相同的整数结果。</p>
-</li>
-<li>
-<p>如果两个对象根据 equals(Object o)方法是不相等的，则调用这两个对象中任一个对象的 hashCode 方法，不要求产生不同的整数结果。但如果能不同，则可能提高散列表的性能。</p>
-</li>
+<li>在一个应用程序执行期间，如果一个对象的 equals 方法做比较所用到的信息没有被修改的话，则对该对象调用 hashCode 方法多次，它必须始终如一地返回同一个整数。</li>
+<li>如果两个对象根据 equals(Object o)方法是相等的，则调用这两个对象中任一对象的 hashCode 方法必须产生相同的整数结果。</li>
+<li>如果两个对象根据 equals(Object o)方法是不相等的，则调用这两个对象中任一个对象的 hashCode 方法，不要求产生不同的整数结果。但如果能不同，则可能提高散列表的性能。</li>
 </ol>
 <p>总的来说，如果x.equals(y) == true，则x.hashCode() == y.hashCode()必须成立；但是如果x.hashCode() == y.hashCode()，x.equals(y)不一定成立。假如x.equals(y) == false，x.hashCode()与y.hashCode()不同，对于散列表来说，效率更加高效，键值对在散列表分布的更加均匀。</p>
 <p>自定义的类型作为HashMap或HashSet键，它的hashCode方法最好应该满足三个条件：</p>

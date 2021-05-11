@@ -3,7 +3,7 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,22 +20,11 @@
 
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="../../../../favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/django.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/vim.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/gradle.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
-...
-
-<script>hljs.initHighlightingOnLoad();</script>
+  
 </head>
 
   <body class="theme-base-0d ">
@@ -50,21 +39,19 @@
 
     <nav>
       <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io/">家</a></li>
-		<li><a href="https://qinry.github.io//categories">分类</a></li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/categories"> 分类 </a></li>
       </ul>
     </nav>
 
-    <p>Copyright (c) 2021 槎城小子</p>
-	
+    <p>Copyright © 2021 槎城小子</p>
   </div>
 </aside>
 
     <main class="content container">
     <div class="post">
   <h1>JSON解析</h1>
-  <time datetime=2021-02-08T12:47:14&#43;0800 class="post-date">2021-02-08 12:47:14</time>
+  <time datetime=2021-02-08T12:47:14&#43;0800 class="post-date">Mon, Feb 8, 2021</time>
   <h3 id="一json概述">一、JSON概述</h3>
 <p>JSON(JavaScriptObject Notation, JS 对象简谱) 是一种轻量级的数据交换格式。它基于 ECMAScript (欧洲计算机协会制定的js规范)的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。已经替代了过去使用的XML，作为流行的数据传输格式。</p>
 <h3 id="二语法">二、语法</h3>
@@ -74,7 +61,7 @@
     <span style="color:#f92672">&#34;info&#34;</span>: <span style="color:#e6db74">&#34;德国批判主义音乐家的一生&#34;</span>,
     <span style="color:#f92672">&#34;price&#34;</span>: <span style="color:#ae81ff">102</span>
 }
-</code></pre></div><p>一对<code>{}</code>表示一个对象，对象里面可以有很多属性，用键值对表示。键必须是用<code>&quot;&quot;</code>包围的字符串，值可以是字符串、对象、数字、布尔值（true/false）、null和数组。</p>
+</code></pre></div><p>一对<code>{}</code>表示一个对象，对象里面可以有很多属性，用键值对表示。键必须是用<code>&amp;quot;&amp;quot;</code>包围的字符串，值可以是字符串、对象、数字、布尔值（true/false）、null和数组。</p>
 <p>一对<code>[]</code>表示一个数组，里面可以包含任何类型，比如字符串、数字、对象、布尔值、null，还可以内嵌一个数组，它们之间用<code>,</code>分开就可以了，例如：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#ae81ff">1</span>, { <span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;zhangsan&#34;</span>, <span style="color:#f92672">&#34;age&#34;</span>:<span style="color:#ae81ff">18</span> }, [<span style="color:#ae81ff">3</span>, <span style="color:#66d9ef">true</span>, <span style="color:#66d9ef">null</span>, <span style="color:#ae81ff">3.14</span>]]
 </code></pre></div><p>特殊地，单独的数组、数字、字符串都是合法的。例如：</p>
@@ -89,23 +76,23 @@
 <ol>
 <li>根据Gson的github地址https://github.com/google/gson/，下载jar包并导入到自己的项目中。</li>
 </ol>
-<p><img src="../../../../images/tutorial/2021/02/java-json-parse/1.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/02/java-json-parse/1.png" alt="picture"></p>
 <p>点击Gson jar downloads进入下一个页面</p>
-<p><img src="../../../../images/tutorial/2021/02/java-json-parse/2.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/02/java-json-parse/2.png" alt="picture"></p>
 <p>点击Downloads&gt;jar下载。</p>
-<ol start="2">
+<ol>
 <li>导入IDEA</li>
 </ol>
 <p>在项目的根目录添加新文件夹<code>lib</code>，把包添加到这里。如下一系列图所示：</p>
-<p><img src="../../../../images/tutorial/2021/02/java-json-parse/3.png" alt="picture"></p>
-<p><img src="../../../../images/tutorial/2021/02/java-json-parse/4.png" alt="picture"></p>
-<p><img src="../../../../images/tutorial/2021/02/java-json-parse/5.png" alt="picture"></p>
-<p><img src="../../../../images/tutorial/2021/02/java-json-parse/6.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/02/java-json-parse/3.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/02/java-json-parse/4.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/02/java-json-parse/5.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/02/java-json-parse/6.png" alt="picture"></p>
 <p>如果模块有你导入的模块，可以忽略这一步，没有如下进行：</p>
-<p><img src="../../../../images/tutorial/2021/02/java-json-parse/7.png" alt="picture"></p>
-<p><img src="../../../../images/tutorial/2021/02/java-json-parse/8.png" alt="picture"></p>
-<p><img src="../../../../images/tutorial/2021/02/java-json-parse/9.png" alt="picture"></p>
-<ol start="3">
+<p><img src="../../../../images/posts/2021/02/java-json-parse/7.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/02/java-json-parse/8.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/02/java-json-parse/9.png" alt="picture"></p>
+<ol>
 <li>使用Gson</li>
 </ol>
 <p>gson有两个常用的方法，解析json的fromJson方法，生成json的toJson方法。</p>
@@ -206,7 +193,6 @@
 
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-
 </code></pre></div><p>输出：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">1001
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">java</span><span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ArrayList</span>

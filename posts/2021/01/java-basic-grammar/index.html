@@ -3,7 +3,7 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,22 +20,11 @@
 
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="../../../../favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/django.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/vim.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/gradle.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
-...
-
-<script>hljs.initHighlightingOnLoad();</script>
+  
 </head>
 
   <body class="theme-base-0d ">
@@ -50,30 +39,30 @@
 
     <nav>
       <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io/">家</a></li>
-		<li><a href="https://qinry.github.io//categories">分类</a></li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/categories"> 分类 </a></li>
       </ul>
     </nav>
 
-    <p>Copyright (c) 2021 槎城小子</p>
-	
+    <p>Copyright © 2021 槎城小子</p>
   </div>
 </aside>
 
     <main class="content container">
     <div class="post">
   <h1>Java基础语法</h1>
-  <time datetime=2021-01-21T14:26:51&#43;0800 class="post-date">2021-01-21 14:26:51</time>
+  <time datetime=2021-01-21T14:26:51&#43;0800 class="post-date">Thu, Jan 21, 2021</time>
   <p>文章目录</p>
 <ul>
-<li><a href="#%E4%B8%80%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">一、基本数据类型</a>
+<li>
+<p><a href="#%E4%B8%80%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">一、基本数据类型</a></p>
 <ul>
 <li><a href="#11-%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96">1.1 声明变量和初始化</a></li>
 <li><a href="#12-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">1.2 类型转换</a></li>
 </ul>
 </li>
-<li><a href="#%E4%BA%8C%E8%BF%90%E7%AE%97%E7%AC%A6">二、运算符</a>
+<li>
+<p><a href="#%E4%BA%8C%E8%BF%90%E7%AE%97%E7%AC%A6">二、运算符</a></p>
 <ul>
 <li><a href="#21-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6">2.1 算数运算符</a></li>
 <li><a href="#22-%E8%87%AA%E5%A2%9E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6">2.2 自增自减运算符</a></li>
@@ -84,7 +73,8 @@
 <li><a href="#27-%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6">2.7 三目运算符</a></li>
 </ul>
 </li>
-<li><a href="#%E4%B8%89%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E5%92%8C%E5%BE%AA%E7%8E%AF%E5%88%86%E6%94%AF">三、条件判断和循环分支</a>
+<li>
+<p><a href="#%E4%B8%89%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E5%92%8C%E5%BE%AA%E7%8E%AF%E5%88%86%E6%94%AF">三、条件判断和循环分支</a></p>
 <ul>
 <li><a href="#31-if-if-else%E8%AF%AD%E5%8F%A5">3.1 if、if-else语句</a></li>
 <li><a href="#32-switch%E8%AF%AD%E5%8F%A5">3.2 switch语句</a></li>
@@ -94,8 +84,11 @@
 <li><a href="#36-break%E4%B8%8Econtinue">3.6 break与continue</a></li>
 </ul>
 </li>
-<li><a href="#%E5%9B%9B%E6%8E%A5%E5%8F%97%E8%BE%93%E5%85%A5">四、 接受输入</a></li>
-<li><a href="#%E4%BA%94%E6%95%B0%E7%BB%84">五、 数组</a>
+<li>
+<p><a href="#%E5%9B%9B%E6%8E%A5%E5%8F%97%E8%BE%93%E5%85%A5">四、 接受输入</a></p>
+</li>
+<li>
+<p><a href="#%E4%BA%94%E6%95%B0%E7%BB%84">五、 数组</a></p>
 <ul>
 <li><a href="#51-%E5%AE%9A%E4%B9%89%E6%A0%BC%E5%BC%8F">5.1 定义格式</a></li>
 <li><a href="#52-%E4%B8%8B%E6%A0%87">5.2 下标</a></li>
@@ -108,66 +101,7 @@
 </ul>
 <h2 id="一基本数据类型">一、基本数据类型</h2>
 <p>Java的数据类型有基本数据类型（primitive）、类（包括枚举）、接口（包括注解）和数组，后三个类型有被称为引用类型（reference）。本文着重基本数据类型。Java中有8种基本数据类型，分别有4种表示整数的整型（byte、short、int、long）；2种表示浮点数的浮点型（float和double）；1种字符类型char；还有用于表示真或假的布尔类型boolean。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">类型</th>
-<th style="text-align:center">范围</th>
-<th style="text-align:center">存储需求</th>
-<th style="text-align:center">默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">byte</td>
-<td style="text-align:center">-128 ~ 127</td>
-<td style="text-align:center">1 byte</td>
-<td style="text-align:center">(byte)0</td>
-</tr>
-<tr>
-<td style="text-align:center">short</td>
-<td style="text-align:center">-32 768 ~ 32 767</td>
-<td style="text-align:center">2byte</td>
-<td style="text-align:center">(short)0</td>
-</tr>
-<tr>
-<td style="text-align:center">int</td>
-<td style="text-align:center">-2 147 483 648 ~ 2 147 483 647(刚刚超过20亿)</td>
-<td style="text-align:center">4byte</td>
-<td style="text-align:center">0</td>
-</tr>
-<tr>
-<td style="text-align:center">long</td>
-<td style="text-align:center">-9 223 372 036 854 775 808 ~ 9 223 972 036 854 775 807</td>
-<td style="text-align:center">8byte</td>
-<td style="text-align:center">0.0L</td>
-</tr>
-<tr>
-<td style="text-align:center">float</td>
-<td style="text-align:center">大约±3.402 823 47E+38F(有效位数6~7位)</td>
-<td style="text-align:center">4byte</td>
-<td style="text-align:center">0.0f</td>
-</tr>
-<tr>
-<td style="text-align:center">double</td>
-<td style="text-align:center">大约±1.797 693 134 862 315 70E+308(有效位数为15为)</td>
-<td style="text-align:center">8byte</td>
-<td style="text-align:center">0.0d</td>
-</tr>
-<tr>
-<td style="text-align:center">char</td>
-<td style="text-align:center">&lsquo;\u0000&rsquo; ~ &lsquo;\uFFFF&rsquo;</td>
-<td style="text-align:center">2byte</td>
-<td style="text-align:center">&lsquo;\u0000&rsquo;</td>
-</tr>
-<tr>
-<td style="text-align:center">boolean</td>
-<td style="text-align:center">false,true</td>
-<td style="text-align:center">1 byte</td>
-<td style="text-align:center">false</td>
-</tr>
-</tbody>
-</table>
+<!-- raw HTML omitted -->
 <h3 id="11-声明变量和初始化">1.1 声明变量和初始化</h3>
 <p>Java声明变量要先指定变量类型，再指定变量名，最后不要忘记分号结束。变量初始化会用到下面会讲的赋值运算符。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">double</span> salary <span style="color:#f92672">=</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
@@ -185,7 +119,7 @@
 <p>还有一点虽然不是强制的，建议标识符命名要见名知意。</p>
 <h3 id="12-类型转换">1.2 类型转换</h3>
 <p>数值类型之间是可以转换。</p>
-<p><img src="../../../../images/tutorial/2021/01/java-basic-grammar/1.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/01/java-basic-grammar/1.png" alt="picture"></p>
 <p>上面6条黑线表示的类型转换没有信息损失，而3条红线表示的类型转换可能精度丢失。
 像没有信息损失的类型转换，Java是会自动帮我们实现转换的，这种类型转换叫做自动类型转换，也就是容量小的类型自动转换容量大的数据类型或者精度低自动转换精度高的数据类型。</p>
 <p>而容量大类型转换容量小类型或者精度高自动转换精度低的数据类型，需要加上强制转换符的被称为强制类型转换，这种类型转换可能造成数据的溢出和精度的降低，使用时要小心。圆括号里面放要转换的类型就是强制转换符格式:<code>(type)</code>。</p>
@@ -197,7 +131,7 @@
 <h3 id="21-算数运算符">2.1 算数运算符</h3>
 <p>参与数字加、减、乘、除和取模（求余运算）的运算符分别是<code>+, -, *, /和%</code>。当参与除法运算的两个操作数都为整数时，表示整数除法；否则，表示浮点数除法，Java的整数除法是地板除，除法的结果小数位是会被截断的，如15/2等于7。相同的数分别用整数和浮点数表示来求余得到的结果可能不同，如：15%2等于，15.0%2等于7.5。需要注意整数除以0会产生异常，浮点数除以0则会得到无穷大或NaN结果。</p>
 <h3 id="22-自增自减运算符">2.2 自增自减运算符</h3>
-<p>Java借鉴C/C++的自增自减运算符，n++是先使用变量原来的值再加1，++n则是先加1再使用变量；n&ndash;与&ndash;n类似只不过是减1罢了。</p>
+<p>Java借鉴C/C++的自增自减运算符，n++是先使用变量原来的值再加1，++n则是先加1再使用变量；n–与–n类似只不过是减1罢了。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> 2<span style="color:#f92672">;</span>
 <span style="color:#66d9ef">int</span> m <span style="color:#f92672">=</span> n<span style="color:#f92672">++;</span> <span style="color:#75715e">// m为2，n为3
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> p <span style="color:#f92672">=</span> <span style="color:#f92672">++</span>n<span style="color:#f92672">;</span> <span style="color:#75715e">// p为4，n为4
@@ -216,7 +150,7 @@
 写法：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">3 <span style="color:#f92672">!=</span> 0
 </code></pre></div><p>上面得到的值为<code>true</code>。</p>
-<p>还有检测大小的小于<code>&lt;</code>，小于等于<code>&lt;=</code>，大于<code>&gt;</code>，大于等于<code>&gt;=</code>运算符。</p>
+<p>还有检测大小的小于<code>&amp;lt;</code>，小于等于<code>&amp;lt;=</code>，大于<code>&amp;gt;</code>，大于等于<code>&amp;gt;=</code>运算符。</p>
 <h3 id="25-逻辑运算符">2.5 逻辑运算符</h3>
 <p>逻辑运算符操作后得到的结果是布尔类型。逻辑运算符使用的表达式得到的结果必须是布尔类型，不能是整型1或0，否则语法是错误的，这与C/C++用法不同。</p>
 <p>逻辑与<code>&amp;</code>用法格式:</p>
@@ -257,7 +191,7 @@
 <p>字符串变量的声明与初始化，写法如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String s<span style="color:#f92672">;</span> 
 s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;I love Java!&#34;</span><span style="color:#f92672">;</span>
-</code></pre></div><p>上面的第一句是变量声明，引用类型与基本类型的声明一样，都是变量类写在前，后跟变量，分号结束。初始化可以使用双引号把一段文字包围起来赋值给String变量。一般引用类型变量的赋值，要使用<code>new</code>表达式创建一个对象再赋给变量，像<code>new String(&quot;I love Java!&quot;);</code>。String类特殊，可以不使用<code>new</code>表达式，直接双引号把文字阔起来赋值给变量即可。</p>
+</code></pre></div><p>上面的第一句是变量声明，引用类型与基本类型的声明一样，都是变量类写在前，后跟变量，分号结束。初始化可以使用双引号把一段文字包围起来赋值给String变量。一般引用类型变量的赋值，要使用<code>new</code>表达式创建一个对象再赋给变量，像<code>new String(&amp;quot;I love Java!&amp;quot;);</code>。String类特殊，可以不使用<code>new</code>表达式，直接双引号把文字阔起来赋值给变量即可。</p>
 <p>字符串连接符是<code>+</code>号，当<code>+</code>号两边任意一边操作数是字符串，<code>+</code>就是字符串连接符，起到字符串拼接的作用。
 写法：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;I love &#34;</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;Java&#34;</span><span style="color:#f92672">+</span>11<span style="color:#960050;background-color:#1e0010">·</span><span style="color:#f92672">;</span> 
@@ -344,8 +278,8 @@ s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;I love J
 <span style="color:#f92672">}</span>
 </code></pre></div><p><code>System.out.println(...)</code>这条语句是直接使用System内部的公共静态域，并调用它的普通成员方法，会在控制台打印内容。这里简单说一下静态方法的调用格式：<code>类名.静态方法名(参数列表)</code>，还有对于普通成员方法调用格式：<code>对象名.成员方法名(参数列表)</code>。System是java.lang包提供的类，out就是其内部有静态成员字段(或域)，println就是out的普通成员方法。使用静态方法和静态域，通常不需要自己创建对象，关联一个类就可以直接使用，但也可以关联对象来使用。在Java中方法是对象的成员，静态方法是类的成员。</p>
 <h3 id="32-switch语句">3.2 switch语句</h3>
-<p>switch语句也是条件判断语句，不过是通过变量与常量的相等检测来选择执行路径。与if相比，灵活性没那么高，适合变量变化小的条件判断。<br>
-用法格式：</p>
+<p>switch语句也是条件判断语句，不过是通过变量与常量的相等检测来选择执行路径。与if相比，灵活性没那么高，适合变量变化小的条件判断。</p>
+<p>用法格式：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">switch</span><span style="color:#f92672">(</span>变量<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 <span style="color:#66d9ef">case</span> 常量1<span style="color:#f92672">:</span> 表达式1或<span style="color:#f92672">{</span>语句块1<span style="color:#f92672">};</span><span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
 <span style="color:#66d9ef">case</span> 常量2<span style="color:#f92672">:</span> 表达式2或<span style="color:#f92672">{</span>语句块2<span style="color:#f92672">}:</span><span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
@@ -477,24 +411,24 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 <p>假设有个数组A，其长度为N，数组中的元素是可以比较大小的，即可以使用大于号，小于号，大于等于号，小于等于号这些运算符进行操作。
 因为只有数据类型是可以比较出大小，数组求最大值和最小值才有意义。</p>
 <p>求数组最大值的算法，伪代码如下:</p>
-<pre><code>max(A, N):
-    i ← 1
-    max ← 0
-    while i &lt; N
-        if (A[i] &gt; A[max])
-            max ← i
-        i ← i + 1
-    return A[i]
-</code></pre><p>求数组最小值的算法，伪代码如下：</p>
-<pre><code>min(A, N):
-    i ← 1
-    min ← 0
-    while i &lt; N
-        if (A[i] &lt; A[min])
-            min ← i
-        i ← i + 1
-    return A[i]
-</code></pre><p>java中完整代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">max<span style="color:#f92672">(</span>A<span style="color:#f92672">,</span> N<span style="color:#f92672">):</span>
+    i <span style="color:#960050;background-color:#1e0010">←</span> 1
+    max <span style="color:#960050;background-color:#1e0010">←</span> 0
+    <span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;</span> N
+        <span style="color:#a6e22e">if</span> <span style="color:#f92672">(</span>A<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">&gt;</span> A<span style="color:#f92672">[</span>max<span style="color:#f92672">])</span>
+            max <span style="color:#960050;background-color:#1e0010">←</span> i
+        i <span style="color:#960050;background-color:#1e0010">←</span> i <span style="color:#f92672">+</span> 1
+    <span style="color:#66d9ef">return</span> A<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>
+</code></pre></div><p>求数组最小值的算法，伪代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">min<span style="color:#f92672">(</span>A<span style="color:#f92672">,</span> N<span style="color:#f92672">):</span>
+    i <span style="color:#960050;background-color:#1e0010">←</span> 1
+    min <span style="color:#960050;background-color:#1e0010">←</span> 0
+    <span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;</span> N
+        <span style="color:#a6e22e">if</span> <span style="color:#f92672">(</span>A<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">&lt;</span> A<span style="color:#f92672">[</span>min<span style="color:#f92672">])</span>
+            min <span style="color:#960050;background-color:#1e0010">←</span> i
+        i <span style="color:#960050;background-color:#1e0010">←</span> i <span style="color:#f92672">+</span> 1
+    <span style="color:#66d9ef">return</span> A<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>
+</code></pre></div><p>java中完整代码如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Demo</span> <span style="color:#f92672">{</span>
     <span style="color:#75715e">// 求数组最大值
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">max</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
@@ -516,7 +450,7 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 </code></pre></div><p>求其他类型数组的最值算法类似上面的算法，只不过是更换类型罢了</p>
 <h3 id="53-冒泡排序">5.3 冒泡排序</h3>
 <p>升序的冒泡排序，操作的过程如下：</p>
-<p><img src="../../../../images/tutorial/2021/01/java-basic-grammar/2.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/01/java-basic-grammar/2.png" alt="picture"></p>
 <p>具体代码如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BubbleSort</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>

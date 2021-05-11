@@ -3,7 +3,7 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,22 +20,11 @@
 
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="../../../../favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/django.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/vim.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/gradle.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
-...
-
-<script>hljs.initHighlightingOnLoad();</script>
+  
 </head>
 
   <body class="theme-base-0d ">
@@ -50,42 +39,54 @@
 
     <nav>
       <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io/">家</a></li>
-		<li><a href="https://qinry.github.io//categories">分类</a></li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/categories"> 分类 </a></li>
       </ul>
     </nav>
 
-    <p>Copyright (c) 2021 槎城小子</p>
-	
+    <p>Copyright © 2021 槎城小子</p>
   </div>
 </aside>
 
     <main class="content container">
     <div class="post">
   <h1>面向对象编程</h1>
-  <time datetime=2021-01-21T14:27:16&#43;0800 class="post-date">2021-01-21 14:27:16</time>
+  <time datetime=2021-01-21T14:27:16&#43;0800 class="post-date">Thu, Jan 21, 2021</time>
   <p>文章目录</p>
 <ul>
-<li><a href="#%E4%B8%80%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1">一、类和对象</a>
+<li>
+<p><a href="#%E4%B8%80%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1">一、类和对象</a></p>
 <ul>
-<li><a href="#11-%E5%AE%9A%E4%B9%89%E7%B1%BB">1.1 定义类</a>
+<li>
+<p><a href="#11-%E5%AE%9A%E4%B9%89%E7%B1%BB">1.1 定义类</a></p>
 <ul>
-<li><a href="#111-%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95">1.1.1 构造方法</a></li>
-<li><a href="#112-%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E8%BD%BD">1.1.2 方法的重载</a></li>
-<li><a href="#113-%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0">1.1.3 可变参数</a></li>
-</ul>
+<li>
+<p><a href="#111-%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95">1.1.1 构造方法</a></p>
 </li>
-<li><a href="#12-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96">1.2 对象的初始化</a>
+<li>
+<p><a href="#112-%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E8%BD%BD">1.1.2 方法的重载</a></p>
+</li>
+<li>
+<p><a href="#113-%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0">1.1.3 可变参数</a></p>
+</li>
+<li>
+<p><a href="#12-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96">1.2 对象的初始化</a></p>
 <ul>
 <li><a href="#121-%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%9D%97">1.2.1 静态代码块</a></li>
-<li><a href="#122-%E6%9E%84%E9%80%A0%E4%BB%A3%E7%A0%81%E5%9D%97">1.2.2 构造代码块</a></li>
-<li><a href="#13-main%E6%96%B9%E6%B3%95">1.3 main方法</a></li>
 </ul>
+</li>
+<li>
+<p><a href="#122-%E6%9E%84%E9%80%A0%E4%BB%A3%E7%A0%81%E5%9D%97">1.2.2 构造代码块</a></p>
+</li>
+<li>
+<p><a href="#13-main%E6%96%B9%E6%B3%95">1.3 main方法</a></p>
 </li>
 </ul>
 </li>
-<li><a href="#%E4%BA%8C%E7%BB%A7%E6%89%BF">二、 继承</a>
+</ul>
+</li>
+<li>
+<p><a href="#%E4%BA%8C%E7%BB%A7%E6%89%BF">二、 继承</a></p>
 <ul>
 <li><a href="#21-super%E5%85%B3%E9%94%AE%E5%AD%97">2.1 super关键字</a></li>
 <li><a href="#22-%E5%AD%90%E7%B1%BB%E5%AE%9E%E4%BE%8B%E5%8C%96">2.2 子类实例化</a></li>
@@ -93,18 +94,27 @@
 <li><a href="#23-final%E4%BF%AE%E9%A5%B0%E7%AC%A6">2.3 final修饰符</a></li>
 </ul>
 </li>
-<li><a href="#%E4%B8%89%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90">三、访问权限</a>
+<li>
+<p><a href="#%E4%B8%89%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90">三、访问权限</a></p>
 <ul>
-<li><a href="#31-%E5%8C%85">3.1 包</a>
+<li>
+<p><a href="#31-%E5%8C%85">3.1 包</a></p>
 <ul>
-<li><a href="#311-%E5%8C%85%E5%90%8D%E8%A7%84%E8%8C%83">3.1.1 包名规范</a></li>
-<li><a href="#312-%E5%AE%9A%E4%B9%89%E5%8C%85%E5%92%8C%E5%8C%85%E5%AF%BC%E5%85%A5">3.1.2 定义包和包导入</a></li>
+<li>
+<p><a href="#311-%E5%8C%85%E5%90%8D%E8%A7%84%E8%8C%83">3.1.1 包名规范</a></p>
+</li>
+<li>
+<p><a href="#312-%E5%AE%9A%E4%B9%89%E5%8C%85%E5%92%8C%E5%8C%85%E5%AF%BC%E5%85%A5">3.1.2 定义包和包导入</a></p>
+</li>
+<li>
+<p><a href="#32-%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6">3.2 权限修饰符</a></p>
+</li>
 </ul>
 </li>
-<li><a href="#32-%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6">3.2 权限修饰符</a></li>
 </ul>
 </li>
-<li><a href="#%E5%9B%9B%E5%86%85%E9%83%A8%E7%B1%BB">四、内部类</a>
+<li>
+<p><a href="#%E5%9B%9B%E5%86%85%E9%83%A8%E7%B1%BB">四、内部类</a></p>
 <ul>
 <li><a href="#41-%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB">4.1 成员内部类</a></li>
 <li><a href="#42-%E5%B1%80%E9%83%A8%E5%86%85%E9%83%A8%E7%B1%BB">4.2 局部内部类</a></li>
@@ -112,14 +122,16 @@
 <li><a href="#44-%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB">4.4 静态内部类</a></li>
 </ul>
 </li>
-<li><a href="#%E4%BA%94%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3">五、抽象类和接口</a>
+<li>
+<p><a href="#%E4%BA%94%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3">五、抽象类和接口</a></p>
 <ul>
 <li><a href="#51-%E6%8A%BD%E8%B1%A1%E7%B1%BB">5.1 抽象类</a></li>
 <li><a href="#52-%E6%8E%A5%E5%8F%A3">5.2 接口</a></li>
 <li><a href="#53-instanceof%E8%BF%90%E7%AE%97%E7%AC%A6">5.3 instanceof运算符</a></li>
 </ul>
 </li>
-<li><a href="#%E5%85%AD%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86">六、异常处理</a>
+<li>
+<p><a href="#%E5%85%AD%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86">六、异常处理</a></p>
 <ul>
 <li><a href="#61-%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7">6.1 异常捕获</a></li>
 <li><a href="#62-%E5%BC%82%E5%B8%B8%E6%8A%9B%E5%87%BA">6.2 异常抛出</a></li>
@@ -178,10 +190,10 @@
 <h4 id="111-构造方法">1.1.1 构造方法</h4>
 <p>构造方法是在创建某类的对象时自动调用的方法，用于初始化对象。如果程序员没有编写构造方法，编译器会自动生成默认的构造方法，默认的构造方法没有参数列表。程序员根据自己的需要编写带有形参的构造器，形参用来指定属性的初始化。自己写构造器，Java将不自动生成默认构造器。所以建议全参构造器和无参构造器一起写。</p>
 <p>构造方法的格式：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">权限修饰符 <span style="color:#a6e22e">类名</span><span style="color:#f92672">(</span>形式参数列表<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#75715e">// 方法体
-</span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
-</code></pre></div><p>例如：</p>
+<pre><code>权限修饰符 类名(形式参数列表) {
+    // 方法体
+}
+</code></pre><p>例如：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cat</span> <span style="color:#f92672">{</span>
     <span style="color:#75715e">// ...
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Cat</span><span style="color:#f92672">()</span> <span style="color:#f92672">{}</span>
@@ -235,26 +247,21 @@
 <h4 id="112-方法的重载">1.1.2 方法的重载</h4>
 <p>Java方法支持重载，重载用于解决需要多个有同一个方法名但传入的参数有所不同的方法的问题。单纯返回值类型不同，方法签名相同的多个方法的重载是不支持的，也就是说方法重载与返回值类型无关，与方法的形参列表的长度，形参类型，形参的顺序有关。</p>
 <p>例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyMath</span> <span style="color:#f92672">{</span>
-    <span style="color:#75715e">//  方法1
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">sum</span><span style="color:#f92672">(</span><span style="color:#66d9ef">double</span> x<span style="color:#f92672">,</span> <span style="color:#66d9ef">double</span> y<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">double</span> z <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> y<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">return</span> z<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-    <span style="color:#75715e">// 方法2
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">sum</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> y<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">int</span> z <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> y<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">return</span> z<span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cat</span>  <span style="color:#f92672">{</span>
+    String name<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">int</span> age<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Cat</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> age<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">(</span><span style="color:#66d9ef">null</span><span style="color:#f92672">,</span> age<span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
 
-    <span style="color:#75715e">/*
-</span><span style="color:#75715e">    // 方法3
-</span><span style="color:#75715e">    public static double sum(int x, int y) {
-</span><span style="color:#75715e">        double z = x + y;
-</span><span style="color:#75715e">        return z;
-</span><span style="color:#75715e">    }
-</span><span style="color:#75715e">    Java不允许方法2和方法3同时存在
-</span><span style="color:#75715e">    */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Cat</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">(</span>name<span style="color:#f92672">,</span> 0<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Cat</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> age<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> age<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><h4 id="113-可变参数">1.1.3 可变参数</h4>
 <p>JDK1.5后支持可变参数列表，方法的参数的数量可以任意一个，不过可变参数必须放在参数列表的最后的位置，否则编译出错。</p>
@@ -299,7 +306,7 @@ cat<span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <
 cat<span style="color:#f92672">.</span><span style="color:#a6e22e">running</span><span style="color:#f92672">();</span>
 </code></pre></div><p>简单了解对象实例化过程在内存中分配空间（地址信息是假设的）。先是在栈中为Cat对象引用分配空间（对象引用可能是用于指向对象在堆中的的起始地址的引用指针，也可能是代表对象的句柄或者其他与此对象相关的位置），然后是在堆中为对象申请空间并存储对象的成员变量，假如类有静态变量，是存在方法区中，与对象和局部变量不同，对象是在堆中，局部变量是在栈中。</p>
 <p>例如：
-<img src="../../../../images/tutorial/2021/01/java-oriented-object/1.png" alt="picture"></p>
+<img src="../../../../images/posts/2021/01/java-oriented-object/1.png" alt="picture"></p>
 <h4 id="121-静态代码块">1.2.1 静态代码块</h4>
 <p>关键字static，修饰成员变量时，表示它是类所有实例对象共享的变量；修饰方法类似，表示类所有对象共有的方法，说明static修饰的属性和方法与对象无关，与类相关。static修饰的成员属性，有时又称“类变量”，方法又称“类方法”。类与对象的关系，可以简单认为，一个是图纸，一个是根据图纸造出的实物。类就是图纸，对象就是实物。static修饰的变量会储存在JVM运行时内存区域的方法区中，方法区存放类加载信息，静态变量和常量等。</p>
 <p>关键字还可以修饰代码块在结构定义语句块内，例如：</p>
@@ -393,7 +400,7 @@ cat<span style="color:#f92672">.</span><span style="color:#a6e22e">running</span
 Person p <span style="color:#f92672">=</span> s<span style="color:#f92672">;</span>
 Student s2 <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Stduent<span style="color:#f92672">)</span>p<span style="color:#f92672">;</span>
 </code></pre></div><p>简单看看子类对象实例化在内存中如何分配空间的（地址信息是假设的）。子类对象有super，其实可以认为是指向子类实例对象父类部分的地址的引用指针。</p>
-<p><img src="../../../../images/tutorial/2021/01/java-oriented-object/2.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/01/java-oriented-object/2.png" alt="picture"></p>
 <p>子类对象引用可以赋值给父类引用，会自动类型转换，在家族树中通常由老到小往下排的，故又叫做向上类型转换。如果父类对象引用赋值给子类对象引用，必须加上强制类型转换符，属于强制类型转换，又叫做向下类型转换。</p>
 <p><strong>多态</strong></p>
 <p>多态性是允许你将父对象设置成为一个或更多的他的子对象相等的技术，赋值之后，父对象就可以根据当前赋值给它的子对象的特性以不同的方式运作。</p>
@@ -448,47 +455,7 @@ Student s2 <span style="color:#f92672">=</span> <span style="color:#f92672">(</s
 <p>不使用修饰符修饰的类、成员变量、方法，表示默认的权限，可以认为是包内私有，只允许同包访问，下面都说是默认权限。
 类只能用public权限或者默认权限，编译单元只能拥有一个public权限的类；成员内部类可以用public、private权限和默认权限。
 成员变量和方法可供选择的权限是全部。局部变量不能用static修饰也不能用权限修饰符修饰</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">修饰符</th>
-<th style="text-align:center">类</th>
-<th style="text-align:center">包</th>
-<th style="text-align:center">子类</th>
-<th style="text-align:center">其他包</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">public</td>
-<td style="text-align:center">✓</td>
-<td style="text-align:center">✓</td>
-<td style="text-align:center">✓</td>
-<td style="text-align:center">✓</td>
-</tr>
-<tr>
-<td style="text-align:center">protected</td>
-<td style="text-align:center">✓</td>
-<td style="text-align:center">✓</td>
-<td style="text-align:center">✓</td>
-<td style="text-align:center">✗</td>
-</tr>
-<tr>
-<td style="text-align:center">(默认)</td>
-<td style="text-align:center">✓</td>
-<td style="text-align:center">✓</td>
-<td style="text-align:center">✗</td>
-<td style="text-align:center">✗</td>
-</tr>
-<tr>
-<td style="text-align:center">private</td>
-<td style="text-align:center">✓</td>
-<td style="text-align:center">✗</td>
-<td style="text-align:center">✗</td>
-<td style="text-align:center">✗</td>
-</tr>
-</tbody>
-</table>
+<!-- raw HTML omitted -->
 <hr>
 <h2 id="四内部类">四、内部类</h2>
 <h3 id="41-成员内部类">4.1 成员内部类</h3>
@@ -644,7 +611,7 @@ Outter<span style="color:#f92672">.</span><span style="color:#a6e22e">Inner</spa
 <h2 id="六异常处理">六、异常处理</h2>
 <p>异常是在程序中导致程序中断运行的一种指令流。</p>
 <p>异常类继承体系，如下：</p>
-<p><img src="../../../../images/tutorial/2021/01/java-oriented-object/3.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/01/java-oriented-object/3.png" alt="picture"></p>
 <p>Throwable存在两个子类：</p>
 <ol>
 <li>Error：表示的是错误，是JVM发出的错误操作,只能尽量避免，无法用代码处理。</li>
@@ -659,7 +626,7 @@ Outter<span style="color:#f92672">.</span><span style="color:#a6e22e">Inner</spa
 <h3 id="61-异常捕获">6.1 异常捕获</h3>
 <p>try块中执行代码，遇到异常抛出，交给catch捕获, 然后进行异常处理。由于try中抛出异常，会在catch中匹配，是不会回到原来的地方，将try-catch语句可以放入while循环，在while的帮助下，能回到到原来中断的地方继续执行，这是一种恢复操作的模型（不太实用，尽量少用，因为它会导致耦合）。</p>
 <p>语法:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
     <span style="color:#75715e">// 假如这里会抛出异常
 </span><span style="color:#75715e"></span><span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>异常类1 对象名1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
     <span style="color:#75715e">// 这里匹配异常后处理
@@ -679,7 +646,7 @@ Outter<span style="color:#f92672">.</span><span style="color:#a6e22e">Inner</spa
 <p>异常说明不会处理异常，只是将异常交给方法调用来处理。</p>
 <p>为了让调用者能知道方法可能抛出异常，以便于捕获它们，用关键字throws跟上一个或多个异常类名，作为方法声明的一部分,在参数列表之后，花括号之前。声明方法将会抛出的异常，实际上不一定抛出。为异常先占个位子，对于定义抽象基类和接口时比较重要，其派生类或接口实现将能抛出预声明的异常。</p>
 <p>语法:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java">权限修饰符 返回值类型 <span style="color:#a6e22e">方法名</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> 异常类1<span style="color:#f92672">,</span> 异常类2<span style="color:#f92672">,</span> <span style="color:#f92672">...,</span> 异常类n <span style="color:#f92672">{</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">权限修饰符 返回值类型 <span style="color:#a6e22e">方法名</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> 异常类1<span style="color:#f92672">,</span> 异常类2<span style="color:#f92672">,</span> <span style="color:#f92672">...,</span> 异常类n <span style="color:#f92672">{</span>
     <span style="color:#75715e">// 会抛出异常
 </span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
 </code></pre></div><h3 id="64-自定义异常类">6.4 自定义异常类</h3>
@@ -695,7 +662,7 @@ Outter<span style="color:#f92672">.</span><span style="color:#a6e22e">Inner</spa
 </code></pre></div><h3 id="65-finally子句">6.5 finally子句</h3>
 <p>用finally子句进行清理，不仅有内存清理，还有资源恢复初始态，如把打开的文件关闭等等。常常将finally放在catch之后。</p>
 <p>语法:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
     <span style="color:#75715e">// 抛出异常
 </span><span style="color:#75715e"></span><span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
     <span style="color:#75715e">// 处理异常
@@ -706,7 +673,7 @@ Outter<span style="color:#f92672">.</span><span style="color:#a6e22e">Inner</spa
 <p>即使是在它之前有return语句，也会在方法结束前，执行finally子句。这里要注意，如果return语句返回的是局部变量，实际上是返回这个变量的拷贝。所以return返回变量，finally即使重新赋值给这个变量，也不会对这个变量的拷贝产生任何作用。不过finally子句操作的变量是对象的引用，对其属性进行赋值修改， 却会影响对象属性的值。</p>
 <p>finally代码中不建议包含return，因为程序会在上述的流程中提前退出，也就是说返回的值不是try或 catch中的值。</p>
 <p>finally还有缺陷，会导致一些异常被忽略,如下:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#75715e">// 在某个类内部
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 在某个类内部
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> FirstException <span style="color:#f92672">{}</span>
 <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">g</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> SecondException <span style="color:#f92672">{}</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
@@ -725,7 +692,7 @@ Outter<span style="color:#f92672">.</span><span style="color:#a6e22e">Inner</spa
 <p>捕获底层异常后再抛出高层异常，还可以把原始异常信息保存在这个新抛出的异常内，通过getCause()可以查看原始异常信息。对于简单的程序而言，通过异常链可以实现将受检异常转换为非受检异常来达到屏蔽检查的目的。</p>
 <p>Throwable子类包括Error（报告系统错误）, Exception（最常用的异常）以及RuntimeException（运行时异常，又称未检查异常）。他们的构造器，有接受Throwable类型的cause参数(表示原始异常对象)的构造器,能够把原始异常传递给新异常。有同等效果的一个方法initCause()也能传递原始异常，如果异常类没有传入cause参数的构造器就可以使用initCause()方法。</p>
 <p>例如:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#75715e">// LowLevelException表示底层异常
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// LowLevelException表示底层异常
 </span><span style="color:#75715e">// HighLevelException表示高层异常
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
     <span style="color:#75715e">// ..

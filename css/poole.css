@@ -159,22 +159,19 @@ code {
 }
 pre {
   display: block;
-  margin-top: 0;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  font-size: .8rem;
-  line-height: 1.4;
-  white-space: pre;
-  word-break: break-all;
-  word-wrap: break-word;
-  background-color: #f9f9f9;
-  white-space: pre;
-  overflow-x: auto;
-
-  tab-size: 4;
-  -moz-tab-size: 4;
-
-
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    font-size: .8rem;
+    line-height: 1.4;
+    white-space: pre;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f9f9f9;
+    white-space: pre;
+    overflow-x: auto;
+    tab-size: 4;
+    -moz-tab-size: 4;
 }
 pre code {
   padding: 0;

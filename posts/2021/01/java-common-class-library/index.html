@@ -3,7 +3,7 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,22 +20,11 @@
 
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="../../../../favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/django.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/vim.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/gradle.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
-...
-
-<script>hljs.initHighlightingOnLoad();</script>
+  
 </head>
 
   <body class="theme-base-0d ">
@@ -50,42 +39,54 @@
 
     <nav>
       <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io/">家</a></li>
-		<li><a href="https://qinry.github.io//categories">分类</a></li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/categories"> 分类 </a></li>
       </ul>
     </nav>
 
-    <p>Copyright (c) 2021 槎城小子</p>
-	
+    <p>Copyright © 2021 槎城小子</p>
   </div>
 </aside>
 
     <main class="content container">
     <div class="post">
   <h1>Java常用类库</h1>
-  <time datetime=2021-01-31T17:08:58&#43;0800 class="post-date">2021-01-31 17:08:58</time>
+  <time datetime=2021-01-31T17:08:58&#43;0800 class="post-date">Sun, Jan 31, 2021</time>
   <p>文章目录</p>
 <ul>
-<li><a href="#%E4%B8%80javautilobjects">一、java.util.Objects</a>
+<li>
+<p><a href="#%E4%B8%80javautilobjects">一、java.util.Objects</a></p>
 <ul>
-<li><a href="#11-%E6%A3%80%E6%9F%A5%E5%AF%B9%E8%B1%A1%E7%9B%B8%E7%AD%89">1.1 检查对象相等</a>
+<li>
+<p><a href="#11-%E6%A3%80%E6%9F%A5%E5%AF%B9%E8%B1%A1%E7%9B%B8%E7%AD%89">1.1 检查对象相等</a></p>
 <ul>
-<li><a href="#111-%E4%BD%BF%E7%94%A8equals">1.1.1 使用equals</a></li>
-<li><a href="#112-equals%E6%BA%90%E7%A0%81">1.1.2 equals源码</a></li>
-</ul>
+<li>
+<p><a href="#111-%E4%BD%BF%E7%94%A8equals">1.1.1 使用equals</a></p>
 </li>
-<li><a href="#12-%E6%A3%80%E6%9F%A5%E7%A9%BA%E5%AF%B9%E8%B1%A1">1.2 检查空对象</a>
+<li>
+<p><a href="#112-equals%E6%BA%90%E7%A0%81">1.1.2 equals源码</a></p>
+</li>
+<li>
+<p><a href="#12-%E6%A3%80%E6%9F%A5%E7%A9%BA%E5%AF%B9%E8%B1%A1">1.2 检查空对象</a></p>
 <ul>
 <li><a href="#121-%E4%BD%BF%E7%94%A8isnull%E5%92%8Cnonnull">1.2.1 使用isNull和nonNull</a></li>
-<li><a href="#122-isnull%E5%92%8Cnonnull%E6%BA%90%E7%A0%81">1.2.2 isNull和nonNull源码</a></li>
-<li><a href="#123-%E4%BD%BF%E7%94%A8requirenonnull">1.2.3 使用requirenonNull</a></li>
-<li><a href="#124-requirenonnull%E6%BA%90%E7%A0%81">1.2.4 requireNonNull源码</a></li>
 </ul>
+</li>
+<li>
+<p><a href="#122-isnull%E5%92%8Cnonnull%E6%BA%90%E7%A0%81">1.2.2 isNull和nonNull源码</a></p>
+</li>
+<li>
+<p><a href="#123-%E4%BD%BF%E7%94%A8requirenonnull">1.2.3 使用requirenonNull</a></p>
+</li>
+<li>
+<p><a href="#124-requirenonnull%E6%BA%90%E7%A0%81">1.2.4 requireNonNull源码</a></p>
 </li>
 </ul>
 </li>
-<li><a href="#%E4%BA%8Cjavalangmath">二、 java.lang.Math</a>
+</ul>
+</li>
+<li>
+<p><a href="#%E4%BA%8Cjavalangmath">二、 java.lang.Math</a></p>
 <ul>
 <li><a href="#21-%E6%B1%82%E7%BB%9D%E5%AF%B9%E5%80%BC">2.1 求绝对值</a></li>
 <li><a href="#22-%E6%B1%82%E4%B8%A4%E6%95%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC%E5%92%8C%E6%9C%80%E5%B0%8F%E5%80%BC">2.2 求两数的最大值和最小值</a></li>
@@ -94,7 +95,8 @@
 <li><a href="#25-%E5%90%91%E4%B8%8A%E5%8F%96%E6%95%B4">2.5 向上取整</a></li>
 </ul>
 </li>
-<li><a href="#%E4%B8%89javautilsarrays">三、java.utils.Arrays</a>
+<li>
+<p><a href="#%E4%B8%89javautilsarrays">三、java.utils.Arrays</a></p>
 <ul>
 <li><a href="#31-%E6%95%B0%E7%BB%84%E5%86%85%E5%AE%B9%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A1%A8%E7%A4%BA">3.1 数组内容的字符串表示</a></li>
 <li><a href="#32-%E6%8E%92%E5%BA%8F">3.2 排序</a></li>
@@ -103,43 +105,71 @@
 <li><a href="#35-%E6%95%B0%E7%BB%84%E7%9A%84%E6%AF%94%E8%BE%83">3.5 数组的比较</a></li>
 </ul>
 </li>
-<li><a href="#%E5%9B%9Bjavamathbigdecimal">四、java.math.BigDecimal</a></li>
-<li><a href="#%E4%BA%94%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4">五、日期和时间</a>
-<ul>
-<li><a href="#51-javautildate">5.1 java.util.Date</a>
-<ul>
-<li><a href="#511-%E5%88%9B%E5%BB%BA%E6%97%A5%E6%9C%9F">5.1.1 创建日期</a></li>
-<li><a href="#512-%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E6%88%B3">5.1.2 获取时间戳</a></li>
-<li><a href="#513-%E6%AF%94%E8%BE%83%E6%97%B6%E9%97%B4">5.1.3 比较时间</a></li>
-</ul>
+<li>
+<p><a href="#%E5%9B%9Bjavamathbigdecimal">四、java.math.BigDecimal</a></p>
 </li>
-<li><a href="#52-javatextdateformat">5.2 java.text.DateFormat</a>
+<li>
+<p><a href="#%E4%BA%94%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4">五、日期和时间</a></p>
+<ul>
+<li>
+<p><a href="#51-javautildate">5.1 java.util.Date</a></p>
+<ul>
+<li>
+<p><a href="#511-%E5%88%9B%E5%BB%BA%E6%97%A5%E6%9C%9F">5.1.1 创建日期</a></p>
+</li>
+<li>
+<p><a href="#512-%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E6%88%B3">5.1.2 获取时间戳</a></p>
+</li>
+<li>
+<p><a href="#513-%E6%AF%94%E8%BE%83%E6%97%B6%E9%97%B4">5.1.3 比较时间</a></p>
+</li>
+<li>
+<p><a href="#52-javatextdateformat">5.2 java.text.DateFormat</a></p>
 <ul>
 <li><a href="#521-%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%97%A5%E6%9C%9F%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A1%A8%E7%A4%BA">5.2.1 格式化日期字符串表示</a></li>
-<li><a href="#522-%E8%A7%A3%E6%9E%90%E6%97%A5%E6%9C%9F%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A1%A8%E7%A4%BA">5.2.2 解析日期字符串表示</a></li>
-<li><a href="#523-%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E7%9A%84%E6%A8%A1%E5%BC%8F">5.2.3 日期和时间的模式</a></li>
 </ul>
 </li>
-<li><a href="#53-javautilcalendar">5.3 java.util.Calendar</a></li>
+<li>
+<p><a href="#522-%E8%A7%A3%E6%9E%90%E6%97%A5%E6%9C%9F%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A1%A8%E7%A4%BA">5.2.2 解析日期字符串表示</a></p>
+</li>
+<li>
+<p><a href="#523-%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E7%9A%84%E6%A8%A1%E5%BC%8F">5.2.3 日期和时间的模式</a></p>
+</li>
+<li>
+<p><a href="#53-javautilcalendar">5.3 java.util.Calendar</a></p>
+</li>
 </ul>
 </li>
-<li><a href="#%E5%85%ADjavalangsystem">六、java.lang.System</a>
+</ul>
+</li>
+<li>
+<p><a href="#%E5%85%ADjavalangsystem">六、java.lang.System</a></p>
 <ul>
 <li><a href="#61-systemgc">6.1 System.gc</a></li>
 <li><a href="#62-systemexit">6.2 System.exit</a></li>
 <li><a href="#63-systemarraycopy">6.3 System.arraycopy</a></li>
 </ul>
 </li>
-<li><a href="#%E4%B8%83%E5%AD%97%E7%AC%A6%E4%B8%B2">七、字符串</a>
+<li>
+<p><a href="#%E4%B8%83%E5%AD%97%E7%AC%A6%E4%B8%B2">七、字符串</a></p>
 <ul>
-<li><a href="#71-javalangstring">7.1 java.lang.String</a>
+<li>
+<p><a href="#71-javalangstring">7.1 java.lang.String</a></p>
 <ul>
-<li><a href="#711-string%E7%9A%84%E5%88%9B%E5%BB%BA">7.1.1 String的创建</a></li>
-<li><a href="#712-%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95">7.1.2 常见方法</a></li>
+<li>
+<p><a href="#711-string%E7%9A%84%E5%88%9B%E5%BB%BA">7.1.1 String的创建</a></p>
+</li>
+<li>
+<p><a href="#712-%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95">7.1.2 常见方法</a></p>
+</li>
+<li>
+<p><a href="#72-javalangstringbuilder">7.2 java.lang.StringBuilder</a></p>
+</li>
 </ul>
 </li>
-<li><a href="#72-javalangstringbuilder">7.2 java.lang.StringBuilder</a></li>
-<li><a href="#72-javalangstringbuffer">7.2 java.lang.StringBuffer</a></li>
+<li>
+<p><a href="#72-javalangstringbuffer">7.2 java.lang.StringBuffer</a></p>
+</li>
 </ul>
 </li>
 </ul>
@@ -267,8 +297,7 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 <span style="color:#f92672">[</span>3<span style="color:#f92672">,</span> 8<span style="color:#f92672">,</span> 7<span style="color:#f92672">,</span> 2<span style="color:#f92672">,</span> 6<span style="color:#f92672">,</span> 4<span style="color:#f92672">]</span>
 </code></pre></div><p>直接打印数组引用a，输出的不是a的内容，而是数组类型和地址，<code>[I</code>表示整型数组类型，@后面的16进制整数是数组对象的起始地址。toString才是打印数组的内容。</p>
 <p>toString源码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@NotNull</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">toString</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">toString</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
         <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;null&#34;</span><span style="color:#f92672">;</span>
     <span style="color:#66d9ef">int</span> iMax <span style="color:#f92672">=</span> a<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span>
@@ -373,10 +402,12 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 <p>获取数组之间第一个相等不匹配的相对索引。</p>
 <ul>
 <li>索引大于0，说明存在这个索引， 返回比较第一个不匹配的元素的比较结果</li>
-<li>索引小于0，说明不存在此索引，返回数组长度的比较结果</li>
 </ul>
 </li>
 </ol>
+<ul>
+<li>索引小于0，说明不存在此索引，返回数组长度的比较结果</li>
+</ul>
 <h3 id="四javamathbigdecimal">四、java.math.BigDecimal</h3>
 <p>double和float的算数运算是不精确的，为了解决精确计算，java.math包提供了BigDecimal则用来精确的浮点数运算。</p>
 <p>常用方法有加(add)、减(substract)、乘(mutiply)、除(divide)，和转换为int(intValue)、long(longValue)、float(floatValue)、double(doubleValue)和BigInteger(toBigInteger)的方法。</p>
@@ -473,7 +504,7 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Fri Jan 22 05<span style="color:#f92672">:</span>50<span style="color:#f92672">:</span>30 CST 1999 <span style="color:#f92672">~</span> 916955430000
 </code></pre></div><h5 id="523-日期和时间的模式">5.2.3 日期和时间的模式</h5>
 <p>有些可以充当转义为日期和时间的特殊字符，如下：
-<img src="../../../../images/tutorial/2021/01/java-common-class-library/1.png" alt="picture"></p>
+<img src="../../../../images/posts/2021/01/java-common-class-library/1.png" alt="picture"></p>
 <h4 id="53-javautilcalendar">5.3 java.util.Calendar</h4>
 <p>Calendar是个抽象类，不能直接new获得，但提供了静态方法getInstance()获取Calendar的子类对象。提供了getTime方法获取Date对象。</p>
 <p>get方法用来获取日历中日期某一字段的信息，像年份、月份、当月几号等等，这些字段信息是储存在int数组fields中，为了方便检索日期某一字段的信息,Calendar内定义许多int常量，比如Calendar.YEAR，这些常量在设置日历，对日历做运算都有要使用，有了它们就不用记住哪个下标的元素代表哪个字段的信息，若是要获得年份可以get(Calendar.YEAR)，要获取其他信息只要使用定义好的常量就行。注意get方法得到月份的信息，是0到11，0表示1月，真正月份是得到信息再加1.</p>
@@ -539,7 +570,7 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 <h4 id="71-javalangstring">7.1 java.lang.String</h4>
 <p>String表示字符串常量，是不可变的。</p>
 <h5 id="711-string的创建">7.1.1 String的创建</h5>
-<p>字符串最常用的创建方式，使用双引号包起一段文字。第一次出现的字符串，才会创建并保存在字符串常量池（在运行时常量池内）。可以赋值给String引用，如：<code>String s = &quot;hello&quot;;</code></p>
+<p>字符串最常用的创建方式，使用双引号包起一段文字。第一次出现的字符串，才会创建并保存在字符串常量池（在运行时常量池内）。可以赋值给String引用，如：<code>String s = &amp;quot;hello&amp;quot;;</code></p>
 <p>第二次出现相同的字符串赋值给新的字符串引用，是不会重复创建，而是共享了第一次创建的字符串的内存地址。不过，把这个字符串传入构造器，使用new表达式是会在内存中重新创建字符串。</p>
 <p>例如：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String s1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;123&#34;</span><span style="color:#f92672">;</span>
@@ -553,76 +584,75 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 </code></pre></div><p>s1和s2引用的同一个字符串，内存地址相同。凡是new表达式创建的对象，一定会在内存分配了空间，所以s1和s3的地址不同。</p>
 <h5 id="712-常见方法">7.1.2 常见方法</h5>
 <p>构造方法：</p>
-<pre><code>String(byte[] bytes) 通过使用平台的默认字符集解码指定的字节数组构造新的 String 。 
-String(byte[] bytes, String charsetName) 构造一个新的String由指定用指定的字节的数组解码charset 。  
-String(char[] value) 分配新的 String ，使其表示当前包含在字符数组参数中的字符序列。
-String(String original) 初始化新创建的String对象，使其表示与参数相同的字符序列; 换句话说，新创建的字符串是参数字符串的副本。 
-</code></pre><p>静态方法:</p>
-<pre><code>static String format(String format, Object... args) 使用指定的格式字符串和参数返回格式化字符串。
-static String copyValueOf(char[] data) 相当于 valueOf(char[]) 。  
-static String copyValueOf(char[] data, int offset, int count) 相当于 valueOf(char[], int, int) 。  
-static String join(CharSequence delimiter, CharSequence... elements) 返回由 CharSequence elements的副本组成的新String，该副本与指定的 delimiter的副本连接在一起。  
-static String join(CharSequence delimiter, Iterable&lt;? extends CharSequence&gt; elements) 返回由 String的副本组成的新 String ，其中 CharSequence elements指定的 delimiter的副本。  
-static String valueOf(boolean b) 返回 boolean参数的字符串表示形式。  
-static String valueOf(char c) 返回 char参数的字符串表示形式。  
-static String valueOf(char[] data) 返回 char数组参数的字符串表示形式。  
-static String valueOf(char[] data, int offset, int count) 返回 char数组参数的特定子数组的字符串表示形式。  
-static String valueOf(double d) 返回 double参数的字符串表示形式。  
-static String valueOf(float f) 返回 float参数的字符串表示形式。  
-static String valueOf(int i) 返回 int参数的字符串表示形式。  
-static String valueOf(long l) 返回 long参数的字符串表示形式。  
-static String valueOf(Object obj) 返回 Object参数的字符串表示形式。  
-
-</code></pre><p>非静态方法：</p>
-<pre><code>int length() 返回此字符串的长度。  
-char charAt(int index)                         返回指定索引处的 char值。 
-int codePoints(int index)                      返回指定索引处的字符（Unicode代码点）。 
-int offsetByCodePoints(int index, int codePointOffset) 返回此 String中的索引，该索引从给定的 index偏移 codePointOffset的代码点。 
-</code></pre><pre><code>boolean startsWith(String prefix)              测试此字符串是否以指定的前缀开头。
-boolean startsWith(String prefix, int toffset) 测试从指定索引开始的此字符串的子字符串是否以指定的前缀开头。 
-boolean endsWith(String suffix)                测试此字符串是否以指定的后缀结尾。
-int compareTo(String anotherString)            按字典顺序比较两个字符串。 
-int compareToIngnoreCase(String str)           按字典顺序比较两个字符串，忽略大小写差异。
-boolean contains(CharSequence s)               当且仅当此字符串包含指定的char值序列时，才返回true。 
-boolean contentEquals(CharSequence cs)         将此字符串与指定的 CharSequence 内容比较。 
-boolean contentEquals(StringBuffer sb)         将此字符串与指定的 StringBuffer 内容比较。
-boolean equals(Object anObject)                将此字符串与指定的对象进行比较。
-boolean equalsIgnoreCase(String anotherString) 将此 String与另一个 String比较，忽略了大小写。   
-</code></pre><pre><code>byte[] getBytes() 使用平台的默认字符集将此 String编码为字节序列，将结果存储到新的字节数组中。  
-byte[] getBytes(String charsetName) 使用命名的字符集将此 String编码为字节序列，将结果存储到新的字节数组中。
-void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin) 
-int indexOf(int ch) 返回指定字符第一次出现的字符串中的索引。  
-int indexOf(int ch, int fromIndex) 返回指定字符第一次出现的此字符串中的索引，从指定索引处开始搜索。 
-int indexOf(String str) 返回指定子字符串第一次出现的字符串中的索引。 
-int indexOf(String str, int fromIndex) 从指定的索引处开始，返回指定子字符串第一次出现的字符串中的索引。  
-int lastIndexOf(int ch) 返回指定字符最后一次出现的字符串中的索引。  
-int lastIndexOf(int ch, int fromIndex) 返回指定字符最后一次出现的字符串中的索引，从指定的索引开始向后搜索。  
-int lastIndexOf(String str) 返回指定子字符串最后一次出现的字符串中的索引。  
-int lastIndexOf(String str, int fromIndex) 返回指定子字符串最后一次出现的字符串中的索引，从指定索引开始向后搜索。  
-String intern() 返回字符串对象的规范表示。与此字符串具有相同内容的字符串，但保证来自唯一字符串池。 
-boolean isBlank() 如果字符串为空或仅包含 white space代码点，则返回 true ，否则 false 。  
-boolean isEmpty() 当且仅当length()是 0 ，返回 true。
-boolean matches(String regex) 判断此字符串是否与给定的 regular expression匹配。  
-boolean regionMatches(int toffset, String other, int ooffset, int len) 测试两个字符串区域是否相等。
-boolean regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len) 测试两个字符串区域是否相等。  
-</code></pre><pre><code>String repeat(int count) 返回一个字符串，其值为此字符串的串联重复 count次。  
-String replace(char oldChar, char newChar) 返回从替换所有出现的导致一个字符串 oldChar在此字符串 newChar 。  
-String replace(CharSequence target, CharSequence replacement) 将此字符串中与文字目标序列匹配的每个子字符串替换为指定的文字替换序列。  
-String replaceAll(String regex, String replacement) 将给定替换的、给定 regular expression匹配的此字符串的每个子字符串替换。  
-String replaceFirst(String regex, String replacement) 将给定替换的、给定 regular expression匹配的此字符串的第一个子字符串替换。  
-String[] split(String regex) 将此字符串拆分为给定 regular expression的匹配 项 。  
-String[] split(String regex, int limit) 将此字符串拆分为给定 regular expression的匹配 项 。  
-String strip() 返回一个字符串，其值为此字符串，并删除了所有前导和尾随 white space 。 
-String stripLeading() 返回一个字符串，其值为此字符串，并删除了所有前导 white space 。  
-String stripTrailing() 返回一个字符串，其值为此字符串，并删除所有尾随 white space 。 
-</code></pre><pre><code>CharSequence subSequence(int beginIndex, int endIndex) 返回作为此序列的子序列的字符序列。  
-String substring(int beginIndex) 返回一个字符串，该字符串是此字符串的子字符串。  
-String substring(int beginIndex, int endIndex) 返回一个字符串，该字符串是此字符串的子字符串。  
-char[] toCharArray() 将此字符串转换为新的字符数组。  
-String toLowerCase() 使用默认语言环境的规则将此 String所有字符转换为小写。  
-String toUpperCase() 使用默认语言环境的规则将此 String所有字符转换为大写。  
-String trim() 返回一个字符串，其值为此字符串，删除了所有前导和尾随空格，其中space被定义为其代码点小于或等于 'U+0020' （空格字符）的任何字符。  
-</code></pre><h4 id="72-javalangstringbuilder">7.2 java.lang.StringBuilder</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String<span style="color:#f92672">(</span><span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> bytes<span style="color:#f92672">)</span> 通过使用平台的默认字符集解码指定的字节数组构造新的 String <span style="color:#960050;background-color:#1e0010">。</span> 
+String<span style="color:#f92672">(</span><span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> bytes<span style="color:#f92672">,</span> String charsetName<span style="color:#f92672">)</span> 构造一个新的String由指定用指定的字节的数组解码charset <span style="color:#960050;background-color:#1e0010">。</span>  
+String<span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> value<span style="color:#f92672">)</span> 分配新的 String <span style="color:#960050;background-color:#1e0010">，</span>使其表示当前包含在字符数组参数中的字符序列<span style="color:#960050;background-color:#1e0010">。</span>
+String<span style="color:#f92672">(</span>String original<span style="color:#f92672">)</span> 初始化新创建的String对象<span style="color:#960050;background-color:#1e0010">，</span>使其表示与参数相同的字符序列<span style="color:#f92672">;</span> 换句话说<span style="color:#960050;background-color:#1e0010">，</span>新创建的字符串是参数字符串的副本<span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><p>静态方法:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">format</span><span style="color:#f92672">(</span>String format<span style="color:#f92672">,</span> Object<span style="color:#f92672">...</span> args<span style="color:#f92672">)</span> 使用指定的格式字符串和参数返回格式化字符串<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">copyValueOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> data<span style="color:#f92672">)</span> 相当于 <span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">[])</span> <span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">copyValueOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> data<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> count<span style="color:#f92672">)</span> 相当于 <span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">[],</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">)</span> <span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">join</span><span style="color:#f92672">(</span>CharSequence delimiter<span style="color:#f92672">,</span> CharSequence<span style="color:#f92672">...</span> elements<span style="color:#f92672">)</span> 返回由 CharSequence elements的副本组成的新String<span style="color:#960050;background-color:#1e0010">，</span>该副本与指定的 delimiter的副本连接在一起<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">join</span><span style="color:#f92672">(</span>CharSequence delimiter<span style="color:#f92672">,</span> Iterable<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> CharSequence<span style="color:#f92672">&gt;</span> elements<span style="color:#f92672">)</span> 返回由 String的副本组成的新 String <span style="color:#960050;background-color:#1e0010">，</span>其中 CharSequence elements指定的 delimiter的副本<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">boolean</span> b<span style="color:#f92672">)</span> 返回 boolean参数的字符串表示形式<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span> c<span style="color:#f92672">)</span> 返回 char参数的字符串表示形式<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> data<span style="color:#f92672">)</span> 返回 char数组参数的字符串表示形式<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> data<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> count<span style="color:#f92672">)</span> 返回 char数组参数的特定子数组的字符串表示形式<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">double</span> d<span style="color:#f92672">)</span> 返回 double参数的字符串表示形式<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">float</span> f<span style="color:#f92672">)</span> 返回 float参数的字符串表示形式<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">)</span> 返回 int参数的字符串表示形式<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">long</span> l<span style="color:#f92672">)</span> 返回 long参数的字符串表示形式<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>Object obj<span style="color:#f92672">)</span> 返回 Object参数的字符串表示形式<span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><p>非静态方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> 返回此字符串的长度<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">char</span> <span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span>                         返回指定索引处的 char值<span style="color:#960050;background-color:#1e0010">。</span> 
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">codePoints</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span>                      返回指定索引处的字符<span style="color:#960050;background-color:#1e0010">（</span>Unicode代码点<span style="color:#960050;background-color:#1e0010">）。</span> 
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">offsetByCodePoints</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> codePointOffset<span style="color:#f92672">)</span> 返回此 String中的索引<span style="color:#960050;background-color:#1e0010">，</span>该索引从给定的 index偏移 codePointOffset的代码点<span style="color:#960050;background-color:#1e0010">。</span>    
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">startsWith</span><span style="color:#f92672">(</span>String prefix<span style="color:#f92672">)</span>              测试此字符串是否以指定的前缀开头<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">startsWith</span><span style="color:#f92672">(</span>String prefix<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> toffset<span style="color:#f92672">)</span> 测试从指定索引开始的此字符串的子字符串是否以指定的前缀开头<span style="color:#960050;background-color:#1e0010">。</span> 
+<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">endsWith</span><span style="color:#f92672">(</span>String suffix<span style="color:#f92672">)</span>                测试此字符串是否以指定的后缀结尾<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>String anotherString<span style="color:#f92672">)</span>            按字典顺序比较两个字符串<span style="color:#960050;background-color:#1e0010">。</span> 
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">compareToIngnoreCase</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span>           按字典顺序比较两个字符串<span style="color:#960050;background-color:#1e0010">，</span>忽略大小写差异<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">contains</span><span style="color:#f92672">(</span>CharSequence s<span style="color:#f92672">)</span>               当且仅当此字符串包含指定的char值序列时<span style="color:#960050;background-color:#1e0010">，</span>才返回true<span style="color:#960050;background-color:#1e0010">。</span> 
+<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">contentEquals</span><span style="color:#f92672">(</span>CharSequence cs<span style="color:#f92672">)</span>         将此字符串与指定的 CharSequence 内容比较<span style="color:#960050;background-color:#1e0010">。</span> 
+<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">contentEquals</span><span style="color:#f92672">(</span>StringBuffer sb<span style="color:#f92672">)</span>         将此字符串与指定的 StringBuffer 内容比较<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>Object anObject<span style="color:#f92672">)</span>                将此字符串与指定的对象进行比较<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">equalsIgnoreCase</span><span style="color:#f92672">(</span>String anotherString<span style="color:#f92672">)</span> 将此 String与另一个 String比较<span style="color:#960050;background-color:#1e0010">，</span>忽略了大小写<span style="color:#960050;background-color:#1e0010">。</span>   
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> <span style="color:#a6e22e">getBytes</span><span style="color:#f92672">()</span> 使用平台的默认字符集将此 String编码为字节序列<span style="color:#960050;background-color:#1e0010">，</span>将结果存储到新的字节数组中<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> <span style="color:#a6e22e">getBytes</span><span style="color:#f92672">(</span>String charsetName<span style="color:#f92672">)</span> 使用命名的字符集将此 String编码为字节序列<span style="color:#960050;background-color:#1e0010">，</span>将结果存储到新的字节数组中<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">getChars</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> srcBegin<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> srcEnd<span style="color:#f92672">,</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> dst<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> dstBegin<span style="color:#f92672">)</span> 
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> ch<span style="color:#f92672">)</span> 返回指定字符第一次出现的字符串中的索引<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> ch<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> fromIndex<span style="color:#f92672">)</span> 返回指定字符第一次出现的此字符串中的索引<span style="color:#960050;background-color:#1e0010">，</span>从指定索引处开始搜索<span style="color:#960050;background-color:#1e0010">。</span> 
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span> 返回指定子字符串第一次出现的字符串中的索引<span style="color:#960050;background-color:#1e0010">。</span> 
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> fromIndex<span style="color:#f92672">)</span> 从指定的索引处开始<span style="color:#960050;background-color:#1e0010">，</span>返回指定子字符串第一次出现的字符串中的索引<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">lastIndexOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> ch<span style="color:#f92672">)</span> 返回指定字符最后一次出现的字符串中的索引<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">lastIndexOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> ch<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> fromIndex<span style="color:#f92672">)</span> 返回指定字符最后一次出现的字符串中的索引<span style="color:#960050;background-color:#1e0010">，</span>从指定的索引开始向后搜索<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">lastIndexOf</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span> 返回指定子字符串最后一次出现的字符串中的索引<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">lastIndexOf</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> fromIndex<span style="color:#f92672">)</span> 返回指定子字符串最后一次出现的字符串中的索引<span style="color:#960050;background-color:#1e0010">，</span>从指定索引开始向后搜索<span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">intern</span><span style="color:#f92672">()</span> 返回字符串对象的规范表示<span style="color:#960050;background-color:#1e0010">。</span>与此字符串具有相同内容的字符串<span style="color:#960050;background-color:#1e0010">，</span>但保证来自唯一字符串池<span style="color:#960050;background-color:#1e0010">。</span> 
+<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isBlank</span><span style="color:#f92672">()</span> 如果字符串为空或仅包含 white space代码点<span style="color:#960050;background-color:#1e0010">，</span>则返回 <span style="color:#66d9ef">true</span> <span style="color:#960050;background-color:#1e0010">，</span>否则 <span style="color:#66d9ef">false</span> <span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()</span> 当且仅当length<span style="color:#f92672">()</span>是 0 <span style="color:#960050;background-color:#1e0010">，</span>返回 <span style="color:#66d9ef">true</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">matches</span><span style="color:#f92672">(</span>String regex<span style="color:#f92672">)</span> 判断此字符串是否与给定的 regular expression匹配<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">regionMatches</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> toffset<span style="color:#f92672">,</span> String other<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> ooffset<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> len<span style="color:#f92672">)</span> 测试两个字符串区域是否相等<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">regionMatches</span><span style="color:#f92672">(</span><span style="color:#66d9ef">boolean</span> ignoreCase<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> toffset<span style="color:#f92672">,</span> String other<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> ooffset<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> len<span style="color:#f92672">)</span> 测试两个字符串区域是否相等<span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String <span style="color:#a6e22e">repeat</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> count<span style="color:#f92672">)</span> 返回一个字符串<span style="color:#960050;background-color:#1e0010">，</span>其值为此字符串的串联重复 count次<span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">replace</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span> oldChar<span style="color:#f92672">,</span> <span style="color:#66d9ef">char</span> newChar<span style="color:#f92672">)</span> 返回从替换所有出现的导致一个字符串 oldChar在此字符串 newChar <span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">replace</span><span style="color:#f92672">(</span>CharSequence target<span style="color:#f92672">,</span> CharSequence replacement<span style="color:#f92672">)</span> 将此字符串中与文字目标序列匹配的每个子字符串替换为指定的文字替换序列<span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">replaceAll</span><span style="color:#f92672">(</span>String regex<span style="color:#f92672">,</span> String replacement<span style="color:#f92672">)</span> 将给定替换的<span style="color:#960050;background-color:#1e0010">、</span>给定 regular expression匹配的此字符串的每个子字符串替换<span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">replaceFirst</span><span style="color:#f92672">(</span>String regex<span style="color:#f92672">,</span> String replacement<span style="color:#f92672">)</span> 将给定替换的<span style="color:#960050;background-color:#1e0010">、</span>给定 regular expression匹配的此字符串的第一个子字符串替换<span style="color:#960050;background-color:#1e0010">。</span>  
+String<span style="color:#f92672">[]</span> <span style="color:#a6e22e">split</span><span style="color:#f92672">(</span>String regex<span style="color:#f92672">)</span> 将此字符串拆分为给定 regular expression的匹配 项 <span style="color:#960050;background-color:#1e0010">。</span>  
+String<span style="color:#f92672">[]</span> <span style="color:#a6e22e">split</span><span style="color:#f92672">(</span>String regex<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> limit<span style="color:#f92672">)</span> 将此字符串拆分为给定 regular expression的匹配 项 <span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">strip</span><span style="color:#f92672">()</span> 返回一个字符串<span style="color:#960050;background-color:#1e0010">，</span>其值为此字符串<span style="color:#960050;background-color:#1e0010">，</span>并删除了所有前导和尾随 white space <span style="color:#960050;background-color:#1e0010">。</span> 
+String <span style="color:#a6e22e">stripLeading</span><span style="color:#f92672">()</span> 返回一个字符串<span style="color:#960050;background-color:#1e0010">，</span>其值为此字符串<span style="color:#960050;background-color:#1e0010">，</span>并删除了所有前导 white space <span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">stripTrailing</span><span style="color:#f92672">()</span> 返回一个字符串<span style="color:#960050;background-color:#1e0010">，</span>其值为此字符串<span style="color:#960050;background-color:#1e0010">，</span>并删除所有尾随 white space <span style="color:#960050;background-color:#1e0010">。</span> 
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">CharSequence <span style="color:#a6e22e">subSequence</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> beginIndex<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> endIndex<span style="color:#f92672">)</span> 返回作为此序列的子序列的字符序列<span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">substring</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> beginIndex<span style="color:#f92672">)</span> 返回一个字符串<span style="color:#960050;background-color:#1e0010">，</span>该字符串是此字符串的子字符串<span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">substring</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> beginIndex<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> endIndex<span style="color:#f92672">)</span> 返回一个字符串<span style="color:#960050;background-color:#1e0010">，</span>该字符串是此字符串的子字符串<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> <span style="color:#a6e22e">toCharArray</span><span style="color:#f92672">()</span> 将此字符串转换为新的字符数组<span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">toLowerCase</span><span style="color:#f92672">()</span> 使用默认语言环境的规则将此 String所有字符转换为小写<span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">toUpperCase</span><span style="color:#f92672">()</span> 使用默认语言环境的规则将此 String所有字符转换为大写<span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">trim</span><span style="color:#f92672">()</span> 返回一个字符串<span style="color:#960050;background-color:#1e0010">，</span>其值为此字符串<span style="color:#960050;background-color:#1e0010">，</span>删除了所有前导和尾随空格<span style="color:#960050;background-color:#1e0010">，</span>其中space被定义为其代码点小于或等于 <span style="color:#960050;background-color:#1e0010">&#39;</span>U<span style="color:#f92672">+</span>0020<span style="color:#960050;background-color:#1e0010">&#39;</span> <span style="color:#960050;background-color:#1e0010">（</span>空格字符<span style="color:#960050;background-color:#1e0010">）</span>的任何字符<span style="color:#960050;background-color:#1e0010">。</span>  
+</code></pre></div><h4 id="72-javalangstringbuilder">7.2 java.lang.StringBuilder</h4>
 <p>可认为是线程不安全的字符串变量，拼接字符串更加高效。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">StringBuilder sb <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StringBuilder<span style="color:#f92672">();</span>
 <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span> i<span style="color:#f92672">&lt;</span>10<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
@@ -634,120 +664,120 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">123456789
 </code></pre></div><p>常用方法：</p>
 <p>构造方法：</p>
-<pre><code>StringBuilder() 构造一个字符串构建器，其中不包含任何字符，初始容量为16个字符。  
-StringBuilder(String str) 构造一个初始化为指定字符串内容的字符串构建器。  
-</code></pre><p>非静态方法：</p>
-<pre><code>int length() 返回长度（字符数）。  
-char charAt(int index) 返回指定索引处的此序列中的 char值。  
-int codePointAt(int index) 返回指定索引处的字符（Unicode代码点）。  
-int codePointBefore(int index) 返回指定索引之前的字符（Unicode代码点）。  
-int codePointCount(int beginIndex, int endIndex) 返回此序列的指定文本范围内的Unicode代码点数。 
-int compareTo(StringBuilder another) StringBuilder字典顺序比较两个 StringBuilder实例。 
-int offsetByCodePoints(int index, int codePointOffset) 返回此序列中的索引，该索引从给定的 index偏移 codePointOffset代码点。 
-StringBuilder replace(int start, int end, String str) 使用指定的 String的字符替换此序列的子字符串中的字符。  
-StringBuilder reverse() 导致此字符序列被序列的反向替换。  
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">StringBuilder<span style="color:#f92672">()</span> 构造一个字符串构建器<span style="color:#960050;background-color:#1e0010">，</span>其中不包含任何字符<span style="color:#960050;background-color:#1e0010">，</span>初始容量为16个字符<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder<span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span> 构造一个初始化为指定字符串内容的字符串构建器<span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><p>非静态方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> 返回长度<span style="color:#960050;background-color:#1e0010">（</span>字符数<span style="color:#960050;background-color:#1e0010">）。</span>  
+<span style="color:#66d9ef">char</span> <span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span> 返回指定索引处的此序列中的 char值<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">codePointAt</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span> 返回指定索引处的字符<span style="color:#960050;background-color:#1e0010">（</span>Unicode代码点<span style="color:#960050;background-color:#1e0010">）。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">codePointBefore</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span> 返回指定索引之前的字符<span style="color:#960050;background-color:#1e0010">（</span>Unicode代码点<span style="color:#960050;background-color:#1e0010">）。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">codePointCount</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> beginIndex<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> endIndex<span style="color:#f92672">)</span> 返回此序列的指定文本范围内的Unicode代码点数<span style="color:#960050;background-color:#1e0010">。</span> 
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>StringBuilder another<span style="color:#f92672">)</span> StringBuilder字典顺序比较两个 StringBuilder实例<span style="color:#960050;background-color:#1e0010">。</span> 
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">offsetByCodePoints</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> codePointOffset<span style="color:#f92672">)</span> 返回此序列中的索引<span style="color:#960050;background-color:#1e0010">，</span>该索引从给定的 index偏移 codePointOffset代码点<span style="color:#960050;background-color:#1e0010">。</span> 
+StringBuilder <span style="color:#a6e22e">replace</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> start<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">,</span> String str<span style="color:#f92672">)</span> 使用指定的 String的字符替换此序列的子字符串中的字符<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">reverse</span><span style="color:#f92672">()</span> 导致此字符序列被序列的反向替换<span style="color:#960050;background-color:#1e0010">。</span>  
 
-StringBuilder append(boolean b) 将 boolean参数的字符串表示形式追加到序列中。  
-StringBuilder append(char c) 将 char参数的字符串表示形式追加到此序列。  
-StringBuilder append(char[] str) 将 char数组参数的字符串表示形式追加到此序列。  
-StringBuilder append(char[] str, int offset, int len) 将 char数组参数的子数组的字符串表示形式追加到此序列。  
-StringBuilder append(double d) 将 double参数的字符串表示形式追加到此序列。  
-StringBuilder append(float f) 将 float参数的字符串表示形式追加到此序列。  
-StringBuilder append(int i) 将 int参数的字符串表示形式追加到此序列。  
-StringBuilder append(long lng) 将 long参数的字符串表示形式追加到此序列。  
-StringBuilder append(CharSequence s) 将指定的字符序列追加到此 Appendable 。  
-StringBuilder append(CharSequence s, int start, int end) 将指定的 CharSequence序列追加到此序列。  
-StringBuilder append(Object obj) 追加 Object参数的字符串表示形式。  
-StringBuilder append(String str) 将指定的字符串追加到此字符序列。  
-StringBuilder append(StringBuffer sb) 将指定的 StringBuffer追加到此序列。  
-StringBuilder appendCodePoint(int codePoint) 将 codePoint参数的字符串表示形式追加到此序列。  
+StringBuilder <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">boolean</span> b<span style="color:#f92672">)</span> 将 boolean参数的字符串表示形式追加到序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span> c<span style="color:#f92672">)</span> 将 char参数的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> str<span style="color:#f92672">)</span> 将 char数组参数的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> str<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> len<span style="color:#f92672">)</span> 将 char数组参数的子数组的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">double</span> d<span style="color:#f92672">)</span> 将 double参数的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">float</span> f<span style="color:#f92672">)</span> 将 float参数的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">)</span> 将 int参数的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">long</span> lng<span style="color:#f92672">)</span> 将 long参数的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>CharSequence s<span style="color:#f92672">)</span> 将指定的字符序列追加到此 Appendable <span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>CharSequence s<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> start<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">)</span> 将指定的 CharSequence序列追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>Object obj<span style="color:#f92672">)</span> 追加 Object参数的字符串表示形式<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span> 将指定的字符串追加到此字符序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>StringBuffer sb<span style="color:#f92672">)</span> 将指定的 StringBuffer追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">appendCodePoint</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> codePoint<span style="color:#f92672">)</span> 将 codePoint参数的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
 
-StringBuilder delete(int start, int end) 删除此序列的子字符串中的字符。  
-StringBuilder deleteCharAt(int index) 按此顺序删除指定位置的 char 。  
-void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin) 将字符从此序列复制到目标字符数组 dst 。  
-int indexOf(String str) 返回指定子字符串第一次出现的字符串中的索引。  
-int indexOf(String str, int fromIndex) 从指定的索引处开始，返回指定子字符串第一次出现的字符串中的索引。 
-int lastIndexOf(String str) 返回指定子字符串最后一次出现的字符串中的索引。  
-int lastIndexOf(String str, int fromIndex) 返回指定子字符串最后一次出现的字符串中的索引，从指定索引开始向后搜索。 
+StringBuilder <span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> start<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">)</span> 删除此序列的子字符串中的字符<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">deleteCharAt</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span> 按此顺序删除指定位置的 <span style="color:#66d9ef">char</span> <span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">getChars</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> srcBegin<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> srcEnd<span style="color:#f92672">,</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> dst<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> dstBegin<span style="color:#f92672">)</span> 将字符从此序列复制到目标字符数组 dst <span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span> 返回指定子字符串第一次出现的字符串中的索引<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> fromIndex<span style="color:#f92672">)</span> 从指定的索引处开始<span style="color:#960050;background-color:#1e0010">，</span>返回指定子字符串第一次出现的字符串中的索引<span style="color:#960050;background-color:#1e0010">。</span> 
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">lastIndexOf</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span> 返回指定子字符串最后一次出现的字符串中的索引<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">lastIndexOf</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> fromIndex<span style="color:#f92672">)</span> 返回指定子字符串最后一次出现的字符串中的索引<span style="color:#960050;background-color:#1e0010">，</span>从指定索引开始向后搜索<span style="color:#960050;background-color:#1e0010">。</span> 
 
-StringBuilder insert(int offset, boolean b) 将 boolean参数的字符串表示形式插入此序列中。  
-StringBuilder insert(int offset, char c) 将 char参数的字符串表示形式插入此序列中。  
-StringBuilder insert(int offset, char[] str) 将 char数组参数的字符串表示形式插入此序列中。  
-StringBuilder insert(int index, char[] str, int offset, int len) 将str数组参数的子数组的字符串表示形式插入此序列中。 
-StringBuilder insert(int offset, double d) 将 double参数的字符串表示形式插入此序列中。  
-StringBuilder insert(int offset, float f) 将 float参数的字符串表示形式插入此序列中。  
-StringBuilder insert(int offset, int i) 将第二个 int参数的字符串表示形式插入此序列中。  
-StringBuilder insert(int offset, long l) 将 long参数的字符串表示形式插入此序列中。  
-StringBuilder insert(int dstOffset, CharSequence s) 将指定的 CharSequence插入此序列。  
-StringBuilder insert(int dstOffset, CharSequence s, int start, int end) 将指定的 CharSequence序列插入此序列。  
-StringBuilder insert(int offset, Object obj) 将 Object参数的字符串表示形式插入此字符序列中。  
-StringBuilder insert(int offset, String str) 将字符串插入此字符序列。  
+StringBuilder <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">boolean</span> b<span style="color:#f92672">)</span> 将 boolean参数的字符串表示形式插入此序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">char</span> c<span style="color:#f92672">)</span> 将 char参数的字符串表示形式插入此序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> str<span style="color:#f92672">)</span> 将 char数组参数的字符串表示形式插入此序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">,</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> str<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> len<span style="color:#f92672">)</span> 将str数组参数的子数组的字符串表示形式插入此序列中<span style="color:#960050;background-color:#1e0010">。</span> 
+StringBuilder <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">double</span> d<span style="color:#f92672">)</span> 将 double参数的字符串表示形式插入此序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">float</span> f<span style="color:#f92672">)</span> 将 float参数的字符串表示形式插入此序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> i<span style="color:#f92672">)</span> 将第二个 int参数的字符串表示形式插入此序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> l<span style="color:#f92672">)</span> 将 long参数的字符串表示形式插入此序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> dstOffset<span style="color:#f92672">,</span> CharSequence s<span style="color:#f92672">)</span> 将指定的 CharSequence插入此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> dstOffset<span style="color:#f92672">,</span> CharSequence s<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> start<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">)</span> 将指定的 CharSequence序列插入此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> Object obj<span style="color:#f92672">)</span> 将 Object参数的字符串表示形式插入此字符序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuilder <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> String str<span style="color:#f92672">)</span> 将字符串插入此字符序列<span style="color:#960050;background-color:#1e0010">。</span>  
 
-void setCharAt(int index, char ch) 指定索引处的字符设置为 ch 。  
-void setLength(int newLength) 设置字符序列的长度。  
-CharSequence subSequence(int start, int end) 返回一个新的字符序列，它是该序列的子序列。  
-String substring(int start) 返回一个新的 String ，其中包含此字符序列中当前包含的字符的子序列。  
-String substring(int start, int end) 返回一个新的 String ，其中包含当前包含在此序列中的字符的子序列。  
-void trimToSize() 尝试减少用于字符序列的存储空间。  
-</code></pre><h4 id="72-javalangstringbuffer">7.2 java.lang.StringBuffer</h4>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setCharAt</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">,</span> <span style="color:#66d9ef">char</span> ch<span style="color:#f92672">)</span> 指定索引处的字符设置为 ch <span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLength</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> newLength<span style="color:#f92672">)</span> 设置字符序列的长度<span style="color:#960050;background-color:#1e0010">。</span>  
+CharSequence <span style="color:#a6e22e">subSequence</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> start<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">)</span> 返回一个新的字符序列<span style="color:#960050;background-color:#1e0010">，</span>它是该序列的子序列<span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">substring</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> start<span style="color:#f92672">)</span> 返回一个新的 String <span style="color:#960050;background-color:#1e0010">，</span>其中包含此字符序列中当前包含的字符的子序列<span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">substring</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> start<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">)</span> 返回一个新的 String <span style="color:#960050;background-color:#1e0010">，</span>其中包含当前包含在此序列中的字符的子序列<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">trimToSize</span><span style="color:#f92672">()</span> 尝试减少用于字符序列的存储空间<span style="color:#960050;background-color:#1e0010">。</span> 
+</code></pre></div><h4 id="72-javalangstringbuffer">7.2 java.lang.StringBuffer</h4>
 <p>用于StringBuffer类似，但可认为线程安全的字符串变量，里面很多方法用synchronized修饰，表示同步方法，多个线程操作StringBuffer对象，是不会同时进行，字符串处理是互斥的。</p>
 <p>常用方法：</p>
 <p>构造器：</p>
-<pre><code>StringBuffer() 构造一个字符串缓冲区，其中没有字符，初始容量为16个字符。  
-StringBuffer(String str) 构造一个初始化为指定字符串内容的字符串缓冲区。  
-</code></pre><p>非静态方法：</p>
-<pre><code>char charAt(int index) 返回指定索引处的此序列中的 char值。  
-int codePointAt(int index) 返回指定索引处的字符（Unicode代码点）。  
-int codePointBefore(int index) 返回指定索引之前的字符（Unicode代码点）。  
-int codePointCount(int beginIndex, int endIndex) 返回此序列的指定文本范围内的Unicode代码点数。  
-int offsetByCodePoints(int index, int codePointOffset) 返回此序列中的索引，该索引从给定的 index偏移 codePointOffset代码点。 
-StringBuffer replace(int start, int end, String str) 使用指定的 String的字符替换此序列的子字符串中的字符。  
-StringBuffer reverse() 导致此字符序列被序列的反向替换。  
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">StringBuffer<span style="color:#f92672">()</span> 构造一个字符串缓冲区<span style="color:#960050;background-color:#1e0010">，</span>其中没有字符<span style="color:#960050;background-color:#1e0010">，</span>初始容量为16个字符<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer<span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span> 构造一个初始化为指定字符串内容的字符串缓冲区<span style="color:#960050;background-color:#1e0010">。</span>  
+</code></pre></div><p>非静态方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">char</span> <span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span> 返回指定索引处的此序列中的 char值<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">codePointAt</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span> 返回指定索引处的字符<span style="color:#960050;background-color:#1e0010">（</span>Unicode代码点<span style="color:#960050;background-color:#1e0010">）。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">codePointBefore</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span> 返回指定索引之前的字符<span style="color:#960050;background-color:#1e0010">（</span>Unicode代码点<span style="color:#960050;background-color:#1e0010">）。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">codePointCount</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> beginIndex<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> endIndex<span style="color:#f92672">)</span> 返回此序列的指定文本范围内的Unicode代码点数<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">offsetByCodePoints</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> codePointOffset<span style="color:#f92672">)</span> 返回此序列中的索引<span style="color:#960050;background-color:#1e0010">，</span>该索引从给定的 index偏移 codePointOffset代码点<span style="color:#960050;background-color:#1e0010">。</span> 
+StringBuffer <span style="color:#a6e22e">replace</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> start<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">,</span> String str<span style="color:#f92672">)</span> 使用指定的 String的字符替换此序列的子字符串中的字符<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">reverse</span><span style="color:#f92672">()</span> 导致此字符序列被序列的反向替换<span style="color:#960050;background-color:#1e0010">。</span>  
 
-StringBuffer append(boolean b) 将 boolean参数的字符串表示形式追加到序列中。  
-StringBuffer append(char c) 将 char参数的字符串表示形式追加到此序列。  
-StringBuffer append(char[] str) 将 char数组参数的字符串表示形式追加到此序列。  
-StringBuffer append(char[] str, int offset, int len) 将 char数组参数的子数组的字符串表示形式追加到此序列。  
-StringBuffer append(double d) 将 double参数的字符串表示形式追加到此序列。  
-StringBuffer append(float f) 将 float参数的字符串表示形式追加到此序列。  
-StringBuffer append(int i) 将 int参数的字符串表示形式追加到此序列。  
-StringBuffer append(long lng) 将 long参数的字符串表示形式追加到此序列。  
-StringBuffer append(CharSequence s) 将指定的 CharSequence追加到此序列。  
-StringBuffer append(CharSequence s, int start, int end) 将指定的 CharSequence序列附加到此序列。  
-StringBuffer append(Object obj) 追加 Object参数的字符串表示形式。  
-StringBuffer append(String str) 将指定的字符串追加到此字符序列。  
-StringBuffer append(StringBuffer sb) 将指定的 StringBuffer追加到此序列。  
-StringBuffer appendCodePoint(int codePoint) 将 codePoint参数的字符串表示形式追加到此序列。  
+StringBuffer <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">boolean</span> b<span style="color:#f92672">)</span> 将 boolean参数的字符串表示形式追加到序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span> c<span style="color:#f92672">)</span> 将 char参数的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> str<span style="color:#f92672">)</span> 将 char数组参数的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> str<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> len<span style="color:#f92672">)</span> 将 char数组参数的子数组的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">double</span> d<span style="color:#f92672">)</span> 将 double参数的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">float</span> f<span style="color:#f92672">)</span> 将 float参数的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">)</span> 将 int参数的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#66d9ef">long</span> lng<span style="color:#f92672">)</span> 将 long参数的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>CharSequence s<span style="color:#f92672">)</span> 将指定的 CharSequence追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>CharSequence s<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> start<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">)</span> 将指定的 CharSequence序列附加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>Object obj<span style="color:#f92672">)</span> 追加 Object参数的字符串表示形式<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span> 将指定的字符串追加到此字符序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>StringBuffer sb<span style="color:#f92672">)</span> 将指定的 StringBuffer追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">appendCodePoint</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> codePoint<span style="color:#f92672">)</span> 将 codePoint参数的字符串表示形式追加到此序列<span style="color:#960050;background-color:#1e0010">。</span>  
 
-int compareTo(StringBuffer another) StringBuffer字典顺序比较两个 StringBuffer实例。  
-StringBuffer delete(int start, int end) 删除此序列的子字符串中的字符。  
-StringBuffer deleteCharAt(int index) 按此顺序删除指定位置的 char 。  
-void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin) 将字符从此序列复制到目标字符数组 dst 。  
-int indexOf(String str) 返回指定子字符串第一次出现的字符串中的索引。  
-int indexOf(String str, int fromIndex) 从指定的索引处开始，返回指定子字符串第一次出现的字符串中的索引。  
-int lastIndexOf(String str) 返回指定子字符串最后一次出现的字符串中的索引。  
-int lastIndexOf(String str, int fromIndex) 返回指定子字符串最后一次出现的字符串中的索引，从指定索引开始向后搜索。  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>StringBuffer another<span style="color:#f92672">)</span> StringBuffer字典顺序比较两个 StringBuffer实例<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> start<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">)</span> 删除此序列的子字符串中的字符<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">deleteCharAt</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span> 按此顺序删除指定位置的 <span style="color:#66d9ef">char</span> <span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">getChars</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> srcBegin<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> srcEnd<span style="color:#f92672">,</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> dst<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> dstBegin<span style="color:#f92672">)</span> 将字符从此序列复制到目标字符数组 dst <span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span> 返回指定子字符串第一次出现的字符串中的索引<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> fromIndex<span style="color:#f92672">)</span> 从指定的索引处开始<span style="color:#960050;background-color:#1e0010">，</span>返回指定子字符串第一次出现的字符串中的索引<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">lastIndexOf</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span> 返回指定子字符串最后一次出现的字符串中的索引<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">lastIndexOf</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> fromIndex<span style="color:#f92672">)</span> 返回指定子字符串最后一次出现的字符串中的索引<span style="color:#960050;background-color:#1e0010">，</span>从指定索引开始向后搜索<span style="color:#960050;background-color:#1e0010">。</span>  
 
-StringBuffer insert(int offset, boolean b) 将 boolean参数的字符串表示形式插入此序列中。  
-StringBuffer insert(int offset, char c) 将 char参数的字符串表示形式插入此序列中。  
-StringBuffer insert(int offset, char[] str) 将 char数组参数的字符串表示形式插入此序列中。  
-StringBuffer insert(int index, char[] str, int offset, int len) 将 str数组参数的子数组的字符串表示形式插入此序列中。 
-StringBuffer insert(int offset, double d) 将 double参数的字符串表示形式插入此序列中。  
-StringBuffer insert(int offset, float f) 将 float参数的字符串表示形式插入此序列中。  
-StringBuffer insert(int offset, int i) 将第二个 int参数的字符串表示形式插入到此序列中。  
-StringBuffer insert(int offset, long l) 将 long参数的字符串表示形式插入此序列中。  
-StringBuffer insert(int dstOffset, CharSequence s) 将指定的 CharSequence插入此序列。  
-StringBuffer insert(int dstOffset, CharSequence s, int start, int end) 将指定的 CharSequence序列插入此序列。  
-StringBuffer insert(int offset, Object obj) 将 Object参数的字符串表示形式插入此字符序列。  
-StringBuffer insert(int offset, String str) 将字符串插入此字符序列。  
+StringBuffer <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">boolean</span> b<span style="color:#f92672">)</span> 将 boolean参数的字符串表示形式插入此序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">char</span> c<span style="color:#f92672">)</span> 将 char参数的字符串表示形式插入此序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> str<span style="color:#f92672">)</span> 将 char数组参数的字符串表示形式插入此序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">,</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> str<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> len<span style="color:#f92672">)</span> 将 str数组参数的子数组的字符串表示形式插入此序列中<span style="color:#960050;background-color:#1e0010">。</span> 
+StringBuffer <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">double</span> d<span style="color:#f92672">)</span> 将 double参数的字符串表示形式插入此序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">float</span> f<span style="color:#f92672">)</span> 将 float参数的字符串表示形式插入此序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> i<span style="color:#f92672">)</span> 将第二个 int参数的字符串表示形式插入到此序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> l<span style="color:#f92672">)</span> 将 long参数的字符串表示形式插入此序列中<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> dstOffset<span style="color:#f92672">,</span> CharSequence s<span style="color:#f92672">)</span> 将指定的 CharSequence插入此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> dstOffset<span style="color:#f92672">,</span> CharSequence s<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> start<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">)</span> 将指定的 CharSequence序列插入此序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> Object obj<span style="color:#f92672">)</span> 将 Object参数的字符串表示形式插入此字符序列<span style="color:#960050;background-color:#1e0010">。</span>  
+StringBuffer <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> offset<span style="color:#f92672">,</span> String str<span style="color:#f92672">)</span> 将字符串插入此字符序列<span style="color:#960050;background-color:#1e0010">。</span>  
 
-void setCharAt(int index, char ch) 指定索引处的字符设置为 ch 。  
-void setLength(int newLength) 设置字符序列的长度。  
-CharSequence subSequence(int start, int end) 返回一个新的字符序列，它是该序列的子序列。  
-String substring(int start) 返回一个新的 String ，其中包含此字符序列中当前包含的字符的子序列。  
-String substring(int start, int end) 返回一个新的 String ，其中包含当前包含在此序列中的字符的子序列。  
-void trimToSize() 尝试减少用于字符序列的存储空间。  
-</code></pre>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setCharAt</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">,</span> <span style="color:#66d9ef">char</span> ch<span style="color:#f92672">)</span> 指定索引处的字符设置为 ch <span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLength</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> newLength<span style="color:#f92672">)</span> 设置字符序列的长度<span style="color:#960050;background-color:#1e0010">。</span>  
+CharSequence <span style="color:#a6e22e">subSequence</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> start<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">)</span> 返回一个新的字符序列<span style="color:#960050;background-color:#1e0010">，</span>它是该序列的子序列<span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">substring</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> start<span style="color:#f92672">)</span> 返回一个新的 String <span style="color:#960050;background-color:#1e0010">，</span>其中包含此字符序列中当前包含的字符的子序列<span style="color:#960050;background-color:#1e0010">。</span>  
+String <span style="color:#a6e22e">substring</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> start<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">)</span> 返回一个新的 String <span style="color:#960050;background-color:#1e0010">，</span>其中包含当前包含在此序列中的字符的子序列<span style="color:#960050;background-color:#1e0010">。</span>  
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">trimToSize</span><span style="color:#f92672">()</span> 尝试减少用于字符序列的存储空间<span style="color:#960050;background-color:#1e0010">。</span>  
+</code></pre></div>
 </div>
 
 

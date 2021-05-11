@@ -3,12 +3,12 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>算法的基础——迭代和递归 &middot; 欢迎来到槎城小子的博客！</title>
+  <title>数据结构与算法分析(笔记) -- 开始 &middot; 欢迎来到槎城小子的博客！</title>
   <meta name="description" content="简单说明时间复杂度和时间复杂度的概念；掌握写递归算法的法则，知道大O标记来描述算法时间复杂度，最大子序列和问题的解法，介绍两条简单的算法" />
 
   
@@ -20,22 +20,11 @@
 
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="../../../../favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/django.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/vim.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/gradle.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
-...
-
-<script>hljs.initHighlightingOnLoad();</script>
+  
 </head>
 
   <body class="theme-base-0d ">
@@ -50,68 +39,47 @@
 
     <nav>
       <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io/">家</a></li>
-		<li><a href="https://qinry.github.io//categories">分类</a></li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/categories"> 分类 </a></li>
       </ul>
     </nav>
 
-    <p>Copyright (c) 2021 槎城小子</p>
-	
+    <p>Copyright © 2021 槎城小子</p>
   </div>
 </aside>
 
     <main class="content container">
     <div class="post">
-  <h1>算法的基础——迭代和递归</h1>
-  <time datetime=2019-10-17T23:29:10&#43;0800 class="post-date">2019-10-17 23:29:10</time>
-  <h2 id="一表征性能的两个指标">一、表征性能的两个指标</h2>
-<p>时间复杂度：算法在运行时的花费时间。</p>
-<p>空间复杂度：算法在运行过程中临时占用存储空间大小的量度</p>
-<p>性能非常关注程序运行的速度和内存占用。</p>
-<p>时间上，在不同机器上运行的相同的程序不同算法花费的时间比较是绝对速度的比较，在相同机器上运行的相同程序不同算法花费时间的比较是相对速度的比较，由于具体的时间很难估计，再加上受不同机器的硬件上的配置和当时的状态都会影响程序的运行时间，所以具体时间的比较很难说明程序的算法性能。科学家提出用时间增长率来比较速度，不考虑机器等的物理影响，纯粹是在比较基本操作的成本，什么意思，简单理解为算法运行中最基本、重复执行最多的指令或语句的执行次数来比较。</p>
-<p>空间上，每当你多声明一次变量，系统就多为程序分配了一次内存，内存的空闲量减少。虽然现在的存储器容量很大，程序越能节省空间，对我们提高对内存的利用率非常，程序内存越节省，内存就能承担更多的进程的运行，机器就能干更多的活。程序也有可能在内存非常受限的机子上运行，对内存的使用是需要非常小心的。当内存是稀缺资源的时候，排除程序文件静态所占的必要空间，我们要考虑程序运行时辅助内存的增长率。</p>
-<p>好的算法设计不仅仅能带来好的性能，也是用户软件体验友好的基本，影响软件的安全、健壮和可扩展性，所以算法是软件这个高楼大厦的地基。</p>
-<h2 id="二递归使用的基本法则">二、递归使用的基本法则</h2>
+  <h1>数据结构与算法分析(笔记) -- 开始</h1>
+  <time datetime=2019-10-17T23:29:10&#43;0800 class="post-date">Thu, Oct 17, 2019</time>
+  <h2 id="递归使用的基本法则">递归使用的基本法则</h2>
 <ol>
 <li>基准情形：要有退出条件</li>
-<li>不断推进：从初始条件趋向退出条件，函数自己调用自己</li>
+<li>不断推进：从初始条件趋向退出条件</li>
 <li>设计准则 ：假设递归准确执行</li>
-<li>合成效益法则：防止重复工作，导致一些工作的重复，进而影响效率</li>
+<li>合成效益法则：防止重复工作，比如生成斐波那契数列的递归实现使用双递归，导致一些工作的重复，进而影响效率</li>
 </ol>
-<p>递归符合前三个法则才能正确进行，符合第四法则递归的使用才有意义。虽然递归的代码逻辑清晰，不过某些情况效率不高，比如生成斐波那契数列的递归实现使用双递归。当递归不能很好解决问题时，可以考虑采用迭代。</p>
-<h2 id="三算法分析">三、算法分析</h2>
-<p>由4种描述算法效率的数学模型，其中常用的是大O记法。
-大O记法：时间复杂度T(N) = O(f(N)) , 表示T(N)的函数增长率小于 f(N)，T(N)是对输入规模N的时间函数。</p>
-<h3 id="31-估算算法的运行时间增长">3.1 估算算法的运行时间增长</h3>
-<p>假设N为算法的输入规模
-一般法则:</p>
+<p>递归符合前三个法则才能正确进行，符合第四法则递归的使用才有意义。虽然递归的代码逻辑清晰，不过某些情况效率不高。当递归不能很好解决问题时，可能考虑采用迭代。</p>
+<h2 id="算法分析">算法分析</h2>
+<p>4种描述算法效率的数学模型，常用的有大O记法</p>
+<p>大O记法：时间T(N) = O( f( N ) ), 意思是T( N ) 的相对增长率小于 f(N)</p>
+<h3 id="计算运行时间">计算运行时间</h3>
+<p>一般法则</p>
 <ol>
-<li>FOR循环： 时间复杂度为O(N)</li>
-<li>嵌套的FOR循环： 如果有a层嵌套，那么时间复杂度为O(N^a)</li>
-<li>顺序语句：时间复杂度为O(1)</li>
-<li>IF/ELSE语句：因为一定会执行2条语句中的某一条，所以取时间复杂度最大为准</li>
+<li>FOR循环</li>
+<li>嵌套的FOR循环</li>
+<li>顺序语句</li>
+<li>IF/ELSE语句</li>
 </ol>
 <hr>
-<h3 id="32-最大子序列和问题解">3.2 最大子序列和问题解</h3>
-<p>有一个整数序列A[a1,a2,&hellip;,an]，其中存在某条子序列A1[ax,ax+1,&hellip;,ax+n]，它们的和比其他任意一条子序列的和要大，A1的序列和为最大序列和</p>
-<h4 id="算法13层嵌套迭代">算法1（3层嵌套迭代）</h4>
-<p>思路：试着确定子序列的首部和尾部的位置，再求子序列和，比较之前确定头尾位置的子序列和，最大值为作为最新缓存，再次试着确定头尾位置进行比较，全部比较完，缓存的值为最大序列和</p>
-<p>输入：序列A[a1,a2,a3&hellip;,an]，序列长度N
-从头到尾扫描序列，设下标i为子序列的头部，下标j为子序列的尾部，下标k在i和j之间，ThisSum为当前子序列的和，MaxSum为最大子序列和。
-步骤1：MaxSum取序列的第一个元素;
-步骤2：i=0,j=i,ThisSum=0;
-步骤3：k从i开始到j遍历，求i到j的序列和，即ThisSum；
-步骤4：如果ThisSum大于MaxSum，MaxSum设为ThisSum的值；否则,下一步；
-步骤5：j加1，如果j不等于N，回到步骤3；
-步骤6：i加1，如果i不等于N，回到步骤3；
-步骤7；返回MaxSum</p>
+<h4 id="最大子序列和问题解">最大子序列和问题解</h4>
+<h5 id="算法1嵌套3层for循环">算法1（嵌套3层for循环）</h5>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span>
 <span style="color:#a6e22e">MaxSubsequenceSum</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> N)
 {
     <span style="color:#66d9ef">int</span> ThisSum, MaxSum, i, j, k;
 
-    MaxSum <span style="color:#f92672">=</span> A[<span style="color:#ae81ff">0</span>];
+    MaxSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> N; i<span style="color:#f92672">++</span>)
         <span style="color:#66d9ef">for</span> (j <span style="color:#f92672">=</span> i; j <span style="color:#f92672">&lt;</span> N; j<span style="color:#f92672">++</span>)
         {
@@ -123,25 +91,13 @@
         }
     <span style="color:#66d9ef">return</span> MaxSum;
 }
-</code></pre></div><hr>
-<h4 id="算法22层嵌套迭代">算法2（2层嵌套迭代）</h4>
-<p>思路：
-试着先确定子序列头部的位置，已确定头部位置的子序列簇中算出序列和的最大值，比较上次缓存的子序列簇中的最大序列和，最大值为最新的缓存，接着确定下一个位置为头部，算出下一个子序列簇中的最大序列和，再进行比较。直到所有的子序列簇比较完，缓存为最大序列和</p>
-<p>输入：序列A[a1,a2,a3&hellip;,an]，序列长度N
-从头到尾扫描序列，设下标i为子序列的头部，下标j为子序列尾部,j在i到N-1之间，ThisSum为当前子序列的和，MaxSum为最大子序列和。
-步骤1：MaxSum取序列的第一个元素;
-步骤2：i=0,ThisSum=0,j=i;
-步骤3：求i到j的序列和，即ThisSum
-步骤4：如果ThisSum大于MaxSum，MaxSum设为ThisSum的值；否则,下一步；
-步骤5：j加1，如果i不等于N，回到步骤3；
-步骤6: i加1，如果j不等于N，回到步骤3；
-步骤7；返回MaxSum</p>
+</code></pre></div><h5 id="算法2嵌套2层for循环">算法2（嵌套2层for循环）</h5>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span>
 <span style="color:#a6e22e">MaxSubsequenceSum</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> N)
 {
     <span style="color:#66d9ef">int</span> ThisSum, MaxSum, i, j;
 
-    MaxSum <span style="color:#f92672">=</span> A[<span style="color:#ae81ff">0</span>];
+    MaxSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> N; i<span style="color:#f92672">++</span>)
     {
         ThisSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
@@ -154,14 +110,7 @@
     }
     <span style="color:#66d9ef">return</span> MaxSum;
 }
-</code></pre></div><hr>
-<h4 id="算法3分治法">算法3（分治法）</h4>
-<p>输入：序列A[a1,a2,a3&hellip;,an]，序列长度N
-步骤1：如果序列长度为1，其元素大于0，最大序列和为该元素；否则为0
-步骤2：将序列一分为二,左子序列A[a1,a2,..,an/2]的最大序列和MaxLefSum，右子序列A[an/2+1,&hellip;an]的最大子序列和MaxRightSum;
-步骤3：
-在左子序列中，尾部为an/2的子序列簇中的序列和为LeftBorderSum，最大值为MaxLeftBorderSum；
-在右子序列中，头部为an/2+1的子序列簇中的序列和为RightBorderSum，最大值为MaxRightBorderSum,算出它们的和(LeftBorderSum+RightBorderSum),取MaxLefSum、MaxRightSum和(MaxLeftBorderSum+MaxRightBorderSum)中最大值为A的最大序列和</p>
+</code></pre></div><h5 id="算法3分治">算法3（分治）</h5>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Max3</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y, <span style="color:#66d9ef">int</span> z)
 {
     <span style="color:#66d9ef">return</span> (x <span style="color:#f92672">&gt;</span> y
@@ -191,7 +140,7 @@
     <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> Center; i <span style="color:#f92672">&gt;=</span> Left; i<span style="color:#f92672">--</span>)
     {
         LeftBorderSum <span style="color:#f92672">+=</span> A[i];
-        <span style="color:#66d9ef">if</span> (LeftBorederSum <span style="color:#f92672">&gt;</span> MaxLeftBorderSum)
+        <span style="color:#66d9ef">if</span> (LeftBorederSum <span style="color:#f92672">&gt;</span> MaxLeftBorderSun)
             MaxLeftBorderSum <span style="color:#f92672">=</span> LeftBorderSum;
     }
 
@@ -210,20 +159,7 @@
 {
     <span style="color:#66d9ef">return</span> MaxSubSum(A, <span style="color:#ae81ff">0</span>, N <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
 }
-</code></pre></div><hr>
-<h4 id="算法4联机算法">算法4(联机算法)</h4>
-<p>思路： 
-如果某一序列后的数为正整数，序列尾部往后移动，当前序列和是增大，直到最后一个整数，在这个整数前的序列的序列和最大，但不排除后面可能还比它更大序列和的子序列，目前它肯定序列和最大；如果后面的数是负整数，序列尾部往后移，当前序列和是减小，尾部越往前序列的序列和越大，直到当前序列和为0，下个整数开始可能存在最大序列和的子序列</p>
-<p>输入：序列A[a1,a2,a3&hellip;,an]，序列长度N
-假设序列中的下标为i，ThisSum为当前子序列的和，MaxSum为最大子序列和。
-步骤1：ThisSum = MaxSum = 0， i=0；
-步骤2：ThisSum加上下标i的元素；
-步骤3: 
-如果ThisSum 大于 MaxSum，则MaxSum=ThisSum，下一步；
-如果ThisSum小于MaxSum，ThisSum小于0，ThisSum=0，下一步；
-其他情况，直接下一步；
-步骤4：i加1，i小于N回到第2步；等于N，下一步；
-步骤5：返回MaxSum；</p>
+</code></pre></div><h5 id="算法4联机算法">算法4(联机算法)</h5>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span>
 <span style="color:#a6e22e">MaxSubsquenceSum</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> N)
 {
@@ -241,10 +177,7 @@
     }
     <span style="color:#66d9ef">return</span> MaxSum;
 }
-</code></pre></div><hr>
-<h2 id="四两条算法">四、两条算法</h2>
-<h3 id="41-欧几里得算法">4.1 欧几里得算法</h3>
-<p>计算两整数的最大公约数</p>
+</code></pre></div><h4 id="欧几里得算法">欧几里得算法</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">gcd</span>(<span style="color:#66d9ef">int</span> M, <span style="color:#66d9ef">int</span> N)
 {
     <span style="color:#66d9ef">int</span> Rem;
@@ -256,8 +189,7 @@
     }
     <span style="color:#66d9ef">return</span> M;
 }
-</code></pre></div><h3 id="42-求幂运算">4.2 求幂运算</h3>
-<p>计算x的N次幂的结果</p>
+</code></pre></div><h4 id="求幂运算">求幂运算</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">_Bool <span style="color:#a6e22e">IsEven</span>(<span style="color:#66d9ef">int</span> N)
 {
     <span style="color:#66d9ef">if</span> (N <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span>)
@@ -275,12 +207,7 @@
     <span style="color:#66d9ef">else</span>
         <span style="color:#66d9ef">return</span> Pow(X <span style="color:#f92672">*</span> X, N <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">*</span> X;
 }
-</code></pre></div><hr>
-<h2 id="五参考">五、参考</h2>
-<ul>
-<li>数据结构与算法——Java语言描述 机械工业出版社 Mark AIlen Weiss</li>
-</ul>
-
+</code></pre></div>
 </div>
 
 

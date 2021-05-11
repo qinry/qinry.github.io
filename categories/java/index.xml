@@ -5,16 +5,7 @@
     <link>https://qinry.github.io/categories/java/</link>
     <description>Recent content in Java on 欢迎来到槎城小子的博客！</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 02 Apr 2021 19:44:50 +0800</lastBuildDate><atom:link href="https://qinry.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>JDBC的使用</title>
-      <link>https://qinry.github.io/posts/2021/04/java-jdbc/</link>
-      <pubDate>Fri, 02 Apr 2021 19:44:50 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2021/04/java-jdbc/</guid>
-      <description>JDBC的使用 什么是JDBC JDBC是执行SQL的java API，为关系型数据库提供访问。JDBC可以在更大平台使用像Windows、Mac</description>
-    </item>
-    
+    <lastBuildDate>Mon, 08 Feb 2021 12:47:14 +0800</lastBuildDate><atom:link href="https://qinry.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JSON解析</title>
       <link>https://qinry.github.io/posts/2021/02/java-json-parse/</link>
@@ -27,7 +18,7 @@
     <item>
       <title>多线程</title>
       <link>https://qinry.github.io/posts/2021/02/java-concurrent/</link>
-      <pubDate>Fri, 05 Feb 2021 22:00:32 +0800</pubDate>
+      <pubDate>Fri, 05 Feb 2021 22:32:16 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2021/02/java-concurrent/</guid>
       <description>一、概述 二、线程创建 三、线程休眠 四、线程阻塞 五、线程终止 六、线程安全 七、死锁 八、多线程通信 九、线程的状态 十、Callable&amp;lt;V&amp;gt</description>

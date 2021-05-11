@@ -3,7 +3,7 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,22 +20,11 @@
 
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="../../../../favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/django.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/vim.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/gradle.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
-...
-
-<script>hljs.initHighlightingOnLoad();</script>
+  
 </head>
 
   <body class="theme-base-0d ">
@@ -50,21 +39,19 @@
 
     <nav>
       <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io/">家</a></li>
-		<li><a href="https://qinry.github.io//categories">分类</a></li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/categories"> 分类 </a></li>
       </ul>
     </nav>
 
-    <p>Copyright (c) 2021 槎城小子</p>
-	
+    <p>Copyright © 2021 槎城小子</p>
   </div>
 </aside>
 
     <main class="content container">
     <div class="post">
   <h1>MySQL事务与SQL优化</h1>
-  <time datetime=2021-03-01T19:43:53&#43;0800 class="post-date">2021-03-01 19:43:53</time>
+  <time datetime=2021-03-01T19:43:16&#43;0800 class="post-date">Mon, Mar 1, 2021</time>
   <h3 id="一事务的语法">一、事务的语法</h3>
 <p>非常简单</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">start</span> tansaction; <span style="color:#75715e">-- 事务开始，也可以换成begin;
@@ -74,124 +61,60 @@
 </span></code></pre></div><h3 id="二事务四大特性">二、事务四大特性</h3>
 <p>事务重要的特性，原子性，一致性，隔离性，持久性。</p>
 <ul>
-<li>
-<p>原子性(Atomicity)</p>
-<p>事务的进行不可分割，是一个原子性的操作序列单元。事务中的操作要么全部执行成功，要么全部执行失败。如果事务中间环节出错，回滚事务开始的状态。</p>
-</li>
-<li>
-<p>一致性(Consistency)</p>
-<p>事务的执行不能破坏数据库数据的完整性和一致性。</p>
-<p>一个事务执行前后，数据库必须处于一致性的状态，也就是数据在操作无误、逻辑无误的情况下，期望结果却与实际结果不一致，也就是数据错乱了。比如：把一个数据原为1000，减掉500，提交后查询数据不是500，说明事务受到了干涉，使事务不一致性。事务应该保持一致性。</p>
-</li>
-<li>
-<p>隔离性(Isolation)</p>
-<p>在并发环境下，并发的事务互相隔离。不同事务处理相同的数据都有自己完整的数据空间。</p>
-</li>
-<li>
-<p>持久性(Duration)</p>
-<p>事务一旦提交，就数据库的数据就永久保存下来。即使发生服务器宕机或崩溃等故障。数据库重启，就能恢复事务结束后的状态。</p>
-</li>
+<li>原子性(Atomicity)
+事务的进行不可分割，是一个原子性的操作序列单元。事务中的操作要么全部执行成功，要么全部执行失败。如果事务中间环节出错，回滚事务开始的状态。</li>
+<li>一致性(Consistency)
+事务的执行不能破坏数据库数据的完整性和一致性。
+一个事务执行前后，数据库必须处于一致性的状态，也就是数据在操作无误、逻辑无误的情况下，期望结果却与实际结果不一致，也就是数据错乱了。比如：把一个数据原为1000，减掉500，提交后查询数据不是500，说明事务受到了干涉，使事务不一致性。事务应该保持一致性。</li>
+<li>隔离性(Isolation)
+在并发环境下，并发的事务互相隔离。不同事务处理相同的数据都有自己完整的数据空间。</li>
+<li>持久性(Duration)
+事务一旦提交，就数据库的数据就永久保存下来。即使发生服务器宕机或崩溃等故障。数据库重启，就能恢复事务结束后的状态。</li>
 </ul>
 <h3 id="三事务的三大并发问题">三、事务的三大并发问题</h3>
 <p>事务面临的三大并发问题，脏读，不可重复度，幻读。</p>
 <ul>
-<li>
-<p>脏读</p>
-<p>读到了未提交的数据。比如事务A和事务B，A读取B更新的数据，B回滚撤销更新，A读到了脏数据。</p>
-</li>
-<li>
-<p>不可重复读</p>
-<p>同一个事务中同条命令得到不同的查询结果集。比如事务A和事务B，A多次读取数据，B在A读取过程中，更新数据并提交，导致A多次读取同一处数据，结果不一致。</p>
-</li>
-<li>
-<p>幻读</p>
-<p>重复查询过程中，数据量发生改变，可能增加，也可能较少，不是数据的内容增减。</p>
-</li>
+<li>脏读
+读到了未提交的数据。比如事务A和事务B，A读取B更新的数据，B回滚撤销更新，A读到了脏数据。</li>
+<li>不可重复读
+同一个事务中同条命令得到不同的查询结果集。比如事务A和事务B，A多次读取数据，B在A读取过程中，更新数据并提交，导致A多次读取同一处数据，结果不一致。</li>
+<li>幻读
+重复查询过程中，数据量发生改变，可能增加，也可能较少，不是数据的内容增减。</li>
 </ul>
 <h3 id="四事务隔离级别">四、事务隔离级别</h3>
 <p>数据库的事务存在一些隔离级别来解决一些并发问题，不同问题应该选择合适的隔离级别。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">隔离级别</th>
-<th style="text-align:center">脏读</th>
-<th style="text-align:center">不可重复读</th>
-<th style="text-align:center">幻读</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">读未提交(READ_UNCOMMITTED)</td>
-<td style="text-align:center">✓</td>
-<td style="text-align:center">✓</td>
-<td style="text-align:center">✓</td>
-</tr>
-<tr>
-<td style="text-align:center">读已提交(READ_COMMITTED)</td>
-<td style="text-align:center">✗</td>
-<td style="text-align:center">✓</td>
-<td style="text-align:center">✓</td>
-</tr>
-<tr>
-<td style="text-align:center">可重复读(REPEATABLE_READ)</td>
-<td style="text-align:center">✗</td>
-<td style="text-align:center">✗</td>
-<td style="text-align:center">？</td>
-</tr>
-<tr>
-<td style="text-align:center">顺序读(SERIALIZABLE)</td>
-<td style="text-align:center">✗</td>
-<td style="text-align:center">✗</td>
-<td style="text-align:center">✗</td>
-</tr>
-</tbody>
-</table>
+<!-- raw HTML omitted -->
 <p>从上往下，隔离级别越高，并发安全越高，但并发性越差。一般数据默认级别为读已提交或可重复读。</p>
 <p>查询当前会话的事务隔离级别</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#f92672">@@</span>tx_isolation;
-<span style="color:#66d9ef">select</span> <span style="color:#f92672">@@</span>transaction_isolation; <span style="color:#75715e">-- mysql8的命令
-</span></code></pre></div><p>设置当前会话的事务隔离级别</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">select <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">@tx_isolation</span><span style="color:#f92672">;</span>
+select <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">@transaction_isolation</span><span style="color:#f92672">;</span> <span style="color:#f92672">--</span> mysql8的命令
+
+</code></pre></div><p>设置当前会话的事务隔离级别</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">set</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">transaction</span> <span style="color:#66d9ef">isolation</span> <span style="color:#66d9ef">level</span> <span style="color:#66d9ef">read</span> uncommited;
 <span style="color:#66d9ef">set</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">transaction</span> <span style="color:#66d9ef">isolation</span> <span style="color:#66d9ef">level</span> <span style="color:#66d9ef">read</span> commited;
 <span style="color:#66d9ef">set</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">transaction</span> <span style="color:#66d9ef">isolation</span> <span style="color:#66d9ef">level</span> <span style="color:#66d9ef">repeatable</span> <span style="color:#66d9ef">read</span>;
 <span style="color:#66d9ef">set</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">transaction</span> <span style="color:#66d9ef">isolation</span> <span style="color:#66d9ef">level</span> <span style="color:#66d9ef">serializable</span>;
 </code></pre></div><p>一一介绍隔离级别</p>
 <ul>
-<li>
-<p>读未提交</p>
-<p>事务A正处理某一数据，对其更新但未提交，事务未完成；事务B能够访问到更新后的数据，也就是会出现脏读。这个隔离级别适合只读的事务。</p>
-</li>
-<li>
-<p>读已提交</p>
-<p>不同事务只能读到已提交的数据。不会出现脏读，事务重复读取数据的过程中，其他事务提交了数据修改，那么重复读会出现结果前后不一致。无法解决不可重复读的问题。</p>
-</li>
-<li>
-<p>可重复读</p>
-<p>保证事务处理，多次读取同一处数据，同一数据的值与事务开始一致。解决脏读和不可重复读，但可能出现幻读。</p>
-</li>
-<li>
-<p>顺序读</p>
-<p>事务排队处理，不能并发，就不会出现并发问题，安全但效率低。</p>
-</li>
+<li>读未提交
+事务A正处理某一数据，对其更新但未提交，事务未完成；事务B能够访问到更新后的数据，也就是会出现脏读。这个隔离级别适合只读的事务。</li>
+<li>读已提交
+不同事务只能读到已提交的数据。不会出现脏读，事务重复读取数据的过程中，其他事务提交了数据修改，那么重复读会出现结果前后不一致。无法解决不可重复读的问题。</li>
+<li>可重复读
+保证事务处理，多次读取同一处数据，同一数据的值与事务开始一致。解决脏读和不可重复读，但可能出现幻读。</li>
+<li>顺序读
+事务排队处理，不能并发，就不会出现并发问题，安全但效率低。</li>
 </ul>
 <h3 id="五不同隔离级别锁">五、不同隔离级别锁</h3>
 <ul>
-<li>
-<p>读未提交</p>
-<p>有行级锁，无间隙锁，可读未提交数据</p>
-</li>
-<li>
-<p>读提交</p>
-<p>有行级锁，无间隙锁，读不到未提交的数据</p>
-</li>
-<li>
-<p>可重复度</p>
-<p>有行级锁，有间隙锁，每次读取的数据一致，可能有幻读</p>
-</li>
-<li>
-<p>序列化</p>
-<p>有行级锁，也有间隙锁，读表的时候上锁。</p>
-</li>
+<li>读未提交
+有行级锁，无间隙锁，可读未提交数据</li>
+<li>读提交
+有行级锁，无间隙锁，读不到未提交的数据</li>
+<li>可重复度
+有行级锁，有间隙锁，每次读取的数据一致，可能有幻读</li>
+<li>序列化
+有行级锁，也有间隙锁，读表的时候上锁。</li>
 </ul>
 <p>行级锁：把一个表的行上锁，只能有一个事务处理这个行。</p>
 <p>间隙锁：一个在索引记录之间的间隙上的锁。保证某个间隙内的数据在锁定情况下不会发生任何变化。</p>

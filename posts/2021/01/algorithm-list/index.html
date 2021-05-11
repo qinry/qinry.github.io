@@ -3,7 +3,7 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,22 +20,11 @@
 
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="../../../../favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/django.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/vim.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/gradle.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
-...
-
-<script>hljs.initHighlightingOnLoad();</script>
+  
 </head>
 
   <body class="theme-base-0d ">
@@ -50,81 +39,33 @@
 
     <nav>
       <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io/">家</a></li>
-		<li><a href="https://qinry.github.io//categories">分类</a></li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/categories"> 分类 </a></li>
       </ul>
     </nav>
 
-    <p>Copyright (c) 2021 槎城小子</p>
-	
+    <p>Copyright © 2021 槎城小子</p>
   </div>
 </aside>
 
     <main class="content container">
     <div class="post">
   <h1>链表</h1>
-  <time datetime=2021-01-31T22:14:45&#43;0800 class="post-date">2021-01-31 22:14:45</time>
+  <time datetime=2021-01-31T22:14:45&#43;0800 class="post-date">Sun, Jan 31, 2021</time>
   <h2 id="一数组与链表">一、数组与链表</h2>
 <p>链表 [Linked List]：链表是由一组不必相连（不必相连：可以连续也可以不连续）的内
 存结构（节点），按特定的顺序链接在一起的抽象数据类型。</p>
 <p>数组和链表的区别和优缺点：
 数组是一种连续存储线性结构，元素类型相同，大小相等</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">优点</th>
-<th style="text-align:center">缺点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">存取速度快</td>
-<td style="text-align:center">事先必须知道数组的长度</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">插入删除元素很慢</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">空间通常是有限制的</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">需要大块连续的内存块</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">插入删除元素的效率很低</td>
-</tr>
-</tbody>
-</table>
+<!-- raw HTML omitted -->
 <p>链表是离散存储线性结构
 n 个节点离散分配，彼此通过指针相连，每个节点只有一个前驱节点，每个节点只有一
 个后续节点，首节点没有前驱节点，尾节点没有后续节点。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">链表优点</th>
-<th style="text-align:center">缺点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">空间没有限制</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">插入删除元素很快</td>
-<td style="text-align:center">存取速度很慢</td>
-</tr>
-</tbody>
-</table>
+<!-- raw HTML omitted -->
 <h2 id="二链表分类">二、链表分类</h2>
 <h3 id="21-单链表">2.1 单链表</h3>
 <p>单链表 [Linked List]：由各个内存结构通过一个 Next 指针链接在一起组成，每一个内存结构都存在后继内存结构(链尾除外），内存结构由数据域和 Next 指针域组成。如图：</p>
-<p><img src="../../../../images/tutorial/2021/01/algorithm-list/1.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/01/algorithm-list/1.png" alt="picture"></p>
 <p>Java表达单链表结点的结构：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LinkedList</span><span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
     Node first<span style="color:#f92672">;</span>
@@ -137,14 +78,14 @@ n 个节点离散分配，彼此通过指针相连，每个节点只有一个前
 <p>插入的位置为i，插入的元素为elem。从头结点开始遍历链表，找到第i-1个结点，创建包含elem的新结点插入第i-1个结点后面。</p>
 <p>Java表达：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">,</span> E elem<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    Node temp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Node<span style="color:#f92672">();</span>
-    temp<span style="color:#f92672">.</span><span style="color:#a6e22e">elem</span> <span style="color:#f92672">=</span> elem<span style="color:#f92672">;</span>
-    Node curr <span style="color:#f92672">=</span> first<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> i<span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-        curr <span style="color:#f92672">=</span> curr<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-    temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> curr<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
-    curr<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> temp<span style="color:#f92672">;</span>
+Node temp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Node<span style="color:#f92672">();</span>
+temp<span style="color:#f92672">.</span><span style="color:#a6e22e">elem</span> <span style="color:#f92672">=</span> elem<span style="color:#f92672">;</span>
+Node curr <span style="color:#f92672">=</span> first<span style="color:#f92672">;</span>
+<span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> i<span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+    curr <span style="color:#f92672">=</span> curr<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> curr<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+curr<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> temp<span style="color:#f92672">;</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>链表的插入、删除与查找之前是要边界检查的，在这些操作过程中可以使用成员变量size，统计结点数，也就是链表长度，为了突出重要的步骤，不过这里省略了。后面的代码也是如此。</p>
 <h4 id="212-删除">2.1.2 删除</h4>
@@ -173,7 +114,7 @@ n 个节点离散分配，彼此通过指针相连，每个节点只有一个前
 <span style="color:#f92672">}</span>
 </code></pre></div><h3 id="22-双链表">2.2 双链表</h3>
 <p>双向链表 [Double Linked List]：由各个内存结构通过指针 Next 和指针 Prev 链接在一起组成，每一个内存结构都存在前驱内存结构和后继内存结构(链头没有前驱，链尾没有后继），内存结构由数据域、Prev 指针域和 Next 指针域组成。</p>
-<p><img src="../../../../images/tutorial/2021/01/algorithm-list/2.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/01/algorithm-list/2.png" alt="picture"></p>
 <p>它的结构类似单链表，我在链表的首尾加了两个哨兵结点（pre和post），加不加哨兵结点只是出于策略的考虑和自己的喜好使用即可，不过我喜欢在双向链表使用哨兵结点，方便插入与删除的操作，且代码写起来更加简单。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DoublyLinkedList</span><span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
     Node pre<span style="color:#f92672">;</span>
@@ -228,7 +169,7 @@ n 个节点离散分配，彼此通过指针相连，每个节点只有一个前
 <h3 id="23-循环链表">2.3 循环链表</h3>
 <p>单向循环链表 [Circular Linked List] : 由各个内存结构通过一个指针 Next 链接在一起组成，每一个内存结构都存在后继内存结构，内存结构由数据域和 Next 指针域组成。</p>
 <p>双向循环链表 [Double Circular Linked List] : 由各个内存结构通过指针 Next 和指针Prev 链接在一起组成，每一个内存结构都存在前驱内存结构和后继内存结构，内存结构由数据域、Prev 指针域和 Next 指针域组成。</p>
-<p><img src="../../../../images/tutorial/2021/01/algorithm-list/3.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/01/algorithm-list/3.png" alt="picture"></p>
 <p>把单向链表的尾结点的Next指针指向头结点就成了单向循环链表。双向循环链表也是一样。一般地，循环链表都是保存尾结点的指针，通过尾结点的到第一个结点，来遍历链表，方便所有位置的插入、删除。插入、删除还有查找的操作与单链表和双链表没什么区别，这里就不多余展示了。</p>
 
 </div>

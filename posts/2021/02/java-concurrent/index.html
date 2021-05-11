@@ -3,7 +3,7 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,22 +20,11 @@
 
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="../../../../favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/django.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/vim.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/gradle.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
-...
-
-<script>hljs.initHighlightingOnLoad();</script>
+  
 </head>
 
   <body class="theme-base-0d ">
@@ -50,21 +39,19 @@
 
     <nav>
       <ul class="sidebar-nav">
-        <li><a href="https://qinry.github.io/">家</a></li>
-		<li><a href="https://qinry.github.io//categories">分类</a></li>
-        <li><a href="https://github.com/qinry"> Github </a></li>
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/categories"> 分类 </a></li>
       </ul>
     </nav>
 
-    <p>Copyright (c) 2021 槎城小子</p>
-	
+    <p>Copyright © 2021 槎城小子</p>
   </div>
 </aside>
 
     <main class="content container">
     <div class="post">
   <h1>多线程</h1>
-  <time datetime=2021-02-05T22:00:32&#43;0800 class="post-date">2021-02-05 22:00:32</time>
+  <time datetime=2021-02-05T22:32:16&#43;0800 class="post-date">Fri, Feb 5, 2021</time>
   <ul>
 <li><a href="#%E4%B8%80%E6%A6%82%E8%BF%B0">一、概述</a></li>
 <li><a href="#%E4%BA%8C%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA">二、线程创建</a></li>
@@ -365,12 +352,8 @@
 <p><strong>隐式锁（synchronized锁）与显式锁（Lock）的区别？</strong></p>
 <p>（1）底层实现不同。</p>
 <ul>
-<li>
-<p>synchronized锁是由JVM维护的，是JVM层的锁。<strong>通过 monitorenter 进行加锁</strong>（底层是通过 monitor 对象来完成的，其中的wait/notify等方法也是依赖于 monitor 对象的。只有在同步代码块或者同步方法中才可以调用wait/notify等方法。因为只有在同步代码块或者是同步方法中，JVM才会调用 monitor对象）；<strong>通过 monitorexit 来退出锁</strong>。</p>
-</li>
-<li>
-<p>Lock是JDK5推出的具体类。使用它是通过调用对应的API方法来获取锁和释放锁，是API层面的锁</p>
-</li>
+<li>synchronized锁是由JVM维护的，是JVM层的锁。<strong>通过 monitorenter 进行加锁</strong>（底层是通过 monitor 对象来完成的，其中的wait/notify等方法也是依赖于 monitor 对象的。只有在同步代码块或者同步方法中才可以调用wait/notify等方法。因为只有在同步代码块或者是同步方法中，JVM才会调用 monitor对象）；<strong>通过 monitorexit 来退出锁</strong>。</li>
+<li>Lock是JDK5推出的具体类。使用它是通过调用对应的API方法来获取锁和释放锁，是API层面的锁</li>
 </ul>
 <p>（2）用法不同</p>
 <ul>
@@ -389,12 +372,8 @@
 </ul>
 <p>（5）绑定多个Condition对象与否</p>
 <ul>
-<li>
-<p>隐式锁:没有。要么随机唤醒一个线程；要么是唤醒所有等待的线程。</p>
-</li>
-<li>
-<p>显示锁:用来实现分组唤醒需要唤醒的线程，可以精确的唤醒，而不是像显示锁不能精确唤醒线程。</p>
-</li>
+<li>隐式锁:没有。要么随机唤醒一个线程；要么是唤醒所有等待的线程。</li>
+<li>显示锁:用来实现分组唤醒需要唤醒的线程，可以精确的唤醒，而不是像显示锁不能精确唤醒线程。</li>
 </ul>
 <h3 id="七死锁">七、死锁</h3>
 <p>两个线程先是各自持有一部分锁，互相之间等待某一个线程释放锁，所有线程都陷入等待，无法继续执行下去。</p>
@@ -538,7 +517,6 @@
         <span style="color:#f92672">}</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-
 </code></pre></div><p>输出：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">服务员端菜<span style="color:#960050;background-color:#1e0010">，</span>菜品是扬州炒饭<span style="color:#960050;background-color:#1e0010">，</span>味道是咸的
 服务员端菜<span style="color:#960050;background-color:#1e0010">，</span>菜品是水煮鱼<span style="color:#960050;background-color:#1e0010">，</span>味道是麻辣的
@@ -551,34 +529,22 @@
 服务员端菜<span style="color:#960050;background-color:#1e0010">，</span>菜品是扬州炒饭<span style="color:#960050;background-color:#1e0010">，</span>味道是咸的
 服务员端菜<span style="color:#960050;background-color:#1e0010">，</span>菜品是水煮鱼<span style="color:#960050;background-color:#1e0010">，</span>味道是麻辣的
 </code></pre></div><h3 id="九线程的状态">九、线程的状态</h3>
-<p><img src="../../../../images/tutorial/2021/02/java-concurrent/1.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/02/java-concurrent/1.png" alt="picture"></p>
 <ul>
-<li>
-<p><code>NEW</code>
-尚未启动的线程处于此状态。</p>
-</li>
-<li>
-<p><code>RUNNABLE</code>
-在Java虚拟机中执行的线程处于此状态。</p>
-</li>
-<li>
-<p><code>BLOCKED</code>
-被阻塞等待监视器锁定的线程处于此状态。</p>
-</li>
-<li>
-<p><code>WAITING</code>
-无限期等待另一个线程执行特定操作的线程处于此状态。</p>
-</li>
-<li>
-<p><code>TIMED_WAITING</code>
-正在等待另一个线程执行最多指定等待时间的操作的线程处于此状态。</p>
-</li>
-<li>
-<p><code>TERMINATED</code>
-已退出的线程处于此状态</p>
-</li>
+<li><code>NEW</code>
+尚未启动的线程处于此状态。</li>
+<li><code>RUNNABLE</code>
+在Java虚拟机中执行的线程处于此状态。</li>
+<li><code>BLOCKED</code>
+被阻塞等待监视器锁定的线程处于此状态。</li>
+<li><code>WAITING</code>
+无限期等待另一个线程执行特定操作的线程处于此状态。</li>
+<li><code>TIMED_WAITING</code>
+正在等待另一个线程执行最多指定等待时间的操作的线程处于此状态。</li>
+<li><code>TERMINATED</code>
+已退出的线程处于此状态</li>
 </ul>
-<h3 id="十callablev和futuretaskv">十、Callable&lt;V&gt;和FutureTask&lt;V&gt;</h3>
+<h3 id="十callableltvgt和futuretaskltvgt">十、Callable&lt;V&gt;和FutureTask&lt;V&gt;</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Caller</span><span style="color:#f92672">&lt;</span>V<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">implements</span> Callable<span style="color:#f92672">&lt;</span>V<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">private</span> V val<span style="color:#f92672">;</span>
 
@@ -740,12 +706,12 @@ pool<span style="color:#f92672">-</span>1<span style="color:#f92672">-</span>thr
         exec<span style="color:#f92672">.</span><span style="color:#a6e22e">shutdown</span><span style="color:#f92672">();</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-
 </code></pre></div><p>输出：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">pool<span style="color:#f92672">-</span>1<span style="color:#f92672">-</span>thread<span style="color:#f92672">-</span>1 Hello World
 pool<span style="color:#f92672">-</span>1<span style="color:#f92672">-</span>thread<span style="color:#f92672">-</span>1 Hello World
 pool<span style="color:#f92672">-</span>1<span style="color:#f92672">-</span>thread<span style="color:#f92672">-</span>1 Hello World
 pool<span style="color:#f92672">-</span>1<span style="color:#f92672">-</span>thread<span style="color:#f92672">-</span>1 Hello World
+
 </code></pre></div><p>周期性定长线程池</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.concurrent.Executors<span style="color:#f92672">;</span>
 <span style="color:#f92672">import</span> java.util.concurrent.ScheduledExecutorService<span style="color:#f92672">;</span>

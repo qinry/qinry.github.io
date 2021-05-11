@@ -12,7 +12,7 @@
       <pubDate>Sun, 20 Oct 2019 08:50:01 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2019/10/git-simple-usage/</guid>
-      <description>配置Git 提供Git用户名和邮箱 $ git config --global user.name &amp;quot;username&amp;quot; $ git config --global user.email &amp;quot;usernaem@example.com&amp;quot; 忽略文件 创建文件 .gitignore ，让Git忽略某目录中的所有文件(不跟踪这些文件)，使用它可以避免</description>
+      <description>配置Git 提供Git用户名和邮箱 $ git config &amp;ndash;global user.name &amp;ldquo;username&amp;rdquo; $ git config &amp;ndash;global user.email &amp;ldquo;usernaem@example.com&amp;rdquo; 忽略文件 创建文件 .gitignore ，让Git忽略某目录中的所有文件(不跟踪这些文件)，使用它可以避免</description>
     </item>
     
   </channel>
