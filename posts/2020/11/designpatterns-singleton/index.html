@@ -3,7 +3,7 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.85.0" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,14 +20,17 @@
 
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
 
   
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </head>
 
   <body class="theme-base-0d ">
+    <span id="top"></span>
   <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -36,11 +39,11 @@
        不积硅步无以至千里，不积小流无以成江海。 
       </p>
     </div>
-
+    
     <nav>
       <ul class="sidebar-nav">
         <li><a href="https://qinry.github.io/">Home</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/categories"> 分类 </a></li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../categories"> 分类 </a></li>
       </ul>
     </nav>
 
@@ -48,10 +51,18 @@
   </div>
 </aside>
 
+  
+
     <main class="content container">
     <div class="post">
+
   <h1>设计模式——单件模式</h1>
-  <time datetime=2020-11-16T08:08:26&#43;0800 class="post-date">Mon, Nov 16, 2020</time>
+  <span class="post-date">
+    2020-11-16 08:08
+    字数：1689
+  </span>
+  
+
   <h1 id="单件模式">单件模式</h1>
 <h2 id="什么是单件模式">什么是单件模式</h2>
 <p>单件模式是在设计模式中常用的一种需要为类只实例化唯一对象的设计方案。意思是说，对于某个类来说，其对象只能创建一个，且每次使用这个类的时候，用到的都是同一个对象。在有些场景下，有些对象我们只需要一个，比如：线程池、缓存、对话框、处理偏好设置和注册表的对象、日志对象、打印机、显卡等表示设备某些资源的对象。也常常用来管理共享的资源，比如数据库连接池等。</p>
@@ -124,8 +135,14 @@
 </div>
 
 
+    
     </main>
-
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
     
       
     

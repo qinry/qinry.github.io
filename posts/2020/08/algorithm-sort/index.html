@@ -3,7 +3,7 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.85.0" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,14 +20,17 @@
 
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
 
   
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </head>
 
   <body class="theme-base-0d ">
+    <span id="top"></span>
   <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -36,11 +39,11 @@
        不积硅步无以至千里，不积小流无以成江海。 
       </p>
     </div>
-
+    
     <nav>
       <ul class="sidebar-nav">
         <li><a href="https://qinry.github.io/">Home</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/categories"> 分类 </a></li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../categories"> 分类 </a></li>
       </ul>
     </nav>
 
@@ -48,12 +51,19 @@
   </div>
 </aside>
 
+  
+
     <main class="content container">
     <div class="post">
+
   <h1>排序</h1>
-  <time datetime=2020-08-06T08:00:11&#43;0800 class="post-date">Thu, Aug 6, 2020</time>
-  <p><em>参考于《算法》第四版第二章</em></p>
-<h2 id="排序算法类的模板">排序算法类的模板</h2>
+  <span class="post-date">
+    2020-08-06 08:00
+    字数：3540
+  </span>
+  
+
+  <h2 id="排序算法类的模板">排序算法类的模板</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Example</span> <span style="color:#f92672">{</span>
   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span>Comparable<span style="color:#f92672">[]</span> a<span style="color:#f92672">){</span>
     <span style="color:#75715e">// ... 见下面详解
@@ -83,7 +93,7 @@
     show<span style="color:#f92672">(</span>a<span style="color:#f92672">);</span>
   <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h2 id="成本模型">成本模型</h2>
+</code></pre></div><h3 id="成本模型">成本模型</h3>
 <p>排序算法需要计算比较和交换的数量，对于不交换元素的算法则计算访问数组的次数。排序算法可能有额外的内存开销，因此有除了函数调用所需的栈和固定数目的实例变量外无需额外内存的排序算法称为原地排序算法和需要额外内存空间存储另一份数组副本的其他排序算法。</p>
 <h2 id="选择排序">选择排序</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Selection</span> <span style="color:#f92672">{</span>
@@ -111,7 +121,7 @@
   <span style="color:#75715e">// less()、exch()、isSorted()和main()方法见“排序算法类模板”
 </span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
 </code></pre></div><p>插入排序所需时间取决于输入中元素的初始顺序。对于随机排序的长度为N且主键不重复的数组，平均情况下插入排序需要~N²/4次比较以及~N²/4次交换。最坏情况下需要~N²/2次比较和~N²/2次交换，最好情况下需要N-1次比较和0次交换。插入排序适合<strong>部分有序的数组</strong>（数组中每个元素离它最终位置不愿、一个有序大数组接一个小数组、数组中只有几个元素的位置不正确）。</p>
-<h4 id="改进">改进</h4>
+<h3 id="改进">改进</h3>
 <p>内循环中较大的元素都向右移动而不总是交换两个元素（这样访问数组的次数就能减半）</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InsertionX</span> <span style="color:#f92672">{</span>
   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span>Comparable<span style="color:#f92672">[]</span> a<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
@@ -210,7 +220,7 @@
   <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>对于长度为N的任意数组，自底向上的归并排序需要1/2NlgN至NlgN次比较，最多需要访问数组6NlgN次。</p>
-<h4 id="改进-1">改进</h4>
+<h3 id="改进-1">改进</h3>
 <p>1、小规模子数组使用插入排序；2、测试数组是否已有序，有序则跳过<code>merge()</code>方法；3、不将重复元素复制到辅助数组，通过在递归调用的每个层次交换输入数组和辅助数组的角色实现。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MergeX</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> CUTOFF <span style="color:#f92672">=</span> 7<span style="color:#f92672">;</span>  <span style="color:#75715e">// cutoff to insertion sort
@@ -326,7 +336,7 @@
   <span style="color:#75715e">// less()、exch()和main()方法见“排序算法类模板”
 </span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
 </code></pre></div><p>将长度为N的无重复数组排序，快速排序平均需要~2NlnN次比较以及1/3NlnN交换，最多需要约N²/2次比较，但随机打乱数组能预防此情况。注意：1、原地切分；2、别越界；3、保持随机性；4、终止循环；5、处理切分元素值有重复的情况；6、终止递归。性能特点：1、切分方法内循环只进行数组元素比较不进行交换，故一般速度比希尔排序、归并排序快；2、排序效率依赖切分数组的效果，这依赖切分元素的值。</p>
-<h4 id="改进-2">改进</h4>
+<h3 id="改进-2">改进</h3>
 <p>1、对于小数组切换到插入排序；2、三取样切分,使用子数组的一小部分元素的中位数来切分数组；3、熵最优的排序，我的理解是是停止对重复元素的切分的快速排序。</p>
 <p>三向切分的快速排序</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Quick3way</span><span style="color:#f92672">{</span>
@@ -484,7 +494,7 @@
       System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h3 id="堆排序">堆排序</h3>
+</code></pre></div><h2 id="堆排序">堆排序</h2>
 <p>堆的实现参见<a href="../2020-08-06-algorithm-priority-queue">优先队列的实现</a></p>
 <p>堆排序算法实现</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Heap</span> <span style="color:#f92672">{</span>
@@ -522,12 +532,22 @@
 </span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
 
 </code></pre></div><p>将N个元素使用堆排序，只需少于(2NlgN+2N)次比较（以及一半次数的交换）。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>《算法》第四版第二章</li>
+</ul>
 
 </div>
 
 
+    
     </main>
-
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
     
       
     

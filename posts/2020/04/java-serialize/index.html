@@ -3,7 +3,7 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.85.0" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,14 +20,17 @@
 
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
 
   
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </head>
 
   <body class="theme-base-0d ">
+    <span id="top"></span>
   <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -36,11 +39,11 @@
        不积硅步无以至千里，不积小流无以成江海。 
       </p>
     </div>
-
+    
     <nav>
       <ul class="sidebar-nav">
         <li><a href="https://qinry.github.io/">Home</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/categories"> 分类 </a></li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../categories"> 分类 </a></li>
       </ul>
     </nav>
 
@@ -48,10 +51,18 @@
   </div>
 </aside>
 
+  
+
     <main class="content container">
     <div class="post">
+
   <h1>Java对象序列化</h1>
-  <time datetime=2020-04-28T16:01:24&#43;0800 class="post-date">Tue, Apr 28, 2020</time>
+  <span class="post-date">
+    2020-04-28 16:01
+    字数：1465
+  </span>
+  
+
   <h2 id="持久性">持久性</h2>
 <p>如果对象能够在程序不运行还能保存其状态信息。可以通过将信息写入文件或数据库来达到程序下次执行时，对象重建后与上次拥有一致的信息。在Java中一切都是对象的思想下，把对象声明为“持久性”，可以省去一些细节，对程序员是种方便。对象的序列化，可以理解为把对象导入到文件中，通过<code>Serialize</code>接口实现。通过导入文件能够反序列化还原对象，达到持久性的目的。该特性支持计算机的远程方法调用，还有帮助Java Bean在设计阶段保存配置信息，并在启动程序后恢复配置信息。如果要把一个对象序列化，实现<code>Serialize</code>接口就可以了，此接口只是标记接口，不含方法。</p>
 <h2 id="序列化写入文件">序列化写入文件</h2>
@@ -201,8 +212,14 @@
 </div>
 
 
+    
     </main>
-
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
     
       
     

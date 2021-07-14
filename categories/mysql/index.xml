@@ -12,7 +12,7 @@
       <pubDate>Fri, 02 Apr 2021 19:44:50 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2021/04/java-jdbc/</guid>
-      <description>JDBC的使用 什么是JDBC JDBC是执行SQL的java API，为关系型数据库提供访问。JDBC可以在更大平台使用像Windows、Mac</description>
+      <description>什么是JDBC JDBC是执行SQL的java API，为关系型数据库提供访问。JDBC可以在更大平台使用像Windows、Mac、Unix等等</description>
     </item>
     
     <item>

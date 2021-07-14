@@ -3,7 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://qinry.github.io/categories/</loc>
-    <lastmod>2021-04-02T19:44:50+08:00</lastmod>
+    <lastmod>2021-07-14T17:02:54+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/posts/</loc>
+    <lastmod>2021-07-14T17:02:54+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/tags/redis/</loc>
+    <lastmod>2021-07-14T17:02:54+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/categories/redis/</loc>
+    <lastmod>2021-07-14T17:02:54+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/posts/2021/07/redis-cluster/</loc>
+    <lastmod>2021-07-14T17:02:54+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/tags/</loc>
+    <lastmod>2021-07-14T17:02:54+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/</loc>
+    <lastmod>2021-07-14T17:02:54+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/posts/2021/07/redis-persistence/</loc>
+    <lastmod>2021-07-14T17:01:46+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/posts/2021/07/redis/</loc>
+    <lastmod>2021-07-14T16:54:53+08:00</lastmod>
   </url><url>
     <loc>https://qinry.github.io/posts/2021/04/java-jdbc/</loc>
     <lastmod>2021-04-02T19:44:50+08:00</lastmod>
@@ -12,15 +36,6 @@
     <lastmod>2021-04-02T19:44:50+08:00</lastmod>
   </url><url>
     <loc>https://qinry.github.io/categories/mysql/</loc>
-    <lastmod>2021-04-02T19:44:50+08:00</lastmod>
-  </url><url>
-    <loc>https://qinry.github.io/posts/</loc>
-    <lastmod>2021-04-02T19:44:50+08:00</lastmod>
-  </url><url>
-    <loc>https://qinry.github.io/tags/</loc>
-    <lastmod>2021-04-02T19:44:50+08:00</lastmod>
-  </url><url>
-    <loc>https://qinry.github.io/</loc>
     <lastmod>2021-04-02T19:44:50+08:00</lastmod>
   </url><url>
     <loc>https://qinry.github.io/posts/2021/03/transaction/</loc>

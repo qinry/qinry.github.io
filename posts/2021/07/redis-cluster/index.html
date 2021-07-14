@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.85.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Redis集群 &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="搭建Redis集群，jedis访问Redis集群" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+  <body class="theme-base-0d ">
+    <span id="top"></span>
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+    
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../categories"> 分类 </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright © 2021 槎城小子</p>
+  </div>
+</aside>
+
+  
+<aside class="post-toc" style="position:fixed;top: 20px;left: 400px;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一集群架构">一、集群架构</a></li>
+    <li><a href="#二心跳机制">二、心跳机制</a></li>
+    <li><a href="#三搭建集群">三、搭建集群</a></li>
+    <li><a href="#四jedis连接集群">四、jedis连接集群</a></li>
+  </ul>
+</nav>
+    
+</aside>
+
+
+    <main class="content container">
+    <div class="post">
+
+  <h1>Redis集群</h1>
+  <span class="post-date">
+    2021-07-14 17:02
+    字数：1080
+  </span>
+  
+
+  <h2 id="一集群架构">一、集群架构</h2>
+<p>(1)所有的 Redis 节点彼此互联（PING-PONG 机制），内部使用二进制协议优化传输速度和带宽.</p>
+<p>(2)节点的 fail 是通过集群中超过半数的节点检测有效时整个集群才生效.</p>
+<p>(3)客户端与 Redis 节点直连,不需要中间 proxy 层.客户端不需要连接集群所有节点,连接集群中任何一个可用节点即可</p>
+<p>(4)redis-cluster把所有的物理节点映射到 [0-16383]slot 上，cluster 负责维护 node&lt;-&gt;slot&lt;-&gt;value</p>
+<p>Redis 集群中内置了 16384 个哈希槽，当需要在 Redis 集群中放置一个 key-value 时，Redis 先对 key 使用 CRC16 算法算出一个结果，然后把结果对 16384 求余数，这样每个 key 都会对应一个编号在 0-16383 之间的哈希槽， Redis 会根据节点数量大致均等的将哈希槽映射到不同的节点</p>
+<h2 id="二心跳机制">二、心跳机制</h2>
+<p>(1)集群中所有 master 参与投票,如果半数以上 master 节点与其中一个 master 节点通信超过 (cluster-node-timeout)，认为该 master 节点挂掉。</p>
+<p>(2)什么时候整个集群不可用(cluster_state:fail)？
+Ø 如果集群任意 master 挂掉,且当前 master 没有 slave ，则集群进入 fail 状态。也可以理解成集群的[0-16383]slot映射不完全时进入fail状态。
+Ø 如果集群超过半数以上 master 挂掉，无论是否有 slave ，集群进入 fail 状态。</p>
+<h2 id="三搭建集群">三、搭建集群</h2>
+<p>前提有多个虚拟机，并装好了 Redis。搭建集群最少要 3 台主机，一台主机再配置从机的话，最少需要 6 台机器或虚拟机。不过可以一台机子有 6 个 Redis 实例。使用端口 7001~7006。</p>
+<p>首先，编写配置文件 redis.conf：<code>cluster-enabled yes</code>。还有按情况配置 <code>port &lt;端口号&gt;</code> 和 <code>bind 0.0.0.0</code>。</p>
+<p>接着，删除数据存放目录下持久化文件，重要持久化文件自行备份。启动 7001～7002 这六个 Redis 实例。如果防火墙未放行 Redis 服务的流量话，配置放行或者关闭防火墙。</p>
+<p>然后，创建集群</p>
+<p><code>redis-cli --cluster create &lt;ip&gt;:&lt;port&gt; [&lt;ip&gt;:&lt;port&gt; ...] --cluster-replicas 1</code>。</p>
+<p>最后，连接集群</p>
+<p><code>redis-cli -h &lt;ip&gt; -p &lt;port&gt; -c</code> 。</p>
+<p>查看集群信息，在运行的客户端内部执行命令 <code>cluster info</code>。
+查看集群节点信息，<code>cluster nodes</code>。</p>
+<h2 id="四jedis连接集群">四、jedis连接集群</h2>
+<p>maven引入相关依赖</p>
+<pre><code>&lt;dependency&gt; 
+    &lt;groupId&gt;redis.clients&lt;/groupId&gt;
+    &lt;artifactId&gt;jedis&lt;/artifactId&gt; 
+    &lt;version&gt;3.6.1&lt;/version&gt;
+  &lt;/dependency&gt;
+</code></pre><p>示例代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span> 
+    <span style="color:#75715e">// 创建一连接，JedisCluster对象,在系统中是单例存在 
+</span><span style="color:#75715e"></span>    Set<span style="color:#f92672">&lt;</span>HostAndPort<span style="color:#f92672">&gt;</span> nodes <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;</span>HostAndPort<span style="color:#f92672">&gt;();</span> 
+    nodes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> HostAndPort<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.123.181&#34;</span><span style="color:#f92672">,</span> 7001<span style="color:#f92672">));</span> 
+    nodes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> HostAndPort<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.123.181&#34;</span><span style="color:#f92672">,</span> 7002<span style="color:#f92672">));</span> 
+    nodes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> HostAndPort<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.123.181&#34;</span><span style="color:#f92672">,</span> 7003<span style="color:#f92672">));</span> 
+    nodes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> HostAndPort<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.123.181&#34;</span><span style="color:#f92672">,</span> 7004<span style="color:#f92672">));</span> 
+    nodes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> HostAndPort<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.123.181&#34;</span><span style="color:#f92672">,</span> 7005<span style="color:#f92672">));</span> 
+    nodes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> HostAndPort<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.123.181&#34;</span><span style="color:#f92672">,</span> 7006<span style="color:#f92672">));</span> 
+    JedisCluster cluster <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> JedisCluster<span style="color:#f92672">(</span>nodes<span style="color:#f92672">);</span>
+    <span style="color:#75715e">// 执行JedisCluster对象中的方法，方法和redis指令一一对应。
+</span><span style="color:#75715e"></span>    cluster<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;test1&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;test111&#34;</span><span style="color:#f92672">);</span>
+    String result <span style="color:#f92672">=</span> cluster<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;test1&#34;</span><span style="color:#f92672">);</span> 
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>result<span style="color:#f92672">);</span>
+    <span style="color:#75715e">//存储List数据到列表中
+</span><span style="color:#75715e"></span>    cluster<span style="color:#f92672">.</span><span style="color:#a6e22e">lpush</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;site-list&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;java&#34;</span><span style="color:#f92672">);</span> 
+    cluster<span style="color:#f92672">.</span><span style="color:#a6e22e">lpush</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;site-list&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">);</span> 
+    cluster<span style="color:#f92672">.</span><span style="color:#a6e22e">lpush</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;site-list&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;mysql&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#75715e">// 获取存储的数据并输出
+</span><span style="color:#75715e"></span>    List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> cluster<span style="color:#f92672">.</span><span style="color:#a6e22e">lrange</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;site-list&#34;</span><span style="color:#f92672">,</span> 0 <span style="color:#f92672">,</span>2<span style="color:#f92672">);</span> 
+    <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span> i<span style="color:#f92672">&lt;</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;列表项为: &#34;</span><span style="color:#f92672">+</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>i<span style="color:#f92672">));</span> 
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">// 程序结束时需要关闭JedisCluster对象 
+</span><span style="color:#75715e"></span>    cluster<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;集群测试成功!&#34;</span><span style="color:#f92672">);</span> 
+    
+<span style="color:#f92672">}</span>
+</code></pre></div>
+</div>
+
+
+    
+    </main>
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
+    
+      
+    
+  </body>
+</html>

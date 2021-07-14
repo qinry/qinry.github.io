@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.85.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Redis 入门 &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="Redis 常用命令；jedis 连接 Redis；缓存雪崩、缓存击穿、缓存穿透问题；分布式锁" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+  <body class="theme-base-0d ">
+    <span id="top"></span>
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+    
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../categories"> 分类 </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright © 2021 槎城小子</p>
+  </div>
+</aside>
+
+  
+<aside class="post-toc" style="position:fixed;top: 20px;left: 400px;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一基本数据结构">一、基本数据结构</a></li>
+    <li><a href="#二常用命令">二、常用命令</a>
+      <ul>
+        <li><a href="#21字符串的命令">2.1.字符串的命令</a></li>
+        <li><a href="#22哈希的命令">2.2.哈希的命令</a></li>
+        <li><a href="#23列表的命令">2.3.列表的命令</a></li>
+        <li><a href="#24无序集合的命令">2.4无序集合的命令</a></li>
+        <li><a href="#25有序集合的命令">2.5.有序集合的命令</a></li>
+        <li><a href="#26hyperloglog的命令">2.6.HyperLogLog的命令</a></li>
+        <li><a href="#27其他常用命令">2.7.其他常用命令</a></li>
+        <li><a href="#28事务管理">2.8.事务管理</a></li>
+        <li><a href="#29发布订阅">2.9.发布/订阅</a></li>
+      </ul>
+    </li>
+    <li><a href="#三jedis连接redis">三、jedis连接Redis</a></li>
+    <li><a href="#四缓存雪崩缓存击穿缓存穿透问题">四、缓存雪崩、缓存击穿、缓存穿透问题</a>
+      <ul>
+        <li><a href="#41缓存雪崩">4.1.缓存雪崩</a></li>
+        <li><a href="#42缓存击穿">4.2.缓存击穿</a></li>
+        <li><a href="#43缓存穿透">4.3.缓存穿透</a></li>
+      </ul>
+    </li>
+    <li><a href="#五分布式锁">五、分布式锁</a>
+      <ul>
+        <li><a href="#51使用分布式锁的条件">5.1.使用分布式锁的条件</a></li>
+        <li><a href="#52应用场景">5.2.应用场景</a></li>
+        <li><a href="#53使用redis的分布式锁">5.3.使用Redis的分布式锁</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    
+</aside>
+
+
+    <main class="content container">
+    <div class="post">
+
+  <h1>Redis 入门</h1>
+  <span class="post-date">
+    2021-07-14 16:54
+    字数：4008
+  </span>
+  
+
+  <p>简单介绍Redis。它是一款键值数据库。它还是非关系型数据库（Nosql）。常常用作内存缓存，应用于频繁的读写场景中。</p>
+<h2 id="一基本数据结构">一、基本数据结构</h2>
+<p>Redi常用的五种数据类型。分别为字符串（strings）、列表（lists）、无序集合（sets）、有序集合（zsets）、哈希（hashs）。</p>
+<h2 id="二常用命令">二、常用命令</h2>
+<h3 id="21字符串的命令">2.1.字符串的命令</h3>
+<pre><code># 一般的字符串
+# 设置字符串类型key为value
+set key value
+# 获取key/value
+get key
+# 设置多个key
+mset key value [key value ...]
+# 获取多个key/value
+mget key [key ...]
+# 删除key
+del key
+# 字符串数字
+# 初始是0，每运行就加1，注意第一次运行后的结果为1
+incr key
+# 初始是0，每运行减1，注意第一次运行后的结果为-1
+decr key
+# 定长增减，每次增减number
+incrby key number
+decrby key number
+</code></pre><h3 id="22哈希的命令">2.2.哈希的命令</h3>
+<pre><code># 设置哈希类型key的field为value
+hset key field value 
+# 获取key的field
+hget key field
+# 设置key的多个field
+hmset key field value [field value ...]
+# 获取key多个field
+hmget key field [field ...]
+# 获取key所有的field
+hgetall key
+# 删除key的某个或多个field
+hdel key field [field ...]
+</code></pre><h3 id="23列表的命令">2.3.列表的命令</h3>
+<pre><code># 向列表key左端加元素value
+lpush key value [value ...]
+# 从列表key左端弹出元素
+lpop key
+# 向列表key右端加元素value
+rpush key value [value ...]
+# 从列表key右端弹出元素
+rpop key
+# 获取列表key元素的个数
+llen key
+# 查看列表key下标start到stop（不包括）的元素，下标从0开始，特殊地，下标-1表示最后一个元素
+lrange key start stop
+</code></pre><h3 id="24无序集合的命令">2.4无序集合的命令</h3>
+<pre><code># 向集合key添加元素member
+sadd key member [member ...]
+# 从集合key指定删除元素member
+srem key member [member ...]
+# 获取所有元素
+smembers key
+# 判断元素是否在集合中
+sismember key member
+</code></pre><h3 id="25有序集合的命令">2.5.有序集合的命令</h3>
+<pre><code># 设置有序集合key的元素及其分数score
+zadd key score member [score member ...]
+# 查询集合中start到stop范围内的元素[可带分数]，元素按降序返回
+zrevrange key start stop [withscores]
+# 获取key中元素的分数
+zscore key member
+# 删除元素
+zrem key member [member ...]
+# 给key元素的分数加减分数score
+zincrby key score member
+</code></pre><h3 id="26hyperloglog的命令">2.6.HyperLogLog的命令</h3>
+<pre><code># 往HyperLogLog类型的key添加元素element
+pfadd key element [element ...]
+# 获取key中唯一元素的估计个数
+pfcount key [key ...]
+pfmerget destkey sourcekey [sourcekey ...]
+</code></pre><h3 id="27其他常用命令">2.7.其他常用命令</h3>
+<pre><code># 查询符合pattern的所有key
+keys pattern
+# 判断key是否存在
+exists key
+# 删除key
+del key
+# 重命名
+rename oldkey newkey
+# 判断key的数据类型
+type key
+# 设置key的有效时间
+expire key seconds
+# 查看key有效时间
+ttl key
+# 清除key的生存时间
+persist key
+# 获取服务器信息和统计
+info
+# 删除当前选择的数据库中所有key，谨慎使用
+flushdb
+# 删除所有数据库的所有key
+flushall
+# Redis默认有16个数据库，从0到15，选择下标为index数据库
+select index
+# key从当前数据库移到下标为index的数据库
+move key index
+</code></pre><h3 id="28事务管理">2.8.事务管理</h3>
+<pre><code># 开启事务
+multi
+# 将多个命令入队到事务中
+...
+# 触发事务
+exec
+</code></pre><h3 id="29发布订阅">2.9.发布/订阅</h3>
+<pre><code># 在某一个客户端上订阅频道channel，等待接受发布者发送的消息
+subscribe channel
+# 在某一个客户端在channel发布消息message给所有此频道的订阅者
+publish channel message
+</code></pre><h2 id="三jedis连接redis">三、jedis连接Redis</h2>
+<p>首先，在项目中使用maven引入jedis依赖</p>
+<pre><code>&lt;dependency&gt; 
+    &lt;groupId&gt;redis.clients&lt;/groupId&gt; 
+    &lt;artifactId&gt;jedis&lt;/artifactId&gt; 
+    &lt;version&gt;3.6.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><p>其次，确保Redis所在的服务器与本地连通，防火墙允许本地流量发送给服务器，服务器可以发送流量给本地，可以选择关闭它。</p>
+<p>最后编写代码，核心代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Jedis jedis <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+    jedis <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Jedis<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.123.181&#34;</span><span style="color:#f92672">,</span>6379<span style="color:#f92672">);</span>
+<span style="color:#75715e">//  jedis.auth(&#34;password&#34;);
+</span><span style="color:#75715e"></span>    jedis<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;bar&#34;</span><span style="color:#f92672">);</span>
+    String bar <span style="color:#f92672">=</span> jedis<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#f92672">);</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;foo:&#34;</span><span style="color:#f92672">+</span>bar<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>jedis <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        jedis<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>运行代码，如果有JedisConnectionException，请检查Redis的配置文件，检查bind是否绑定服务器的ip，或者设置成0.0.0.0</p>
+<p>使用jedis连接池，核心代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">JedisPoolConfig config <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> JedisPoolConfig<span style="color:#f92672">();</span>
+config<span style="color:#f92672">.</span><span style="color:#a6e22e">setMaxIdle</span><span style="color:#f92672">(</span>10<span style="color:#f92672">);</span>
+config<span style="color:#f92672">.</span><span style="color:#a6e22e">setMaxTotal</span><span style="color:#f92672">(</span>20<span style="color:#f92672">);</span>
+JedisPool pool <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+Jedis jedis <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+    pool <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> JedisPool<span style="color:#f92672">(</span>config<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;192.168.123.181&#34;</span><span style="color:#f92672">,</span>6379<span style="color:#f92672">);</span>
+    jedis <span style="color:#f92672">=</span> pool<span style="color:#f92672">.</span><span style="color:#a6e22e">getResource</span><span style="color:#f92672">();</span>
+<span style="color:#75715e">//  jedis.auth(&#34;password&#34;);
+</span><span style="color:#75715e"></span>    jedis<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;bar&#34;</span><span style="color:#f92672">);</span>
+    String foo <span style="color:#f92672">=</span> jedis<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#f92672">);</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;foo=&#34;</span><span style="color:#f92672">+</span>foo<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>jedis <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        jedis<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>pool <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        pool<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="四缓存雪崩缓存击穿缓存穿透问题">四、缓存雪崩、缓存击穿、缓存穿透问题</h2>
+<p>什么是缓存?
+广义的缓存就是在第一次加载某些可能会复用数据的时候，在加载数据的同时，将数据放到一个指定的地点做保 存。再下次加载的时候，从这个指定地点去取数据。这里加缓存是有一个前提的，就是从这个地方取数据，比从数 据源取数据要快的多。
+java狭义一些的缓存，主要是指三大类</p>
+<ol>
+<li>虚拟机缓存(ehcache，JBoss Cache)</li>
+<li>分布式缓存(redis，memcache)</li>
+<li>数据库缓存
+正常来说，速度由上到下依次减慢</li>
+</ol>
+<h3 id="41缓存雪崩">4.1.缓存雪崩</h3>
+<p>缓存雪崩通俗简单的理解就是:由于原有缓存失效(或者数据未加载到缓存中)，新缓存未到期间(缓存正常从 Redis 中获取)所有原本应该访问缓存的请求都去查询数据库了，而对数据库CPU和内存造成巨大压力， 严重的会造成数据库宕机，造成系统的崩溃。</p>
+<p>解决方案：</p>
+<ol>
+<li>在缓存失效后，通过加锁或者队列来控制读数据库写缓存的线程数量。比如对某个key只允许一个线程查询数据
+和写缓存，其他线程等待。虽然能够在一定的程度上缓解了数据库的压力但是与此同时又降低了系统的吞吐量。</li>
+</ol>
+<p>代码示例说明：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> Users <span style="color:#a6e22e">getByUsers</span><span style="color:#f92672">(</span>Long id<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 1.先查询redis
+</span><span style="color:#75715e"></span>    String key <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">+</span> Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getStackTrace</span><span style="color:#f92672">()</span> <span style="color:#f92672">[</span>1<span style="color:#f92672">].</span><span style="color:#a6e22e">getMethodName</span><span style="color:#f92672">()</span>
+    <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;-id:&#34;</span> <span style="color:#f92672">+</span> id<span style="color:#f92672">;</span>
+    String userJson <span style="color:#f92672">=</span> redisService<span style="color:#f92672">.</span><span style="color:#a6e22e">getString</span><span style="color:#f92672">(</span>key<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>StringUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">(</span>userJson<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+        Users users <span style="color:#f92672">=</span> JSONObject<span style="color:#f92672">.</span><span style="color:#a6e22e">parseObject</span><span style="color:#f92672">(</span>userJson<span style="color:#f92672">,</span> Users<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> users<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    Users user <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+        lock<span style="color:#f92672">.</span><span style="color:#a6e22e">lock</span><span style="color:#f92672">();</span>
+        <span style="color:#75715e">// 查询db
+</span><span style="color:#75715e"></span>        user <span style="color:#f92672">=</span> userMapper<span style="color:#f92672">.</span><span style="color:#a6e22e">getUser</span><span style="color:#f92672">(</span>id<span style="color:#f92672">);</span>
+        redisService<span style="color:#f92672">.</span><span style="color:#a6e22e">setSet</span><span style="color:#f92672">(</span>key<span style="color:#f92672">,</span> JSONObject<span style="color:#f92672">.</span><span style="color:#a6e22e">toJSONString</span><span style="color:#f92672">(</span>user<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span> 
+        lock<span style="color:#f92672">.</span><span style="color:#a6e22e">unlock</span><span style="color:#f92672">();</span> <span style="color:#75715e">// 释放锁 
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">return</span> user<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><ol start="2">
+<li>分析用户的行为，不同的key，设置不同的过期时间，让缓存失效的时间点尽量均匀。</li>
+</ol>
+<h3 id="42缓存击穿">4.2.缓存击穿</h3>
+<p>对于一些设置了过期时间的key，如果这些key可能会在某些时间点被超高并发地访问，是一种非常“热点”的数据。 这个时候，需要考虑一个问题:缓存被“击穿”的问题，这个和缓存雪崩的区别在于这里针对某一key缓存，前者则是 很多key。</p>
+<p>热点key:某个key访问非常频繁，当key失效的时候有大量线程来构建缓存，导致负载增加，系统崩溃。</p>
+<p>解决办法:</p>
+<ol>
+<li>使用锁，单机用synchronized,lock等，分布式用分布式锁。</li>
+<li>缓存过期时间不设置，而是设置在key对应的value里。如果检测到存的时间超过过期时间则异步更新缓存。</li>
+</ol>
+<h3 id="43缓存穿透">4.3.缓存穿透</h3>
+<p>缓存穿透是指用户查询数据，在数据库没有，自然在缓存中也不会有。这样就导致用户查询的时候，在缓存中找不到，每次都要去数据库再查询一遍，然后返回空。这样请求就绕过缓存直接查数据库，这也是经常提的缓存命中 率问题。</p>
+<p>解决方案:</p>
+<ol>
+<li>
+<p>如果查询数据库也为空，直接设置一个默认值存放到缓存，这样第二次到缓冲中获取就有值了，而不会继续访问数据库，这种办法最简单粗暴。</p>
+</li>
+<li>
+<p>把空结果，也给缓存起来，这样下次同样的请求就可以直接返回空了，既可以避免当查询的值为空时引起的缓存穿透。同时也可以单独设置个缓存区域存储空值，对要查询的key进行预先校验，然后再放行给后面的正常缓存处理逻辑。</p>
+</li>
+</ol>
+<p>代码示例说明：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getByUsers2</span><span style="color:#f92672">(</span>Long id<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 1.先查询redis
+</span><span style="color:#75715e"></span>    String key <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">+</span> Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getStackTrace</span><span style="color:#f92672">()[</span>1<span style="color:#f92672">].</span><span style="color:#a6e22e">getMethodName</span><span style="color:#f92672">()+</span> <span style="color:#e6db74">&#34;-id:&#34;</span> <span style="color:#f92672">+</span> id<span style="color:#f92672">;</span>
+    String userName <span style="color:#f92672">=</span> redisService<span style="color:#f92672">.</span><span style="color:#a6e22e">getString</span><span style="color:#f92672">(</span>key<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>StringUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">(</span>userName<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> userName<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span> 
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;######开始发送数据库DB请求########&#34;</span><span style="color:#f92672">);</span> 
+    Users user <span style="color:#f92672">=</span> userMapper<span style="color:#f92672">.</span><span style="color:#a6e22e">getUser</span><span style="color:#f92672">(</span>id<span style="color:#f92672">);</span>
+    String value <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>user <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// 标识为null
+</span><span style="color:#75715e"></span>        value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">;</span> <span style="color:#75715e">// 设置默认值
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+        value <span style="color:#f92672">=</span> user<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span> 
+    redisService<span style="color:#f92672">.</span><span style="color:#a6e22e">setString</span><span style="color:#f92672">(</span>key<span style="color:#f92672">,</span> value<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">return</span> value<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="五分布式锁">五、分布式锁</h2>
+<h3 id="51使用分布式锁的条件">5.1.使用分布式锁的条件</h3>
+<ol>
+<li>
+<p>系统是一个分布式系统(关键是分布式，单机的可以使用ReentrantLock或者synchronized代码块来实现)</p>
+</li>
+<li>
+<p>共享资源(各个系统访问同一个资源，资源的载体可能是传统关系型数据库或者NoSQL)</p>
+</li>
+<li>
+<p>同步访问(即有很多个进程同时访问同一个共享资源。)</p>
+</li>
+</ol>
+<h3 id="52应用场景">5.2.应用场景</h3>
+<p>分布式锁应该用来解决分布式情况下的多进程并发问题才是最合适的。</p>
+<p>有这样一个情境，线程A和线程B都共享某个变量X。</p>
+<p>如果是单机情况下(单JVM)，线程之间共享内存，只要使用线程锁就可以解决并发问题。</p>
+<p>如果是分布式情况下(多JVM)，线程A和线程B很可能不是在同一JVM中，这样线程锁就无法起到作用了，这时候 就要用到分布式锁来解决。</p>
+<p>分布式锁可以基于很多种方式实现，比如zookeeper、redis&hellip;。不管哪种方式，他的基本原理是不变的:用一个状态值表示锁，对锁的占用和释放通过状态值来标识。</p>
+<h3 id="53使用redis的分布式锁">5.3.使用Redis的分布式锁</h3>
+<p>setnx和getset命令来获取锁，锁的信息设置成锁有效的截止时间。expire设置有效时间。del来释放锁。
+注意：</p>
+<ol>
+<li>
+<p>锁只能有一个进程占有</p>
+</li>
+<li>
+<p>锁只能有锁的持有者释放</p>
+</li>
+<li>
+<p>锁必须设置过期时间</p>
+</li>
+</ol>
+<h4 id="531setnx命令">5.3.1.setnx命令</h4>
+<p>Redis为单进程单线程模式，采用队列模式将并发访问变成串行访问，且多客户端对Redis的连接并不存在竞争 关系。Redis的setnx命令可以方便的实现分布式锁。</p>
+<pre><code># 当key不存在时，设置为value，否则不做任何动作
+setnx key value
+# 成功返回Integer 1.
+# 失败返回Integer 0.
+</code></pre><p>如果setnx返回1，说明客户端已经获得了锁，setnx将键的值设置为锁的超时时间(当前时间 + 锁的有效时间)。 之后客户端可以通过del来释放锁。</p>
+<p>如果setnx返回0，说明key已经被其他客户端上锁了。如果锁是非阻塞(non blocking lock)的，我们可以选择返回调用，或者进入一个重试循环，直到成功获得锁或重试超时(timeout)。</p>
+<h4 id="532getset命令">5.3.2.getset命令</h4>
+<pre><code># 将给定key设置为value，返回旧值，旧值不存在返回的是nil
+# 如果key存在但不是字符串，则返回错误
+getset key value
+</code></pre><p>代码示例说明：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">lock</span><span style="color:#f92672">(</span>String lockName<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    Jedis jedis <span style="color:#f92672">=</span> RedisPool<span style="color:#f92672">.</span><span style="color:#a6e22e">getJedis</span><span style="color:#f92672">();</span> 
+    <span style="color:#75715e">//lockName可以为共享变量名，也可以为方法名，主要是用于模拟锁信息 
+</span><span style="color:#75715e"></span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;开始尝试加锁!&#34;</span><span style="color:#f92672">);</span>
+    Long result <span style="color:#f92672">=</span> jedis<span style="color:#f92672">.</span><span style="color:#a6e22e">setnx</span><span style="color:#f92672">(</span>lockName<span style="color:#f92672">,</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> 5000<span style="color:#f92672">));</span> 
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>result <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> result<span style="color:#f92672">.</span><span style="color:#a6e22e">intValue</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> 1<span style="color:#f92672">){</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;加锁成功!&#34;</span><span style="color:#f92672">);</span> 
+        jedis<span style="color:#f92672">.</span><span style="color:#a6e22e">expire</span><span style="color:#f92672">(</span>lockName<span style="color:#f92672">,</span> 5<span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;执行业务逻辑!&#34;</span><span style="color:#f92672">);</span>
+        jedis<span style="color:#f92672">.</span><span style="color:#a6e22e">del</span><span style="color:#f92672">(</span>lockName<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//判断是否死锁
+</span><span style="color:#75715e"></span>        String lockValueA <span style="color:#f92672">=</span> jedis<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>lockName<span style="color:#f92672">);</span> 
+        <span style="color:#75715e">//得到锁的过期时间，判断小于当前时间，说明已超时但是没释放锁，通过下面的操作来尝试获得锁。下面逻辑防止死锁 [已经过期但是没有释放锁的情况]
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>lockValueA <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> Long<span style="color:#f92672">.</span><span style="color:#a6e22e">parseLong</span><span style="color:#f92672">(</span>lockValueA<span style="color:#f92672">)</span> <span style="color:#f92672">&lt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">()){</span> 
+            String lockValueB <span style="color:#f92672">=</span> jedis<span style="color:#f92672">.</span><span style="color:#a6e22e">getSet</span><span style="color:#f92672">(</span>lockName<span style="color:#f92672">,</span>
+            String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> 5000<span style="color:#f92672">));</span> <span style="color:#75715e">//这里返回的值是旧值，如果有的话。之前没有值就返回null,设置的是新超时。
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>lockValueB <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> lockValueB<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>lockValueA<span style="color:#f92672">)){</span> 
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;加锁成功!&#34;</span><span style="color:#f92672">);</span> 
+                jedis<span style="color:#f92672">.</span><span style="color:#a6e22e">expire</span><span style="color:#f92672">(</span>lockName<span style="color:#f92672">,</span> 5<span style="color:#f92672">);</span> 
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;执行业务逻辑!&#34;</span><span style="color:#f92672">);</span> 
+                jedis<span style="color:#f92672">.</span><span style="color:#a6e22e">del</span><span style="color:#f92672">(</span>lockName<span style="color:#f92672">);</span>
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+       <span style="color:#f92672">}</span> 
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div>
+</div>
+
+
+    
+    </main>
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
+    
+      
+    
+  </body>
+</html>

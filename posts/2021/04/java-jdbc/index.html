@@ -3,7 +3,7 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.85.0" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,14 +20,17 @@
 
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
 
   
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </head>
 
   <body class="theme-base-0d ">
+    <span id="top"></span>
   <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -36,11 +39,11 @@
        不积硅步无以至千里，不积小流无以成江海。 
       </p>
     </div>
-
+    
     <nav>
       <ul class="sidebar-nav">
         <li><a href="https://qinry.github.io/">Home</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/categories"> 分类 </a></li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../categories"> 分类 </a></li>
       </ul>
     </nav>
 
@@ -48,22 +51,53 @@
   </div>
 </aside>
 
+  
+<aside class="post-toc" style="position:fixed;top: 20px;left: 400px;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是jdbc">什么是JDBC</a></li>
+    <li><a href="#jdbc可以做什么">JDBC可以做什么</a></li>
+    <li><a href="#jdbc的核心组件">JDBC的核心组件</a>
+      <ul>
+        <li><a href="#jdbc基本使用">JDBC基本使用</a></li>
+        <li><a href="#使用预状态通道避免sql注入">使用预状态通道避免SQL注入</a></li>
+        <li><a href="#jdbc的事务">JDBC的事务</a></li>
+        <li><a href="#jdbc批处理">JDBC批处理</a></li>
+      </ul>
+    </li>
+    <li><a href="#数据库连接池">数据库连接池</a>
+      <ul>
+        <li><a href="#c3p0">c3p0</a></li>
+        <li><a href="#druid">druid</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    
+</aside>
+
+
     <main class="content container">
     <div class="post">
+
   <h1>JDBC的使用</h1>
-  <time datetime=2021-04-02T19:44:50&#43;0800 class="post-date">Fri, Apr 2, 2021</time>
-  <h2 id="jdbc的使用">JDBC的使用</h2>
-<h3 id="什么是jdbc">什么是JDBC</h3>
+  <span class="post-date">
+    2021-04-02 19:44
+    字数：1778
+  </span>
+  
+
+  <h2 id="什么是jdbc">什么是JDBC</h2>
 <p>JDBC是执行SQL的java API，为关系型数据库提供访问。JDBC可以在更大平台使用像Windows、Mac、Unix等等</p>
 <p>JDBC体系由JDBC驱动和JDBC API构成。通过驱动管理器可以连接不同结构的数据库管理系统。</p>
-<h3 id="jdbc可以做什么">JDBC可以做什么</h3>
+<h2 id="jdbc可以做什么">JDBC可以做什么</h2>
 <ol>
 <li>创建数据库连接</li>
 <li>创建SQL语句</li>
 <li>执行SQL查询</li>
 <li>查看或修改记录</li>
 </ol>
-<h3 id="jdbc的核心组件">JDBC的核心组件</h3>
+<h2 id="jdbc的核心组件">JDBC的核心组件</h2>
 <ol>
 <li>DriverManager:通过适合的通讯子协议，Java应用程序和相应数据库驱动程序匹配连接</li>
 <li>Driver:处理与数据库服务器的连接，客户端程序很少使用</li>
@@ -72,7 +106,7 @@
 <li>ResultSet:执行查询语句得到的结果集，通过它可以检索数据</li>
 <li>SQLException:处理数据相关的异常</li>
 </ol>
-<h4 id="jdbc基本使用">JDBC基本使用</h4>
+<h3 id="jdbc基本使用">JDBC基本使用</h3>
 <p>使用前需要，导包</p>
 <ol>
 <li>注册JDBC驱动</li>
@@ -126,14 +160,14 @@ ResultSet rs <span style="color:#f92672">=</span> stmt<span style="color:#f92672
 <span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
     conn<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h4 id="使用预状态通道避免sql注入">使用预状态通道避免SQL注入</h4>
+</code></pre></div><h3 id="使用预状态通道避免sql注入">使用预状态通道避免SQL注入</h3>
 <p>PreparedStatement是Statement的子类，支持参数化查询，来防止SQL注入攻击。PreparedStatement还可以预编译SQL语句，使执行SQL的效率更高点</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> id <span style="color:#f92672">=</span> 2<span style="color:#f92672">;</span>
 String sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select id, name from user where id=?&#34;</span><span style="color:#f92672">;</span>
 PreparedStatement pstmt <span style="color:#f92672">=</span> conn<span style="color:#f92672">.</span><span style="color:#a6e22e">prepareStatement</span><span style="color:#f92672">(</span>sql<span style="color:#f92672">);</span>
 pstmt<span style="color:#f92672">.</span><span style="color:#a6e22e">setInt</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> id<span style="color:#f92672">);</span>
 rs <span style="color:#f92672">=</span> pstmt<span style="color:#f92672">.</span><span style="color:#a6e22e">executeQuery</span><span style="color:#f92672">();</span>
-</code></pre></div><h4 id="jdbc的事务">JDBC的事务</h4>
+</code></pre></div><h3 id="jdbc的事务">JDBC的事务</h3>
 <p>事务常常见于转账</p>
 <ol>
 <li>开启事务</li>
@@ -154,7 +188,7 @@ rs <span style="color:#f92672">=</span> pstmt<span style="color:#f92672">.</span
 <li>提交</li>
 </ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">conn<span style="color:#f92672">.</span><span style="color:#a6e22e">commit</span><span style="color:#f92672">();</span>
-</code></pre></div><h4 id="jdbc批处理">JDBC批处理</h4>
+</code></pre></div><h3 id="jdbc批处理">JDBC批处理</h3>
 <p>一次请求，执行多条语句，使用批处理效率更高</p>
 <ol>
 <li>Statement的批处理</li>
@@ -182,8 +216,10 @@ pstmt<span style="color:#f92672">.</span><span style="color:#a6e22e">addBatch</s
 pstmt<span style="color:#f92672">.</span><span style="color:#a6e22e">setString</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;xiaolei&#34;</span><span style="color:#f92672">);</span>
 pstmt<span style="color:#f92672">.</span><span style="color:#a6e22e">addBatch</span><span style="color:#f92672">();</span>
 
+pstmt<span style="color:#f92672">.</span><span style="color:#a6e22e">executeBatch</span><span style="color:#f92672">();</span>
+
 conn<span style="color:#f92672">.</span><span style="color:#a6e22e">commit</span><span style="color:#f92672">();</span>
-</code></pre></div><h3 id="数据库连接池">数据库连接池</h3>
+</code></pre></div><h2 id="数据库连接池">数据库连接池</h2>
 <p>连接池：系统初始化，将连接作为对象存储在内存中，当有用户需要连接数据库时，第一时间不是创建连接，而是查看连接池是否由空闲的连接，如果有直接使用。使用连接完毕，不是马上关闭资源，而是暂时放回连接池，以便下一次请求使用。</p>
 <p>连接池几个重要的参数：</p>
 <ol>
@@ -198,7 +234,7 @@ conn<span style="color:#f92672">.</span><span style="color:#a6e22e">commit</span
 <li>druid</li>
 <li>HikariCP</li>
 </ol>
-<h4 id="c3p0">c3p0</h4>
+<h3 id="c3p0">c3p0</h3>
 <p>首先，导入数据库驱动相关的jar包和c3p0的jar包.
 例如：
 mysql-connector-java-5.0.8.jar
@@ -246,31 +282,31 @@ c3p0-0.9.1.2.jar</p>
 </code></pre></div><p>从数据源中获取连接</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Connection conn <span style="color:#f92672">=</span> dataSource<span style="color:#f92672">.</span><span style="color:#a6e22e">getConnection</span><span style="color:#f92672">();</span>
 </code></pre></div><p>其他与JDBC操作无差别</p>
-<h4 id="druid">druid</h4>
+<h3 id="druid">druid</h3>
 <p>首先，同样导入数据库驱动相关的jar包和druid的jar包.
 例如：
 mysql-connector-java-5.0.8.jar
 druid-1.0.9.jar</p>
 <p>需要数据库配置相关的properties后缀的文件，比如db.properties</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#960050;background-color:#1e0010">#</span> 驱动类名
-driverClassName <span style="color:#f92672">=</span> com<span style="color:#f92672">.</span><span style="color:#a6e22e">mysql</span><span style="color:#f92672">.</span><span style="color:#a6e22e">cj</span><span style="color:#f92672">.</span><span style="color:#a6e22e">jdbc</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Driver</span>
-<span style="color:#960050;background-color:#1e0010">#</span> 数据库URL
-url <span style="color:#f92672">=</span> jdbc<span style="color:#f92672">:</span>mysql<span style="color:#f92672">:</span><span style="color:#75715e">//localhost:3306/lxq?serverTimezone=UTC
-</span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">#</span> 数据库用户名
-username <span style="color:#f92672">=</span> root
-<span style="color:#960050;background-color:#1e0010">#</span> 数据用户密码
-password <span style="color:#f92672">=</span> password
-<span style="color:#960050;background-color:#1e0010">#</span> 初始连接数
-initialSize<span style="color:#f92672">=</span>5
-<span style="color:#960050;background-color:#1e0010">#</span> 最大活跃连接数
-maxActive <span style="color:#f92672">=</span> 10
-<span style="color:#960050;background-color:#1e0010">#</span> 最小空闲连接数
-minIdle <span style="color:#f92672">=</span> 5
-<span style="color:#960050;background-color:#1e0010">#</span> 最大等待连接时间<span style="color:#960050;background-color:#1e0010">，</span>单位毫秒
-maxWait <span style="color:#f92672">=</span> 3000
-<span style="color:#960050;background-color:#1e0010">#</span> 是否测试空闲连接
-testWhileIdle <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">InputStream in <span style="color:#f92672">=</span> JDBCUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getClassLoader</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getResourceAsStream</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;db.properties&#34;</span><span style="color:#f92672">);</span>
+<pre><code># 驱动类名
+driverClassName = com.mysql.cj.jdbc.Driver
+# 数据库URL
+url = jdbc:mysql://localhost:3306/lxq?serverTimezone=UTC
+# 数据库用户名
+username = root
+# 数据用户密码
+password = password
+# 初始连接数
+initialSize=5
+# 最大活跃连接数
+maxActive = 10
+# 最小空闲连接数
+minIdle = 5
+# 最大等待连接时间，单位毫秒
+maxWait = 3000
+# 是否测试空闲连接
+testWhileIdle = false
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">InputStream in <span style="color:#f92672">=</span> JDBCUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getClassLoader</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getResourceAsStream</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;db.properties&#34;</span><span style="color:#f92672">);</span>
 Properties properties <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Properties<span style="color:#f92672">();</span>
 properties<span style="color:#f92672">.</span><span style="color:#a6e22e">load</span><span style="color:#f92672">(</span>in<span style="color:#f92672">);</span>
 DruidDataSource dataSource <span style="color:#f92672">=</span> DruidDataSourceFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">createDataSource</span><span style="color:#f92672">(</span>properties<span style="color:#f92672">);</span>
@@ -278,8 +314,14 @@ DruidDataSource dataSource <span style="color:#f92672">=</span> DruidDataSourceF
 </div>
 
 
+    
     </main>
-
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
     
       
     

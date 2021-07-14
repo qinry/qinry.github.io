@@ -3,7 +3,7 @@
 <head>
   <link href="https://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.85.0" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,14 +20,17 @@
 
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
 
   
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </head>
 
   <body class="theme-base-0d ">
+    <span id="top"></span>
   <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -36,11 +39,11 @@
        不积硅步无以至千里，不积小流无以成江海。 
       </p>
     </div>
-
+    
     <nav>
       <ul class="sidebar-nav">
         <li><a href="https://qinry.github.io/">Home</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="/categories"> 分类 </a></li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../categories"> 分类 </a></li>
       </ul>
     </nav>
 
@@ -48,11 +51,19 @@
   </div>
 </aside>
 
+  
+
     <main class="content container">
     <div class="post">
+
   <h1>简简单单知道递归</h1>
-  <time datetime=2020-04-27T20:21:23&#43;0800 class="post-date">Mon, Apr 27, 2020</time>
-  <h3 id="递归的含义">递归的含义</h3>
+  <span class="post-date">
+    2020-04-27 20:21
+    字数：958
+  </span>
+  
+
+  <h2 id="递归的含义">递归的含义</h2>
 <p>递归就是函数或方法通过调用自己本身来达到解决问题的目的，这种解法形式叫递归。用欧几里得算法的Java描述说明问题：</p>
 <p>任意一对非负整数p，q(p &gt; q),设r是p与q相除的余数。p，q的最大公约数等于q，p的最大公约数。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">gcd</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> p<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> q<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
@@ -60,7 +71,7 @@
     <span style="color:#66d9ef">int</span> r <span style="color:#f92672">=</span> p <span style="color:#f92672">%</span> q<span style="color:#f92672">;</span>
     <span style="color:#66d9ef">return</span> gcd<span style="color:#f92672">(</span>q<span style="color:#f92672">,</span> r<span style="color:#f92672">);</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h3 id="为什么使用递归">为什么使用递归</h3>
+</code></pre></div><h2 id="为什么使用递归">为什么使用递归</h2>
 <ul>
 <li>
 <p>面对某些复杂的问题使用递归可以很好的描述并有效解决，例如汉诺塔问题、二叉树的遍历、查询目录等等。</p>
@@ -69,9 +80,9 @@
 <p>递归使算法实现的代码更加简洁，而且易懂。</p>
 </li>
 </ul>
-<h3 id="误区迭代一定比递归的效率高">误区——迭代一定比递归的效率高</h3>
+<h2 id="误区迭代一定比递归的效率高">误区——迭代一定比递归的效率高</h2>
 <p>当递归使用的是尾递归本质其是就是迭代，效率不亚于普通迭代(不考虑函数的开销，递归比迭代更好)。如果使用使用双递归、三递归等等，才会算法极度低效，这是用之不当所致</p>
-<h3 id="如何使用递归">如何使用递归</h3>
+<h2 id="如何使用递归">如何使用递归</h2>
 <p>使用数学归纳法诠释重要三点：</p>
 <ol>
 <li>
@@ -84,14 +95,14 @@
 <p>递归调用的父问题和尝试解决的子问题之间不应该有交集。</p>
 </li>
 </ol>
-<h3 id="一些递归的例子">一些递归的例子</h3>
-<h4 id="阶乘">阶乘</h4>
+<h2 id="一些递归的例子">一些递归的例子</h2>
+<h3 id="阶乘">阶乘</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fact</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> N<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
         <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>N <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 1<span style="color:#f92672">;</span>
         <span style="color:#66d9ef">return</span> N <span style="color:#f92672">*</span> fact<span style="color:#f92672">(</span>N <span style="color:#f92672">-</span> 1<span style="color:#f92672">);</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>典型的尾递归，效率最高的递归形式</p>
-<h4 id="斐波那契数列">斐波那契数列</h4>
+<h3 id="斐波那契数列">斐波那契数列</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fibonacci</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> N<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
         <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>N <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
         <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>N <span style="color:#f92672">==</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 1<span style="color:#f92672">;</span>
@@ -120,8 +131,8 @@
 
 <span style="color:#f92672">}</span>
 </code></pre></div><p>根据条件分路解决规模更小子问题，递归调用次数随N递减不呈指数增长,而是线性增长,也是尾递归。</p>
-<h3 id="扩展">扩展</h3>
-<h4 id="数学归纳法证明欧几里得算法能够计算任意一对非负整数p-q的最大公约数">数学归纳法证明欧几里得算法能够计算任意一对非负整数p, q的最大公约数</h4>
+<h2 id="扩展">扩展</h2>
+<h3 id="数学归纳法证明欧几里得算法能够计算任意一对非负整数p-q的最大公约数">数学归纳法证明欧几里得算法能够计算任意一对非负整数p, q的最大公约数</h3>
 <p>假设p &gt; q，r为p除以q的余数,引证p,q的最大公约数等于q, r的最大公约数的结论。
 证明如下:</p>
 <p>(1).简单情况，p能被q整除，最大公约数即q</p>
@@ -134,8 +145,14 @@ p和q往p能被q整除的情况收敛，它们的最大公约数一直等于原�
 </div>
 
 
+    
     </main>
-
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
     
       
     

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.85.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Redis 持久化 &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="Redis 两种持久化方式，主从复制和哨兵模式" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+  <body class="theme-base-0d ">
+    <span id="top"></span>
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+    
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../categories"> 分类 </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright © 2021 槎城小子</p>
+  </div>
+</aside>
+
+  
+<aside class="post-toc" style="position:fixed;top: 20px;left: 400px;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一redis-持久化存储方式">一、Redis 持久化存储方式</a>
+      <ul>
+        <li><a href="#11rdb-持久化">1.1.RDB 持久化</a></li>
+        <li><a href="#12aof-持久化">1.2.AOF 持久化</a></li>
+        <li><a href="#13aof-与-rdb-区别">1.3.AOF 与 RDB 区别</a></li>
+      </ul>
+    </li>
+    <li><a href="#二主从复制">二、主从复制</a>
+      <ul>
+        <li><a href="#21特点">2.1.特点</a></li>
+        <li><a href="#22搭建主从复制">2.2.搭建主从复制</a></li>
+        <li><a href="#23复制过程原理">2.3.复制过程原理</a></li>
+        <li><a href="#24问题解决">2.4.问题解决</a></li>
+      </ul>
+    </li>
+    <li><a href="#三哨兵模式">三、哨兵模式</a>
+      <ul>
+        <li><a href="#31特点">3.1.特点</a></li>
+        <li><a href="#32搭建">3.2.搭建</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    
+</aside>
+
+
+    <main class="content container">
+    <div class="post">
+
+  <h1>Redis 持久化</h1>
+  <span class="post-date">
+    2021-07-14 17:01
+    字数：2730
+  </span>
+  
+
+  <h2 id="一redis-持久化存储方式">一、Redis 持久化存储方式</h2>
+<p>由于 Redis 的值放在内存中，为防止突然断电等特殊情况的发生，需要对数据进行持久化备份。即将内存数据保存 到硬盘。</p>
+<h3 id="11rdb-持久化">1.1.RDB 持久化</h3>
+<p>RDB 是以二进制文件，是在某个时间点将数据写入一个临时文件，持久化结束后，用这个临时文件替换上次持久化的文件，达到数据恢复。</p>
+<p>Redis 默认启用 RDB 存储，redis.conf 中的具体配置参数如下：</p>
+<pre><code>#dbfilename:持久化数据存储在本地的文件
+dbfilename &quot;dump.rdb&quot;
+#dir:持久化数据存储在本地的路径，如果是在/usr/local/redis/redis-5.0.5/src下启动的redis-cli，则数据会存储在当前src目录下
+dir &quot;/var/lib/redis/6379&quot;
+##snapshot触发的时机，save
+##如下为900秒后，至少有一个变更操作，才会snapshot
+##对于此值的设置，需要谨慎，评估系统的变更操作密集程度
+##可以通过“save”来关闭snapshot功能 
+#save时间，以下分别表示更改了1个key时间隔900s进行持久化存储;更改了10个key300s进行存储;更改10000个 key60s进行存储。
+save 900 1
+save 300 10
+save 60 10000 
+##当snapshot时出现错误无法继续时，是否阻塞客户端「变更操作」，「错误」可能因为磁盘已满/磁盘故障/OS级别异常等 
+stop-writes-on-bgsave-error yes 
+##是否启用rdb文件压缩，默认为“yes”，压缩往往意味着「额外的cpu消耗」，同时也意味这较小的文件尺寸以及较短的网 络传输时间
+rdbcompression yes
+</code></pre><h3 id="12aof-持久化">1.2.AOF 持久化</h3>
+<p>Append-Only File，将「操作 + 数据」以格式化指令的方式追加到操作日志文件的尾部，在 append 操作返回后(已经写入到文件或者将要写入)，才进行实际的数据变更，“日志文件”保存了历史所有的操作过程;</p>
+<p>当 server 需要数据恢复时，可以直接 replay 此日志文件，即可还原所有的操作过程。AOF 相对可靠，AOF 文件内容是字符串，非常容易阅读和解析。</p>
+<p>AOF 的特性决定了它相对比较安全，如果你期望数据更少的丢失，那么可以采用 AOF 模式。</p>
+<p>如果 AOF 文件正在被写入时突然 server 失效，有可能导致文件的最后一次记录是不完整，你可以通过手工或者程序的方式去检测并修正不完整的记录。</p>
+<p>如果你的 redis 持久化手段中有 aof，那么在 server 故障失效后再次启动前，需要检测 aof 文件的完整性。</p>
+<p>AOF 默认关闭，开启需要修改配置文件 redis.conf : appendonly yes</p>
+<pre><code>##此选项为aof功能的开关，默认为“no”，可以通过“yes”来开启aof功能 
+##只有在“yes”下，aof重写/文件同步等特性才会生效
+appendonly yes
+
+##指定aof文件名称 
+appendfilename &quot;appendonly.aof&quot;
+
+##指定aof操作中文件同步策略，有三个合法值:always everysec no,默认为everysec
+appendfsync everysec 
+
+##在aof-rewrite期间，appendfsync是否暂缓文件同步，&quot;no&quot;表示「不暂缓」，“yes”表示「暂缓」，默认为“no” 
+no-appendfsync-on-rewrite no
+##aof文件rewrite触发的最小文件尺寸(mb,gb),只有aof文件大于此尺寸是才会触发rewrite，默认“64mb”，建议“512mb”
+auto-aof-rewrite-min-size 64mb
+
+##相对于「上一次」rewrite，本次rewrite触发时aof文件应该增长的百分比。 
+##每一次rewrite之后，Redis都会记录下此时“新aof”文件的大小(例如A)，那么当aof文件增长到A*(1 + p)之后 
+##触发下一次rewrite，每一次aof记录的添加，都会检测当前aof文件的尺寸。
+auto-aof-rewrite-percentage 100
+</code></pre><h3 id="13aof-与-rdb-区别">1.3.AOF 与 RDB 区别</h3>
+<p>RDB 的优缺点</p>
+<p>优点：使用单独子进程来进行持久化，主进程不会进行任何IO操作，保证了Redis的高性能</p>
+<p>缺点：RDB是间隔一段时间进行持久化，如果持久化之间Redis发生故障，会发生数据丢失。所以这种方式更适合数据要求不严谨的时候</p>
+<p>AOF 的优缺点</p>
+<p>优点：可以保持更高的数据完整性，如果设置追加 file 的时间是 1s，如果 Redis 发生故障，最多会丢失1s的数据;且如果日志写入不完整支持 redis-check-aof 来进行日志修复;AOF文件没被 rewrite 之前(文件过大时会对命令进行 合并重写)，可以删除其中的某些命令(比如误操作的 flushall)。</p>
+<p>缺点：AOF 文件比 RDB 文件大，且恢复速度慢。</p>
+<hr>
+<h2 id="二主从复制">二、主从复制</h2>
+<h3 id="21特点">2.1.特点</h3>
+<ol>
+<li>
+<p>持久化保证了即使Redis服务重启也不会丢失数据，但是当 Redis 服务器的硬盘损坏了可能会导致数据丢失，通过Redis的主从复制机制就可以避免这种单点故障(单台服务器的故障)。</p>
+</li>
+<li>
+<p>主Redis中的数据和从上的数据保持实时同步,当主 Redis 写入数据时通过主从复制机制复制到两个从服务上。</p>
+</li>
+<li>
+<p>主从复制不会阻塞 master，在同步数据时，master 可以继续处理 client 请求.</p>
+</li>
+<li>
+<p>主机 master 配置:无需配置</p>
+</li>
+</ol>
+<h3 id="22搭建主从复制">2.2.搭建主从复制</h3>
+<p>搭建主从复制，主机是不用配置，只配置从机即可。</p>
+<p>前提有多台虚拟机，或者在一台搭建多个 Redis 虚拟主机，这个要多个 Redis 副本</p>
+<p>首先，从机修改配置文件 redis.conf: <code>replicaof &lt;主机ip&gt; &lt;主机端口号&gt;</code>
+如有需要，则修改 bind 和 port 等信息。</p>
+<p>接着，清除从机的持久化文件</p>
+<p>最后启动从机</p>
+<p>查看主从关系信息，客户单内部运行命令 <code>info replication</code>。</p>
+<p>注意：</p>
+<ol>
+<li>主机一旦发生增删改操作，那么从机会自动将数据同步到从机中</li>
+<li>从机不能执行写操作,只能读</li>
+</ol>
+<h3 id="23复制过程原理">2.3.复制过程原理</h3>
+<ol>
+<li>当从库和主库建立 MS (master slaver)关系后，会向主数据库发送SYNC命令;</li>
+<li>主库接收到 SYNC 命令后会开始在后台保存快照(RDB 持久化过程)，并将期间接收到的写命令缓存起来; 快照完成后,主 Redis 会将快照文件和所有缓存的写命令发送给从 Redis;</li>
+<li>从 Redis 接收到后，会载入快照文件并且执行收到的缓存命令;</li>
+<li>主 Redis 每当接收到写命令时就会将命令发送从 Redis，保证数据的一致;</li>
+</ol>
+<h3 id="24问题解决">2.4.问题解决</h3>
+<p>主从复制过程中出现宕机的解决办法：</p>
+<ul>
+<li>
+<p>从机宕机：直接重启</p>
+</li>
+<li>
+<p>主机宕机：从机执行 <code>slaveof no one</code> 命令，断开主从关系并提升为主库；当原先主机修好后，重启后，执行 <code>slaveof</code> 命令，原先主机设置为从机。</p>
+</li>
+</ul>
+<h2 id="三哨兵模式">三、哨兵模式</h2>
+<h3 id="31特点">3.1.特点</h3>
+<p>哨兵的作用就是对 Redis 系统的运行情况监控，它是一个独立进程,它的功能:</p>
+<ol>
+<li>监控主数据库和从数据库是否运行正常;</li>
+<li>主数据出现故障后自动将从数据库转化为主数据库;</li>
+</ol>
+<h3 id="32搭建">3.2.搭建</h3>
+<p>前提有多台主机，最开始只需在配置从机，在从机启动哨兵进程监控主机。</p>
+<p>首先，配置哨兵配置文件，可以从源码复制sentinel.conf或自行创建sentinel.conf到/etc/redis/sentinel.conf。配置 sentienl.conf : <code>sentinel monitor &lt;监控名&gt; &lt;主机ip&gt; &lt;主机端口&gt; &lt;最低通过票数&gt;</code>。
+可以按需配置 <code>daemonize yes</code> 和 <code>logfile &quot;/var/log/redis_sentinel.log&quot;</code>。</p>
+<p>接着，启动哨兵前，确保主从服务正常，启动主机服务，再启动从机服务。</p>
+<p>最后，执行 <code>redis-sentinel /etc/redis/sentinel.conf</code></p>
+<p>注意，每次修改 sentinel.conf，都要重新启动 redis-sentinel</p>
+<p>当主机宕机，哨兵进程会把从库自动提升为主库，并自动修改主从库的 redis.conf。下次原先主机重启服务，会自动变成从机服务。</p>
+
+</div>
+
+
+    
+    </main>
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
+    
+      
+    
+  </body>
+</html>

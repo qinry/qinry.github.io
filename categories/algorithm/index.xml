@@ -21,7 +21,7 @@
       <pubDate>Thu, 06 Aug 2020 21:36:55 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2020/08/algorithm-priority-queue/</guid>
-      <description>最大优先队列¶ API: public class MaxPQ&amp;lt;Key extends Comparable&amp;lt;Key&amp;gt;&amp;gt; 方法 功能描述 MaxPQ(int max) 创建一个初始容量为max的优先队列 void insert(Key x) 向优先队列插入一个元素 Key delMax() 删除最大元素并返回最大元素 boolean isEmpty() 返</description>
+      <description>最大优先队列 API: public class MaxPQ&amp;lt;Key extends Comparable&amp;lt;Key&amp;gt;&amp;gt; 方法 功能描述 MaxPQ(int max) 创建一个初始容量为max的优先队列 void insert(Key x) 向优先队列插入一个元素 Key delMax() 删除最大元素并返回最大元素 boolean isEmpty() 返回</description>
     </item>
     
     <item>
@@ -30,7 +30,7 @@
       <pubDate>Thu, 06 Aug 2020 08:00:11 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2020/08/algorithm-sort/</guid>
-      <description>参考于《算法》第四版第二章 排序算法类的模板 public class Example { public static void sort(Comparable[] a){ // ... 见下面详解 } private static boolean less(Comparable v, Comparable w) { return v.compareTo(w) &amp;lt; 0; } private static void exch(Comparable[] a, int i, int j) { Comparable t = a[i];a[i] = a[j];a[j] = t; }</description>
+      <description>排序算法类的模板 public class Example { public static void sort(Comparable[] a){ // ... 见下面详解 } private static boolean less(Comparable v, Comparable w) { return v.compareTo(w) &amp;lt; 0; } private static void exch(Comparable[] a, int i, int j) { Comparable t = a[i];a[i] = a[j];a[j] = t; } private static void show(Comparable[] a) { for(int i = 0; i &amp;lt; a.length;</description>
     </item>
     
     <item>
