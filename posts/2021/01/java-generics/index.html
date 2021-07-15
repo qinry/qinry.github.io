@@ -24,14 +24,23 @@
   <link rel="shortcut icon" href="../../../../favicon.png">
 
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/json.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/bash.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/properties.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/plaintext.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
+
 </head>
 
   <body class="theme-base-0d ">
     <span id="top"></span>
-  <aside class="sidebar">
+    <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
@@ -43,7 +52,7 @@
     <nav>
       <ul class="sidebar-nav">
         <li><a href="https://qinry.github.io/">Home</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../categories"> 分类 </a></li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../tags"> 分类标签 </a></li>
       </ul>
     </nav>
 
@@ -51,8 +60,8 @@
   </div>
 </aside>
 
-  
-<aside class="post-toc" style="position:fixed;top: 20px;left: 400px;">
+    
+<aside class="post-toc right-0" style="position:fixed;top: 20px;">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#理解泛型">理解泛型</a></li>
@@ -77,10 +86,11 @@
 
   <h1>泛型</h1>
   <span class="post-date">
-    2021-01-31 17:09
-    字数：1435
+    2021-01-31 17:09 &nbsp;
+    字数：<strong>1435</strong> &nbsp;
+    标签：
+              <a href="https://qinry.github.io/tags/java/">Java</a>&nbsp;
   </span>
-  
 
   <h2 id="理解泛型">理解泛型</h2>
 <p>泛型是将类型参数化，类定义时一些成员变量和一些方法形式参数的类型成为变量，在使用时再传入一个具体类型，进一步抽象了变量的类型。好像是给方法或类写了一个模板，根据模板赋予不同的类型参数，就会生成不同的类。将那些类似方法或类都集中在一起编写，也就是将相同的部分都封装起来，不同的部分参数化。某种程度，减少编写只因类型不同，逻辑大部分相同的多个类的代码量，使这部分代码耦合度降低，提高了代码的复用率。在Java中的泛型使用时指定类型但不需要强制类型转换，不必担心，类型是安全的，编译器会检查。</p>
@@ -191,7 +201,6 @@ Fruit <span style="color:#a6e22e">read</span><span style="color:#f92672">(</span
 </div>
 
 
-    
     </main>
     <a href="#top" class="backtop">
     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

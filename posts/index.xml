@@ -12,7 +12,7 @@
       <pubDate>Wed, 14 Jul 2021 17:02:54 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2021/07/redis-cluster/</guid>
-      <description>一、集群架构 (1)所有的 Redis 节点彼此互联（PING-PONG 机制），内部使用二进制协议优化传输速度和带宽. (2)节点的 fail 是通过集群中超过半数的</description>
+      <description>.aspect-ratio { position: relative; width: 100%; height: 0; padding-bottom: 75%; } .aspect-ratio iframe { position: absolute; width: 100%; height: 100%; left: 0; top: 0; } 一、集群架构 (1)所有的 Redis 节点彼此互联（PING-PONG 机制），内部使用二进制协议优化传</description>
     </item>
     
     <item>
@@ -21,7 +21,7 @@
       <pubDate>Wed, 14 Jul 2021 17:01:46 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2021/07/redis-persistence/</guid>
-      <description>一、Redis 持久化存储方式 由于 Redis 的值放在内存中，为防止突然断电等特殊情况的发生，需要对数据进行持久化备份。即将内存数据保存 到硬盘。 1.1.RDB 持久化</description>
+      <description>.aspect-ratio { position: relative; width: 100%; height: 0; padding-bottom: 75%; } .aspect-ratio iframe { position: absolute; width: 100%; height: 100%; left: 0; top: 0; } 一、Redis 持久化存储方式 由于 Redis 的值放在内存中，为防止突然断电等特殊情况的发生，需要对数</description>
     </item>
     
     <item>
@@ -30,7 +30,7 @@
       <pubDate>Wed, 14 Jul 2021 16:54:53 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2021/07/redis/</guid>
-      <description>简单介绍Redis。它是一款键值数据库。它还是非关系型数据库（Nosql）。常常用作内存缓存，应用于频繁的读写场景中。 一、基本数据结构 Red</description>
+      <description>简单介绍Redis。它是一款键值数据库。它还是非关系型数据库（Nosql）。常常用作内存缓存，应用于频繁的读写场景中。 .aspect-ratio { position: relative; width: 100%; height: 0; padding-bottom: 75%; }</description>
     </item>
     
     <item>
@@ -345,7 +345,7 @@
       <pubDate>Sun, 20 Oct 2019 08:50:01 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2019/10/git-simple-usage/</guid>
-      <description>配置Git 提供Git用户名和邮箱 git config --global user.name &amp;quot;username&amp;quot; git config --global user.email &amp;quot;usernaem@example.com&amp;quot; 忽略文件 创建文件 .gitignore ，让Git忽略某目录中的所有文件(不跟踪这些文件)，使用它可以避免项目</description>
+      <description>配置Git 提供Git用户名和邮箱 git config --global user.name &amp;#34;username&amp;#34; git config --global user.email &amp;#34;usernaem@example.com&amp;#34; 忽略文件 创建文件 .gitignore ，让Git忽略某目录中的所有文件(不跟踪这些文件)，使用它可以避免项目</description>
     </item>
     
     <item>

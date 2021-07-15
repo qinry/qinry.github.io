@@ -24,14 +24,23 @@
   <link rel="shortcut icon" href="../../../../favicon.png">
 
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/json.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/bash.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/properties.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/plaintext.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
+
 </head>
 
   <body class="theme-base-0d ">
     <span id="top"></span>
-  <aside class="sidebar">
+    <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
@@ -43,7 +52,7 @@
     <nav>
       <ul class="sidebar-nav">
         <li><a href="https://qinry.github.io/">Home</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../categories"> 分类 </a></li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../tags"> 分类标签 </a></li>
       </ul>
     </nav>
 
@@ -51,17 +60,18 @@
   </div>
 </aside>
 
-  
+    
 
     <main class="content container">
     <div class="post">
 
   <h1>Java字符串</h1>
   <span class="post-date">
-    2019-11-25 09:46
-    字数：1023
+    2019-11-25 09:46 &nbsp;
+    字数：<strong>1023</strong> &nbsp;
+    标签：
+              <a href="https://qinry.github.io/tags/%E7%AC%94%E8%AE%B0/">笔记</a>&nbsp;
   </span>
-  
 
   <h2 id="string对象不可变">String对象不可变</h2>
 <p>String对象被创建后不可修改，某些方法看似是修改源字符串，其实是重新创建新字符串来代替。</p>
@@ -201,7 +211,6 @@ Formatter。</p>
 </div>
 
 
-    
     </main>
     <a href="#top" class="backtop">
     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

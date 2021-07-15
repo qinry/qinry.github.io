@@ -24,14 +24,23 @@
   <link rel="shortcut icon" href="../../../../favicon.png">
 
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/json.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/bash.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/properties.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/plaintext.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
+
 </head>
 
   <body class="theme-base-0d ">
     <span id="top"></span>
-  <aside class="sidebar">
+    <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
@@ -43,7 +52,7 @@
     <nav>
       <ul class="sidebar-nav">
         <li><a href="https://qinry.github.io/">Home</a> </li>
-        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../categories"> 分类 </a></li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../tags"> 分类标签 </a></li>
       </ul>
     </nav>
 
@@ -51,8 +60,8 @@
   </div>
 </aside>
 
-  
-<aside class="post-toc" style="position:fixed;top: 20px;left: 400px;">
+    
+<aside class="post-toc right-0" style="position:fixed;top: 20px;">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#什么是jdbc">什么是JDBC</a></li>
@@ -82,10 +91,12 @@
 
   <h1>JDBC的使用</h1>
   <span class="post-date">
-    2021-04-02 19:44
-    字数：1778
+    2021-04-02 19:44 &nbsp;
+    字数：<strong>1778</strong> &nbsp;
+    标签：
+              <a href="https://qinry.github.io/tags/mysql/">MySQL</a>&nbsp;
+              <a href="https://qinry.github.io/tags/java/">Java</a>&nbsp;
   </span>
-  
 
   <h2 id="什么是jdbc">什么是JDBC</h2>
 <p>JDBC是执行SQL的java API，为关系型数据库提供访问。JDBC可以在更大平台使用像Windows、Mac、Unix等等</p>
@@ -288,7 +299,7 @@ c3p0-0.9.1.2.jar</p>
 mysql-connector-java-5.0.8.jar
 druid-1.0.9.jar</p>
 <p>需要数据库配置相关的properties后缀的文件，比如db.properties</p>
-<pre><code># 驱动类名
+<pre><code class="language-properties" data-lang="properties"># 驱动类名
 driverClassName = com.mysql.cj.jdbc.Driver
 # 数据库URL
 url = jdbc:mysql://localhost:3306/lxq?serverTimezone=UTC
@@ -314,7 +325,6 @@ DruidDataSource dataSource <span style="color:#f92672">=</span> DruidDataSourceF
 </div>
 
 
-    
     </main>
     <a href="#top" class="backtop">
     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
