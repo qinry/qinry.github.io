@@ -249,6 +249,10 @@ a.sidebar-nav-item:focus {
   color: #8f5536;
 }
 
+.right-0 {
+  right: 0;
+}
+
 .post-toc {
   position: absolute;
   width: 17rem;

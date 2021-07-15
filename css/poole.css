@@ -146,38 +146,72 @@ abbr[title] {
 }
 
 /* Code */
+
+pre {
+  display: block;
+  font-family: monospace;
+  white-space: pre;
+  margin: 1em 0px;
+}
+
+pre {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+pre, .pre {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overflow: scroll;
+}
+
+pre {
+  background-color: #fff;
+  color: #333;
+  white-space: pre;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  position: relative;
+  border-width: 1px;
+  border-color: #ccc;
+  border-style: solid;
+}
+
+
 code,
 pre {
   font-family: Menlo, Monaco, "Courier New", monospace;
 }
+
 code {
-  padding: .25em .5em;
+  padding: .2em;
+  margin: 0;
   font-size: 85%;
-  color: #b3555e;
-  background-color: #f9f9f9;
+  background-color: rgba(27,31,35,5%);  
   border-radius: 3px;
 }
-pre {
-  white-space: pre;
-  overflow-x: auto;
 
-  tab-size: 4;
-  -moz-tab-size: 4;
-
-  padding: 0;
-}
 pre code {
-  padding: 0;
-  font-size: 100%;
-  color: inherit;
-  background-color: transparent;
+  display: block;
+  padding: 1.5em;
+  font-size: small;
+  line-height: 2;
+  overflow-x: auto;
 }
+
 .highlight {
   margin-bottom: 1rem;
   border-radius: 4px;
 }
+
 .highlight pre {
   margin-bottom: 0;
+}
+
+
+code, .code, pre code, .highlight pre {
+  font-family: inconsolata,Menlo,Monaco,courier new,monospace;
 }
 
 /* Quotes */
