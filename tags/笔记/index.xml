@@ -115,6 +115,15 @@
     </item>
     
     <item>
+      <title>Java接口</title>
+      <link>https://qinry.github.io/posts/2019/10/java-interfaces/</link>
+      <pubDate>Tue, 22 Oct 2019 16:29:48 +0800</pubDate>
+      
+      <guid>https://qinry.github.io/posts/2019/10/java-interfaces/</guid>
+      <description>抽象类和抽象方法 抽象方法：仅有声明而没有方法体。 如： abstract void f(); 抽象类： 包含抽象方法的类。 如果一个类包含一个或多个抽象方法，该类必须限定为抽象的。</description>
+    </item>
+    
+    <item>
       <title>Java多态</title>
       <link>https://qinry.github.io/posts/2019/10/java-polymorphism/</link>
       <pubDate>Mon, 21 Oct 2019 17:01:44 +0800</pubDate>
