@@ -16,6 +16,7 @@
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -27,13 +28,12 @@
   <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
 
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/json.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/bash.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/properties.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/plaintext.min.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
 
 
 </head>
@@ -112,7 +112,7 @@
   <h1>集合框架</h1>
   <span class="post-date">
     2021-01-31 22:14 &nbsp;
-    字数：<strong>9418</strong> &nbsp;
+    字数：<strong>9420</strong> &nbsp;
     标签：
               <a href="https://qinry.github.io/tags/java/">Java</a>&nbsp;
   </span>
@@ -124,74 +124,74 @@
 <p>这里的集合指Collection及其子类，存储的数据是独立的，没有关联值。</p>
 <h3 id="11-collection接口">1.1 Collection接口</h3>
 <p>Collection与Iterator用例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.*<span style="color:#f92672">;</span>
+<pre><code>import java.util.*;
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UseCollection</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        Collection<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> c <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;&gt;();</span>
-        <span style="color:#75715e">// 不允许对list做增删操作
-</span><span style="color:#75715e"></span>        List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> 7<span style="color:#f92672">,</span> 11<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===add===addAll===&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 10<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            c<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>i<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>c<span style="color:#f92672">);</span>
-        c<span style="color:#f92672">.</span><span style="color:#a6e22e">addAll</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>c<span style="color:#f92672">);</span>
+public class UseCollection {
+    public static void main(String[] args) {
+        Collection&lt;Integer&gt; c = new LinkedList&lt;&gt;();
+        // 不允许对list做增删操作
+        List&lt;Integer&gt; list = Arrays.asList(3, 7, 11);
+        System.out.println(&quot;===add===addAll===&quot;);
+        for (int i = 0; i &lt; 10; i++) {
+            c.add(i);
+        }
+        System.out.println(c);
+        c.addAll(list);
+        System.out.println(c);
         
-        <span style="color:#75715e">//list.add(2);
-</span><span style="color:#75715e"></span>        list<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 2<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
+        //list.add(2);
+        list.set(1, 2);
+        System.out.println(list);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===iterator===&#34;</span><span style="color:#f92672">);</span>
-        Iterator<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> iterator <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">();</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span>x <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">);</span>
-                iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
+        System.out.println(&quot;===iterator===&quot;);
+        Iterator&lt;Integer&gt; iterator = c.iterator();
+        while (iterator.hasNext()) {
+            int x = iterator.next();
+            if (x % 2 == 0) {
+                System.out.print(x + &quot; &quot;);
+                iterator.remove();
+            }
+        }
+        System.out.println();
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===remove===removeAll===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>c<span style="color:#f92672">);</span>
-        c<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span>3<span style="color:#f92672">);</span>
-        c<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span>5<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>c<span style="color:#f92672">);</span>
-        c<span style="color:#f92672">.</span><span style="color:#a6e22e">removeAll</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>c<span style="color:#f92672">);</span>
+        System.out.println(&quot;===remove===removeAll===&quot;);
+        System.out.println(c);
+        c.remove(3);
+        c.remove(5);
+        System.out.println(c);
+        c.removeAll(list);
+        System.out.println(c);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===retainAll===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>c<span style="color:#f92672">);</span>
-        list <span style="color:#f92672">=</span> Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 7<span style="color:#f92672">);</span>
-        c<span style="color:#f92672">.</span><span style="color:#a6e22e">retainAll</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>c<span style="color:#f92672">);</span>
+        System.out.println(&quot;===retainAll===&quot;);
+        System.out.println(c);
+        list = Arrays.asList(1, 7);
+        c.retainAll(list);
+        System.out.println(c);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===contains===containsAll===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>c<span style="color:#f92672">.</span><span style="color:#a6e22e">contains</span><span style="color:#f92672">(</span>6<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>c<span style="color:#f92672">.</span><span style="color:#a6e22e">containsAll</span><span style="color:#f92672">(</span>list<span style="color:#f92672">));</span>
+        System.out.println(&quot;===contains===containsAll===&quot;);
+        System.out.println(c.contains(6));
+        System.out.println(c.containsAll(list));
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===toArray===&#34;</span><span style="color:#f92672">);</span>
-        Object<span style="color:#f92672">[]</span> a <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">();</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">(</span>a<span style="color:#f92672">));</span>
-        Integer<span style="color:#f92672">[]</span> a2 <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>1<span style="color:#f92672">,</span> 3<span style="color:#f92672">,</span> 5<span style="color:#f92672">,</span> 7<span style="color:#f92672">,</span> 9<span style="color:#f92672">};</span>
-        Integer<span style="color:#f92672">[]</span> a3 <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">(</span>a2<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">(</span>a3<span style="color:#f92672">));</span>
-        Integer<span style="color:#f92672">[]</span> a4 <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>1<span style="color:#f92672">,</span> 3<span style="color:#f92672">,</span> 5<span style="color:#f92672">};</span>
-        Integer<span style="color:#f92672">[]</span> a5 <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">(</span>a4<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">(</span>a5<span style="color:#f92672">));</span>
-        Integer<span style="color:#f92672">[]</span> a6 <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Integer<span style="color:#f92672">[</span>0<span style="color:#f92672">]);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">(</span>a6<span style="color:#f92672">));</span>
+        System.out.println(&quot;===toArray===&quot;);
+        Object[] a = c.toArray();
+        System.out.println(Arrays.toString(a));
+        Integer[] a2 = {1, 3, 5, 7, 9};
+        Integer[] a3 = c.toArray(a2);
+        System.out.println(Arrays.toString(a3));
+        Integer[] a4 = {1, 3, 5};
+        Integer[] a5 = c.toArray(a4);
+        System.out.println(Arrays.toString(a5));
+        Integer[] a6 = c.toArray(new Integer[0]);
+        System.out.println(Arrays.toString(a6));
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===clear===&#34;</span><span style="color:#f92672">);</span>
-        c<span style="color:#f92672">.</span><span style="color:#a6e22e">clear</span><span style="color:#f92672">();</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>c<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">());</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>c<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">());</span>
+        System.out.println(&quot;===clear===&quot;);
+        c.clear();
+        System.out.println(c.isEmpty());
+        System.out.println(c.size());
 
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p><strong>java.util.Collection</strong></p>
+    }
+}
+</code></pre><p><strong>java.util.Collection</strong></p>
 <ul>
 <li>
 <p>Iterator  iterator()
@@ -256,175 +256,175 @@
 <hr>
 <h3 id="13-链表">1.3 链表</h3>
 <p>ArrayList用例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.lang.reflect.Field<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.ArrayList<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.Arrays<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.List<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.ListIterator<span style="color:#f92672">;</span>
+<pre><code>import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ListIterator;
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UseArrayList</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
-        ArrayList<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span>
-        List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list2 <span style="color:#f92672">=</span> Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> 7<span style="color:#f92672">,</span> 21<span style="color:#f92672">,</span> 42<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;============add===addAll===========&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 10<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>i<span style="color:#f92672">+</span>10<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>10<span style="color:#f92672">,</span> 11<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">addAll</span><span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> list2<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
+public class UseArrayList {
+    public static void main(String[] args) throws Exception {
+        ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+        List&lt;Integer&gt; list2 = Arrays.asList(3, 7, 21, 42);
+        System.out.println(&quot;============add===addAll===========&quot;);
+        for (int i = 0; i &lt; 10; i++) {
+            list.add(i+10);
+        }
+        System.out.println(list);
+        list.add(10, 11);
+        System.out.println(list);
+        list.addAll(2, list2);
+        System.out.println(list);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;====indexOf===lastIndexOf===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span>13<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">lastIndexOf</span><span style="color:#f92672">(</span>15<span style="color:#f92672">));</span>
+        System.out.println(&quot;====indexOf===lastIndexOf===&quot;);
+        System.out.println(list.indexOf(13));
+        System.out.println(list.lastIndexOf(15));
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;==============listIterator=====================&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        ListIterator<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> listIterator <span style="color:#f92672">=</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">listIterator</span><span style="color:#f92672">(</span>5<span style="color:#f92672">);</span>
+        System.out.println(&quot;==============listIterator=====================&quot;);
+        System.out.println(list);
+        ListIterator&lt;Integer&gt; listIterator = list.listIterator(5);
 
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>x <span style="color:#f92672">%</span> 4 <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasPrevious</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">previous</span><span style="color:#f92672">();</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
-            listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>x<span style="color:#f92672">+</span>1<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
+        while (listIterator.hasNext()) {
+            int x = listIterator.next();
+            if (x % 4 == 0) {
+                listIterator.remove();
+            }
+        }
+        System.out.println(list);
+        while (listIterator.hasPrevious()) {
+            int x = listIterator.previous();
+            if (x % 2 == 0) {
+                listIterator.remove();
+            }
+        }
+        System.out.println(list);
+        while (listIterator.hasNext()) {
+            int x = listIterator.next();
+            listIterator.set(x+1);
+        }
+        System.out.println(list);
 
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasPrevious</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">previous</span><span style="color:#f92672">();</span>
-            listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>x <span style="color:#f92672">+</span> x <span style="color:#f92672">+</span> x<span style="color:#f92672">);</span>
-            listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">previous</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
+        while (listIterator.hasPrevious()) {
+            int x = listIterator.previous();
+            listIterator.add(x + x + x);
+            listIterator.previous();
+        }
+        System.out.println(list);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===========remove==========&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span>2<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
+        System.out.println(&quot;===========remove==========&quot;);
+        System.out.println(list);
+        list.remove(0);
+        list.remove(2);
+        System.out.println(list);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===========set===========&#34;</span><span style="color:#f92672">);</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;4&#34;</span><span style="color:#f92672">));</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;7&#34;</span><span style="color:#f92672">));</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>4<span style="color:#f92672">,</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;5&#34;</span><span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
+        System.out.println(&quot;===========set===========&quot;);
+        list.set(0, Integer.valueOf(&quot;4&quot;));
+        list.set(2, Integer.valueOf(&quot;7&quot;));
+        list.set(4, Integer.valueOf(&quot;5&quot;));
+        System.out.println(list);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===========get=============&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>2<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>5<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()-</span>1<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===========ensureCapacity===trimToSize=============&#34;</span><span style="color:#f92672">);</span>
-        Class<span style="color:#f92672">&lt;?&gt;</span> c <span style="color:#f92672">=</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">();</span>
-        Field f <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;elementData&#34;</span><span style="color:#f92672">);</span>
-        f<span style="color:#f92672">.</span><span style="color:#a6e22e">setAccessible</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
-        Object obj <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        System.out.println(&quot;===========get=============&quot;);
+        System.out.println(list.get(2));
+        System.out.println(list.get(5));
+        System.out.println(list.get(list.size()-1));
+        System.out.println(&quot;===========ensureCapacity===trimToSize=============&quot;);
+        Class&lt;?&gt; c = list.getClass();
+        Field f = c.getDeclaredField(&quot;elementData&quot;);
+        f.setAccessible(true);
+        Object obj = null;
 
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">ensureCapacity</span><span style="color:#f92672">(</span>50<span style="color:#f92672">);</span>
-        obj <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(((</span>Object<span style="color:#f92672">[])</span>obj<span style="color:#f92672">).</span><span style="color:#a6e22e">length</span><span style="color:#f92672">);</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">trimToSize</span><span style="color:#f92672">();</span>
-        obj <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(((</span>Object<span style="color:#f92672">[])</span>obj<span style="color:#f92672">).</span><span style="color:#a6e22e">length</span><span style="color:#f92672">);</span>
+        list.ensureCapacity(50);
+        obj = f.get(list);
+        System.out.println(((Object[])obj).length);
+        list.trimToSize();
+        obj = f.get(list);
+        System.out.println(((Object[])obj).length);
 
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>LinkedList用例:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.Arrays<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.LinkedList<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.List<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.ListIterator<span style="color:#f92672">;</span>
+    }
+}
+</code></pre><p>LinkedList用例:</p>
+<pre><code>import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UseLinkedList</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
-        LinkedList<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;();</span>
-        List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list2 <span style="color:#f92672">=</span> Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> 7<span style="color:#f92672">,</span> 21<span style="color:#f92672">,</span> 42<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===add===addFirst===addLast===addAll===&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 10<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>i<span style="color:#f92672">+</span>10<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>10<span style="color:#f92672">,</span> 11<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">addFirst</span><span style="color:#f92672">(</span>34<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">addLast</span><span style="color:#f92672">(</span>17<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">addAll</span><span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> list2<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
+public class UseLinkedList {
+    public static void main(String[] args) throws Exception {
+        LinkedList&lt;Integer&gt; list = new LinkedList&lt;Integer&gt;();
+        List&lt;Integer&gt; list2 = Arrays.asList(3, 7, 21, 42);
+        System.out.println(&quot;===add===addFirst===addLast===addAll===&quot;);
+        for (int i = 0; i &lt; 10; i++) {
+            list.add(i+10);
+        }
+        System.out.println(list);
+        list.add(10, 11);
+        System.out.println(list);
+        list.addFirst(34);
+        System.out.println(list);
+        list.addLast(17);
+        System.out.println(list);
+        list.addAll(3, list2);
+        System.out.println(list);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;====indexOf===lastIndexOf===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span>13<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">lastIndexOf</span><span style="color:#f92672">(</span>15<span style="color:#f92672">));</span>
+        System.out.println(&quot;====indexOf===lastIndexOf===&quot;);
+        System.out.println(list.indexOf(13));
+        System.out.println(list.lastIndexOf(15));
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;==============listIterator=================&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        ListIterator<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> listIterator <span style="color:#f92672">=</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">listIterator</span><span style="color:#f92672">(</span>5<span style="color:#f92672">);</span>
+        System.out.println(&quot;==============listIterator=================&quot;);
+        System.out.println(list);
+        ListIterator&lt;Integer&gt; listIterator = list.listIterator(5);
 
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>x <span style="color:#f92672">%</span> 4 <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasPrevious</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">previous</span><span style="color:#f92672">();</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
-            listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>x<span style="color:#f92672">+</span>1<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
+        while (listIterator.hasNext()) {
+            int x = listIterator.next();
+            if (x % 4 == 0) {
+                listIterator.remove();
+            }
+        }
+        System.out.println(list);
+        while (listIterator.hasPrevious()) {
+            int x = listIterator.previous();
+            if (x % 2 == 0) {
+                listIterator.remove();
+            }
+        }
+        System.out.println(list);
+        while (listIterator.hasNext()) {
+            int x = listIterator.next();
+            listIterator.set(x+1);
+        }
+        System.out.println(list);
 
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasPrevious</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">previous</span><span style="color:#f92672">();</span>
-            listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>x <span style="color:#f92672">+</span> x <span style="color:#f92672">+</span> x<span style="color:#f92672">);</span>
-            listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">previous</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
+        while (listIterator.hasPrevious()) {
+            int x = listIterator.previous();
+            listIterator.add(x + x + x);
+            listIterator.previous();
+        }
+        System.out.println(list);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;====remove===removeFirst===removeLast===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span>2<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">removeFirst</span><span style="color:#f92672">());</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">removeLast</span><span style="color:#f92672">());</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
+        System.out.println(&quot;====remove===removeFirst===removeLast===&quot;);
+        System.out.println(list);
+        list.remove(0);
+        list.remove(2);
+        System.out.println(list);
+        System.out.println(list.removeFirst());
+        System.out.println(list.removeLast());
+        System.out.println(list);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===========set===========&#34;</span><span style="color:#f92672">);</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;4&#34;</span><span style="color:#f92672">));</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;7&#34;</span><span style="color:#f92672">));</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>4<span style="color:#f92672">,</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;5&#34;</span><span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
+        System.out.println(&quot;===========set===========&quot;);
+        list.set(0, Integer.valueOf(&quot;4&quot;));
+        list.set(2, Integer.valueOf(&quot;7&quot;));
+        list.set(4, Integer.valueOf(&quot;5&quot;));
+        System.out.println(list);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===get===getFirst===getLast===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>2<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>5<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()-</span>1<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">getFirst</span><span style="color:#f92672">());</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">getLast</span><span style="color:#f92672">());</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p><strong>java.util.List</strong></p>
+        System.out.println(&quot;===get===getFirst===getLast===&quot;);
+        System.out.println(list.get(2));
+        System.out.println(list.get(5));
+        System.out.println(list.get(list.size()-1));
+        System.out.println(list.getFirst());
+        System.out.println(list.getLast());
+    }
+}
+</code></pre><p><strong>java.util.List</strong></p>
 <ul>
 <li>ListIterator listIterator()
 返回此列表中元素的列表迭代器（按适当顺序）。</li>
@@ -481,57 +481,57 @@
 </ul>
 <hr>
 <h3 id="14-散列集">1.4 散列集</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.Arrays<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.HashSet<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.Iterator<span style="color:#f92672">;</span>
+<pre><code>import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UseHashSet</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        HashSet<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> set <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;();</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===add===addAll===&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 10<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            set<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>i<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        set<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
-        set<span style="color:#f92672">.</span><span style="color:#a6e22e">addAll</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>11<span style="color:#f92672">,</span> 19<span style="color:#f92672">,</span> 13<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
+public class UseHashSet {
+    public static void main(String[] args) {
+        HashSet&lt;Integer&gt; set = new HashSet&lt;&gt;();
+        System.out.println(&quot;===add===addAll===&quot;);
+        for (int i = 0; i &lt; 10; i++) {
+            set.add(i);
+        }
+        set.add(1);
+        System.out.println(set);
+        set.addAll(Arrays.asList(11, 19, 13));
+        System.out.println(set);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===iterator===&#34;</span><span style="color:#f92672">);</span>
-        Iterator<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> iterator <span style="color:#f92672">=</span> set<span style="color:#f92672">.</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">();</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span>iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
+        System.out.println(&quot;===iterator===&quot;);
+        Iterator&lt;Integer&gt; iterator = set.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next()+&quot; &quot;);
+        }
+        System.out.println();
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===remove===removeAll===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
-        set<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span>3<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
-        set<span style="color:#f92672">.</span><span style="color:#a6e22e">removeAll</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 2<span style="color:#f92672">,</span> 5<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
-
-
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===contains===containsAll===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">contains</span><span style="color:#f92672">(</span>7<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">containsAll</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>6<span style="color:#f92672">,</span> 8<span style="color:#f92672">,</span> 9<span style="color:#f92672">)));</span>
-
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===retainAll===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
-        set<span style="color:#f92672">.</span><span style="color:#a6e22e">retainAll</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>4<span style="color:#f92672">,</span> 6<span style="color:#f92672">,</span> 8<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
-
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===clear===&#34;</span><span style="color:#f92672">);</span>
-        set<span style="color:#f92672">.</span><span style="color:#a6e22e">clear</span><span style="color:#f92672">();</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">());</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">());</span>
+        System.out.println(&quot;===remove===removeAll===&quot;);
+        System.out.println(set);
+        set.remove(3);
+        System.out.println(set);
+        set.removeAll(Arrays.asList(1, 2, 5));
+        System.out.println(set);
 
 
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
+        System.out.println(&quot;===contains===containsAll===&quot;);
+        System.out.println(set);
+        System.out.println(set.contains(7));
+        System.out.println(set.containsAll(Arrays.asList(6, 8, 9)));
 
-</code></pre></div><p><strong>java.util.HasthSet</strong></p>
+        System.out.println(&quot;===retainAll===&quot;);
+        System.out.println(set);
+        set.retainAll(Arrays.asList(4, 6, 8));
+        System.out.println(set);
+
+        System.out.println(&quot;===clear===&quot;);
+        set.clear();
+        System.out.println(set.isEmpty());
+        System.out.println(set.size());
+
+
+    }
+}
+
+</code></pre><p><strong>java.util.HasthSet</strong></p>
 <ul>
 <li>HashSet()
 构造一个新的空集; 支持HashMap实例具有默认初始容量（16）和加载因子（0.75）。</li>
@@ -545,78 +545,78 @@
 <hr>
 <h3 id="15-树集">1.5 树集</h3>
 <p>TreeSet用例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.Arrays<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.Iterator<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.TreeSet<span style="color:#f92672">;</span>
+<pre><code>import java.util.Arrays;
+import java.util.Iterator;
+import java.util.TreeSet;
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UseTreeSet</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        TreeSet<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> set <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeSet<span style="color:#f92672">&lt;&gt;();</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===add===addAll===&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 10<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            set<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>i<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        set<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
-        set<span style="color:#f92672">.</span><span style="color:#a6e22e">addAll</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>11<span style="color:#f92672">,</span> 13<span style="color:#f92672">,</span> 19<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
+public class UseTreeSet {
+    public static void main(String[] args) {
+        TreeSet&lt;Integer&gt; set = new TreeSet&lt;&gt;();
+        System.out.println(&quot;===add===addAll===&quot;);
+        for (int i = 0; i &lt; 10; i++) {
+            set.add(i);
+        }
+        set.add(1);
+        System.out.println(set);
+        set.addAll(Arrays.asList(11, 13, 19));
+        System.out.println(set);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===iterator===descandingIterator===&#34;</span><span style="color:#f92672">);</span>
-        Iterator<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> iterator <span style="color:#f92672">=</span> set<span style="color:#f92672">.</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">();</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span>iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
+        System.out.println(&quot;===iterator===descandingIterator===&quot;);
+        Iterator&lt;Integer&gt; iterator = set.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next()+&quot; &quot;);
+        }
+        System.out.println();
 
-        Iterator<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> descandingIterator <span style="color:#f92672">=</span> set<span style="color:#f92672">.</span><span style="color:#a6e22e">descendingIterator</span><span style="color:#f92672">();</span>
+        Iterator&lt;Integer&gt; descandingIterator = set.descendingIterator();
 
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>descandingIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span>descandingIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
+        while (descandingIterator.hasNext()) {
+            System.out.print(descandingIterator.next()+&quot; &quot;);
+        }
+        System.out.println();
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===remove===removeAll===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
-        set<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span>3<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
-        set<span style="color:#f92672">.</span><span style="color:#a6e22e">removeAll</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 2<span style="color:#f92672">,</span> 5<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
+        System.out.println(&quot;===remove===removeAll===&quot;);
+        System.out.println(set);
+        set.remove(3);
+        System.out.println(set);
+        set.removeAll(Arrays.asList(1, 2, 5));
+        System.out.println(set);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===contains===containsAll===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">contains</span><span style="color:#f92672">(</span>7<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">containsAll</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>6<span style="color:#f92672">,</span> 8<span style="color:#f92672">,</span> 9<span style="color:#f92672">)));</span>
+        System.out.println(&quot;===contains===containsAll===&quot;);
+        System.out.println(set);
+        System.out.println(set.contains(7));
+        System.out.println(set.containsAll(Arrays.asList(6, 8, 9)));
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===retainAll===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
-        set<span style="color:#f92672">.</span><span style="color:#a6e22e">retainAll</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>4<span style="color:#f92672">,</span> 6<span style="color:#f92672">,</span> 8<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
+        System.out.println(&quot;===retainAll===&quot;);
+        System.out.println(set);
+        set.retainAll(Arrays.asList(4, 6, 8));
+        System.out.println(set);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===first===last===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">first</span><span style="color:#f92672">());</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">last</span><span style="color:#f92672">());</span>
+        System.out.println(&quot;===first===last===&quot;);
+        System.out.println(set.first());
+        System.out.println(set.last());
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===higher===lower===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">higher</span><span style="color:#f92672">(</span>6<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">lower</span><span style="color:#f92672">(</span>6<span style="color:#f92672">));</span>
+        System.out.println(&quot;===higher===lower===&quot;);
+        System.out.println(set);
+        System.out.println(set.higher(6));
+        System.out.println(set.lower(6));
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===ceiling===floor===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">ceiling</span><span style="color:#f92672">(</span>4<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>8<span style="color:#f92672">));</span>
+        System.out.println(&quot;===ceiling===floor===&quot;);
+        System.out.println(set);
+        System.out.println(set.ceiling(4));
+        System.out.println(set.floor(8));
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===pollFirst===pollLast===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">pollFirst</span><span style="color:#f92672">());</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">pollLast</span><span style="color:#f92672">());</span>
+        System.out.println(&quot;===pollFirst===pollLast===&quot;);
+        System.out.println(set.pollFirst());
+        System.out.println(set.pollLast());
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===clear===&#34;</span><span style="color:#f92672">);</span>
-        set<span style="color:#f92672">.</span><span style="color:#a6e22e">clear</span><span style="color:#f92672">();</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">());</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">());</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p><strong>java.util.TreeSet</strong></p>
+        System.out.println(&quot;===clear===&quot;);
+        set.clear();
+        System.out.println(set.isEmpty());
+        System.out.println(set.size());
+    }
+}
+</code></pre><p><strong>java.util.TreeSet</strong></p>
 <ul>
 <li>TreeSet()
 构造一个新的空树集，根据其元素的自然顺序进行排序。</li>
@@ -714,100 +714,100 @@
 <h2 id="二映射">二、映射</h2>
 <h3 id="21-基本映射操作">2.1 基本映射操作</h3>
 <p>HashMap用例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.Collection<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.HashMap<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.Map<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.Set<span style="color:#f92672">;</span>
-<span style="color:#75715e">/**
-</span><span style="color:#75715e"> * @author lixiaoqin
-</span><span style="color:#75715e"> * @date 2021.01.30
-</span><span style="color:#75715e"> * */</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UseHashMap</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        HashMap<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;</span> map <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;();</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===put===&#34;</span><span style="color:#f92672">);</span>
-        map<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;S&#34;</span><span style="color:#f92672">,</span> 23<span style="color:#f92672">);</span>
-        map<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;E&#34;</span><span style="color:#f92672">,</span> 47<span style="color:#f92672">);</span>
-        map<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;C&#34;</span><span style="color:#f92672">,</span> 19<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">);</span>
+<pre><code>import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+/**
+ * @author lixiaoqin
+ * @date 2021.01.30
+ * */
+public class UseHashMap {
+    public static void main(String[] args) {
+        HashMap&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
+        System.out.println(&quot;===put===&quot;);
+        map.put(&quot;S&quot;, 23);
+        map.put(&quot;E&quot;, 47);
+        map.put(&quot;C&quot;, 19);
+        System.out.println(map);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===get===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;S&#34;</span><span style="color:#f92672">));</span>
+        System.out.println(&quot;===get===&quot;);
+        System.out.println(map.get(&quot;S&quot;));
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===put修改值===&#34;</span><span style="color:#f92672">);</span>
-        map<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;S&#34;</span><span style="color:#f92672">,</span> 24<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">);</span>
+        System.out.println(&quot;===put修改值===&quot;);
+        map.put(&quot;S&quot;, 24);
+        System.out.println(map);
 
-        Set<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> keySet <span style="color:#f92672">=</span> map<span style="color:#f92672">.</span><span style="color:#a6e22e">keySet</span><span style="color:#f92672">();</span>
-        Collection<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> values <span style="color:#f92672">=</span> map<span style="color:#f92672">.</span><span style="color:#a6e22e">values</span><span style="color:#f92672">();</span>
-        Set<span style="color:#f92672">&lt;</span>Map<span style="color:#f92672">.</span><span style="color:#a6e22e">Entry</span><span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;&gt;</span> entrySet <span style="color:#f92672">=</span> map<span style="color:#f92672">.</span><span style="color:#a6e22e">entrySet</span><span style="color:#f92672">();</span>
+        Set&lt;String&gt; keySet = map.keySet();
+        Collection&lt;Integer&gt; values = map.values();
+        Set&lt;Map.Entry&lt;String, Integer&gt;&gt; entrySet = map.entrySet();
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===keySet===values===entrySet===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>keySet<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>values<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>entrySet<span style="color:#f92672">);</span>
+        System.out.println(&quot;===keySet===values===entrySet===&quot;);
+        System.out.println(keySet);
+        System.out.println(values);
+        System.out.println(entrySet);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===containsKey===containsValue===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">containsKey</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;S&#34;</span><span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">containsValue</span><span style="color:#f92672">(</span>47<span style="color:#f92672">));</span>
+        System.out.println(&quot;===containsKey===containsValue===&quot;);
+        System.out.println(map.containsKey(&quot;S&quot;));
+        System.out.println(map.containsValue(47));
 
-        Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;</span> map2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;();</span>
-        map2<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;A&#34;</span><span style="color:#f92672">,</span> 11<span style="color:#f92672">);</span>
-        map2<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;B&#34;</span><span style="color:#f92672">,</span> 13<span style="color:#f92672">);</span>
-        map2<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;K&#34;</span><span style="color:#f92672">,</span> 25<span style="color:#f92672">);</span>
+        Map&lt;String, Integer&gt; map2 = new HashMap&lt;&gt;();
+        map2.put(&quot;A&quot;, 11);
+        map2.put(&quot;B&quot;, 13);
+        map2.put(&quot;K&quot;, 25);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===putAll===&#34;</span><span style="color:#f92672">);</span>
-        map<span style="color:#f92672">.</span><span style="color:#a6e22e">putAll</span><span style="color:#f92672">(</span>map2<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">);</span>
+        System.out.println(&quot;===putAll===&quot;);
+        map.putAll(map2);
+        System.out.println(map);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===Entry.getKey===Entry.getValue===Entry.setValue===&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>var entry <span style="color:#f92672">:</span> entrySet<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span>entry<span style="color:#f92672">.</span><span style="color:#a6e22e">getKey</span><span style="color:#f92672">());</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;:&#34;</span><span style="color:#f92672">);</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span>entry<span style="color:#f92672">.</span><span style="color:#a6e22e">getValue</span><span style="color:#f92672">());</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">);</span>
-            entry<span style="color:#f92672">.</span><span style="color:#a6e22e">setValue</span><span style="color:#f92672">(</span>entry<span style="color:#f92672">.</span><span style="color:#a6e22e">getValue</span><span style="color:#f92672">()+</span>1<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>entrySet<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>TreeMap用例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.TreeMap<span style="color:#f92672">;</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UseTreeMap</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        TreeMap<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;</span> map <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeMap<span style="color:#f92672">&lt;&gt;();</span>
-        map<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;S&#34;</span><span style="color:#f92672">,</span> 23<span style="color:#f92672">);</span>
-        map<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;E&#34;</span><span style="color:#f92672">,</span> 47<span style="color:#f92672">);</span>
-        map<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;C&#34;</span><span style="color:#f92672">,</span> 19<span style="color:#f92672">);</span>
+        System.out.println(&quot;===Entry.getKey===Entry.getValue===Entry.setValue===&quot;);
+        for (var entry : entrySet) {
+            System.out.print(entry.getKey());
+            System.out.print(&quot;:&quot;);
+            System.out.print(entry.getValue());
+            System.out.print(&quot; &quot;);
+            entry.setValue(entry.getValue()+1);
+        }
+        System.out.println();
+        System.out.println(entrySet);
+    }
+}
+</code></pre><p>TreeMap用例：</p>
+<pre><code>import java.util.TreeMap;
+public class UseTreeMap {
+    public static void main(String[] args) {
+        TreeMap&lt;String, Integer&gt; map = new TreeMap&lt;&gt;();
+        map.put(&quot;S&quot;, 23);
+        map.put(&quot;E&quot;, 47);
+        map.put(&quot;C&quot;, 19);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===firstKey===lastKey===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">firstKey</span><span style="color:#f92672">());</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">lastKey</span><span style="color:#f92672">());</span>
+        System.out.println(&quot;===firstKey===lastKey===&quot;);
+        System.out.println(map.firstKey());
+        System.out.println(map.lastKey());
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===firstEntry===lastEntry===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">firstEntry</span><span style="color:#f92672">());</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">lastEntry</span><span style="color:#f92672">());</span>
+        System.out.println(&quot;===firstEntry===lastEntry===&quot;);
+        System.out.println(map.firstEntry());
+        System.out.println(map.lastEntry());
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===lowerKey===higherKey===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">lowerKey</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;E&#34;</span><span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">higherKey</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;E&#34;</span><span style="color:#f92672">));</span>
+        System.out.println(&quot;===lowerKey===higherKey===&quot;);
+        System.out.println(map.lowerKey(&quot;E&quot;));
+        System.out.println(map.higherKey(&quot;E&quot;));
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===lowerEntry===higherEntry===&#34;</span><span style="color:#f92672">);</span>
+        System.out.println(&quot;===lowerEntry===higherEntry===&quot;);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">lowerEntry</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;E&#34;</span><span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">higherEntry</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;E&#34;</span><span style="color:#f92672">));</span>
+        System.out.println(map.lowerEntry(&quot;E&quot;));
+        System.out.println(map.higherEntry(&quot;E&quot;));
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===floorKey===ceilingKey===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">floorKey</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;S&#34;</span><span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">ceilingKey</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;C&#34;</span><span style="color:#f92672">));</span>
+        System.out.println(&quot;===floorKey===ceilingKey===&quot;);
+        System.out.println(map.floorKey(&quot;S&quot;));
+        System.out.println(map.ceilingKey(&quot;C&quot;));
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===floorEntry===ceilingEntry===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">floorEntry</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;S&#34;</span><span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">ceilingEntry</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;C&#34;</span><span style="color:#f92672">));</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p><strong>java.util.Map&lt;K, V&gt;</strong></p>
+        System.out.println(&quot;===floorEntry===ceilingEntry===&quot;);
+        System.out.println(map.floorEntry(&quot;S&quot;));
+        System.out.println(map.ceilingEntry(&quot;C&quot;));
+    }
+}
+</code></pre><p><strong>java.util.Map&lt;K, V&gt;</strong></p>
 <ul>
 <li>V get​(Object key)
 返回指定键映射到的值，如果此映射不包含键的映射，则返回 null 。</li>
@@ -889,24 +889,24 @@
 </ul>
 <h2 id="三小集合">三、小集合</h2>
 <p>Java9提供了一些静态方法，可以生成给定元素的集或列表，以及映射。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> names <span style="color:#f92672">=</span> List<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Peter&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Paul&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Mary&#34;</span><span style="color:#f92672">);</span>
-Set<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> Set<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> 3<span style="color:#f92672">,</span> 5<span style="color:#f92672">);</span>
-Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;</span> scores <span style="color:#f92672">=</span> Map<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Peter&#34;</span><span style="color:#f92672">,</span> 2<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Paul&#34;</span><span style="color:#f92672">,</span> 3<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Mary&#34;</span><span style="color:#f92672">,</span> 5<span style="color:#f92672">);</span>
-</code></pre></div><p>List、Set接口of方法有11个重载版本，参数个数从0到10。还有一个可变参数的of方法。而Map提供了ofEntries方法和entry方法，ofEntries可接受人一个Entry对象，entry用于创建这些对象。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import static</span> java.util.Map.ofEntries<span style="color:#f92672">;</span>
-<span style="color:#f92672">import static</span> java.util.Map.entry<span style="color:#f92672">;</span>
-<span style="color:#f92672">...</span>
+<pre><code>List&lt;String&gt; names = List.of(&quot;Peter&quot;, &quot;Paul&quot;, &quot;Mary&quot;);
+Set&lt;Integer&gt; numbers = Set.of(2, 3, 5);
+Map&lt;String, Integer&gt; scores = Map.of(&quot;Peter&quot;, 2, &quot;Paul&quot;, 3, &quot;Mary&quot;, 5);
+</code></pre><p>List、Set接口of方法有11个重载版本，参数个数从0到10。还有一个可变参数的of方法。而Map提供了ofEntries方法和entry方法，ofEntries可接受人一个Entry对象，entry用于创建这些对象。</p>
+<pre><code>import static java.util.Map.ofEntries;
+import static java.util.Map.entry;
+...
 
-Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;</span> scores <span style="color:#f92672">=</span> ofEntries<span style="color:#f92672">(</span>
-    entry<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Peter&#34;</span><span style="color:#f92672">,</span> 2<span style="color:#f92672">),</span>
-    entry<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Paul&#34;</span><span style="color:#f92672">,</span> 3<span style="color:#f92672">),</span>
-    entry<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Mary&#34;</span><span style="color:#f92672">,</span> 5<span style="color:#f92672">)</span>
-<span style="color:#f92672">);</span>
-</code></pre></div><p>这些集合不可改变。试图修改会导致UnsupportedOperationException。</p>
+Map&lt;String, Integer&gt; scores = ofEntries(
+    entry(&quot;Peter&quot;, 2),
+    entry(&quot;Paul&quot;, 3),
+    entry(&quot;Mary&quot;, 5)
+);
+</code></pre><p>这些集合不可改变。试图修改会导致UnsupportedOperationException。</p>
 <h2 id="四子范围">四、子范围</h2>
 <p>例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list2 <span style="color:#f92672">=</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">subList</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 10<span style="color:#f92672">);</span>
-</code></pre></div><p><strong>java.util.List</strong></p>
+<pre><code>List&lt;Integer&gt; list2 = list.subList(0, 10);
+</code></pre><p><strong>java.util.List</strong></p>
 <ul>
 <li>List subList​(int fromIndex, int toIndex)
 返回指定的 fromIndex （包含）和 toIndex （不包括）之间的此列表部分的视图。</li>
@@ -979,16 +979,16 @@ Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</s
 </ul>
 <h2 id="七检查型视图">七、检查型视图</h2>
 <p>检查型视图用来对泛型类型可能出现问题提供调试支持。如果没有它，可能导致错误的类型元素混入泛型集合中。例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">var strings <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;();</span>
-ArrayList rawList <span style="color:#f92672">=</span> strings<span style="color:#f92672">;</span> <span style="color:#75715e">// 只会发出警告，无错误。可兼容旧代码
-</span><span style="color:#75715e"></span>
-rawList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Date<span style="color:#f92672">());</span> <span style="color:#75715e">// 现在strings包含了Date对象。
-</span></code></pre></div><p>这个错误的add方法在运行时检测不到。只有当另一部分代码调用get方法，并将结果强制转换为String时，才会出现类强制转换异常。为了解决这个问题，Collections提供了生成检查型视图的方法，在集合插入元素时，会检查类型。</p>
+<pre><code>var strings = new ArrayList&lt;String&gt;();
+ArrayList rawList = strings; // 只会发出警告，无错误。可兼容旧代码
+
+rawList.add(new Date()); // 现在strings包含了Date对象。
+</code></pre><p>这个错误的add方法在运行时检测不到。只有当另一部分代码调用get方法，并将结果强制转换为String时，才会出现类强制转换异常。为了解决这个问题，Collections提供了生成检查型视图的方法，在集合插入元素时，会检查类型。</p>
 <p>例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> safeStrings <span style="color:#f92672">=</span> Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">checkedList</span><span style="color:#f92672">(</span>strings<span style="color:#f92672">,</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
-ArrayList rawList <span style="color:#f92672">=</span> safeStrings<span style="color:#f92672">;</span>
-rawList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Date<span style="color:#f92672">());</span> <span style="color:#75715e">// 此时检查型列表会抛出ClassCastException
-</span></code></pre></div><p><strong>java.util.Collections</strong></p>
+<pre><code>List&lt;String&gt; safeStrings = Collections.checkedList(strings, String.class);
+ArrayList rawList = safeStrings;
+rawList.add(new Date()); // 此时检查型列表会抛出ClassCastException
+</code></pre><p><strong>java.util.Collections</strong></p>
 <ul>
 <li>static   Collection  checkedCollection​(Collection  c, Class  type)
 返回指定集合的动态类型安全视图。</li>
@@ -1012,23 +1012,23 @@ rawList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span
 <h2 id="八泛型算法">八、泛型算法</h2>
 <h3 id="81-排序与混排">8.1 排序与混排</h3>
 <p>假定列表的元素实现了Comparable接口：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">var staff <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;();</span>
-<span style="color:#75715e">// 填充集合
-</span><span style="color:#75715e"></span>Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span>staff<span style="color:#f92672">);</span>
-</code></pre></div><p>逆序：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span>staff<span style="color:#f92672">,</span> Comparator<span style="color:#f92672">.</span><span style="color:#a6e22e">reverseOrder</span><span style="color:#f92672">());</span>
-staff<span style="color:#f92672">.</span><span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span>Comparator<span style="color:#f92672">.</span><span style="color:#a6e22e">reverseOrder</span><span style="color:#f92672">());</span>
-</code></pre></div><p>也可以传入Comparator的导出类，假定实现了comparator：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span>staff<span style="color:#f92672">,</span> comparator<span style="color:#f92672">);</span>
-staff<span style="color:#f92672">.</span><span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span>comparator<span style="color:#f92672">);</span>
-</code></pre></div><p>逆序：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span>staff<span style="color:#f92672">,</span> comparator<span style="color:#f92672">.</span><span style="color:#a6e22e">reversed</span><span style="color:#f92672">());</span>
-staff<span style="color:#f92672">.</span><span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span>comparator<span style="color:#f92672">.</span><span style="color:#a6e22e">reversed</span><span style="color:#f92672">());</span>
-</code></pre></div><p>混排其实就是把元素打乱， 例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">shuffle</span><span style="color:#f92672">(</span>staff<span style="color:#f92672">);</span>
-Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">shuffle</span><span style="color:#f92672">(</span>staff<span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> Random<span style="color:#f92672">());</span>
+<pre><code>var staff = new LinkedList&lt;String&gt;();
+// 填充集合
+Collections.sort(staff);
+</code></pre><p>逆序：</p>
+<pre><code>Collections.sort(staff, Comparator.reverseOrder());
+staff.sort(Comparator.reverseOrder());
+</code></pre><p>也可以传入Comparator的导出类，假定实现了comparator：</p>
+<pre><code>Collections.sort(staff, comparator);
+staff.sort(comparator);
+</code></pre><p>逆序：</p>
+<pre><code>Collections.sort(staff, comparator.reversed());
+staff.sort(comparator.reversed());
+</code></pre><p>混排其实就是把元素打乱， 例如：</p>
+<pre><code>Collections.shuffle(staff);
+Collections.shuffle(staff, new Random());
 
-</code></pre></div><p><strong>java.util.Collections</strong></p>
+</code></pre><p><strong>java.util.Collections</strong></p>
 <ul>
 <li>static &lt;T extends Comparable&lt;? super T» void sort​(List list)
 根据其元素的natural ordering ，将指定列表按升序排序。</li>
@@ -1053,9 +1053,9 @@ Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">shuff
 </ul>
 <h3 id="82-二分查找">8.2 二分查找</h3>
 <p>集合c、查找element，比较器comparator:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">binarySearch</span><span style="color:#f92672">(</span>c<span style="color:#f92672">,</span> element<span style="color:#f92672">);</span>
-<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">binarySearch</span><span style="color:#f92672">(</span>c<span style="color:#f92672">,</span> element<span style="color:#f92672">,</span> comparator<span style="color:#f92672">);</span>
-</code></pre></div><p><strong>java.util.Collections</strong></p>
+<pre><code>int i = Collections.binarySearch(c, element);
+int j = Collections.binarySearch(c, element, comparator);
+</code></pre><p><strong>java.util.Collections</strong></p>
 <ul>
 <li>static  int binarySearch​(List&lt;? extends Comparable&lt;? super T» list, T key)
 使用二进制搜索算法在指定列表中搜索指定对象。</li>
@@ -1065,88 +1065,88 @@ Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">shuff
 <p>如果为binarySearch方法提供一个链表，它自动退化为线性查找。查找前必须保证列表是有序的。</p>
 <h2 id="九补充">九、补充</h2>
 <p>Vector用例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.Vector<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.List<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.Arrays<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.ListIterator<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.Enumeration<span style="color:#f92672">;</span>
+<pre><code>import java.util.Vector;
+import java.util.List;
+import java.util.Arrays;
+import java.util.ListIterator;
+import java.util.Enumeration;
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UseVector</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        Vector<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> vector <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Vector<span style="color:#f92672">&lt;&gt;();</span>
-        List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list2 <span style="color:#f92672">=</span> Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> 7<span style="color:#f92672">,</span> 21<span style="color:#f92672">,</span> 42<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;============add===addAll===========&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 10<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            vector<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>i<span style="color:#f92672">+</span>10<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">);</span>
-        vector<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>10<span style="color:#f92672">,</span> 11<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">);</span>
-        vector<span style="color:#f92672">.</span><span style="color:#a6e22e">addAll</span><span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> list2<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">);</span>
+public class UseVector {
+    public static void main(String[] args) {
+        Vector&lt;Integer&gt; vector = new Vector&lt;&gt;();
+        List&lt;Integer&gt; list2 = Arrays.asList(3, 7, 21, 42);
+        System.out.println(&quot;============add===addAll===========&quot;);
+        for (int i = 0; i &lt; 10; i++) {
+            vector.add(i+10);
+        }
+        System.out.println(vector);
+        vector.add(10, 11);
+        System.out.println(vector);
+        vector.addAll(2, list2);
+        System.out.println(vector);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===indexOf===lastIndexOf===&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">.</span><span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span>13<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">.</span><span style="color:#a6e22e">lastIndexOf</span><span style="color:#f92672">(</span>15<span style="color:#f92672">));</span>
+        System.out.println(&quot;===indexOf===lastIndexOf===&quot;);
+        System.out.println(vector.indexOf(13));
+        System.out.println(vector.lastIndexOf(15));
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===========listIterator============&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">);</span>
-        ListIterator<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> listIterator <span style="color:#f92672">=</span> vector<span style="color:#f92672">.</span><span style="color:#a6e22e">listIterator</span><span style="color:#f92672">(</span>5<span style="color:#f92672">);</span>
+        System.out.println(&quot;===========listIterator============&quot;);
+        System.out.println(vector);
+        ListIterator&lt;Integer&gt; listIterator = vector.listIterator(5);
 
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>x <span style="color:#f92672">%</span> 4 <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasPrevious</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">previous</span><span style="color:#f92672">();</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
-            listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>x<span style="color:#f92672">+</span>1<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">);</span>
+        while (listIterator.hasNext()) {
+            int x = listIterator.next();
+            if (x % 4 == 0) {
+                listIterator.remove();
+            }
+        }
+        System.out.println(vector);
+        while (listIterator.hasPrevious()) {
+            int x = listIterator.previous();
+            if (x % 2 == 0) {
+                listIterator.remove();
+            }
+        }
+        System.out.println(vector);
+        while (listIterator.hasNext()) {
+            int x = listIterator.next();
+            listIterator.set(x+1);
+        }
+        System.out.println(vector);
 
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasPrevious</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">previous</span><span style="color:#f92672">();</span>
-            listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>x <span style="color:#f92672">+</span> x <span style="color:#f92672">+</span> x<span style="color:#f92672">);</span>
-            listIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">previous</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">);</span>
+        while (listIterator.hasPrevious()) {
+            int x = listIterator.previous();
+            listIterator.add(x + x + x);
+            listIterator.previous();
+        }
+        System.out.println(vector);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===========remove==========&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">);</span>
-        vector<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
-        vector<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span>2<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">);</span>
+        System.out.println(&quot;===========remove==========&quot;);
+        System.out.println(vector);
+        vector.remove(0);
+        vector.remove(2);
+        System.out.println(vector);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===========set===========&#34;</span><span style="color:#f92672">);</span>
-        vector<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;4&#34;</span><span style="color:#f92672">));</span>
-        vector<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;7&#34;</span><span style="color:#f92672">));</span>
-        vector<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>4<span style="color:#f92672">,</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;5&#34;</span><span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">);</span>
+        System.out.println(&quot;===========set===========&quot;);
+        vector.set(0, Integer.valueOf(&quot;4&quot;));
+        vector.set(2, Integer.valueOf(&quot;7&quot;));
+        vector.set(4, Integer.valueOf(&quot;5&quot;));
+        System.out.println(vector);
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===========get=============&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>2<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>5<span style="color:#f92672">));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>vector<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()-</span>1<span style="color:#f92672">));</span>
+        System.out.println(&quot;===========get=============&quot;);
+        System.out.println(vector.get(2));
+        System.out.println(vector.get(5));
+        System.out.println(vector.get(vector.size()-1));
 
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;===========elements===nextElement=============&#34;</span><span style="color:#f92672">);</span>
-        Enumeration<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> enumeration <span style="color:#f92672">=</span> vector<span style="color:#f92672">.</span><span style="color:#a6e22e">elements</span><span style="color:#f92672">();</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>enumeration<span style="color:#f92672">.</span><span style="color:#a6e22e">hasMoreElements</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span>enumeration<span style="color:#f92672">.</span><span style="color:#a6e22e">nextElement</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
+        System.out.println(&quot;===========elements===nextElement=============&quot;);
+        Enumeration&lt;Integer&gt; enumeration = vector.elements();
+        while (enumeration.hasMoreElements()) {
+            System.out.print(enumeration.nextElement()+&quot; &quot;);
+        }
+        System.out.println();
+    }
+}
 
-</code></pre></div><h3 id="91-arraylist和vector区别">9.1 ArrayList和Vector区别</h3>
+</code></pre><h3 id="91-arraylist和vector区别">9.1 ArrayList和Vector区别</h3>
 <!-- raw HTML omitted -->
 <h3 id="92-hashmaphashtableconcurrenthashmap的区别">9.2 HashMap、Hashtable、ConcurrentHashMap的区别</h3>
 <!-- raw HTML omitted -->
@@ -1166,24 +1166,24 @@ Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">shuff
 <li>均匀性——均匀地散列所有的键</li>
 </ol>
 <p>例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Transaction</span> 
-<span style="color:#f92672">{</span> 
-    <span style="color:#f92672">...</span> 
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> String who<span style="color:#f92672">;</span> 
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Date when<span style="color:#f92672">;</span> 
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">double</span> amount<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span><span style="color:#f92672">()</span> 
-    <span style="color:#f92672">{</span> 
-        <span style="color:#66d9ef">int</span> hash <span style="color:#f92672">=</span> 17<span style="color:#f92672">;</span> 
-        hash <span style="color:#f92672">=</span> 31 <span style="color:#f92672">*</span> hash <span style="color:#f92672">+</span> who<span style="color:#f92672">.</span><span style="color:#a6e22e">hashCode</span><span style="color:#f92672">();</span> 
-        hash <span style="color:#f92672">=</span> 31 <span style="color:#f92672">*</span> hash <span style="color:#f92672">+</span> when<span style="color:#f92672">.</span><span style="color:#a6e22e">hashCode</span><span style="color:#f92672">();</span> 
-        hash <span style="color:#f92672">=</span> 31 <span style="color:#f92672">*</span> hash 
-        <span style="color:#f92672">+</span> <span style="color:#f92672">((</span>Double<span style="color:#f92672">)</span> amount<span style="color:#f92672">).</span><span style="color:#a6e22e">hashCode</span><span style="color:#f92672">();</span> 
-        <span style="color:#66d9ef">return</span> hash<span style="color:#f92672">;</span> 
-    <span style="color:#f92672">}</span> 
-    <span style="color:#f92672">...</span> 
-<span style="color:#f92672">}</span>
-</code></pre></div><p>一般自定义类型对象可将多个成员变量的哈希值组合计算出它的哈希值。采用Horner经典算法，有N个变量参与计算哈希值，那么使用N次乘法、加法，计算散列值如上代码所示，计算相当于在算一个N位R进制值，这里的R最好取一个够小素数，比如31，可以保证所有变量都发挥作用，HashMap或HashSet再计算索引的时候不会溢出表的尺寸。</p>
+<pre><code>public class Transaction 
+{ 
+    ... 
+    private final String who; 
+    private final Date when; 
+    private final double amount;
+    public int hashCode() 
+    { 
+        int hash = 17; 
+        hash = 31 * hash + who.hashCode(); 
+        hash = 31 * hash + when.hashCode(); 
+        hash = 31 * hash 
+        + ((Double) amount).hashCode(); 
+        return hash; 
+    } 
+    ... 
+}
+</code></pre><p>一般自定义类型对象可将多个成员变量的哈希值组合计算出它的哈希值。采用Horner经典算法，有N个变量参与计算哈希值，那么使用N次乘法、加法，计算散列值如上代码所示，计算相当于在算一个N位R进制值，这里的R最好取一个够小素数，比如31，可以保证所有变量都发挥作用，HashMap或HashSet再计算索引的时候不会溢出表的尺寸。</p>
 <p>作为HashMap与HashSet的键，一旦存入，就不要修改，前后哈希值不一致，会导致查询失败。</p>
 <h3 id="94-treemaptreeset的键">9.4 TreeMap/TreeSet的键</h3>
 <p>TreeMap/TreeSet的键最好实现Comparable接口，不然则在构造的时候，传入相应的Comparator实现。</p>

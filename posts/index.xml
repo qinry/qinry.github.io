@@ -174,7 +174,7 @@
       <pubDate>Tue, 12 May 2020 22:06:42 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2020/05/java-annotation/</guid>
-      <description>定义注解 import java.lang.annotation.*; @Target(ElementType.METHOND) @Retention(RetentionPolicy.RUNTIME) public @interface UseCase { int id(); String description() default &amp;#34;no description&amp;#34;; } 使用注解 import java.util.*; public class PasswordUtils { @UseCase(id = 47, description = &amp;#34;Passwords must contain at least one numeric&amp;#34;) public boolean validatePassword(String passwd) { return (passwd.matches(&amp;#34;\\w*\\d\\w*&amp;#34;)); } @UseCase(id = 48) public String encryptPassword(String passwd) { return new StringBuilder(passwd) .reverse().toString(); } @UseCase(id = 49, description = &amp;#34;New passwords</description>
+      <description>定义注解 import java.lang.annotation.*; @Target(ElementType.METHOND) @Retention(RetentionPolicy.RUNTIME) public @interface UseCase { int id(); String description() default &amp;quot;no description&amp;quot;; } 使用注解 import java.util.*; public class PasswordUtils { @UseCase(id = 47, description = &amp;quot;Passwords must contain at least one numeric&amp;quot;) public boolean validatePassword(String passwd) { return (passwd.matches(&amp;quot;\\w*\\d\\w*&amp;quot;)); } @UseCase(id = 48) public String encryptPassword(String passwd) { return new StringBuilder(passwd) .reverse().toString(); } @UseCase(id = 49, description = &amp;quot;New passwords</description>
     </item>
     
     <item>
@@ -345,7 +345,7 @@
       <pubDate>Sun, 20 Oct 2019 08:50:01 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2019/10/git-simple-usage/</guid>
-      <description>配置Git 提供Git用户名和邮箱 git config --global user.name &amp;#34;username&amp;#34; git config --global user.email &amp;#34;usernaem@example.com&amp;#34; 忽略文件 创建文件 .gitignore ，让Git忽略某目录中的所有文件(不跟踪这些文件)，使用它可以避免项目</description>
+      <description>配置Git 提供Git用户名和邮箱 git config --global user.name &amp;quot;username&amp;quot; git config --global user.email &amp;quot;usernaem@example.com&amp;quot; 忽略文件 创建文件 .gitignore ，让Git忽略某目录中的所有文件(不跟踪这些文件)，使用它可以避免项目</description>
     </item>
     
     <item>

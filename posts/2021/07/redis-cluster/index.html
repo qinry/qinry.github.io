@@ -16,6 +16,7 @@
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -27,13 +28,12 @@
   <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
 
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/json.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/bash.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/properties.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/plaintext.min.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
 
 
 </head>
@@ -80,7 +80,7 @@
   <h1>Redis集群</h1>
   <span class="post-date">
     2021-07-14 17:02 &nbsp;
-    字数：<strong>1103</strong> &nbsp;
+    字数：<strong>1106</strong> &nbsp;
     标签：
               <a href="https://qinry.github.io/tags/redis/">Redis</a>&nbsp;
   </span>
@@ -129,48 +129,48 @@
 <p>首先，编写配置文件 redis.conf：<code>cluster-enabled yes</code>。还有按情况配置 <code>port &lt;端口号&gt;</code> 和 <code>bind 0.0.0.0</code>。</p>
 <p>接着，删除数据存放目录下持久化文件，重要持久化文件自行备份。启动 7001～7002 这六个 Redis 实例。如果防火墙未放行 Redis 服务的流量话，配置放行或者关闭防火墙。</p>
 <p>然后，创建集群</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">redis-cli --cluster create &lt;ip&gt;:&lt;port&gt; <span style="color:#f92672">[</span>&lt;ip&gt;:&lt;port&gt; ...<span style="color:#f92672">]</span> --cluster-replicas <span style="color:#ae81ff">1</span>
-</code></pre></div><p>最后，连接集群</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">redis-cli -h &lt;ip&gt; -p &lt;port&gt; -c
-</code></pre></div><p>查看集群信息，在运行的客户端内部执行命令 <code>cluster info</code>。
+<pre><code>redis-cli --cluster create &lt;ip&gt;:&lt;port&gt; [&lt;ip&gt;:&lt;port&gt; ...] --cluster-replicas 1
+</code></pre><p>最后，连接集群</p>
+<pre><code>redis-cli -h &lt;ip&gt; -p &lt;port&gt; -c
+</code></pre><p>查看集群信息，在运行的客户端内部执行命令 <code>cluster info</code>。
 查看集群节点信息，<code>cluster nodes</code>。</p>
 <h2 id="四jedis连接集群">四、jedis连接集群</h2>
 <p>maven引入相关依赖</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span> 
-    <span style="color:#f92672">&lt;groupId&gt;</span>redis.clients<span style="color:#f92672">&lt;/groupId&gt;</span>
-    <span style="color:#f92672">&lt;artifactId&gt;</span>jedis<span style="color:#f92672">&lt;/artifactId&gt;</span> 
-    <span style="color:#f92672">&lt;version&gt;</span>3.6.1<span style="color:#f92672">&lt;/version&gt;</span>
-  <span style="color:#f92672">&lt;/dependency&gt;</span>
-</code></pre></div><p>示例代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span> 
-    <span style="color:#75715e">// 创建一连接，JedisCluster对象,在系统中是单例存在 
-</span><span style="color:#75715e"></span>    Set<span style="color:#f92672">&lt;</span>HostAndPort<span style="color:#f92672">&gt;</span> nodes <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;</span>HostAndPort<span style="color:#f92672">&gt;();</span> 
-    nodes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> HostAndPort<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.123.181&#34;</span><span style="color:#f92672">,</span> 7001<span style="color:#f92672">));</span> 
-    nodes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> HostAndPort<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.123.181&#34;</span><span style="color:#f92672">,</span> 7002<span style="color:#f92672">));</span> 
-    nodes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> HostAndPort<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.123.181&#34;</span><span style="color:#f92672">,</span> 7003<span style="color:#f92672">));</span> 
-    nodes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> HostAndPort<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.123.181&#34;</span><span style="color:#f92672">,</span> 7004<span style="color:#f92672">));</span> 
-    nodes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> HostAndPort<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.123.181&#34;</span><span style="color:#f92672">,</span> 7005<span style="color:#f92672">));</span> 
-    nodes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> HostAndPort<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;192.168.123.181&#34;</span><span style="color:#f92672">,</span> 7006<span style="color:#f92672">));</span> 
-    JedisCluster cluster <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> JedisCluster<span style="color:#f92672">(</span>nodes<span style="color:#f92672">);</span>
-    <span style="color:#75715e">// 执行JedisCluster对象中的方法，方法和redis指令一一对应。
-</span><span style="color:#75715e"></span>    cluster<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;test1&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;test111&#34;</span><span style="color:#f92672">);</span>
-    String result <span style="color:#f92672">=</span> cluster<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;test1&#34;</span><span style="color:#f92672">);</span> 
-    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>result<span style="color:#f92672">);</span>
-    <span style="color:#75715e">//存储List数据到列表中
-</span><span style="color:#75715e"></span>    cluster<span style="color:#f92672">.</span><span style="color:#a6e22e">lpush</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;site-list&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;java&#34;</span><span style="color:#f92672">);</span> 
-    cluster<span style="color:#f92672">.</span><span style="color:#a6e22e">lpush</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;site-list&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">);</span> 
-    cluster<span style="color:#f92672">.</span><span style="color:#a6e22e">lpush</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;site-list&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;mysql&#34;</span><span style="color:#f92672">);</span>
-    <span style="color:#75715e">// 获取存储的数据并输出
-</span><span style="color:#75715e"></span>    List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> cluster<span style="color:#f92672">.</span><span style="color:#a6e22e">lrange</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;site-list&#34;</span><span style="color:#f92672">,</span> 0 <span style="color:#f92672">,</span>2<span style="color:#f92672">);</span> 
-    <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span> i<span style="color:#f92672">&lt;</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;列表项为: &#34;</span><span style="color:#f92672">+</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>i<span style="color:#f92672">));</span> 
-    <span style="color:#f92672">}</span>
-    <span style="color:#75715e">// 程序结束时需要关闭JedisCluster对象 
-</span><span style="color:#75715e"></span>    cluster<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
-    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;集群测试成功!&#34;</span><span style="color:#f92672">);</span> 
+<pre><code>&lt;dependency&gt; 
+    &lt;groupId&gt;redis.clients&lt;/groupId&gt;
+    &lt;artifactId&gt;jedis&lt;/artifactId&gt; 
+    &lt;version&gt;3.6.1&lt;/version&gt;
+  &lt;/dependency&gt;
+</code></pre><p>示例代码：</p>
+<pre><code>public static void main(String[] args) throws IOException { 
+    // 创建一连接，JedisCluster对象,在系统中是单例存在 
+    Set&lt;HostAndPort&gt; nodes = new HashSet&lt;HostAndPort&gt;(); 
+    nodes.add(new HostAndPort(&quot;192.168.123.181&quot;, 7001)); 
+    nodes.add(new HostAndPort(&quot;192.168.123.181&quot;, 7002)); 
+    nodes.add(new HostAndPort(&quot;192.168.123.181&quot;, 7003)); 
+    nodes.add(new HostAndPort(&quot;192.168.123.181&quot;, 7004)); 
+    nodes.add(new HostAndPort(&quot;192.168.123.181&quot;, 7005)); 
+    nodes.add(new HostAndPort(&quot;192.168.123.181&quot;, 7006)); 
+    JedisCluster cluster = new JedisCluster(nodes);
+    // 执行JedisCluster对象中的方法，方法和redis指令一一对应。
+    cluster.set(&quot;test1&quot;, &quot;test111&quot;);
+    String result = cluster.get(&quot;test1&quot;); 
+    System.out.println(result);
+    //存储List数据到列表中
+    cluster.lpush(&quot;site-list&quot;, &quot;java&quot;); 
+    cluster.lpush(&quot;site-list&quot;, &quot;c&quot;); 
+    cluster.lpush(&quot;site-list&quot;, &quot;mysql&quot;);
+    // 获取存储的数据并输出
+    List&lt;String&gt; list = cluster.lrange(&quot;site-list&quot;, 0 ,2); 
+    for(int i=0; i&lt;list.size(); i++) {
+        System.out.println(&quot;列表项为: &quot;+list.get(i)); 
+    }
+    // 程序结束时需要关闭JedisCluster对象 
+    cluster.close();
+    System.out.println(&quot;集群测试成功!&quot;); 
     
-<span style="color:#f92672">}</span>
-</code></pre></div>
+}
+</code></pre>
 </div>
 
 

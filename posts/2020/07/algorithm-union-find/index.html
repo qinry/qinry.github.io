@@ -16,6 +16,7 @@
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -27,13 +28,12 @@
   <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
 
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/json.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/bash.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/properties.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/plaintext.min.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
 
 
 </head>
@@ -123,126 +123,126 @@
 </tbody>
 </table>
 <p>初步实现：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UF</span> <span style="color:#f92672">{</span>
-  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> id<span style="color:#f92672">;</span> <span style="color:#75715e">// 分量id（以触点作为索引）
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> count<span style="color:#f92672">;</span> <span style="color:#75715e">// 分量数量
-</span><span style="color:#75715e"></span>
-  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">UF</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> N<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    count <span style="color:#f92672">=</span> N<span style="color:#f92672">;</span>
-    id <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>N<span style="color:#f92672">];</span>
-    <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> N<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span>
-      id<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> i<span style="color:#f92672">;</span>
-  <span style="color:#f92672">}</span>
+<pre><code>public class UF {
+  private int[] id; // 分量id（以触点作为索引）
+  private int count; // 分量数量
 
-  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">count</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">return</span> count<span style="color:#f92672">;</span>
-  <span style="color:#f92672">}</span>
-  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">connected</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> p<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> q<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">return</span> find<span style="color:#f92672">(</span>p<span style="color:#f92672">)</span> <span style="color:#f92672">==</span> find<span style="color:#f92672">(</span>q<span style="color:#f92672">);</span>
-  <span style="color:#f92672">}</span>
-  <span style="color:#75715e">// 以下方法，不同算法，实现各不同
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">find</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> p<span style="color:#f92672">)</span>
-  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">union</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> p<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> q<span style="color:#f92672">)</span>
+  public UF(int N) {
+    count = N;
+    id = new int[N];
+    for(int i = 0; i &lt; N; i++)
+      id[i] = i;
+  }
 
-<span style="color:#f92672">}</span>
-</code></pre></div><p>不同算法实现并查集，性能各不同，因为在数据存放形式和数据的操作上有所不一样，或许是细微的差别。有简单的算法及其改进的算法，如：quick-find算法、quick-union算法、加权quick-union算法、路径压缩的加权quick-union算法。</p>
+  public int count() {
+    return count;
+  }
+  public boolean connected(int p, int q) {
+    return find(p) == find(q);
+  }
+  // 以下方法，不同算法，实现各不同
+  public int find(int p)
+  public void union(int p, int q)
+
+}
+</code></pre><p>不同算法实现并查集，性能各不同，因为在数据存放形式和数据的操作上有所不一样，或许是细微的差别。有简单的算法及其改进的算法，如：quick-find算法、quick-union算法、加权quick-union算法、路径压缩的加权quick-union算法。</p>
 <h2 id="quick-find算法">quick-find算法</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UF</span> <span style="color:#f92672">{</span>
-  <span style="color:#75715e">// ... 其他方法见上的初步实现
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">find</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> p<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">return</span> id<span style="color:#f92672">[</span>p<span style="color:#f92672">];</span>
-  <span style="color:#f92672">}</span>
-  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">union</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> p<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> q<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#75715e">// p和q归并到相同的分量中
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> pID <span style="color:#f92672">=</span> find<span style="color:#f92672">(</span>p<span style="color:#f92672">);</span>
-    <span style="color:#66d9ef">int</span> qID <span style="color:#f92672">=</span> find<span style="color:#f92672">(</span>q<span style="color:#f92672">);</span>
+<pre><code>public class UF {
+  // ... 其他方法见上的初步实现
+  public int find(int p) {
+    return id[p];
+  }
+  public void union(int p, int q) {
+    // p和q归并到相同的分量中
+    int pID = find(p);
+    int qID = find(q);
 
-    <span style="color:#75715e">// 如果p和q相连，不采取任何动作
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>pID <span style="color:#f92672">==</span> qID<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+    // 如果p和q相连，不采取任何动作
+    if(pID == qID) return;
 
-    <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> id<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span>
-      <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>id<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> pID<span style="color:#f92672">)</span> id<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> qID<span style="color:#f92672">;</span>
-    count<span style="color:#f92672">--;</span>
-  <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>分析：find()操作对数组直接操作一次，访问数组id[]一次，速度很快，这个算法无法处理大型问题，由于每一对输入union()都扫描整个数组。find()访问数组操作是常数级别的；union()是线性级别，归并时会调用2次find()，检查id数组的N个元素，还有改变元素的个数在1到N-1，总共访问数组N+3~2N+1之间。（方法主要开销在数组的访问，用数组访问操作作为算法分析的基准）用quick-find算法解决动态连通性问题且最后仅得一个分量，至少调用N-1次union()，那么至少(N+3)(N-1)~N^2次数组访问，说明quick-find解决此问题是平方级别的。</p>
+    for(int i = 0; i &lt; id.length; i++)
+      if(id[i] == pID) id[i] = qID;
+    count--;
+  }
+}
+</code></pre><p>分析：find()操作对数组直接操作一次，访问数组id[]一次，速度很快，这个算法无法处理大型问题，由于每一对输入union()都扫描整个数组。find()访问数组操作是常数级别的；union()是线性级别，归并时会调用2次find()，检查id数组的N个元素，还有改变元素的个数在1到N-1，总共访问数组N+3~2N+1之间。（方法主要开销在数组的访问，用数组访问操作作为算法分析的基准）用quick-find算法解决动态连通性问题且最后仅得一个分量，至少调用N-1次union()，那么至少(N+3)(N-1)~N^2次数组访问，说明quick-find解决此问题是平方级别的。</p>
 <h2 id="quick-union算法">quick-union算法</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UF</span> <span style="color:#f92672">{</span>
-  <span style="color:#75715e">// ... 其他方法见上的初步实现
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">find</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> p<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#75715e">// 找出分量名称
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>p<span style="color:#f92672">!=</span>id<span style="color:#f92672">[</span>p<span style="color:#f92672">])</span> p <span style="color:#f92672">=</span> id<span style="color:#f92672">[</span>p<span style="color:#f92672">];</span>
-    <span style="color:#66d9ef">return</span> p<span style="color:#f92672">;</span>
-  <span style="color:#f92672">}</span>
-  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">union</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> p<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> q<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#75715e">// 将p和q的根节点统一
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> pRoot <span style="color:#f92672">=</span> find<span style="color:#f92672">(</span>p<span style="color:#f92672">);</span>
-    <span style="color:#66d9ef">int</span> qRoot <span style="color:#f92672">=</span> find<span style="color:#f92672">(</span>q<span style="color:#f92672">);</span>
-    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>pRoot <span style="color:#f92672">==</span> qRoot<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span>
+<pre><code>public class UF {
+  // ... 其他方法见上的初步实现
+  public int find(int p) {
+    // 找出分量名称
+    while(p!=id[p]) p = id[p];
+    return p;
+  }
+  public void union(int p, int q) {
+    // 将p和q的根节点统一
+    int pRoot = find(p);
+    int qRoot = find(q);
+    if(pRoot == qRoot) return
 
-    id<span style="color:#f92672">[</span>pRoot<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> qRoot<span style="color:#f92672">;</span>
-    count<span style="color:#f92672">--;</span>
-  <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>分析：数据结构用森林表示，节点与另一个节点的相连为链接，一节点指向其父节点，最终都是朝向根节点，用根节点标识分量，id[]数组是用父链接的形式表示的森林。find()操作从节点顺着链接找到根节点，在最好的情况下，访问数组一次完成操作，最坏也不过是2N+1次访问。该方法访问数组的次数为1加上两倍的所访问节点深度；union()操作假设两节点不在同一个森林，其中一个节点的根节点成为另一个根节点的父节点，接着两个树归并为一树。该方法访问数组次数是find()的两倍。quick-union最坏情况下运行时间是平方级别的，有赖于输入的特性。</p>
+    id[pRoot] = qRoot;
+    count--;
+  }
+}
+</code></pre><p>分析：数据结构用森林表示，节点与另一个节点的相连为链接，一节点指向其父节点，最终都是朝向根节点，用根节点标识分量，id[]数组是用父链接的形式表示的森林。find()操作从节点顺着链接找到根节点，在最好的情况下，访问数组一次完成操作，最坏也不过是2N+1次访问。该方法访问数组的次数为1加上两倍的所访问节点深度；union()操作假设两节点不在同一个森林，其中一个节点的根节点成为另一个根节点的父节点，接着两个树归并为一树。该方法访问数组次数是find()的两倍。quick-union最坏情况下运行时间是平方级别的，有赖于输入的特性。</p>
 <h2 id="加权quick-union算法">加权quick-union算法</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UF</span> <span style="color:#f92672">{</span>
-  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> id<span style="color:#f92672">;</span> <span style="color:#75715e">// 父链接数组（由触点索引）
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> sz<span style="color:#f92672">;</span> <span style="color:#75715e">// （由触点索引）各个根节点所对应的分量的大小
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> count<span style="color:#f92672">;</span> <span style="color:#75715e">// 连通分量的数量
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">UF</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> N<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    count <span style="color:#f92672">=</span> N<span style="color:#f92672">;</span>
-    id <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> id<span style="color:#f92672">[</span>N<span style="color:#f92672">];</span>
-    <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> N<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span>
-      id<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> i<span style="color:#f92672">;</span>
-    sz <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> sz<span style="color:#f92672">[</span>N<span style="color:#f92672">];</span>
-    <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> N<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span>
-      sz<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
-  <span style="color:#f92672">}</span>
-  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">find</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> p<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>p<span style="color:#f92672">!=</span> id<span style="color:#f92672">[</span>p<span style="color:#f92672">])</span> p <span style="color:#f92672">=</span> id<span style="color:#f92672">[</span>p<span style="color:#f92672">];</span>
-    <span style="color:#66d9ef">return</span> p<span style="color:#f92672">;</span>
-  <span style="color:#f92672">}</span>
-  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">union</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> p<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> q<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> find<span style="color:#f92672">(</span>p<span style="color:#f92672">);</span>
-    <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> find<span style="color:#f92672">(</span>q<span style="color:#f92672">);</span>
-    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>i <span style="color:#f92672">=</span> j<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
-    <span style="color:#75715e">// 将小树的根节点连接到大树的根节点
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>sz<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">&lt;</span> sz<span style="color:#f92672">[</span>j<span style="color:#f92672">]){</span>
-      id<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> j<span style="color:#f92672">;</span>
-      sz<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">+=</span> sz<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
-    <span style="color:#f92672">}</span>
-    <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-      id<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> i<span style="color:#f92672">;</span>
-      sz<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">+=</span> sz<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span>
-    <span style="color:#f92672">}</span>
-    count<span style="color:#f92672">--;</span>
-  <span style="color:#f92672">}</span>
-  <span style="color:#75715e">// 其他方法见初步实现
-</span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
-</code></pre></div><p>分析：记录两棵树的大小，将小树连接到较大的树下，只需增加一个数组记录每个根节点的分量大小。访问节点所在的深度，有N个触点的话，深度最多lgN，最坏的情况下find()、union()的成本的增长数量级为lgN。改进quick-union算法的不足，保证运行时间是对数级别。</p>
+<pre><code>public class UF {
+  private int[] id; // 父链接数组（由触点索引）
+  private int[] sz; // （由触点索引）各个根节点所对应的分量的大小
+  private int count; // 连通分量的数量
+  public UF(int N) {
+    count = N;
+    id = new id[N];
+    for(int i = 0; i &lt; N; i++)
+      id[i] = i;
+    sz = new sz[N];
+    for(int i = ; i &lt; N; i++)
+      sz[i] = 1;
+  }
+  public int find(int p) {
+    while(p!= id[p]) p = id[p];
+    return p;
+  }
+  public void union(int p, int q) {
+    int i = find(p);
+    int j = find(q);
+    if(i = j) return;
+    // 将小树的根节点连接到大树的根节点
+    if(sz[i] &lt; sz[j]){
+      id[i] = j;
+      sz[j] += sz[i];
+    }
+    else {
+      id[j] = i;
+      sz[i] += sz[j];
+    }
+    count--;
+  }
+  // 其他方法见初步实现
+}
+</code></pre><p>分析：记录两棵树的大小，将小树连接到较大的树下，只需增加一个数组记录每个根节点的分量大小。访问节点所在的深度，有N个触点的话，深度最多lgN，最坏的情况下find()、union()的成本的增长数量级为lgN。改进quick-union算法的不足，保证运行时间是对数级别。</p>
 <h2 id="路径压缩的加权quic-union算法">路径压缩的加权quic-union算法</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UF</span> <span style="color:#f92672">{</span>
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> id<span style="color:#f92672">;</span>
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> sz<span style="color:#f92672">;</span>
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> count<span style="color:#f92672">;</span>
+<pre><code>public class UF {
+	private int[] id;
+	private int[] sz;
+	private int count;
 
-  <span style="color:#75715e">// 其他方法参考加权quick-union算法和初步实现
-</span><span style="color:#75715e"></span>
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">find</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> p<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">int</span> root <span style="color:#f92672">=</span> id<span style="color:#f92672">[</span>p<span style="color:#f92672">];</span>
-		<span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>root <span style="color:#f92672">!=</span> id<span style="color:#f92672">[</span>root<span style="color:#f92672">])</span> <span style="color:#f92672">{</span>
-			root <span style="color:#f92672">=</span> id<span style="color:#f92672">[</span>root<span style="color:#f92672">];</span>
-		<span style="color:#f92672">}</span>
-		<span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>root <span style="color:#f92672">!=</span> id<span style="color:#f92672">[</span>p<span style="color:#f92672">])</span> <span style="color:#f92672">{</span>
-			<span style="color:#66d9ef">int</span> newp <span style="color:#f92672">=</span> id<span style="color:#f92672">[</span>p<span style="color:#f92672">];</span>
-			id<span style="color:#f92672">[</span>p<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> root<span style="color:#f92672">;</span>
-			p <span style="color:#f92672">=</span> newp<span style="color:#f92672">;</span>
-		<span style="color:#f92672">}</span>
-		<span style="color:#66d9ef">return</span> p<span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+  // 其他方法参考加权quick-union算法和初步实现
 
-</code></pre></div><p>分析：在加权quick-union的基础上，再进一步改进，所访问的触点向上找到根节点的同时把检查的所有触点直接与根节点连接，使得树更加扁平，可以说是最优算法了，union()和find()最坏情况下存在N触点的增长数量级非常接近1但未到的程度。</p>
+	public int find(int p) {
+		int root = id[p];
+		while(root != id[root]) {
+			root = id[root];
+		}
+		while(root != id[p]) {
+			int newp = id[p];
+			id[p] = root;
+			p = newp;
+		}
+		return p;
+	}
+
+</code></pre><p>分析：在加权quick-union的基础上，再进一步改进，所访问的触点向上找到根节点的同时把检查的所有触点直接与根节点连接，使得树更加扁平，可以说是最优算法了，union()和find()最坏情况下存在N触点的增长数量级非常接近1但未到的程度。</p>
 <h2 id="参考">参考</h2>
 <ul>
 <li>《算法》第4版第一章第五节</li>

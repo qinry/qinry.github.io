@@ -16,6 +16,7 @@
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -27,13 +28,12 @@
   <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
 
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/json.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/bash.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/properties.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/plaintext.min.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
 
 
 </head>
@@ -106,72 +106,72 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MaxPQ</span><span style="color:#f92672">&lt;</span>Key <span style="color:#66d9ef">extends</span> Comparable<span style="color:#f92672">&lt;</span>Key<span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">private</span> Key<span style="color:#f92672">[]</span> pq<span style="color:#f92672">;</span>                    <span style="color:#75715e">// 基于堆的完全二叉树
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> N <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>                   <span style="color:#75715e">// 存储于pq[1..N]中，pq[0]没有使用
-</span><span style="color:#75715e"></span>
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">MaxPQ</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> maxN<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        pq <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Key<span style="color:#f92672">[])</span> <span style="color:#66d9ef">new</span> Comparable<span style="color:#f92672">[</span>maxN <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
-    <span style="color:#f92672">}</span>
+<pre><code>public class MaxPQ&lt;Key extends Comparable&lt;Key&gt;&gt; {
+    private Key[] pq;                    // 基于堆的完全二叉树
+    private int N = 0;                   // 存储于pq[1..N]中，pq[0]没有使用
 
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> n <span style="color:#f92672">==</span> 0<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    public MaxPQ(int maxN) {
+        pq = (Key[]) new Comparable[maxN + 1];
+    }
 
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> N<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    public boolean isEmpty() {
+        return n == 0;
+    }
 
-    <span style="color:#66d9ef">public</span> Key <span style="color:#a6e22e">max</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isEmpty<span style="color:#f92672">())</span> <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> NoSuchElementException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Priority queue underflow&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">return</span> pq<span style="color:#f92672">[</span>1<span style="color:#f92672">];</span>
-    <span style="color:#f92672">}</span>
+    public int size() {
+        return N;
+    }
 
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span>Key x<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    public Key max() {
+        if (isEmpty()) throw new NoSuchElementException(&quot;Priority queue underflow&quot;);
+        return pq[1];
+    }
 
-        pq<span style="color:#f92672">[++</span>n<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> x<span style="color:#f92672">;</span>
-        swim<span style="color:#f92672">(</span>n<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
+    public void insert(Key x) {
 
-    <span style="color:#66d9ef">public</span> Key <span style="color:#a6e22e">delMax</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        Key max <span style="color:#f92672">=</span> pq<span style="color:#f92672">[</span>1<span style="color:#f92672">];</span> <span style="color:#75715e">// 从根结点得到最大元素
-</span><span style="color:#75715e"></span>        exch<span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> N<span style="color:#f92672">--);</span> <span style="color:#75715e">// 将其和最后一个结点交换
-</span><span style="color:#75715e"></span>        pq<span style="color:#f92672">[</span>n<span style="color:#f92672">+</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span> <span style="color:#75715e">//防止对象游离
-</span><span style="color:#75715e"></span>        sink<span style="color:#f92672">(</span>1<span style="color:#f92672">);</span> <span style="color:#75715e">// 恢复堆的有序性
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> max<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+        pq[++n] = x;
+        swim(n);
+    }
 
-    <span style="color:#75715e">// 辅助方法
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">swim</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>k <span style="color:#f92672">&gt;</span> 1 <span style="color:#f92672">&amp;&amp;</span> less<span style="color:#f92672">(</span>k<span style="color:#f92672">/</span>2<span style="color:#f92672">,</span> k<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
-            exch<span style="color:#f92672">(</span>k<span style="color:#f92672">,</span> k<span style="color:#f92672">/</span>2<span style="color:#f92672">);</span>
-            k <span style="color:#f92672">=</span> k<span style="color:#f92672">/</span>2<span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
+    public Key delMax() {
+        Key max = pq[1]; // 从根结点得到最大元素
+        exch(1, N--); // 将其和最后一个结点交换
+        pq[n+1] = null; //防止对象游离
+        sink(1); // 恢复堆的有序性
+        return max;
+    }
 
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sink</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>2<span style="color:#f92672">*</span>k <span style="color:#f92672">&lt;=</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 2<span style="color:#f92672">*</span>k<span style="color:#f92672">;</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>j <span style="color:#f92672">&lt;</span> n <span style="color:#f92672">&amp;&amp;</span> less<span style="color:#f92672">(</span>j<span style="color:#f92672">,</span> j<span style="color:#f92672">+</span>1<span style="color:#f92672">))</span> j<span style="color:#f92672">++;</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>less<span style="color:#f92672">(</span>k<span style="color:#f92672">,</span> j<span style="color:#f92672">))</span> <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-            exch<span style="color:#f92672">(</span>k<span style="color:#f92672">,</span> j<span style="color:#f92672">);</span>
-            k <span style="color:#f92672">=</span> j<span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
+    // 辅助方法
+    private void swim(int k) {
+        while (k &gt; 1 &amp;&amp; less(k/2, k)) {
+            exch(k, k/2);
+            k = k/2;
+        }
+    }
 
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">less</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> j<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-      <span style="color:#66d9ef">return</span> pq<span style="color:#f92672">[</span>i<span style="color:#f92672">].</span><span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>pq<span style="color:#f92672">[</span>j<span style="color:#f92672">])</span> <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    private void sink(int k) {
+        while (2*k &lt;= n) {
+            int j = 2*k;
+            if (j &lt; n &amp;&amp; less(j, j+1)) j++;
+            if (!less(k, j)) break;
+            exch(k, j);
+            k = j;
+        }
+    }
 
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">exch</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> j<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        Key swap <span style="color:#f92672">=</span> pq<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
-        pq<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> pq<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span>
-        pq<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> swap<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    private boolean less(int i, int j) {
+      return pq[i].compareTo(pq[j]) &lt; 0;
+    }
 
-<span style="color:#f92672">}</span>
+    private void exch(int i, int j) {
+        Key swap = pq[i];
+        pq[i] = pq[j];
+        pq[j] = swap;
+    }
 
-</code></pre></div><hr>
+}
+
+</code></pre><hr>
 <h2 id="最小优先队列">最小优先队列</h2>
 <p><strong>API:</strong></p>
 <p><code>public class MinPQ&lt;Key extends Comparable&lt;Key&gt;&gt;</code></p>
@@ -205,46 +205,46 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MinPQ</span><span style="color:#f92672">&lt;</span>Key <span style="color:#66d9ef">extends</span> Comparable<span style="color:#f92672">&lt;</span>Key<span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">{</span>
-	 <span style="color:#66d9ef">private</span> Key<span style="color:#f92672">[]</span> pq<span style="color:#f92672">;</span>
-   <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> N<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span>
+<pre><code>public class MinPQ&lt;Key extends Comparable&lt;Key&gt;&gt; {
+	 private Key[] pq;
+   private int N=0;
 
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">MinPQ</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> initCapacity<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        pq <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Key<span style="color:#f92672">[])</span> <span style="color:#66d9ef">new</span> Comparable<span style="color:#f92672">[</span>initCapacity <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
-    <span style="color:#f92672">}</span>
+    public MinPQ(int initCapacity) {
+        pq = (Key[]) new Comparable[initCapacity + 1];
+    }
 
-    <span style="color:#66d9ef">public</span> Key <span style="color:#a6e22e">delMin</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        Key min <span style="color:#f92672">=</span> pq<span style="color:#f92672">[</span>1<span style="color:#f92672">];</span>
-        exch<span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> N<span style="color:#f92672">--);</span>
-        pq<span style="color:#f92672">[</span>N<span style="color:#f92672">+</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>     
-        sink<span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">return</span> min<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    public Key delMin() {
+        Key min = pq[1];
+        exch(1, N--);
+        pq[N+1] = null;     
+        sink(1);
+        return min;
+    }
 
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">swim</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>k <span style="color:#f92672">&gt;</span> 1 <span style="color:#f92672">&amp;&amp;</span> greater<span style="color:#f92672">(</span>k<span style="color:#f92672">/</span>2<span style="color:#f92672">,</span> k<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
-            exch<span style="color:#f92672">(</span>k<span style="color:#f92672">,</span> k<span style="color:#f92672">/</span>2<span style="color:#f92672">);</span>
-            k <span style="color:#f92672">=</span> k<span style="color:#f92672">/</span>2<span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
+    private void swim(int k) {
+        while (k &gt; 1 &amp;&amp; greater(k/2, k)) {
+            exch(k, k/2);
+            k = k/2;
+        }
+    }
 
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sink</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>2<span style="color:#f92672">*</span>k <span style="color:#f92672">&lt;=</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 2<span style="color:#f92672">*</span>k<span style="color:#f92672">;</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>j <span style="color:#f92672">&lt;</span> n <span style="color:#f92672">&amp;&amp;</span> greater<span style="color:#f92672">(</span>j<span style="color:#f92672">,</span> j<span style="color:#f92672">+</span>1<span style="color:#f92672">))</span> j<span style="color:#f92672">++;</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>greater<span style="color:#f92672">(</span>k<span style="color:#f92672">,</span> j<span style="color:#f92672">))</span> <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-            exch<span style="color:#f92672">(</span>k<span style="color:#f92672">,</span> j<span style="color:#f92672">);</span>
-            k <span style="color:#f92672">=</span> j<span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">greater</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> j<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-      <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>pq<span style="color:#f92672">[</span>i<span style="color:#f92672">]).</span><span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>pq<span style="color:#f92672">[</span>j<span style="color:#f92672">])</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    private void sink(int k) {
+        while (2*k &lt;= n) {
+            int j = 2*k;
+            if (j &lt; n &amp;&amp; greater(j, j+1)) j++;
+            if (!greater(k, j)) break;
+            exch(k, j);
+            k = j;
+        }
+    }
+    private boolean greater(int i, int j) {
+      return (pq[i]).compareTo(pq[j]) &gt; 0;
+    }
 
 
-    <span style="color:#75715e">// isEmpty()、size()、insert()、exch()于MaxPQ的方法一样
-</span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
-</code></pre></div><hr>
+    // isEmpty()、size()、insert()、exch()于MaxPQ的方法一样
+}
+</code></pre><hr>
 <h2 id="索引最小优先队列">索引最小优先队列</h2>
 <p><strong>API:</strong></p>
 <p><code>public class IndexMinPQ&lt;Item extends Comparable&lt;Item&gt;&gt;</code></p>
@@ -298,100 +298,100 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">IndexMinPQ</span><span style="color:#f92672">&lt;</span>Item <span style="color:#66d9ef">extends</span> Comparable<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">&gt;&gt;{</span>
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> N<span style="color:#f92672">;</span> <span style="color:#75715e">// PQ中元素数量
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> pq<span style="color:#f92672">;</span> <span style="color:#75715e">// 索引二叉堆，由1开始
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> qp<span style="color:#f92672">;</span> <span style="color:#75715e">// 逆序：qp[pq[i]] = pq[qp[i]] = i
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">private</span> Item<span style="color:#f92672">[]</span> items<span style="color:#f92672">;</span> <span style="color:#75715e">// 有优先级之分的元素
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">IndexMinPQ</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> maxN<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		items <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Item<span style="color:#f92672">[])</span><span style="color:#66d9ef">new</span> Comparable<span style="color:#f92672">[</span>maxN <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
-		pq <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>maxN <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
-		qp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>maxN <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
-		<span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;=</span> maxN<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> qp<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+<pre><code>public class IndexMinPQ&lt;Item extends Comparable&lt;Item&gt;&gt;{
+	private int N; // PQ中元素数量
+	private int[] pq; // 索引二叉堆，由1开始
+	private int[] qp; // 逆序：qp[pq[i]] = pq[qp[i]] = i
+	private Item[] items; // 有优先级之分的元素
+	public IndexMinPQ(int maxN) {
+		items = (Item[])new Comparable[maxN + 1];
+		pq = new int[maxN + 1];
+		qp = new int[maxN + 1];
+		for(int i = 0; i &lt;= maxN; i++) qp[i] = -1;
+	}
 
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">return</span> N <span style="color:#f92672">==</span> 0<span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	public boolean isEmpty() {
+		return N == 0;
+	}
 
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">return</span> N<span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	public int size() {
+		return N;
+	}
 
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">contains</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">return</span> qp<span style="color:#f92672">[</span>k<span style="color:#f92672">]</span> <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	public boolean contains(int k) {
+		return qp[k] != -1;
+	}
 
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">insert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k<span style="color:#f92672">,</span> Item item<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		N<span style="color:#f92672">++;</span>
-		qp<span style="color:#f92672">[</span>k<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> N<span style="color:#f92672">;</span>
-		pq<span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> k<span style="color:#f92672">;</span>
-	  items<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> item<span style="color:#f92672">;</span>
-		swim<span style="color:#f92672">(</span>N<span style="color:#f92672">);</span>
-	<span style="color:#f92672">}</span>
+	public void insert(int k, Item item) {
+		N++;
+		qp[k] = N;
+		pq[N] = k;
+	  items[i] = item;
+		swim(N);
+	}
 
-	<span style="color:#66d9ef">public</span> Item <span style="color:#a6e22e">min</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">return</span> items<span style="color:#f92672">[</span>pq<span style="color:#f92672">[</span>1<span style="color:#f92672">]];</span>
-	<span style="color:#f92672">}</span>
+	public Item min() {
+		return items[pq[1]];
+	}
 
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">delMin</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">int</span> indexOfMin <span style="color:#f92672">=</span> pq<span style="color:#f92672">[</span>1<span style="color:#f92672">];</span>
-		exch<span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> N<span style="color:#f92672">--);</span>
-		sink<span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
-		items<span style="color:#f92672">[</span>pq<span style="color:#f92672">[</span>N<span style="color:#f92672">+</span>1<span style="color:#f92672">]]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-		qp<span style="color:#f92672">[</span>pq<span style="color:#f92672">[</span>N<span style="color:#f92672">+</span>1<span style="color:#f92672">]]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
-		<span style="color:#66d9ef">return</span> indexOfMin<span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	public int delMin() {
+		int indexOfMin = pq[1];
+		exch(1, N--);
+		sink(1);
+		items[pq[N+1]] = null;
+		qp[pq[N+1]] = -1;
+		return indexOfMin;
+	}
 
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">minIndex</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">return</span> pq<span style="color:#f92672">[</span>1<span style="color:#f92672">];</span>
-	<span style="color:#f92672">}</span>
+	public int minIndex() {
+		return pq[1];
+	}
 
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">change</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k<span style="color:#f92672">,</span> Item item<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		items<span style="color:#f92672">[</span>k<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> item<span style="color:#f92672">;</span>
-    swim<span style="color:#f92672">(</span>qp<span style="color:#f92672">[</span>k<span style="color:#f92672">]);</span>
-    sink<span style="color:#f92672">(</span>qp<span style="color:#f92672">[</span>k<span style="color:#f92672">]);</span>
-	<span style="color:#f92672">}</span>
+	public void change(int k, Item item) {
+		items[k] = item;
+    swim(qp[k]);
+    sink(qp[k]);
+	}
 
 
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> qp<span style="color:#f92672">[</span>k<span style="color:#f92672">];</span>
-		exch<span style="color:#f92672">(</span>index<span style="color:#f92672">,</span> N<span style="color:#f92672">--);</span>
-		swim<span style="color:#f92672">(</span>index<span style="color:#f92672">);</span>
-		sink<span style="color:#f92672">(</span>index<span style="color:#f92672">);</span>
-		items<span style="color:#f92672">[</span>k<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-		qp<span style="color:#f92672">[</span>k<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	public void delete(int k) {
+		int index = qp[k];
+		exch(index, N--);
+		swim(index);
+		sink(index);
+		items[k] = null;
+		qp[k] = -1;
+	}
 
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">swim</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>k <span style="color:#f92672">&gt;</span> 1 <span style="color:#f92672">&amp;&amp;</span> greater<span style="color:#f92672">(</span>k<span style="color:#f92672">/</span>2<span style="color:#f92672">,</span> k<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
-			exch<span style="color:#f92672">(</span>k<span style="color:#f92672">,</span> k<span style="color:#f92672">/</span>2<span style="color:#f92672">);</span>
-			k <span style="color:#f92672">=</span> k<span style="color:#f92672">/</span>2<span style="color:#f92672">;</span>
-		<span style="color:#f92672">}</span>
-	<span style="color:#f92672">}</span>
+	private void swim(int k) {
+		while(k &gt; 1 &amp;&amp; greater(k/2, k)) {
+			exch(k, k/2);
+			k = k/2;
+		}
+	}
 
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sink</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>2<span style="color:#f92672">*</span>k <span style="color:#f92672">&lt;=</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-			<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 2<span style="color:#f92672">*</span>k<span style="color:#f92672">;</span>
-			<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>j <span style="color:#f92672">&lt;</span> n <span style="color:#f92672">&amp;&amp;</span> greater<span style="color:#f92672">(</span>j<span style="color:#f92672">,</span> j <span style="color:#f92672">+</span> 1<span style="color:#f92672">))</span> j<span style="color:#f92672">++;</span>
-			<span style="color:#66d9ef">if</span><span style="color:#f92672">(!</span>greater<span style="color:#f92672">(</span>k<span style="color:#f92672">,</span> j<span style="color:#f92672">))</span> <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-			exch<span style="color:#f92672">(</span>k<span style="color:#f92672">,</span> j<span style="color:#f92672">);</span>
-			k <span style="color:#f92672">=</span> j<span style="color:#f92672">;</span>
-		<span style="color:#f92672">}</span>
-	<span style="color:#f92672">}</span>
+	private void sink(int k) {
+		while(2*k &lt;= n) {
+			int j = 2*k;
+			if(j &lt; n &amp;&amp; greater(j, j + 1)) j++;
+			if(!greater(k, j)) break;
+			exch(k, j);
+			k = j;
+		}
+	}
 
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">greater</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> j<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">return</span> items<span style="color:#f92672">[</span>pq<span style="color:#f92672">[</span>i<span style="color:#f92672">]].</span><span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>items<span style="color:#f92672">[</span>pq<span style="color:#f92672">[</span>j<span style="color:#f92672">]])</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	private boolean greater(int i, int j) {
+		return items[pq[i]].compareTo(items[pq[j]]) &gt; 0;
+	}
 
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">exch</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> j<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">int</span> swap <span style="color:#f92672">=</span> pq<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
-		pq<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> pq<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span>
-		pq<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> swap<span style="color:#f92672">;</span>
-		qp<span style="color:#f92672">[</span>pq<span style="color:#f92672">[</span>i<span style="color:#f92672">]]</span> <span style="color:#f92672">=</span> i<span style="color:#f92672">;</span>
-		qp<span style="color:#f92672">[</span>pq<span style="color:#f92672">[</span>j<span style="color:#f92672">]]</span> <span style="color:#f92672">=</span> j<span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
-</code></pre></div><hr>
+	private void exch(int i, int j) {
+		int swap = pq[i];
+		pq[i] = pq[j];
+		pq[j] = swap;
+		qp[pq[i]] = i;
+		qp[pq[j]] = j;
+	}
+</code></pre><hr>
 <h2 id="索引最大优先队列">索引最大优先队列</h2>
 <p><strong>API:</strong></p>
 <p><code>public class IndexMaxPQ&lt;Item extends Comparable&lt;Item&gt;&gt;</code></p>
@@ -445,61 +445,61 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">IndexMaxPQ</span><span style="color:#f92672">&lt;</span>Item <span style="color:#66d9ef">extends</span> Comparable<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">{</span>
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> N<span style="color:#f92672">;</span>
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> pq<span style="color:#f92672">;</span>
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> qp<span style="color:#f92672">;</span>  
-	<span style="color:#66d9ef">private</span> Item<span style="color:#f92672">[]</span> items<span style="color:#f92672">;</span>
+<pre><code>public class IndexMaxPQ&lt;Item extends Comparable&lt;Item&gt;&gt; {
+	private int N;
+	private int[] pq;
+	private int[] qp;  
+	private Item[] items;
 
-	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">IndexMaxPQ</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> maxN<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		items <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Item<span style="color:#f92672">[])</span><span style="color:#66d9ef">new</span> Comparable<span style="color:#f92672">[</span>maxN <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
-		pq <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>maxN <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
-		qp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>maxN <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
-		<span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;=</span> maxN<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span>
-			qp<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	public IndexMaxPQ(int maxN) {
+		items = (Item[])new Comparable[maxN + 1];
+		pq = new int[maxN + 1];
+		qp = new int[maxN + 1];
+		for(int i = 0; i &lt;= maxN; i++)
+			qp[i] = -1;
+	}
 
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">maxIndex</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">return</span> pq<span style="color:#f92672">[</span>1<span style="color:#f92672">];</span>
-	<span style="color:#f92672">}</span>
+	public int maxIndex() {
+		return pq[1];
+	}
 
-	<span style="color:#66d9ef">public</span> Item <span style="color:#a6e22e">max</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">return</span> items<span style="color:#f92672">[</span>pq<span style="color:#f92672">[</span>1<span style="color:#f92672">]];</span>
-	<span style="color:#f92672">}</span>
+	public Item max()) {
+		return items[pq[1]];
+	}
 
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">delMax</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">int</span> indexMax <span style="color:#f92672">=</span> pq<span style="color:#f92672">[</span>1<span style="color:#f92672">];</span>
-		exch<span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> N<span style="color:#f92672">--);</span>
-		sink<span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
-		items<span style="color:#f92672">[</span>pq<span style="color:#f92672">[</span>N<span style="color:#f92672">+</span>1<span style="color:#f92672">]]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-		qp<span style="color:#f92672">[</span>pq<span style="color:#f92672">[</span>N<span style="color:#f92672">+</span>1<span style="color:#f92672">]]</span> <span style="color:#f92672">=</span>  <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
-		<span style="color:#66d9ef">return</span> indexMax<span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	public int delMax() {
+		int indexMax = pq[1];
+		exch(1, N--);
+		sink(1);
+		items[pq[N+1]] = null;
+		qp[pq[N+1]] =  -1;
+		return indexMax;
+	}
 
-  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">swim</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-      <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>k <span style="color:#f92672">&gt;</span> 1 <span style="color:#f92672">&amp;&amp;</span> less<span style="color:#f92672">(</span>k<span style="color:#f92672">/</span>2<span style="color:#f92672">,</span> k<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
-          exch<span style="color:#f92672">(</span>k<span style="color:#f92672">,</span> k<span style="color:#f92672">/</span>2<span style="color:#f92672">);</span>
-          k <span style="color:#f92672">=</span> k<span style="color:#f92672">/</span>2<span style="color:#f92672">;</span>
-      <span style="color:#f92672">}</span>
-  <span style="color:#f92672">}</span>
+  private void swim(int k) {
+      while (k &gt; 1 &amp;&amp; less(k/2, k)) {
+          exch(k, k/2);
+          k = k/2;
+      }
+  }
 
-  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sink</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-      <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>2<span style="color:#f92672">*</span>k <span style="color:#f92672">&lt;=</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-          <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 2<span style="color:#f92672">*</span>k<span style="color:#f92672">;</span>
-          <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>j <span style="color:#f92672">&lt;</span> n <span style="color:#f92672">&amp;&amp;</span> less<span style="color:#f92672">(</span>j<span style="color:#f92672">,</span> j<span style="color:#f92672">+</span>1<span style="color:#f92672">))</span> j<span style="color:#f92672">++;</span>
-          <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>less<span style="color:#f92672">(</span>k<span style="color:#f92672">,</span> j<span style="color:#f92672">))</span> <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-          exch<span style="color:#f92672">(</span>k<span style="color:#f92672">,</span> j<span style="color:#f92672">);</span>
-          k <span style="color:#f92672">=</span> j<span style="color:#f92672">;</span>
-      <span style="color:#f92672">}</span>
-  <span style="color:#f92672">}</span>
+  private void sink(int k) {
+      while (2*k &lt;= n) {
+          int j = 2*k;
+          if (j &lt; n &amp;&amp; less(j, j+1)) j++;
+          if (!less(k, j)) break;
+          exch(k, j);
+          k = j;
+      }
+  }
 
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">less</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> j<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">return</span> items<span style="color:#f92672">[</span>pq<span style="color:#f92672">[</span>i<span style="color:#f92672">]].</span><span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>keys<span style="color:#f92672">[</span>pq<span style="color:#f92672">[</span>j<span style="color:#f92672">]])</span> <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	private boolean less(int i, int j) {
+		return items[pq[i]].compareTo(keys[pq[j]]) &lt; 0;
+	}
 
-  <span style="color:#75715e">// insert()、change()、contains()、delete()、isEmpty()、size()、和exch()与IndexMinPQ的一样
-</span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
-</code></pre></div><hr>
+  // insert()、change()、contains()、delete()、isEmpty()、size()、和exch()与IndexMinPQ的一样
+}
+</code></pre><hr>
 <h2 id="参考">参考</h2>
 <ul>
 <li>《算法》第四版</li>

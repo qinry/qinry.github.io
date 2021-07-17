@@ -16,6 +16,7 @@
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -27,13 +28,12 @@
   <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
 
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/json.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/bash.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/properties.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/plaintext.min.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
 
 
 </head>
@@ -76,33 +76,33 @@
   <h2 id="file类">File类</h2>
 <p><code>File</code>类作用和它的名字不太相符，File除了可以代表一个特定的文件，还可以表示一个目录（包含一组文件），最准确认为是“路径”。还一个与之相关的接口<code>FilenameFilter</code>，用来筛选路径的目录或文件。它们在java.io包中。</p>
 <p>用例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.regex.*<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.*<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.io.*<span style="color:#f92672">;</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DirList</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        File path <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;.&#34;</span><span style="color:#f92672">);</span> <span style="color:#75715e">// .表示当前工作路径
-</span><span style="color:#75715e"></span>        String<span style="color:#f92672">[]</span> list<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span>
-            list <span style="color:#f92672">=</span> path<span style="color:#f92672">.</span><span style="color:#a6e22e">list</span><span style="color:#f92672">();</span>
-        <span style="color:#66d9ef">else</span>
-            list <span style="color:#f92672">=</span> path<span style="color:#f92672">.</span><span style="color:#a6e22e">list</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> DirFilter<span style="color:#f92672">(</span>args<span style="color:#f92672">[</span>0<span style="color:#f92672">]));</span>
-        Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span>list<span style="color:#f92672">,</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">CASE_INSENSITIVE_ORDER</span><span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span>String dirItem <span style="color:#f92672">:</span> list<span style="color:#f92672">)</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>dirItem<span style="color:#f92672">)</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
+<pre><code>import java.util.regex.*;
+import java.util.*;
+import java.io.*;
+public class DirList {
+    public static void main(String[] args) {
+        File path = new File(&quot;.&quot;); // .表示当前工作路径
+        String[] list;
+        if(args.length == 0)
+            list = path.list();
+        else
+            list = path.list(new DirFilter(args[0]));
+        Arrays.sort(list, String.CASE_INSENSITIVE_ORDER);
+        for(String dirItem : list)
+            System.out.println(dirItem)
+    }
+}
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DirFilter</span> <span style="color:#66d9ef">implements</span> FilenameFilter <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">private</span> Pattern pattern<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DirFilter</span><span style="color:#f92672">(</span>String regex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        pattern <span style="color:#f92672">=</span> Pattern<span style="color:#f92672">.</span><span style="color:#a6e22e">compile</span><span style="color:#f92672">(</span>regex<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">accept</span><span style="color:#f92672">(</span>File dir<span style="color:#f92672">,</span> String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> pattern<span style="color:#f92672">.</span><span style="color:#a6e22e">matcher</span><span style="color:#f92672">(</span>name<span style="color:#f92672">).</span><span style="color:#a6e22e">matches</span><span style="color:#f92672">();</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>File的list(FilenameFilter)或者list()方法产生工作目录下的文件名的数组，本质是String数组,还有类似的listFiles(FilenameFilter)或listFiles()方法工作目录的生成File数组。</p>
+class DirFilter implements FilenameFilter {
+    private Pattern pattern;
+    public DirFilter(String regex) {
+        pattern = Pattern.compile(regex);
+    }
+    public boolean accept(File dir, String name) {
+        return pattern.matcher(name).matches();
+    }
+}
+</code></pre><p>File的list(FilenameFilter)或者list()方法产生工作目录下的文件名的数组，本质是String数组,还有类似的listFiles(FilenameFilter)或listFiles()方法工作目录的生成File数组。</p>
 <h2 id="file的一些方法">File的一些方法</h2>
 <table>
 <thead>
@@ -286,28 +286,28 @@
 <h4 id="进程控制">进程控制</h4>
 <p>操作系统非常见到Java程序调用另一个程序,还用控制当中的输入输出,输出是发送到控制台的。简单地可以使用<code>ProcessBuilder</code>类实现该操作。</p>
 <p>用例:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.io.*<span style="color:#f92672">;</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StartProcess</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        Process process <span style="color:#f92672">=</span> 
-            <span style="color:#66d9ef">new</span> ProcessBuilder<span style="color:#f92672">(</span>args<span style="color:#f92672">.</span><span style="color:#a6e22e">split</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">))</span>
-                <span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
-        BufferedReader results <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader<span style="color:#f92672">(</span>
-            <span style="color:#66d9ef">new</span> InputStreamReader<span style="color:#f92672">(</span>process<span style="color:#f92672">.</span><span style="color:#a6e22e">getInputStream</span><span style="color:#f92672">()));</span>
-        String s<span style="color:#f92672">;</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;output:&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">while</span><span style="color:#f92672">((</span>s <span style="color:#f92672">=</span> results<span style="color:#f92672">.</span><span style="color:#a6e22e">readLine</span><span style="color:#f92672">())</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>s<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        BufferedReader err <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader<span style="color:#f92672">(</span>
-            <span style="color:#66d9ef">new</span> InputStreamReader<span style="color:#f92672">(</span>process<span style="color:#f92672">.</span><span style="color:#a6e22e">getErrorStream</span><span style="color:#f92672">()));</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;error&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">while</span><span style="color:#f92672">((</span>s <span style="color:#f92672">=</span> readLine<span style="color:#f92672">())</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>s<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div>
+<pre><code>import java.io.*;
+public class StartProcess {
+    public static void main(String[] args) {
+        Process process = 
+            new ProcessBuilder(args.split(&quot; &quot;))
+                .start();
+        BufferedReader results = new BufferedReader(
+            new InputStreamReader(process.getInputStream()));
+        String s;
+        System.out.println(&quot;output:&quot;);
+        while((s = results.readLine()) != null) {
+            System.out.println(s);
+        }
+        BufferedReader err = new BufferedReader(
+            new InputStreamReader(process.getErrorStream()));
+        System.out.println(&quot;error&quot;);
+        while((s = readLine()) != null) {
+            System.out.println(s);
+        }
+    }
+}
+</code></pre>
 </div>
 
 

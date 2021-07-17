@@ -148,71 +148,39 @@ abbr[title] {
 /* Code */
 
 pre {
-  display: block;
-  font-family: monospace;
-  white-space: pre;
-  margin: 1em 0px;
+  margin:0;
+  padding:0;
 }
 
-pre {
-  font-family: monospace,monospace;
-  font-size: 1em;
-}
-
-pre, .pre {
-  overflow-x: auto;
-  overflow-y: hidden;
-  overflow: scroll;
-}
-
-pre {
-  background-color: #fff;
-  color: #333;
-  white-space: pre;
-  -webkit-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-  position: relative;
-  border-width: 1px;
-  border-color: #ccc;
-  border-style: solid;
-}
-
-
-code,
-pre {
-  font-family: Menlo, Monaco, "Courier New", monospace;
-}
-
+pre,
 code {
-  padding: .2em;
-  margin: 0;
-  font-size: 85%;
-  background-color: rgba(27,31,35,5%);  
-  border-radius: 3px;
+  font-family: "Source Code Pro", monospace;
+  font-size:0.85em;
+  background-color: #f9f9f9;
+  overflow: auto;
 }
-
-pre code {
-  display: block;
-  padding: 1.5em;
-  font-size: small;
-  line-height: 2;
-  overflow-x: auto;
-}
-
-.highlight {
-  margin-bottom: 1rem;
-  border-radius: 4px;
-}
-
 .highlight pre {
-  margin-bottom: 0;
+  /* Avoid pushing up the copy buttons */
+  margin-top: 0;
+  border-radius: 3px;
+  padding: 10px;
+  overflow-x: auto;
+  font-size: 0.9em;
 }
 
-
-code, .code, pre code, .highlight pre {
-  font-family: inconsolata,Menlo,Monaco,courier new,monospace;
+.highlight pre code {
+  /* Otherwise, overflow text hits the edge of the block */
+  margin-right: 8px;
+  display: inline-block;
 }
+
+/* Lines that are highlighted */
+.highlight pre code > span[style*="display:block;"] {
+  margin-left: -10px;
+  padding-left: 5px;
+  border-left: 5px solid #ee7f2d;
+}
+
 
 /* Quotes */
 blockquote {

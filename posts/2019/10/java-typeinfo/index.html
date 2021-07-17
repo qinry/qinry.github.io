@@ -16,6 +16,7 @@
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -27,13 +28,12 @@
   <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
 
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/json.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/bash.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/properties.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/plaintext.min.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
 
 
 </head>
@@ -76,37 +76,37 @@
   <h2 id="class对象">Class对象</h2>
 <p>每个类都存在包含类型信息的Class对象，Class对象属于Java类中Class类型。有两种方法获得某类型的Class 对象，一种是使用<code>Class.forName()</code>静态方法，接受包含完整类名的字符串参数，创建对应类型的Class对象;第二种类字面量，<code>&lt;ClassName&gt;.class</code>。forName()方法必须放在try语句块，而类字面量不需要，故效率更高。</p>
 <p>例子：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Rock</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">static</span> <span style="color:#f92672">{</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hi, I&#39;m a Rock!&#34;</span><span style="color:#f92672">);</span> <span style="color:#f92672">}</span>  
-    <span style="color:#66d9ef">public</span> String  <span style="color:#a6e22e">toString</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;I don&#39;t like water&#34;</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
+<pre><code>class Rock {
+    static { System.out.println(&quot;Hi, I'm a Rock!&quot;); }  
+    public String  toString() {
+        return &quot;I don't like water&quot;;
+    }
+}
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PlayRock</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">play</span><span style="color:#f92672">(</span>Rock rc<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>rc<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-            Class<span style="color:#f92672">&lt;?&gt;</span> type <span style="color:#f92672">=</span> Class<span style="color:#f92672">.</span><span style="color:#a6e22e">forName</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Rock&#34;</span><span style="color:#f92672">);</span>  <span style="color:#75715e">// ?是通配符表示任何事物
-</span><span style="color:#75715e"></span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>ClassNotFoundException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;No find Rock&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        Rock rc <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-            rc <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Rock<span style="color:#f92672">)</span>type<span style="color:#f92672">.</span><span style="color:#a6e22e">newInstance</span><span style="color:#f92672">();</span> <span style="color:#75715e">// 实例化得到却是Object引用，所以要强制类型转换
-</span><span style="color:#75715e"></span>            play<span style="color:#f92672">(</span>rc<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>InstantiationException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Cannot instantiate&#34;</span><span style="color:#f92672">);</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>IllegalAccessException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Cannot access&#34;</span><span style="color:#f92672">);</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>output:</p>
+public class PlayRock {
+    static void play(Rock rc) {
+        System.out.println(rc);
+    }
+    public static void main(String[] args) {
+        try {
+            Class&lt;?&gt; type = Class.forName(&quot;Rock&quot;);  // ?是通配符表示任何事物
+        } catch(ClassNotFoundException e) {
+            System.out.println(&quot;No find Rock&quot;);
+        }
+        Rock rc = null;
+        try {
+            rc = (Rock)type.newInstance(); // 实例化得到却是Object引用，所以要强制类型转换
+            play(rc);
+        } catch(InstantiationException e) {
+            System.out.println(&quot;Cannot instantiate&quot;);
+            System.exit(1);
+        } catch(IllegalAccessException e) {
+            System.out.println(&quot;Cannot access&quot;);
+            System.exit(1);
+        }
+    }
+}
+</code></pre><p>output:</p>
 <blockquote>
 <p>Hi, I&rsquo;m a Rock!<br>
 I don&rsquo;t like water</p>
@@ -116,31 +116,31 @@ I don&rsquo;t like water</p>
 <h2 id="cast-方法">cast( )方法</h2>
 <p>cast( )接受参数对象，将其类型转换为Class指向的类型。用法形似c++的dynamic_cast&lt; T &gt;(obj ) 。</p>
 <p>例子:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Building</span> <span style="color:#f92672">{}</span>
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">House</span> <span style="color:#66d9ef">extends</span> Building <span style="color:#f92672">{}</span>
+<pre><code>class Building {}
+class House extends Building {}
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClassCasts</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        Building b <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> House<span style="color:#f92672">();</span>
-        Class<span style="color:#f92672">&lt;</span>House<span style="color:#f92672">&gt;</span> houseType <span style="color:#f92672">=</span> House<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">;</span> <span style="color:#75715e">// 使用泛化Class引用
-</span><span style="color:#75715e"></span>        House h <span style="color:#f92672">=</span> houseType<span style="color:#f92672">.</span><span style="color:#a6e22e">cast</span><span style="color:#f92672">(</span>b<span style="color:#f92672">);</span>
-        h <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>House<span style="color:#f92672">)</span>b<span style="color:#f92672">;</span> <span style="color:#75715e">// ... 或者这样做.
-</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>如果类型转换出错了，回抛出 <code>ClassCastException</code> 异常</p>
+public class ClassCasts {
+    public static void main(String[] args) {
+        Building b = new House();
+        Class&lt;House&gt; houseType = House.class; // 使用泛化Class引用
+        House h = houseType.cast(b);
+        h = (House)b; // ... 或者这样做.
+    }
+}
+</code></pre><p>如果类型转换出错了，回抛出 <code>ClassCastException</code> 异常</p>
 <h2 id="类型检查">类型检查</h2>
 <p>它们都是用来检查某个对象是否是某个类型的实例对象，类型检查用在类型转换之前。</p>
 <h3 id="关键字instanceof">关键字instanceof</h3>
 <p>它会返回boolean类型值。不过其之后必须跟类型名，否则报错。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">if</span>  <span style="color:#f92672">(</span>x <span style="color:#66d9ef">instanceof</span> Dog<span style="color:#f92672">)</span>
-    <span style="color:#f92672">((</span>Dog<span style="color:#f92672">)</span>x<span style="color:#f92672">).</span><span style="color:#a6e22e">bark</span><span style="color:#f92672">(</span> <span style="color:#f92672">);</span>
-</code></pre></div><p>当进行多个类型检查必须一个一个罗列。</p>
+<pre><code>if  (x instanceof Dog)
+    ((Dog)x).bark( );
+</code></pre><p>当进行多个类型检查必须一个一个罗列。</p>
 <h3 id="classisinstance-方法">Class.isInstance( )方法</h3>
 <p>提供动态测试对象类型的方法，使用更为灵活。使用for循环可以方便对一个对象进行多次检查</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">:</span> types<span style="color:#f92672">)</span>
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t<span style="color:#f92672">.</span><span style="color:#a6e22e">isInstance</span><span style="color:#f92672">(</span>obj<span style="color:#f92672">))</span>
-        <span style="color:#75715e">// 执行一些操作
-</span></code></pre></div><p>解释:types是Class数组，obj实例对象，检查obj是否是types数组中所指类型。</p>
+<pre><code>for (class t : types)
+    if (t.isInstance(obj))
+        // 执行一些操作
+</code></pre><p>解释:types是Class数组，obj实例对象，检查obj是否是types数组中所指类型。</p>
 <h2 id="反射机制">反射机制</h2>
 <p>由java.lang.reflect类库提供支持，包含实现Member接口的Field, Method, Constructor类，分别表示未知类型的域，方法，构造器。getFields( )得到Field数组,
 同理getMethods( )和 getConstructors( )是Method数组，Constructor数组。比较常用的是对Method对象调用invoke()使用Method关联的方法, 对Field对象
@@ -151,43 +151,43 @@ I don&rsquo;t like water</p>
 <h3 id="类方法提取器">类方法提取器</h3>
 <p>通过反射机制能很好帮助我们了解某个类的完整接口。</p>
 <p>例程：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// e.g {java ShowMethods ShowMethods}
-</span><span style="color:#75715e"></span><span style="color:#f92672">import</span> java.lang.reflect.*<span style="color:#f92672">;</span>
+<pre><code>// e.g {java ShowMethods ShowMethods}
+import java.lang.reflect.*;
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ShowMethods</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">&lt;</span>  1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-            Class<span style="color:#f92672">&lt;?&gt;</span>  c <span style="color:#f92672">=</span> Class<span style="color:#f92672">.</span><span style="color:#a6e22e">forName</span><span style="color:#f92672">(</span>args<span style="color:#f92672">[</span>0<span style="color:#f92672">]);</span>
-            Method<span style="color:#f92672">[]</span> methods <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span><span style="color:#a6e22e">getMethods</span><span style="color:#f92672">();</span>
-            Constructor<span style="color:#f92672">[]</span> ctors <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span><span style="color:#a6e22e">getConstructors</span><span style="color:#f92672">();</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Method method <span style="color:#f92672">:</span> methods<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>method<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">());</span>
-                <span style="color:#f92672">}</span>
-                <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Constructor ctor <span style="color:#f92672">:</span> ctors<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ctor<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">());</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Method method <span style="color:#f92672">:</span> methods<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>method<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">().</span><span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span>args<span style="color:#f92672">[</span>1<span style="color:#f92672">])</span> <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>method<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">());</span>
-                    <span style="color:#f92672">}</span>
-                <span style="color:#f92672">}</span>
-                <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Constructor ctor <span style="color:#f92672">:</span> ctors<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>ctor<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">().</span><span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span>args<span style="color:#f92672">[</span>1<span style="color:#f92672">])</span> <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ctor<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">());</span>
-                    <span style="color:#f92672">}</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>ClassNotFoundException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;No such class: &#34;</span> <span style="color:#f92672">+</span> e<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>output:</p>
+public class ShowMethods {
+    public static void main(String[] args) {
+        if (args.length &lt;  1) {
+            System.exit(0);
+        }
+        try {
+            Class&lt;?&gt;  c = Class.forName(args[0]);
+            Method[] methods = c.getMethods();
+            Constructor[] ctors = c.getConstructors();
+            if (args.length == 1) {
+                for (Method method : methods) {
+                    System.out.println(method.toString());
+                }
+                for (Constructor ctor : ctors) {
+                    System.out.println(ctor.toString());
+                }
+            } else {
+                for (Method method : methods) {
+                    if (method.toString().indexOf(args[1]) != -1) {
+                        System.out.println(method.toString());
+                    }
+                }
+                for (Constructor ctor : ctors) {
+                    if (ctor.toString().indexOf(args[1]) != -1) {
+                        System.out.println(ctor.toString());
+                    }
+                }
+            }
+        } catch(ClassNotFoundException e) {
+            System.out.println(&quot;No such class: &quot; + e);
+        }
+    }
+}
+</code></pre><p>output:</p>
 <blockquote>
 <p>public static void ShowMethods.main(java.lang.String[])
 public final void java.lang.Object.wait(long,int) throws
@@ -206,57 +206,57 @@ public ShowMethods()</p>
 </blockquote>
 <h2 id="动态代理">动态代理</h2>
 <p>例程:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.lang.reflect.*<span style="color:#f92672">;</span>
+<pre><code>import java.lang.reflect.*;
 
-<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Interfaces</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doSomething</span><span style="color:#f92672">();</span>
+interface Interfaces {
+    void doSomething();
 
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">somethingElse</span><span style="color:#f92672">(</span>String arg<span style="color:#f92672">);</span>
-<span style="color:#f92672">}</span>
+    void somethingElse(String arg);
+}
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RealObject</span> <span style="color:#66d9ef">implements</span> Interfaces <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doSomething</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;doSomething&#34;</span><span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
+class RealObject implements Interfaces {
+    public void doSomething() {
+        System.out.println(&quot;doSomething&quot;);
+    }
 
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">somethingElse</span><span style="color:#f92672">(</span>String arg<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;somethingElse : &#34;</span> <span style="color:#f92672">+</span> arg<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
+    public void somethingElse(String arg) {
+        System.out.println(&quot;somethingElse : &quot; + arg);
+    }
+}
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DynamicProxyHandler</span> <span style="color:#66d9ef">implements</span> InvocationHandler <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">private</span> Object proxied<span style="color:#f92672">;</span> <span style="color:#75715e">// 被代理
-</span><span style="color:#75715e"></span>
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DynamicProxyHandler</span><span style="color:#f92672">(</span>Object proxied<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">proxied</span> <span style="color:#f92672">=</span> proxied<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-    <span style="color:#75715e">// 接口调用重定向为代理的调用
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> Object <span style="color:#a6e22e">invoke</span><span style="color:#f92672">(</span>Object proxy<span style="color:#f92672">,</span> Method method<span style="color:#f92672">,</span> Object<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Throwable <span style="color:#f92672">{</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
-                <span style="color:#e6db74">&#34;**** proxy: &#34;</span> <span style="color:#f92672">+</span> proxy<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, method: &#34;</span> <span style="color:#f92672">+</span> method <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, args: &#34;</span> <span style="color:#f92672">+</span> args<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>args <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
-            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Object arg <span style="color:#f92672">:</span> args<span style="color:#f92672">)</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> arg<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">return</span> method<span style="color:#f92672">.</span><span style="color:#a6e22e">invoke</span><span style="color:#f92672">(</span>proxied<span style="color:#f92672">,</span> args<span style="color:#f92672">);</span> <span style="color:#75715e">// 转发给被代理对象调用
-</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
+class DynamicProxyHandler implements InvocationHandler {
+    private Object proxied; // 被代理
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SimpleDynamicProxy</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">consumer</span><span style="color:#f92672">(</span>Interfaces iface<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        iface<span style="color:#f92672">.</span><span style="color:#a6e22e">doSomething</span><span style="color:#f92672">();</span>
-        iface<span style="color:#f92672">.</span><span style="color:#a6e22e">somethingElse</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;bonobo&#34;</span><span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
+    public DynamicProxyHandler(Object proxied) {
+        this.proxied = proxied;
+    }
+    // 接口调用重定向为代理的调用
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println(
+                &quot;**** proxy: &quot; + proxy.getClass() + &quot;, method: &quot; + method + &quot;, args: &quot; + args);
+        if (args != null)
+            for (Object arg : args)
+                System.out.println(&quot; &quot; + arg);
+        return method.invoke(proxied, args); // 转发给被代理对象调用
+    }
+}
 
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        RealObject real <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RealObject<span style="color:#f92672">();</span>
-        consumer<span style="color:#f92672">(</span>real<span style="color:#f92672">);</span>
-        <span style="color:#75715e">// 添加代理并再次调用实际对象
-</span><span style="color:#75715e"></span>        Interfaces proxy <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Interfaces<span style="color:#f92672">)</span> Proxy<span style="color:#f92672">.</span><span style="color:#a6e22e">newProxyInstance</span><span style="color:#f92672">(</span>Interfaces<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getClassLoader</span><span style="color:#f92672">(),</span>
-                <span style="color:#66d9ef">new</span> Class<span style="color:#f92672">[]</span> <span style="color:#f92672">{</span> Interfaces<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span> <span style="color:#f92672">},</span> <span style="color:#66d9ef">new</span> DynamicProxyHandler<span style="color:#f92672">(</span>real<span style="color:#f92672">));</span>
-        consumer<span style="color:#f92672">(</span>proxy<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>Output:</p>
+public class SimpleDynamicProxy {
+    public static void consumer(Interfaces iface) {
+        iface.doSomething();
+        iface.somethingElse(&quot;bonobo&quot;);
+    }
+
+    public static void main(String[] args) {
+        RealObject real = new RealObject();
+        consumer(real);
+        // 添加代理并再次调用实际对象
+        Interfaces proxy = (Interfaces) Proxy.newProxyInstance(Interfaces.class.getClassLoader(),
+                new Class[] { Interfaces.class }, new DynamicProxyHandler(real));
+        consumer(proxy);
+    }
+}
+</code></pre><p>Output:</p>
 <blockquote>
 <p>doSomething<br>
 somethingElse : bonobo<br>
@@ -272,121 +272,121 @@ somethingElse : bonobo</p>
 <p>静态方法Proxy.newProxyInstance()可以创建动态代理，它接受三个参数，一、类加载器,通过已经加载的对象获取，如上的Interfaces.class.getClassLoader( );二、希望代理实现的接口列表不包括类或者抽象类;三、InvocationHandler接口的实现。动态代理将所有方法的调用重定向给调用处理器，所以常常向调用处理器的构造器传入“实际”对象的引用，以便调用处理器请求转发任务。</p>
 <h2 id="空对象">空对象</h2>
 <p>内置null表示缺少对象，每次使用引用是都必须检测是否为null，使用null会引发NullPointerException异常;而使用空对象就可以不检查null，但同样来表示为空值，可以简单理解为通过实际对象虚拟的空值对象，来替代null，变得更智能。不过如果需要测试其为空，只要创建一个标记接口就行了。如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Null.java
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Null</span> <span style="color:#f92672">{</span> <span style="color:#f92672">}</span>
-</code></pre></div><p>让空对象实现这个标记接口，通过<code>instanceof</code>来探测空对象，不强制为所有的类添加像isNull( )方法。空对象通常是单例，用<code>staic</code> 和<code>final</code> 修饰，故还可以使用equals()，== 与 空对象比较。空对象可以使用具体类或接口来创建，如果是通过接口，可以使用DynamicProxy自动创建空对象。</p>
+<pre><code>// Null.java
+public interface Null { }
+</code></pre><p>让空对象实现这个标记接口，通过<code>instanceof</code>来探测空对象，不强制为所有的类添加像isNull( )方法。空对象通常是单例，用<code>staic</code> 和<code>final</code> 修饰，故还可以使用equals()，== 与 空对象比较。空对象可以使用具体类或接口来创建，如果是通过接口，可以使用DynamicProxy自动创建空对象。</p>
 <p>例程：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Book.java
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Book</span> <span style="color:#f92672">{</span>
-    String <span style="color:#a6e22e">title</span><span style="color:#f92672">();</span>
-    <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">price</span><span style="color:#f92672">();</span>
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">count</span><span style="color:#f92672">();</span>
-    <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">total</span><span style="color:#f92672">();</span>
-    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test</span><span style="color:#f92672">(</span>Book b<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>b <span style="color:#66d9ef">instanceof</span> Null<span style="color:#f92672">)</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Null Object&#34;</span><span style="color:#f92672">);</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;title : &#34;</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">.</span><span style="color:#a6e22e">title</span><span style="color:#f92672">());</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;count: &#34;</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">.</span><span style="color:#a6e22e">count</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, price: &#34;</span>
-             <span style="color:#f92672">+</span> b<span style="color:#f92672">.</span><span style="color:#a6e22e">price</span><span style="color:#f92672">());</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;total price: &#34;</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">.</span><span style="color:#a6e22e">total</span><span style="color:#f92672">());</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
+<pre><code>// Book.java
+public interface Book {
+    String title();
+    double price();
+    int count();
+    double total();
+    class Test {
+        public static void test(Book b) {
+            if (b instanceof Null)
+                System.out.println(&quot;Null Object&quot;);
+            System.out.println(&quot;title : &quot; + b.title());
+            System.out.println(&quot;count: &quot; + b.count() + &quot;, price: &quot;
+             + b.price());
+            System.out.println(&quot;total price: &quot; + b.total());
+        }
+    }
+}
 
-<span style="color:#75715e">// Novel.java
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Novel</span> <span style="color:#66d9ef">implements</span> Book <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">private</span> String title<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> price<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> count<span style="color:#f92672">;</span>
+// Novel.java
+public class Novel implements Book {
+    private String title;
+    private double price;
+    private int count;
 
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Novel</span><span style="color:#f92672">(</span>String title<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> title<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    public Novel(String title) {
+        this.title = title;
+    }
 
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Novel</span><span style="color:#f92672">(</span>String title<span style="color:#f92672">,</span> <span style="color:#66d9ef">double</span> price<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">(</span>title<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> price<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    public Novel(String title, double price) {
+        this(title);
+        this.price = price;
+    }
 
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Novel</span><span style="color:#f92672">(</span>String title<span style="color:#f92672">,</span> <span style="color:#66d9ef">double</span> price<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> count<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">(</span>title<span style="color:#f92672">,</span> price<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> count<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    public Novel(String title, double price, int count) {
+        this(title, price);
+        this.count = count;
+    }
 
-    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">title</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> title<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    public String title() {
+        return title;
+    }
 
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">count</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> count<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    public int count() {
+        return count;
+    }
 
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">price</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> price<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    public double price() {
+        return price;
+    }
 
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">total</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> price <span style="color:#f92672">*</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">double</span><span style="color:#f92672">)</span> count<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    public double total() {
+        return price * (double) count;
+    }
 
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        Book<span style="color:#f92672">.</span><span style="color:#a6e22e">Test</span><span style="color:#f92672">.</span><span style="color:#a6e22e">test</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Novel<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Robinson Crusoe by Daniel Defoe&#34;</span><span style="color:#f92672">,</span> 47<span style="color:#f92672">.</span><span style="color:#a6e22e">10</span><span style="color:#f92672">,</span> 3<span style="color:#f92672">));</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>output:</p>
+    public static void main(String[] args) {
+        Book.Test.test(new Novel(&quot;Robinson Crusoe by Daniel Defoe&quot;, 47.10, 3));
+    }
+}
+</code></pre><p>output:</p>
 <blockquote>
 <p>title : Robinson Crusoe by Daniel Defoe<br>
 count: 3, price: 47.1<br>
 total price: 141.3</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// NullBook.java
-</span><span style="color:#75715e"></span><span style="color:#f92672">import</span> java.lang.reflect.*<span style="color:#f92672">;</span>
+<pre><code>// NullBook.java
+import java.lang.reflect.*;
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NullBookProxyHandler</span> <span style="color:#66d9ef">implements</span> InvocationHandler <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">private</span> String nullName<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> Book proxied <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NBook<span style="color:#f92672">();</span>
+class NullBookProxyHandler implements InvocationHandler {
+    private String nullName;
+    private Book proxied = new NBook();
 
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">NullBookProxyHandler</span><span style="color:#f92672">(</span>Class<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> Book<span style="color:#f92672">&gt;</span> type<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        nullName <span style="color:#f92672">=</span> type<span style="color:#f92672">.</span><span style="color:#a6e22e">getSimpleName</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; NullBook&#34;</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    public NullBookProxyHandler(Class&lt;? extends Book&gt; type) {
+        nullName = type.getSimpleName() + &quot; NullBook&quot;;
+    }
 
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NBook</span> <span style="color:#66d9ef">implements</span> Book<span style="color:#f92672">,</span> Null <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">title</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">return</span> nullName<span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
+    private class NBook implements Book, Null {
+        public String title() {
+            return nullName;
+        }
 
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">count</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
+        public int count() {
+            return 0;
+        }
 
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">price</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
+        public double price() {
+            return 0.0;
+        }
 
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">total</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
+        public double total() {
+            return 0.0;
+        }
+    }
 
-    <span style="color:#66d9ef">public</span> Object <span style="color:#a6e22e">invoke</span><span style="color:#f92672">(</span>Object proxy<span style="color:#f92672">,</span> Method method<span style="color:#f92672">,</span> Object<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Throwable <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> method<span style="color:#f92672">.</span><span style="color:#a6e22e">invoke</span><span style="color:#f92672">(</span>proxied<span style="color:#f92672">,</span> args<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        return method.invoke(proxied, args);
+    }
+}
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NullBook</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Book <span style="color:#a6e22e">newNullBook</span><span style="color:#f92672">(</span>Class<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> Book<span style="color:#f92672">&gt;</span> type<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>Book<span style="color:#f92672">)</span> Proxy<span style="color:#f92672">.</span><span style="color:#a6e22e">newProxyInstance</span><span style="color:#f92672">(</span>Book<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getClassLoader</span><span style="color:#f92672">(),</span> <span style="color:#66d9ef">new</span> Class<span style="color:#f92672">[]</span> <span style="color:#f92672">{</span> Book<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> Null<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span> <span style="color:#f92672">},</span>
-                <span style="color:#66d9ef">new</span> NullBookProxyHandler<span style="color:#f92672">(</span>type<span style="color:#f92672">));</span>
-    <span style="color:#f92672">}</span>
+public class NullBook {
+    public static Book newNullBook(Class&lt;? extends Book&gt; type) {
+        return (Book) Proxy.newProxyInstance(Book.class.getClassLoader(), new Class[] { Book.class, Null.class },
+                new NullBookProxyHandler(type));
+    }
 
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        Book books<span style="color:#f92672">[]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">new</span> Novel<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thinking in Java&#34;</span><span style="color:#f92672">,</span> 108<span style="color:#f92672">.</span><span style="color:#a6e22e">00</span><span style="color:#f92672">,</span> 1<span style="color:#f92672">),</span> newNullBook<span style="color:#f92672">(</span>Novel<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span> <span style="color:#f92672">};</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Book book <span style="color:#f92672">:</span> books<span style="color:#f92672">)</span>
-            Book<span style="color:#f92672">.</span><span style="color:#a6e22e">Test</span><span style="color:#f92672">.</span><span style="color:#a6e22e">test</span><span style="color:#f92672">(</span>book<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>output:</p>
+    public static void main(String[] args) {
+        Book books[] = { new Novel(&quot;Thinking in Java&quot;, 108.00, 1), newNullBook(Novel.class) };
+        for (Book book : books)
+            Book.Test.test(book);
+    }
+}
+</code></pre><p>output:</p>
 <blockquote>
 <p>title : Thinking in Java<br>
 count: 1, price: 108.0<br>
@@ -401,41 +401,41 @@ total price: 0.0</p>
 <h2 id="接口与类型的信息">接口与类型的信息</h2>
 <p>通过反射机制几乎可以访问类的任何成员，无论是private成员还是包访问权限的成员，抑或是内部类，匿名类。</p>
 <p>举个简单例程：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.lang.reflect.*<span style="color:#f92672">;</span>
+<pre><code>import java.lang.reflect.*;
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WithPrivateFinalField</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> String s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;I&#39;m totally safe&#34;</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> String s2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Am I safe?&#34;</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">toString</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;i = &#34;</span> <span style="color:#f92672">+</span> i <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">+</span> s <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">+</span> s2<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
+class WithPrivateFinalField {
+    private int i = 1;
+    private final String s = &quot;I'm totally safe&quot;;
+    private String s2 = &quot;Am I safe?&quot;;
+    public String toString() {
+        return &quot;i = &quot; + i + &quot;, &quot; + s + &quot;, &quot; + s2;
+    }
+}
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ModifyingPrivateFields</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
-        WithPrivateFinalField pf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> WithPrivateFinalField<span style="color:#f92672">();</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>pf<span style="color:#f92672">);</span>
-        Field f <span style="color:#f92672">=</span> pf<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getDeclaredField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;i&#34;</span><span style="color:#f92672">);</span>
-        f<span style="color:#f92672">.</span><span style="color:#a6e22e">setAccessible</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;f.getInt(pf): &#34;</span> <span style="color:#f92672">+</span> f<span style="color:#f92672">.</span><span style="color:#a6e22e">getInt</span><span style="color:#f92672">(</span>pf<span style="color:#f92672">));</span>
-        f<span style="color:#f92672">.</span><span style="color:#a6e22e">setInt</span><span style="color:#f92672">(</span>pf<span style="color:#f92672">,</span> 47<span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>pf<span style="color:#f92672">);</span>
+public class ModifyingPrivateFields {
+    public static void main(String[] args) throws Exception {
+        WithPrivateFinalField pf = new WithPrivateFinalField();
+        System.out.println(pf);
+        Field f = pf.getClass().getDeclaredField(&quot;i&quot;);
+        f.setAccessible(true);
+        System.out.println(&quot;f.getInt(pf): &quot; + f.getInt(pf));
+        f.setInt(pf, 47);
+        System.out.println(pf);
 
-        f <span style="color:#f92672">=</span> pf<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getDeclaredField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;s&#34;</span><span style="color:#f92672">);</span>
-        f<span style="color:#f92672">.</span><span style="color:#a6e22e">setAccessible</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;f.get(pf): &#34;</span> <span style="color:#f92672">+</span> f<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>pf<span style="color:#f92672">));</span>
-        f<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>pf<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;No, you&#39;re not!&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>pf<span style="color:#f92672">);</span>
+        f = pf.getClass().getDeclaredField(&quot;s&quot;);
+        f.setAccessible(true);
+        System.out.println(&quot;f.get(pf): &quot; + f.get(pf));
+        f.set(pf, &quot;No, you're not!&quot;);
+        System.out.println(pf);
 
-        f <span style="color:#f92672">=</span> pf<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getDeclaredField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;s2&#34;</span><span style="color:#f92672">);</span>
-        f<span style="color:#f92672">.</span><span style="color:#a6e22e">setAccessible</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;f.get(pf): &#34;</span> <span style="color:#f92672">+</span> f<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>pf<span style="color:#f92672">));</span>
-        f<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>pf<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;No, you&#39;re not&#34;</span><span style="color:#f92672">);</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>pf<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>Output:</p>
+        f = pf.getClass().getDeclaredField(&quot;s2&quot;);
+        f.setAccessible(true);
+        System.out.println(&quot;f.get(pf): &quot; + f.get(pf));
+        f.set(pf, &quot;No, you're not&quot;);
+        System.out.println(pf);
+    }
+}
+</code></pre><p>Output:</p>
 <blockquote>
 <p>i = 1, I&rsquo;m totally safe, Am I safe?<br>
 f.getInt(pf): 1<br>

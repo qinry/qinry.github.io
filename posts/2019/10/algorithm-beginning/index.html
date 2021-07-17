@@ -16,6 +16,7 @@
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -27,13 +28,12 @@
   <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
 
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/json.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/bash.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/properties.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/plaintext.min.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
 
 
 </head>
@@ -95,140 +95,140 @@
 <hr>
 <h4 id="最大子序列和问题解">最大子序列和问题解</h4>
 <h5 id="算法1嵌套3层for循环">算法1（嵌套3层for循环）</h5>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span>
-<span style="color:#a6e22e">MaxSubsequenceSum</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> N)
+<pre><code>int
+MaxSubsequenceSum(const int A[], int N)
 {
-    <span style="color:#66d9ef">int</span> ThisSum, MaxSum, i, j, k;
+    int ThisSum, MaxSum, i, j, k;
 
-    MaxSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> N; i<span style="color:#f92672">++</span>)
-        <span style="color:#66d9ef">for</span> (j <span style="color:#f92672">=</span> i; j <span style="color:#f92672">&lt;</span> N; j<span style="color:#f92672">++</span>)
+    MaxSum = 0;
+    for (i = 0; i &lt; N; i++)
+        for (j = i; j &lt; N; j++)
         {
-            ThisSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-            <span style="color:#66d9ef">for</span> (k <span style="color:#f92672">=</span> i; k <span style="color:#f92672">&lt;=</span> j; k<span style="color:#f92672">++</span>)
-                ThisSum <span style="color:#f92672">+=</span> A[k];
-            <span style="color:#66d9ef">if</span> (ThisSum <span style="color:#f92672">&gt;</span> MaxSum)
-                MaxSum <span style="color:#f92672">=</span> ThisSum;
+            ThisSum = 0;
+            for (k = i; k &lt;= j; k++)
+                ThisSum += A[k];
+            if (ThisSum &gt; MaxSum)
+                MaxSum = ThisSum;
         }
-    <span style="color:#66d9ef">return</span> MaxSum;
+    return MaxSum;
 }
-</code></pre></div><h5 id="算法2嵌套2层for循环">算法2（嵌套2层for循环）</h5>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span>
-<span style="color:#a6e22e">MaxSubsequenceSum</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> N)
+</code></pre><h5 id="算法2嵌套2层for循环">算法2（嵌套2层for循环）</h5>
+<pre><code>int
+MaxSubsequenceSum(const int A[], int N)
 {
-    <span style="color:#66d9ef">int</span> ThisSum, MaxSum, i, j;
+    int ThisSum, MaxSum, i, j;
 
-    MaxSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> N; i<span style="color:#f92672">++</span>)
+    MaxSum = 0;
+    for (i = 0; i &lt; N; i++)
     {
-        ThisSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-        <span style="color:#66d9ef">for</span> (j <span style="color:#f92672">=</span> i; j <span style="color:#f92672">&lt;</span> N; j<span style="color:#f92672">++</span>)
+        ThisSum = 0;
+        for (j = i; j &lt; N; j++)
         {
-            ThisSum <span style="color:#f92672">+=</span> A[j];
-            <span style="color:#66d9ef">if</span> (ThisSum <span style="color:#f92672">&gt;</span> MaxSum)
-                MaxSum <span style="color:#f92672">=</span> ThisSum;
+            ThisSum += A[j];
+            if (ThisSum &gt; MaxSum)
+                MaxSum = ThisSum;
         }
     }
-    <span style="color:#66d9ef">return</span> MaxSum;
+    return MaxSum;
 }
-</code></pre></div><h5 id="算法3分治">算法3（分治）</h5>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Max3</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y, <span style="color:#66d9ef">int</span> z)
+</code></pre><h5 id="算法3分治">算法3（分治）</h5>
+<pre><code>int Max3(int x, int y, int z)
 {
-    <span style="color:#66d9ef">return</span> (x <span style="color:#f92672">&gt;</span> y
-            <span style="color:#f92672">?</span> (x <span style="color:#f92672">&gt;</span> z <span style="color:#f92672">?</span> x : z)
-            <span style="color:#f92672">:</span> (y <span style="color:#f92672">&gt;</span> z <span style="color:#f92672">?</span> y : z)
+    return (x &gt; y
+            ? (x &gt; z ? x : z)
+            : (y &gt; z ? y : z)
             );
 }
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span>
-<span style="color:#a6e22e">MaxSubSum</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> Left, <span style="color:#66d9ef">int</span> Right)
+static int
+MaxSubSum(const int A[], int Left, int Right)
 {
-    <span style="color:#66d9ef">int</span> MaxLeftSum, MaxRightSum;
-    <span style="color:#66d9ef">int</span> MaxLeftBorderSum, MaxRightBorderSum;
-    <span style="color:#66d9ef">int</span> LeftBorderSum, RightBorderSum;
-    <span style="color:#66d9ef">int</span> Centerm i;
+    int MaxLeftSum, MaxRightSum;
+    int MaxLeftBorderSum, MaxRightBorderSum;
+    int LeftBorderSum, RightBorderSum;
+    int Centerm i;
 
-    <span style="color:#66d9ef">if</span> ( Left <span style="color:#f92672">==</span> Right )
-        <span style="color:#66d9ef">if</span> ( A[Left] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> )
-            <span style="color:#66d9ef">return</span> A[ Left ];
-        <span style="color:#66d9ef">else</span>
-            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+    if ( Left == Right )
+        if ( A[Left] &gt; 0 )
+            return A[ Left ];
+        else
+            return 0;
 
-    Center <span style="color:#f92672">=</span> (Left <span style="color:#f92672">+</span> Right) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
-    MaxLeftSum <span style="color:#f92672">=</span> MaxSubSum( A, Left, Center);
-    MaxRightSum <span style="color:#f92672">=</span> MaxSubSum(A, Center <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, Right);
+    Center = (Left + Right) / 2;
+    MaxLeftSum = MaxSubSum( A, Left, Center);
+    MaxRightSum = MaxSubSum(A, Center + 1, Right);
 
-    MaxLeftBorderSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;LeftBorderSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> Center; i <span style="color:#f92672">&gt;=</span> Left; i<span style="color:#f92672">--</span>)
+    MaxLeftBorderSum = 0;LeftBorderSum = 0;
+    for (i = Center; i &gt;= Left; i--)
     {
-        LeftBorderSum <span style="color:#f92672">+=</span> A[i];
-        <span style="color:#66d9ef">if</span> (LeftBorederSum <span style="color:#f92672">&gt;</span> MaxLeftBorderSun)
-            MaxLeftBorderSum <span style="color:#f92672">=</span> LeftBorderSum;
+        LeftBorderSum += A[i];
+        if (LeftBorederSum &gt; MaxLeftBorderSun)
+            MaxLeftBorderSum = LeftBorderSum;
     }
 
-    MaxRightBorderSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;RightBorderSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> Center <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> Right; i<span style="color:#f92672">++</span>)
+    MaxRightBorderSum = 0;RightBorderSum = 0;
+    for (i = Center + 1; i &lt; Right; i++)
     {
-        RightBorderSum <span style="color:#f92672">+=</span> A[i];
-        <span style="color:#66d9ef">if</span> (RightBorderSum <span style="color:#f92672">&gt;</span> MaxRightBorderSum)
-            MaxRightBorderSum <span style="color:#f92672">=</span> RightBorderSum;
+        RightBorderSum += A[i];
+        if (RightBorderSum &gt; MaxRightBorderSum)
+            MaxRightBorderSum = RightBorderSum;
     }
-    <span style="color:#66d9ef">return</span> Max3(MaxLeftSum, MaxRightSum,
-            MaxLeftBorderSum <span style="color:#f92672">+</span> MaxRightBorderSum);
+    return Max3(MaxLeftSum, MaxRightSum,
+            MaxLeftBorderSum + MaxRightBorderSum);
 }
-<span style="color:#66d9ef">int</span>
-<span style="color:#a6e22e">MaxSubsquenceSum</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> N)
+int
+MaxSubsquenceSum(const int A[], int N)
 {
-    <span style="color:#66d9ef">return</span> MaxSubSum(A, <span style="color:#ae81ff">0</span>, N <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
+    return MaxSubSum(A, 0, N - 1);
 }
-</code></pre></div><h5 id="算法4联机算法">算法4(联机算法)</h5>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span>
-<span style="color:#a6e22e">MaxSubsquenceSum</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> N)
+</code></pre><h5 id="算法4联机算法">算法4(联机算法)</h5>
+<pre><code>int
+MaxSubsquenceSum(const int A[], int N)
 {
-    <span style="color:#66d9ef">int</span> ThisSum, MaxSum, i;
+    int ThisSum, MaxSum, i;
 
-    ThisSum <span style="color:#f92672">=</span> MaxSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> N; i<span style="color:#f92672">++</span>)
+    ThisSum = MaxSum = 0;
+    for (i = 0; i &lt; N; i++)
     {
-        ThisSum <span style="color:#f92672">+=</span> A[i];
+        ThisSum += A[i];
 
-        <span style="color:#66d9ef">if</span> (ThisSum <span style="color:#f92672">&gt;</span> MaxSum)
-            MaxSum <span style="color:#f92672">=</span> ThisSum;
-        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (ThisSum <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>)
-            ThisSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        if (ThisSum &gt; MaxSum)
+            MaxSum = ThisSum;
+        else if (ThisSum &lt; 0)
+            ThisSum = 0;
     }
-    <span style="color:#66d9ef">return</span> MaxSum;
+    return MaxSum;
 }
-</code></pre></div><h4 id="欧几里得算法">欧几里得算法</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">gcd</span>(<span style="color:#66d9ef">int</span> M, <span style="color:#66d9ef">int</span> N)
+</code></pre><h4 id="欧几里得算法">欧几里得算法</h4>
+<pre><code>int gcd(int M, int N)
 {
-    <span style="color:#66d9ef">int</span> Rem;
-    <span style="color:#66d9ef">while</span> ( N <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> )
+    int Rem;
+    while ( N == 0 )
     {
-        Rem <span style="color:#f92672">=</span> M <span style="color:#f92672">%</span> N;
-        M <span style="color:#f92672">=</span> N;
-        N <span style="color:#f92672">=</span> Rem;
+        Rem = M % N;
+        M = N;
+        N = Rem;
     }
-    <span style="color:#66d9ef">return</span> M;
+    return M;
 }
-</code></pre></div><h4 id="求幂运算">求幂运算</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">_Bool <span style="color:#a6e22e">IsEven</span>(<span style="color:#66d9ef">int</span> N)
+</code></pre><h4 id="求幂运算">求幂运算</h4>
+<pre><code>_Bool IsEven(int N)
 {
-    <span style="color:#66d9ef">if</span> (N <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span>)
-        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+    if (N % 2)
+        return 0;
+    return 1;
 }
-<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Pow</span>(<span style="color:#66d9ef">int</span> X, <span style="color:#66d9ef">int</span> N)
+int Pow(int X, int N)
 {
-    <span style="color:#66d9ef">if</span> (N <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
-        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
-    <span style="color:#66d9ef">if</span> (N <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)
-        <span style="color:#66d9ef">return</span> X;
-    <span style="color:#66d9ef">if</span> IsEven(N)
-        <span style="color:#66d9ef">return</span> Pow(X <span style="color:#f92672">*</span> X, N <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>);
-    <span style="color:#66d9ef">else</span>
-        <span style="color:#66d9ef">return</span> Pow(X <span style="color:#f92672">*</span> X, N <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">*</span> X;
+    if (N == 0)
+        return 1;
+    if (N == 1)
+        return X;
+    if IsEven(N)
+        return Pow(X * X, N / 2);
+    else
+        return Pow(X * X, N / 2) * X;
 }
-</code></pre></div>
+</code></pre>
 </div>
 
 

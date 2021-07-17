@@ -16,6 +16,7 @@
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -27,13 +28,12 @@
   <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
 
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/json.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/bash.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/properties.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/plaintext.min.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
 
 
 </head>
@@ -135,11 +135,11 @@
 <h2 id="三元操作符">三元操作符</h2>
 <p>形式: (boolean-exp) ? (true-result) : (false-true);</p>
 <p>等价为条件判断语句</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">boolean</span><span style="color:#f92672">-</span>exp<span style="color:#f92672">)</span>
-    <span style="color:#66d9ef">true</span><span style="color:#f92672">-</span>result<span style="color:#f92672">;</span>
-<span style="color:#66d9ef">else</span>
-    <span style="color:#66d9ef">false</span><span style="color:#f92672">-</span>result<span style="color:#f92672">;</span>
-</code></pre></div><h2 id="字符串操作符">字符串操作符</h2>
+<pre><code>if (boolean-exp)
+    true-result;
+else
+    false-result;
+</code></pre><h2 id="字符串操作符">字符串操作符</h2>
 <ul>
 <li><code>+</code> 将两个字符串拼接得到一个临时对象</li>
 <li><code>+=</code> 将后字符串合并到前字符串，后字符串不改变</li>
@@ -160,12 +160,12 @@
 <h2 id="生成随机数的类">生成随机数的类</h2>
 <p>java.util 中有 Random类用于生成随机数列, 有成员方法nextInt(int), nextFloat(), nextLong(), nextDouble() 返回对应的类型值
 用法如下:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Random rand <span style="color:#f92672">=</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">);</span>
-<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> rand<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">(</span>20<span style="color:#f92672">);</span> <span style="color:#75715e">// 生成 0 ~ 19 中的数， 不包括
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">float</span> f <span style="color:#f92672">=</span> rand<span style="color:#f92672">.</span><span style="color:#a6e22e">nextFloat</span><span style="color:#f92672">();</span>
-<span style="color:#66d9ef">double</span> d  <span style="color:#f92672">=</span> rand<span style="color:#f92672">.</span><span style="color:#a6e22e">nextDouble</span><span style="color:#f92672">();</span>
-<span style="color:#66d9ef">long</span> l <span style="color:#f92672">=</span> rand<span style="color:#f92672">.</span><span style="color:#a6e22e">nextLong</span><span style="color:#f92672">();</span>
-</code></pre></div>
+<pre><code>Random rand = Random(47);
+int i = rand.nextInt(20); // 生成 0 ~ 19 中的数， 不包括
+float f = rand.nextFloat();
+double d  = rand.nextDouble();
+long l = rand.nextLong();
+</code></pre>
 </div>
 
 

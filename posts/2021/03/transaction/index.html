@@ -16,6 +16,7 @@
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -27,13 +28,12 @@
   <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
 
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/json.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/bash.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/properties.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/plaintext.min.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
 
 
 </head>
@@ -90,11 +90,11 @@
 
   <h2 id="一事务的语法">一、事务的语法</h2>
 <p>非常简单</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">start</span> tansaction; <span style="color:#75715e">-- 事务开始，也可以换成begin;
-</span><span style="color:#75715e"></span>... <span style="color:#75715e">-- 一系列SQL语句完成一个操作
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">commit</span>; <span style="color:#75715e">-- 提交当前的修改
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">rollback</span>; <span style="color:#75715e">-- 撤销修改
-</span></code></pre></div><h2 id="二事务四大特性">二、事务四大特性</h2>
+<pre><code>start tansaction; -- 事务开始，也可以换成begin;
+... -- 一系列SQL语句完成一个操作
+commit; -- 提交当前的修改
+rollback; -- 撤销修改
+</code></pre><h2 id="二事务四大特性">二、事务四大特性</h2>
 <p>事务重要的特性，原子性，一致性，隔离性，持久性。</p>
 <ul>
 <li>原子性(Atomicity)
@@ -161,15 +161,15 @@
 </table>
 <p>从上往下，隔离级别越高，并发安全越高，但并发性越差。一般数据默认级别为读已提交或可重复读。</p>
 <p>查询当前会话的事务隔离级别</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#f92672">@@</span>tx_isolation;
-<span style="color:#66d9ef">select</span> <span style="color:#f92672">@@</span>transaction_isolation; <span style="color:#75715e">-- mysql8的命令
-</span><span style="color:#75715e"></span>
-</code></pre></div><p>设置当前会话的事务隔离级别</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">set</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">transaction</span> <span style="color:#66d9ef">isolation</span> <span style="color:#66d9ef">level</span> <span style="color:#66d9ef">read</span> uncommited;
-<span style="color:#66d9ef">set</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">transaction</span> <span style="color:#66d9ef">isolation</span> <span style="color:#66d9ef">level</span> <span style="color:#66d9ef">read</span> commited;
-<span style="color:#66d9ef">set</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">transaction</span> <span style="color:#66d9ef">isolation</span> <span style="color:#66d9ef">level</span> <span style="color:#66d9ef">repeatable</span> <span style="color:#66d9ef">read</span>;
-<span style="color:#66d9ef">set</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">transaction</span> <span style="color:#66d9ef">isolation</span> <span style="color:#66d9ef">level</span> <span style="color:#66d9ef">serializable</span>;
-</code></pre></div><p>一一介绍隔离级别</p>
+<pre><code>select @@tx_isolation;
+select @@transaction_isolation; -- mysql8的命令
+
+</code></pre><p>设置当前会话的事务隔离级别</p>
+<pre><code>set session transaction isolation level read uncommited;
+set session transaction isolation level read commited;
+set session transaction isolation level repeatable read;
+set session transaction isolation level serializable;
+</code></pre><p>一一介绍隔离级别</p>
 <ul>
 <li>读未提交</li>
 </ul>
@@ -211,20 +211,20 @@
 <p>1.对查询进行优化，要尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引</p>
 <p>2.应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫</p>
 <p>描，如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#960050;background-color:#1e0010">属性</span><span style="color:#ae81ff">2</span> <span style="color:#66d9ef">from</span> <span style="color:#960050;background-color:#1e0010">表名</span> <span style="color:#66d9ef">where</span> <span style="color:#960050;background-color:#1e0010">属性</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">null</span>;
-</code></pre></div><p>最好不要给数据库留NULL，尽可能的使用 NOT NULL填充数据库.</p>
+<pre><code>select 属性2 from 表名 where 属性1 is null;
+</code></pre><p>最好不要给数据库留NULL，尽可能的使用 NOT NULL填充数据库.</p>
 <p>备注、描述、评论之类的可以设置为 NULL，其他的，最好不要使用NULL。</p>
 <p>3.应尽量避免在 where 子句中使用 <code>!=</code> 或 <code>&lt;=&gt;</code> 操作符，否则引擎将放弃使用索引而进行全表扫描。</p>
 <p>4.应尽量避免在 where 子句中使用 or 来连接条件，如果一个字段有索引，一个字段没有索引，将导致引擎放弃使用索引而进行全表扫描，如：</p>
 <p>可以这样查询：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> id <span style="color:#66d9ef">from</span> t <span style="color:#66d9ef">where</span> num <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> 
-<span style="color:#66d9ef">union</span> <span style="color:#66d9ef">all</span> 
-<span style="color:#66d9ef">select</span> id <span style="color:#66d9ef">from</span> t <span style="color:#66d9ef">where</span> Name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;admin&#39;</span>;
-</code></pre></div><p>5.in 和 not in 也要慎用，否则会导致全表扫描，如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> id <span style="color:#66d9ef">from</span> t <span style="color:#66d9ef">where</span> num <span style="color:#66d9ef">in</span>(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>);
-</code></pre></div><p>对于连续的数值，能用 between 就不要用 in 了：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> id <span style="color:#66d9ef">from</span> t <span style="color:#66d9ef">where</span> num <span style="color:#66d9ef">between</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">and</span> <span style="color:#ae81ff">3</span>;
-</code></pre></div><p>很多时候用 exists 代替 in 是一个好的选择。</p>
+<pre><code>select id from t where num = 10 
+union all 
+select id from t where Name = 'admin';
+</code></pre><p>5.in 和 not in 也要慎用，否则会导致全表扫描，如：</p>
+<pre><code>select id from t where num in(1,2,3);
+</code></pre><p>对于连续的数值，能用 between 就不要用 in 了：</p>
+<pre><code>select id from t where num between 1 and 3;
+</code></pre><p>很多时候用 exists 代替 in 是一个好的选择。</p>
 <p>6.select语句避免使用星号(<code>*</code>)。</p>
 
 </div>

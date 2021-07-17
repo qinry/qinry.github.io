@@ -16,6 +16,7 @@
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -27,13 +28,12 @@
   <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
 
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/json.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/bash.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/properties.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/plaintext.min.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
 
 
 </head>
@@ -155,15 +155,15 @@
 <li>对主类的main() 很重要，因为能在不创建对象的情况下调用<strong>static</strong>方法</li>
 </ul>
 <h2 id="java程序">Java程序</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#f92672">import</span> java.util.*<span style="color:#f92672">;</span> <span style="color:#75715e">// 每个程序文件开头，必须声明import，以便引入文件
-</span><span style="color:#75715e"></span>                    <span style="color:#75715e">// 代码中需要用到的额外类
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HelloDate</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hello, it&#39;s&#34;</span><span style="color:#f92672">);</span> <span style="color:#75715e">// java.lang 会自动Java源文件
-</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Date<span style="color:#f92672">());</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>使用 <em>javac</em> 和 <em>java</em> 工具命令编译和运行Java程序 或 <em>ant</em> 构建 Java项目（最近流行<em>Maven</em>和<em>Gradle</em>）</p>
+<pre><code>import java.util.*; // 每个程序文件开头，必须声明import，以便引入文件
+                    // 代码中需要用到的额外类
+public class HelloDate {
+    public static void main(String[] args) {
+        System.out.println(&quot;Hello, it's&quot;); // java.lang 会自动Java源文件
+        System.out.println(new Date());
+    }
+}
+</code></pre><p>使用 <em>javac</em> 和 <em>java</em> 工具命令编译和运行Java程序 或 <em>ant</em> 构建 Java项目（最近流行<em>Maven</em>和<em>Gradle</em>）</p>
 <h2 id="注释与嵌入式文档">注释与嵌入式文档</h2>
 <p>注释形式: (1). 嵌入式HTML; (2). 文档标签</p>
 <p>3种类型注释文档在类、域和方法后。</p>

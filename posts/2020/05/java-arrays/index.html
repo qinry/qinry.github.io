@@ -16,6 +16,7 @@
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -27,13 +28,12 @@
   <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
 
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/json.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/bash.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/properties.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/plaintext.min.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
 
 
 </head>
@@ -77,11 +77,11 @@
 <p>数组的标识符其实只是引用，所谓的安全指针，指向在堆中创建的一个真实对象，这个数组对象用于保存指向其他对象的引用，它有唯一的域length表示数组的大小，通过&quot;[]&ldquo;来随机访问数组的元素。</p>
 <h2 id="一维数组和多维数组">一维数组和多维数组</h2>
 <p>数组类型的声明：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> direct<span style="color:#f92672">;</span> <span style="color:#75715e">// 一维数组
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> flat <span style="color:#f92672">;</span> <span style="color:#75715e">// 二维数组
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span><span style="color:#f92672">[][][]</span> body<span style="color:#f92672">;</span> <span style="color:#75715e">// 三维数组
-</span><span style="color:#75715e"></span><span style="color:#f92672">...</span> 以此类推其他多维数组
-</code></pre></div><p>一维数组的打印版，Arrays.toString(数组对象)；二维数组的打印版，Arrays.deepToString(数组对象)。</p>
+<pre><code>int[] direct; // 一维数组
+int[][] flat ; // 二维数组
+int[][][] body; // 三维数组
+... 以此类推其他多维数组
+</code></pre><p>一维数组的打印版，Arrays.toString(数组对象)；二维数组的打印版，Arrays.deepToString(数组对象)。</p>
 <h2 id="数组和泛型">数组和泛型</h2>
 <p>不能实例化具有参数化类型的数组:</p>
 <p><code>Peel&lt;Banana&gt;[] peels = new Peel&lt;Banana&gt;[10]; // illegal</code></p>
@@ -175,17 +175,17 @@
 <h2 id="比较器">比较器</h2>
 <p>自定义的数据类型可能没实现Comparable泛型接口，数组的元素是该类型时，排序是要调用Comparable的compareTo()方法，所以排序无法进行。但是自建一个比较器Comparator来专门用于此类型的比较，弥补没实现Comparable泛型接口的类型，来用于排序操作。</p>
 <p>用例:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CompType</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">int</span> j<span style="color:#f92672">;</span>
-    <span style="color:#75715e">// ...
-</span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+<pre><code>class CompType {
+    int j;
+    // ...
+}
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CompTypeComparator</span> <span style="color:#66d9ef">implements</span> Comparator<span style="color:#f92672">&lt;</span>CompType<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">compare</span><span style="color:#f92672">(</span>CompType left<span style="color:#f92672">,</span> CompType right<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> left<span style="color:#f92672">.</span><span style="color:#a6e22e">j</span> <span style="color:#f92672">&lt;</span> right<span style="color:#f92672">.</span><span style="color:#a6e22e">j</span> <span style="color:#f92672">?</span> <span style="color:#f92672">-</span>1 <span style="color:#f92672">:</span> <span style="color:#f92672">(</span> left<span style="color:#f92672">.</span><span style="color:#a6e22e">j</span> <span style="color:#f92672">==</span> right<span style="color:#f92672">.</span><span style="color:#a6e22e">j</span> <span style="color:#f92672">?</span> 0 <span style="color:#f92672">:</span> 1<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div>
+class CompTypeComparator implements Comparator&lt;CompType&gt; {
+    public int compare(CompType left, CompType right) {
+        return left.j &lt; right.j ? -1 : ( left.j == right.j ? 0 : 1);
+    }
+}
+</code></pre>
 </div>
 
 

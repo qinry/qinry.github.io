@@ -16,6 +16,7 @@
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
   <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
 
 
@@ -27,13 +28,12 @@
   <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
 
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/json.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/bash.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/properties.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/languages/plaintext.min.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
 
 
 </head>
@@ -184,10 +184,10 @@
 </ul>
 <h2 id="内存映射文件mappedbytebuffer">内存映射文件MappedByteBuffer</h2>
 <p>以下是创建MappedByteBuffer的方法，内存映射文件开一个创建和修改太大的文件，可以方便想数组一样访问文件，如put(byte data)加入数据，get(int index)访问数据，它继承ByteBuffer，拥有父类所有的方法。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">MappedByteBuffer buff <span style="color:#f92672">=</span>
-    <span style="color:#66d9ef">new</span> RandomAccessFile<span style="color:#f92672">(</span>文件名<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;rw&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">getChannel</span><span style="color:#f92672">()</span>
-        <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>FileChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">MapMode</span><span style="color:#f92672">.</span><span style="color:#a6e22e">READ_WRITE</span><span style="color:#f92672">,</span> POSITION<span style="color:#f92672">,</span> SIZE<span style="color:#f92672">);</span>
-</code></pre></div><h2 id="字符集charset">字符集CharSet</h2>
+<pre><code>MappedByteBuffer buff =
+    new RandomAccessFile(文件名, &quot;rw&quot;).getChannel()
+        .map(FileChannel.MapMode.READ_WRITE, POSITION, SIZE);
+</code></pre><h2 id="字符集charset">字符集CharSet</h2>
 <p>CharSet api:</p>
 <ul>
 <li>
@@ -221,12 +221,12 @@
 </ul>
 <h2 id="文件加锁filelock">文件加锁FileLock</h2>
 <p>以下方式给文件加锁,release()可以释放suo</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">FileOutputStream fos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>文件名<span style="color:#f92672">);</span>
-FileLock fl <span style="color:#f92672">=</span> fos<span style="color:#f92672">.</span><span style="color:#a6e22e">tryLock</span><span style="color:#f92672">();</span>
-<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>fl <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
-    fl<span style="color:#f92672">.</span><span style="color:#a6e22e">release</span><span style="color:#f92672">();</span>
-fos<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
-</code></pre></div><ul>
+<pre><code>FileOutputStream fos = new FileOutputStream(文件名);
+FileLock fl = fos.tryLock();
+if(fl != null)
+    fl.release();
+fos.close();
+</code></pre><ul>
 <li>public FileLock tryLock(long position, long size, boolean shared) 对文件部分加非阻塞(共享/独享)锁，还有阻塞式的lock(),二者区别是lock()一定要获取锁，那怕阻塞别的线程，tryLock()是尝试获取。</li>
 </ul>
 <h2 id="字节存放的次序">字节存放的次序</h2>
