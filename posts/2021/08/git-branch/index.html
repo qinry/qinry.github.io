@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.85.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Git 分支 &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="Git分支相关操作：创建、切换、合并、删除等等" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>hljs.highlightAll();</script>
+
+
+</head>
+
+  <body class="theme-base-0d ">
+    <span id="top"></span>
+    <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+    
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../tags"> 分类标签 </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright © 2021 槎城小子</p>
+  </div>
+</aside>
+
+    
+<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#创建分支">创建分支</a></li>
+    <li><a href="#查看分支">查看分支</a></li>
+    <li><a href="#切换分支">切换分支</a></li>
+    <li><a href="#合并分支">合并分支</a>
+      <ul>
+        <li><a href="#合并前的准备">合并前的准备</a></li>
+        <li><a href="#模拟两个分支的并行操作">模拟两个分支的并行操作</a></li>
+        <li><a href="#merge合并分支">merge合并分支</a></li>
+        <li><a href="#解决合并时的冲突">解决合并时的冲突</a></li>
+        <li><a href="#rebase合并分支">rebase合并分支</a></li>
+        <li><a href="#删除分支">删除分支</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    
+</aside>
+
+
+    <main class="content container">
+    <div class="post">
+
+  <h1>Git 分支</h1>
+  <span class="post-date">
+    2021-08-18 17:44 &nbsp;
+    字数：<strong>679</strong> &nbsp;
+    标签：
+              <a href="https://qinry.github.io/tags/git/">Git</a>&nbsp;
+  </span>
+
+  <h2 id="创建分支">创建分支</h2>
+<p><code>git branch &lt;分支名&gt;</code></p>
+<pre><code>git branch dev
+</code></pre><h2 id="查看分支">查看分支</h2>
+<pre><code>git branch # 等价于git branch -a，显示所有分支
+</code></pre><p>效果：
+<img src="../../../../images/posts/2021/08/git-branch/1.png" alt="picture"></p>
+<p>* 表示当前活跃的分支</p>
+<h2 id="切换分支">切换分支</h2>
+<p><code>git checkout &lt;分支名&gt;</code></p>
+<pre><code>git checkout dev
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/git-branch/2.png" alt="picture"></p>
+<p>创建并切换到新分支</p>
+<pre><code>git checkout -b feature
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/git-branch/3.png" alt="picture"></p>
+<h2 id="合并分支">合并分支</h2>
+<h3 id="合并前的准备">合并前的准备</h3>
+<p>假如在master分支，新建了sample.txt并提交，提交信息维 &ldquo;init commit&rdquo;</p>
+<p>sample.txt内容如下：</p>
+<pre><code>创建sample.txt
+</code></pre><p>用git log查看提交信息
+<img src="../../../../images/posts/2021/08/git-branch/4.png" alt="picture"></p>
+<h3 id="模拟两个分支的并行操作">模拟两个分支的并行操作</h3>
+<p>切换到feature分支，在 sample.txt 追加新内容，并提交</p>
+<p><img src="../../../../images/posts/2021/08/git-branch/5.png" alt="picture"></p>
+<p><img src="../../../../images/posts/2021/08/git-branch/6.png" alt="picture"></p>
+<p>切换到dev分支，也在 sample.txt 也追加新内容</p>
+<p><img src="../../../../images/posts/2021/08/git-branch/7.png" alt="picture"></p>
+<h3 id="merge合并分支">merge合并分支</h3>
+<p>切换回master分支，合并dev的提交到master。</p>
+<pre><code>git checkout master
+git merge dev
+</code></pre><p>效果：
+<img src="../../../../images/posts/2021/08/git-branch/8.png" alt="picture"></p>
+<p>此分支间若没有冲突，会自动处理合并，由于dev包含了master的记录，通过把master分支的位置移动到dev的最新分支，则会快进合并（fast-forward）</p>
+<h3 id="解决合并时的冲突">解决合并时的冲突</h3>
+<pre><code>git merge feature
+</code></pre><p>效果：
+<img src="../../../../images/posts/2021/08/git-branch/9.png" alt="picture"></p>
+<p>提示master和feature冲突发生在sample.txt</p>
+<p>查看 sample.txt</p>
+<p><img src="../../../../images/posts/2021/08/git-branch/10.png" alt="picture"></p>
+<p>&ldquo;&laquo;&laquo;&laquo;&laquo;&lt;&ldquo;和&rdquo;===========&ldquo;之间表示当前分支的提交</p>
+<p>&ldquo;=========&ldquo;和&rdquo;&raquo;&raquo;&raquo;&raquo;&raquo;&gt;&ldquo;之间表示合并分支引入的提交</p>
+<p>处理冲突后，效果：
+<img src="../../../../images/posts/2021/08/git-branch/11.png" alt="picture"></p>
+<h3 id="rebase合并分支">rebase合并分支</h3>
+<pre><code>git reset --hard HEAD~
+git checkout feature
+git rebase master
+</code></pre><p>效果：
+<img src="../../../../images/posts/2021/08/git-branch/12.png" alt="picture"></p>
+<p>与使用merge合并分支时一样，处理冲突后</p>
+<pre><code>git add sample.txt
+git rebase --continue
+git checkout master
+git merge feature
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/git-branch/13.png" alt="picture"></p>
+<h3 id="删除分支">删除分支</h3>
+<p><code>git branch -d &lt;要删除分支名&gt;</code></p>
+<pre><code>git branch issue
+git branch -d issue
+</code></pre>
+</div>
+
+
+    </main>
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
+    
+      
+    
+  </body>
+</html>
