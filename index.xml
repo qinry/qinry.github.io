@@ -5,7 +5,16 @@
     <link>https://qinry.github.io/</link>
     <description>Recent content on 欢迎来到槎城小子的博客！</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 18 Aug 2021 17:44:40 +0800</lastBuildDate><atom:link href="https://qinry.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Aug 2021 15:47:23 +0800</lastBuildDate><atom:link href="https://qinry.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Maven 入门</title>
+      <link>https://qinry.github.io/posts/2021/08/maven-basic/</link>
+      <pubDate>Fri, 20 Aug 2021 15:47:23 +0800</pubDate>
+      
+      <guid>https://qinry.github.io/posts/2021/08/maven-basic/</guid>
+      <description>什么是Maven Apache Maven 是一个软件项目管理工具。基于项目对象模型的概念，它可以通过配置信息来管理项目的构建、报告和文档这些行为。 其目标旨在： 使项</description>
+    </item>
+    
     <item>
       <title>Git 分支</title>
       <link>https://qinry.github.io/posts/2021/08/git-branch/</link>
