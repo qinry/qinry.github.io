@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CSS on 欢迎来到槎城小子的博客！</title>
+    <link>https://qinry.github.io/tags/css/</link>
+    <description>Recent content in CSS on 欢迎来到槎城小子的博客！</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 23 Aug 2021 20:16:46 +0800</lastBuildDate><atom:link href="https://qinry.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CSS 语法</title>
+      <link>https://qinry.github.io/posts/2021/08/css-grammar/</link>
+      <pubDate>Mon, 23 Aug 2021 20:16:46 +0800</pubDate>
+      
+      <guid>https://qinry.github.io/posts/2021/08/css-grammar/</guid>
+      <description>概述 CSS，即Cascading Style Sheets，中文意思层叠样式表。CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进</description>
+    </item>
+    
+  </channel>
+</rss>

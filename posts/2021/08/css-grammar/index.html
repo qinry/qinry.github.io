@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.85.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CSS 语法 &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="学习 CSS 语法，重点使用选择器和了解盒子模型" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>hljs.highlightAll();</script>
+
+
+</head>
+
+  <body class="theme-base-0d ">
+    <span id="top"></span>
+    <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+    
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../tags"> 分类标签 </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright © 2021 槎城小子</p>
+  </div>
+</aside>
+
+    
+<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#导入方式">导入方式</a></li>
+    <li><a href="#优先级">优先级</a></li>
+    <li><a href="#继承">继承</a></li>
+    <li><a href="#选择器">选择器</a></li>
+    <li><a href="#美化网页元素">美化网页元素</a></li>
+    <li><a href="#盒子模型">盒子模型</a></li>
+    <li><a href="#浮动">浮动</a></li>
+    <li><a href="#定位">定位</a></li>
+    <li><a href="#更多资源">更多资源</a></li>
+  </ul>
+</nav>
+        
+</aside>
+
+
+    <main class="content container">
+    <div class="post">
+
+  <h1>CSS 语法</h1>
+  <span class="post-date">
+    2021-08-23 20:16 &nbsp;
+    字数：<strong>9403</strong> &nbsp;
+    标签：
+              <a href="https://qinry.github.io/tags/css/">CSS</a>&nbsp;
+              <a href="https://qinry.github.io/tags/web/">WEB</a>&nbsp;
+  </span>
+
+  <h2 id="概述">概述</h2>
+<p>CSS，即Cascading Style Sheets，中文意思层叠样式表。CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。其实简单说就是美化HTML页面。</p>
+<p>美化的内容有：</p>
+<ul>
+<li>字体</li>
+<li>颜色</li>
+<li>边距</li>
+<li>背景图片</li>
+<li>网页定位</li>
+<li>网页浮动</li>
+<li>等等</li>
+</ul>
+<blockquote>
+<p>CSS版本</p>
+</blockquote>
+<ul>
+<li>CSS1.0 基本的样式，如字体</li>
+<li>CSS2.0 提出使用div和css来达到HTML与CSS结构分离的思想</li>
+<li>CSS2.1 浮动 定位 &hellip;</li>
+<li>CSS3.0 圆角 边框 动画 &hellip;</li>
+</ul>
+<h2 id="导入方式">导入方式</h2>
+<ul>
+<li>内联样式</li>
+<li>内部样式</li>
+<li>外部样式</li>
+</ul>
+<h3 id="内联样式">内联样式</h3>
+<p>语法：
+在某个标签内设置style属性，key为某一样式名，value为对应样式的值。键值对要用分号结尾</p>
+<pre><code>style=&quot;key1:value1;key2:value2;keyN:valueN;&quot;
+</code></pre><pre><code>&lt;!-- index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2 style=&quot;color:red;&quot;&gt;二级标题&lt;/h2&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/1.png" alt="image"></p>
+<h3 id="内部样式">内部样式</h3>
+<p>CSS语法：selector意为选择器，用于表示选择设置的HTML元素，然后大括号内部，以键值对逐行编写的格式设置元素的样式。</p>
+<p>内部样式表要写在style标签内。</p>
+<pre><code>/* comment */
+selector {
+    key1:value1;
+    key2:value2;
+    keyN:valueN;
+}
+</code></pre><pre><code>&lt;!-- index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style&gt;
+        h2 {
+            color: green;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;二级标题&lt;/h2&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/2.png" alt="image"></p>
+<h3 id="外部样式">外部样式</h3>
+<p>外部样式表写css文件，通过link标签导入。</p>
+<pre><code>/* css/style.css */
+h2 {
+    color: blue;
+}
+</code></pre><pre><code>&lt;!-- index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;二级标题&lt;/h2&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/3.png" alt="image"></p>
+<h2 id="优先级">优先级</h2>
+<p>一个选择器的优先级可以说是由四个部分相加 (分量)，可以认为是个十百千 — 四位数的四个位数：</p>
+<ol>
+<li>千位： 如果声明在 style 的属性（内联样式）则该位得一分。这样的声明没有选择器，所以它得分总是1000。</li>
+<li>百位： 选择器中包含ID选择器则该位得一分。</li>
+<li>十位： 选择器中包含类选择器、属性选择器或者伪类则该位得一分。</li>
+<li>个位：选择器中包含元素、伪元素选择器则该位得一分。</li>
+</ol>
+<p>css规则的顺序很重要；当应用两条同级别的规则到一个元素的时候，写在后面的就是实际使用的规则。</p>
+<blockquote>
+<p>注: 通用选择器 (*)，组合符 (<code>+</code>, <code>&gt;</code>, <code>~</code>,<code> </code>)，和否定伪类 (:not) 不会影响优先级。</p>
+</blockquote>
+<blockquote>
+<p>警告: 在进行计算时不允许进行进位，例如，20 个类选择器仅仅意味着 20 个十位，而不能视为 两个百位，也就是说，无论多少个类选择器的权重叠加，都不会超过一个 ID 选择器。</p>
+</blockquote>
+<p>例如：</p>
+<pre><code>/* css/style.css */
+h2 {
+    color: blue;
+}
+</code></pre><pre><code>&lt;head&gt;
+    ...
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+    &lt;style&gt;
+        h2 {
+            color: green;
+        }
+    &lt;/style&gt;
+    ...
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;二级标题&lt;/h2&gt;
+&lt;/body&gt;
+</code></pre><p>这里内部样式表离目标元素近，也就是写在最后，所以优先渲染它。如果它们位置调转，则外部样式表优先。</p>
+<h2 id="继承">继承</h2>
+<p>一些设置在父元素上的css属性是可以被子元素继承的，有些则不能。</p>
+<p>举一个例子，如果你设置一个元素的 color 和 font-family ，每个在里面的元素也都会有相同的属性，除非你直接在元素上设置属性。</p>
+<p>一些属性是不能继承的 — 举个例子如果你在一个元素上设置 width 50% ，所有的后代不会是父元素的宽度的50% 。如果这个也可以继承的话，CSS就会很难使用了!</p>
+<p>像 widths (上面提到的), margins, padding, 和 borders 不会被继承。如果borders可以被继承，每个列表和列表项都会获得一个边框 — 可能就不是我们想要的结果!</p>
+<h2 id="选择器">选择器</h2>
+<p>了解了CSS语法，接下来了解选择器有哪些。</p>
+<h3 id="选择器的优先级">选择器的优先级</h3>
+<p>可先跳过，熟悉其他选择器，再回来。</p>
+<p>浏览器是根据优先级来决定当多个规则有不同选择器对应相同的元素的时候需要使用哪个规则。它基本上是一个衡量选择器具体选择哪些区域的尺度：</p>
+<ul>
+<li>一个元素选择器不是很具体 — 会选择页面上该类型的所有元素 — 所以它的优先级就会低一些。</li>
+<li>一个类选择器稍微具体点 — 它会选择该页面中有特定 class 属性值的元素 — 所以它的优先级就要高一点。</li>
+</ul>
+<p>总之，越具体，优先级越高。</p>
+<h3 id="基本选择器">基本选择器</h3>
+<ul>
+<li>元素选择器(type selector)</li>
+<li>id选择器(id selector)</li>
+<li>class选择器(class selector)</li>
+<li>通配选择器(universal selector)</li>
+<li>属性选择器(attribute selector)</li>
+</ul>
+<h4 id="元素选择器">元素选择器</h4>
+<p>也可以叫做，类型选择器</p>
+<p>按照给定的节点名称，选择所有匹配的元素。</p>
+<p>语法：<code>elementname</code></p>
+<h4 id="id选择器">id选择器</h4>
+<p>按照 id 属性选择一个与之匹配的元素。需要注意的是，一个文档中，每个 ID 属性都应当是唯一的。</p>
+<p>语法：<code>#idname</code></p>
+<p>例子：</p>
+<pre><code>span#identified {
+  background-color: DodgerBlue;
+}
+</code></pre><pre><code>&lt;span id=&quot;identified&quot;&gt;Here's a span with some text.&lt;/span&gt;
+&lt;span&gt;Here's another.&lt;/span&gt;
+</code></pre><h4 id="class选择器">class选择器</h4>
+<p>按照给定的 class 属性的值，选择所有匹配的元素。class选择器能够跨标签设置样式，所以更好复用。</p>
+<p>语法：<code>.classname</code></p>
+<pre><code>span.classy {
+  background-color: DodgerBlue;
+}
+</code></pre><pre><code>&lt;span class=&quot;classy&quot;&gt;Here's a span with some text.&lt;/span&gt;
+&lt;span&gt;Here's another.&lt;/span&gt;
+</code></pre><h4 id="通配选择器">通配选择器</h4>
+<p>选择所有元素。</p>
+<p>语法：<code>*</code></p>
+<p>例子：</p>
+<pre><code>*[lang^=en]{color:green;}
+*.warning {color:red;}
+*#maincontent {border: 1px solid blue;}
+</code></pre><pre><code>&lt;p class=&quot;warning&quot;&gt;
+  &lt;span lang=&quot;en-us&quot;&gt;A green span&lt;/span&gt; in a red paragraph.
+&lt;/p&gt;
+&lt;p id=&quot;maincontent&quot; lang=&quot;en-gb&quot;&gt;
+  &lt;span class=&quot;warning&quot;&gt;A red span&lt;/span&gt; in a green paragraph.
+&lt;/p&gt;
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/4.png" alt="image"></p>
+<p>不推荐使用通配选择器,因为它是性能最低的一个CSS选择器。</p>
+<h4 id="属性选择器">属性选择器</h4>
+<p>按照给定的属性，选择所有匹配的元素。</p>
+<p>语法：</p>
+<ul>
+<li><code>[attr]</code> 表示带有以 attr 命名的属性的元素。</li>
+<li><code>[attr=value]</code> 表示带有以 attr 命名的属性，且属性值为 value 的元素。</li>
+<li><code>[attr^=value]</code> 表示带有以 attr 命名的属性，且属性值是以 value 开头的元素。</li>
+<li><code>[attr$=value]</code> 表示带有以 attr 命名的属性，且属性值是以 value 结尾的元素。</li>
+<li><code>[attr*=value]</code> 表示带有以 attr 命名的属性，且属性值至少包含一个 value 值的元素。</li>
+<li><code>[attr~=value]</code> 表示带有以 attr 命名的属性的元素，并且该属性是一个以空格作为分隔的值列表，其中至少有一个值为 value。</li>
+<li><code>[attr|=value]</code> 表示带有以 attr 命名的属性的元素，属性值为“value”或是以“value-”为前缀（&quot;-&ldquo;为连字符，Unicode 编码为 U+002D）开头。典型的应用场景是用来匹配语言简写代码（如 zh-CN，zh-TW 可以用 zh 作为 value）。</li>
+</ul>
+<p>例子：</p>
+<pre><code>/* 存在title属性的&lt;a&gt; 元素 */
+a[title] {
+  color: purple;
+}
+
+/* 存在href属性并且属性值匹配&quot;https://example.org&quot;的&lt;a&gt; 元素 */
+a[href=&quot;https://example.org&quot;] {
+  color: green;
+}
+
+/* 存在href属性并且属性值包含&quot;example&quot;的&lt;a&gt; 元素 */
+a[href*=&quot;example&quot;] {
+  font-size: 2em;
+}
+
+/* 存在href属性并且属性值结尾是&quot;.org&quot;的&lt;a&gt; 元素 */
+a[href$=&quot;.org&quot;] {
+  font-style: italic;
+}
+
+/* 存在class属性并且属性值包含以空格分隔的&quot;logo&quot;的&lt;a&gt;元素 */
+a[class~=&quot;logo&quot;] {
+  padding: 2px;
+}
+</code></pre><h3 id="分组选择器">分组选择器</h3>
+<h4 id="选择器列表">选择器列表</h4>
+<p>CSS4草案更名为选择器列表，目前命名为分组选择器</p>
+<p><code>,</code>是将不同的选择器组合在一起的方法，它选择所有能被列表中的任意一个选择器选中的节点。</p>
+<p>语法：<code>selector1,selector2,selectorN</code></p>
+<h3 id="层级选择器">层级选择器</h3>
+<p>也可以称作组合器</p>
+<ul>
+<li>后代组合器(descendant combinator)</li>
+<li>直接子代组合器(child combinator)</li>
+<li>紧邻兄弟组合器(adjacent sibling combinator)</li>
+<li>一般兄弟组合器(general sibling combinator)</li>
+</ul>
+<h4 id="后代组合器">后代组合器</h4>
+<p>（空格）组合器选择前一个元素的后代节点。</p>
+<p>语法：<code>ancestor descendants</code></p>
+<h4 id="直接子代组合器">直接子代组合器</h4>
+<p><code>&gt;</code> 组合器选择前一个元素的直接子代的节点。</p>
+<p>语法：<code>parent &gt; child</code></p>
+<h4 id="紧邻兄弟组合器">紧邻兄弟组合器</h4>
+<p><code>+</code> 组合器选择相邻元素，即后一个元素紧跟在前一个之后，并且共享同一个父节点。</p>
+<p>语法：<code>previous + next</code></p>
+<h4 id="一般兄弟组合器">一般兄弟组合器</h4>
+<p><code>~</code> 组合器选择兄弟元素，也就是说，后一个节点在前一个节点后面的任意位置，并且共享同一个父节</p>
+<p>语法：<code>previous ~ next</code></p>
+<h3 id="伪类选择器">伪类选择器</h3>
+<p>CSS 伪类 是添加到选择器的关键字，指定要选择的元素的特殊状态。</p>
+<p>语法：</p>
+<pre><code>selector:pseudo-class {
+  property: value;
+}
+</code></pre><p>例子：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;树结构伪类选择器&lt;/title&gt;
+    &lt;style&gt;
+        ul li:first-child {
+            background-color: red;
+        }
+        ul li:last-child {
+            background-color: green;
+        }
+        p:nth-child(2) {
+            background-color: blue;
+        }
+        p:nth-of-type(3) {
+            background-color: yellowgreen;
+        }
+        a:hover {
+            background-color: black;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;a&gt;123&lt;/a&gt;
+    &lt;div&gt;
+        &lt;h2&gt;二级标题&lt;/h2&gt;
+        &lt;p&gt;p1&lt;/p&gt;
+        &lt;p&gt;p2&lt;/p&gt;
+        &lt;p&gt;p3&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;p&gt;p1&lt;/p&gt;
+        &lt;p&gt;p2&lt;/p&gt;
+        &lt;p&gt;p3&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;ul&gt;
+        &lt;li&gt;li1&lt;/li&gt;
+        &lt;li&gt;li2&lt;/li&gt;
+        &lt;li&gt;li3&lt;/li&gt;
+        &lt;li&gt;li4&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul&gt;
+        &lt;li&gt;li1&lt;/li&gt;
+        &lt;li&gt;li2&lt;/li&gt;
+        &lt;li&gt;li3&lt;/li&gt;
+        &lt;li&gt;li4&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>效果：</p>
+<p>第一行的超链接，鼠标悬浮时，背景色变黑。</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/5.png" alt="image"></p>
+<p>常见树结构伪类选择器</p>
+<ul>
+<li>:first-child 某个元素的父元素的第一个子元素，只有当第一个子元素和其类型相同时，设置的样式才生效。等价于 :nth-child(1)</li>
+<li>:last-child 某个元素的父元素的最后一个子元素，只有当最后一个子元素和其类型相同时，设置的样式才生效 :nth-last-child(1)</li>
+<li>:nth-child(an+b|even|odd) an+b(n=0,1,2&hellip;) a和b是系数。even代表偶数。odd代表奇数</li>
+<li>:nth-of-type(an+b|even|odd) a和b是系数。even代表偶数。odd代表奇数</li>
+</ul>
+<p>还有其他伪类选择器超过本章的内容范围，可参见 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes">MDN Web Docs的Pseudo-classes一章</a></p>
+<h2 id="美化网页元素">美化网页元素</h2>
+<h3 id="字体样式">字体样式</h3>
+<ul>
+<li>字体族 font-family</li>
+<li>字体大小 font-size</li>
+<li>字体粗细 font-weight</li>
+<li>字体颜色 color</li>
+<li>字体风格 font-style</li>
+</ul>
+<p>CSS</p>
+<pre><code>body {
+    font-family:'Times New Roman','楷体';
+    color: #a17e32;
+}
+h2 {
+    font-size: 50px;
+}
+.p1 {
+    font-weight: bolder;
+    font-style: oblique;
+}
+</code></pre><p>HTML</p>
+<pre><code>&lt;h2&gt;将进军&lt;/h2&gt;
+&lt;p class=&quot;p1&quot;&gt;君不见黄河之水天上来，奔流到海不复回。&lt;/p&gt;
+&lt;p&gt;君不见高堂明镜悲白发，朝如青丝暮成雪。&lt;/p&gt;
+&lt;p&gt;人生得意须尽欢，莫使金樽空对月。&lt;/p&gt;
+&lt;p&gt;天生我材必有用，千金散尽还复来。&lt;/p&gt;
+&lt;p&gt;烹羊宰牛且为乐，会须一饮三百杯。&lt;/p&gt;
+&lt;p&gt;岑夫子，丹丘生，将进酒，杯莫停。&lt;/p&gt;
+&lt;p&gt;与君歌一曲，请君为我倾耳听。&lt;/p&gt;
+&lt;p&gt;钟鼓馔玉不足贵，但愿长醉不复醒。&lt;/p&gt;
+&lt;p&gt;古来圣贤皆寂寞，惟有饮者留其名。&lt;/p&gt;
+&lt;p&gt;陈王昔时宴平乐，斗酒十千恣欢谑。&lt;/p&gt;
+&lt;p&gt;主人何为言少钱，径须沽取对君酌。&lt;/p&gt;
+&lt;p&gt;五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。&lt;/p&gt;
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/6.png" alt="image"></p>
+<h3 id="文本样式">文本样式</h3>
+<p>用斜杠表示样式的多种值或多种表达</p>
+<ul>
+<li>颜色 <code>color:red/#FF0000/rgba(255,0,0,1);</code></li>
+<li>对齐 <code>text-align:left/right/center;</code></li>
+<li>首行缩进 <code>text-indent: 2em;</code></li>
+<li>行高 <code>line-height:300px;</code> 单行文本垂直居中 height == line-height</li>
+<li>装饰 <code>text-decoration: underline/overline/line-through/none;</code></li>
+<li>文本图片垂直对齐 <code>vertical-align: middle/top/bottom;</code></li>
+</ul>
+<p>CSS</p>
+<pre><code>h2 {
+    text-align: center;
+    color: rgba(255,0,0,0.5);
+}
+p {
+    text-align: left;
+    color: brown;
+}
+.p1 {
+    text-indent: 2em; 
+}
+.p3 {
+    background-color: rgba(100, 219, 235, 0.5);
+    height:300px;
+    line-height:300px;
+    text-decoration: underline;
+}
+img,span {
+    vertical-align: middle;
+}
+</code></pre><p>HTML</p>
+<pre><code>&lt;p&gt;
+    &lt;img src=&quot;resources/image/1.png&quot; alt=&quot;image&quot; width=&quot;144px&quot; height=&quot;90px&quot;&gt;
+    &lt;span&gt;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&lt;/span&gt;
+&lt;/p&gt;
+&lt;h2&gt;将进军&lt;/h2&gt;
+&lt;p class=&quot;p1&quot;&gt;君不见黄河之水天上来，奔流到海不复回。&lt;/p&gt;
+&lt;p&gt;君不见高堂明镜悲白发，朝如青丝暮成雪。&lt;/p&gt;
+&lt;p class=&quot;p3&quot;&gt;人生得意须尽欢，莫使金樽空对月。&lt;/p&gt;
+&lt;p&gt;天生我材必有用，千金散尽还复来。&lt;/p&gt;
+&lt;p&gt;烹羊宰牛且为乐，会须一饮三百杯。&lt;/p&gt;
+&lt;p&gt;岑夫子，丹丘生，将进酒，杯莫停。&lt;/p&gt;
+&lt;p&gt;与君歌一曲，请君为我倾耳听。&lt;/p&gt;
+&lt;p&gt;钟鼓馔玉不足贵，但愿长醉不复醒。&lt;/p&gt;
+&lt;p&gt;古来圣贤皆寂寞，惟有饮者留其名。&lt;/p&gt;
+&lt;p&gt;陈王昔时宴平乐，斗酒十千恣欢谑。&lt;/p&gt;
+&lt;p&gt;主人何为言少钱，径须沽取对君酌。&lt;/p&gt;
+&lt;p&gt;五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。&lt;/p&gt;
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/7.png" alt="image"></p>
+<h3 id="文本阴影和超链接伪类">文本阴影和超链接伪类</h3>
+<ul>
+<li>文本阴影 <code>text-shadow: brown 5px -5px 2px</code></li>
+</ul>
+<p>CSS</p>
+<pre><code> a {
+    text-decoration: none;
+}
+/* LVHA */
+a:link {
+    color: yellow;
+}
+
+a:visited {
+    color: brown;
+}
+
+a:hover {
+    color: orange;
+}
+a:active {
+    color:green;
+}
+p#price {
+    /* 阴影颜色 水平偏移 垂直偏移 模糊半径 */
+    text-shadow: brown 5px -5px 2px;
+}
+</code></pre><p>HTML</p>
+<pre><code>&lt;p&gt;
+    &lt;img src=&quot;resources/image/3.png&quot; alt=&quot;image&quot; width=&quot;70px&quot; height=&quot;100px&quot;&gt;
+&lt;/p&gt;
+&lt;p&gt;
+    &lt;a href=&quot;#&quot;&gt;码出高效：Java开发手册&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+    &lt;a href=&quot;#&quot;&gt;作者：孤尽老师&lt;/a&gt;
+&lt;/p&gt;
+&lt;p id=&quot;price&quot;&gt;
+    ¥99
+&lt;/p&gt;
+</code></pre><p>效果</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/8.png" alt="image"></p>
+<h3 id="列表样式">列表样式</h3>
+<ul>
+<li>列表样式 <code>list-style: none/circle/square/decimal/decimal/disc;</code></li>
+</ul>
+<p>CSS</p>
+<pre><code>#nav {
+    width: 300px;
+    background-color: #a0a0a0;
+}
+
+h2 {
+    background-color: red; 
+}
+/* ul li */
+ul {
+    background-color: #a0a0a0;
+}
+
+ul li {
+    list-style:none;
+}
+
+a {
+    text-decoration: none;
+    color: brown;
+}
+
+a:hover {
+    color: orange;
+}
+a:active {
+    color: green;
+}
+</code></pre><p>HTML</p>
+<pre><code>&lt;div id=&quot;nav&quot;&gt;
+    &lt;h2 class=&quot;title&quot;&gt;全部商品分类&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;图书&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;音像&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;数字商品&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;家用电器&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;手机&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;数码&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;电脑&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;办公&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;家居&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;家装&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;厨具&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;个护化妆&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;服饰鞋帽&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;礼品箱包&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;钟表&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;珠宝&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;食品饮料&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;保健食品&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;彩票&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;旅行&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;充值&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;票务&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/9.png" alt="image"></p>
+<h3 id="背景图像及渐变">背景图像及渐变</h3>
+<ul>
+<li>背景图像 <code>background-image: url('path/to/image')</code></li>
+<li>背景渐变 <code>background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)</code></li>
+</ul>
+<p>背景图像</p>
+<p>CSS</p>
+<pre><code>div {
+    width: 700px;
+    height: 700px;
+    border: 1px solid red;
+    background-image: url(&quot;resources/image/6.jpeg&quot;);
+
+}
+.div1 {
+    background-repeat: repeat-x;
+}
+.div2 {
+    background-repeat: repeat-y;
+}
+.div3 {
+    background-repeat: no-repeat;
+}
+</code></pre><p>HTML</p>
+<pre><code>&lt;div class=&quot;div1&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;div2&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;div3&quot;&gt;&lt;/div&gt;
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/10.png" alt="image">
+<img src="../../../../images/posts/2021/08/css-grammar/11.png" alt="image">
+<img src="../../../../images/posts/2021/08/css-grammar/12.png" alt="image"></p>
+<p>CSS</p>
+<pre><code>div#nav {
+    width: 300px;
+    background-color: #a0a0a0;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    text-indent: 1em;
+    line-height: 35px;
+    height: 35px;
+    background: red url('../resources/image/4.png') 270px 10px no-repeat;
+}
+/* ul li */
+
+ul {
+    background-color: #a0a0a0;
+}
+ul li {
+    list-style:none;
+    height: 30px;
+    background-image: url('../resources/image/5.png');
+    background-repeat: no-repeat;
+    background-position: 232px 5px;
+
+}
+
+a {
+    font-size: 14px;    
+    text-decoration: none;
+    text-indent: 1em;
+    color: brown;
+}
+
+a:hover {
+    color: orange;
+    text-decoration: underline;
+}
+a:active {
+    color: green;
+}
+</code></pre><p>HTML</p>
+<pre><code>&lt;div id=&quot;nav&quot;&gt;
+    &lt;h2 class=&quot;title&quot;&gt;全部商品分类&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;图书&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;音像&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;数字商品&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;家用电器&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;手机&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;数码&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;电脑&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;办公&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;家居&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;家装&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;厨具&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;个护化妆&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;服饰鞋帽&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;礼品箱包&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;钟表&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;珠宝&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;食品饮料&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;保健食品&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;&quot;&gt;彩票&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;旅行&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;充值&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;&quot;&gt;票务&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/13.png" alt="image"></p>
+<p>背景渐变</p>
+<p>CSS</p>
+<pre><code>body {
+    background-color: #4158D0;
+    /* 渐变轴 渐变的颜色列表 */
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)；
+}
+</code></pre><p>效果：
+<img src="../../../../images/posts/2021/08/css-grammar/14.png" alt="image"></p>
+<h2 id="盒子模型">盒子模型</h2>
+<p><img src="../../../../images/posts/2021/08/css-grammar/15.png" alt="image"></p>
+<ul>
+<li>margin 外边距</li>
+<li>border 边框</li>
+<li>padding 内边距</li>
+<li>content 内容</li>
+</ul>
+<h3 id="边框">边框</h3>
+<ul>
+<li>边框粗细 <code>border-width: 1px;</code></li>
+<li>边框样式 <code>border-style: solid/dashed;</code></li>
+<li>边框颜色 <code>border-color: black;</code></li>
+</ul>
+<p>CSS</p>
+<pre><code>h2,ul,li,a,body {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+div#box {
+    width: 300px;
+    border: 1px solid black; 
+}
+
+h2 {
+    font-size: 16px;
+    background-color: #3cbda6;
+    line-height: 30px;
+}
+
+form {
+    background-color: #3cbda6;
+}
+
+div:not(.box):nth-of-type(1)  input {
+    border: 3px solid brown;
+}
+
+div:not(.box):nth-of-type(2)   input {
+    border: 3px dashed orange;
+}
+
+div:not(.box):nth-of-type(3)   input {
+    border: 3px dashed palegoldenrod;
+}
+</code></pre><pre><code>&lt;div id=&quot;box&quot;&gt;
+    &lt;h2&gt;会员登录&lt;/h2&gt;
+    &lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;
+        &lt;div&gt;
+            &lt;label for=&quot;uname&quot;&gt;用户名：&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;uname&quot; name=&quot;uname&quot;&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;label for=&quot;pwd&quot;&gt;密码：&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;pwd&quot; name=&quot;pwd&quot;&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;label for=&quot;email&quot;&gt;邮箱：&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;email&quot; name=&quot;email&quot;&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+</code></pre><h3 id="内外边距及div居中">内外边距及div居中</h3>
+<h4 id="外边距">外边距</h4>
+<pre><code>margin: top-right-bottom-left;
+margin: top-botton left-right;
+margin: top  left-right bottom;
+margin: top right bottom left;
+</code></pre><p>例子：</p>
+<pre><code>margin: 0;
+margin: 0 auto;
+margin: 0 auto 20px;
+margin: 0 1px 2px 3px;
+</code></pre><p>内边距padding类似，不在举例</p>
+<h4 id="div居中">div居中</h4>
+<pre><code>div#box {
+    width: 300px;
+    margin: 0 auto;
+}
+</code></pre><h3 id="圆角边框及阴影">圆角边框及阴影</h3>
+<ul>
+<li>圆角边框 <code>border-radius: 圆角半径;</code></li>
+<li>边框阴影 <code>box-shadow: 水平偏移 垂直偏移 阴影模糊半径 颜色;</code> 与文本阴影text-shadow设置雷同</li>
+</ul>
+<p>HTML</p>
+<pre><code>&lt;div id=&quot;circle&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;semicircle&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;quartercircle&quot;&gt;&lt;/div&gt;
+</code></pre><p>CSS</p>
+<p>圆边边框</p>
+<pre><code>div#circle {
+    margin: 0px auto;
+    width:100px;
+    height: 100px;
+    border: 1px solid red;
+    border-radius: 50px ; /* 圆角半径 */
+}
+</code></pre><p>半圆边框</p>
+<pre><code>div#semicircle {
+    margin: 0px auto;
+    width: 100px;
+    height: 50px;
+    border: 1px solid red;
+    border-radius: 50px 50px 0 0;
+}
+</code></pre><p>四分一圆边框</p>
+<pre><code>div#quartercircle {
+    margin: 0px auto;
+    width:50px;
+    height: 50px;
+    border: 1px solid red;
+    border-radius: 50px 0 0 0;
+}
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/16.png" alt="image"></p>
+<h2 id="浮动">浮动</h2>
+<h3 id="display和浮动">display和浮动</h3>
+<p><code>display: block/inline/inline-block/none</code></p>
+<ul>
+<li>block 表现块元素</li>
+<li>inline 表现内联元素 不能设置宽高</li>
+<li>inline-block* 让块级元素在一行显示的性质 可设置宽高</li>
+<li>none 隐藏</li>
+</ul>
+<p><code>float:left/right/none/inherit</code></p>
+<p>使用元素浮动，可向左向右。还可以继承父元素的浮动。</p>
+<p><code>clear:both/left/right/none</code></p>
+<p>指定一个元素是否必须移动(清除浮动后)到在它之前的浮动元素下面。简单理解让其移动到左边或右边或两边不存在浮动元素的位置。</p>
+<p>浮动的例子：</p>
+<p>CSS</p>
+<pre><code>div#father {
+    border: 1px solid black;
+}
+div#circle {
+    margin: 0px auto;
+    width:100px;
+    height: 100px;
+    border: 1px solid red;
+    border-radius: 50px ;
+    float: left;
+}
+div#semicircle {
+    margin: 0px auto;
+    width: 100px;
+    height: 50px;
+    border: 1px solid red;
+    border-radius: 50px 50px 0 0;
+    float: right;
+}
+div#quartercircle {
+    margin: 0px auto;
+    width:50px;
+    height: 50px;
+    border: 1px solid red;
+    border-radius: 50px 0 0 0;
+    float:right;
+    clear: both;
+}
+</code></pre><p>HTML</p>
+<pre><code>&lt;div id=&quot;father&quot;&gt;
+    &lt;div id=&quot;circle&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;semicircle&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;quartercircle&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/17.png" alt="image"></p>
+<h3 id="父级边框塌陷问题及overflow">父级边框塌陷问题及overflow</h3>
+<p>上节的浮动与清除的例子，就展现了父级边框塌陷问题。就是浮动元素超出了父级元素的边框。</p>
+<p>解决方案</p>
+<ol>
+<li>父级边框设置固定高度</li>
+</ol>
+<pre><code>div#father {
+    border: 1px solid black;
+    height: 500px;
+}
+</code></pre><p>不灵活，如果子元素宽高改变，父级元素也跟着可能改变，不建议使用。</p>
+<ol start="2">
+<li>在所有浮动元素添加空div</li>
+</ol>
+<p>例如：</p>
+<pre><code>.clear {
+    clear:both;
+    margin: 0;
+    padding: 0;
+}
+</code></pre><pre><code>&lt;div id=&quot;father&quot;&gt;
+    &lt;div id=&quot;circle&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;semicircle&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;quartercircle&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/18.png" alt="image"></p>
+<p>简单，但不建议添加空div。</p>
+<ol start="3">
+<li>overflow</li>
+</ol>
+<pre><code>div#father {
+    border: 1px solid black;
+    overflow: hidden;
+}
+</code></pre><p>简单，但是不适合在下拉的场景中，导致被元素剪切，避免使用</p>
+<p><code>overflow: hidden/auto/scroll</code></p>
+<p>当子元素内容高度，大于父级的高度或宽度，即溢出时，可设置overflow属性。</p>
+<p>hidden会剪切掉子元素溢出部分。scroll在父级元素出现滚动条，通过滚动来浏览溢出内容。auto根据情况自动选择hidden或scroll。</p>
+<ol start="4">
+<li>父边框添加伪类 :after （推荐）</li>
+</ol>
+<pre><code>div#father:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+</code></pre><p>最佳的处理父级边框塌陷。</p>
+<h2 id="定位">定位</h2>
+<h3 id="相对定位">相对定位</h3>
+<pre><code>body {
+    padding: 20px;
+}
+div {
+    margin: 10px;
+    padding: 5px;
+    font-size: 12px;
+    line-height: 25px;
+}
+#father {
+    border: 1px solid black;
+    padding: 0;
+}
+#first {
+    background-color: rgb(240, 179, 230);
+    border: 1px dashed rgb(240, 179, 65);
+    position: relative;
+    top: -10px;
+    left: 10px;
+}
+#second {
+    background-color: rgb(156, 39, 230);
+    border: 1px dashed rgb(156, 39, 39);
+}
+#third {
+    background-color: rgb(167, 161, 230);
+    border: 1px dashed rgb(167, 161, 103);
+    position: relative;
+    bottom: -10px;
+    right: 10px;
+}
+</code></pre><pre><code> &lt;div id=&quot;father&quot;&gt;
+    &lt;div id=&quot;first&quot;&gt;第一个盒子&lt;/div&gt;
+    &lt;div id=&quot;second&quot;&gt;第二个盒子&lt;/div&gt;
+    &lt;div id=&quot;third&quot;&gt;第三个盒子&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/19.png" alt="image"></p>
+<p><code>position: relative;</code></p>
+<pre><code>top: -10px; /* 距离原来顶部边界位置，偏移-10px */
+bottom: -10px; /* 距离原来底部边界位置，偏移-10px */
+left: 10px; /* 距离原来左边部边界位置，偏移10px */
+right: 10px; /* 距离原来右边部边界位置，偏移10px */
+</code></pre><p>该关键字下，元素先放置在未添加定位时的位置，再在不改变页面布局的前提下调整元素位置（因此会在此元素未添加定位时所在位置留下空白）</p>
+<h3 id="方块定位">方块定位</h3>
+<p>例子：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;style&gt;
+        a, div,body {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        div#father {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto; 
+            padding: 10px;
+            border: 3px solid red;
+        }
+        div#father  a {
+            background-color: pink;
+            display: block;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            color: white;
+        }
+        div#father a:hover {
+            background-color: blue;
+        }
+
+        div#father  a:nth-child(2), div#father  a:nth-child(4) {
+            position: relative;
+            top: -100px;
+            left: 200px;
+        }
+        
+        div#father  a:nth-child(5) {
+            position: relative;
+            top: -300px;
+            left: 100px;
+        }
+        
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;father&quot;&gt;
+        &lt;a href=&quot;#&quot;&gt;链接1&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;链接2&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;链接3&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;链接4&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;链接5&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/20.png" alt="image"></p>
+<h3 id="绝对定位和固定定位">绝对定位和固定定位</h3>
+<p><code>position: absolute;</code></p>
+<p>元素会被移出正常文档流，并不为元素预留空间，通过指定元素相对于最近的非 static 定位祖先元素的偏移，来确定元素位置。static表示默认定位。</p>
+<p>当这样的祖先元素不存在时，则相对于ICB（inital container block, 初始包含块，也就是body）。</p>
+<p>绝对定位的元素可以设置外边距（margins），且不会与其他边距合并。</p>
+<p><code>position: fixed;</code></p>
+<p>元素会被移出正常文档流，并不为元素预留空间，而是通过指定元素相对于屏幕视口（viewport）的位置来指定元素位置。元素的位置在屏幕滚动时不会改变。打印时，元素会出现在的每页的固定位置。</p>
+<h3 id="z-index及透明度">z-index及透明度</h3>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;style&gt;
+        ul, li, div,body {
+            margin: 0;
+            padding: 0;
+        }
+        #content {
+            width: 300px;
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            line-height: 25px;
+            overflow: hidden;
+            border: 1px solid black;
+        }
+        ul li{
+            list-style: none;
+        }
+        #content ul {
+            position: relative;
+        }
+        .tipText, .tipBg {
+            position: absolute;
+            top: 175px;
+            width: 300px;
+            height: 25px;
+        }
+        .tipText {
+            z-index: 2;
+            color: white;
+        }
+        .tipBg {
+            background-color: black;
+            opacity: 0.5;
+        }
+    
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+   &lt;div id=&quot;content&quot;&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;img src=&quot;resources/image/1.png&quot; alt=&quot;image&quot; width=&quot;300px&quot; height=&quot;200px&quot;&gt;&lt;/li&gt;
+            &lt;li class=&quot;tipText&quot;&gt;哇，是个美女！&lt;/li&gt;
+            &lt;li class=&quot;tipBg&quot;&gt;&lt;/li&gt;
+            &lt;li&gt;她是凯瑟琳？&lt;/li&gt;
+            &lt;li&gt;画的真不错！&lt;/li&gt;
+        &lt;/ul&gt;
+   &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><ul>
+<li>图层 <code>z-index: 0~infinity</code> 默认是0，为最底层，数值越大，越靠外层</li>
+<li>背景透明度 <code>opacity: 0~1</code></li>
+</ul>
+<p>效果：</p>
+<p><img src="../../../../images/posts/2021/08/css-grammar/21.png" alt="image"></p>
+<h2 id="更多资源">更多资源</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">MDN Web Docs - CSS</a></li>
+</ul>
+
+</div>
+
+
+    </main>
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
+    
+      
+    
+  </body>
+</html>

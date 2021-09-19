@@ -5,7 +5,16 @@
     <link>https://qinry.github.io/tags/mysql/</link>
     <description>Recent content in MySQL on 欢迎来到槎城小子的博客！</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 02 Apr 2021 19:44:50 +0800</lastBuildDate><atom:link href="https://qinry.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 Aug 2021 09:06:53 +0800</lastBuildDate><atom:link href="https://qinry.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在MySQL学习SQL</title>
+      <link>https://qinry.github.io/posts/2021/08/mysql-sql-statement/</link>
+      <pubDate>Thu, 26 Aug 2021 09:06:53 +0800</pubDate>
+      
+      <guid>https://qinry.github.io/posts/2021/08/mysql-sql-statement/</guid>
+      <description>概述 数据库（database） 保存有组织的数据的容器（通常是一个或一组文件） 数据库管理系统（DBMS，Database Management System） 一种软</description>
+    </item>
+    
     <item>
       <title>JDBC的使用</title>
       <link>https://qinry.github.io/posts/2021/04/java-jdbc/</link>
@@ -21,7 +30,7 @@
       <pubDate>Mon, 01 Mar 2021 19:43:16 +0800</pubDate>
       
       <guid>https://qinry.github.io/posts/2021/03/transaction/</guid>
-      <description>一、事务的语法 非常简单 start tansaction; -- 事务开始，也可以换成begin; ... -- 一系列SQL语句完成一个操作 commit; -- 提交当前的修改 rollback; -- 撤销修改 二、事务四大特性 事</description>
+      <description>一、事务的语法 非常简单 set autocommit = 0; -- 关闭自动提交 start tansaction; -- 事务开始，也可以换成begin; ... -- 一系列SQL语句完成一个操作 -- 当执行commit或ro</description>
     </item>
     
   </channel>

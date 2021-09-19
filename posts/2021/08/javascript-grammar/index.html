@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.85.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Javascript 语法 &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="学习JavaScript 语法和 jQuery" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>hljs.highlightAll();</script>
+
+
+</head>
+
+  <body class="theme-base-0d ">
+    <span id="top"></span>
+    <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+    
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../tags"> 分类标签 </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright © 2021 槎城小子</p>
+  </div>
+</aside>
+
+    
+<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#使用方式">使用方式</a></li>
+    <li><a href="#简述数据类型">简述数据类型</a></li>
+    <li><a href="#运算符">运算符</a></li>
+    <li><a href="#进一步了解数据类型">进一步了解数据类型</a></li>
+    <li><a href="#流程控制">流程控制</a></li>
+    <li><a href="#集合">集合</a></li>
+    <li><a href="#函数">函数</a></li>
+    <li><a href="#内部对象">内部对象</a></li>
+    <li><a href="#面向对象">面向对象</a></li>
+    <li><a href="#操作bom对象">操作BOM对象</a></li>
+    <li><a href="#操作dom对象">操作DOM对象</a></li>
+    <li><a href="#验证表单">验证表单</a></li>
+    <li><a href="#jquery">jQuery</a></li>
+    <li><a href="#其他资源">其他资源</a></li>
+  </ul>
+</nav>
+        
+</aside>
+
+
+    <main class="content container">
+    <div class="post">
+
+  <h1>Javascript 语法</h1>
+  <span class="post-date">
+    2021-08-21 10:08 &nbsp;
+    字数：<strong>8290</strong> &nbsp;
+    标签：
+              <a href="https://qinry.github.io/tags/javascript/">JavaScript</a>&nbsp;
+              <a href="https://qinry.github.io/tags/web/">WEB</a>&nbsp;
+  </span>
+
+  <h2 id="概述">概述</h2>
+<p><strong>Javascript</strong> 一种Web的编程语言，是互联网最流行的脚本语言。可以插入到HTML中，被所有的浏览器所执行。
+ECMAScript 6，简称 ES6。ECMAScript 可以理解是 Javascript 的标准化规范。</p>
+<h2 id="使用方式">使用方式</h2>
+<p>引入外部文件，js代码可以写在后缀为js文件</p>
+<pre><code>// main.js
+// javascript 代码写在这个文件
+// ...
+</code></pre><pre><code>&lt;!-- index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>嵌入到HTML内部使用</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;script&gt;
+            // javascript代码写在这里
+            // ...
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>js命名严格区分大小写</p>
+<h2 id="简述数据类型">简述数据类型</h2>
+<p>js的数据类型有数值、文本、图形、音频、视频等等</p>
+<p>变量定义格式</p>
+<pre><code>var 全局变量 = 值;
+let 局部变量 = 值;
+</code></pre><p>变量名不能以数字开头，可以以字母、下划线_和美元符号$开头</p>
+<p>注意：</p>
+<ul>
+<li>null 表示空，是一种表示空的数据类型</li>
+<li>undefined 表示未定义，说明变量未声明或声明但未初始化，依然为未定义</li>
+</ul>
+<h3 id="严格检查模式">严格检查模式</h3>
+<pre><code>'user strict'; // 严格检查模式，必须写在第一行
+</code></pre><h3 id="数字">数字</h3>
+<p>不区分小数和整数，例如：</p>
+<pre><code>123 // 整数
+123.1 // 浮点数
+1.234e3 // 科学计数法
+-99 // 负数
+NaN // Not a Number
+Infinity // 无穷大
+</code></pre><h3 id="字符串">字符串</h3>
+<p>用单引号或双引号表示，例如：</p>
+<pre><code>&quot;abc&quot;
+'abc'
+</code></pre><h3 id="布尔">布尔</h3>
+<p>有两个值true或false</p>
+<h3 id="数组">数组</h3>
+<p>使用中括号[]表示。这里数组，每个元素可以不相同，但建议保持使用一样的数据类型</p>
+<p>例如：</p>
+<pre><code>var ia = [ 1,2,3,4 ];
+var sa = [ &quot;hello&quot;, &quot;world&quot; ];
+var ba = [ true, false ];
+var matrix = [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ];
+</code></pre><h3 id="对象">对象</h3>
+<p>使用大括号{}表示，对象的属性以 <code>属性名:值</code> 格式表示，属性之间用逗号隔开，最后的属性不加逗号</p>
+<pre><code>var person = {
+    name: &quot;zhangsan&quot;,
+    age: 13
+}
+var personName = person.name
+var personAge = person.age
+</code></pre><h3 id="null">null</h3>
+<p>表示一个变量为空</p>
+<pre><code>var a = null;
+</code></pre><h2 id="运算符">运算符</h2>
+<h3 id="逻辑运算符">逻辑运算符</h3>
+<pre><code>&amp;&amp; 短路与
+|| 短路或
+! 否
+</code></pre><h3 id="比较运算符">比较运算符</h3>
+<pre><code>!= 不等于
+== 等于，表示值相等返回true
+=== 绝对等于，表示类型相等，值也相等，返回true
+&gt; 大于
+&gt;= 大于等于
+&lt; 小于
+&lt;= 小于等于
+</code></pre><p>建议使用 === ，而不是 ==</p>
+<p>注意：</p>
+<ul>
+<li>
+<p>NaN === NaN，NaN和任何数或NaN比较相等返回false</p>
+</li>
+<li>
+<p>isNaN方法，判断变量是否为NaN</p>
+</li>
+</ul>
+<h3 id="其他">其他</h3>
+<h2 id="进一步了解数据类型">进一步了解数据类型</h2>
+<h3 id="字符串-1">字符串</h3>
+<p>1、转义字符</p>
+<pre><code>\\ 反斜杠
+\' 单引号
+\&quot; 双引号
+\n 换行符
+\t 制表符
+\u4e2d unicode字符 \u0000~\uffff 十六进制
+\x41 ascii字符 \x00~\x7f 十六进制
+</code></pre><p>2、多行字符串</p>
+<pre><code>var str = `hello
+world`;
+</code></pre><p>3、模式字符串</p>
+<pre><code>var world = &quot;world!&quot;;
+var str = `hello, ${world}`; // 结果：&quot;hello, world!&quot;
+</code></pre><p>4、字符串长度</p>
+<pre><code>var str = &quot;hello, javascript&quot;;
+var len = str.length;
+</code></pre><p>5、字符串可变性与否</p>
+<p>字符串可通过下标取出包含的字符，如：<code>str[0]</code>。字符串不可变，即使 <code>str[0] = 'b';</code> ，也不能改变 str里面的值。</p>
+<p>6、大小写转换</p>
+<pre><code>var str = &quot;student&quot;;
+str.toUpperCase();
+str.toLowerCase();
+</code></pre><p>7、子字符串</p>
+<pre><code>var str = &quot;student&quot;;
+var sub = str.substring(0, 3);
+</code></pre><p>8、索引</p>
+<pre><code>var str = &quot;student&quot;;
+var idx = str.indexOf('t');
+</code></pre><h3 id="数组-1">数组</h3>
+<p>1、长度</p>
+<pre><code>var arr = [ 1, 2, 3, 4, 5 ];
+var len = arr.length;
+</code></pre><p>长度可变，数组大小也会改变。如果长度变小，数组元素会丢失；如果长度变大，数组后面填充empty，其实是undefined。</p>
+<p>2、索引</p>
+<pre><code>var arr = [ 1, 2, 3, 4, 5 ];
+var idx = arr.indexOf(2);
+</code></pre><p>3、分片</p>
+<pre><code>var arr = [ 1, 2, 3, 4, 5 ];
+var subarr = arr.slice(1, 4); // 取下标1到5（不包含）的子数组
+</code></pre><p>4、添加和移除尾部元素</p>
+<pre><code>var arr = [ 1, 2, 3, 4, 5 ];
+arr.push(6, 7); // 函数参数是可变参数，添加一或多个元素到尾部
+var lastValue = arr.pop(); // 移除元素
+</code></pre><p>5、添加和移除首部元素</p>
+<pre><code>var arr = [ 1, 2, 3, 4, 5 ];
+arr.unshift(-2, 0); // 函数参数是可变参数，添加一或多个元素到首部
+var firstValue = arr.shift(); // 移除元素
+</code></pre><p>6、排序</p>
+<pre><code>var arr = [ 3, 1, 5, 4, 2 ]
+arr.sort();
+</code></pre><p>7、元素反转</p>
+<pre><code>var arr = [ 1, 2, 3, 4, 5 ];
+arr.reverse();
+</code></pre><p>8、合并</p>
+<p>不改变原数组，返回合并后的数组</p>
+<pre><code>var arr = [ 1, 2, 3, 4, 5 ];
+arr.concat([ 6, 7, 8] );
+</code></pre><p>9、连接</p>
+<p>将数组元素连接成字符串，参数为连接符，默认为&quot;,&quot;</p>
+<pre><code>var arr = [ 1, 2, 3, 4, 5 ];
+var str = arr.join(&quot;-&quot;); // 结果：1-2-3-4-5
+</code></pre><p>10、多维数组</p>
+<p>取值</p>
+<pre><code>var matrix = [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ];
+var value = matrix[1][1];
+</code></pre><h3 id="对象-1">对象</h3>
+<p>以对象person为例：</p>
+<pre><code>var person = {
+    name: &quot;张三&quot;,
+    age: 18,
+    email: &quot;zhangsan@163.com&quot;,
+    score: 0
+};
+</code></pre><p>1、设置属性</p>
+<pre><code>person.name = &quot;李四&quot;;
+person.gender = &quot;男&quot;; // 设置不存在属性，对象增添该属性
+</code></pre><p>2、获得属性值</p>
+<pre><code>var personName = person.name;
+var gender = person.gender; // 不存在属性，返回undefined，没有报错
+</code></pre><p>3、删除属性</p>
+<pre><code>var flag = delete person.gender; // 删除该属性，若属性存在，返回true，否则返回undefined
+</code></pre><p>4、判断对象包含的属性</p>
+<p>可以是<code>&quot;属性名&quot; in 对象名</code> 来判断，也可以是<code>对象名.hasOwnProperty(属性名)</code>。</p>
+<pre><code>var exists = &quot;age&quot; in person; // 存在返回true，否则返回false
+exists = person.hasOwnProperty(&quot;name&quot;); // 与上行类似
+</code></pre><p>他们区别，in还可以判断某个方法是否在这个对象，hasOwnProperty方法显然不行。
+例如：</p>
+<pre><code>&quot;toString&quot; in person; // 结果：true
+person.hasOwnProperty(&quot;toString&quot;); // 结果： false
+</code></pre><h2 id="流程控制">流程控制</h2>
+<h3 id="if分支">if分支</h3>
+<pre><code>var score = 88;
+if (score &lt; 0 || score &gt; 100) {
+    alert(&quot;分数在不合理范围&quot;);
+}
+if (score &gt;= 90) {
+    console.log(&quot;优秀&quot;);
+} else if (score &gt;= 80) {
+    console.log(&quot;良好&quot;);
+} else if (score &gt;= 70) {
+    console.log(&quot;中等&quot;);
+} else if (score &gt;= 60) {
+    console.log(&quot;及格&quot;);
+} else {
+    console.log(&quot;不及格&quot;);
+}
+</code></pre><p>console.log(&hellip;) 在浏览器控制台输出消息。alert(&hellip;) 浏览器弹窗显示消息</p>
+<h3 id="while循环">while循环</h3>
+<pre><code>var i = 0;
+while (i &lt; 5) {
+    console.log(i);
+    i++;
+}
+
+do {
+    i--;
+    console.log(i);
+} while(i &gt; 0);
+</code></pre><h3 id="for循环">for循环</h3>
+<pre><code>for (let i = 0; i &lt; 5; i++) {
+    console.log(i);
+}
+</code></pre><h3 id="foreach循环">foreach循环</h3>
+<pre><code>var arr = [ 1, 2, 3, 4, 5 ];
+// 不建议使用 for .. in 遍历数组，如果arr新增属性，也会被遍历出来，有漏洞
+for (let idx in arr) {
+    console.log(arr[idx]);
+}
+
+for (let val of arr) {
+    console.log(val);
+}
+
+var person = {
+    name: &quot;张三&quot;,
+    age: 18,
+    email: &quot;zhangsan@163.com&quot;,
+    score: 0
+};
+
+for (let key in person) {
+    console.log(person[key]);
+}
+</code></pre><h2 id="集合">集合</h2>
+<h3 id="map">map</h3>
+<blockquote>
+<p>map增删改查</p>
+</blockquote>
+<pre><code>var map = new Map([ [&quot;jack&quot;, 90],[&quot;rocco&quot;, 88] ]); // 新建Map 可传参：二维数组 表示键值对
+map.set(&quot;tom&quot;, 100); // 增
+map.delete(&quot;tom&quot;); // 删：成功返回true，否则返回false
+map.set(&quot;rocco&quot;, 100); // 改
+map.get(&quot;jack&quot;); // 查
+</code></pre><blockquote>
+<p>遍历map</p>
+</blockquote>
+<pre><code>for (let x of map) {
+    console.log(x[0] + &quot; =&gt; &quot; + x[1]);
+}
+</code></pre><h3 id="set">set</h3>
+<blockquote>
+<p>set增删查</p>
+</blockquote>
+<pre><code>var set = new Set([1,2,3,3]);
+set.add(4); // 增
+set.delete(3); // 删
+set.has(2); // 查
+</code></pre><blockquote>
+<p>遍历set</p>
+</blockquote>
+<pre><code>for (let x of set) {
+    console.log(x);
+}
+</code></pre><h2 id="函数">函数</h2>
+<h3 id="定义函数">定义函数</h3>
+<blockquote>
+<p>方式1</p>
+</blockquote>
+<pre><code>function methodName(paramName) {
+    //...
+    return returnVal;
+}
+
+function abs(x) {
+    if (typeof x !== &quot;number&quot;) {
+        throw &quot;arg x not a number&quot;;
+    }
+    return x &gt;= 0 ? x : -x;
+}
+var val = abs(-2);
+</code></pre><blockquote>
+<p>方式2</p>
+</blockquote>
+<pre><code>var methodName = function(paramName) {
+    //...
+    return returnVal;
+}
+
+var abs = function(x) {
+    if (typeof x !== &quot;Number&quot;) {
+        throw &quot;arg x not a number&quot;;
+    }
+    return x &gt;= 0 ? x : -x;
+}
+var val = abs(-2);
+</code></pre><p>通过 typeof 得到变量的类型，进行类型判断。throw + 异常信息 就可以抛出异常</p>
+<h3 id="arguments关键字">arguments关键字</h3>
+<p>arguments包含函数的所有参数，其实是数组</p>
+<pre><code>function log(str) {
+    if (typeof str !== &quot;String&quot;) {
+        throw &quot;arg str not a String&quot;;
+    }
+    if (arguments.length == 1) {
+        console.log(str);
+    } else if (arguments.length &gt; 1) {
+        console.log(str);
+        for (let i = 1; i &lt; arguments.length; i++) {
+            console.log(arguments[i]);
+        }
+    }
+    
+}
+log(&quot;hello&quot;, &quot;world&quot;, &quot;!&quot;);
+</code></pre><h3 id="可变参数">可变参数</h3>
+<pre><code>function log(str, ...rest) {
+    if (typeof str !== &quot;String&quot;) {
+        throw &quot;arg str not a String&quot;;
+    }
+    console.log(str);
+    for (let msg of rest) {
+        console.log(msg);
+    }
+}
+log(&quot;hello&quot;, &quot;world&quot;, &quot;!&quot;);
+</code></pre><h3 id="作用域">作用域</h3>
+<p>在函数内部声明的局部变量，只能在其函数内部使用。</p>
+<pre><code>function f1() {
+    var x = 1;
+    function f2() {
+        x++;
+        console.log(x);
+    }
+    return f2;
+}
+var f = f1();
+f();
+</code></pre><p>这里函数f2是个闭包，f2内部能访问到f1中的变量x，并能自增1。f1返回值为f2。那么函数外部可以通过f1的返回值访问到f1内部的局部变量。</p>
+<p>在函数外声明的全局变量，能被所有函数访问。全部的全局变量会绑定为全局对象window的属性。</p>
+<pre><code>var global_x = 1;
+function f1() {
+    console.log(global_x);
+}
+console.log(window.global_x);
+</code></pre><p>函数查找变量，从其内部往外查找，直到全局作用域，内部覆盖外部同名变量。</p>
+<p>注意：</p>
+<ul>
+<li>建议函数内部所有声明的变量的位置都放在函数体的头部。不该在需要某一变量的地方声明。</li>
+<li>建议所有的全局变量，放到同一个对象中，这个对象绑定为window属性，这个属性里面再放入许多的全局变量，来减少命名冲突。比如：jQuery 这个库的全局变量放到了名为&quot;jQuery&quot;的对象中，其还有一个别名：$。</li>
+</ul>
+<h3 id="let关键字">let关键字</h3>
+<p>解决局部作用冲突问题。建议函数局部变量使用let声明</p>
+<pre><code>for (var i = 0; i &lt; 5; i++) {
+    console.log(i);
+}
+console.log(i+1);
+
+for (let i = 0; i &lt; 5; i++) {
+    console.log(i+1);
+}
+// console.log(i+1);// ! let声明的i不会在for循环外生效，而var会
+</code></pre><h3 id="const关键字">const关键字</h3>
+<p>定义常量，使用关键字const</p>
+<pre><code>const PI = &quot;3.1415&quot;;
+// PI = &quot;123&quot;; // ! 常量PI只读，不能修改
+</code></pre><h3 id="方法">方法</h3>
+<p>对象包含的变量为属性，对象包含的函数为方法</p>
+<blockquote>
+<p>方式1</p>
+</blockquote>
+<pre><code>var person = {
+    name: &quot;zhangsan&quot;,
+    birth: 1999,
+    age: function() {
+        var now = new Date().getFullYear();
+        return now - this.birth;
+    }
+}
+person.age();
+</code></pre><p>方法使用对象的属性，要用 this.属性名 获取。</p>
+<blockquote>
+<p>方式2</p>
+</blockquote>
+<pre><code>function getAge() {
+    var now = new Date().getFullYear();
+    return now - this.birth;
+}
+
+var person = {
+    name: &quot;zhangsan&quot;,
+    birth: 1999,
+    age: getAge
+}
+person.age();
+</code></pre><h3 id="apply">apply</h3>
+<p>控制函数中this的指向</p>
+<pre><code>function getAge() {
+    var now = new Date().getFullYear();
+    return now - this.birth;
+}
+
+var person = {
+    name: &quot;zhangsan&quot;,
+    birth: 1999,
+    age: getAge
+}
+getAge.apply(person, []);
+</code></pre><h2 id="内部对象">内部对象</h2>
+<h3 id="标准对象">标准对象</h3>
+<pre><code>typeof 123;
+&quot;number&quot;
+typeof &quot;123&quot;;
+&quot;string&quot;
+typeof true;
+&quot;boolean&quot;
+typeof NaN;
+&quot;number&quot;
+typeof [];
+&quot;object&quot;
+typeof {};
+&quot;object&quot;
+</code></pre><h3 id="date">Date</h3>
+<blockquote>
+<p>常用方法</p>
+</blockquote>
+<pre><code>var now = new Date();
+now.getFullYear();
+now.getMonth(); // 0-11
+now.getDate(); 
+now.getDay(); // 星期几
+now.getHours();
+now.getMinutes();
+now.getSeconds();
+now.getTime(); // 时间戳
+now = new Date(1629555024108);
+</code></pre><blockquote>
+<p>日期转文本</p>
+</blockquote>
+<pre><code>var     now = new Date(1629555024108);
+now.toLocaleString();
+</code></pre><h3 id="json">JSON</h3>
+<p>对象转JSON字符串</p>
+<pre><code>var person = {
+    name: &quot;张三&quot;,
+    age: 18,
+    email: &quot;zhangsan@163.com&quot;,
+    score: 0
+};
+var jsonPerson = JSON.stringify(person);
+console.log(jsonPerson);
+</code></pre><p>JSON字符串转对象</p>
+<pre><code>var person = JSON.parse('{&quot;name&quot;:&quot;张三&quot;,&quot;age&quot;:18,&quot;email&quot;:&quot;zhangsan@163.com&quot;,&quot;score&quot;:0}');
+console.log(person.name)
+</code></pre><h2 id="面向对象">面向对象</h2>
+<blockquote>
+<p>原型对象</p>
+</blockquote>
+<pre><code>function Student(name) {
+    this.name = name;
+}
+
+Student.prototype.hello = function(){
+    alert('hello');
+};
+
+
+
+// 继承
+function Pupil(name, age) {
+    Student.call(this,name);
+    this.age = age; 
+}
+
+Pupil.prototype.showAge = function() {
+    alert('age:'+this.age);
+}
+var pu = new Pupil('lisi', 8);
+var stu = new Student(&quot;zhangsan&quot;);
+pu.showAge();
+stu.hello();
+</code></pre><blockquote>
+<p>class对象</p>
+</blockquote>
+<pre><code>class Student {
+    constructor(name) {
+        this.name = name;
+    }
+    hello() {
+        alert('hello');
+    }
+}
+// 继承
+class Pupil extends Student {
+    constructor(name, age) {
+        super(name);
+        this.age = age;
+    }
+    showAge() {
+        alert(&quot;age:&quot;+this.age);
+    }
+}
+var p = new Pupil('lisi', 8);
+var s = new Student('zhangsan');
+p.showAge();
+s.hello();
+</code></pre><h2 id="操作bom对象">操作BOM对象</h2>
+<p>BOM，即 Browser Object Model，中文是浏览器对象模型</p>
+<p>几个常见浏览器内核：</p>
+<ul>
+<li>IE</li>
+<li>Chrome</li>
+<li>FireFox</li>
+<li>Safari</li>
+</ul>
+<blockquote>
+<p>window</p>
+</blockquote>
+<p>代表浏览器的窗口</p>
+<pre><code>window.alert('..')
+window.innerHeight
+window.innerWidth
+window.outerHeight
+window.outerWidth
+</code></pre><blockquote>
+<p>navigator</p>
+</blockquote>
+<p>封装浏览器信息</p>
+<pre><code>navigator.appName
+navigator.appVersion
+navigator.platform
+navigator.userAgent
+</code></pre><p>navigator信息会被人为修改，所以不建议使用这些属性，来编写代码</p>
+<blockquote>
+<p>screen</p>
+</blockquote>
+<p>表示屏幕信息</p>
+<pre><code>screen.height
+screen.width
+</code></pre><blockquote>
+<p>location</p>
+</blockquote>
+<p>代表定位</p>
+<pre><code>location.host
+location.protocol // https
+location.href
+location.hostname
+location.reload() // 刷新
+location.assign('..') // 重定向
+</code></pre><blockquote>
+<p>history
+表示历史记录</p>
+</blockquote>
+<pre><code>history.back()
+history.forward()
+</code></pre><p>不建议使用，可以是ajax完成页面的局部刷新来替代。</p>
+<blockquote>
+<p>document</p>
+</blockquote>
+<p>表示当前页面，就是HTML 文档树</p>
+<pre><code>document.title
+document.getElementById('..'); // id选择文档树结点
+document.cookie // cookie不安全，服务端需要设置cookie httpOnly属性，那么document.cookie无法访问设置该属性的cookie
+</code></pre><h2 id="操作dom对象">操作DOM对象</h2>
+<p>DOM，即 Document Object Model，中文为文档对象模型。</p>
+<p>浏览器页面本质就是DOM树结构</p>
+<p>核心操作：</p>
+<ul>
+<li>更新节点</li>
+<li>遍历节点</li>
+<li>删除节点</li>
+<li>新增节点</li>
+</ul>
+<p>假如有这么一个html文件：</p>
+<pre><code>&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;操作DOM对象&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            .p2 {
+                color: red;
+                font-size: 100px;   
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;father&quot;&gt;
+            &lt;h1&gt;一级标题&lt;/h1&gt;
+            &lt;p id=&quot;p1&quot;&gt;p1&lt;/p&gt;
+            &lt;p class=&quot;p2&quot;&gt;p2&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            // ... 操作DOM节点
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="查找节点">查找节点</h3>
+<pre><code>// 根据选择器选择元素节点
+var h1 = document.getElementsByTagName('h1').item(0);
+var p1 = document.getElementById('p1');
+var p2 = document.getElementsByClassName('p2').item(0);
+var father = document.getElementById('father');
+
+// 获取所有子元素节点
+var children = father.children;
+// 第一个子元素节点
+var first = father.firstElementChild
+// 最后一个子元素节点
+var last= father.lastElementChild;
+
+// 下一个相邻元素节点
+var next = first.nextElementSibling;
+// 上一个相邻元素节点
+var prev = last.previousElementSibling;
+
+</code></pre><h3 id="更新节点">更新节点</h3>
+<pre><code>h1.innerText = 'h1'; // 修改文本内容
+h1.innerHTML = '&lt;strong&gt;h1&lt;/strong&gt;'; // 修改超文本内容，可以解析HTML
+// 修改元素的css
+h1.style.color = 'red';
+h1.style.fontSize = '20px';
+h1.style.padding = '2em';
+</code></pre><h3 id="删除节点">删除节点</h3>
+<p>步骤：首先查找删除节点的父节点，再通过父节点删除</p>
+<pre><code>father.removeChild(p1);
+
+var father2 =  p1.parentElement; // 获取父元素节点
+father2.removechild(p2);
+</code></pre><h3 id="新增节点">新增节点</h3>
+<p>新增方法传入的是已有的元素节点，则是元素节点</p>
+<blockquote>
+<p>append
+在父节点内部追加一个子节点到尾部</p>
+</blockquote>
+<pre><code>var p3 = document.createElement('p');
+p3.setAttribute('id', 'p3');
+// p3.id = 'p3'; // 与上行等效
+p3.innerText = 'p3';
+father.append(p3); 
+</code></pre><blockquote>
+<p>insertBefore
+在父节点内部的目标子节点前插入一个节点</p>
+</blockquote>
+<pre><code>var p3 = document.createElement('p');
+p3.setAttribute('id', 'p3');
+p3.innerText = 'p3';
+father.insertBefore(p3, p2); // father内部的目标p2前插入p3
+</code></pre><blockquote>
+<p>prepend
+在父节点内部追加一个子节点到头部部</p>
+</blockquote>
+<pre><code>var p3 = document.createElement('p');
+p3.setAttribute('id', 'p3');
+p3.innerText = 'p3';
+father.prepend(p3);
+</code></pre><blockquote>
+<p>before
+在目标节点前面插入新节点</p>
+</blockquote>
+<pre><code>var p3 = document.createElement('p');
+p3.setAttribute('id', 'p3');
+p3.innerText = 'p3';
+p2.before(p3);
+</code></pre><blockquote>
+<p>after</p>
+</blockquote>
+<p>在目标节点后面插入新节点</p>
+<pre><code>var p3 = document.createElement('p');
+p3.setAttribute('id', 'p3');
+p3.innerText = 'p3';
+p2.after(p3);
+</code></pre><h2 id="验证表单">验证表单</h2>
+<blockquote>
+<p>登录或注册表单的验证
+假如有这样一个html文件</p>
+</blockquote>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;验证表单&lt;/title&gt;
+        &lt;script src=&quot;https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div&gt;
+            &lt;form action=&quot;#&quot; method=&quot;post&quot; onsubmit=&quot;return checkForm()&quot;&gt;
+                &lt;label&gt;用户名:&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;uname&quot; name=&quot;uname&quot;&gt; &lt;br&gt;
+                &lt;label&gt;密码:&lt;/label&gt;
+                &lt;input type=&quot;password&quot; id=&quot;input-pwd&quot;&gt; &lt;br&gt;
+                &lt;input type=&quot;hidden&quot; id=&quot;md5-pwd&quot; name=&quot;pwd&quot;&gt; &lt;br&gt;
+                &lt;button type=&quot;submit&quot; &gt;提交&lt;/button&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            function checkForm() {
+                var uname = document.getElementById('uname').value;
+                var pwd = document.getElementById('input-pwd').value;
+                var md5_pwd_elem = document.getElementById('md5-pwd');
+                md5_pwd_elem.value = md5(pwd);
+                return true;
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><ol>
+<li>引入bootcdn的md5.min.js文件，用它使用md5算法加密密码文本</li>
+<li>form的属性 onsubmit 用来表单在提交时绑定的事件，这里是checkForm函数，目的是用来验证表单</li>
+<li>id为input-pwd的密码输入框用于接受密码的输入，id为md5-pwd的隐藏域用来真正提交的加密过的密码</li>
+<li>提交表单上传的数据，对应的文本必须有name属性，用来标示对应的数据项</li>
+<li>选择的input元素elem可以使用value属性获取表单输入的值，或设置他们的value的值来改变输入的值。但是输入是固定选项的话，则使用checked或selected属性的真与否来判断所选择的值是哪一个。</li>
+</ol>
+<blockquote>
+<p>获取单选框、多选框、下拉框所选定的值</p>
+</blockquote>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;验证表单&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div&gt;
+            &lt;form action=&quot;#&quot; method=&quot;post&quot; onsubmit=&quot;return checkForm()&quot;&gt;
+                &lt;label&gt;性别&lt;/label&gt;
+                &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;male&quot;&gt; 男
+                &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;female&quot;&gt; 女 &lt;br&gt;
+                &lt;label&gt;爱好&lt;/label&gt;
+                &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;movie&quot;&gt; 电影
+                &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;song&quot;&gt; 听歌
+                &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;game&quot;&gt; 游戏 &lt;br&gt;
+                &lt;label&gt;选择编程语言&lt;/label&gt;
+                &lt;select name=&quot;language&quot; id=&quot;language&quot;&gt;
+                    &lt;option value=&quot;C&quot;&gt;C&lt;/option&gt;
+                    &lt;option value=&quot;Java&quot;&gt;Java&lt;/option&gt;
+                    &lt;option value=&quot;JavaScript&quot;&gt;JavaScript&lt;/option&gt;
+                &lt;/select&gt;&lt;br&gt;
+                &lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+           // .. javascript代码位置
+           function checkForm() {
+               // ..
+               return true;
+           }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>判断选项框是否选中</p>
+<pre><code>document.getElementById('boy').checked; // 结果： true/false
+document.getElementById('girl').checked;
+
+var hobby = document.getElementsByName('hobby');
+hobby[0].checked; // 结果：true / false
+hobby[1].checked;
+hobby[2].checked;
+
+var lang = document.getElementById('language');
+var idx = lang.selectedIndex; // 结果： 0 ~ lang.length - 1
+lang[idx].selected; // 结果： true / false
+</code></pre><h2 id="jquery">jQuery</h2>
+<p><strong>jQuery</strong> 是 javascript 的封装库，旨在减少书写javascript的代码量，能够做更多的事情。更多详情在官网在<a href="https://jquery.com/">那里</a></p>
+<h3 id="导入jquery的方式">导入jQuery的方式</h3>
+<p>方式1：CDN导入</p>
+<p>CDN选择很多，这里是使用BootCDN的jQuery。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;script src=&quot;https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div&gt;
+        
+        &lt;/div&gt;
+        &lt;script&gt;
+           // .. javascript代码位置
+        
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>方式2：本地导入</p>
+<p>需要到官网<a href="https://jquery.com/download/">下载</a>未压缩的开发用的jQuery，再本地导入到web项目中。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;script src=&quot;./jquery-3.6.0.js&quot;&gt;&lt;/script&gt;
+
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div&gt;
+        
+        &lt;/div&gt;
+        &lt;script&gt;
+           // .. javascript代码位置
+        
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="jquery公式">jQuery公式</h3>
+<p>使用jQuery通常来查找DOM节点，它有一个通用的公式：</p>
+<pre><code>$(selector).action(function(){
+
+});
+</code></pre><p>selector指的是选择器，利用CSS选择器的语法来查找DOM节点，action指节点绑定或监听的事件。事件大致分为鼠标事件、键盘事件和其他事件。</p>
+<h3 id="jquery选择器">jQuery选择器</h3>
+<p>基本选择器</p>
+<ul>
+<li>#id：根据给定的ID匹配一个元素。</li>
+<li>element：根据给定的元素标签名匹配所有元素。</li>
+<li>.class：根据给定的css类名匹配元素。</li>
+<li>*：匹配所有元素。</li>
+<li>selector1,selector2,selectorN：将每一个选择器匹配到的元素合并后一起返回。可以指定任意多个选择器，并将匹配到的元素合并到一个结果内。</li>
+</ul>
+<p>层级选择器</p>
+<ul>
+<li>ancestor descendant：在给定的祖先元素下匹配所有的后代元素</li>
+<li>parent &gt; child：在给定的父元素下匹配所有的子元素</li>
+<li>prev + next：匹配所有紧接在 prev 元素后的 next 元素</li>
+<li>prev ~ sliblings：匹配 prev 元素之后的所有 siblings 元素</li>
+</ul>
+<p>基本筛选器</p>
+<p>&ldquo;selector:filter&rdquo; 代表在selector基础上使用filter筛选元素</p>
+<p>filter有如下：</p>
+<ul>
+<li>:first ：获取第一个元素</li>
+<li>:last：获取最后个元素</li>
+<li>:not(selector)：去除所有与给定选择器匹配的元素</li>
+<li>:even：匹配所有索引值为偶数的元素，从 0 开始计数</li>
+<li>:odd：匹配所有索引值为奇数的元素，从 0 开始计数</li>
+<li>:eq(index)：匹配一个给定索引值的元素</li>
+<li>:gt(index)：匹配所有大于给定索引值的元素</li>
+<li>:lt(index)：匹配所有小于给定索引值的元素</li>
+<li>:header：匹配如 h1, h2, h3之类的标题元素</li>
+</ul>
+<p>内容筛选</p>
+<ul>
+<li>:contains(text)：匹配包含给定文本的元素</li>
+<li>:empty：匹配所有不包含子元素或者文本的空元素</li>
+<li>:has(selector)：匹配含有选择器所匹配的元素的元素</li>
+<li>:parent：匹配含有子元素或者文本的元素</li>
+</ul>
+<p>可见性筛选</p>
+<ul>
+<li>:hidden：匹配所有不可见元素，或者type为hidden的元素</li>
+<li>:visible：匹配所有的可见元素</li>
+</ul>
+<p>子元素筛选</p>
+<ul>
+<li>:first-child：匹配所给选择器( :之前的选择器)的第一个子元素</li>
+<li>:last-child：匹配最后一个子元素</li>
+<li>:nth-child(n|even|odd)：匹配其父元素下的第N个子或奇偶元素</li>
+<li>:nth-last-child(n|even|odd|formula)：选择所有他们父元素的第n个子元素。计数从最后一个元素开始到第一个。</li>
+<li>:first-of-type：结构化伪类，匹配E的父元素的第一个E类型的孩子。</li>
+<li>:last-of-type：结构化伪类，匹配E的父元素的最后一个E类型的孩子</li>
+<li>:nth-of-type(n|even|odd|formula)：选择同属于一个父元素之下，并且标签名相同的子元素中的第n个。</li>
+<li>:nth-last-of-type(n|even|odd|formula)：选择同属于一个父元素之下，并且标签名相同的子元素中的第n个，计数从最后一个元素到第一个。</li>
+</ul>
+<p>属性筛选</p>
+<ul>
+<li>[attribute]：匹配包含给定属性的元素。</li>
+<li>[attribute=value]：匹配给定的属性是某个特定值的元素</li>
+<li>[attribute!=value]：匹配所有不含有指定的属性，或者属性不等于特定值的元素。</li>
+<li>[attribute^=value]：匹配给定的属性是以某些值开头的元素</li>
+<li>[attribute$=value]：匹配给定的属性是以某些值结尾的元素</li>
+<li>[attribute*=value]：匹配给定的属性是以包含某些值的元素</li>
+</ul>
+<p>表单</p>
+<ul>
+<li>:input：匹配所有 input, textarea, select 和 button 元素</li>
+<li>:text：匹配所有的单行文本框</li>
+<li>:password：匹配所有密码框</li>
+<li>:radio：匹配所有单选按钮</li>
+<li>:checkbox：匹配所有复选框</li>
+<li>:submit：匹配所有提交按钮，理论上只匹配 type=&ldquo;submit&rdquo; 的input或者button，但是现在的很多浏览器，button元素默认的type即为submit，所以很多情况下，不设置type的button也会成为筛选结果</li>
+<li>:image：匹配所有图像域</li>
+<li>:reset：匹配所有重置按钮</li>
+<li>:button：匹配所有按钮</li>
+<li>:file：匹配所有文件域</li>
+</ul>
+<p>表单对象属性</p>
+<ul>
+<li>:enabled：匹配所有可用元素</li>
+<li>:disabled：匹配所有不可用元素</li>
+<li>:checked：匹配所有选中的radio或checkbox等元素</li>
+<li>:selected：匹配所有选中的option元素</li>
+</ul>
+<h3 id="绑定事件">绑定事件</h3>
+<p>鼠标事件</p>
+<ul>
+<li>mousedown([[data],fn])：当鼠标指针移动到元素上方，并按下鼠标按键时，会发生 mousedown 事件。</li>
+<li>mouseup([[data],fn])：当在元素上放松鼠标按钮时，会发生 mouseup 事件。</li>
+<li>mouseenter([[data],fn])：当鼠标指针穿过元素时，会发生 mouseenter 事件。</li>
+<li>mouseleave([[data],fn])：当鼠标指针离开元素时，会发生 mouseleave 事件。</li>
+<li>mousemove([[data],fn])：当鼠标指针在指定的元素中移动时，就会发生 mousemove 事件。</li>
+<li>mouseover([[data],fn])：与 mouseenter 事件不同，不论鼠标指针穿过被选元素或其子元素，都会触发 mouseover 事件。</li>
+<li>mouseout([[data],fn])：与 mouseleave 事件不同，不论鼠标指针离开被选元素还是任何子元素，都会触发 mouseout 事件。</li>
+<li>scroll([[data],fn])：当用户滚动指定的元素时，会发生 scroll 事件。</li>
+</ul>
+<p>键盘事件</p>
+<ul>
+<li>keydown([[data],fn])：当键盘或按钮被按下时，发生 keydown 事件。</li>
+<li>keypress([[data],fn])：与 keydown 事件不同，每插入一个字符，就会发生 keypress 事件。</li>
+<li>keyup([[data],fn])：当按钮被松开时，发生 keyup 事件。它发生在当前获得焦点的元素上。</li>
+</ul>
+<p>其它事件</p>
+<ul>
+<li>blur([[data],fn])：当元素失去焦点时触发 blur 事件。</li>
+<li>change([[data],fn])：当元素的值发生改变时，会发生 change 事件。仅适用于文本域（text field），以及 textarea 和 select 元素。</li>
+<li>click([[data],fn])：点击元素，触发click事件。</li>
+<li>dbclick([[data],fn])：双击元素，触发click事件。</li>
+<li>focus([[data],fn])：当元素获得焦点时，触发 focus 事件。</li>
+<li>focusin([[data],fn])：当元素获得焦点时，触发 focusin 事件。focusin事件跟focus事件区别在于，他可以在父元素上检测子元素获取焦点的情况。</li>
+<li>focusout([[data],fn])：当元素失去焦点时触发 focusout 事件。focusout事件跟blur事件区别在于，他可以在父元素上检测子元素失去焦点的情况。</li>
+<li>resize([[data],fn])：当调整浏览器窗口的大小时，发生 resize 事件。</li>
+<li>submit([[data],fn])：当提交表单时，会发生 submit 事件。</li>
+<li>select([[data],fn])：当 textarea 或文本类型的 input 元素中的文本被选择时，会发生 select 事件。</li>
+<li>ready(fn)：当DOM载入就绪可以查询及操纵时绑定一个要执行的函数。</li>
+</ul>
+<p>样例：</p>
+<pre><code>&lt;script&gt;
+    $(function(){ // 文档就绪时触发的事件
+        $(':input').blur();
+    });
+&lt;/script&gt;
+</code></pre><h3 id="jquery操作dom">jQuery操作DOM</h3>
+<p>更新DOM</p>
+<pre><code>$(selector).html(); // 获取超文本内容
+$(selector).html('..'); // 设置超文本内容
+$(selector).text(); // 获取文本内容
+$(selector).text('..'); // 设置文本内容
+</code></pre><p>CSS操作</p>
+<pre><code>$(selector).css({key:value});
+</code></pre><p>元素的显示与隐藏</p>
+<pre><code>$(selector).hide(); // 隐藏元素
+$(selector).show(); // 显示元素
+</code></pre><p>window的宽高</p>
+<pre><code>$(window).height();
+$(window).width();
+</code></pre><h3 id="ajax异步请求">ajax异步请求</h3>
+<pre><code>$.ajax({
+    type: 'GET', /* GET/POST 请求方式 */
+    url: 'url', /* 请求地址 */
+    data: {key:value}, /* 传入的数据 */
+    dataType: &quot;JSON&quot;, /* 接受的数据格式 */
+    async: true, /* true/false 是否异步 */
+    success: function(data) { // 请求成功后的响应事件
+
+    },
+    error: function() { // 请求失败后的响应事件
+
+    }
+});
+</code></pre><h2 id="其他资源">其他资源</h2>
+<ul>
+<li><a href="https://jquery.cuishifeng.cn/">jQuery API 中文文档</a></li>
+</ul>
+
+</div>
+
+
+    </main>
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
+    
+      
+    
+  </body>
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.85.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>HTML 语法 &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="学习 HTML 语法，重点使用表单" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>hljs.highlightAll();</script>
+
+
+</head>
+
+  <body class="theme-base-0d ">
+    <span id="top"></span>
+    <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+    
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../tags"> 分类标签 </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright © 2021 槎城小子</p>
+  </div>
+</aside>
+
+    
+<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#html基本结构">HTML基本结构</a></li>
+    <li><a href="#注释">注释</a></li>
+    <li><a href="#网页基本信息">网页基本信息</a></li>
+    <li><a href="#基本标签">基本标签</a></li>
+    <li><a href="#图像标签">图像标签</a></li>
+    <li><a href="#超链接">超链接</a></li>
+    <li><a href="#行内元素和块元素">行内元素和块元素</a></li>
+    <li><a href="#列表标签">列表标签</a></li>
+    <li><a href="#表格标签">表格标签</a></li>
+    <li><a href="#媒体元素">媒体元素</a></li>
+    <li><a href="#页面结构">页面结构</a></li>
+    <li><a href="#内联框架">内联框架</a></li>
+    <li><a href="#表单">表单</a></li>
+    <li><a href="#其他资源">其他资源</a></li>
+  </ul>
+</nav>
+        
+</aside>
+
+
+    <main class="content container">
+    <div class="post">
+
+  <h1>HTML 语法</h1>
+  <span class="post-date">
+    2021-08-23 13:22 &nbsp;
+    字数：<strong>4531</strong> &nbsp;
+    标签：
+              <a href="https://qinry.github.io/tags/html/">HTML</a>&nbsp;
+              <a href="https://qinry.github.io/tags/web/">WEB</a>&nbsp;
+  </span>
+
+  <h2 id="概述">概述</h2>
+<p>HTML，即Hyper Text Markup Language，中文是超文本标记语言</p>
+<p>W3C标准：</p>
+<ul>
+<li>结构化标准(HTML,XML)</li>
+<li>表现标准语言(CSS)</li>
+<li>行为标准(DOM,ECMAScript)</li>
+</ul>
+<h2 id="html基本结构">HTML基本结构</h2>
+<p>例如某个web项目中的01-helloworld.html所示：</p>
+<pre><code>&lt;!-- 01-hellworld.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;首页&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><ol>
+<li>head是网页的头部，body是网页主体部分。</li>
+<li>head和body元素是开放标签和闭合标签成对出现，有头有尾 ，如：<code>&lt;head&gt;&lt;/head&gt;</code></li>
+<li>meta元素是自闭合标签，有头无尾或有尾无头，如：<code>&lt;hr /&gt;</code></li>
+</ol>
+<h2 id="注释">注释</h2>
+<p>单行注释</p>
+<pre><code>&lt;!-- 单行注释 --&gt;
+</code></pre><p>多行注释</p>
+<pre><code>&lt;!--
+    多行注释1
+    多行注释2
+    ..
+--&gt;
+</code></pre><h2 id="网页基本信息">网页基本信息</h2>
+<p>在head元素里面设置网页信息，通过meta标签设置一些元信息和title标签设置网站标题，如下：</p>
+<pre><code>&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;keywords&quot; content=&quot;网站搜索的关键字&quot;&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;网站描述&quot;&gt;
+    &lt;title&gt;填写网站标题&lt;/title&gt;
+&lt;/head&gt;
+</code></pre><h2 id="基本标签">基本标签</h2>
+<p>网页主体的基本标签如下：</p>
+<ul>
+<li>标题标签</li>
+<li>段落标签</li>
+<li>换行标签</li>
+<li>水平线标签</li>
+<li>字体样式标签</li>
+<li>特殊符号</li>
+</ul>
+<blockquote>
+<p>标题标签 h1~h6</p>
+</blockquote>
+<pre><code>&lt;!-- 02-basicTag.html --&gt;
+&lt;body&gt;
+    &lt;h1&gt;一级标题&lt;/h1&gt;
+    &lt;h2&gt;二级标题&lt;/h2&gt;
+    &lt;h3&gt;三级标题&lt;/h3&gt;
+    &lt;h4&gt;四级标题&lt;/h4&gt;
+    &lt;h5&gt;五级标题&lt;/h5&gt;
+    &lt;h6&gt;六级标题&lt;/h6&gt;
+&lt;/body&gt;
+</code></pre><blockquote>
+<p>段落标签 p</p>
+</blockquote>
+<pre><code>&lt;body&gt;
+    &lt;p&gt;君不见黄河之水天上来，奔流到海不复回。&lt;/p&gt;
+    &lt;p&gt;君不见高堂明镜悲白发，朝如青丝暮成雪。&lt;/p&gt;
+    &lt;p&gt;人生得意须尽欢，莫使金樽空对月。&lt;/p&gt;
+    &lt;p&gt;天生我材必有用，千金散尽还复来。&lt;/p&gt;
+    &lt;p&gt;烹羊宰牛且为乐，会须一饮三百杯。&lt;/p&gt;
+    &lt;p&gt;岑夫子，丹丘生，将进酒，杯莫停。&lt;/p&gt;
+    &lt;p&gt;与君歌一曲，请君为我倾耳听。&lt;/p&gt;
+    &lt;p&gt;钟鼓馔玉不足贵，但愿长醉不复醒。&lt;/p&gt;
+    &lt;p&gt;古来圣贤皆寂寞，惟有饮者留其名。&lt;/p&gt;
+    &lt;p&gt;陈王昔时宴平乐，斗酒十千恣欢谑。&lt;/p&gt;
+    &lt;p&gt;主人何为言少钱，径须沽取对君酌。&lt;/p&gt;
+    &lt;p&gt;五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。&lt;/p&gt;
+&lt;/body&gt;
+
+</code></pre><blockquote>
+<p>换行标签 br</p>
+</blockquote>
+<pre><code>&lt;body&gt;
+    君不见黄河之水天上来，奔流到海不复回。&lt;br/&gt;
+    君不见高堂明镜悲白发，朝如青丝暮成雪。&lt;br/&gt;
+    人生得意须尽欢，莫使金樽空对月。&lt;br/&gt;
+    天生我材必有用，千金散尽还复来。&lt;br/&gt;
+    烹羊宰牛且为乐，会须一饮三百杯。&lt;br/&gt;
+    岑夫子，丹丘生，将进酒，杯莫停。&lt;br/&gt;
+    与君歌一曲，请君为我倾耳听。&lt;br/&gt;
+    钟鼓馔玉不足贵，但愿长醉不复醒。&lt;br/&gt;
+    古来圣贤皆寂寞，惟有饮者留其名。&lt;br/&gt;
+    陈王昔时宴平乐，斗酒十千恣欢谑。&lt;br/&gt;
+    主人何为言少钱，径须沽取对君酌。&lt;br/&gt;
+    五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。&lt;br/&gt;
+&lt;/body&gt;
+</code></pre><blockquote>
+<p>水平线标签</p>
+</blockquote>
+<pre><code>&lt;body&gt;
+    &lt;hr/&gt;
+&lt;/body&gt;
+</code></pre><blockquote>
+<p>字体样式标签 strong,em,del</p>
+</blockquote>
+<pre><code>&lt;body&gt;
+    粗体：&lt;strong&gt;hahaha&lt;/strong&gt;&lt;br/&gt;
+    斜体：&lt;em&gt;hahaha&lt;/em&gt;&lt;br/&gt;
+    删除线：&lt;del&gt;hahaha&lt;/del&gt;&lt;br/&gt;
+&lt;/body&gt;
+</code></pre><blockquote>
+<p>特殊符号</p>
+</blockquote>
+<pre><code>&lt;body&gt;
+    空&amp;nbsp;&amp;nbsp;&amp;nbsp;格&lt;br/&gt;
+    小于号&amp;lt; 小于等于&amp;le;&lt;br/&gt;
+    大于号&amp;gt; 大于等于&amp;ge;&lt;br/&gt;
+    等于&amp;Equal; 不等于&amp;NotEqual;&lt;br/&gt;
+    版权符号&amp;copy;&lt;br/&gt;
+&lt;/body&gt;
+</code></pre><h2 id="图像标签">图像标签</h2>
+<p>常见图片格式：</p>
+<ul>
+<li>JPG</li>
+<li>GIF</li>
+<li>PNG</li>
+<li>BMP</li>
+</ul>
+<pre><code>&lt;img src=&quot;path&quot; alter=&quot;text&quot; title=&quot;word&quot; width=&quot;x&quot; height=&quot;y&quot;&gt;
+</code></pre><ol>
+<li>src* 图片位置（绝对路径/相对路径）</li>
+<li>alter* 替换文本</li>
+<li>title 悬停文字</li>
+<li>width 图片宽度</li>
+<li>height 图片高度</li>
+</ol>
+<p>* 表示必填</p>
+<pre><code>&lt;!-- 03-imgTag.html --&gt;
+&lt;body&gt;
+    &lt;!-- resouces/image存在1.png，没有2.png --&gt;
+    &lt;img src=&quot;../resouces/image/1.png&quot; alt=&quot;凯瑟琳&quot; title=&quot;凯瑟琳&quot; width=&quot;500px&quot; height=&quot;300px&quot;&gt;&lt;br/&gt;
+    &lt;img src=&quot;../resouces/image/2.png&quot; alt=&quot;凯瑟琳&quot; title=&quot;凯瑟琳&quot; width=&quot;500px&quot; height=&quot;300px&quot;&gt;
+&lt;/body&gt;
+</code></pre><h2 id="超链接">超链接</h2>
+<ul>
+<li>文本链接</li>
+<li>图片链接</li>
+</ul>
+<pre><code>&lt;a href=&quot;url&quot; target=&quot;window&quot;&gt;
+    可以是文本，也可以是图片
+&lt;/a&gt;
+</code></pre><ol>
+<li>href* 超文本引用，超链接地址</li>
+<li>target 目标窗口，如：新标签页跳转_blank/默认当前标签页跳转_self/_parent/_top/自定义(iframe的name)</li>
+</ol>
+<pre><code>&lt;!-- 04-aTag.html --&gt;
+&lt;body&gt;
+    &lt;!-- 描链接 --&gt;
+    &lt;a name=&quot;top&quot;&gt;顶部&lt;/a&gt;
+    &lt;!-- 文本链接 --&gt;
+    &lt;a href=&quot;01-helloworld.html&quot; &gt;跳转到..&lt;/a&gt;
+    &lt;a href=&quot;https://www.baidu.com&quot; &gt;去百度&lt;/a&gt;
+    &lt;!-- 邮件链接 --&gt;
+    &lt;a href=&quot;mailto:lixiaoqin28@outlook.com&quot;&gt;联系邮箱&lt;/a&gt;&lt;br/&gt;
+    &lt;!-- 图片链接 --&gt;
+
+    &lt;a href=&quot;01-helloworld.html&quot; &gt;
+        &lt;img src=&quot;../resouces/image/1.png&quot; alt=&quot;凯瑟琳&quot; title=&quot;凯瑟琳&quot; width=&quot;500px&quot; height=&quot;300px&quot;&gt;&lt;br/&gt;
+    &lt;/a&gt;
+    &lt;img src=&quot;../resouces/image/1.png&quot; alt=&quot;凯瑟琳&quot; title=&quot;凯瑟琳&quot; width=&quot;500px&quot; height=&quot;300px&quot;&gt;&lt;br/&gt;
+    &lt;img src=&quot;../resouces/image/1.png&quot; alt=&quot;凯瑟琳&quot; title=&quot;凯瑟琳&quot; width=&quot;500px&quot; height=&quot;300px&quot;&gt;&lt;br/&gt;
+    &lt;img src=&quot;../resouces/image/1.png&quot; alt=&quot;凯瑟琳&quot; title=&quot;凯瑟琳&quot; width=&quot;500px&quot; height=&quot;300px&quot;&gt;&lt;br/&gt;
+    &lt;img src=&quot;../resouces/image/1.png&quot; alt=&quot;凯瑟琳&quot; title=&quot;凯瑟琳&quot; width=&quot;500px&quot; height=&quot;300px&quot;&gt;&lt;br/&gt;
+
+    &lt;!-- 描链接 --&gt;
+    &lt;a href=&quot;#top&quot;&gt;回到顶部&lt;/a&gt;
+&lt;/body&gt;
+</code></pre><h2 id="行内元素和块元素">行内元素和块元素</h2>
+<ul>
+<li>快元素 独占一行 如：p、h1~h6、div &hellip;</li>
+<li>行内元素 内容撑开，左右皆是行内元素可以排在一行 如：a、strong、em、del、span、input &hellip;</li>
+</ul>
+<h2 id="列表标签">列表标签</h2>
+<ul>
+<li>有序列表 ol&gt;li</li>
+<li>无序列表 ul&gt;li</li>
+<li>自定义列表 dl&gt;dt+dd</li>
+</ul>
+<pre><code>&lt;!-- 05-listTag.html --&gt;
+&lt;body&gt;
+    &lt;!-- 
+        有序列表 
+        试卷、问答 ...
+    --&gt;
+    &lt;ol&gt;
+        &lt;li&gt;Java&lt;/li&gt;
+        &lt;li&gt;Linux&lt;/li&gt;
+        &lt;li&gt;Web&lt;/li&gt;
+        &lt;li&gt;C/C++&lt;/li&gt;
+    &lt;/ol&gt;
+    
+    &lt;!-- 
+        无序列表
+        导航栏，测表栏
+     --&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Java&lt;/li&gt;
+        &lt;li&gt;Linux&lt;/li&gt;
+        &lt;li&gt;Web&lt;/li&gt;
+        &lt;li&gt;C/C++&lt;/li&gt;
+
+    &lt;/ul&gt;
+
+
+    &lt;!-- 
+        自定义列表 
+        dl 标签
+        dt 列表名称
+        dd 列表内容
+        网站底部
+    --&gt;
+    &lt;dl&gt;
+        &lt;dt&gt;subject&lt;/dt&gt;
+        &lt;dd&gt;Java&lt;/dd&gt;
+        &lt;dd&gt;Linux&lt;/dd&gt;
+        &lt;dd&gt;Web&lt;/dd&gt;
+        &lt;dd&gt;C/C++&lt;/dd&gt;
+    &lt;/dl&gt;
+    
+&lt;/body&gt;
+</code></pre><h2 id="表格标签">表格标签</h2>
+<pre><code>&lt;!-- 06-tableTag.html --&gt;
+&lt;body&gt;
+    &lt;!-- 表格标签 --&gt;
+    &lt;table border=&quot;1px&quot;&gt;
+        &lt;tr&gt;
+            &lt;!-- colspan 跨列 --&gt;
+            &lt;td colspan=&quot;3&quot; &gt;学生成绩 &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;!-- rowspan 跨行 --&gt;
+            &lt;td rowspan=&quot;2&quot;&gt;小红&lt;/td&gt;
+            &lt;td&gt;语文&lt;/td&gt;
+            &lt;td&gt;100&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;数学&lt;/td&gt;
+            &lt;td&gt;100&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;!-- rowspan 跨行 --&gt;
+            &lt;td rowspan=&quot;2&quot;&gt;小明&lt;/td&gt;
+            &lt;td&gt;语文&lt;/td&gt;
+            &lt;td&gt;100&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;数学&lt;/td&gt;
+            &lt;td&gt;100&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+</code></pre><h2 id="媒体元素">媒体元素</h2>
+<ul>
+<li>音频元素</li>
+<li>视频元素</li>
+</ul>
+<pre><code>&lt;!-- 07-mediaTag.html --&gt;
+&lt;body&gt;
+    &lt;!-- 视频标签 --&gt;
+    &lt;video src=&quot;../resouces/video/1.mp4&quot; controls autoplay width=&quot;1511px&quot; height=&quot;750px&quot;&gt;&lt;/video&gt;
+    &lt;!-- 音频标签 --&gt;
+    &lt;audio src=&quot;../resouces/audio/1.mp3&quot; controls autoplay&gt;&lt;/audio&gt;   
+&lt;/body&gt;
+</code></pre><h2 id="页面结构">页面结构</h2>
+<ul>
+<li>header* 标记头部区域内容</li>
+<li>footer* 标记脚部区域内容</li>
+<li>section 一块独立区域</li>
+<li>article 独立的文章内容</li>
+<li>aside 相关内容或应用，常见于侧边栏</li>
+<li>nav* 导航辅助内容</li>
+</ul>
+<p>* 重点</p>
+<pre><code>&lt;!-- 08-pageStructure.html --&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h2&gt;页面内容头部&lt;/h2&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+        &lt;h2&gt;页面内容主体&lt;/h2&gt;
+    &lt;/section&gt;
+    &lt;footer&gt;
+        &lt;h2&gt;页面内容脚部&lt;/h2&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+</code></pre><h2 id="内联框架">内联框架</h2>
+<pre><code>&lt;iframe src=&quot;path&quot; name=&quot;mainFrame&quot; width=&quot;x&quot; height=&quot;y&quot;&gt; &lt;/iframe&gt;
+</code></pre><ul>
+<li>src 嵌入的HTML地址</li>
+<li>name 框架的名称</li>
+<li>width 框架的宽度</li>
+<li>height 框架的高度</li>
+</ul>
+<p>可以和a标签搭配使用</p>
+<pre><code>&lt;!-- 09-iframeTag.html --&gt;
+&lt;body&gt;
+    &lt;iframe src=&quot;#&quot; 
+        name=&quot;frame&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot; width=&quot;750px&quot; height=&quot;405px&quot;&gt; 
+    &lt;/iframe&gt;
+    &lt;a href=&quot;https://player.bilibili.com/player.html?aid=929767931&amp;bvid=BV13K4y1S75r&amp;cid=315710506&amp;page=1&quot; target=&quot;frame&quot;&gt;点击&lt;/a&gt;
+&lt;/body&gt;
+</code></pre><h2 id="表单">表单</h2>
+<p>最简单的表单：</p>
+<pre><code>&lt;!-- 10-formTag.html --&gt;
+&lt;body&gt;
+    &lt;form method=&quot;post&quot; action=&quot;#&quot; enctype=&quot;application/x-www-form-urlencoded&quot;&gt;
+        用户名：&lt;input type=&quot;text&quot; name=&quot;uname&quot;&gt;&lt;br/&gt;
+        密码：&lt;input type=&quot;password&quot; name=&quot;pwd&quot;&gt;&lt;br/&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+        &lt;input type=&quot;reset&quot; value=&quot;重置&quot;&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+</code></pre><ul>
+<li>method 提交方式 post/get</li>
+<li>action 表单提交的位置，可以是网站，也可以是请求地址</li>
+<li>enctype 表单内容类型 如：multipart/form-data（文件上传必选）、application/x-www-form-urlencoded（默认）</li>
+</ul>
+<blockquote>
+<p>文本框</p>
+</blockquote>
+<pre><code>&lt;p&gt;用户名：&lt;input type=&quot;text&quot; name=&quot;uname&quot; value=&quot;admin&quot; maxLength=&quot;8&quot; size=&quot;30&quot;&gt;&lt;/p&gt;
+</code></pre><ul>
+<li>type 文本框 text</li>
+<li>name 提交表单时，数据项的名称</li>
+<li>value 数据项的默认初始值</li>
+<li>maxLength 最大可输入字符数</li>
+<li>size 文本框宽度</li>
+</ul>
+<blockquote>
+<p>单选框</p>
+</blockquote>
+<pre><code>&lt;p&gt;性别：
+    &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;male&quot; checked /&gt; 男
+    &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;female&quot; /&gt; 女
+&lt;/p&gt;
+</code></pre><ul>
+<li>type 单选框 radio</li>
+<li>value 选项的值，不能改变</li>
+<li>checked 有则默认选中，无不选中</li>
+</ul>
+<blockquote>
+<p>多选框</p>
+</blockquote>
+<pre><code>&lt;p&gt;爱好：
+    &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;movie&quot; /&gt; 电影
+    &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;song&quot; /&gt; 歌曲
+    &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;game&quot; /&gt; 游戏
+&lt;/p&gt;
+</code></pre><ul>
+<li>type  多选框 checkbox</li>
+<li>checked 有则默认选中，无不选中</li>
+</ul>
+<blockquote>
+<p>列表框</p>
+</blockquote>
+<pre><code> &lt;p&gt;所在地
+    &lt;select name=&quot;location&quot;&gt;
+        &lt;option value=&quot;Guangdong&quot; selected&gt;广东&lt;/option&gt;
+        &lt;option value=&quot;Shanghai&quot;&gt;上海&lt;/option&gt;
+        &lt;option value=&quot;Beijing&quot;&gt;北京&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/p&gt;
+</code></pre><ul>
+<li>selected 有默认选中，无不选中</li>
+</ul>
+<blockquote>
+<p>文本域</p>
+</blockquote>
+<pre><code>&lt;p&gt;个人简介:
+    &lt;textarea name=&quot;introduction&quot; cols=&quot;80&quot; rows=&quot;10&quot;&gt;我是...&lt;/textarea&gt;
+&lt;/p&gt;
+</code></pre><ul>
+<li>cols 文本域的初始列数</li>
+<li>rows 文本域初始行数</li>
+</ul>
+<blockquote>
+<p>按钮</p>
+</blockquote>
+<pre><code>&lt;p&gt;
+    &lt;input type=&quot;image&quot;  src=&quot;../resources/image/2.png&quot; width=&quot;30px&quot; height=&quot;30px&quot;/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+    &lt;input type=&quot;button&quot; name=&quot;btn1&quot; value=&quot;按钮&quot; /&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+    &lt;input type=&quot;reset&quot; value=&quot;重置&quot;&gt;
+&lt;/p&gt;
+</code></pre><blockquote>
+<p>文件域</p>
+</blockquote>
+<p>常用于文件上传</p>
+<pre><code>&lt;p&gt;上传：
+    &lt;input type=&quot;file&quot; name=&quot;files&quot; /&gt;
+&lt;/p&gt;
+</code></pre><blockquote>
+<p>其他</p>
+</blockquote>
+<pre><code>&lt;p&gt;邮箱
+    &lt;input type=&quot;email&quot; name=&quot;email&quot; /&gt;
+&lt;/p&gt;
+&lt;p&gt;电话：
+    &lt;input type=&quot;tel&quot; name=&quot;tel&quot; /&gt;
+&lt;/p&gt;
+&lt;p&gt;url：
+    &lt;input type=&quot;url&quot; name=&quot;url&quot; /&gt;
+&lt;/p&gt;
+&lt;p&gt;搜索：
+    &lt;input type=&quot;search&quot; name=&quot;search&quot; /&gt;
+&lt;/p&gt;
+&lt;p&gt;数量：
+    &lt;input type=&quot;number&quot; name=&quot;number&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;10&quot; /&gt;
+&lt;/p&gt;
+&lt;p&gt;范围：
+    &lt;input type=&quot;range&quot; name=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;2&quot;/&gt;
+&lt;/p&gt;
+</code></pre><ul>
+<li>min type为number/range 的最小值</li>
+<li>max type为number/range 的最大值</li>
+<li>step type为number/range 步长值</li>
+</ul>
+<h3 id="label与input">label与input</h3>
+<pre><code>&lt;label for=&quot;uname&quot;&gt;用户名&lt;/label&gt;
+&lt;input type=&quot;text&quot; name=&quot;uname&quot; id=&quot;uname&quot; /&gt;
+</code></pre><p>鼠标点击label，聚焦for对应指定的id值（这里是uname）的元素。</p>
+<h3 id="常见输入框的属性">常见输入框的属性</h3>
+<p>表单输入框的属性</p>
+<ul>
+<li>reaonly 表示只读不可修改</li>
+<li>disabled 禁用输入框</li>
+<li>hidden 隐藏输入框</li>
+</ul>
+<pre><code>&lt;p&gt;用户名：&lt;input type=&quot;text&quot; name=&quot;admin&quot; readonly&gt;&lt;/p&gt;
+
+&lt;p&gt;性别：
+    &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;male&quot; checked  disabled/&gt; 男
+    &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;female&quot; /&gt; 女
+&lt;/p&gt;
+
+&lt;p&gt;密码：&lt;input type=&quot;password&quot; name=&quot;pwd&quot; hidden&gt;&lt;/p&gt;
+</code></pre><h3 id="表单验证">表单验证</h3>
+<p>表单输入框的属性用于简单的验证输入</p>
+<ul>
+<li>placeholder 输入框提示</li>
+<li>required 输入框必须有输入，防止空输入</li>
+<li>pattern 对输入框内容进行模式匹配验证</li>
+</ul>
+<pre><code>&lt;p&gt;用户名：&lt;input type=&quot;text&quot; name=&quot;admin&quot; placeholder=&quot;请输入用户名&quot;&gt;&lt;/p&gt;
+&lt;p&gt;密码：&lt;input type=&quot;password&quot; name=&quot;pwd&quot; required&gt;&lt;/p&gt;
+&lt;p&gt;邮箱
+    &lt;input type=&quot;email&quot; name=&quot;email&quot; pattern=&quot;\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*&quot; /&gt;
+&lt;/p&gt;
+</code></pre><h2 id="其他资源">其他资源</h2>
+<ul>
+<li><a href="https://www.w3school.com.cn/">w3cschool</a></li>
+<li><a href="https://www.runoob.com/">菜鸟教程</a></li>
+</ul>
+
+</div>
+
+
+    </main>
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
+    
+      
+    
+  </body>
+</html>

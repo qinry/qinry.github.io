@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.85.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>在MySQL学习SQL &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="MySQL的SQL基础" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>hljs.highlightAll();</script>
+
+
+</head>
+
+  <body class="theme-base-0d ">
+    <span id="top"></span>
+    <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+    
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../tags"> 分类标签 </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright © 2021 槎城小子</p>
+  </div>
+</aside>
+
+    
+<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#mysql版本">MySQL版本</a></li>
+    <li><a href="#基本命令行">基本命令行</a></li>
+    <li><a href="#sql命令类型">SQL命令类型</a></li>
+    <li><a href="#操作数据库">操作数据库</a></li>
+    <li><a href="#数据管理">数据管理</a></li>
+    <li><a href="#查询">查询</a></li>
+    <li><a href="#事务与sql优化">事务与SQL优化</a></li>
+    <li><a href="#索引">索引</a></li>
+    <li><a href="#用户权限管理">用户权限管理</a></li>
+    <li><a href="#mysql备份">MySQL备份</a></li>
+    <li><a href="#如何设计数据库">如何设计数据库</a></li>
+    <li><a href="#数据库的三大范式">数据库的三大范式</a></li>
+    <li><a href="#其他资源">其他资源</a></li>
+  </ul>
+</nav>
+        
+</aside>
+
+
+    <main class="content container">
+    <div class="post">
+
+  <h1>在MySQL学习SQL</h1>
+  <span class="post-date">
+    2021-08-26 09:06 &nbsp;
+    字数：<strong>6387</strong> &nbsp;
+    标签：
+              <a href="https://qinry.github.io/tags/mysql/">MySQL</a>&nbsp;
+  </span>
+
+  <h2 id="概述">概述</h2>
+<p><strong>数据库（database）</strong> 保存有组织的数据的容器（通常是一个或一组文件）</p>
+<p><strong>数据库管理系统（DBMS，Database Management System）</strong> 一种软件，创建和操控数据库</p>
+<p><strong>表（table）</strong> 某种特定类型数据的结构化清单。表名相对于同一个数据库唯一，但不同的数据库中可以使用相同的表名。</p>
+<p><strong>模式（schema）</strong> 关于数据库和表的布局及特性信息。</p>
+<p><strong>列（column）</strong> 表中的一个字段。所有表都是由一个列或多个列组成。每个列都有相应的数据类型</p>
+<p><strong>数据类型（datatype）</strong> 所容许的数据的类型。每个列对应的数据类型来限制，该列存储的数据。比如有 int、varchar、datatime、double等（重点）</p>
+<p><strong>行（row）</strong> 表中的一个记录</p>
+<p><strong>主键（primary key）</strong> 一列中或一组列，其值唯一区分表中的每一个行。</p>
+<p>定义主键方便只涉及相关行的操作。</p>
+<p>任意两行主键值不相同。每行的主键不能为空（NULL）。</p>
+<p>建议不更新主键列的值，不主键列的值，不把经常需要修改的列设置主键列，例如什么什么的名称</p>
+<p><strong>SQL（Structured Query Language）</strong> 专门用于与数据库通信的语言</p>
+<p>数据库分类：</p>
+<ul>
+<li>关系型数据库 （SQL）</li>
+</ul>
+<p>MySQL、Oracle、SQL Server、DB2、SQLite</p>
+<ul>
+<li>非关系型数据库 （NoSQL， Not Only SQL）</li>
+</ul>
+<p>Redis、MongoDB</p>
+<h2 id="mysql版本">MySQL版本</h2>
+<ul>
+<li>4 InnoDB引擎，事务处理，并，改进全文本搜索</li>
+<li>4.1 对函数库、子查询、集成帮助等的重要增加</li>
+<li>5 存储过程、触发器、游标、视图等等</li>
+</ul>
+<h2 id="基本命令行">基本命令行</h2>
+<p>连接</p>
+<pre><code>mysql -u 用户名 -p口令 -h 主机名 -P 对口号
+mysql -u root -proot -h 127.0.0.1 -P 3306
+</code></pre><p>选择数据库</p>
+<pre><code>USE `数据库名`;
+USE `crashcourse`;
+</code></pre><p>了解数据库和表</p>
+<pre><code>SHOW  DATABASES; -- 返回可用数据库的一个列表
+SHOW TABLES; -- 返回当前选择的数据库内可用表的列表
+SHOW COLUMNS FROM 表名; -- 返回字段描述信息
+DESCRIBE 表名; -- 上一行的快捷方式
+
+SHOW STATUS; -- 用于显示广泛的服务器状态信息
+SHOW CREATE DATABASE 数据库名; -- 显示创建特定数据库的MySQL语句
+SHOW CREATE TABLE 表名; -- 显示创建特定表的MySQL语句
+SHOW GRANTS FOR 用户名; -- 用来显示授予用户的安全权限
+SHOW ERRORS; -- 用来显示服务器错误
+SHOW WARNINGS; -- 用来显示服务器警告信息
+</code></pre><p>退出连接</p>
+<pre><code>exit;
+</code></pre><h2 id="sql命令类型">SQL命令类型</h2>
+<ul>
+<li>DDL（Data Definition Language） 数据库定义语言</li>
+</ul>
+<p>create|drop|alter|truncate|comment|rename</p>
+<ul>
+<li>DML（Data Manipulation Language）数据库操作语言</li>
+</ul>
+<p>insert|update|delete</p>
+<ul>
+<li>DQL（Data query Language） 数据库查询语言</li>
+</ul>
+<p>select</p>
+<ul>
+<li>DCL（Data Control Language） 数据库控制语言</li>
+</ul>
+<p>grant|revoke</p>
+<ul>
+<li>TCL（Transaction Control Language） 事务控制语言</li>
+</ul>
+<p>commit|rollback|savepoint|set transaction</p>
+<h2 id="操作数据库">操作数据库</h2>
+<p>创建数据库</p>
+<pre><code>CREATE DATABASE [IF NOT EXISTS] `数据库名`;
+CREATE DATABASE IF NOT EXISTS `crashcourse`;
+</code></pre><p>删除数据库</p>
+<pre><code>DROP DATABASE [IF EXISTS] `数据库名`;
+DROP DATABASE IF NOT EXISTS `crashcourse`;
+</code></pre><blockquote>
+<p>注意 ：操作或创建数据库的表时，要先选择数据库。</p>
+</blockquote>
+<h3 id="数据类型">数据类型</h3>
+<h4 id="串数据类型">串数据类型</h4>
+<ul>
+<li>char 字符数固定大小的 长度0～255 存储方式：数据</li>
+<li>varchar  字符数可变字符串 长度0~65535 存储方式：长度前缀+数据</li>
+<li>tinytext 微型变长文本 长度0～2^8-1</li>
+<li>text 变长文本串 长度0～2^16-1</li>
+</ul>
+<h4 id="数值类型">数值类型</h4>
+<ul>
+<li>tinyint 十分小的整数 大小1B</li>
+<li>smallint 较小的整数 大小2B</li>
+<li>mediumint 中等大小整数 大小3B</li>
+<li>int 标准整数 大小4B</li>
+<li>bigint 较大整数 大小8B</li>
+<li>float 单精度浮点 大小4B</li>
+<li>double 双精度浮点 大小8B</li>
+<li>decimal 精度可变的浮点数 金融计算使用decimal(p, d) p：有效数字的字数 d：小数点后位数。</li>
+</ul>
+<h4 id="时间日期类型">时间日期类型</h4>
+<ul>
+<li>date YYYY-mm-dd</li>
+<li>time HH:MM:SS</li>
+<li>datetime YYYY-mm-dd HH:MM:SS</li>
+<li>timestamp 时间戳</li>
+<li>Year 年</li>
+</ul>
+<h4 id="null">NULL</h4>
+<p>没有值，未知。
+不建议使用NULL进行<code>==</code>运算</p>
+<h3 id="数据库字段属性">数据库字段属性</h3>
+<ul>
+<li>UNSIGNED 无符号整数 不可填充负数</li>
+<li>ZEROFILL 0填充 不足位数用0填充</li>
+<li>AUTO_INCREMENT 自增 在上条记录基础上加1 必须整数类型 可设置起始值和步长值</li>
+<li>NOT NULL|NULL 允许非空或空</li>
+<li>DEFAULT 默认值</li>
+</ul>
+<p>数据库表固定的几个样板字段</p>
+<ul>
+<li>id 主键</li>
+<li>version 乐观锁</li>
+<li>is_delete 伪删除</li>
+<li>gmt_create 创建时间</li>
+<li>gmt_update 更新时间</li>
+</ul>
+<h3 id="建立表">建立表</h3>
+<p>例如建立学生表：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>学号id</td>
+<td>int(4)</td>
+</tr>
+<tr>
+<td>密码pwd</td>
+<td>varchar(20)</td>
+</tr>
+<tr>
+<td>姓名name</td>
+<td>varchar(3)</td>
+</tr>
+<tr>
+<td>性别gender</td>
+<td>varchar(2)</td>
+</tr>
+<tr>
+<td>出生日期birth</td>
+<td>datetime</td>
+</tr>
+<tr>
+<td>家庭住址address</td>
+<td>varchar(100)</td>
+</tr>
+<tr>
+<td>电子邮箱email</td>
+<td>varchar(50)</td>
+</tr>
+</tbody>
+</table>
+<pre><code>CREATE TABLE IF NOT EXISTS `student` (
+    `id` INT(4) NOT NULL AUTO_INCREMENT COMMENT '学号',
+    `name` VARCHAR(3) NOT NULL DEFAULT '匿名' COMMENT '姓名',
+    `pwd` VARCHAR(20) NOT NULL DEFAULT '123456' COMMENT '密码',
+    `gender` VARCHAR(2) NOT NULL DEFAULT '男' COMMENT '性别',
+    `birth` DATETIME DEFAULT NULL COMMENT '出生日期',
+    `address` VARCHAR(100) DEFAULT NULL COMMENT '家庭住址',
+    `email` VARCHAR(50) DEFAULT NULL COMMENT '电子邮箱',
+    PRIMARY KEY(`id`)
+) ENGINE=INNODB DEFAULT CHARSET=UTF8;
+</code></pre><p>输出：</p>
+<blockquote>
+<p>OK, Time: 0.022000s</p>
+</blockquote>
+<p>格式：</p>
+<pre><code>CREATE TABLE [IF NOT EXISTS] 表名 (
+    `字段名` 数据类型 [属性] [索引] [注释],
+    `字段名` 数据类型 [属性] [索引] [注释],
+    ...
+    `字段名` 数据类型 [属性] [索引] [注释]
+)[存储引擎][字符集设置][注释]
+</code></pre><h3 id="innodb与myisam">INNODB与MYISAM</h3>
+<p>区别：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>MYISAM</th>
+<th>INNODB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>事务支持</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>数据行锁定</td>
+<td>不支持，但支持表锁</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>外键约束</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>全文搜索</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>表空间大小</td>
+<td>较小</td>
+<td>较大，约为MYISAM的两倍</td>
+</tr>
+</tbody>
+</table>
+<p>优点：</p>
+<ul>
+<li>MYISAM 节约空间，速度快</li>
+<li>INNODB 安全性高，事务处理，多表多用户操作</li>
+</ul>
+<h4 id="数据库文件存放位置">数据库文件存放位置</h4>
+<p>在Linux操作系统，mysql数据目录在/var/lib/mysql下（docker的mysql默认的位置）。</p>
+<p>Window可能在mysql家目录的data目录下（据实际情况而定）。</p>
+<p>Mac在/usr/local/var/mysql中（brew安装的话）。</p>
+<p>一个文件夹对应数据库，如下：</p>
+<p><img src="../../../../images/posts/2021/08/mysql-sql-statement/1.png" alt="image"></p>
+<p><img src="../../../../images/posts/2021/08/mysql-sql-statement/2.png" alt="image"></p>
+<p><img src="../../../../images/posts/2021/08/mysql-sql-statement/3.png" alt="image"></p>
+<p>MySQL存储引擎在文件上的区别：</p>
+<ul>
+<li>INNODB在数据库tests文件夹中只有*.frm文件，上级目录的ibdata1数据文件</li>
+<li>MYISAM在数据库tests文件夹中有：
+<ul>
+<li>*.frm 表结构定义文件</li>
+<li>*.MYD 数据文件</li>
+<li>*.MYI 索引文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="更新表">更新表</h3>
+<p>完全限定表名：`数据库`.`表`</p>
+<p>修改表名</p>
+<pre><code>ALTER TABLE `旧表名` RENAME AS `新表名`;
+ALTER TABLE `student` RENAME AS `stu`;
+RENAME TABLE `旧表名` TO `新表名`;
+RENAME TABLE `student` TO `stu`;
+</code></pre><p>新增字段</p>
+<pre><code>ALTER TABLE `表名` ADD `字段名` 数据类型 属性;
+ALTER TABLE `student` ADD  `gradeId` INT(11) NOT NULL COMMENT '班级';
+</code></pre><p>修改字段(重命名，约束)</p>
+<p>change 字段名、数据类型、属性都能修改</p>
+<p>modify 除了字段名不能更改和change一样</p>
+<pre><code>ALTER TABLE `表名` CHANGE `旧字段名` `新字段名` 数据类型;
+ALTER TABLE `student` CHANGE `name` `stuName` VARCHAR(10) NOT NULL DEFAULT '匿名' COMMENT '学生姓名';
+ALTER TABLE `表名` MODIFY `字段名` 新数据类型 属性;
+ALTER TABLE `student` MODIFY `stuName` VARCHAR(30) NOT NULL DEFAULT '匿名' COMMENT '学生姓名';
+</code></pre><p>删除字段</p>
+<pre><code>ALTER TABLE `表名` DROP `字段名`;
+</code></pre><h3 id="删除表">删除表</h3>
+<pre><code>DROP TABLE [IF EXISTS] `表名`;
+</code></pre><h2 id="数据管理">数据管理</h2>
+<h3 id="外键">外键</h3>
+<pre><code>CREATE TABLE IF NOT EXISTS `grade` (
+    `gradeId` INT(11) NOT NULL AUTO_INCREMENT,
+    `gradeName` VARCHAR(10) NOT NULL DEFAULT '未知',
+    PRIMARY KEY(`gradeId`)
+)ENGINE=INNODB DEFAULT CHARSET=utf8
+</code></pre><pre><code>ALTER TABLE `表名` ADD CONSTRAINT `约束名` FOREIGN KEY(`外键名`) REFERENCES `引用表名`(`关联外键的字段名`);
+ALTER TABLE `student` ADD CONSTRAINT `fk_student_grade` FOREIGN KEY(`gradeId`) REFERENCES `grade`(`gradeId`);
+</code></pre><p>已经不建议使用物理外键，以后可以使用程序实现逻辑外键，代码更易维护。</p>
+<h3 id="新增">新增</h3>
+<pre><code>INSERT INTO `表名`[(字段1,字段2,字段N)] 
+VALUES (值1,值2,值N) [,(值1,值2,值N)];
+
+INSERT INTO `grade`(`gradeName`) 
+VALUES('一年级'),('二年级'),('三年级');
+
+INSERT INTO `student` 
+VALUES(NULL,'张三','123456','男','1999-08-08','广东广州','zhangsan@163.com',1), 
+(NULL,'李四','123456','男','1999-08-08','广东广州','lisi@163.com',2),
+(NULL,'王二','123456','男','1999-08-08','广东广州','wanger@163.com',3);
+</code></pre><blockquote>
+<p>注意：若字段省略，VALUES之后的值和顺序必须与表一一对应</p>
+</blockquote>
+<h3 id="更新">更新</h3>
+<pre><code>UPDATE `表名` SET `字段1`=值1,`字段2`=值2,`字段N`=值N WHERE 条件；
+UPDATE `student` SET `stuName`='张三三',`stuEmail`='zhangsansan@163.com' WHERE `stuId`=1;
+</code></pre><p>WHERE子句在SELECT详细说明，用于过滤数据，这里表示选择stuId为1的行，进行更新stuName和stuEmail字段。</p>
+<h3 id="删除">删除</h3>
+<pre><code>DELETE FROM `表名` WHERE 条件;
+DELETE FROM `student` WHERE `stuId`=3;
+</code></pre><pre><code>TRUNCATE `表名`;
+TRUNCATE `grade`;
+</code></pre><p>TRUNCATE是删除表，再重新建立之前空行的表，理解为清理表。它和DELETE不同在于它会重置AUTO_INCREMENT计数。</p>
+<p>一般业务中不会物理删除，会使用伪删除。</p>
+<h2 id="查询">查询</h2>
+<pre><code>SELECT
+    [ALL | DISTINCT | DISTINCTROW ]
+    [HIGH_PRIORITY]
+    [STRAIGHT_JOIN]
+    [SQL_SMALL_RESULT] [SQL_BIG_RESULT] [SQL_BUFFER_RESULT]
+    [SQL_CACHE | SQL_NO_CACHE] [SQL_CALC_FOUND_ROWS]
+    select_expr [, select_expr] ...
+    [into_option]
+    [FROM table_references
+      [PARTITION partition_list]]
+    [WHERE where_condition]
+    [GROUP BY {col_name | expr | position}
+      [ASC | DESC], ... [WITH ROLLUP]]
+    [HAVING where_condition]
+    [ORDER BY {col_name | expr | position}
+      [ASC | DESC], ...]
+    [LIMIT {[offset,] row_count | row_count OFFSET offset}]
+    [PROCEDURE procedure_name(argument_list)]
+    [into_option]
+    [FOR UPDATE | LOCK IN SHARE MODE]
+
+into_option: {
+    INTO OUTFILE 'file_name'
+        [CHARACTER SET charset_name]
+        export_options
+  | INTO DUMPFILE 'file_name'
+  | INTO var_name [, var_name] ...
+}
+</code></pre><h3 id="基本查询">基本查询</h3>
+<pre><code>SELECT `字段1`,`字段2`,`字段N` FROM `表名`;
+</code></pre><pre><code>SELECT VERSION(); -- 版本号
+SELECT LAST_INSERT_ID(); -- 返回最后插入的AUTO_INCREMENT的值
+SELECT UUID(); -- 生成随机的UUID值
+SELECT @@AUTO_INCREMENT_INCREMENT; -- 自增步长
+SELECT NOW(); -- 当前日期时间
+SELECT CURRENT_DATE; -- 当前日期
+SELECT CURRENT_TIME; -- 当前时间
+</code></pre><h4 id="去重数据">去重数据</h4>
+<pre><code>SELECT DISTINCT `字段1`,`字段2`,`字段N` FORM `表名`;
+</code></pre><h4 id="分页查询">分页查询</h4>
+<pre><code>SELECT `字段1`,`字段2`,`字段N` FORM `表名` LIMIT 行数;
+SELECT `字段1`,`字段2`,`字段N` FORM `表名` LIMIT 起始偏移, 行数;
+</code></pre><h3 id="排序数据">排序数据</h3>
+<pre><code>SELECT `字段1`,`字段2`,`字段N` FROM `表名` ORDER BY `字段a` [DESC|ASC] [ ,`字段b` [DESC|ASC],`字段z` [DESC|ASc] ];
+</code></pre><h3 id="过滤数据">过滤数据</h3>
+<h4 id="where子句操作符">WHERE子句操作符</h4>
+<p><code>WHERE 字段 操作符 值</code></p>
+<p><code>WHERE 条件a 逻辑操作符(AND或OR) 条件b</code></p>
+<p><code>WHERE NOT 条件</code></p>
+<p><code>WHERE 字段 IS NULL</code></p>
+<p><code>WHERE 字段 IS NOT NULL</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">操作符</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">=</td>
+<td style="text-align:center">等于</td>
+</tr>
+<tr>
+<td style="text-align:center">!=</td>
+<td style="text-align:center">不等于</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;&gt;</td>
+<td style="text-align:center">不等于</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;</td>
+<td style="text-align:center">小于</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;=</td>
+<td style="text-align:center">小等于</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;</td>
+<td style="text-align:center">大于</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;=</td>
+<td style="text-align:center">大等于</td>
+</tr>
+<tr>
+<td style="text-align:center">BETWEEN a AND b</td>
+<td style="text-align:center">指定a，b值之间</td>
+</tr>
+<tr>
+<td style="text-align:center">IN (a,b,z)</td>
+<td style="text-align:center">在指定括号内值的范围</td>
+</tr>
+<tr>
+<td style="text-align:center">NOT</td>
+<td style="text-align:center">逻辑否</td>
+</tr>
+<tr>
+<td style="text-align:center">AND</td>
+<td style="text-align:center">逻辑与</td>
+</tr>
+<tr>
+<td style="text-align:center">OR</td>
+<td style="text-align:center">逻辑或</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：逻辑运算执行顺序 NOT &gt; AND &gt; OR。使用圆括号()，优先执行。</p>
+</blockquote>
+<pre><code>SELECT * FROM `student` WHERE `stuId`=1;
+SELECT * FROM `student` WHERE `stuName`='张三';
+SELECT * FROM `student` WHERE `stuId`!=1;
+SELECT * FROM `student` WHERE `stuId`&lt;&gt;=1;
+SELECT * FROM `student` WHERE `stuId`&lt;3;
+SELECT * FROM `student` WHERE `stuId`&lt;=3;
+SELECT * FROM `student` WHERE `stuId`&gt;3;
+SELECT * FROM `student` WHERE `stuId`&gt;=3;
+SELECT * FROM `student` WHERE `stuId` BETWEEN ;
+</code></pre><h3 id="模糊查询">模糊查询</h3>
+<pre><code>SELECT `字段1`,`字段2`,`字段N` FROM `表名` WHERE `字段` LIKE '%值%';
+</code></pre><h3 id="计算字段">计算字段</h3>
+<h4 id="拼接字段">拼接字段</h4>
+<pre><code>CONCAT(a,b)
+</code></pre><h4 id="起别名">起别名</h4>
+<pre><code>`原字段名` AS `字段别名`
+</code></pre><pre><code>SELECT CONCAT(TRIM(`stuId`),TRIM(`stuName`)) AS `title` FROM `student`;
+</code></pre><p>TRIM函数去掉串两边空格</p>
+<h3 id="表达式">表达式</h3>
+<pre><code>SELECT 表达式;
+</code></pre><pre><code>SELECT 100*3-1 AS `result`;
+</code></pre><h3 id="常用函数">常用函数</h3>
+<h4 id="文本处理函数">文本处理函数</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Left(str,len)</td>
+<td style="text-align:center">返回串左边的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">Right(str,len)</td>
+<td style="text-align:center">返回串右边的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">Length(str)</td>
+<td style="text-align:center">返回串左边的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">Locate(substr,str)</td>
+<td style="text-align:center">找出串中的子串</td>
+</tr>
+<tr>
+<td style="text-align:center">Lower(str)</td>
+<td style="text-align:center">将串转换为小写</td>
+</tr>
+<tr>
+<td style="text-align:center">Upper(str)</td>
+<td style="text-align:center">将串转换为大写</td>
+</tr>
+<tr>
+<td style="text-align:center">Ltrim(str)</td>
+<td style="text-align:center">去掉串左空格</td>
+</tr>
+<tr>
+<td style="text-align:center">Rtrim(str)</td>
+<td style="text-align:center">去掉串右空格</td>
+</tr>
+<tr>
+<td style="text-align:center">Rtrim(str)</td>
+<td style="text-align:center">去掉串左右空格</td>
+</tr>
+<tr>
+<td style="text-align:center">Soundex(str)</td>
+<td style="text-align:center">返回串的SOUNDEX值</td>
+</tr>
+<tr>
+<td style="text-align:center">SubString(str FROM pos)</td>
+<td style="text-align:center">返回子串的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">MD5(str)</td>
+<td style="text-align:center">返回字符串MD5值</td>
+</tr>
+</tbody>
+</table>
+<h4 id="日期和时间处理函数">日期和时间处理函数</h4>
+<p>几个关键字：<strong>CURRENT_DATE</strong>、<strong>CURRENT_TIME</strong>分别表示当前的日期和时间</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">AddDate(date, INTERVAL expr unit)</td>
+<td style="text-align:center">增加一个日期（天、周等）</td>
+</tr>
+<tr>
+<td style="text-align:center">AddTime(time, expr)</td>
+<td style="text-align:center">增加一个时间（时、分等）</td>
+</tr>
+<tr>
+<td style="text-align:center">CurDate()</td>
+<td style="text-align:center">返回当前日期</td>
+</tr>
+<tr>
+<td style="text-align:center">CurTime()</td>
+<td style="text-align:center">返回当前时间</td>
+</tr>
+<tr>
+<td style="text-align:center">Date(expr)</td>
+<td style="text-align:center">返回日期时间的日期部分</td>
+</tr>
+<tr>
+<td style="text-align:center">Time(expr)</td>
+<td style="text-align:center">返回日期时间的时间部分</td>
+</tr>
+<tr>
+<td style="text-align:center">Now()</td>
+<td style="text-align:center">返回当前日期和时间</td>
+</tr>
+<tr>
+<td style="text-align:center">DateDiff(expr1,expr2)</td>
+<td style="text-align:center">返回当前日期之差（expr1-expr2）</td>
+</tr>
+<tr>
+<td style="text-align:center">Date_Add(date,INTERVAL expr unit)</td>
+<td style="text-align:center">高度灵活的日期运算函数（加减）</td>
+</tr>
+<tr>
+<td style="text-align:center">Date_Format(date,format)</td>
+<td style="text-align:center">返回格式化的日期或时间串</td>
+</tr>
+<tr>
+<td style="text-align:center">Day(date)</td>
+<td style="text-align:center">返回一个日期的天数部分</td>
+</tr>
+<tr>
+<td style="text-align:center">Month(date)</td>
+<td style="text-align:center">返回一个日期的月数部分</td>
+</tr>
+<tr>
+<td style="text-align:center">Year(date)</td>
+<td style="text-align:center">返回一个日期的年数部分</td>
+</tr>
+<tr>
+<td style="text-align:center">DayOfWeek(date)</td>
+<td style="text-align:center">对于一个日期，返回对应的星期几（1周日 2周一 &hellip;）</td>
+</tr>
+<tr>
+<td style="text-align:center">Hour(time)</td>
+<td style="text-align:center">返回时间的小时部分</td>
+</tr>
+<tr>
+<td style="text-align:center">Minute(time)</td>
+<td style="text-align:center">返回时间的分钟部分</td>
+</tr>
+<tr>
+<td style="text-align:center">Second(time)</td>
+<td style="text-align:center">返回时间的秒部分</td>
+</tr>
+</tbody>
+</table>
+<h4 id="数值处理函数">数值处理函数</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Abs(x)</td>
+<td style="text-align:center">返回一个数的绝对值</td>
+</tr>
+<tr>
+<td style="text-align:center">Cos(x)</td>
+<td style="text-align:center">返回一个弧度的余弦</td>
+</tr>
+<tr>
+<td style="text-align:center">Exp(x)</td>
+<td style="text-align:center">返回一个自然对数的指数值</td>
+</tr>
+<tr>
+<td style="text-align:center">Mod(n,m)</td>
+<td style="text-align:center">返回除操作的余数</td>
+</tr>
+<tr>
+<td style="text-align:center">Pi()</td>
+<td style="text-align:center">返回圆周率</td>
+</tr>
+<tr>
+<td style="text-align:center">Rand()</td>
+<td style="text-align:center">返回一个随机数</td>
+</tr>
+<tr>
+<td style="text-align:center">Sin(x)</td>
+<td style="text-align:center">返回一个弧度的正弦</td>
+</tr>
+<tr>
+<td style="text-align:center">Sqrt(x)</td>
+<td style="text-align:center">返回一个数的平方</td>
+</tr>
+<tr>
+<td style="text-align:center">Tan(x)</td>
+<td style="text-align:center">返回一个弧度的正切</td>
+</tr>
+</tbody>
+</table>
+<h3 id="聚合函数">聚合函数</h3>
+<p><strong>聚集函数</strong> 运行在行组上，计算和返回单个值的函数</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">AVG([DISTINCT] expr)</td>
+<td style="text-align:center">返回某列的平均值</td>
+</tr>
+<tr>
+<td style="text-align:center">COUNT(DISTINCT [expr][,expr])</td>
+<td style="text-align:center">返回某列<strong>符合表达式条件</strong>的行数</td>
+</tr>
+<tr>
+<td style="text-align:center">MAX([DISTINCT] expr)</td>
+<td style="text-align:center">返回某列的最大值</td>
+</tr>
+<tr>
+<td style="text-align:center">MIN([DISTINCT] expr)</td>
+<td style="text-align:center">返回某列的最小值</td>
+</tr>
+<tr>
+<td style="text-align:center">SUM([DISTINCT]expr)</td>
+<td style="text-align:center">返回某列值之和</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>重点看COUNT函数。<code>COUNT(*)</code> 对所有表进行计数，不管是列中包含的是空值还是非空值。但<code>COUNT(column)</code>对特定列中具有值的行进行计数，忽略NULL值。所以<code>COUNT(NULL)</code>为0。</p>
+</blockquote>
+<h3 id="分组过滤">分组过滤</h3>
+<pre><code>SELECT `字段1`,`字段2`,`字段N` FROM `表名` GROUP BY `列中字段` HAVING 条件;
+</code></pre><pre><code>SELECT `stuId`, `stuName`,`stuGender` FROM `student` GROUP BY `stuGender`,`stuId`, `stuName` HAVING `stuId` &gt; 1;
+</code></pre><blockquote>
+<p>注意：
+1.GROUP BY 子句可以包含<strong>任意数目</strong>的列；</p>
+</blockquote>
+<blockquote>
+<p>2.GROUP BY 子句不能使用聚合函数；</p>
+</blockquote>
+<blockquote>
+<p>3.SELECT中出现的所有列和表达式，也在GROUP BY 中出现，但<strong>不使用别名</strong>；</p>
+</blockquote>
+<blockquote>
+<p>4.若分组列中具有NULL值，则NULL将作为一个分组返回。若是多行NULL，它们将分成一组；</p>
+</blockquote>
+<blockquote>
+<p>5.GROUP BY 子句必须出现在 <strong>WHERE 子句之后</strong>，<strong>ORDER BY 子句之前</strong>；</p>
+</blockquote>
+<blockquote>
+<p>6.在建立分组时，指定的所有列都一起计算，所以不能从个别的列取回数据。</p>
+</blockquote>
+<blockquote>
+<p>7.如果检索列和聚合函数在SELECT中一起使用，GROUP BY 必须使用。</p>
+</blockquote>
+<blockquote>
+<p>HAVING支持所有WHERE子句中的条件，它们句法相同，一个用于分组前的过滤行，一个分组后的过滤分组</p>
+</blockquote>
+<h3 id="子查询">子查询</h3>
+<p><strong>子查询</strong> SELECT语句中嵌套了其他的SELECT查询。子查询由内向外处理。</p>
+<ul>
+<li>子查询过滤（常用且灵活）</li>
+<li>子查询计算字段</li>
+</ul>
+<h4 id="子查询过滤">子查询过滤</h4>
+<p>查询学生id为3的年级名称。</p>
+<pre><code>SELECT `gradeName`
+FROM `grade`
+WHERE `gradeId` IN (SELECT `gradeId` 
+                    FROM `student`
+                    WHERE `stuId`=3);
+</code></pre><p>WHERE 子句的列和SELECT 语句中列必须匹配，即具有相同数目的列。</p>
+<h4 id="子查询计算字段">子查询计算字段</h4>
+<p>查询各个年级的学生数量。</p>
+<pre><code>SELECT `gradeName`, 
+       (SELECT COUNT(*)
+        FROM `student` WHERE `student`.`gradeId` = `grade`.`gradeId` ) AS count 
+FROM `grade`
+ORDER BY `gradeName`;
+</code></pre><h3 id="级联查询">级联查询</h3>
+<ul>
+<li>内部联结</li>
+<li>外部联结</li>
+</ul>
+<h4 id="内部联结">内部联结</h4>
+<p>基于两个表之间相等测试的联结。故又称<strong>等值联结</strong>。排除相同的列多次出现，则成为<strong>自然联结</strong>。特殊地，当两张表为同一张表，就成为<strong>自联结</strong>。</p>
+<pre><code>SELECT `student`.*,`grade`.`gradeName`
+FROM `student`
+INNER JOIN `grade`
+ON `student`.`gradeId` = `grade`.`gradeId`;
+</code></pre><pre><code>SELECT `student`.*,`grade`.`gradeName`
+FROM `student`,`grade`
+WHERE `student`.`gradeId` = `grade`.`gradeId`;
+</code></pre><h4 id="外部联结">外部联结</h4>
+<p>外部联结包含那些在相关表中没有关联行的行。</p>
+<ul>
+<li>左外联结</li>
+<li>右外联结</li>
+</ul>
+<h5 id="左外联结">左外联结</h5>
+<p>包含了交集部分</p>
+<pre><code>SELECT `student`.*,`grade`.`gradeName`
+FROM `student`
+LEFT OUTER JOIN `grade`
+ON `student`.`gradeId` = `grade`.`gradeId`;
+</code></pre><p>不包含了交集部分</p>
+<pre><code>SELECT `student`.*,`grade`.`gradeName`
+FROM `student`
+LEFT OUTER JOIN `grade`
+ON `student`.`gradeId` = `grade`.`gradeId`
+WHERE `grade`.`gradeId` IS NULL;
+</code></pre><h5 id="右外联结">右外联结</h5>
+<p>包含了交集部分</p>
+<pre><code>SELECT `student`.*,`grade`.`gradeName`
+FROM `student`
+RIGHT OUTER JOIN `grade`
+ON `student`.`gradeId` = `grade`.`gradeId`;
+</code></pre><p>不包含了交集部分</p>
+<pre><code>SELECT `student`.*,`grade`.`gradeName`
+FROM `student`
+RIGHT OUTER JOIN `grade`
+ON `student`.`gradeId` = `grade`.`gradeId`
+WHERE `student`.`gradeId` IS NULL;
+</code></pre><blockquote>
+<p>注意：联结非常消耗性能，联结的表越多，性能下降越快，不要联结不必要的表</p>
+</blockquote>
+<h3 id="组合查询">组合查询</h3>
+<p>多个SELECT结果合并</p>
+<p>全联结包含交集部分</p>
+<pre><code>SELECT `student`.*,`grade`.`gradeName`
+FROM `student`
+LEFT OUTER JOIN `grade`
+ON `student`.`gradeId` = `grade`.`gradeId`
+UNION
+SELECT `student`.*,`grade`.`gradeName`
+FROM `student`
+RIGHT OUTER JOIN `grade`
+ON `student`.`gradeId` = `grade`.`gradeId`;
+</code></pre><p>全联结不包含交集部分</p>
+<pre><code>SELECT `student`.*,`grade`.`gradeName`
+FROM `student`
+LEFT OUTER JOIN `grade`
+ON `student`.`gradeId` = `grade`.`gradeId`
+WHERE `grade`.`gradeId` IS NULL
+UNION
+SELECT `student`.*,`grade`.`gradeName`
+FROM `student`
+RIGHT OUTER JOIN `grade`
+ON `student`.`gradeId` = `grade`.`gradeId`
+WHERE `student`.`gradeId` IS NULL;
+</code></pre><h2 id="事务与sql优化">事务与SQL优化</h2>
+<p>见<a href="../../../../posts/2021/03/transaction">MySQL事务与SQL优化</a>回顾。</p>
+<h2 id="索引">索引</h2>
+<p>MySQL官方定义：帮助MySQL高效获取数据的数据结构，就是索引。</p>
+<p>其底层的数据结构是<strong>B+树</strong>。</p>
+<p>分类：</p>
+<ul>
+<li>主键索引 （PRIMARY KEY）
+<ul>
+<li>唯一标识，主键列值不可重复，主键只能有一个，不可多个</li>
+</ul>
+</li>
+<li>唯一索引 （UNIQUE KEY）
+<ul>
+<li>避免重复的列值出现，唯一索引可以有多个</li>
+</ul>
+</li>
+<li>常规索引 （KEY｜INDEX）
+<ul>
+<li>默认的</li>
+</ul>
+</li>
+<li>全文索引 （FULLTEXT INDEX）
+<ul>
+<li>MYISAM 特有，用于快速定位和搜索</li>
+</ul>
+</li>
+</ul>
+<p>建表时增加索引</p>
+<pre><code>CREATE TABLE `表名` (
+  `属性1` 数据类型,
+  `属性2` 数据类型,
+  `属性3` 数据类型,
+  PRIMARY KEY(`属性1`)
+  UNIQUE KEY `属性2` (`属性2`),
+  KEY `属性3` (`属性3`)
+) ENGINE=INNODB;
+
+CREATE TABLE `表名` (
+  `属性1` 数据类型,
+  `属性2` 数据类型,
+  `属性3` 数据类型,
+  FULLTEXT(`属性1`)
+) ENGINE=MYISAM;
+</code></pre><p>建表后增加索引</p>
+<pre><code>ALTER TABLE `表名` ADD FULLTEXT INDEX `属性1` (`属性1`);
+</code></pre><p>索引搜索</p>
+<pre><code>SELECT `属性` FROM `表名` WHERE MATCH(`属性1`) AGAINST('值');
+</code></pre><h3 id="索引其他命令">索引其他命令</h3>
+<pre><code># 显示所有索引信息
+SHOW INDEX FROM `表名`;
+# 分析SQL语句执行状况 比如查询所需记录的行数
+EXPLAIN SQL语句;
+</code></pre><p>建议：</p>
+<ul>
+<li>索引不是越多越好</li>
+<li>不对变动大数据加索引</li>
+<li>数据量小的表不加索引</li>
+<li>索引一般加在常用查询的字段上</li>
+</ul>
+<h2 id="用户权限管理">用户权限管理</h2>
+<p>新建一个用户</p>
+<pre><code>CREATE USER `用户名` IDENTIFIED BY '密码';
+</code></pre><p>更改用户密码</p>
+<pre><code>ALTER USER `用户名` IDENTIFIED BY '密码';
+</code></pre><p>重命名</p>
+<pre><code>RENAME USER `原名` TO `新名`
+</code></pre><p>用户授权</p>
+<pre><code>GRANT 权限 ON `库名`.`表名` TO `用户`;
+</code></pre><p>权限有SELECT、INSERT、UPDATE、DELETE等等，ALL PRIVILEGES 表示除了GRANT的所有权限。</p>
+<p>权限撤销</p>
+<pre><code>REVOKE 权限 ON `库名`.`表名` FROM `用户`;
+</code></pre><h2 id="mysql备份">MySQL备份</h2>
+<p>保证重要数据不丢失，方便数据转移</p>
+<pre><code># mysqldump -h 主机 -u 用户 -p 密码 库名 表名 &gt; 文件名
+mysqldump -h localhost -uroot -p123456 crashcourse student &gt; data.sql
+
+# mysqldump -h 主机 -u 用户 -p 密码 库名 表名1 表名2 表名N &gt; 文件名
+mysqldump -h localhost -uroot -p123456 crashcourse student teacher &gt; data.sql
+
+# mysqldump -h 主机 -u 用户 -p 密码 库名  &gt; 文件名
+mysqldump -h localhost -uroot -p123456 crashcourse  &gt; data.sql
+</code></pre><p>导入
+先登录数据库后</p>
+<pre><code>USE `crashcourse`;
+SOURCE /path/to/data.sql
+</code></pre><h2 id="如何设计数据库">如何设计数据库</h2>
+<p>软件开发中数据库设计</p>
+<ul>
+<li>分析需求：分析业务和需求处理的数据库的需求</li>
+<li>概要设计：设计关系E-R图</li>
+</ul>
+<p>设计数据库的步骤</p>
+<ul>
+<li>收集信息，分析需求
+<ul>
+<li>要创建哪些表，表里有哪些需求</li>
+</ul>
+</li>
+<li>标识实体
+<ul>
+<li>把需求落实到字段</li>
+</ul>
+</li>
+<li>标识实体的关系
+<ul>
+<li>有一对一，多对多，一对多</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据库的三大范式">数据库的三大范式</h2>
+<p>防止信息重复，减少数据冗余，防止异常。</p>
+<ol>
+<li>第一范式（1NF）要求数据库的每一列都是不可在分割的原子数据项</li>
+<li>第二范式（2NF）前提满足第一范式，确保数据库的每一列依赖于主键列（每张表只描述一件事）</li>
+<li>第三范式（3NF）前提满足第一第二范式，确保数据库每列数据都和主键直接相关，不能间接相关</li>
+</ol>
+<h3 id="规范性和性能的问题">规范性和性能的问题</h3>
+<p>根据阿里规范，关联查询建议不超过3张表</p>
+<ul>
+<li>考虑商业化的需求和目标，数据库性能更加重要</li>
+<li>在考虑完性能问题后，适当考虑规范性的问题</li>
+<li>有时需要故意增加一些冗余的字段（方便将多表查询变为单表查询）</li>
+<li>有时故意增加一些计算字段（将大数据降低为小数据量的查询：索引）</li>
+</ul>
+<h2 id="其他资源">其他资源</h2>
+<ul>
+<li><a href="https://dev.mysql.com/doc/refman/5.7/en/">MySQL 5.7 参考手册</a></li>
+</ul>
+
+</div>
+
+
+    </main>
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
+    
+      
+    
+  </body>
+</html>
