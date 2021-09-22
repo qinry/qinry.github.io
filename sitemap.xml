@@ -3,7 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://qinry.github.io/categories/</loc>
-    <lastmod>2021-08-26T09:06:53+08:00</lastmod>
+    <lastmod>2021-09-20T06:38:50+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/posts/</loc>
+    <lastmod>2021-09-20T06:38:50+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/tags/</loc>
+    <lastmod>2021-09-20T06:38:50+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/tags/vue/</loc>
+    <lastmod>2021-09-20T06:38:50+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/categories/vue/</loc>
+    <lastmod>2021-09-20T06:38:50+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/posts/2021/09/vue-js/</loc>
+    <lastmod>2021-09-20T06:38:50+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/tags/web/</loc>
+    <lastmod>2021-09-20T06:38:50+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/</loc>
+    <lastmod>2021-09-20T06:38:50+08:00</lastmod>
   </url><url>
     <loc>https://qinry.github.io/tags/mysql/</loc>
     <lastmod>2021-08-26T09:06:53+08:00</lastmod>
@@ -11,16 +32,7 @@
     <loc>https://qinry.github.io/categories/mysql/</loc>
     <lastmod>2021-08-26T09:06:53+08:00</lastmod>
   </url><url>
-    <loc>https://qinry.github.io/posts/</loc>
-    <lastmod>2021-08-26T09:06:53+08:00</lastmod>
-  </url><url>
-    <loc>https://qinry.github.io/tags/</loc>
-    <lastmod>2021-08-26T09:06:53+08:00</lastmod>
-  </url><url>
     <loc>https://qinry.github.io/posts/2021/08/mysql-sql-statement/</loc>
-    <lastmod>2021-08-26T09:06:53+08:00</lastmod>
-  </url><url>
-    <loc>https://qinry.github.io/</loc>
     <lastmod>2021-08-26T09:06:53+08:00</lastmod>
   </url><url>
     <loc>https://qinry.github.io/tags/css/</loc>
@@ -30,9 +42,6 @@
     <lastmod>2021-08-23T20:16:46+08:00</lastmod>
   </url><url>
     <loc>https://qinry.github.io/posts/2021/08/css-grammar/</loc>
-    <lastmod>2021-08-23T20:16:46+08:00</lastmod>
-  </url><url>
-    <loc>https://qinry.github.io/tags/web/</loc>
     <lastmod>2021-08-23T20:16:46+08:00</lastmod>
   </url><url>
     <loc>https://qinry.github.io/tags/html/</loc>

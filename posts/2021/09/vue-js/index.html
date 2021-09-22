@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.85.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vue.js入门 &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="Vue入门学习" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>hljs.highlightAll();</script>
+
+
+</head>
+
+  <body class="theme-base-0d ">
+    <span id="top"></span>
+    <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+    
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../tags"> 分类标签 </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright © 2021 槎城小子</p>
+  </div>
+</aside>
+
+    
+<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#第一个vue程序">第一个Vue程序</a></li>
+    <li><a href="#基本语法">基本语法</a></li>
+    <li><a href="#绑定事件">绑定事件</a></li>
+    <li><a href="#数据双向绑定">数据双向绑定</a></li>
+    <li><a href="#vue组件">vue组件</a></li>
+    <li><a href="#axios通信">axios通信</a></li>
+    <li><a href="#计算属性">计算属性</a></li>
+    <li><a href="#插槽">插槽</a></li>
+    <li><a href="#自定义事件内容分发">自定义事件内容分发</a></li>
+    <li><a href="#vue-cli">vue-cli</a></li>
+    <li><a href="#webpack">webpack</a></li>
+    <li><a href="#vue-router">vue-router</a></li>
+    <li><a href="#elementui">elementUI</a></li>
+    <li><a href="#嵌套路由">嵌套路由</a></li>
+    <li><a href="#参数传递与重定向">参数传递与重定向</a></li>
+    <li><a href="#404和路由钩子">404和路由钩子</a></li>
+    <li><a href="#更多资源">更多资源</a></li>
+  </ul>
+</nav>
+        
+</aside>
+
+
+    <main class="content container">
+    <div class="post">
+
+  <h1>Vue.js入门</h1>
+  <span class="post-date">
+    2021-09-20 06:38 &nbsp;
+    字数：<strong>6976</strong> &nbsp;
+    标签：
+              <a href="https://qinry.github.io/tags/vue/">Vue</a>&nbsp;
+              <a href="https://qinry.github.io/tags/web/">WEB</a>&nbsp;
+  </span>
+
+  <h2 id="概述">概述</h2>
+<p><strong>Vue</strong>，一套用于构建用户界面的渐进式框架，被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，还支持事件驱动。</p>
+<p><strong>什么是MVVM</strong></p>
+<p>MVVM代表Mode-View-ViewModel，一种软件架构。</p>
+<ul>
+<li>Model：模型层，数据保存</li>
+<li>View：视图层，用户界面</li>
+<li>ViewModel：视图模型层，还可以理解为数据绑定器，负责把Model的数据同步到View显示出来，还负责把View的修改同步回Model。</li>
+</ul>
+<p>ViewModel层采用<strong>双向数据绑定</strong>，View发生变动，自动反映ViewModel，反之亦然。ViewModel和Model之间则是双向通信。</p>
+<p><img src="../../../../images/posts/2021/09/vue-js/1.png" alt="image"></p>
+<p>Vue可以理解为实现MVVM理念的前端框架。</p>
+<h2 id="第一个vue程序">第一个Vue程序</h2>
+<p>Vue中的data的属性表示模型数据，视图模板中用两个花括号来代表绑定的相应名称的模型数据，也可以是使用<code>v-</code>为前缀的指令来绑定数据。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- 视图 --&gt;
+&lt;div id=&quot;app&quot;&gt;
+    {{message}}
+    &lt;span v-bind:title=&quot;message&quot;&gt;鼠标悬停在这里几秒&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- 1. 导入vue.js    --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    // 视图模型
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data:{ // 模型
+            message:&quot;hello,Vue!&quot;
+        }
+    });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>显示：
+<img src="../../../../images/posts/2021/09/vue-js/2.png" alt="image"></p>
+<p>当Model数据发生改变时，ViewModel会同步View的改变，例如在浏览器的控制台修改vm.message的值，反映到视图。</p>
+<p><img src="../../../../images/posts/2021/09/vue-js/3.png" alt="image"></p>
+<h2 id="基本语法">基本语法</h2>
+<p>if-else判断和for循环，指令分别有<code>v-if</code>、<code>v-else-if</code>、<code>v-else</code>和<code>v-for</code></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;app&quot;&gt;
+    &lt;h2 v-if=&quot;type==='A'&quot;&gt;A&lt;/h2&gt;
+    &lt;h2 v-else-if=&quot;type==='B'&quot;&gt;B&lt;/h2&gt;
+    &lt;h2 v-else-if=&quot;type==='C'&quot;&gt;C&lt;/h2&gt;
+    &lt;h2 v-else&gt;D&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div id=&quot;app2&quot;&gt;
+    &lt;li v-for=&quot;(item,index) in items&quot;&gt;
+        {{item.message}}-{{index}}
+    &lt;/li&gt;
+&lt;/div&gt;
+&lt;!-- 1. 导入vue.js    --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data: {
+            type: 'A'
+        }
+    });
+    var vm2 = new Vue({
+        el: &quot;#app2&quot;,
+        data: {
+            items: [
+                {message: &quot;foo&quot;},
+                {message: &quot;bar&quot;}
+            ]
+        }
+    });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>显示：
+<img src="../../../../images/posts/2021/09/vue-js/4.png" alt="image"></p>
+<h2 id="绑定事件">绑定事件</h2>
+<p>vue的methods属性声明了用于绑定事件的方法，使用<code>v-on:事件</code>的指令来绑定事件(事件名和jQuery一致)</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- 视图 --&gt;
+&lt;div id=&quot;app&quot;&gt;
+    &lt;button v-on:click=&quot;sayHi&quot;&gt;点我&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- 1. 导入vue.js    --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    // 视图模型
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data: { // 模型
+            message: &quot;hello,Vue!&quot;
+        },
+        methods: {
+            sayHi: function() {
+                alert('hello, vue!');
+            }
+        }
+    });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>显示：
+<img src="../../../../images/posts/2021/09/vue-js/5.png" alt="image"></p>
+<h2 id="数据双向绑定">数据双向绑定</h2>
+<p>使用<code>v-model</code>指令绑定表单的输入域</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- 视图 --&gt;
+&lt;div id=&quot;app&quot;&gt;
+    &lt;input type=&quot;uname&quot; name=&quot;text&quot; v-model=&quot;message&quot;&gt;
+    {{message}} &lt;br&gt;
+    &lt;select name=&quot;option&quot; v-model=&quot;selected&quot;&gt;
+        &lt;option value=&quot;&quot; disabled&gt;--请选择--&lt;/option&gt;
+        &lt;option value=&quot;A&quot;&gt;A&lt;/option&gt;
+        &lt;option value=&quot;B&quot;&gt;B&lt;/option&gt;
+    &lt;/select&gt;
+    {{selected}} &lt;br&gt;
+    &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;男&quot; v-model=&quot;sex&quot; &gt;男
+    &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;女&quot; v-model=&quot;sex&quot; &gt;女
+    {{sex}}&lt;br&gt;
+    &lt;textarea name=&quot;info&quot; id=&quot;&quot; cols=&quot;30&quot; rows=&quot;10&quot; v-model=&quot;textarea&quot; style=&quot;resize:none;&quot;&gt;&lt;/textarea&gt;
+    {{textarea}} &lt;br&gt;
+&lt;/div&gt;
+
+&lt;!-- 1. 导入vue.js    --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    // 视图模型
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data: { // 模型
+            message: 'hello,Vue!',
+            selected: '',
+            sex: '男',
+            textarea: '123'
+        },
+    });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><img src="../../../../images/posts/2021/09/vue-js/6.png" alt="image"></p>
+<h2 id="vue组件">vue组件</h2>
+<p>组件可设置名称，如名为list，使用组件与使用标签一样。组件的模版与普通vue视图编写一致。还有props属性用于组件的数据绑定。<code>v-bind:item</code>与props属性数组中<code>item</code>直接相关，模板中<code>{{item}}</code>也与props中的<code>item</code>相关。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;vue-component&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- 视图 --&gt;
+&lt;div id=&quot;app&quot;&gt;
+    &lt;list
+        v-for=&quot;item in items&quot;
+        v-bind:item=&quot;item&quot;
+    &gt;&lt;/list&gt;
+&lt;/div&gt;
+
+&lt;!-- 1. 导入vue.js    --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    // vue 组件
+    Vue.component('list', {
+        props: ['item'],
+        template: '&lt;li&gt;{{item}}&lt;/li&gt;'
+    });
+    // 视图模型
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data: { // 模型
+            items: ['Java', 'JavaScript', 'C']
+        },
+    });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><img src="../../../../images/posts/2021/09/vue-js/7.png" alt="image"></p>
+<h2 id="axios通信">axios通信</h2>
+<p>要导入vue文件后，导入axios文件。vue对象具有生命周期，其中许多钩子函数，例如beforeCreate、mounted等等。mounted函数用于一次ajax的请求。<a href="http://axios-js.com/zh-cn/docs/index.html">详情 axios-js</a></p>
+<p>GET请求语法，如下：</p>
+<pre><code>axios.get('/getUser',{id:1})
+    .then(response=&gt;{console.log(response)})
+    .catch(error=&gt;{console.log(error)});
+</code></pre><p>POST类似。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;axios&lt;/title&gt;
+    &lt;style&gt;
+        /* 解决闪烁问题 */
+        [v-clock] {
+            display: none;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- 视图 --&gt;
+&lt;div id=&quot;vue&quot; v-clock&gt;
+    &lt;h2&gt;{{info.name}}&lt;/h2&gt;
+    &lt;a v-bind:href=&quot;info.url&quot;&gt;百度一下&lt;/a&gt;
+    &lt;p&gt;{{info.description}}&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- 1. 导入vue.js    --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+
+    // 视图模型
+    var vm = new Vue({
+        el: &quot;#vue&quot;,
+        data() {
+            return { info:{} }
+        },
+        mounted() {
+            axios.get('../data.json').then(response=&gt;(this.info=response.data))
+        }
+    });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><pre><code>{
+  &quot;name&quot;: &quot;百度&quot;,
+  &quot;url&quot;: &quot;https://www.baidu.com&quot;,
+  &quot;description&quot;: &quot;有问题找度娘&quot;
+}
+</code></pre><p><img src="../../../../images/posts/2021/09/vue-js/8.png" alt="image"></p>
+<h2 id="计算属性">计算属性</h2>
+<p>computed属性与methods属性的写法一致，但有区别，使用methods不会缓存计算结果，而computed则会缓存结果。在浏览器控制台每调用一次<code>vm.currentTime1()</code>会产生不同结果，而<code>vm.currentTime2</code>则每次调用结果都与第一次的结果是一样，除非起内部的方法里字段发生修改或页面刷新。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;computed&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- 视图 --&gt;
+&lt;div id=&quot;app&quot;&gt;
+    &lt;p&gt;currentTime1 {{currentTime1()}}&lt;/p&gt;
+    &lt;p&gt;currentTime2 {{currentTime2}}&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- 1. 导入vue.js    --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    // 视图模型
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data: {
+            message: &quot;Hello, Vue!&quot;
+        }
+        methods: {
+            currentTime1: function() {
+                return Date.now();
+            }
+        },
+        computed: {
+            currentTime2: function() {
+                return Date.now();
+            }
+        }
+    });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="插槽">插槽</h2>
+<p>模板需要指定slot属性，组件中template属性内部slot标签需要指定name。通过使用插槽，使得模板视图更加灵活，不嵌入静态数据。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;slot&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;app&quot;&gt;
+    &lt;todo&gt;
+        &lt;todo-title slot=&quot;todo-title&quot; :title=&quot;title&quot;&gt;&lt;/todo-title&gt;
+        &lt;todo-list slot=&quot;todo-list&quot; v-for=&quot;item in items&quot; :item=&quot;item&quot;&gt;&lt;/todo-list&gt;
+    &lt;/todo&gt;
+&lt;/div&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    Vue.component('todo', {
+        template: '&lt;div&gt;' +
+            '&lt;slot name=&quot;todo-title&quot;&gt;&lt;/slot&gt;' +
+            '&lt;ul&gt;' +
+            '&lt;slot name=&quot;todo-list&quot;&gt;&lt;/slot&gt;' +
+            '&lt;/ul&gt;' +
+            '&lt;/div&gt;'
+    });
+    Vue.component('todo-title', {
+        props: ['title'],
+        template: '&lt;div&gt;{{title}}&lt;/div&gt;'
+    });
+    Vue.component('todo-list', {
+        props: ['item'],
+        template: '&lt;li&gt;{{item}}&lt;/li&gt;'
+    });
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            title: '编程语言',
+            items: ['Java', 'JavaScript', 'C']
+        }
+    });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="自定义事件内容分发">自定义事件内容分发</h2>
+<p>组件要自删除的按钮的实现，需要自定义事件内容分发来完成。Vue对象是直接参与模型数据删除，其方法为removeItems。组件需要监听鼠标点击事件，触发remove方法。remove方法再通过调用特殊函数<code>this.$emit('自定义事件名称', 参数列表)</code>，这个自定义事件还需要模板绑定自定义事件，自定义事件触发的方法正是直接参与删除的removeItems，比如：<code>@removeItems=&quot;removeItems(idx)&quot;</code>。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;custom-event-content-deliver&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;app&quot;&gt;
+    &lt;todo&gt;
+        &lt;todo-title slot=&quot;todo-title&quot; :title=&quot;title&quot;&gt;&lt;/todo-title&gt;
+        &lt;todo-list slot=&quot;todo-list&quot; v-for=&quot;(item, idx) in items&quot;
+                   :item=&quot;item&quot; :idx=&quot;idx&quot; @removeItems=&quot;removeItems(idx)&quot;
+        &gt;&lt;/todo-list&gt;
+    &lt;/todo&gt;
+&lt;/div&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    Vue.component('todo', {
+        template: '&lt;div&gt;' +
+            '&lt;slot name=&quot;todo-title&quot;&gt;&lt;/slot&gt;' +
+            '&lt;ul&gt;' +
+            '&lt;slot name=&quot;todo-list&quot;&gt;&lt;/slot&gt;' +
+            '&lt;/ul&gt;' +
+            '&lt;/div&gt;'
+    });
+    Vue.component('todo-title', {
+        props: ['title'],
+        template: '&lt;div&gt;{{title}}&lt;/div&gt;'
+    });
+    Vue.component('todo-list', {
+        props: ['item', 'idx'],
+        template: '&lt;li&gt;{{idx}}--{{item}} &lt;button @click=&quot;remove&quot;&gt;删除&lt;/button&gt;&lt;/li&gt;',
+        methods: {
+            remove: function (idx) {
+                this.$emit('removeItems', idx);
+            }
+        }
+    });
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            title: '编程语言',
+            items: ['Java', 'JavaScript', 'C']
+        },
+        methods: {
+            removeItems: function (idx) {
+                console.log('删除了' + this.items[idx] + ' OK');
+                this.items.splice(idx, 1);
+            }
+        }
+    });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>总之，组件的点击删除事件需要委托给自定义事件remove</p>
+<h2 id="vue-cli">vue-cli</h2>
+<p>使用vue-cli之前需要<a href="https://nodejs.org/zh-cn/">安装nodejs</a>，根据平台安装最近的长期维护版本。</p>
+<p>安装后，测试</p>
+<pre><code>node -v
+npm -v
+</code></pre><p>成功则显示：</p>
+<p><img src="../../../../images/posts/2021/09/vue-js/9.png" alt="image"></p>
+<p>然后使用 npm 这个包管理工具，下载相应的前端模块化工具，需要以管理员权限运行：</p>
+<pre><code>npm install vue-cli -g
+npm install cnpm -g # cnpm是下载淘宝镜像npm包的工具
+</code></pre><p>同样测试 vue-cli 是否安装成功：</p>
+<pre><code>vue list
+</code></pre><p>显示：</p>
+<p><img src="../../../../images/posts/2021/09/vue-js/10.png" alt="image"></p>
+<p>接着使用 vue-cli 初始化一个 vue.js项目</p>
+<pre><code>cd ~/Desktop
+mkdir vue
+cd vue
+vue init webpack myvue
+</code></pre><p>创建项目时，如果会出现一些输入时，则默认回车，如果出现一些选项，统统按n回车，还有选择编译器时选择运行时加编译器。</p>
+<p>下一步是以开发模式启动项目</p>
+<pre><code>cd myvue
+npm install
+npm audit fix
+npm run dev
+</code></pre><p>打开浏览器，输入localhost:8080，查看
+<img src="../../../../images/posts/2021/09/vue-js/11.png" alt="image"></p>
+<p>查看myvue项目的目录结构，本质也是一个webpack目录结构</p>
+<p><img src="../../../../images/posts/2021/09/vue-js/12.png" alt="image"></p>
+<p>简单了解重要目录与文件：</p>
+<ul>
+<li>src：项目源代码编写的地方</li>
+<li>static：存放静态资源，例如html、css、json、图片等等</li>
+<li>node_modules：项目依赖库</li>
+<li>build：webpack的相关文件存放的地方</li>
+<li>config：项目开发环境的配置文件</li>
+<li>index.html：项目的入口页面</li>
+<li>package.json：项目打包的配置文件</li>
+</ul>
+<p>详情见<a href="http://vuejs-templates.github.io/webpack/structure.html">Project Structure</a></p>
+<h2 id="webpack">webpack</h2>
+<p>安装webpack</p>
+<pre><code>sudo npm install webpack webpack-cli -g
+webpack -v
+webpack-cli -v
+</code></pre><p>结果：
+<img src="../../../../images/posts/2021/09/vue-js/13.png" alt="image"></p>
+<p>创建第一个webpack项目</p>
+<pre><code>cd ~/Desktop
+mkdir webpack-study &amp;&amp; cd webpack-study
+mkdir modules
+cd modules
+touch main.js
+touch hello.js
+cd ../
+touch webpack.config.js
+touch index.html
+</code></pre><p>hello.js</p>
+<pre><code>&quot;use strict&quot;;
+export function sayHi() {
+    document.write(&quot;&lt;h2&gt;Hello, World!&lt;/h2&gt;&quot;)
+}
+</code></pre><p>main.js</p>
+<pre><code>'use strict';
+import * as hello from './hello';
+hello.sayHi();
+</code></pre><p>webpack.config.js</p>
+<pre><code>module.exports = {
+    entry: &quot;./modules/main.js&quot;,
+    output: {
+        filename: &quot;./js/bundle.js&quot;
+    }
+}
+</code></pre><p>然后运行webpack命令，输出dist/js/bundle.js</p>
+<p>index.html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;webpack-study&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script src=&quot;./dist/js/bundle.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>结果：
+<img src="../../../../images/posts/2021/09/vue-js/14.png" alt="image"></p>
+<h2 id="vue-router">vue-router</h2>
+<p>创建一个vue-cli项目，项目名不为vue-router</p>
+<p>在<strong>当前项目</strong>下，安装vue-router插件</p>
+<pre><code>sudo npm install vue-router --save-dev
+</code></pre><p>在src下创建文件夹router，这里存放路由配置</p>
+<p>router/index.js</p>
+<pre><code>import Vue from 'vue';
+import VueRouter from &quot;vue-router&quot;;
+
+import Content from '../components/Content';
+import Main from '../components/Main'
+// 安装路由
+Vue.use(VueRouter)
+
+// 配置导出路由
+export default new VueRouter ({
+  routes: [
+    {
+      // 路径
+      path: '/content',
+      name: 'content',
+      // 跳转组件
+      component: Content
+    },
+    {
+      // 路径
+      path: '/main',
+      name: 'main',
+      // 跳转组件
+      component: Main
+    }
+  ]
+});
+</code></pre><p>接着编写，路由组件</p>
+<p>components/Main.vue</p>
+<pre><code>&lt;template&gt;
+  &lt;h2&gt;首页&lt;/h2&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: &quot;Main&quot;
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+
+</code></pre><p>components/Content.vue</p>
+<pre><code>&lt;template&gt;
+  &lt;h2&gt;内容页&lt;/h2&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: &quot;Content&quot;
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+
+</code></pre><p>在main.js中引入router的相关配置</p>
+<pre><code>import Vue from 'vue'
+import App from './App'
+// 导入路由配置
+import router from './router'
+
+Vue.config.productionTip = false
+
+new Vue({
+  el: '#app',
+  router, // 使用路由
+  components: { App },
+  template: '&lt;App/&gt;'
+})
+
+</code></pre><p>最后，在App.vue编写模板</p>
+<pre><code>&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;h2&gt;Vue-Router&lt;/h2&gt;
+    &lt;router-link to=&quot;/main&quot;&gt;首页&lt;/router-link&gt;
+    &lt;router-link to=&quot;/content&quot;&gt;内容页&lt;/router-link&gt;
+    &lt;router-view&gt;&lt;/router-view&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+export default {
+  name: 'App',
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+&lt;/style&gt;
+
+</code></pre><p><code>npm run dev</code> 运行查看效果效果：</p>
+<p><img src="../../../../images/posts/2021/09/vue-js/15.png" alt="image">
+<img src="../../../../images/posts/2021/09/vue-js/16.png" alt="image">
+<img src="../../../../images/posts/2021/09/vue-js/17.png" alt="image"></p>
+<h2 id="elementui">elementUI</h2>
+<p>在新的vue-cli项目中，安装element-ui插件</p>
+<pre><code>sudo npm install vue-router --save-dev
+sudo npm i element-ui -S
+# 安装依赖
+sudo npm install
+# 安装 sass-loader 和 node-sass
+sudo cnpm install sass-loader node-sass --save-dev
+# 启动测试
+npm run dev
+</code></pre><p>首先编写视图，在src下创建views文件夹</p>
+<p>views/Main.vue</p>
+<pre><code>&lt;template&gt;
+  &lt;h2&gt;主页&lt;/h2&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: &quot;Main&quot;
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre><p>views/Login.vue</p>
+<pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;el-form ref=&quot;loginForm&quot; :model=&quot;form&quot; :rules=&quot;rules&quot; label-width=&quot;80px&quot; class=&quot;login-box&quot;&gt;
+      &lt;h3 class=&quot;login-title&quot;&gt;欢迎登录&lt;/h3&gt;
+      &lt;el-form-item label=&quot;账号&quot; prop=&quot;username&quot;&gt;
+        &lt;el-input type=&quot;text&quot; placeholder=&quot;请输入账号&quot; v-model=&quot;form.username&quot;&gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;密码&quot; prop=&quot;password&quot;&gt;
+        &lt;el-input type=&quot;password&quot; placeholder=&quot;请输入密码&quot; v-model=&quot;form.password&quot;&gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item&gt;
+        &lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit('loginForm')&quot;&gt;提交&lt;/el-button&gt;
+      &lt;/el-form-item&gt;
+    &lt;/el-form&gt;
+    &lt;el-dialog
+      title=&quot;温馨提示&quot;
+      :visible.sync=&quot;dialogVisible&quot;
+      width=&quot;30%&quot;&gt;
+      &lt;span&gt;请输入账号和密码&lt;/span&gt;
+      &lt;span slot=&quot;footer&quot; class=&quot;el-dialog__footer&quot;&gt;
+        &lt;el-button type=&quot;primary&quot; @click=&quot;dialogVisible = false&quot;&gt;确定&lt;/el-button&gt;
+      &lt;/span&gt;
+    &lt;/el-dialog&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: &quot;Login&quot;,
+  data() {
+    return {
+      form: {
+        username: '',
+        password: ''
+      },
+      rules: {
+        username: [
+          {required: true, message: '账号不为空', trigger: 'blur'}
+        ],
+        password: [
+          {required: true, message: '密码不为空', trigger: 'blur'}
+        ]
+      },
+      dialogVisible: false
+    }
+  },
+  methods: {
+    onSubmit(formName) {
+      this.$refs[formName].validate((valid) =&gt; {
+        if (valid) {
+          this.$router.push('/main');
+        } else {
+          this.dialogVisible = true;
+          return false;
+        }
+      });
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+.login-box {
+  border: 1px solid #DCDFE6;
+  width: 350px;
+  margin: 180px auto;
+  padding: 35px 35px 15px 35px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  box-shadow: 0 0 25px #909399;
+}
+
+.login-title {
+  text-align: center;
+  margin: 0 auto 40px auto;
+  color: #303133;
+}
+&lt;/style&gt;
+</code></pre><p>接着，编写路由相关配置</p>
+<p>router/index.js</p>
+<pre><code>import Vue from 'vue';
+import Router from &quot;vue-router&quot;;
+import Main from &quot;../views/Main&quot;;
+import Login from &quot;../views/Login&quot;;
+
+// 安装路由
+Vue.use(Router);    
+
+// 配置导出路由
+export default new Router({
+  routes: [
+    {
+      path: '/main',
+      name: 'main',
+      component: Main
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    }
+  ]
+});
+</code></pre><p>最后，导入Element-UI并使用</p>
+<p>main.js</p>
+<pre><code>import Vue from 'vue'
+// 导入ElementUI相关的库
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+import App from './App';
+import router from './router';
+
+Vue.use(ElementUI); // Vue使用ElementUI
+
+new Vue({
+  el: '#app',
+  router,
+  render: h =&gt; h(App) // 在App中渲染ElementUI的组件
+})
+
+</code></pre><p><img src="../../../../images/posts/2021/09/vue-js/18.png" alt="image"></p>
+<p>更多ElementUI组件见，<a href="https://element.eleme.cn/#/zh-CN/guide/design">点这里</a></p>
+<h2 id="嵌套路由">嵌套路由</h2>
+<p>在views下，增加user目录，里面再新增Profile.vue和List.vue</p>
+<p>Profile.vue</p>
+<pre><code>&lt;template&gt;
+  &lt;h2&gt;个人信息&lt;/h2&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: &quot;UserProfile&quot;
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre><p>List.vue</p>
+<pre><code>&lt;template&gt;
+  &lt;h2&gt;用户列表&lt;/h2&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: &quot;UserList&quot;
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre><p>修改views/Main.vue</p>
+<p>views/Main.vue</p>
+<pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;el-container&gt;
+      &lt;el-aside width=&quot;200px&quot;&gt;
+        &lt;el-menu :default-openeds=&quot;['1']&quot;&gt;
+          &lt;el-submenu index=&quot;1&quot;&gt;
+            &lt;template slot=&quot;title&quot;&gt;&lt;i class=&quot;el-icon-caret-right&quot;&gt;&lt;/i&gt;用户管理&lt;/template&gt;
+            &lt;el-menu-item-group&gt;
+              &lt;el-menu-item index=&quot;1-1&quot;&gt;
+                &lt;!--插入的地方--&gt;
+                &lt;router-link to=&quot;/user/profile&quot;&gt;个人信息&lt;/router-link&gt;
+              &lt;/el-menu-item&gt;
+              &lt;el-menu-item index=&quot;1-2&quot;&gt;
+                &lt;!--插入的地方--&gt;
+                &lt;router-link to=&quot;/user/list&quot;&gt;用户列表&lt;/router-link&gt;
+              &lt;/el-menu-item&gt;
+            &lt;/el-menu-item-group&gt;
+          &lt;/el-submenu&gt;
+          &lt;el-submenu index=&quot;2&quot;&gt;
+            &lt;template slot=&quot;title&quot;&gt;&lt;i class=&quot;el-icon-caret-right&quot;&gt;&lt;/i&gt;内容管理&lt;/template&gt;
+            &lt;el-menu-item-group&gt;
+              &lt;el-menu-item index=&quot;2-1&quot;&gt;分类管理&lt;/el-menu-item&gt;
+              &lt;el-menu-item index=&quot;2-2&quot;&gt;内容列表&lt;/el-menu-item&gt;
+            &lt;/el-menu-item-group&gt;
+          &lt;/el-submenu&gt;
+        &lt;/el-menu&gt;
+      &lt;/el-aside&gt;
+
+      &lt;el-container&gt;
+        &lt;el-header style=&quot;text-align: right; font-size: 12px&quot;&gt;
+          &lt;el-dropdown&gt;
+            &lt;i class=&quot;el-icon-setting&quot; style=&quot;margin-right: 15px&quot;&gt;&lt;/i&gt;
+            &lt;el-dropdown-menu slot=&quot;dropdown&quot;&gt;
+              &lt;el-dropdown-item&gt;个人信息&lt;/el-dropdown-item&gt;
+              &lt;el-dropdown-item&gt;退出登录&lt;/el-dropdown-item&gt;
+            &lt;/el-dropdown-menu&gt;
+          &lt;/el-dropdown&gt;
+        &lt;/el-header&gt;
+        &lt;el-main&gt;
+          &lt;!--在这里展示视图--&gt;
+          &lt;router-view /&gt;
+        &lt;/el-main&gt;
+      &lt;/el-container&gt;
+    &lt;/el-container&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  name: &quot;Main&quot;
+}
+&lt;/script&gt;
+&lt;style scoped&gt;
+.el-header {
+  background-color: #B3C0D1;
+  color: #333;
+  line-height: 60px;
+}
+.el-aside {
+  color: #333;
+}
+&lt;/style&gt;
+</code></pre><p>修改router/index.js</p>
+<pre><code>import Vue from 'vue';
+import Router from &quot;vue-router&quot;;
+import Main from &quot;../views/Main&quot;;
+import Login from &quot;../views/Login&quot;;
+import UserList from '../views/user/List';
+import UserProfile from '../views/user/Profile';
+
+// 安装路由
+Vue.use(Router);
+
+// 配置导出路由
+export default new Router({
+  routes: [
+    {
+      path: '/main',
+      component: Main,
+      // 嵌套路由
+      children: [
+        {path: '/user/list', component: UserList},
+        {path: '/user/profile', component: UserProfile  }
+      ]
+    },
+    {
+      path: '/login',
+      component: Login,
+
+    }
+  ]
+});
+</code></pre><p>最后，<code>npm run dev</code> 查看</p>
+<p><img src="../../../../images/posts/2021/09/vue-js/19.png" alt="image"></p>
+<h2 id="参数传递与重定向">参数传递与重定向</h2>
+<p>修改views/Main.vue，将个人信息的路由链接的路径修改，使用<code>:to</code>来绑定路径和参数，用一个对象来表达，例如<code>{name: '命名路径', parmas: {参数名: 值}}</code></p>
+<pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;el-container&gt;
+      &lt;el-aside width=&quot;200px&quot;&gt;
+        &lt;el-menu :default-openeds=&quot;['1']&quot;&gt;
+          &lt;el-submenu index=&quot;1&quot;&gt;
+            &lt;template slot=&quot;title&quot;&gt;&lt;i class=&quot;el-icon-caret-right&quot;&gt;&lt;/i&gt;用户管理&lt;/template&gt;
+            &lt;el-menu-item-group&gt;
+              &lt;el-menu-item index=&quot;1-1&quot;&gt;
+                &lt;!--参数传递--&gt;
+                &lt;router-link :to=&quot;{name: 'UserProfile', params:{id: id}}&quot;&gt;个人信息&lt;/router-link&gt;
+              &lt;/el-menu-item&gt;
+              &lt;el-menu-item index=&quot;1-2&quot;&gt;
+                &lt;router-link to=&quot;/user/list&quot;&gt;用户列表&lt;/router-link&gt;
+              &lt;/el-menu-item&gt;
+              &lt;el-menu-item index=&quot;1-3&quot;&gt;
+                &lt;!--重定向--&gt;
+                &lt;router-link to=&quot;/goHome&quot;&gt;回到主页&lt;/router-link&gt;
+              &lt;/el-menu-item&gt;
+            &lt;/el-menu-item-group&gt;
+          &lt;/el-submenu&gt;
+          &lt;el-submenu index=&quot;2&quot;&gt;
+            &lt;template slot=&quot;title&quot;&gt;&lt;i class=&quot;el-icon-caret-right&quot;&gt;&lt;/i&gt;内容管理&lt;/template&gt;
+            &lt;el-menu-item-group&gt;
+              &lt;el-menu-item index=&quot;2-1&quot;&gt;分类管理&lt;/el-menu-item&gt;
+              &lt;el-menu-item index=&quot;2-2&quot;&gt;内容列表&lt;/el-menu-item&gt;
+            &lt;/el-menu-item-group&gt;
+          &lt;/el-submenu&gt;
+        &lt;/el-menu&gt;
+      &lt;/el-aside&gt;
+
+      &lt;el-container&gt;
+        &lt;el-header style=&quot;text-align: right; font-size: 12px&quot;&gt;
+          &lt;el-dropdown&gt;
+            &lt;i class=&quot;el-icon-setting&quot; style=&quot;margin-right: 15px&quot;&gt;&lt;/i&gt;
+            &lt;el-dropdown-menu slot=&quot;dropdown&quot;&gt;
+              &lt;el-dropdown-item&gt;个人信息&lt;/el-dropdown-item&gt;
+              &lt;el-dropdown-item&gt;退出登录&lt;/el-dropdown-item&gt;
+            &lt;/el-dropdown-menu&gt;
+          &lt;/el-dropdown&gt;
+        &lt;/el-header&gt;
+        &lt;el-main&gt;
+          &lt;!--在这里展示视图--&gt;
+          &lt;router-view /&gt;
+        &lt;/el-main&gt;
+      &lt;/el-container&gt;
+    &lt;/el-container&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  name: &quot;Main&quot;,
+  data() {
+    return {id:1}
+  }
+}
+&lt;/script&gt;
+&lt;style scoped&gt;
+.el-header {
+  background-color: #B3C0D1;
+  color: #333;
+  line-height: 60px;
+}
+.el-aside {
+  color: #333;
+}
+&lt;/style&gt;
+</code></pre><p>在此还需要修改router/index.js，给对于组件UserProfile的路由命名。允许使用props来解耦视图与数据。这里还举例重定向的例子('/goHome')</p>
+<pre><code>import Vue from 'vue';
+import Router from &quot;vue-router&quot;;
+import Main from &quot;../views/Main&quot;;
+import Login from &quot;../views/Login&quot;;
+import UserList from '../views/user/List';
+import UserProfile from '../views/user/Profile';
+
+// 安装路由
+Vue.use(Router);
+
+// 配置导出路由
+export default new Router({
+  routes: [
+    {
+      path: '/main',
+      component: Main,
+      children: [
+        {path: '/user/list', component: UserList},
+        {path: '/user/profile/:id',name: 'UserProfile',component: UserProfile, props: true  }
+      ]
+    },
+    {
+      path: '/login',
+      component: Login,
+
+    },
+    {
+      path: '/goHome',
+      redirect: '/main'
+    }
+  ]
+});
+</code></pre><p>修改views/UserProfile.vue，在template标签下，用一个div标签包含之前的h2，在其下面，嵌入<code>{{id}}</code>，还有组件新添属性props。</p>
+<pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;h2&gt;个人信息&lt;/h2&gt;
+    {{id}}
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  props: ['id'],
+  name: &quot;UserProfile&quot;
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre><h2 id="404和路由钩子">404和路由钩子</h2>
+<p>编写404视图组件views/NotFound.vue</p>
+<pre><code>&lt;template&gt;
+  &lt;div&gt;
+    404，页面丢失了
+    &lt;hr&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: &quot;NotFound&quot;
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre><p>在 router/index.js 加写NotFound组件的路由。路径属性用<code>'*'</code>匹配。路由模式有两种：一是默认的hash，url带有'#'；二是history，不带'#'</p>
+<pre><code>import Vue from 'vue';
+import Router from &quot;vue-router&quot;;
+import Main from &quot;../views/Main&quot;;
+import Login from &quot;../views/Login&quot;;
+import UserList from '../views/user/List';
+import UserProfile from '../views/user/Profile';
+import NotFound from '../views/NotFound';
+
+// 安装路由
+Vue.use(Router);
+
+// 配置导出路由
+export default new Router({
+  mode: 'history',
+  routes: [
+    {
+      path: '/main/:name',
+      component: Main,
+      props: true,
+      children: [
+        {path: '/user/list', component: UserList},
+        {path: '/user/profile/:id',name: 'UserProfile',component: UserProfile, props: true  }
+      ]
+    },
+    {
+      path: '/login',
+      component: Login,
+
+    },
+    {
+      path: '/goHome',
+      redirect: '/main'
+    },
+    {
+      path: '*',
+      component: NotFound
+    }
+  ]
+});
+</code></pre><p><img src="../../../../images/posts/2021/09/vue-js/20.png" alt="image"></p>
+<p>路由钩子重点看beforeRouteEnter和beforeRouteLeave</p>
+<p>在组件Profile添加路由钩子</p>
+<pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;h2&gt;个人信息&lt;/h2&gt;
+    {{id}}
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  props: ['id'],
+  name: &quot;UserProfile&quot;,
+  beforeRouteEnter: function(to, from, next) {
+    console.log('进入路由前');
+    next();
+  },
+  beforeRouteLeave: function(to, from, next) {
+    console.log('进入路由后');
+    next();
+  }
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre><p>钩子函数默认带有三个参数 (to, from, next)。还有next方法来解析此钩子。</p>
+<ul>
+<li>
+<p>next(): 进行管道中的下一个钩子。如果全部钩子执行完了，则导航的状态就是 confirmed (确认的)。</p>
+</li>
+<li>
+<p>next(false): 中断当前的导航。如果浏览器的 URL 改变了 (可能是用户手动或者浏览器后退按钮)，那么 URL 地址会重置到 from 路由对应的地址。</p>
+</li>
+<li>
+<p>next('/') 或者 next({ path: &lsquo;/&rsquo; }): 跳转到一个不同的地址。当前的导航被中断，然后进行一个新的导航。你可以向 next 传递任意位置对象，且允许设置诸如 replace: true、name: &lsquo;home&rsquo; 之类的选项以及任何用在 router-link 的 to prop 或 router.push 中的选项。</p>
+</li>
+<li>
+<p>next(error): (2.4.0+) 如果传入 next 的参数是一个 Error 实例，则导航会被终止且该错误会被传递给 router.onError() 注册过的回调。</p>
+</li>
+<li>
+<p>next(function): 可以通过传一个回调给 next 来访问组件实例，例如 <code>next(vm=&gt;{// 通过vm访问组件})</code></p>
+</li>
+</ul>
+<p>在路由钩子中发送ajax请求</p>
+<p>首先安装axios插件</p>
+<pre><code>sudo npm install vue-axios axios --save
+</code></pre><p>在main.js配置导入axios</p>
+<pre><code>import Vue from 'vue';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+
+Vue.use(VueAxios, axios);
+</code></pre><p>改写beforeRouteEnter方法</p>
+<pre><code>export default {
+  props: ['id'],
+  name: &quot;UserProfile&quot;,
+  beforeRouteEnter: function(to, from, next) {
+    console.log('进入路由前');
+    next(vm=&gt;{
+      vm.getData();
+    });
+  },
+  beforeRouteLeave: function(to, from, next) {
+    console.log('进入路由后');
+    next();
+  },
+  methods: {
+    getData: function() {
+      this.axios({
+        method: &quot;GET&quot;,
+        url: &quot;/static/mock/data.json&quot;
+      }).then(function(response) {
+        console.log(response);
+      });
+    }
+  }
+}
+</code></pre><h2 id="更多资源">更多资源</h2>
+<ul>
+<li><a href="https://v3.cn.vuejs.org/guide/introduction.html">Vue官网</a></li>
+<li><a href="http://axios-js.com/zh-cn/docs/index.html">Axios文档</a></li>
+<li><a href="https://cli.vuejs.org/zh/">Vue-CLI文档</a></li>
+<li><a href="https://router.vuejs.org/zh/">Vue-Router文档</a></li>
+<li><a href="https://element.eleme.cn/#/zh-CN/guide/design">ElementUI文档</a></li>
+</ul>
+
+</div>
+
+
+    </main>
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
+    
+      
+    
+  </body>
+</html>
