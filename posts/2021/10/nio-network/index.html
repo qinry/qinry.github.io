@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.85.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NIO 网络编程 &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="了解NIO网络编程，与BIO的区别" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>hljs.highlightAll();</script>
+
+
+</head>
+
+  <body class="theme-base-0d ">
+    <span id="top"></span>
+    <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+    
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../tags"> 分类标签 </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright © 2021 槎城小子</p>
+  </div>
+</aside>
+
+    
+
+    <main class="content container">
+    <div class="post">
+
+  <h1>NIO 网络编程</h1>
+  <span class="post-date">
+    2021-10-26 17:16 &nbsp;
+    字数：<strong>1941</strong> &nbsp;
+    标签：
+              <a href="https://qinry.github.io/tags/java/">Java</a>&nbsp;
+              <a href="https://qinry.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a>&nbsp;
+  </span>
+
+  <h2 id="io模型">IO模型</h2>
+<p>有三个重要的IO模型：</p>
+<ul>
+<li>
+<p>BIO 同步阻塞IO</p>
+</li>
+<li>
+<p>NIO 同步非阻塞IO</p>
+</li>
+<li>
+<p>AIO 异步IO</p>
+</li>
+</ul>
+<blockquote>
+<p>同步与异步。它们是相对于应用程序与系统内核交互讨论的。</p>
+</blockquote>
+<blockquote>
+<p>同步是应用触发IO操作等待或轮询数据读写就绪；异步采取订阅-发布模式，应用发送IO请求给内核，然后应用进行其他操作并订阅回复的消息，是内核触发IO操作，当数据的读写完成时，发布消息回给应用。</p>
+</blockquote>
+<blockquote>
+<p>阻塞与非阻塞。它们是相对于IO的就绪状态，应用采取的处理方式讨论的。</p>
+</blockquote>
+<blockquote>
+<p>当数据不可写入，或者是说，无数据可读时，如果采取阻塞方式，应用将等待数据可读可写为止，线程自然会挂起；如果采用非阻塞方式，有数据可读可写则进行操作，没有则不等待直接返回，常常通过循环来轮询数据读写是否就绪，线程不挂起，比起阻塞有更好的响应速度。</p>
+</blockquote>
+<h2 id="bio模型">BIO模型</h2>
+<p>BIO模型简单，适合连接数量少且固定的场景（这里的少是指千量级及其以下）。一个连接对应一个线程处理IO，可通过线程池方式来缓冲连接请求，提升高可用。</p>
+<p>简单例子：</p>
+<p>ServerSocket</p>
+<ol>
+<li>创建ServerSocket，绑定端口10086；</li>
+<li>ServerSocket接受连接得到Socket，获取输入和输出流；</li>
+<li>通过输出流发送和输入流接受数据。</li>
+</ol>
+<pre><code>public class BIOServer {
+    public static void main(String[] args) {
+        try {
+            ExecutorService exec = Executors.newFixedThreadPool(10);
+            ServerSocket server = new ServerSocket(10086);
+            System.out.println(&quot;服务端端口号--10086&quot;);
+            while (true) {
+                Socket client = server.accept();
+                System.out.println(&quot;客户端连接成功&quot;);
+                exec.submit(()-&gt;{
+                    System.out.println(&quot;线程ID:&quot;+Thread.currentThread().getId());
+                    System.out.println(&quot;线程名称:&quot;+Thread.currentThread().getName());
+                    try {
+                        InputStream in = client.getInputStream();
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                        while (true) {
+                            Optional&lt;String&gt; msg = Optional.ofNullable(reader.readLine());
+                            if (!msg.isPresent()) {
+                                break;
+                            }
+                            System.out.println(&quot;客户端消息:&quot;+msg);
+                        }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><p>Socket</p>
+<ol>
+<li>创建Socket，绑定ip和端口，然后发送连接</li>
+<li>Socket获得输入流和输出流</li>
+<li>通过输入流接受和输出流发送数据</li>
+</ol>
+<pre><code>public class BIOClient {
+    public static void main(String[] args) {
+        try (Socket socket = new Socket(&quot;127.0.0.1&quot;, 10086)) {
+            OutputStream out = socket.getOutputStream();
+            System.out.println(&quot;客户端连接成功&quot;);
+            PrintWriter writer = new PrintWriter(out, true);
+            writer.println(&quot;hello&quot;);
+            System.in.read();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><p><img src="../../../../images/posts/2021/10/nio-network/1.png" alt="images"></p>
+<h2 id="nio模型">NIO模型</h2>
+<p>NIO模型复杂度稍微高了一点，适合请求量较多且短连接的场景（至少大到十万量级别）。</p>
+<p>BIO单向的流处理输入输出，而NIO是以块的形式处理，而且是双向的。</p>
+<p>BIO是基于字节流和字符流操作，而BIO是基于缓冲区(Buffer)和通道(Channel)操作的，进一步可通过同一个轮询器(Selector)监听多个客户端通道和一个服务器通道事件，进行读写操作，即多路复用。</p>
+<p>数据总是通过缓冲区写入通道，亦或者从通道读入缓冲区。</p>
+<p><img src="../../../../images/posts/2021/10/nio-network/2.png" alt="images"></p>
+<p>核心类是：Selector（包括SelectionKey）、Channel、Buffer</p>
+<p>简单例子:</p>
+<p>ServerSocketChannel</p>
+<p>初始化</p>
+<ol>
+<li>创建ServerSocketChannel，绑定端口，设置非阻塞；</li>
+<li>将ServerSocketChannel注册到Selector，设为监听接受连接事件；</li>
+</ol>
+<p>轮询</p>
+<ol start="3">
+<li>通过Selector轮询通道，0表示未选择到通道，大于0表示有可选择通道；</li>
+<li>通过selectionKeys方法获取数据已就绪的通道；</li>
+<li>通过key.isAcceptable判断，ServerSocketChannel接受客户端通道并注册到Selector，设为监听读数据事件；</li>
+</ol>
+<p>读/写数据</p>
+<ol start="6">
+<li>通过key.isReadable判断，处理Readable，接受数据。read大于0表示通道还连接可读数据。为-1时，表示客户端断开连接。</li>
+</ol>
+<pre><code>public class NIOServer {
+    public static void main(String[] args) {
+        try(Selector selector = Selector.open();
+            ServerSocketChannel server = ServerSocketChannel.open()) {
+            server.bind(new InetSocketAddress(10086));
+            // 通道设为非阻塞
+            server.configureBlocking(false);
+            server.register(selector, SelectionKey.OP_ACCEPT);
+            while (true) {
+                if (selector.select(3000) == 0) {
+                    System.out.println(&quot;Server: 等待接受连接中。。。先忙别的&quot;);
+                    continue;
+                }
+                Set&lt;SelectionKey&gt; selectionKeys = selector.selectedKeys();
+                Iterator&lt;SelectionKey&gt; keyIterator = selectionKeys.iterator();
+                while (keyIterator.hasNext()) {
+                    SelectionKey key = keyIterator.next();
+                    if (key.isAcceptable()) {
+                        SocketChannel client = server.accept();
+                        client.configureBlocking(false);
+                        System.out.println(&quot;有客户端连接了-&quot;+client.hashCode());
+                        client.register(selector, SelectionKey.OP_READ, ByteBuffer.allocate(1024));
+                    } else if (key.isReadable()) {
+                        SocketChannel client =  (SocketChannel) key.channel();
+                        ByteBuffer buffer = (ByteBuffer) key.attachment();
+                        int read = client.read(buffer);
+                        if (read &gt; 0) {
+                            buffer.flip();
+                            System.out.println(&quot;客户端消息：&quot; + new String(buffer.array(), 0, buffer.limit(), StandardCharsets.UTF_8));
+                        } else if (read == -1){
+                            client.close();
+                        }
+                    }
+                    keyIterator.remove();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><p>SocketChannel</p>
+<ol>
+<li>创建SocketChannel，绑定ip和端口，设置非阻塞</li>
+<li>发送连接，通过循环finishConnect完成连接</li>
+<li>SocketChannel通过ByteBuffer读/写数据</li>
+</ol>
+<pre><code>public class NIOClient {
+    public static void main(String[] args) {
+        try (SocketChannel client = SocketChannel.open()) {
+            client.configureBlocking(false);
+            InetSocketAddress address = new InetSocketAddress(&quot;127.0.0.1&quot;, 10086);
+            if (!client.connect(address)) {
+                while (!client.finishConnect()) {
+                    System.out.println(&quot;连接服务端中。。。可先忙别的&quot;);
+                }
+            }
+            String msg = &quot;hi&quot;;
+            ByteBuffer buf = ByteBuffer.wrap(msg.getBytes(StandardCharsets.UTF_8));
+            client.write(buf);
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><blockquote>
+<p>注：不熟悉的方法查看api文档</p>
+</blockquote>
+
+</div>
+
+
+    </main>
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
+    
+      
+    
+  </body>
+</html>
