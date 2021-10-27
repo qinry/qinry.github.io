@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.85.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mongodb 快速开始 &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="MongoDB快速开始使用" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script>hljs.highlightAll();</script>
+
+
+</head>
+
+  <body class="theme-base-0d ">
+    <span id="top"></span>
+    <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+    
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../tags"> 分类标签 </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright © 2021 槎城小子</p>
+  </div>
+</aside>
+
+    
+<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#安装">安装</a></li>
+    <li><a href="#运行">运行</a></li>
+    <li><a href="#连接mongodb">连接MongoDB</a></li>
+    <li><a href="#常见数据类型">常见数据类型</a></li>
+    <li><a href="#常见指令">常见指令</a></li>
+    <li><a href="#索引">索引</a></li>
+    <li><a href="#备份和恢复">备份和恢复</a></li>
+    <li><a href="#搭建集群">搭建集群</a></li>
+  </ul>
+</nav>
+        
+</aside>
+
+
+    <main class="content container">
+    <div class="post">
+
+  <h1>Mongodb 快速开始</h1>
+  <span class="post-date">
+    2021-10-26 20:39 &nbsp;
+    字数：<strong>3015</strong> &nbsp;
+    标签：
+              <a href="https://qinry.github.io/tags/mongodb/">MongoDB</a>&nbsp;
+  </span>
+
+  <h2 id="简介">简介</h2>
+<p>MongoDB，是一款分布式文件存储数据库系统。是NoSQL类型（Not Only SQL）。旨在为WEB应用提供可扩展的高性能数据存储解决方案。其数据结构非常松散，类似JSON的BSON格式，作为其数据传输和存储的格式。BSON，理解为二进制的JSON，可以用来表示一些简答数据类型，还有对象和数组等。</p>
+<p>其特点：</p>
+<ol>
+<li>面向集合存储，易存储对象类型数据。</li>
+<li>支持动态查询</li>
+<li>支持完全索引</li>
+<li>支持复制和故障恢复</li>
+<li>支持多语言开发</li>
+<li>使用高效的二进制存储</li>
+</ol>
+<p>适合场景：</p>
+<ol>
+<li>网站实时数据处理。实时插入、更新和查询；</li>
+<li>缓存。充当关系型数据库数据的缓存，避免关系型数据库过载访问；</li>
+<li>高伸缩性的场景，非常适合由数十或数百台服务器组成的数据库，它的路线图中已经包含对 MapReduce引擎的内置支持。</li>
+</ol>
+<p>不适合场景：</p>
+<ol>
+<li>要求高度事务性的系统</li>
+<li>传统的商业智能应用</li>
+<li>复杂跨文档查询，即级联查询</li>
+</ol>
+<p>与关系型数据库类比概念</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">关系型数据库</th>
+<th style="text-align:center">MongoDB</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">database</td>
+<td style="text-align:center">database</td>
+<td style="text-align:center">数据库</td>
+</tr>
+<tr>
+<td style="text-align:center">table</td>
+<td style="text-align:center">collection</td>
+<td style="text-align:center">表/集合</td>
+</tr>
+<tr>
+<td style="text-align:center">row</td>
+<td style="text-align:center">document</td>
+<td style="text-align:center">行/文档</td>
+</tr>
+<tr>
+<td style="text-align:center">column</td>
+<td style="text-align:center">field</td>
+<td style="text-align:center">列/字段</td>
+</tr>
+<tr>
+<td style="text-align:center">index</td>
+<td style="text-align:center">index</td>
+<td style="text-align:center">索引</td>
+</tr>
+<tr>
+<td style="text-align:center">table joins</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">MongoDB不支持联表查询</td>
+</tr>
+<tr>
+<td style="text-align:center">primary key</td>
+<td style="text-align:center">primary key</td>
+<td style="text-align:center">主键，MongoDB自动生成_id字段设为主键</td>
+</tr>
+</tbody>
+</table>
+<h2 id="安装">安装</h2>
+<p>Linux CentOS7 发行版安装MongoDB</p>
+<p>到MongoDB官网找到相应版本，拷贝连接，使用wget下载</p>
+<pre><code># 安装mongodb依赖
+sudo yum install libcurl openssl xz-libs
+# 下载mongodb-community server和database-tools
+wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-5.0.3.tgz
+wget https://fastdl.mongodb.org/tools/db/mongodb-database-tools-rhel70-x86_64-100.5.1.tgz
+# 解压安装
+tar zxvf mongodb-linux-x86_64-rhel70-5.0.3.tgz
+mv mongodb-linux-x86_64-rhel70-5.0.3 /usr/local/mongodb
+tar zxvf mongodb-database-tools-rhel70-x86_64-100.5.1.tgz
+cd mongodb-database-tools-rhel70-x86_64-100.5.1/bin
+cp * /usr/local/mongodb/bin/
+ln -s /usr/local/mongodb/bin/* /usr/local/bin/
+cd ../../
+</code></pre><p>创建数据库目录和日志目录</p>
+<pre><code>mkdir -p /var/lib/mongo
+mkdir -p /var/log/mongodb
+chown -R `whoami` /var/lib/mongo
+chown -R `whomai` var/log/mongodb
+</code></pre><p>安装emacs</p>
+<pre><code>yum install -y emacs
+cd /usr/local/mongodb/bin
+emacs -nw mongod.conf
+</code></pre><p>编辑mongod.conf</p>
+<pre><code>systemLog:
+   destination: file
+   path: &quot;/var/log/mongodb/mongod.log&quot;
+   logAppend: true
+storage:
+   dbPath: &quot;/var/lib/mongo&quot;
+   journal:
+      enabled: true
+processManagement:
+   fork: true
+net:
+   bindIp: 0.0.0.0
+   port: 27017
+</code></pre><p>C-x C-s 保存，C-x C-c 退出emacs（C指control键，x、s、c字母键）</p>
+<h2 id="运行">运行</h2>
+<pre><code>mongod -f /usr/local/mongodb/bin/mongod.conf
+</code></pre><p>可编写脚本运行</p>
+<p>退出运行</p>
+<pre><code>mongod -f /usr/local/mongodb/bin/mongod.conf --shutdown
+</code></pre><h2 id="连接mongodb">连接MongoDB</h2>
+<p>在shell中输入命令mongo就可以进入客户端交互界面。</p>
+<pre><code>mongo 127.0.0.1 # shell没有指定ip，默认使用127.0.0.1
+</code></pre><h2 id="常见数据类型">常见数据类型</h2>
+<pre><code>{&quot;x&quot;: null} # null类型
+{&quot;x&quot;: true}  # 布尔类型
+{&quot;x&quot;: 2.32} # 默认数字类型为64位浮点数
+{&quot;x&quot;: NumberInt(2)} # 32整数
+{&quot;x&quot;: NumberLong(2)} # 64位整数
+{&quot;x&quot;: &quot;string&quot;} # 字符串
+{&quot;x&quot;: new Date()} # 日期
+{&quot;x&quot;: [&quot;hello&quot;,&quot;world&quot;]} # 数组
+{&quot;x&quot;: /mongodb/i} # 正则表达式
+{&quot;x&quot;:{&quot;name&quot;: &quot;zhangsan&quot;}} # 内嵌文档
+{&quot;_id&quot;: ObjectId()} # _id和ObjectId，_id可以是任何类型；不指定_id时，会生成ObjectId对象
+</code></pre><p>ObjectId是12字节（24个十六进制数）存储空间，数据组织：</p>
+<pre><code>0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 
+    时间戳     |   机器码   |进程PID| 计数器
+</code></pre><h2 id="常见指令">常见指令</h2>
+<pre><code>show dbs # 查看数据库
+use db0 # use &lt;database name&gt;  切换数据库/创建再切换数据库
+db # 当前所在数据库
+show collections # 查看所有数据集
+db.dropDatabase() # 删除当前数据库
+
+db.createCollection(&quot;users&quot;) # 创建数据集
+db.users.drop() # db.&lt;collection name&gt;.drop()删除数据集
+db.users.renameCollection(&quot;user&quot;) # db.&lt;old collection name&gt;.renameCollection(&quot;new name&quot;) 改数据集名称
+
+db.user.insert({&quot;name&quot;: &quot;zhangsan&quot;, age: 18}) # db.&lt;collection name&gt;.insert({&quot;key&quot;: value}) 新增数据
+db.user.save({&quot;name&quot;: &quot;zhangsan&quot;, age: 18}) # db.&lt;collection name&gt;.save({&quot;key&quot;: value}) 新增数据
+
+db.user.find() # db.&lt;collection name&gt;.find() 全查
+# db.&lt;collection name&gt;.find(condition) 条件查询
+db.user.find({&quot;age&quot;: 18}) # 等于18
+db.user.find({&quot;age&quot;: {$gt:14}}) # 大于14
+db.user.find({&quot;age&quot;: {$gte:14}}) # 大于等于14
+db.user.find({&quot;age&quot;: {$lt:14}}) # 小于14
+db.user.find({&quot;age&quot;: {$lte:14}}) # 小于等于14
+db.user.find().pretty() # 人性化格式化输出
+
+# or关系：{$or:[{k1:v1},{k2:v2}]}
+db.user.find({$or: [{&quot;name&quot;: &quot;zhangsan&quot;},{&quot;age&quot;: {$gt:12}}]}) # name等于zhangsan或者age大于12
+
+# db.&lt;collection name&gt;.remove(condition) 条件删除
+db.user.remove({&quot;age&quot;: {$lt:12}}) 
+
+db.user.findOne() # db.&lt;collection name&gt;.findOne() 查询一条数据
+db.user.find({},{name:1}) # 查询指定字段，1表示只包含该字段，0表示排除该字段
+db.user.distinct('name') # db.&lt;collection name&gt;.distinct('field name') 查询指定字段，并去重
+
+db.user.find().sort({name:1}) # 升序， -1则表示降序
+db.user.find().count() # 查询条数
+db.user.find().limit(3) # 查询限定数量
+db.user.find().limit(3).skip(5) # 先跳过前5个，再查询3个
+
+# db.&lt;collection name&gt;.update(query, update, upsert, multi) query查询条件，update更新的字段，
+# upsert为true，不存在值插入，默认为false不插入
+# multi为true，更新所有查询的数据，为false更新第一条数据
+db.user.update({name:'tom'},{$set:{age: 21}},false, true)
+</code></pre><h2 id="索引">索引</h2>
+<p>创建索引</p>
+<pre><code># db.&lt;collection name&gt;.createIndex(keys, options)
+db.users.createIndex({&quot;name&quot;: 1}) # 1表示升序，-1表示降序
+</code></pre><p>options含义：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">background</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">建索引过程会阻塞其它数据库操作，background可指定 以后台方式创建索引，即增加 &ldquo;background&rdquo; 可选参数。 &ldquo;background&rdquo; 默认值为false。</td>
+</tr>
+<tr>
+<td style="text-align:center">unique</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">建立的索引是否唯一。指定为true创建唯一索引。默认值 为false.</td>
+</tr>
+<tr>
+<td style="text-align:center">name</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">索引的名称。如果未指定，MongoDB的通过连接索引的 字段名和排序顺序生成一个索引名称。例如：name_1</td>
+</tr>
+<tr>
+<td style="text-align:center">dropDups</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">3.0+版本已废弃。在建立唯一索引时是否删除重复记录, 指定 true 创建唯一索引。默认值为 false.</td>
+</tr>
+<tr>
+<td style="text-align:center">sparse</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">对文档中不存在的字段数据不启用索引;这个参数需要特 别注意，如果设置为true的话，在索引字段中不会查询出 不包含对应字段的文档.。默认值为 false.</td>
+</tr>
+<tr>
+<td style="text-align:center">expireAfterSeconds</td>
+<td style="text-align:center">integer</td>
+<td style="text-align:center">指定一个以秒为单位的数值，完成 TTL设定，设定集合的 生存时间。</td>
+</tr>
+<tr>
+<td style="text-align:center">v</td>
+<td style="text-align:center">index version</td>
+<td style="text-align:center">索引的版本号。默认的索引版本取决于mongod创建索引 时运行的版本。</td>
+</tr>
+<tr>
+<td style="text-align:center">weigths</td>
+<td style="text-align:center">document</td>
+<td style="text-align:center">索引权重值，数值在 1 到 99,999 之间，表示该索引相对 于其他索引字段的得分权重。</td>
+</tr>
+<tr>
+<td style="text-align:center">default_language</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">对于文本索引，该参数决定了停用词列表及词干分析器和分词器的规则。 默认为 english</td>
+</tr>
+<tr>
+<td style="text-align:center">language_override</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">对于文本索引，该参数的值是集合文档中字段名，此字段包含索引指定使用的语言，默认值为 language.</td>
+</tr>
+</tbody>
+</table>
+<p>索引分类：
+用创建的索引的参数来说明</p>
+<ol>
+<li>默认索引：集合创建后，系统自动创建名为_id的主键和名为_id_的索引，此索引<strong>无法删除</strong></li>
+<li>单列索引：例如{&ldquo;name&rdquo;:1}</li>
+<li>组合索引；例如{&ldquo;name&rdquo;:1,&ldquo;age&rdquo;:1}</li>
+<li>唯一索引：例如{&ldquo;name&rdquo;:1},{unique:true}</li>
+<li>TTL索引：例如{&ldquo;createAt&rdquo;:1},{expireAfterSeconds:3600}</li>
+</ol>
+<p>删除索引</p>
+<pre><code># db.&lt;collection name&gt;.dropIndex(&quot;index name&quot;)
+db.users.dropIndex(&quot;name&quot;)
+db.users.dropIndexes() 
+</code></pre><blockquote>
+<p>用remove删除集合数据不会删除索引，drop又删除集合数据又删除索引</p>
+</blockquote>
+<h2 id="备份和恢复">备份和恢复</h2>
+<p>备份</p>
+<pre><code>mongodump -h 127.0.0.1:27017 -d db0 -o /Users/yourname
+</code></pre><ul>
+<li>-h指定主机ip和port，默认127.0.0.1和27017</li>
+<li>-d指定数据库名，这里是db0</li>
+<li>-o指定备份到目标目录</li>
+</ul>
+<p>也可以不指定以上参数，将使用默认参数，并将有数据的数据库全部备份到当前目录</p>
+<pre><code>mongodump
+tree dump
+dump
+├── admin
+│   ├── system.version.bson
+│   └── system.version.metadata.json
+└── db0
+    ├── users.bson
+    └── users.metadata.json
+</code></pre><p>将当前MongoDB服务实例的数据备份到当前目录下，在当前目录下会创建一个dump文件夹，该文件夹下又有与数据库同名的文件夹，如admin和db0。数据文件是.bson后缀的文件</p>
+<p>恢复</p>
+<pre><code>mongorestore -h 127.0.0.1:27017 -d test dump/db0/users.bson
+</code></pre><ul>
+<li>-h指定主机ip和port，默认127.0.0.1和27017</li>
+<li>-d指定目标数据库名，这里是test</li>
+<li>dump/db0/users.bson指备份数据的路径，未指定则为当前目录下的dump中数据</li>
+</ul>
+<p>将当前目录下的dump/db0/users.bson数据恢复到新数据库test中</p>
+<h2 id="搭建集群">搭建集群</h2>
+<p>在三个主机安装MongoDB，假如他们的主机地址分别为；192.168.123.181、192.168.123.182和192.168.123.183</p>
+<p>三个不同主机的MongoDB实例，分别改写配置文件mongod.conf</p>
+<pre><code>emacs -nw /usr/local/mongodb/bin/mongod.conf
+</code></pre><pre><code>systemLog:
+   destination: file
+   path: &quot;/var/log/mongodb/mongod.log&quot;
+   logAppend: true
+storage:
+   dbPath: &quot;/var/lib/mongo&quot;
+   journal:
+      enabled: true
+processManagement:
+   fork: true
+net:
+   bindIp: 0.0.0.0
+   port: 27017
+# 添加副本集，名为rs0
+replication:
+   replSetName: &quot;rs0&quot;
+</code></pre><p>初始化副本集</p>
+<pre><code>mongo
+&gt; rs.initiate({_id:'rs0'},members:[{_id:1,host:'192.168.123.181:27017'},{_id:2,host:'192.168.123.182:27017'},{_id:3,host:'192.168.123.183:27017'}])
+</code></pre><p>查看状态</p>
+<pre><code>rs0.PRIMARY&gt; rs.status()
+
+# 部分信息如下
+{
+   # ...
+   members: [{
+         &quot;_id&quot; : 1,
+         &quot;name&quot; : &quot;192.168.123.181:27017&quot;,
+         &quot;health&quot; : 1,
+         &quot;state&quot; : 1,
+         &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+         # ...
+      },{
+         &quot;_id&quot; : 2,
+         &quot;name&quot; : &quot;192.168.123.182:27017&quot;,
+         &quot;health&quot; : 1,
+         &quot;state&quot; : 2,
+         &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+      },
+      # ...
+   ],
+}
+</code></pre><p>要在从机查询数据，需要调用secondaryOK()方法</p>
+<pre><code>rs0.SECONDARY&gt; rs.secondaryOk()
+</code></pre><p>删除节点</p>
+<pre><code>rs0.PRIMARY&gt; rs.remove(&quot;192.168.123.183:27017&quot;) # rs.remove(&quot;ip:port&quot;)
+{
+   &quot;ok&quot; : 1,
+   &quot;$clusterTime&quot; : {
+      &quot;clusterTime&quot; : Timestamp(1635336751, 1),
+      &quot;signature&quot; : {
+            &quot;hash&quot; : BinData(0,&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;),
+            &quot;keyId&quot; : NumberLong(0)
+      }
+   },
+   &quot;operationTime&quot; : Timestamp(1635336751, 1)
+}
+</code></pre><p>添加节点与删除节点类似，rs.add(&ldquo;ip:port&rdquo;)</p>
+<p>添加仲裁者</p>
+<pre><code>rs0.PRIMARY&gt; db.adminCommand({setDefaultRWConcern:1,defaultWriteConcern:{&quot;w&quot;:1}})
+rs0.PRIMARY&gt; rs.addArb(&quot;192.168.123.183:27017&quot;)
+</code></pre><blockquote>
+<p>添加仲裁者之前需要强制修改Default Write Concern，从5.0开始。
+注：仲裁者对偶数集群有效。在一主一从关系中，任意节点宕机都无法选举出主节点，无法提供写操作。此时需要加入仲裁者节点即可。</p>
+</blockquote>
+
+</div>
+
+
+    </main>
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
+    
+      
+    
+  </body>
+</html>
