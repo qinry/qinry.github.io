@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.85.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>快速开始Java8函数式编程 &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="快速开始Java8函数式编程" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/toc.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/backtop.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script src="../../../../js/main.js"></script>
+
+
+</head>
+
+  <body class="theme-base-0d ">
+    <span id="top"></span>
+    <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+    
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../tags"> 分类标签 </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright © 2021 槎城小子</p>
+  </div>
+</aside>
+
+    
+<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#lambda表达式">Lambda表达式</a></li>
+    <li><a href="#方法引用">方法引用</a></li>
+    <li><a href="#函数式接口">函数式接口</a></li>
+    <li><a href="#高阶函数">高阶函数</a></li>
+    <li><a href="#闭包">闭包</a></li>
+    <li><a href="#函数组合">函数组合</a></li>
+    <li><a href="#柯里化和部分求值">柯里化和部分求值</a></li>
+  </ul>
+</nav>
+        
+</aside>
+
+
+    <main class="content container">
+    <div class="post">
+
+  <h1>快速开始Java8函数式编程</h1>
+  <span class="post-date">
+    2021-11-02 06:12 &nbsp;
+    字数：<strong>3516</strong> &nbsp;
+    标签：
+              <a href="https://qinry.github.io/tags/java/">Java</a>&nbsp;
+  </span>
+
+  <p>Java 8 Lambda 表达式和方法引用 (Method References) 允许你以函数式编程。函数式编程抽象行为，通过合并现有代码来生成新功能而不是从头开始编写所有内容，我们可以更快地获得更可靠的代码。可以把函数当作方法入参传递给方法，以来控制方法的行为，类似设计模式的策略模式。</p>
+<h2 id="lambda表达式">Lambda表达式</h2>
+<p>Lambda表达式，从语法上看是一个函数，而非对象。实际上，Java虚拟机会动态生成一个对象，它的方法会包含这个函数描述的行为。</p>
+<p>例如：</p>
+<pre><code>interface Description {
+  String brief();
+}
+interface Body {
+  String detailed(String head);
+}
+interface Multi {
+  String twoArg(String head, Double d);
+}
+</code></pre><pre><code>Body bod = h -&gt; h + &quot;No Parens&quot;;
+Body bod2 = (h) -&gt; h + &quot;More details&quot;;
+Description desc = () -&gt; &quot;Short info&quot;;
+Multi mult = (h, n) -&gt; h + n;
+Description moreLines = () -&gt; {
+    System.out.println(&quot;moreLines&quot;);
+    return &quot;from moreLines&quot;;
+};
+</code></pre><p>lambda表示有三个部分，第一部分就是参数，第二部分是箭头<code>-&gt;</code>，第三部分就是方法体。</p>
+<blockquote>
+<p>当只有一个参数时，可以省略圆括号。
+当方法体只有一行时，可以省略花括号和return，还有分号。多行时，编写与方法一致。</p>
+</blockquote>
+<p>lambda表达式只能赋值给只有一个抽象方法的接口，或只有一个抽象方法的抽象类。</p>
+<p>lambda表达式使用递归</p>
+<pre><code>interface IntCall {
+  int call(int arg);
+}
+
+public class RecursiveFibonacci {
+  IntCall fib;
+  RecursiveFibonacci() {
+    fib = n -&gt; n == 0 ? 0 :
+               n == 1 ? 1 :
+               fib.call(n - 1) + fib.call(n - 2);
+  }
+  int fibonacci(int n) { return fib.call(n); }
+  public static void main(String[] args) {
+    RecursiveFibonacci rf = new RecursiveFibonacci();
+    for(int i = 0; i &lt;= 10; i++)
+      System.out.println(rf.fibonacci(i));
+  }
+}
+</code></pre><blockquote>
+<p>递归方法必须是实例变量或静态变量，否则会出现编译时错误。</p>
+</blockquote>
+<h2 id="方法引用">方法引用</h2>
+<p>方法引用组成：类名/对象名,后面跟 <code>::</code>，然后跟方法名称。</p>
+<pre><code>interface Callable { // [1]
+  void call(String s);
+}
+class Describe {
+  void show(String msg) { // [2]
+    System.out.println(msg);
+  }
+}
+public class MethodReferences {
+  static void hello(String name) { // [3]
+    System.out.println(&quot;Hello, &quot; + name);
+  }
+  static class Description {
+    String about;
+    Description(String desc) { about = desc; }
+    void help(String msg) { // [4]
+      System.out.println(about + &quot; &quot; + msg);
+    }
+  }
+  static class Helper {
+    static void assist(String msg) { // [5]
+      System.out.println(msg);
+    }
+  }
+  public static void main(String[] args) {
+    Describe d = new Describe();
+    Callable c = d::show; // [6] 实例方法引用
+    c.call(&quot;call()&quot;); // [7]
+    c = MethodReferences::hello; // [8] 外部类的静态方法引用
+    c.call(&quot;Bob&quot;);
+    c = new Description(&quot;valuable&quot;)::help; // [9] 静态内部类对象的实例方法引用
+    c.call(&quot;information&quot;);
+    c = Helper::assist; // [10] 静态内部类的静态方法引用
+    c.call(&quot;Help!&quot;);
+  }
+}
+</code></pre><p>方法引用的方法签名符合要赋值的接口方法的方法签名，例如Describe的show()与Callable的call()，对已实例化对象的方法的引用，有时称为绑定方法引用。</p>
+<p>未绑定的方法引用是指没有关联对象的普通（非静态）方法。</p>
+<pre><code>class X {
+  String f() { return &quot;X::f()&quot;; }
+}
+interface MakeString {
+  String make();
+}
+interface TransformX {
+  String transform(X x);
+}
+public class UnboundMethodReference {
+  public static void main(String[] args) {
+    // MakeString ms = X::f; // [1]
+    TransformX sp = X::f;
+    X x = new X();
+    System.out.println(sp.transform(x)); // [2]
+    System.out.println(x.f()); // 同等效果
+  }
+}
+</code></pre><blockquote>
+<p>未绑定的方法引用的类名与要赋值的接口的方法第一参数类型名要一致。在调用此接口时要传入对象，该对象与方法引用进行绑定。这个用法非常妙</p>
+</blockquote>
+<p>构造器的方法引用，形如：<code>String::new</code>，<code>String[]::new</code>，构造器有分无参和有参构造器，赋值给参数不同方法的接口，对应使用相应参数数量的构造器。</p>
+<pre><code>class Dog {
+  String name;
+  int age = -1; // For &quot;unknown&quot;
+  Dog() { name = &quot;stray&quot;; }
+  Dog(String nm) { name = nm; }
+  Dog(String nm, int yrs) { name = nm; age = yrs; }
+}
+interface MakeNoArgs {
+  Dog make();
+}
+interface Make1Arg {
+  Dog make(String nm);
+}
+interface Make2Args {
+  Dog make(String nm, int age);
+}
+public class CtorReference {
+  public static void main(String[] args) {
+    MakeNoArgs mna = Dog::new; // [1]
+    Make1Arg m1a = Dog::new;   // [2]
+    Make2Args m2a = Dog::new;  // [3]
+    Dog dn = mna.make();
+    Dog d1 = m1a.make(&quot;Comet&quot;);
+    Dog d2 = m2a.make(&quot;Ralph&quot;, 4);
+  }
+}
+</code></pre><h2 id="函数式接口">函数式接口</h2>
+<p>由于lambda表达式包含类型推导，要想让编译器能推断出参数和返回值的类型，需要函数式接口。Java有内置的函数接口，不过也可以自定义函数式接口。Java1.8以前的函数式接口有：<code>Runnable</code>、<code>Callable&lt;T&gt;</code>。
+Java1.8引入了<code>java.util.function</code>这个包，里面包含大量的函数式接口，它们只包含单独的方法，即函数式方法。查看这些接口的源代码，会发现它们都使用了一个注解<code>FunctionalInterface</code>，强制使此接口只能有一个抽象方法。</p>
+<p>常用的函数时接口如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口</th>
+<th style="text-align:center">函数式方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Supplier<!-- raw HTML omitted --></td>
+<td style="text-align:center">T get()</td>
+</tr>
+<tr>
+<td style="text-align:center">Consumer<!-- raw HTML omitted --></td>
+<td style="text-align:center">void accept(T t)</td>
+</tr>
+<tr>
+<td style="text-align:center">Function&lt;T,R&gt;</td>
+<td style="text-align:center">R apply(T t)</td>
+</tr>
+<tr>
+<td style="text-align:center">Predicate<!-- raw HTML omitted --></td>
+<td style="text-align:center">boolean test(T t)</td>
+</tr>
+<tr>
+<td style="text-align:center">UnaryOperator<!-- raw HTML omitted --></td>
+<td style="text-align:center">T apply(T t)</td>
+</tr>
+<tr>
+<td style="text-align:center">BinaryOperator<!-- raw HTML omitted --></td>
+<td style="text-align:center">T apply(T t1, T t2)</td>
+</tr>
+</tbody>
+</table>
+<p>还有其他接口，这里就不列举，都是通过以上接口衍生的。例如：<code>LongConsumer</code>，参数类型是Long、<code>LongSupplier</code>，返回值类型是Long、IntToLongFunction，参数是Integer，返回值是Long等等。详情请看源代码或Java API Docs。</p>
+<h2 id="高阶函数">高阶函数</h2>
+<p>Lambda表达式和方法引用可以充当方法的参数或返回值，也可以理解为消费和产生函数的方法被称为高阶函数。例如：很多的函数式接口都有默认实现的一个方法<code>andThen</code>，这个方法的参数after类型与对应接口类型一致，在接口调用函数式方法后再调用参数的函数式方法。</p>
+<p>例如：Function接口的andThen方法实现</p>
+<pre><code>default &lt;V&gt; Function&lt;T, V&gt; andThen(Function&lt;? super R, ? extends V&gt; after) {
+    Objects.requireNonNull(after);
+    return (t) -&gt; {
+        return after.apply(this.apply(t));
+    };
+}
+</code></pre><pre><code>class I {
+  @Override
+  public String toString() { return &quot;I&quot;; }
+}
+class O {
+  @Override
+  public String toString() { return &quot;O&quot;; }
+}
+public class TransformFunction {
+  static Function&lt;I,O&gt; transform(Function&lt;I,O&gt; in) {
+    return in.andThen(o -&gt; {
+      System.out.println(o);
+      return o;
+    });
+  }
+  public static void main(String[] args) {
+    Function&lt;I,O&gt; f2 = transform(i -&gt; {
+      System.out.println(i);
+      return new O();
+    });
+    O o = f2.apply(new I());
+  }
+}
+</code></pre><p>输出：</p>
+<pre><code>I
+O
+</code></pre><h2 id="闭包">闭包</h2>
+<p>可以简单理解为使用函数作用域之外的变量的lambda表达式作为方法返回值的类。有时称为词法定界（lexically scoped ）或变量捕获（variable capture）</p>
+<p>闭包在实现上是一个结构体，它存储了一个函数（通常是其入口地址）和一个关联的环境（相当于一个符号查找表）。环境里是若干对符号和值的对应关系，它既要包括约束变量（该函数内部绑定的符号），也要包括自由变量（在函数外部定义但在函数内被引用），有些函数也可能没有自由变量。（此处见维基百科——闭包）</p>
+<p>正面教材1：</p>
+<pre><code>public class Closure1 {
+  int i;
+  IntSupplier makeFun(int x) {
+    return () -&gt; x + i++;
+  }
+}
+</code></pre><pre><code>public class SharedStorage {
+  public static void main(String[] args) {
+    Closure1 c1 = new Closure1();
+    IntSupplier f1 = c1.makeFun(0);
+    IntSupplier f2 = c1.makeFun(0);
+    IntSupplier f3 = c1.makeFun(0);
+    System.out.println(f1.getAsInt());
+    System.out.println(f2.getAsInt());
+    System.out.println(f3.getAsInt());
+  }
+}
+</code></pre><p>输出：</p>
+<pre><code>0
+1
+2
+</code></pre><p>最大特征是，Closure1对象调用makeFun方法产生的三个IntSupplier对象都共享了Closure1的属性i的存储。</p>
+<p>正面教材2:</p>
+<pre><code>public class Closure2 {
+  IntSupplier makeFun(int x) {
+    int i = 0;
+    return () -&gt; x + i;
+  }
+}
+</code></pre><p>makeFun返回的IntSupplier会仍然保持i和x的内存不会消失。一般的方法的局部变量在调用完之后将会消失。</p>
+<blockquote>
+<p>这里的变量i是等同final效果，lambda表达式引用的局部变量应该是不可变的，即要使用final修饰，但是Java8引入这个特性，可以省略final，在编译的时候编译器会帮我们自动加上。所以反面教材4，举例语法不正确的情况。</p>
+</blockquote>
+<p>正面教材3:</p>
+<pre><code>public class Closure3 {
+  Supplier&lt;List&lt;Integer&gt;&gt; makeFun() {
+    final List&lt;Integer&gt; ai = new ArrayList&lt;&gt;();
+    ai.add(1);
+    return () -&gt; ai;
+  }
+  public static void main(String[] args) {
+    Closure3 c7 = new Closure3();
+    List&lt;Integer&gt;
+      l1 = c7.makeFun().get(),
+      l2 = c7.makeFun().get();
+    System.out.println(l1);
+    System.out.println(l2);
+    l1.add(42);
+    l2.add(96);
+    System.out.println(l1);
+    System.out.println(l2);
+  }
+}
+</code></pre><p>输出：</p>
+<pre><code>[1]
+[1]
+[1, 42]
+[1, 96]
+</code></pre><p>输出的第三和第四行说明，两个makeFun方法返回的Supplier对象持有的ArrayList对象是各自独立的，而非共享。</p>
+<p>反面教材4:</p>
+<pre><code>public class Closure4 {
+  IntSupplier makeFun(int x) {
+    int i = 0;
+    // x++ 和 i++ 都会报错：
+    return () -&gt; x++ + i++;
+  }
+}
+</code></pre><p>或</p>
+<pre><code>public class Closure5 {
+  // {无法编译成功}
+  IntSupplier makeFun(int x) {
+    int i = 0;
+    i++;
+    x++;
+    return () -&gt; x + i;
+  }
+}
+</code></pre><p>如何解决：</p>
+<pre><code>public class Closure6 {
+  IntSupplier makeFun(int x) {
+    int i = 0;
+    i++;
+    x++;
+    final int iFinal = i;
+    final int xFinal = x;
+    return () -&gt; xFinal + iFinal;
+  }
+}
+</code></pre><p>Java8以前的闭包</p>
+<pre><code>public class AnonymousClosure {
+  IntSupplier makeFun(int x) {
+    int i = 0;
+    // 同样规则的应用:
+    // i++; // 非等同 final 效果
+    // x++; // 同上
+    return new IntSupplier() {
+      public int getAsInt() { return x + i; }
+    };
+  }
+}
+</code></pre><blockquote>
+<p>实际上只要有内部类，就会有闭包（Java 8 只是简化了闭包操作）。在 Java 8 之前，变量 x 和 i 必须被明确声明为 final。在 Java 8 中，内部类的规则放宽，包括等同 final 效果。</p>
+</blockquote>
+<h2 id="函数组合">函数组合</h2>
+<p>在高阶函数时使用Function的andThen方法，就是一个将多个函数组合成新函数的方法。</p>
+<p>例如；</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">组合方法</th>
+<th style="text-align:center">支持的接口</th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">andThen(arg)</td>
+<td style="text-align:center">Function、Consumer、UnaryOperator、BinaryOperator</td>
+<td style="text-align:center">先执行操作，再执行参数操作</td>
+</tr>
+<tr>
+<td style="text-align:center">compose(arg)</td>
+<td style="text-align:center">Function、UnaryOperator、IntUnaryOperator</td>
+<td style="text-align:center">先执行参数操作，再执行原操作</td>
+</tr>
+<tr>
+<td style="text-align:center">negate()</td>
+<td style="text-align:center">Predicate</td>
+<td style="text-align:center">该谓词的逻辑非</td>
+</tr>
+<tr>
+<td style="text-align:center">and(arg)</td>
+<td style="text-align:center">Predicate</td>
+<td style="text-align:center">原谓词(Predicate)和参数谓词的短路逻辑与</td>
+</tr>
+<tr>
+<td style="text-align:center">or(arg)</td>
+<td style="text-align:center">Predicate</td>
+<td style="text-align:center">原谓词和参数谓词的短路逻辑或</td>
+</tr>
+</tbody>
+</table>
+<p>衍生出来的接口就不列举了</p>
+<p>Function调用andThen和compose的例子：</p>
+<pre><code>public class FunctionComposition {
+  static Function&lt;String, String&gt;
+    f1 = s -&gt; {
+      System.out.println(s);
+      return s.replace('A', '_');
+    },
+    f2 = s -&gt; s.substring(3),
+    f3 = s -&gt; s.toLowerCase(),
+    f4 = f1.compose(f2).andThen(f3);
+  public static void main(String[] args) {
+    System.out.println(
+      f4.apply(&quot;GO AFTER ALL AMBULANCES&quot;));
+  }
+}
+</code></pre><p>输出：</p>
+<pre><code>AFTER ALL AMBULANCES
+_fter _ll _mbul_nces
+</code></pre><p>Predicate调用negate、and和or的例子：</p>
+<pre><code>public class PredicateComposition {
+  static Predicate&lt;String&gt;
+    p1 = s -&gt; s.contains(&quot;bar&quot;),
+    p2 = s -&gt; s.length() &lt; 5,
+    p3 = s -&gt; s.contains(&quot;foo&quot;),
+    p4 = p1.negate().and(p2).or(p3);
+  public static void main(String[] args) {
+    Stream.of(&quot;bar&quot;, &quot;foobar&quot;, &quot;foobaz&quot;, &quot;fongopuckey&quot;)
+      .filter(p4)
+      .forEach(System.out::println);
+  }
+}
+</code></pre><p>输出：</p>
+<pre><code>foobar
+foobaz
+</code></pre><p>p4等价于<code>s-&gt;!s.contains(&quot;bar&quot;)&amp;&amp;s.length()&lt;5||s.contains(&quot;foo&quot;)</code></p>
+<blockquote>
+<p>这里使用流式编程，对于四个字符串组成的流，使用p4这个断言过滤出为出true的结果，最终再打印出来。</p>
+</blockquote>
+<h2 id="柯里化和部分求值">柯里化和部分求值</h2>
+<blockquote>
+<p>柯里化意为：将一个多参数的函数，转换为一系列单参数函数。</p>
+</blockquote>
+<p>例如：</p>
+<pre><code>public class CurryingAndPartials {
+   // 未柯里化:
+   static String uncurried(String a, String b) {
+      return a + b;
+   }
+   public static void main(String[] args) {
+      // 柯里化的函数:
+      Function&lt;String, Function&lt;String, String&gt;&gt; sum =
+         a -&gt; b -&gt; a + b; // [1]
+      System.out.println(uncurried(&quot;Hi &quot;, &quot;Ho&quot;));
+      Function&lt;String, String&gt;
+        hi = sum.apply(&quot;Hi &quot;); // [2]
+      System.out.println(hi.apply(&quot;Ho&quot;));
+      // 部分应用:
+      Function&lt;String, String&gt; sumHi =
+        sum.apply(&quot;Hup &quot;);
+      System.out.println(sumHi.apply(&quot;Ho&quot;));
+      System.out.println(sumHi.apply(&quot;Hey&quot;));
+   }
+}
+</code></pre><p>输出：</p>
+<pre><code>Hi Ho
+Hi Ho
+Hup Ho
+Hup Hey
+</code></pre><p>注意接口的声明，第二类型参数是一个Function类型。</p>
+<p>可以通过继续添加层级来柯里化一个三参数函数：</p>
+<pre><code>// functional/Curry3Args.java
+import java.util.function.*;
+public class Curry3Args {
+   public static void main(String[] args) {
+      Function&lt;String,
+        Function&lt;String,
+          Function&lt;String, String&gt;&gt;&gt; sum =
+            a -&gt; b -&gt; c -&gt; a + b + c;
+      Function&lt;String,
+        Function&lt;String, String&gt;&gt; hi =
+          sum.apply(&quot;Hi &quot;);
+      Function&lt;String, String&gt; ho =
+        hi.apply(&quot;Ho &quot;);
+      System.out.println(ho.apply(&quot;Hup&quot;));
+   }
+}
+</code></pre><p>输出：</p>
+<pre><code>Hi Ho Hup
+</code></pre><pre><code>public class CurriedIntAdd {
+  public static void main(String[] args) {
+    IntFunction&lt;IntUnaryOperator&gt;
+      curriedIntAdd = a -&gt; b -&gt; a + b;
+    IntUnaryOperator add4 = curriedIntAdd.apply(4);
+    System.out.println(add4.applyAsInt(5));
+      }
+}
+</code></pre><p>输出：</p>
+<pre><code>9
+</code></pre>
+</div>
+
+
+    </main>
+    <a href="#top" class="backtop">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+    </svg>
+</a>
+    
+      
+    
+  </body>
+</html>
