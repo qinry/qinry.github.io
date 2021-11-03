@@ -3,9 +3,11 @@
 }
 
 .post-toc {
-  position: absolute;
+  position: fixed;
+  top: 20px;
+  bottom: 280px;
   width: 17rem;
-  height: 20rem;
+  height: auto;
   margin-left: 785px;
   padding: 40px 20px;
   font-family: Athelas, STHeiti, Microsoft Yahei, serif;

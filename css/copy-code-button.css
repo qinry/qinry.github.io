@@ -32,8 +32,3 @@
 .copy-code-button:active {
   background-color: #d9d9d9;
 }
-
-.highlight pre {
-  /* Avoid pushing up the copy buttons. */
-  margin: 0;
-}

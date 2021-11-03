@@ -23,11 +23,8 @@ function addCopyButtons(clipboard) {
             );
         });
 
-        if ($(ele).parents('div.highligh').length == 0) {
-            $(ele).parent().prepend(button);
-        } else {
-            $(ele).parents('div.highlight').prepend(button);
-        }
+        $(ele).parent().prepend(button);
+
     });
     $("pre").each(function(idx,elem){
         $(elem).mouseenter(function(){
