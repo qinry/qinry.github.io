@@ -39,7 +39,6 @@
 </head>
 
   <body class="theme-base-0d ">
-    <span id="top"></span>
     <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -61,18 +60,44 @@
 </aside>
 
     
-<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+<aside class="post-toc right-0" style="position: fixed;top: 0px;">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#一集合">一、集合</a></li>
-    <li><a href="#二映射">二、映射</a></li>
+    <li><a href="#一集合">一、集合</a>
+      <ul>
+        <li><a href="#11-collection接口">1.1 Collection接口</a></li>
+        <li><a href="#12-迭代器">1.2 迭代器</a></li>
+        <li><a href="#13-链表">1.3 链表</a></li>
+        <li><a href="#14-散列集">1.4 散列集</a></li>
+        <li><a href="#15-树集">1.5 树集</a></li>
+        <li><a href="#16-队列与双端队列">1.6 队列与双端队列</a></li>
+      </ul>
+    </li>
+    <li><a href="#二映射">二、映射</a>
+      <ul>
+        <li><a href="#21-基本映射操作">2.1 基本映射操作</a></li>
+        <li><a href="#22-映射视图">2.2 映射视图</a></li>
+      </ul>
+    </li>
     <li><a href="#三小集合">三、小集合</a></li>
     <li><a href="#四子范围">四、子范围</a></li>
     <li><a href="#五不可修改的视图">五、不可修改的视图</a></li>
     <li><a href="#六同步视图">六、同步视图</a></li>
     <li><a href="#七检查型视图">七、检查型视图</a></li>
-    <li><a href="#八泛型算法">八、泛型算法</a></li>
-    <li><a href="#九补充">九、补充</a></li>
+    <li><a href="#八泛型算法">八、泛型算法</a>
+      <ul>
+        <li><a href="#81-排序与混排">8.1 排序与混排</a></li>
+        <li><a href="#82-二分查找">8.2 二分查找</a></li>
+      </ul>
+    </li>
+    <li><a href="#九补充">九、补充</a>
+      <ul>
+        <li><a href="#91-arraylist和vector区别">9.1 ArrayList和Vector区别</a></li>
+        <li><a href="#92-hashmaphashtableconcurrenthashmap的区别">9.2 HashMap、Hashtable、ConcurrentHashMap的区别</a></li>
+        <li><a href="#93-hashcode约束">9.3 hashCode约束</a></li>
+        <li><a href="#94-treemaptreeset的键">9.4 TreeMap/TreeSet的键</a></li>
+      </ul>
+    </li>
     <li><a href="#十参考">十、参考</a></li>
   </ul>
 </nav>
@@ -1171,12 +1196,12 @@ public class UseVector {
 
 
     </main>
-    <a href="#top" class="backtop">
-    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <button class="backtop-btn">
+<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
     <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
     </path>
-    </svg>
-</a>
+</svg>
+</button>
     
       
     

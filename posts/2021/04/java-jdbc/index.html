@@ -39,7 +39,6 @@
 </head>
 
   <body class="theme-base-0d ">
-    <span id="top"></span>
     <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -61,13 +60,25 @@
 </aside>
 
     
-<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+<aside class="post-toc right-0" style="position: fixed;top: 0px;">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#什么是jdbc">什么是JDBC</a></li>
     <li><a href="#jdbc可以做什么">JDBC可以做什么</a></li>
-    <li><a href="#jdbc的核心组件">JDBC的核心组件</a></li>
-    <li><a href="#数据库连接池">数据库连接池</a></li>
+    <li><a href="#jdbc的核心组件">JDBC的核心组件</a>
+      <ul>
+        <li><a href="#jdbc基本使用">JDBC基本使用</a></li>
+        <li><a href="#使用预状态通道避免sql注入">使用预状态通道避免SQL注入</a></li>
+        <li><a href="#jdbc的事务">JDBC的事务</a></li>
+        <li><a href="#jdbc批处理">JDBC批处理</a></li>
+      </ul>
+    </li>
+    <li><a href="#数据库连接池">数据库连接池</a>
+      <ul>
+        <li><a href="#c3p0">c3p0</a></li>
+        <li><a href="#druid">druid</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
         
@@ -314,12 +325,12 @@ DruidDataSource dataSource = DruidDataSourceFactory.createDataSource(properties)
 
 
     </main>
-    <a href="#top" class="backtop">
-    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <button class="backtop-btn">
+<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
     <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
     </path>
-    </svg>
-</a>
+</svg>
+</button>
     
       
     

@@ -39,7 +39,6 @@
 </head>
 
   <body class="theme-base-0d ">
-    <span id="top"></span>
     <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -61,14 +60,38 @@
 </aside>
 
     
-<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+<aside class="post-toc right-0" style="position: fixed;top: 0px;">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#什么是maven">什么是Maven</a></li>
     <li><a href="#maven项目构建过程">Maven项目构建过程</a></li>
-    <li><a href="#maven生命周期">Maven生命周期</a></li>
-    <li><a href="#项目构建常用命令">项目构建常用命令</a></li>
-    <li><a href="#配置文件pomxml">配置文件pom.xml</a></li>
+    <li><a href="#maven生命周期">Maven生命周期</a>
+      <ul>
+        <li><a href="#clean生命周期">clean生命周期</a></li>
+        <li><a href="#default生命周期">default生命周期</a></li>
+        <li><a href="#site生命周期">site生命周期</a></li>
+      </ul>
+    </li>
+    <li><a href="#项目构建常用命令">项目构建常用命令</a>
+      <ul>
+        <li><a href="#清理">清理</a></li>
+        <li><a href="#编译">编译</a></li>
+        <li><a href="#测试">测试</a></li>
+        <li><a href="#打包">打包</a></li>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#复合操作">复合操作</a></li>
+      </ul>
+    </li>
+    <li><a href="#配置文件pomxml">配置文件pom.xml</a>
+      <ul>
+        <li><a href="#坐标">坐标</a></li>
+        <li><a href="#打包格式">打包格式</a></li>
+        <li><a href="#属性">属性</a></li>
+        <li><a href="#依赖">依赖</a></li>
+        <li><a href="#插件">插件</a></li>
+        <li><a href="#资源">资源</a></li>
+      </ul>
+    </li>
     <li><a href="#其他资源">其他资源</a></li>
   </ul>
 </nav>
@@ -588,12 +611,12 @@ mvn clean install
 
 
     </main>
-    <a href="#top" class="backtop">
-    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <button class="backtop-btn">
+<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
     <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
     </path>
-    </svg>
-</a>
+</svg>
+</button>
     
       
     

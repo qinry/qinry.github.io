@@ -39,7 +39,6 @@
 </head>
 
   <body class="theme-base-0d ">
-    <span id="top"></span>
     <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -61,14 +60,38 @@
 </aside>
 
     
-<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+<aside class="post-toc right-0" style="position: fixed;top: 0px;">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#一基本数据结构">一、基本数据结构</a></li>
-    <li><a href="#二常用命令">二、常用命令</a></li>
+    <li><a href="#二常用命令">二、常用命令</a>
+      <ul>
+        <li><a href="#21字符串的命令">2.1.字符串的命令</a></li>
+        <li><a href="#22哈希的命令">2.2.哈希的命令</a></li>
+        <li><a href="#23列表的命令">2.3.列表的命令</a></li>
+        <li><a href="#24无序集合的命令">2.4无序集合的命令</a></li>
+        <li><a href="#25有序集合的命令">2.5.有序集合的命令</a></li>
+        <li><a href="#26hyperloglog的命令">2.6.HyperLogLog的命令</a></li>
+        <li><a href="#27其他常用命令">2.7.其他常用命令</a></li>
+        <li><a href="#28事务管理">2.8.事务管理</a></li>
+        <li><a href="#29发布订阅">2.9.发布/订阅</a></li>
+      </ul>
+    </li>
     <li><a href="#三jedis连接redis">三、jedis连接Redis</a></li>
-    <li><a href="#四缓存雪崩缓存击穿缓存穿透问题">四、缓存雪崩、缓存击穿、缓存穿透问题</a></li>
-    <li><a href="#五分布式锁">五、分布式锁</a></li>
+    <li><a href="#四缓存雪崩缓存击穿缓存穿透问题">四、缓存雪崩、缓存击穿、缓存穿透问题</a>
+      <ul>
+        <li><a href="#41缓存雪崩">4.1.缓存雪崩</a></li>
+        <li><a href="#42缓存击穿">4.2.缓存击穿</a></li>
+        <li><a href="#43缓存穿透">4.3.缓存穿透</a></li>
+      </ul>
+    </li>
+    <li><a href="#五分布式锁">五、分布式锁</a>
+      <ul>
+        <li><a href="#51使用分布式锁的条件">5.1.使用分布式锁的条件</a></li>
+        <li><a href="#52应用场景">5.2.应用场景</a></li>
+        <li><a href="#53使用redis的分布式锁">5.3.使用Redis的分布式锁</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
         
@@ -441,12 +464,12 @@ getset key value
 
 
     </main>
-    <a href="#top" class="backtop">
-    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <button class="backtop-btn">
+<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
     <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
     </path>
-    </svg>
-</a>
+</svg>
+</button>
     
       
     

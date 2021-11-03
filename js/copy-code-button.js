@@ -24,10 +24,17 @@ function addCopyButtons(clipboard) {
         });
 
         if ($(ele).parents('div.highligh').length == 0) {
-            $(ele).parent().before(button);
+            $(ele).parent().prepend(button);
         } else {
-            $(ele).parents('div.highlight').before(button);
+            $(ele).parents('div.highlight').prepend(button);
         }
     });
-   
+    $("pre").each(function(idx,elem){
+        $(elem).mouseenter(function(){
+            $("button.copy-code-button").eq(idx).show()
+        })
+        $(elem).mouseleave(function(){
+            $("button.copy-code-button").eq(idx).hide()
+        })
+    })
 }

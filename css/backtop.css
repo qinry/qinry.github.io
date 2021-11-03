@@ -1,9 +1,25 @@
-.backtop {
-    color: #b3b1b1;
-    position: fixed;
-    right: 16px;
-    bottom: 16px;
-    width: 32px;
-    height: 32px;
-    z-index: 999998;
+html, body {
+  scroll-behavior: smooth;
+}
+
+.backtop-btn {
+  width: 50px;
+  height: 50px;
+
+  display: none;
+  position: fixed; 
+  bottom: 20px; 
+  right: 20px; 
+  z-index: 99; 
+  border: none;
+  outline: none; 
+  color: white; 
+  cursor: pointer; 
+  padding: 0px; 
+  border-radius: 10px; 
+}
+
+.backtop-btn svg {
+  width: 25px;
+  height: 25px;
 }

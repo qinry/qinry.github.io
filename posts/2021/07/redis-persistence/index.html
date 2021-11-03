@@ -39,7 +39,6 @@
 </head>
 
   <body class="theme-base-0d ">
-    <span id="top"></span>
     <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -61,12 +60,30 @@
 </aside>
 
     
-<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+<aside class="post-toc right-0" style="position: fixed;top: 0px;">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#一redis-持久化存储方式">一、Redis 持久化存储方式</a></li>
-    <li><a href="#二主从复制">二、主从复制</a></li>
-    <li><a href="#三哨兵模式">三、哨兵模式</a></li>
+    <li><a href="#一redis-持久化存储方式">一、Redis 持久化存储方式</a>
+      <ul>
+        <li><a href="#11rdb-持久化">1.1.RDB 持久化</a></li>
+        <li><a href="#12aof-持久化">1.2.AOF 持久化</a></li>
+        <li><a href="#13aof-与-rdb-区别">1.3.AOF 与 RDB 区别</a></li>
+      </ul>
+    </li>
+    <li><a href="#二主从复制">二、主从复制</a>
+      <ul>
+        <li><a href="#21特点">2.1.特点</a></li>
+        <li><a href="#22搭建主从复制">2.2.搭建主从复制</a></li>
+        <li><a href="#23复制过程原理">2.3.复制过程原理</a></li>
+        <li><a href="#24问题解决">2.4.问题解决</a></li>
+      </ul>
+    </li>
+    <li><a href="#三哨兵模式">三、哨兵模式</a>
+      <ul>
+        <li><a href="#31特点">3.1.特点</a></li>
+        <li><a href="#32搭建">3.2.搭建</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
         
@@ -233,12 +250,12 @@ auto-aof-rewrite-percentage 100
 
 
     </main>
-    <a href="#top" class="backtop">
-    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <button class="backtop-btn">
+<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
     <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
     </path>
-    </svg>
-</a>
+</svg>
+</button>
     
       
     

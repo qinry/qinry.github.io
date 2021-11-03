@@ -1,39 +1,56 @@
 .right-0 {
-    right: 0;
-  }
-  
-  .post-toc {
-    position: absolute;
-    width: 17rem;
-    margin-left: 785px;
-    padding: 40px 20px;
-    font-family: Athelas,STHeiti,Microsoft Yahei,serif;
-    font-size: small;
-    border-radius: 15px;
-    background: #fdf6e3;
-    box-shadow: 1px 1px 2px rgb(0 0 0 / 13%);
-    word-wrap: break-word;
-    box-sizing: border-box;
-  }
-  .post-toc a {
-    color: #657b83;
-  }
-  
-  .post-toc a:hover {
-    color: #2abfea;
-  }
-  
-  
-  
-  .post-toc a:active {
-    color: #90a959;
-  }
-  
-  .post-toc a:current {
-    color: #2abfea;
-  }
-  
-  .post-toc h1 {
-    color: grey;
-  }
-  
+  right: 0;
+}
+
+.post-toc {
+  position: absolute;
+  width: 17rem;
+  height: 20rem;
+  margin-left: 785px;
+  padding: 40px 20px;
+  font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+  font-size: small;
+  border-radius: 15px;
+  background: #fdf6e3;
+  box-shadow: 1px 1px 2px rgb(0 0 0 / 13%);
+  word-wrap: break-word;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.post-toc a {
+  color: #657b83;
+}
+
+.post-toc a:hover {
+  color: #2abfea;
+}
+
+.post-toc a:active {
+  color: #90a959;
+}
+
+.post-toc a:current {
+  color: #2abfea;
+}
+
+.post-toc h1 {
+  color: grey;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(128,0,128, 0.3);
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(255, 0, 0, 0.4);
+}

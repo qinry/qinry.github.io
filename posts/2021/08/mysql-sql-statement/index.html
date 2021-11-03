@@ -39,7 +39,6 @@
 </head>
 
   <body class="theme-base-0d ">
-    <span id="top"></span>
     <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -61,22 +60,61 @@
 </aside>
 
     
-<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+<aside class="post-toc right-0" style="position: fixed;top: 0px;">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#概述">概述</a></li>
     <li><a href="#mysql版本">MySQL版本</a></li>
     <li><a href="#基本命令行">基本命令行</a></li>
     <li><a href="#sql命令类型">SQL命令类型</a></li>
-    <li><a href="#操作数据库">操作数据库</a></li>
-    <li><a href="#数据管理">数据管理</a></li>
-    <li><a href="#查询">查询</a></li>
+    <li><a href="#操作数据库">操作数据库</a>
+      <ul>
+        <li><a href="#数据类型">数据类型</a></li>
+        <li><a href="#数据库字段属性">数据库字段属性</a></li>
+        <li><a href="#建立表">建立表</a></li>
+        <li><a href="#innodb与myisam">INNODB与MYISAM</a></li>
+        <li><a href="#更新表">更新表</a></li>
+        <li><a href="#删除表">删除表</a></li>
+      </ul>
+    </li>
+    <li><a href="#数据管理">数据管理</a>
+      <ul>
+        <li><a href="#外键">外键</a></li>
+        <li><a href="#新增">新增</a></li>
+        <li><a href="#更新">更新</a></li>
+        <li><a href="#删除">删除</a></li>
+      </ul>
+    </li>
+    <li><a href="#查询">查询</a>
+      <ul>
+        <li><a href="#基本查询">基本查询</a></li>
+        <li><a href="#排序数据">排序数据</a></li>
+        <li><a href="#过滤数据">过滤数据</a></li>
+        <li><a href="#模糊查询">模糊查询</a></li>
+        <li><a href="#计算字段">计算字段</a></li>
+        <li><a href="#表达式">表达式</a></li>
+        <li><a href="#常用函数">常用函数</a></li>
+        <li><a href="#聚合函数">聚合函数</a></li>
+        <li><a href="#分组过滤">分组过滤</a></li>
+        <li><a href="#子查询">子查询</a></li>
+        <li><a href="#级联查询">级联查询</a></li>
+        <li><a href="#组合查询">组合查询</a></li>
+      </ul>
+    </li>
     <li><a href="#事务与sql优化">事务与SQL优化</a></li>
-    <li><a href="#索引">索引</a></li>
+    <li><a href="#索引">索引</a>
+      <ul>
+        <li><a href="#索引其他命令">索引其他命令</a></li>
+      </ul>
+    </li>
     <li><a href="#用户权限管理">用户权限管理</a></li>
     <li><a href="#mysql备份">MySQL备份</a></li>
     <li><a href="#如何设计数据库">如何设计数据库</a></li>
-    <li><a href="#数据库的三大范式">数据库的三大范式</a></li>
+    <li><a href="#数据库的三大范式">数据库的三大范式</a>
+      <ul>
+        <li><a href="#规范性和性能的问题">规范性和性能的问题</a></li>
+      </ul>
+    </li>
     <li><a href="#其他资源">其他资源</a></li>
   </ul>
 </nav>
@@ -1010,12 +1048,12 @@ SOURCE /path/to/data.sql
 
 
     </main>
-    <a href="#top" class="backtop">
-    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <button class="backtop-btn">
+<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
     <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
     </path>
-    </svg>
-</a>
+</svg>
+</button>
     
       
     

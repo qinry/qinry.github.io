@@ -12,5 +12,15 @@ $(function(){
             addCopyButtons(clipboard);
         };
     }
-    
+    $(window).scroll(function() {
+        if ($(this).scrollTop() >= $(window).height()) {
+            // console.log($(window).height())
+            $(".backtop-btn").show()
+        } else {
+            $(".backtop-btn").hide()
+        }
+    })
+    $(".backtop-btn").click(function(){
+        $(window).scrollTop(0)
+    })
 });

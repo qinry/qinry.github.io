@@ -39,7 +39,6 @@
 </head>
 
   <body class="theme-base-0d ">
-    <span id="top"></span>
     <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -61,7 +60,7 @@
 </aside>
 
     
-<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+<aside class="post-toc right-0" style="position: fixed;top: 0px;">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#lambda表达式">Lambda表达式</a></li>
@@ -83,7 +82,7 @@
   <h1>快速开始Java8函数式编程</h1>
   <span class="post-date">
     2021-11-02 06:12 &nbsp;
-    字数：<strong>3516</strong> &nbsp;
+    字数：<strong>3522</strong> &nbsp;
     标签：
               <a href="https://qinry.github.io/tags/java/">Java</a>&nbsp;
   </span>
@@ -534,27 +533,28 @@ public class Curry3Args {
 }
 </code></pre><p>输出：</p>
 <pre><code>Hi Ho Hup
-</code></pre><pre><code>public class CurriedIntAdd {
-  public static void main(String[] args) {
-    IntFunction&lt;IntUnaryOperator&gt;
-      curriedIntAdd = a -&gt; b -&gt; a + b;
-    IntUnaryOperator add4 = curriedIntAdd.apply(4);
-    System.out.println(add4.applyAsInt(5));
-      }
-}
-</code></pre><p>输出：</p>
+</code></pre><p>再来一个例子</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CurriedIntAdd</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    IntFunction<span style="color:#f92672">&lt;</span>IntUnaryOperator<span style="color:#f92672">&gt;</span>
+      curriedIntAdd <span style="color:#f92672">=</span> a <span style="color:#f92672">-&gt;</span> b <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">+</span> b<span style="color:#f92672">;</span>
+    IntUnaryOperator add4 <span style="color:#f92672">=</span> curriedIntAdd<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">(</span>4<span style="color:#f92672">);</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>add4<span style="color:#f92672">.</span><span style="color:#a6e22e">applyAsInt</span><span style="color:#f92672">(</span>5<span style="color:#f92672">));</span>
+      <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>输出：</p>
 <pre><code>9
 </code></pre>
 </div>
 
 
     </main>
-    <a href="#top" class="backtop">
-    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <button class="backtop-btn">
+<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
     <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
     </path>
-    </svg>
-</a>
+</svg>
+</button>
     
       
     

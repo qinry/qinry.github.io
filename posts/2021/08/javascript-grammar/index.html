@@ -39,7 +39,6 @@
 </head>
 
   <body class="theme-base-0d ">
-    <span id="top"></span>
     <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -61,23 +60,90 @@
 </aside>
 
     
-<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+<aside class="post-toc right-0" style="position: fixed;top: 0px;">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#概述">概述</a></li>
     <li><a href="#使用方式">使用方式</a></li>
-    <li><a href="#简述数据类型">简述数据类型</a></li>
-    <li><a href="#运算符">运算符</a></li>
-    <li><a href="#进一步了解数据类型">进一步了解数据类型</a></li>
-    <li><a href="#流程控制">流程控制</a></li>
-    <li><a href="#集合">集合</a></li>
-    <li><a href="#函数">函数</a></li>
-    <li><a href="#内部对象">内部对象</a></li>
+    <li><a href="#简述数据类型">简述数据类型</a>
+      <ul>
+        <li><a href="#严格检查模式">严格检查模式</a></li>
+        <li><a href="#数字">数字</a></li>
+        <li><a href="#字符串">字符串</a></li>
+        <li><a href="#布尔">布尔</a></li>
+        <li><a href="#数组">数组</a></li>
+        <li><a href="#对象">对象</a></li>
+        <li><a href="#null">null</a></li>
+      </ul>
+    </li>
+    <li><a href="#运算符">运算符</a>
+      <ul>
+        <li><a href="#逻辑运算符">逻辑运算符</a></li>
+        <li><a href="#比较运算符">比较运算符</a></li>
+        <li><a href="#其他">其他</a></li>
+      </ul>
+    </li>
+    <li><a href="#进一步了解数据类型">进一步了解数据类型</a>
+      <ul>
+        <li><a href="#字符串-1">字符串</a></li>
+        <li><a href="#数组-1">数组</a></li>
+        <li><a href="#对象-1">对象</a></li>
+      </ul>
+    </li>
+    <li><a href="#流程控制">流程控制</a>
+      <ul>
+        <li><a href="#if分支">if分支</a></li>
+        <li><a href="#while循环">while循环</a></li>
+        <li><a href="#for循环">for循环</a></li>
+        <li><a href="#foreach循环">foreach循环</a></li>
+      </ul>
+    </li>
+    <li><a href="#集合">集合</a>
+      <ul>
+        <li><a href="#map">map</a></li>
+        <li><a href="#set">set</a></li>
+      </ul>
+    </li>
+    <li><a href="#函数">函数</a>
+      <ul>
+        <li><a href="#定义函数">定义函数</a></li>
+        <li><a href="#arguments关键字">arguments关键字</a></li>
+        <li><a href="#可变参数">可变参数</a></li>
+        <li><a href="#作用域">作用域</a></li>
+        <li><a href="#let关键字">let关键字</a></li>
+        <li><a href="#const关键字">const关键字</a></li>
+        <li><a href="#方法">方法</a></li>
+        <li><a href="#apply">apply</a></li>
+      </ul>
+    </li>
+    <li><a href="#内部对象">内部对象</a>
+      <ul>
+        <li><a href="#标准对象">标准对象</a></li>
+        <li><a href="#date">Date</a></li>
+        <li><a href="#json">JSON</a></li>
+      </ul>
+    </li>
     <li><a href="#面向对象">面向对象</a></li>
     <li><a href="#操作bom对象">操作BOM对象</a></li>
-    <li><a href="#操作dom对象">操作DOM对象</a></li>
+    <li><a href="#操作dom对象">操作DOM对象</a>
+      <ul>
+        <li><a href="#查找节点">查找节点</a></li>
+        <li><a href="#更新节点">更新节点</a></li>
+        <li><a href="#删除节点">删除节点</a></li>
+        <li><a href="#新增节点">新增节点</a></li>
+      </ul>
+    </li>
     <li><a href="#验证表单">验证表单</a></li>
-    <li><a href="#jquery">jQuery</a></li>
+    <li><a href="#jquery">jQuery</a>
+      <ul>
+        <li><a href="#导入jquery的方式">导入jQuery的方式</a></li>
+        <li><a href="#jquery公式">jQuery公式</a></li>
+        <li><a href="#jquery选择器">jQuery选择器</a></li>
+        <li><a href="#绑定事件">绑定事件</a></li>
+        <li><a href="#jquery操作dom">jQuery操作DOM</a></li>
+        <li><a href="#ajax异步请求">ajax异步请求</a></li>
+      </ul>
+    </li>
     <li><a href="#其他资源">其他资源</a></li>
   </ul>
 </nav>
@@ -1071,12 +1137,12 @@ $(window).width();
 
 
     </main>
-    <a href="#top" class="backtop">
-    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <button class="backtop-btn">
+<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
     <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
     </path>
-    </svg>
-</a>
+</svg>
+</button>
     
       
     

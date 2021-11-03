@@ -39,7 +39,6 @@
 </head>
 
   <body class="theme-base-0d ">
-    <span id="top"></span>
     <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -61,14 +60,47 @@
 </aside>
 
     
-<aside class="post-toc right-0" style="position:fixed;top: 20px;">
+<aside class="post-toc right-0" style="position: fixed;top: 0px;">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#一基本数据类型">一、基本数据类型</a></li>
-    <li><a href="#二运算符">二、运算符</a></li>
-    <li><a href="#三条件判断和循环分支">三、条件判断和循环分支</a></li>
+    <li><a href="#一基本数据类型">一、基本数据类型</a>
+      <ul>
+        <li><a href="#11-声明变量和初始化">1.1 声明变量和初始化</a></li>
+        <li><a href="#12-类型转换">1.2 类型转换</a></li>
+      </ul>
+    </li>
+    <li><a href="#二运算符">二、运算符</a>
+      <ul>
+        <li><a href="#21-算数运算符">2.1 算数运算符</a></li>
+        <li><a href="#22-自增自减运算符">2.2 自增自减运算符</a></li>
+        <li><a href="#23-赋值运算符">2.3 赋值运算符</a></li>
+        <li><a href="#24-关系运算符">2.4 关系运算符</a></li>
+        <li><a href="#25-逻辑运算符">2.5 逻辑运算符</a></li>
+        <li><a href="#26-字符串连接符">2.6 字符串连接符</a></li>
+        <li><a href="#27-三目运算符">2.7 三目运算符</a></li>
+      </ul>
+    </li>
+    <li><a href="#三条件判断和循环分支">三、条件判断和循环分支</a>
+      <ul>
+        <li><a href="#31-ifif-else语句">3.1 if、if-else语句</a></li>
+        <li><a href="#32-switch语句">3.2 switch语句</a></li>
+        <li><a href="#33-while循环">3.3 while循环</a></li>
+        <li><a href="#34-do-while循环">3.4 do-while循环</a></li>
+        <li><a href="#35-for循环">3.5 for循环</a></li>
+        <li><a href="#36-break与continue">3.6 break与continue</a></li>
+      </ul>
+    </li>
     <li><a href="#四接受输入">四、接受输入</a></li>
-    <li><a href="#五数组">五、数组</a></li>
+    <li><a href="#五数组">五、数组</a>
+      <ul>
+        <li><a href="#51-定义格式">5.1 定义格式</a></li>
+        <li><a href="#52-下标">5.2 下标</a></li>
+        <li><a href="#52-求数组中最值">5.2 求数组中最值</a></li>
+        <li><a href="#53-冒泡排序">5.3 冒泡排序</a></li>
+        <li><a href="#54-二分查找">5.4 二分查找</a></li>
+        <li><a href="#55-多维数组">5.5 多维数组</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
         
@@ -530,12 +562,12 @@ for (int j=0; j&lt;a.length; j++) {
 
 
     </main>
-    <a href="#top" class="backtop">
-    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <button class="backtop-btn">
+<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
     <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
     </path>
-    </svg>
-</a>
+</svg>
+</button>
     
       
     
