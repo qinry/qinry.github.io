@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.85.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>快速开始Java8流式编程 &middot; 欢迎来到槎城小子的博客！</title>
+  <meta name="description" content="快速开始Java8流式编程" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/copy-code-button.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/toc.css">
+  <link type="text/css" rel="stylesheet" href="https://qinry.github.io/css/backtop.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="../../../../favicon.png">
+
+  
+  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/styles/base16/monokai.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../../js/copy-code-button.js"></script>
+<script src="../../../../js/main.js"></script>
+
+
+</head>
+
+  <body class="theme-base-0d ">
+    <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://qinry.github.io/"><h1>欢迎来到槎城小子的博客！</h1></a>
+      <p class="lead">
+       不积硅步无以至千里，不积小流无以成江海。 
+      </p>
+    </div>
+    
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://qinry.github.io/">Home</a> </li>
+        <li><a href="https://github.com/qinry"> Github </a></li><li><a href="../../../../tags"> 分类标签 </a></li>
+      </ul>
+    </nav>
+
+    <p>Copyright © 2021 槎城小子</p>
+  </div>
+</aside>
+
+    
+<aside class="post-toc right-0" style="position: fixed;top: 0px;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#流是什么">流是什么</a></li>
+    <li><a href="#快速开始的入门示例">快速开始的入门示例</a></li>
+    <li><a href="#流的创建">流的创建</a>
+      <ul>
+        <li><a href="#流的简单工厂">流的简单工厂</a></li>
+        <li><a href="#stream方法">stream方法</a></li>
+        <li><a href="#随机数流">随机数流</a></li>
+        <li><a href="#流的生成">流的生成</a></li>
+        <li><a href="#流的迭代">流的迭代</a></li>
+        <li><a href="#流的建造者">流的建造者</a></li>
+        <li><a href="#数组转换成流">数组转换成流</a></li>
+        <li><a href="#正则表达式">正则表达式</a></li>
+      </ul>
+    </li>
+    <li><a href="#中间操作">中间操作</a>
+      <ul>
+        <li><a href="#帮助调试">帮助调试</a></li>
+        <li><a href="#元素排序">元素排序</a></li>
+        <li><a href="#去除元素">去除元素</a></li>
+        <li><a href="#映射">映射</a></li>
+      </ul>
+    </li>
+    <li><a href="#optional类">Optional类</a>
+      <ul>
+        <li><a href="#optional基本用法">Optional基本用法</a></li>
+      </ul>
+    </li>
+    <li><a href="#终端操作">终端操作</a>
+      <ul>
+        <li><a href="#数组">数组</a></li>
+        <li><a href="#循环">循环</a></li>
+        <li><a href="#集合">集合</a></li>
+        <li><a href="#组合">组合</a></li>
+        <li><a href="#匹配">匹配</a></li>
+        <li><a href="#查找">查找</a></li>
+        <li><a href="#信息">信息</a></li>
+        <li><a href="#数字流信息">数字流信息</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        
+</aside>
+
+
+    <main class="content container">
+    <div class="post">
+
+  <h1>快速开始Java8流式编程</h1>
+  <span class="post-date">
+    2021-11-02 11:01 &nbsp;
+    字数：<strong>5549</strong> &nbsp;
+    标签：
+              <a href="https://qinry.github.io/tags/java/">Java</a>&nbsp;
+  </span>
+
+  <h2 id="流是什么">流是什么</h2>
+<p>流（Streams）是与任何特定存储机制无关的元素序列——实际上，我们说流是 “没有存储 “的。</p>
+<blockquote>
+<p>集合优化了对象的存储，而流（Streams）则是关于一组组对象的处理。</p>
+</blockquote>
+<p>取代了在集合中迭代元素的做法，使用流即可从管道中提取元素并对其操作。这些管道通常被串联在一起形成一整套的管线，来对流进行操作,它使得程序更加短小并且更易理解。</p>
+<h2 id="快速开始的入门示例">快速开始的入门示例</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Randoms</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">)</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>5<span style="color:#f92672">,</span> 20<span style="color:#f92672">)</span> <span style="color:#75715e">// 流的创建
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">.</span><span style="color:#a6e22e">distinct</span><span style="color:#f92672">()</span> <span style="color:#75715e">// 3个中间操作
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">.</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>7<span style="color:#f92672">)</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">sorted</span><span style="color:#f92672">()</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>println<span style="color:#f92672">);</span> <span style="color:#75715e">// 终结操作
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>5到20的随机数不重复，限制7个后排序，再打印输出。</p>
+<blockquote>
+<p>这里只描述了流的行为，并未明确指明具体的操作。这是声明式编程风格，而非命令式编程风格，语义更加清晰，语法更加简洁。</p>
+</blockquote>
+<blockquote>
+<p>流有一个重要特征，就是懒加载，只有在必要时进行计算，又称惰性求值。由于计算延迟，流使我们能够表示非常大（甚至无限）的序列，而不需要考虑内存问题。</p>
+</blockquote>
+<p>将上方的声明式编程风格的代码用命令式编程风格重写如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Randoms</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        Random rand <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">);</span>
+        SortedSet<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> rints <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeSet<span style="color:#f92672">&lt;&gt;();</span> <span style="color:#75715e">// distinct sorted
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>rints<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">&lt;</span> 7<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// limit
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">int</span> r <span style="color:#f92672">=</span> rand<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">(</span>20<span style="color:#f92672">);</span> <span style="color:#75715e">// &lt; 20
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>r <span style="color:#f92672">&lt;</span> 5<span style="color:#f92672">)</span> <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span> <span style="color:#75715e">// &gt;= 5
+</span><span style="color:#75715e"></span>            rints<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>r<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>rints<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>流式编程有三个部分：流创建、中间操作、终端操作。中间操作可以更改流，终端操作会等到某种结果。</p>
+<h2 id="流的创建">流的创建</h2>
+<ul>
+<li>流的简单工厂（of/stream）</li>
+<li>随机数流</li>
+<li>int类型的范围（range/rangeClosed）</li>
+<li>生成（generate）</li>
+<li>迭代（iterate）</li>
+<li>流的建造者（builder）</li>
+<li>数组转换流 （stream）</li>
+<li>正则表达式（splitAsStream）</li>
+</ul>
+<h3 id="流的简单工厂">流的简单工厂</h3>
+<h4 id="of方法">of方法</h4>
+<p>Stream.of有两个重载方法，一个是单参数的，另一个是可变参数，参数类型是泛型。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Stream<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">);</span>
+Stream<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 2<span style="color:#f92672">,</span> 3<span style="color:#f92672">,</span> 4<span style="color:#f92672">,);</span>
+</code></pre></div><p>泛型的重载方法，实际委托给Arrays.stream方法来创建流</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@SafeVarargs</span>
+<span style="color:#a6e22e">@SuppressWarnings</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;varargs&#34;</span><span style="color:#f92672">)</span> <span style="color:#75715e">// Creating a stream from an array is safe
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Stream<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">of</span><span style="color:#f92672">(</span>T<span style="color:#f92672">...</span> values<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span>values<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="stream方法">stream方法</h3>
+<p>Collection接口默认实现了stream方法来创建，这个方法实际工作最终委托给StreamSupport这个底层工具类来完成。Arrays.stream方法与Stream.of单参数版本也是如此。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">default</span> Stream<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">stream</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> StreamSupport<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span>spliterator<span style="color:#f92672">(),</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Java的集合框架中实现Collection及其子接口的类都可以使用stream方法创建流</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span>
+list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">);</span>
+list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">);</span>
+list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">);</span>
+list<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">();</span>
+Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> map <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;();</span>
+map<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;apple&#34;</span><span style="color:#f92672">);</span>
+map<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;banana&#34;</span><span style="color:#f92672">);</span>
+map<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;cookie&#34;</span><span style="color:#f92672">);</span>
+map<span style="color:#f92672">.</span><span style="color:#a6e22e">entrySet</span><span style="color:#f92672">().</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">();</span>
+</code></pre></div><h3 id="随机数流">随机数流</h3>
+<p>ints、longs和doubles得到是原始数据类型的流，boxed将原始数据类型转化为包装类型流。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RandomGenerators</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">show</span><span style="color:#f92672">(</span>Stream<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> stream<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        stream
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>4<span style="color:#f92672">)</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>println<span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;++++++++&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        Random rand <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">);</span>
+        show<span style="color:#f92672">(</span>rand<span style="color:#f92672">.</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">().</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">());</span>
+        show<span style="color:#f92672">(</span>rand<span style="color:#f92672">.</span><span style="color:#a6e22e">longs</span><span style="color:#f92672">().</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">());</span>
+        show<span style="color:#f92672">(</span>rand<span style="color:#f92672">.</span><span style="color:#a6e22e">doubles</span><span style="color:#f92672">().</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">());</span>
+        <span style="color:#75715e">// 控制上限和下限：
+</span><span style="color:#75715e"></span>        show<span style="color:#f92672">(</span>rand<span style="color:#f92672">.</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>10<span style="color:#f92672">,</span> 20<span style="color:#f92672">).</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">());</span>
+        show<span style="color:#f92672">(</span>rand<span style="color:#f92672">.</span><span style="color:#a6e22e">longs</span><span style="color:#f92672">(</span>50<span style="color:#f92672">,</span> 100<span style="color:#f92672">).</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">());</span>
+        show<span style="color:#f92672">(</span>rand<span style="color:#f92672">.</span><span style="color:#a6e22e">doubles</span><span style="color:#f92672">(</span>20<span style="color:#f92672">,</span> 30<span style="color:#f92672">).</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">());</span>
+        <span style="color:#75715e">// 控制流大小：
+</span><span style="color:#75715e"></span>        show<span style="color:#f92672">(</span>rand<span style="color:#f92672">.</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>2<span style="color:#f92672">).</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">());</span>
+        show<span style="color:#f92672">(</span>rand<span style="color:#f92672">.</span><span style="color:#a6e22e">longs</span><span style="color:#f92672">(</span>2<span style="color:#f92672">).</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">());</span>
+        show<span style="color:#f92672">(</span>rand<span style="color:#f92672">.</span><span style="color:#a6e22e">doubles</span><span style="color:#f92672">(</span>2<span style="color:#f92672">).</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">());</span>
+        <span style="color:#75715e">// 控制流的大小和界限
+</span><span style="color:#75715e"></span>        show<span style="color:#f92672">(</span>rand<span style="color:#f92672">.</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> 3<span style="color:#f92672">,</span> 9<span style="color:#f92672">).</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">());</span>
+        show<span style="color:#f92672">(</span>rand<span style="color:#f92672">.</span><span style="color:#a6e22e">longs</span><span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> 12<span style="color:#f92672">,</span> 22<span style="color:#f92672">).</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">());</span>
+        show<span style="color:#f92672">(</span>rand<span style="color:#f92672">.</span><span style="color:#a6e22e">doubles</span><span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> 11<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">,</span> 12<span style="color:#f92672">.</span><span style="color:#a6e22e">3</span><span style="color:#f92672">).</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">());</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">-1172028779
+1717241110
+-2014573909
+229403722
+++++++++
+2955289354441303771
+3476817843704654257
+-8917117694134521474
+4941259272818818752
+++++++++
+0.2613610344283964
+0.0508673570556899
+0.8037155449603999
+0.7620665811558285
+++++++++
+16
+10
+11
+12
+++++++++
+65
+99
+54
+58
+++++++++
+29.86777681078574
+24.83968447804611
+20.09247112332014
+24.046793846338723
+++++++++
+1169976606
+1947946283
+++++++++
+2970202997824602425
+-2325326920272830366
+++++++++
+0.7024254510631527
+0.6648552384607359
+++++++++
+6
+7
+7
+++++++++
+17
+12
+20
+++++++++
+12.27872414236691
+11.732085449736195
+12.196509449817267
+++++++++
+</code></pre></div><h3 id="流的生成">流的生成</h3>
+<p>Stream.generate方法的方法签名，接受一个Supplier类型。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Stream<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">generate</span><span style="color:#f92672">(</span>Supplier<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> s<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    Objects<span style="color:#f92672">.</span><span style="color:#a6e22e">requireNonNull</span><span style="color:#f92672">(</span>s<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">return</span> StreamSupport<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span>
+            <span style="color:#66d9ef">new</span> StreamSpliterators<span style="color:#f92672">.</span><span style="color:#a6e22e">InfiniteSupplyingSpliterator</span><span style="color:#f92672">.</span><span style="color:#a6e22e">OfRef</span><span style="color:#f92672">&lt;&gt;(</span>Long<span style="color:#f92672">.</span><span style="color:#a6e22e">MAX_VALUE</span><span style="color:#f92672">,</span> s<span style="color:#f92672">),</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>可以实现Supplier接口，传入generate方法，也可以使用lambda表达式以及方法引用形式</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Generator</span> <span style="color:#66d9ef">implements</span> Supplier<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+    Random rand <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> letters <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#34;</span><span style="color:#f92672">.</span><span style="color:#a6e22e">toCharArray</span><span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">get</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">+</span> letters<span style="color:#f92672">[</span>rand<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">(</span>letters<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">)];</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        String word <span style="color:#f92672">=</span> Stream<span style="color:#f92672">.</span><span style="color:#a6e22e">generate</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Generator<span style="color:#f92672">())</span>
+                            <span style="color:#f92672">.</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>30<span style="color:#f92672">)</span>
+                            <span style="color:#f92672">.</span><span style="color:#a6e22e">collect</span><span style="color:#f92672">(</span>Collectors<span style="color:#f92672">.</span><span style="color:#a6e22e">joining</span><span style="color:#f92672">());</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>word<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">YNZBRNYGCFOWZNTCQRGSEGZMMJMROE
+</code></pre></div><h3 id="流的迭代">流的迭代</h3>
+<p>Stream.iterate的方法签名，接受一个泛型种子（初始值），还有一个UnaryOperator类型</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Stream<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">iterate</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> T seed<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> UnaryOperator<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> f<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    Objects<span style="color:#f92672">.</span><span style="color:#a6e22e">requireNonNull</span><span style="color:#f92672">(</span>f<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">final</span> Iterator<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> iterator <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Iterator<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;()</span> <span style="color:#f92672">{</span>
+        <span style="color:#a6e22e">@SuppressWarnings</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;unchecked&#34;</span><span style="color:#f92672">)</span>
+        T t <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>T<span style="color:#f92672">)</span> Streams<span style="color:#f92672">.</span><span style="color:#a6e22e">NONE</span><span style="color:#f92672">;</span>
+
+        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">hasNext</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> T <span style="color:#a6e22e">next</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> t <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>t <span style="color:#f92672">==</span> Streams<span style="color:#f92672">.</span><span style="color:#a6e22e">NONE</span><span style="color:#f92672">)</span> <span style="color:#f92672">?</span> seed <span style="color:#f92672">:</span> f<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">(</span>t<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">};</span>
+    <span style="color:#66d9ef">return</span> StreamSupport<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span>Spliterators<span style="color:#f92672">.</span><span style="color:#a6e22e">spliteratorUnknownSize</span><span style="color:#f92672">(</span>
+            iterator<span style="color:#f92672">,</span>
+            Spliterator<span style="color:#f92672">.</span><span style="color:#a6e22e">ORDERED</span> <span style="color:#f92672">|</span> Spliterator<span style="color:#f92672">.</span><span style="color:#a6e22e">IMMUTABLE</span><span style="color:#f92672">),</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>与generate类似，可以实现接口，或者使用函数式编程来传入第二参数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Fibonacci</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+    Stream<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">numbers</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> Stream<span style="color:#f92672">.</span><span style="color:#a6e22e">iterate</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> i <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> i<span style="color:#f92672">;</span>
+            x <span style="color:#f92672">=</span> i<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+        <span style="color:#f92672">});</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">new</span> Fibonacci<span style="color:#f92672">().</span><span style="color:#a6e22e">numbers</span><span style="color:#f92672">()</span>
+                       <span style="color:#f92672">.</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>20<span style="color:#f92672">)</span> <span style="color:#75715e">// 过滤前 20 个
+</span><span style="color:#75715e"></span>                       <span style="color:#f92672">.</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>10<span style="color:#f92672">)</span> <span style="color:#75715e">// 然后取 10 个
+</span><span style="color:#75715e"></span>                       <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>println<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">6765
+10946
+17711
+28657
+46368
+75025
+121393
+196418
+317811
+514229
+</code></pre></div><h3 id="流的建造者">流的建造者</h3>
+<p>Stream.builder方法的返回值是一个Builder类型，实际上是Streams.StreamBuilderImpl对象</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Builder<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">builder</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Streams<span style="color:#f92672">.</span><span style="color:#a6e22e">StreamBuilderImpl</span><span style="color:#f92672">&lt;&gt;();</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Streams.StreamBuilderImpl有两个重要的方法一个是add，还有一个是build。add用来链式添加流中的元素，build则是完成构建流。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StreamBuilderImpl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+            <span style="color:#66d9ef">extends</span> AbstractStreamBuilderImpl<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">,</span> Spliterator<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&gt;</span>
+            <span style="color:#66d9ef">implements</span> Stream<span style="color:#f92672">.</span><span style="color:#a6e22e">Builder</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> Stream<span style="color:#f92672">.</span><span style="color:#a6e22e">Builder</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>T t<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        accept<span style="color:#f92672">(</span>t<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> Stream<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">build</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> count<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>c <span style="color:#f92672">&gt;=</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">// Switch count to negative value signalling the builder is built
+</span><span style="color:#75715e"></span>            count <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>count <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span>
+            <span style="color:#75715e">// Use this spliterator if 0 or 1 elements, otherwise use
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">// the spliterator of the spined buffer
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>c <span style="color:#f92672">&lt;</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">?</span> StreamSupport<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">)</span> <span style="color:#f92672">:</span> StreamSupport<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">.</span><span style="color:#a6e22e">spliterator</span><span style="color:#f92672">(),</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalStateException<span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>add委托给accpet方法将元素添加到buffer中</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// The first element in the stream
+</span><span style="color:#75715e">// valid if count == 1
+</span><span style="color:#75715e"></span>T first<span style="color:#f92672">;</span>
+
+<span style="color:#75715e">// The first and subsequent elements in the stream
+</span><span style="color:#75715e">// non-null if count == 2
+</span><span style="color:#75715e"></span>SpinedBuffer<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> buffer<span style="color:#f92672">;</span>
+
+
+<span style="color:#a6e22e">@Override</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">accept</span><span style="color:#f92672">(</span>T t<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>count <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        first <span style="color:#f92672">=</span> t<span style="color:#f92672">;</span>
+        count<span style="color:#f92672">++;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>count <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>buffer <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SpinedBuffer<span style="color:#f92672">&lt;&gt;();</span>
+            buffer<span style="color:#f92672">.</span><span style="color:#a6e22e">accept</span><span style="color:#f92672">(</span>first<span style="color:#f92672">);</span>
+            count<span style="color:#f92672">++;</span>
+        <span style="color:#f92672">}</span>
+
+        buffer<span style="color:#f92672">.</span><span style="color:#a6e22e">accept</span><span style="color:#f92672">(</span>t<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalStateException<span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>一旦调用build后，count会变成负数，再调用add/accept方法，就会抛出IllegalStateException。所以，Stream.Builder调用builder()后不可再添加元素。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Stream<span style="color:#f92672">.</span><span style="color:#a6e22e">Builder</span><span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> builder <span style="color:#f92672">=</span> Stream<span style="color:#f92672">.</span><span style="color:#a6e22e">builder</span><span style="color:#f92672">();</span>
+Stream<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> stream <span style="color:#f92672">=</span> builder<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;I&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Love&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Java8&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+</code></pre></div><h3 id="数组转换成流">数组转换成流</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String<span style="color:#f92672">[]</span> stringArray <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">[</span>4<span style="color:#f92672">];</span>
+stringArray<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;I&#34;</span><span style="color:#f92672">;</span>
+stringArray<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Love&#34;</span><span style="color:#f92672">;</span>
+stringArray<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Java&#34;</span><span style="color:#f92672">;</span>
+stringArray<span style="color:#f92672">[</span>3<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;!&#34;</span><span style="color:#f92672">;</span>
+Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span>stringArray<span style="color:#f92672">).</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>println<span style="color:#f92672">);</span>    
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">I
+Love
+Java
+!
+</code></pre></div><p>stream()的调用有两个额外的参数。第一个参数告诉 stream() 从数组的哪个位置开始选择元素，第二个参数用于告知在哪里停止（不包含）。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">double</span><span style="color:#f92672">[]</span> <span style="color:#f92672">{</span> 3<span style="color:#f92672">.</span><span style="color:#a6e22e">14159</span><span style="color:#f92672">,</span> 2<span style="color:#f92672">.</span><span style="color:#a6e22e">718</span><span style="color:#f92672">,</span> 1<span style="color:#f92672">.</span><span style="color:#a6e22e">618</span> <span style="color:#f92672">})</span>
+            <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%f &#34;</span><span style="color:#f92672">,</span> n<span style="color:#f92672">));</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
+Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> <span style="color:#f92672">{</span> 1<span style="color:#f92672">,</span> 3<span style="color:#f92672">,</span> 5 <span style="color:#f92672">})</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%d &#34;</span><span style="color:#f92672">,</span> n<span style="color:#f92672">));</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
+Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">long</span><span style="color:#f92672">[]</span> <span style="color:#f92672">{</span> 11<span style="color:#f92672">,</span> 22<span style="color:#f92672">,</span> 44<span style="color:#f92672">,</span> 66 <span style="color:#f92672">})</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%d &#34;</span><span style="color:#f92672">,</span> n<span style="color:#f92672">));</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
+<span style="color:#75715e">// 选择一个子域:
+</span><span style="color:#75715e"></span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> <span style="color:#f92672">{</span> 1<span style="color:#f92672">,</span> 3<span style="color:#f92672">,</span> 5<span style="color:#f92672">,</span> 7<span style="color:#f92672">,</span> 15<span style="color:#f92672">,</span> 28<span style="color:#f92672">,</span> 37 <span style="color:#f92672">},</span> 3<span style="color:#f92672">,</span> 6<span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%d &#34;</span><span style="color:#f92672">,</span> n<span style="color:#f92672">));</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">3.141590 2.718000 1.618000
+1 3 5
+11 22 44 66
+7 15 28
+</code></pre></div><h3 id="正则表达式">正则表达式</h3>
+<p>Java 8 在 java.util.regex.Pattern 中增加了一个新的方法 splitAsStream()。这个方法可以根据传入的公式将字符序列转化为流。但是有一个限制，输入只能是 CharSequence，因此不能将流作为 splitAsStream() 的参数。</p>
+<p>cheese.txt文件内容：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">// cheese.txt
+Not much of a cheese shop really, is it?
+Finest in the district, sir.
+And what leads you to that conclusion?
+Well, it&#39;s so clean.
+It&#39;s certainly uncontaminated by cheese.
+</code></pre></div><p>读取cheese.txt文件的每一行，然后跳过第一行，每一行用空格连接成一个字符串。接着使用正则表达式将字符串转化为单词流。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FileToWordsRegexp</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String all<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">FileToWordsRegexp</span><span style="color:#f92672">(</span>String filePath<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        all <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">lines</span><span style="color:#f92672">(</span>Paths<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>filePath<span style="color:#f92672">))</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>1<span style="color:#f92672">)</span> <span style="color:#75715e">// First (comment) line
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">.</span><span style="color:#a6e22e">collect</span><span style="color:#f92672">(</span>Collectors<span style="color:#f92672">.</span><span style="color:#a6e22e">joining</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> Stream<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">stream</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> Pattern
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">compile</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;[ .,?]+&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">splitAsStream</span><span style="color:#f92672">(</span>all<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span>
+    <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        FileToWordsRegexp fw <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileToWordsRegexp<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Cheese.txt&#34;</span><span style="color:#f92672">);</span>
+        fw<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">()</span>
+          <span style="color:#f92672">.</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>7<span style="color:#f92672">)</span>
+          <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>w <span style="color:#f92672">-&gt;</span> w <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">)</span>
+          <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>print<span style="color:#f92672">);</span>
+        fw<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">()</span>
+          <span style="color:#f92672">.</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>7<span style="color:#f92672">)</span>
+          <span style="color:#f92672">.</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>2<span style="color:#f92672">)</span>
+          <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>w <span style="color:#f92672">-&gt;</span> w <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">)</span>
+          <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>print<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Not much of a cheese shop really is it
+</code></pre></div><h2 id="中间操作">中间操作</h2>
+<ul>
+<li>帮助调试（peek）</li>
+<li>给流排序（sorted）</li>
+<li>去除元素（distinct/filter）</li>
+<li>映射（map/flatmap）</li>
+</ul>
+<h3 id="帮助调试">帮助调试</h3>
+<p>peek()它允许你无修改地查看流中的元素。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Stream<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> stream <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">lines</span><span style="color:#f92672">(</span>Paths<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;cheese.txt&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>1<span style="color:#f92672">).</span><span style="color:#a6e22e">flatMap</span><span style="color:#f92672">(</span>line <span style="color:#f92672">-&gt;</span> Pattern<span style="color:#f92672">.</span><span style="color:#a6e22e">compile</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;\\W+&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">splitAsStream</span><span style="color:#f92672">(</span>line<span style="color:#f92672">));</span>
+stream<span style="color:#f92672">.</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>21<span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>4<span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>w <span style="color:#f92672">-&gt;</span> w<span style="color:#f92672">+</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">peek</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>print<span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>String<span style="color:#f92672">::</span>toUpperCase<span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">peek</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>print<span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>String<span style="color:#f92672">::</span>toLowerCase<span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>print<span style="color:#f92672">);</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Well WELL well it IT it s S s so SO so
+</code></pre></div><h3 id="元素排序">元素排序</h3>
+<p>sorted() 预设了一些默认的比较器。但也可以自提供比较器</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Stream<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> stream <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">lines</span><span style="color:#f92672">(</span>Paths<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;cheese.txt&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>1<span style="color:#f92672">).</span><span style="color:#a6e22e">flatMap</span><span style="color:#f92672">(</span>line <span style="color:#f92672">-&gt;</span> Pattern<span style="color:#f92672">.</span><span style="color:#a6e22e">compile</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;\\W+&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">splitAsStream</span><span style="color:#f92672">(</span>line<span style="color:#f92672">));</span>
+stream<span style="color:#f92672">.</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>10<span style="color:#f92672">)</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>10<span style="color:#f92672">)</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">sorted</span><span style="color:#f92672">(</span>Comparator<span style="color:#f92672">.</span><span style="color:#a6e22e">reverseOrder</span><span style="color:#f92672">())</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>w <span style="color:#f92672">-&gt;</span> w <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">)</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>print<span style="color:#f92672">);</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">you what to the that sir leads in district And
+</code></pre></div><h3 id="去除元素">去除元素</h3>
+<ul>
+<li>
+<p>distinct():distinct() 可用于消除流中的重复元素。</p>
+</li>
+<li>
+<p>filter(Predicate):过滤操作，保留如下元素：若元素传递给过滤函数产生的结果为true 。</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Stream<span style="color:#f92672">.</span><span style="color:#a6e22e">iterate</span><span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> i <span style="color:#f92672">-&gt;</span> i <span style="color:#f92672">+</span> 1<span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">filter</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> LongStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">long</span><span style="color:#f92672">)</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">sqrt</span><span style="color:#f92672">(</span>n<span style="color:#f92672">)).</span><span style="color:#a6e22e">noneMatch</span><span style="color:#f92672">(</span>i <span style="color:#f92672">-&gt;</span> n <span style="color:#f92672">%</span> i <span style="color:#f92672">==</span> 0<span style="color:#f92672">))</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>10<span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%d &#34;</span><span style="color:#f92672">,</span> n<span style="color:#f92672">));</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
+Stream<span style="color:#f92672">.</span><span style="color:#a6e22e">iterate</span><span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> i <span style="color:#f92672">-&gt;</span> i <span style="color:#f92672">+</span> 1<span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">filter</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> LongStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">long</span><span style="color:#f92672">)</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">sqrt</span><span style="color:#f92672">(</span>n<span style="color:#f92672">)).</span><span style="color:#a6e22e">noneMatch</span><span style="color:#f92672">(</span>i <span style="color:#f92672">-&gt;</span> n <span style="color:#f92672">%</span> i <span style="color:#f92672">==</span> 0<span style="color:#f92672">))</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>90<span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>10<span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%d &#34;</span><span style="color:#f92672">,</span> n<span style="color:#f92672">));</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">2 3 5 7 11 13 17 19 23 29
+467 479 487 491 499 503 509 521 523 541
+</code></pre></div><h3 id="映射">映射</h3>
+<ul>
+<li>
+<p>map(Function)：将函数操作应用在输入流的元素中，并将返回值传递到输出流中。</p>
+</li>
+<li>
+<p>mapToInt(ToIntFunction)：操作同上，但结果是 IntStream。</p>
+</li>
+<li>
+<p>mapToLong(ToLongFunction)：操作同上，但结果是 LongStream。</p>
+</li>
+<li>
+<p>mapToDouble(ToDoubleFunction)：操作同上，但结果是 DoubleStream。</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;add brackets&#34;</span><span style="color:#f92672">);</span>
+Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> String<span style="color:#f92672">[]{</span><span style="color:#e6db74">&#34;12&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;23&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;45&#34;</span><span style="color:#f92672">})</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span> s <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;[&#34;</span> <span style="color:#f92672">+</span> s <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;]&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>println<span style="color:#f92672">);</span>
+
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Increment&#34;</span><span style="color:#f92672">);</span>
+Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> String<span style="color:#f92672">[]{</span><span style="color:#e6db74">&#34;12&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;23&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;45&#34;</span><span style="color:#f92672">})</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span> s <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">return</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> 1 <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>NumberFormatException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">return</span> s<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">})</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>println<span style="color:#f92672">);</span>
+
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Replace&#34;</span><span style="color:#f92672">);</span>
+Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> String<span style="color:#f92672">[]{</span><span style="color:#e6db74">&#34;12&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;23&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;45&#34;</span><span style="color:#f92672">})</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span> s <span style="color:#f92672">-&gt;</span> s<span style="color:#f92672">.</span><span style="color:#a6e22e">replace</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;2&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;9&#34;</span><span style="color:#f92672">))</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>println<span style="color:#f92672">);</span>
+
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Take last digit&#34;</span><span style="color:#f92672">);</span>
+Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> String<span style="color:#f92672">[]{</span><span style="color:#e6db74">&#34;12&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;23&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;45&#34;</span><span style="color:#f92672">})</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span> s <span style="color:#f92672">-&gt;</span> s<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">&gt;</span> 0 <span style="color:#f92672">?</span>
+        s<span style="color:#f92672">.</span><span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">:</span> s<span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>println<span style="color:#f92672">);</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">add brackets
+[12]
+[]
+[23]
+[45]
+Increment
+13
+
+24
+46
+Replace
+19
+
+93
+45
+Take last digit
+2
+
+3
+5
+</code></pre></div><p>如果Function的返回值类型是Stream类型时使用。flatMap() 做了两件事：将产生流的函数应用在每个元素上（与 map() 所做的相同），然后将每个流都扁平化为元素，因而最终产生的仅仅是元素。</p>
+<ul>
+<li>
+<p>flatMap(Function)：当 Function 产生流时使用。</p>
+</li>
+<li>
+<p>flatMapToInt(Function)：当 Function 产生 IntStream 时使用。</p>
+</li>
+<li>
+<p>flatMapToLong(Function)：当 Function 产生 LongStream 时使用。</p>
+</li>
+<li>
+<p>flatMapToDouble(Function)：当 Function 产生 DoubleStream 时使用。</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Stream<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 2<span style="color:#f92672">,</span> 3<span style="color:#f92672">)</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">flatMap</span><span style="color:#f92672">(</span>i <span style="color:#f92672">-&gt;</span> Stream<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Gonzo&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Fozzie&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Beaker&#34;</span><span style="color:#f92672">))</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>println<span style="color:#f92672">);</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Gonzo
+Fozzie
+Beaker
+Gonzo
+Fozzie
+Beaker
+Gonzo
+Fozzie
+Beaker
+</code></pre></div><h2 id="optional类">Optional类</h2>
+<p>以下几种流的终端操作的方法返回值类型为Optional对象，所以要了解Optional对象的使用。</p>
+<ul>
+<li>findFirst() 返回一个包含第一个元素的 Optional 对象，如果流为空则返回 Optional.empty</li>
+<li>findAny() 返回包含任意元素的 Optional 对象，如果流为空则返回 Optional.empty</li>
+<li>max()和mix() 返回一个包含最大值或者最小值的 Optional 对象，如果流为空则返回 Optional.empty</li>
+<li>reduce(BinaryOperator) 返回包含调用BinaryOperator的apply方法结果的Optional对象。</li>
+<li>对于数字流 IntStream、LongStream 和 DoubleStream，average() 会将结果包装在 Optional 以防止流为空。</li>
+</ul>
+<p>注意，空流是通过 Stream.<!-- raw HTML omitted -->empty() 创建的。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Stream<span style="color:#f92672">.&lt;</span>String<span style="color:#f92672">&gt;</span>empty<span style="color:#f92672">()</span>
+         <span style="color:#f92672">.</span><span style="color:#a6e22e">findFirst</span><span style="color:#f92672">());</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Stream<span style="color:#f92672">.&lt;</span>String<span style="color:#f92672">&gt;</span>empty<span style="color:#f92672">()</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">findAny</span><span style="color:#f92672">());</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Stream<span style="color:#f92672">.&lt;</span>String<span style="color:#f92672">&gt;</span>empty<span style="color:#f92672">()</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>String<span style="color:#f92672">.</span><span style="color:#a6e22e">CASE_INSENSITIVE_ORDER</span><span style="color:#f92672">));</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Stream<span style="color:#f92672">.&lt;</span>String<span style="color:#f92672">&gt;</span>empty<span style="color:#f92672">()</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>String<span style="color:#f92672">.</span><span style="color:#a6e22e">CASE_INSENSITIVE_ORDER</span><span style="color:#f92672">));</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Stream<span style="color:#f92672">.&lt;</span>String<span style="color:#f92672">&gt;</span>empty<span style="color:#f92672">()</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">reduce</span><span style="color:#f92672">((</span>s1<span style="color:#f92672">,</span> s2<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> s1 <span style="color:#f92672">+</span> s2<span style="color:#f92672">));</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">empty</span><span style="color:#f92672">()</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">average</span><span style="color:#f92672">());</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Optional.empty
+Optional.empty
+Optional.empty
+Optional.empty
+Optional.empty
+OptionalDouble.empty
+</code></pre></div><h3 id="optional基本用法">Optional基本用法</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">// opt是Optional对象
+if (opt.isPresent()) {
+    // 如果不为空进行的行为
+} else {
+    // 如果为空进行的行为
+}
+</code></pre></div><p>有许多便利函数可以解包 Optional ，这简化了上述“对所包含的对象的检查和执行操作”的过程：</p>
+<ul>
+<li>ifPresent(Consumer)：当值存在时调用 Consumer，否则什么也不做。</li>
+<li>orElse(otherObject)：如果值存在则直接返回，否则生成 otherObject。</li>
+<li>orElseGet(Supplier)：如果值存在则直接返回，否则使用 Supplier 函数生成一个可替代对象。</li>
+<li>orElseThrow(Supplier)：如果值存在直接返回，否则使用 Supplier 函数生成一个异常。</li>
+</ul>
+<pre><code>Optional&lt;String&gt; opt = Optional.ofNullable(&quot;Hello Optional&quot;);
+opt.ifPresent(System.out::println);
+opt = Optional.ofNullable(null);
+System.out.println(opt.orElse(&quot;Hello&quot;));
+System.out.println(opt.orElseGet(() -&gt; &quot;Hello&quot;));
+try {
+    opt.orElseThrow(() -&gt; new Exception(&quot;Supplied&quot;));
+} catch(Exception e) {
+   System.out.println(&quot;Caught &quot;+e);
+}
+</code></pre><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Hello Optional
+Hello
+Hello
+Caught java.lang.Exception: Supplied
+</code></pre></div><p>Optional的创建方法：</p>
+<ul>
+<li>empty() 生成一个空 Optional。</li>
+<li>of(value) 将一个非空值包装到 Optional 里。</li>
+<li>ofNullable(value) 针对一个可能为空的值，为空时自动生成 Optional.empty，否则将值包装在 Optional 中。</li>
+</ul>
+<p>Optional对象操作：</p>
+<ul>
+<li>
+<p>filter(Predicate)：对 Optional 中的内容应用Predicate 并将结果返回。如果 Optional 不满足 Predicate ，将 Optional 转化为空 Optional 。如果 Optional 已经为空，则直接返回空Optional 。</p>
+</li>
+<li>
+<p>map(Function)：如果 Optional 不为空，应用 Function 于 Optional 中的内容，并返回结果。否则直接返回 Optional.empty。</p>
+</li>
+<li>
+<p>flatMap(Function)：同 map()，但是提供的映射函数将结果包装在 Optional 对象中，因此 flatMap() 不会在最后进行任何包装。</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String<span style="color:#f92672">[]</span> elements <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;Foo&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Bar&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Baz&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Bingo&#34;</span>
+<span style="color:#f92672">};</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">);</span>
+IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> elements<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">).</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>i <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span>elements<span style="color:#f92672">).</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>i<span style="color:#f92672">).</span><span style="color:#a6e22e">findFirst</span><span style="color:#f92672">().</span><span style="color:#a6e22e">filter</span><span style="color:#f92672">(</span>str <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">));</span>      
+<span style="color:#f92672">});</span>
+
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;false&#34;</span><span style="color:#f92672">);</span>
+IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> elements<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">).</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>i <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span>elements<span style="color:#f92672">).</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>i<span style="color:#f92672">).</span><span style="color:#a6e22e">findFirst</span><span style="color:#f92672">().</span><span style="color:#a6e22e">filter</span><span style="color:#f92672">(</span>str <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">));</span>      
+<span style="color:#f92672">});</span>
+
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;str != \&#34;\&#34;&#34;</span><span style="color:#f92672">);</span>
+IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> elements<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">).</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>i <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span>elements<span style="color:#f92672">).</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>i<span style="color:#f92672">).</span><span style="color:#a6e22e">findFirst</span><span style="color:#f92672">().</span><span style="color:#a6e22e">filter</span><span style="color:#f92672">(</span>str <span style="color:#f92672">-&gt;</span> str <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">));</span>      
+<span style="color:#f92672">});</span>
+
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;str.length() == 3&#34;</span><span style="color:#f92672">);</span>
+IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> elements<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">).</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>i <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span>elements<span style="color:#f92672">).</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>i<span style="color:#f92672">).</span><span style="color:#a6e22e">findFirst</span><span style="color:#f92672">().</span><span style="color:#a6e22e">filter</span><span style="color:#f92672">(</span>str <span style="color:#f92672">-&gt;</span> str<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> 3<span style="color:#f92672">));</span>      
+<span style="color:#f92672">});</span>
+
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;startsWith(\&#34;B\&#34;)&#34;</span><span style="color:#f92672">);</span>
+IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> elements<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">).</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>i <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span>elements<span style="color:#f92672">).</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>i<span style="color:#f92672">).</span><span style="color:#a6e22e">findFirst</span><span style="color:#f92672">().</span><span style="color:#a6e22e">filter</span><span style="color:#f92672">(</span>str <span style="color:#f92672">-&gt;</span> str<span style="color:#f92672">.</span><span style="color:#a6e22e">startsWith</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;B&#34;</span><span style="color:#f92672">)));</span>      
+<span style="color:#f92672">});</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">true
+Optional[Foo]
+Optional[]
+Optional[Bar]
+Optional[Baz]
+Optional[Bingo]
+Optional.empty
+false
+Optional.empty
+Optional.empty
+Optional.empty
+Optional.empty
+Optional.empty
+Optional.empty
+str != &#34;&#34;
+Optional[Foo]
+Optional.empty
+Optional[Bar]
+Optional[Baz]
+Optional[Bingo]
+Optional.empty
+str.length() == 3
+Optional[Foo]
+Optional.empty
+Optional[Bar]
+Optional[Baz]
+Optional.empty
+Optional.empty
+startsWith(&#34;B&#34;)
+Optional.empty
+Optional.empty
+Optional[Bar]
+Optional[Baz]
+Optional[Bingo]
+Optional.empty
+</code></pre></div><p>map()</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String<span style="color:#f92672">[]</span> elements <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;Foo&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Bar&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Baz&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Bingo&#34;</span>
+<span style="color:#f92672">};</span>
+IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> elements<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">).</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>i <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span>elements<span style="color:#f92672">).</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>i<span style="color:#f92672">).</span><span style="color:#a6e22e">findFirst</span><span style="color:#f92672">().</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>s <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;[&#34;</span><span style="color:#f92672">+</span>s<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;]&#34;</span><span style="color:#f92672">));</span>      
+<span style="color:#f92672">});</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Optional[[Foo]]
+Optional[[]]
+Optional[[Bar]]
+Optional[[Baz]]
+Optional[[Bingo]]
+Optional.empty
+</code></pre></div><p>flatMap()</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String<span style="color:#f92672">[]</span> elements <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;Foo&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Bar&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Baz&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Bingo&#34;</span>
+<span style="color:#f92672">};</span>
+IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> elements<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">).</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>i <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span>elements<span style="color:#f92672">).</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>i<span style="color:#f92672">).</span><span style="color:#a6e22e">findFirst</span><span style="color:#f92672">().</span><span style="color:#a6e22e">flatMap</span><span style="color:#f92672">(</span>s <span style="color:#f92672">-&gt;</span> Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;[&#34;</span><span style="color:#f92672">+</span>s<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;]&#34;</span><span style="color:#f92672">)));</span>      
+<span style="color:#f92672">});</span>
+</code></pre></div><h2 id="终端操作">终端操作</h2>
+<p>终端操作可以等到结果：</p>
+<ul>
+<li>数组</li>
+<li>循环</li>
+<li>集合</li>
+<li>组合</li>
+<li>匹配</li>
+<li>查找</li>
+<li>信息</li>
+<li>数字流信息</li>
+</ul>
+<h3 id="数组">数组</h3>
+<ul>
+<li>toArray()：将流转换成适当类型的数组。</li>
+<li>toArray(generator)：在特殊情况下，生成自定义类型的数组。 例如：toArray(Person[]::new)</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> arr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>48<span style="color:#f92672">).</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 1000<span style="color:#f92672">).</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>10<span style="color:#f92672">).</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">();</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">(</span>arr<span style="color:#f92672">));</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">[368, 316, 831, 244, 877, 911, 522, 100, 987, 794]
+</code></pre></div><h3 id="循环">循环</h3>
+<ul>
+<li>forEach(Consumer)常见如 System.out::println 作为 Consumer 函数。</li>
+<li>forEachOrdered(Consumer)： 保证 forEach 按照原始流顺序操作。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">).</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 1000<span style="color:#f92672">).</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>100<span style="color:#f92672">).</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">())</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>14<span style="color:#f92672">).</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%d &#34;</span><span style="color:#f92672">,</span> n<span style="color:#f92672">));</span>
+Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">).</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 1000<span style="color:#f92672">).</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>100<span style="color:#f92672">).</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">())</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>14<span style="color:#f92672">).</span><span style="color:#a6e22e">parallel</span><span style="color:#f92672">().</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%d &#34;</span><span style="color:#f92672">,</span> n<span style="color:#f92672">));</span>
+Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">).</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 1000<span style="color:#f92672">).</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>100<span style="color:#f92672">).</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">())</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>14<span style="color:#f92672">).</span><span style="color:#a6e22e">parallel</span><span style="color:#f92672">().</span><span style="color:#a6e22e">forEachOrdered</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%d &#34;</span><span style="color:#f92672">,</span> n<span style="color:#f92672">));</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">258 555 693 861 961 429 868 200 522 207 288 128 551 589 
+551 589 200 522 868 288 128 207 555 693 258 861 961 429
+258 555 693 861 961 429 868 200 522 207 288 128 551 589
+</code></pre></div><p>对于并行流，forEach是无序的，forEachOrder确保有序</p>
+<h3 id="集合">集合</h3>
+<ul>
+<li>collect(Collector)：使用 Collector 收集流元素到结果集合中。</li>
+<li>collect(Supplier, BiConsumer, BiConsumer)：同上，第一个参数 Supplier 创建了一个新的结果集合，第二个参数 BiConsumer 将下一个元素收集到结果集合中，第三个参数 BiConsumer 用于将两个结果集合合并起来。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Set&lt;String&gt; words = Files.lines(Paths.get(&#34;cheese.txt&#34;))
+    .flatMap(s -&gt; Pattern.compile(&#34;\\W+&#34;).splitAsStream(s))
+    .filter(s -&gt; !s.matches(&#34;\\d+&#34;))
+    .map(String::trim)
+    .filter(s -&gt; s.length() &gt; 2)
+    .limit(100)
+    .collect(Collectors.toCollection(TreeSet::new));
+System.out.println(words);
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">[And, Finest, Not, Well, certainly, cheese, clean, conclusion, 
+district, leads, much, really, shop, sir, that, the, txt, uncontaminated, what, you]
+</code></pre></div><h3 id="组合">组合</h3>
+<p>reduce(BinaryOperator)：使用 BinaryOperator 来组合所有流中的元素。因为流可能为空，其返回值为 Optional。
+reduce(identity, BinaryOperator)：功能同上，但是使用 identity 作为其组合的初始值。因此如果流为空，identity 就是结果。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 100<span style="color:#f92672">).</span><span style="color:#a6e22e">reduce</span><span style="color:#f92672">((</span>s1<span style="color:#f92672">,</span>s2<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> s1 <span style="color:#f92672">+</span> s2<span style="color:#f92672">).</span><span style="color:#a6e22e">ifPresent</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>println<span style="color:#f92672">);</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">5050
+</code></pre></div><h3 id="匹配">匹配</h3>
+<ul>
+<li>allMatch(Predicate) ：如果流的每个元素提供给 Predicate 都返回 true ，结果返回为 true。在第一个 false 时，则停止执行计算。</li>
+<li>anyMatch(Predicate)：如果流的任意一个元素提供给 Predicate 返回 true ，结果返回为 true。在第一个 true 是停止执行计算。</li>
+<li>noneMatch(Predicate)：如果流的每个元素提供给 Predicate 都返回 false 时，结果返回为 true。在第一个 true 时停止执行计算。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 9<span style="color:#f92672">).</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">().</span><span style="color:#a6e22e">peek</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%d &#34;</span><span style="color:#f92672">,</span> n<span style="color:#f92672">)).</span><span style="color:#a6e22e">allMatch</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> n <span style="color:#f92672">&lt;</span> 10<span style="color:#f92672">));</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 9<span style="color:#f92672">).</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">().</span><span style="color:#a6e22e">peek</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%d &#34;</span><span style="color:#f92672">,</span> n<span style="color:#f92672">)).</span><span style="color:#a6e22e">allMatch</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> n <span style="color:#f92672">&lt;</span> 4<span style="color:#f92672">));</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 9<span style="color:#f92672">).</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">().</span><span style="color:#a6e22e">peek</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%d &#34;</span><span style="color:#f92672">,</span> n<span style="color:#f92672">)).</span><span style="color:#a6e22e">anyMatch</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> n <span style="color:#f92672">&lt;</span> 2<span style="color:#f92672">));</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 9<span style="color:#f92672">).</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">().</span><span style="color:#a6e22e">peek</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%d &#34;</span><span style="color:#f92672">,</span> n<span style="color:#f92672">)).</span><span style="color:#a6e22e">anyMatch</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> n <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">));</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 9<span style="color:#f92672">).</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">().</span><span style="color:#a6e22e">peek</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%d &#34;</span><span style="color:#f92672">,</span> n<span style="color:#f92672">)).</span><span style="color:#a6e22e">noneMatch</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> n <span style="color:#f92672">&lt;</span> 5<span style="color:#f92672">));</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>IntStream<span style="color:#f92672">.</span><span style="color:#a6e22e">rangeClosed</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 9<span style="color:#f92672">).</span><span style="color:#a6e22e">boxed</span><span style="color:#f92672">().</span><span style="color:#a6e22e">peek</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;%d &#34;</span><span style="color:#f92672">,</span> n<span style="color:#f92672">)).</span><span style="color:#a6e22e">noneMatch</span><span style="color:#f92672">(</span>n <span style="color:#f92672">-&gt;</span> n <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">));</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">1 2 3 4 5 6 7 8 9 true
+1 2 3 4 false
+1 true
+1 2 3 4 5 6 7 8 9 false
+1 false
+1 2 3 4 5 6 7 8 9 true
+</code></pre></div><h3 id="查找">查找</h3>
+<ul>
+<li>findFirst()：返回第一个流元素的 Optional，如果流为空返回 Optional.empty。</li>
+<li>findAny(：返回含有任意流元素的 Optional，如果流为空返回 Optional.empty。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
+    Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">).</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 1000<span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>100<span style="color:#f92672">).</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">findFirst</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getAsInt</span><span style="color:#f92672">());</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
+    Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">).</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 1000<span style="color:#f92672">).</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>100<span style="color:#f92672">).</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">())</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">parallel</span><span style="color:#f92672">().</span><span style="color:#a6e22e">findFirst</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getAsInt</span><span style="color:#f92672">());</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
+    Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">).</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 1000<span style="color:#f92672">).</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>100<span style="color:#f92672">).</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">())</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">findAny</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getAsInt</span><span style="color:#f92672">());</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
+    Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">).</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 1000<span style="color:#f92672">).</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>100<span style="color:#f92672">).</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">())</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">parallel</span><span style="color:#f92672">().</span><span style="color:#a6e22e">findAny</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getAsInt</span><span style="color:#f92672">());</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">258
+258
+258
+402
+</code></pre></div><h3 id="信息">信息</h3>
+<ul>
+<li>count()：流中的元素个数。</li>
+<li>max(Comparator)：根据所传入的 Comparator 所决定的“最大”元素。</li>
+<li>min(Comparator)：根据所传入的 Comparator 所决定的“最小”元素。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
+    Files<span style="color:#f92672">.</span><span style="color:#a6e22e">lines</span><span style="color:#f92672">(</span>Paths<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Cheese.txt&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>1<span style="color:#f92672">).</span><span style="color:#a6e22e">flatMap</span><span style="color:#f92672">(</span>s <span style="color:#f92672">-&gt;</span> Pattern<span style="color:#f92672">.</span><span style="color:#a6e22e">compile</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;\\W+&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">splitAsStream</span><span style="color:#f92672">(</span>s<span style="color:#f92672">))</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">count</span><span style="color:#f92672">());</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
+    Files<span style="color:#f92672">.</span><span style="color:#a6e22e">lines</span><span style="color:#f92672">(</span>Paths<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Cheese.txt&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>1<span style="color:#f92672">).</span><span style="color:#a6e22e">flatMap</span><span style="color:#f92672">(</span>s <span style="color:#f92672">-&gt;</span> Pattern<span style="color:#f92672">.</span><span style="color:#a6e22e">compile</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;\\W+&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">splitAsStream</span><span style="color:#f92672">(</span>s<span style="color:#f92672">))</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>String<span style="color:#f92672">.</span><span style="color:#a6e22e">CASE_INSENSITIVE_ORDER</span><span style="color:#f92672">)</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">orElse</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;NONE&#34;</span><span style="color:#f92672">));</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
+    Files<span style="color:#f92672">.</span><span style="color:#a6e22e">lines</span><span style="color:#f92672">(</span>Paths<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Cheese.txt&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>1<span style="color:#f92672">).</span><span style="color:#a6e22e">flatMap</span><span style="color:#f92672">(</span>s <span style="color:#f92672">-&gt;</span> Pattern<span style="color:#f92672">.</span><span style="color:#a6e22e">compile</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;\\W+&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">splitAsStream</span><span style="color:#f92672">(</span>s<span style="color:#f92672">))</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>String<span style="color:#f92672">.</span><span style="color:#a6e22e">CASE_INSENSITIVE_ORDER</span><span style="color:#f92672">)</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">orElse</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;NONE&#34;</span><span style="color:#f92672">));</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">32
+a
+you
+</code></pre></div><h3 id="数字流信息">数字流信息</h3>
+<ul>
+<li>average() ：求取流元素平均值。</li>
+<li>max() 和 min()：数值流操作无需 Comparator。</li>
+<li>sum()：对所有流元素进行求和。</li>
+<li>summaryStatistics()：生成可能有用的数据。目前并不太清楚这个方法存在的必要性，因为我们其实可以用更直接的方法获得需要的数据。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">).</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 1000<span style="color:#f92672">).</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>100<span style="color:#f92672">).</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">())</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">average</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getAsDouble</span><span style="color:#f92672">());</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">).</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 1000<span style="color:#f92672">).</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>100<span style="color:#f92672">).</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">())</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getAsInt</span><span style="color:#f92672">());</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">).</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 1000<span style="color:#f92672">).</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>100<span style="color:#f92672">).</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">())</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getAsInt</span><span style="color:#f92672">());</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">).</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 1000<span style="color:#f92672">).</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>100<span style="color:#f92672">).</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">())</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">sum</span><span style="color:#f92672">());</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>47<span style="color:#f92672">).</span><span style="color:#a6e22e">ints</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> 1000<span style="color:#f92672">).</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>100<span style="color:#f92672">).</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">())</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">summaryStatistics</span><span style="color:#f92672">());</span>
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">507.94
+998
+8
+50794
+IntSummaryStatistics{count=100, sum=50794, min=8, average=507.940000, max=998}
+</code></pre></div><p>上例操作对于 LongStream 和 DoubleStream 同样适用</p>
+
+</div>
+
+
+    </main>
+    <button class="backtop-btn">
+<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-up" class="svg-inline--fa fa-chevron-circle-up fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+    </path>
+</svg>
+</button>
+    
+      
+    
+  </body>
+</html>

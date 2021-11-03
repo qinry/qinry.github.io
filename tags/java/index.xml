@@ -5,7 +5,16 @@
     <link>https://qinry.github.io/tags/java/</link>
     <description>Recent content in Java on 欢迎来到槎城小子的博客！</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 02 Nov 2021 06:12:46 +0800</lastBuildDate><atom:link href="https://qinry.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Nov 2021 11:01:21 +0800</lastBuildDate><atom:link href="https://qinry.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>快速开始Java8流式编程</title>
+      <link>https://qinry.github.io/posts/2021/11/quickstart-java8-stream-programming/</link>
+      <pubDate>Tue, 02 Nov 2021 11:01:21 +0800</pubDate>
+      
+      <guid>https://qinry.github.io/posts/2021/11/quickstart-java8-stream-programming/</guid>
+      <description>流是什么 流（Streams）是与任何特定存储机制无关的元素序列——实际上，我们说流是 “没有存储 “的。 集合优化了对象的存储，而流（Stream</description>
+    </item>
+    
     <item>
       <title>快速开始Java8函数式编程</title>
       <link>https://qinry.github.io/posts/2021/11/quickstart-java8-functional-programming/</link>
