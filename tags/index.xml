@@ -1,145 +1,440 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>Tags on 欢迎来到槎城小子的博客！</title>
+    <title>Tags on 槎城小子</title>
     <link>https://qinry.github.io/tags/</link>
-    <description>Recent content in Tags on 欢迎来到槎城小子的博客！</description>
+    <description>Recent content in Tags on 槎城小子</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 02 Nov 2021 11:01:21 +0800</lastBuildDate><atom:link href="https://qinry.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Java</title>
-      <link>https://qinry.github.io/tags/java/</link>
-      <pubDate>Tue, 02 Nov 2021 11:01:21 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/tags/java/</guid>
-      <description></description>
-    </item>
+    <language>zh</language>
+    <managingEditor>lixiaoqin490@gmail.com (槎城小子)</managingEditor>
+    <webMaster>lixiaoqin490@gmail.com (槎城小子)</webMaster>
+    <copyright>©2021, All Rights Reserved</copyright>
+    <lastBuildDate>Tue, 26 Oct 2021 20:39:48 +0800</lastBuildDate>
     
-    <item>
-      <title>MongoDB</title>
-      <link>https://qinry.github.io/tags/mongodb/</link>
-      <pubDate>Tue, 26 Oct 2021 20:39:48 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/tags/mongodb/</guid>
-      <description></description>
-    </item>
+        <atom:link href="https://qinry.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    <item>
-      <title>网络编程</title>
-      <link>https://qinry.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
-      <pubDate>Tue, 26 Oct 2021 17:16:15 +0800</pubDate>
+
       
-      <guid>https://qinry.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Vue</title>
-      <link>https://qinry.github.io/tags/vue/</link>
-      <pubDate>Mon, 20 Sep 2021 06:38:50 +0800</pubDate>
+      <item>
+        <title>mongodb</title>
+        <link>https://qinry.github.io/tags/mongodb/</link>
+        <pubDate>Tue, 26 Oct 2021 20:39:48 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/mongodb/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/tags/vue/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>WEB</title>
-      <link>https://qinry.github.io/tags/web/</link>
-      <pubDate>Mon, 20 Sep 2021 06:38:50 +0800</pubDate>
+      <item>
+        <title>io</title>
+        <link>https://qinry.github.io/tags/io/</link>
+        <pubDate>Tue, 26 Oct 2021 17:16:15 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/io/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/tags/web/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>MySQL</title>
-      <link>https://qinry.github.io/tags/mysql/</link>
-      <pubDate>Thu, 26 Aug 2021 09:06:53 +0800</pubDate>
+      <item>
+        <title>vue</title>
+        <link>https://qinry.github.io/tags/vue/</link>
+        <pubDate>Mon, 20 Sep 2021 06:38:50 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/vue/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/tags/mysql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>CSS</title>
-      <link>https://qinry.github.io/tags/css/</link>
-      <pubDate>Mon, 23 Aug 2021 20:16:46 +0800</pubDate>
+      <item>
+        <title>mysql</title>
+        <link>https://qinry.github.io/tags/mysql/</link>
+        <pubDate>Thu, 26 Aug 2021 09:06:53 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/mysql/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/tags/css/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>HTML</title>
-      <link>https://qinry.github.io/tags/html/</link>
-      <pubDate>Mon, 23 Aug 2021 13:22:52 +0800</pubDate>
+      <item>
+        <title>sql</title>
+        <link>https://qinry.github.io/tags/sql/</link>
+        <pubDate>Thu, 26 Aug 2021 09:06:53 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/sql/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/tags/html/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JavaScript</title>
-      <link>https://qinry.github.io/tags/javascript/</link>
-      <pubDate>Sat, 21 Aug 2021 10:08:07 +0800</pubDate>
+      <item>
+        <title>css</title>
+        <link>https://qinry.github.io/tags/css/</link>
+        <pubDate>Mon, 23 Aug 2021 20:16:46 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/css/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Maven</title>
-      <link>https://qinry.github.io/tags/maven/</link>
-      <pubDate>Fri, 20 Aug 2021 15:47:23 +0800</pubDate>
+      <item>
+        <title>html</title>
+        <link>https://qinry.github.io/tags/html/</link>
+        <pubDate>Mon, 23 Aug 2021 13:22:52 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/html/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/tags/maven/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Git</title>
-      <link>https://qinry.github.io/tags/git/</link>
-      <pubDate>Wed, 18 Aug 2021 17:44:40 +0800</pubDate>
+      <item>
+        <title>javascript</title>
+        <link>https://qinry.github.io/tags/javascript/</link>
+        <pubDate>Sat, 21 Aug 2021 10:08:07 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/javascript/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Redis</title>
-      <link>https://qinry.github.io/tags/redis/</link>
-      <pubDate>Wed, 14 Jul 2021 17:02:54 +0800</pubDate>
+      <item>
+        <title>maven</title>
+        <link>https://qinry.github.io/tags/maven/</link>
+        <pubDate>Fri, 20 Aug 2021 15:47:23 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/maven/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/tags/redis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Algorithm</title>
-      <link>https://qinry.github.io/tags/algorithm/</link>
-      <pubDate>Sun, 31 Jan 2021 22:14:45 +0800</pubDate>
+      <item>
+        <title>redis</title>
+        <link>https://qinry.github.io/tags/redis/</link>
+        <pubDate>Wed, 14 Jul 2021 17:02:54 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/redis/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/tags/algorithm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Design Pattern</title>
-      <link>https://qinry.github.io/tags/design-pattern/</link>
-      <pubDate>Mon, 16 Nov 2020 08:08:26 +0800</pubDate>
+      <item>
+        <title>第三方类库</title>
+        <link>https://qinry.github.io/tags/%E7%AC%AC%E4%B8%89%E6%96%B9%E7%B1%BB%E5%BA%93/</link>
+        <pubDate>Fri, 02 Apr 2021 19:44:50 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/%E7%AC%AC%E4%B8%89%E6%96%B9%E7%B1%BB%E5%BA%93/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/tags/design-pattern/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>笔记</title>
-      <link>https://qinry.github.io/tags/%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Tue, 12 May 2020 22:06:42 +0800</pubDate>
+      <item>
+        <title>事务</title>
+        <link>https://qinry.github.io/tags/%E4%BA%8B%E5%8A%A1/</link>
+        <pubDate>Mon, 01 Mar 2021 19:43:16 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/%E4%BA%8B%E5%8A%A1/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/tags/%E7%AC%94%E8%AE%B0/</guid>
-      <description></description>
-    </item>
+      <item>
+        <title>json</title>
+        <link>https://qinry.github.io/tags/json/</link>
+        <pubDate>Mon, 08 Feb 2021 12:47:14 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/json/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>并发编程</title>
+        <link>https://qinry.github.io/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</link>
+        <pubDate>Fri, 05 Feb 2021 22:32:16 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>链表</title>
+        <link>https://qinry.github.io/tags/%E9%93%BE%E8%A1%A8/</link>
+        <pubDate>Sun, 31 Jan 2021 22:14:45 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/%E9%93%BE%E8%A1%A8/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>泛型</title>
+        <link>https://qinry.github.io/tags/%E6%B3%9B%E5%9E%8B/</link>
+        <pubDate>Sun, 31 Jan 2021 17:09:15 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/%E6%B3%9B%E5%9E%8B/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>常用类库</title>
+        <link>https://qinry.github.io/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%BA%93/</link>
+        <pubDate>Sun, 31 Jan 2021 17:08:58 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%BA%93/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>面向对象编程</title>
+        <link>https://qinry.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</link>
+        <pubDate>Thu, 21 Jan 2021 14:27:16 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>基础语法</title>
+        <link>https://qinry.github.io/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</link>
+        <pubDate>Thu, 21 Jan 2021 14:26:51 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>jar</title>
+        <link>https://qinry.github.io/tags/jar/</link>
+        <pubDate>Tue, 28 Apr 2020 14:50:00 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/jar/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>zip</title>
+        <link>https://qinry.github.io/tags/zip/</link>
+        <pubDate>Tue, 28 Apr 2020 14:50:00 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/zip/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>递归</title>
+        <link>https://qinry.github.io/tags/%E9%80%92%E5%BD%92/</link>
+        <pubDate>Mon, 27 Apr 2020 20:21:23 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/%E9%80%92%E5%BD%92/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>index</title>
+        <link>https://qinry.github.io/tags/index/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/index/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+
     
   </channel>
 </rss>

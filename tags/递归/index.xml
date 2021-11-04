@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>递归 on 槎城小子</title>
+    <link>https://qinry.github.io/tags/%E9%80%92%E5%BD%92/</link>
+    <description>Recent content in 递归 on 槎城小子</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <managingEditor>lixiaoqin490@gmail.com (槎城小子)</managingEditor>
+    <webMaster>lixiaoqin490@gmail.com (槎城小子)</webMaster>
+    <copyright>©2021, All Rights Reserved</copyright>
+    <lastBuildDate>Mon, 27 Apr 2020 20:21:23 +0800</lastBuildDate>
+    
+        <atom:link href="https://qinry.github.io/tags/%E9%80%92%E5%BD%92/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>简简单单知道递归</title>
+        <link>https://qinry.github.io/posts/2020/04/algorithm-recursion/</link>
+        <pubDate>Mon, 27 Apr 2020 20:21:23 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Mon, 27 Apr 2020 20:21:23 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2020/04/algorithm-recursion/</guid>
+        <description>一、递归的含义 递归就是函数或方法通过调用自己本身来达到解决问题的目的，这种解法形式叫递归。用欧几里得算法的 Java 描述说明问题： 任意一对非负整数 p</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>递归</category>
+            
+          
+        
+        
+          
+            
+              <category>算法</category>
+            
+          
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

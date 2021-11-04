@@ -1,37 +1,116 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>Redis on 欢迎来到槎城小子的博客！</title>
+    <title>redis on 槎城小子</title>
     <link>https://qinry.github.io/tags/redis/</link>
-    <description>Recent content in Redis on 欢迎来到槎城小子的博客！</description>
+    <description>Recent content in redis on 槎城小子</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 14 Jul 2021 17:02:54 +0800</lastBuildDate><atom:link href="https://qinry.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Redis集群</title>
-      <link>https://qinry.github.io/posts/2021/07/redis-cluster/</link>
-      <pubDate>Wed, 14 Jul 2021 17:02:54 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2021/07/redis-cluster/</guid>
-      <description>.aspect-ratio { position: relative; width: 100%; height: 0; padding-bottom: 75%; } .aspect-ratio iframe { position: absolute; width: 100%; height: 100%; left: 0; top: 0; } 一、集群架构 (1)所有的 Redis 节点彼此互联（PING-PONG 机制），内部使用二进制协议优化传</description>
-    </item>
+    <language>zh</language>
+    <managingEditor>lixiaoqin490@gmail.com (槎城小子)</managingEditor>
+    <webMaster>lixiaoqin490@gmail.com (槎城小子)</webMaster>
+    <copyright>©2021, All Rights Reserved</copyright>
+    <lastBuildDate>Wed, 14 Jul 2021 17:02:54 +0800</lastBuildDate>
     
-    <item>
-      <title>Redis 持久化</title>
-      <link>https://qinry.github.io/posts/2021/07/redis-persistence/</link>
-      <pubDate>Wed, 14 Jul 2021 17:01:46 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2021/07/redis-persistence/</guid>
-      <description>.aspect-ratio { position: relative; width: 100%; height: 0; padding-bottom: 75%; } .aspect-ratio iframe { position: absolute; width: 100%; height: 100%; left: 0; top: 0; } 一、Redis 持久化存储方式 由于 Redis 的值放在内存中，为防止突然断电等特殊情况的发生，需要对数</description>
-    </item>
+        <atom:link href="https://qinry.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
     
-    <item>
-      <title>Redis 入门</title>
-      <link>https://qinry.github.io/posts/2021/07/redis/</link>
-      <pubDate>Wed, 14 Jul 2021 16:54:53 +0800</pubDate>
+
       
-      <guid>https://qinry.github.io/posts/2021/07/redis/</guid>
-      <description>简单介绍Redis。它是一款键值数据库。它还是非关系型数据库（Nosql）。常常用作内存缓存，应用于频繁的读写场景中。 .aspect-ratio { position: relative; width: 100%; height: 0; padding-bottom: 75%; }</description>
-    </item>
+      <item>
+        <title>Redis集群</title>
+        <link>https://qinry.github.io/posts/2021/07/redis-cluster/</link>
+        <pubDate>Wed, 14 Jul 2021 17:02:54 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Wed, 14 Jul 2021 17:02:54 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/07/redis-cluster/</guid>
+        <description>一、集群架构 (1)所有的 Redis 节点彼此互联（PING-PONG 机制），内部使用二进制协议优化传输速度和带宽. (2)节点的 fail 是通过集群中超过半数的</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>redis</category>
+            
+          
+        
+        
+          
+            
+              <category>数据库</category>
+            
+          
+        
+        
+      </item>
+      
+      <item>
+        <title>Redis 持久化</title>
+        <link>https://qinry.github.io/posts/2021/07/redis-persistence/</link>
+        <pubDate>Wed, 14 Jul 2021 17:01:46 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Wed, 14 Jul 2021 17:01:46 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/07/redis-persistence/</guid>
+        <description>一、Redis 持久化存储方式 由于 Redis 的值放在内存中，为防止突然断电等特殊情况的发生，需要对数据进行持久化备份。即将内存数据保存 到硬盘。 1.1.RDB 持久化</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>redis</category>
+            
+          
+        
+        
+          
+            
+              <category>数据库</category>
+            
+          
+        
+        
+      </item>
+      
+      <item>
+        <title>Redis 入门</title>
+        <link>https://qinry.github.io/posts/2021/07/redis/</link>
+        <pubDate>Wed, 14 Jul 2021 16:54:53 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Wed, 14 Jul 2021 16:54:53 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/07/redis/</guid>
+        <description>简单介绍Redis。它是一款键值数据库。它还是非关系型数据库（Nosql）。常常用作内存缓存，应用于频繁的读写场景中。 一、基本数据结构 Red</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>redis</category>
+            
+          
+        
+        
+          
+            
+              <category>数据库</category>
+            
+          
+        
+        
+      </item>
+      
+
     
   </channel>
 </rss>

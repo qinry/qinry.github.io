@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>json on 槎城小子</title>
+    <link>https://qinry.github.io/tags/json/</link>
+    <description>Recent content in json on 槎城小子</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <managingEditor>lixiaoqin490@gmail.com (槎城小子)</managingEditor>
+    <webMaster>lixiaoqin490@gmail.com (槎城小子)</webMaster>
+    <copyright>©2021, All Rights Reserved</copyright>
+    <lastBuildDate>Mon, 08 Feb 2021 12:47:14 +0800</lastBuildDate>
+    
+        <atom:link href="https://qinry.github.io/tags/json/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>JSON解析</title>
+        <link>https://qinry.github.io/posts/2021/02/java-json-parse/</link>
+        <pubDate>Mon, 08 Feb 2021 12:47:14 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Mon, 08 Feb 2021 12:47:14 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/02/java-json-parse/</guid>
+        <description>一、JSON概述 JSON(JavaScriptObject Notation, JS 对象简谱) 是一种轻量级的数据交换格式。它基于 ECMAScript (欧洲计算机协会制定的js规范)的一个子集，采用完全独立于编程语言的文本</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>第三方类库</category>
+            
+          
+            
+              <category>json</category>
+            
+          
+        
+        
+          
+            
+              <category>java</category>
+            
+          
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

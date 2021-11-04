@@ -1,19 +1,56 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>Vue on 欢迎来到槎城小子的博客！</title>
+    <title>vue on 槎城小子</title>
     <link>https://qinry.github.io/tags/vue/</link>
-    <description>Recent content in Vue on 欢迎来到槎城小子的博客！</description>
+    <description>Recent content in vue on 槎城小子</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 20 Sep 2021 06:38:50 +0800</lastBuildDate><atom:link href="https://qinry.github.io/tags/vue/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Vue.js入门</title>
-      <link>https://qinry.github.io/posts/2021/09/vue-js/</link>
-      <pubDate>Mon, 20 Sep 2021 06:38:50 +0800</pubDate>
+    <language>zh</language>
+    <managingEditor>lixiaoqin490@gmail.com (槎城小子)</managingEditor>
+    <webMaster>lixiaoqin490@gmail.com (槎城小子)</webMaster>
+    <copyright>©2021, All Rights Reserved</copyright>
+    <lastBuildDate>Mon, 20 Sep 2021 06:38:50 +0800</lastBuildDate>
+    
+        <atom:link href="https://qinry.github.io/tags/vue/index.xml" rel="self" type="application/rss+xml" />
+    
+
       
-      <guid>https://qinry.github.io/posts/2021/09/vue-js/</guid>
-      <description>概述 Vue，一套用于构建用户界面的渐进式框架，被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，还支持事件驱动。 什么是MVVM MVV</description>
-    </item>
+      <item>
+        <title>Vue.js入门</title>
+        <link>https://qinry.github.io/posts/2021/09/vue-js/</link>
+        <pubDate>Mon, 20 Sep 2021 06:38:50 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Mon, 20 Sep 2021 06:38:50 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/09/vue-js/</guid>
+        <description>概述 Vue，一套用于构建用户界面的渐进式框架，被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，还支持事件驱动。 什么是MVVM MVV</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>vue</category>
+            
+          
+        
+        
+          
+            
+              <category>web</category>
+            
+          
+        
+        
+      </item>
+      
+
     
   </channel>
 </rss>

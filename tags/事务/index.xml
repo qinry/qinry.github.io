@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>事务 on 槎城小子</title>
+    <link>https://qinry.github.io/tags/%E4%BA%8B%E5%8A%A1/</link>
+    <description>Recent content in 事务 on 槎城小子</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <managingEditor>lixiaoqin490@gmail.com (槎城小子)</managingEditor>
+    <webMaster>lixiaoqin490@gmail.com (槎城小子)</webMaster>
+    <copyright>©2021, All Rights Reserved</copyright>
+    <lastBuildDate>Mon, 01 Mar 2021 19:43:16 +0800</lastBuildDate>
+    
+        <atom:link href="https://qinry.github.io/tags/%E4%BA%8B%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>MySQL事务与SQL优化</title>
+        <link>https://qinry.github.io/posts/2021/03/transaction/</link>
+        <pubDate>Mon, 01 Mar 2021 19:43:16 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Mon, 01 Mar 2021 19:43:16 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/03/transaction/</guid>
+        <description>一、事务的语法 非常简单 set autocommit = 0; -- 关闭自动提交 start tansaction; -- 事务开始，也可以换成begin; ... -- 一系列SQL语句完成一个操作 -- 当执行commit或ro</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>事务</category>
+            
+          
+            
+              <category>mysql</category>
+            
+          
+        
+        
+          
+            
+              <category>数据库</category>
+            
+          
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

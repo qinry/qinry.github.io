@@ -1,487 +1,857 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>欢迎来到槎城小子的博客！</title>
+    <title>槎城小子</title>
     <link>https://qinry.github.io/</link>
-    <description>Recent content on 欢迎来到槎城小子的博客！</description>
+    <description>Recent content on 槎城小子</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 02 Nov 2021 11:01:21 +0800</lastBuildDate><atom:link href="https://qinry.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>快速开始Java8流式编程</title>
-      <link>https://qinry.github.io/posts/2021/11/quickstart-java8-stream-programming/</link>
-      <pubDate>Tue, 02 Nov 2021 11:01:21 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2021/11/quickstart-java8-stream-programming/</guid>
-      <description>流是什么 流（Streams）是与任何特定存储机制无关的元素序列——实际上，我们说流是 “没有存储 “的。 集合优化了对象的存储，而流（Stream</description>
-    </item>
+    <language>zh</language>
+    <managingEditor>lixiaoqin490@gmail.com (槎城小子)</managingEditor>
+    <webMaster>lixiaoqin490@gmail.com (槎城小子)</webMaster>
+    <copyright>©2021, All Rights Reserved</copyright>
+    <lastBuildDate>Tue, 02 Nov 2021 11:01:21 +0800</lastBuildDate>
     
-    <item>
-      <title>快速开始Java8函数式编程</title>
-      <link>https://qinry.github.io/posts/2021/11/quickstart-java8-functional-programming/</link>
-      <pubDate>Tue, 02 Nov 2021 06:12:46 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2021/11/quickstart-java8-functional-programming/</guid>
-      <description>Java 8 Lambda 表达式和方法引用 (Method References) 允许你以函数式编程。函数式编程抽象行为，通过合并现有代码来生成新功能而不是从头开始编写所有内容，我们可以更快地获得</description>
-    </item>
+        <atom:link href="https://qinry.github.io/index.xml" rel="self" type="application/rss+xml" />
     
-    <item>
-      <title>Mongodb 快速开始</title>
-      <link>https://qinry.github.io/posts/2021/10/mongodb-crash/</link>
-      <pubDate>Tue, 26 Oct 2021 20:39:48 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2021/10/mongodb-crash/</guid>
-      <description>简介 MongoDB，是一款分布式文件存储数据库系统。是NoSQL类型（Not Only SQL）。旨在为WEB应用提供可扩展的高性能数据存储解决方案。</description>
-    </item>
-    
-    <item>
-      <title>NIO 网络编程</title>
-      <link>https://qinry.github.io/posts/2021/10/nio-network/</link>
-      <pubDate>Tue, 26 Oct 2021 17:16:15 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2021/10/nio-network/</guid>
-      <description>IO模型 有三个重要的IO模型： BIO 同步阻塞IO NIO 同步非阻塞IO AIO 异步IO 同步与异步。它们是相对于应用程序与系统内核交互讨论的。 同步是应用触发I</description>
-    </item>
-    
-    <item>
-      <title>Vue.js入门</title>
-      <link>https://qinry.github.io/posts/2021/09/vue-js/</link>
-      <pubDate>Mon, 20 Sep 2021 06:38:50 +0800</pubDate>
       
-      <guid>https://qinry.github.io/posts/2021/09/vue-js/</guid>
-      <description>概述 Vue，一套用于构建用户界面的渐进式框架，被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，还支持事件驱动。 什么是MVVM MVV</description>
-    </item>
-    
-    <item>
-      <title>在MySQL学习SQL</title>
-      <link>https://qinry.github.io/posts/2021/08/mysql-sql-statement/</link>
-      <pubDate>Thu, 26 Aug 2021 09:06:53 +0800</pubDate>
+        
       
-      <guid>https://qinry.github.io/posts/2021/08/mysql-sql-statement/</guid>
-      <description>概述 数据库（database） 保存有组织的数据的容器（通常是一个或一组文件） 数据库管理系统（DBMS，Database Management System） 一种软</description>
-    </item>
-    
-    <item>
-      <title>CSS 语法</title>
-      <link>https://qinry.github.io/posts/2021/08/css-grammar/</link>
-      <pubDate>Mon, 23 Aug 2021 20:16:46 +0800</pubDate>
+
       
-      <guid>https://qinry.github.io/posts/2021/08/css-grammar/</guid>
-      <description>概述 CSS，即Cascading Style Sheets，中文意思层叠样式表。CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进</description>
-    </item>
-    
-    <item>
-      <title>HTML 语法</title>
-      <link>https://qinry.github.io/posts/2021/08/html-grammar/</link>
-      <pubDate>Mon, 23 Aug 2021 13:22:52 +0800</pubDate>
+      <item>
+        <title>快速开始Java8流式编程</title>
+        <link>https://qinry.github.io/posts/2021/11/quickstart-java8-stream-programming/</link>
+        <pubDate>Tue, 02 Nov 2021 11:01:21 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Tue, 02 Nov 2021 11:01:21 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/11/quickstart-java8-stream-programming/</guid>
+        <description>流是什么 流（Streams）是与任何特定存储机制无关的元素序列——实际上，我们说流是 “没有存储 “的。 集合优化了对象的存储，而流（Stream</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+          
+            
+              <category>java</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/08/html-grammar/</guid>
-      <description>概述 HTML，即Hyper Text Markup Language，中文是超文本标记语言 W3C标准： 结构化标准(HTML,XML) 表现标准语言(CSS) 行为标准</description>
-    </item>
-    
-    <item>
-      <title>Javascript 语法</title>
-      <link>https://qinry.github.io/posts/2021/08/javascript-grammar/</link>
-      <pubDate>Sat, 21 Aug 2021 10:08:07 +0800</pubDate>
+      <item>
+        <title>快速开始Java8函数式编程</title>
+        <link>https://qinry.github.io/posts/2021/11/quickstart-java8-functional-programming/</link>
+        <pubDate>Tue, 02 Nov 2021 06:12:46 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Tue, 02 Nov 2021 06:12:46 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/11/quickstart-java8-functional-programming/</guid>
+        <description>Java 8 Lambda 表达式和方法引用 (Method References) 允许你以函数式编程。函数式编程抽象行为，通过合并现有代码来生成新功能而不是从头开始编写所有内容，我们可以更快地获得</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+          
+            
+              <category>java</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/08/javascript-grammar/</guid>
-      <description>概述 Javascript 一种Web的编程语言，是互联网最流行的脚本语言。可以插入到HTML中，被所有的浏览器所执行。 ECMAScript 6，简称 ES6。ECMAScript 可以</description>
-    </item>
-    
-    <item>
-      <title>Maven 入门</title>
-      <link>https://qinry.github.io/posts/2021/08/maven-basic/</link>
-      <pubDate>Fri, 20 Aug 2021 15:47:23 +0800</pubDate>
+      <item>
+        <title>Mongodb 快速开始</title>
+        <link>https://qinry.github.io/posts/2021/10/mongodb-crash/</link>
+        <pubDate>Tue, 26 Oct 2021 20:39:48 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Tue, 26 Oct 2021 20:39:48 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/10/mongodb-crash/</guid>
+        <description>简介 MongoDB，是一款分布式文件存储数据库系统。是NoSQL类型（Not Only SQL）。旨在为WEB应用提供可扩展的高性能数据存储解决方案。</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>mongodb</category>
+            
+          
+        
+        
+          
+            
+              <category>数据库</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/08/maven-basic/</guid>
-      <description>什么是Maven Apache Maven 是一个软件项目管理工具。基于项目对象模型的概念，它可以通过配置信息来管理项目的构建、报告和文档这些行为。 其目标旨在： 使项</description>
-    </item>
-    
-    <item>
-      <title>Git 分支</title>
-      <link>https://qinry.github.io/posts/2021/08/git-branch/</link>
-      <pubDate>Wed, 18 Aug 2021 17:44:40 +0800</pubDate>
+      <item>
+        <title>NIO 网络编程</title>
+        <link>https://qinry.github.io/posts/2021/10/nio-network/</link>
+        <pubDate>Tue, 26 Oct 2021 17:16:15 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Tue, 26 Oct 2021 17:16:15 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/10/nio-network/</guid>
+        <description>IO模型 有三个重要的IO模型： BIO 同步阻塞IO NIO 同步非阻塞IO AIO 异步IO 同步与异步。它们是相对于应用程序与系统内核交互讨论的。 同步是应用触发I</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>io</category>
+            
+          
+        
+        
+          
+            
+              <category>网络编程</category>
+            
+          
+            
+              <category>java</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/08/git-branch/</guid>
-      <description>创建分支 git branch &amp;lt;分支名&amp;gt; git branch dev 查看分支 git branch # 等价于git branch -a，显示所有分支 效果： * 表示当前活跃的分支 切换分支 git checkout &amp;lt;分支名&amp;</description>
-    </item>
-    
-    <item>
-      <title>Redis集群</title>
-      <link>https://qinry.github.io/posts/2021/07/redis-cluster/</link>
-      <pubDate>Wed, 14 Jul 2021 17:02:54 +0800</pubDate>
+      <item>
+        <title>Vue.js入门</title>
+        <link>https://qinry.github.io/posts/2021/09/vue-js/</link>
+        <pubDate>Mon, 20 Sep 2021 06:38:50 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Mon, 20 Sep 2021 06:38:50 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/09/vue-js/</guid>
+        <description>概述 Vue，一套用于构建用户界面的渐进式框架，被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，还支持事件驱动。 什么是MVVM MVV</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>vue</category>
+            
+          
+        
+        
+          
+            
+              <category>web</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/07/redis-cluster/</guid>
-      <description>.aspect-ratio { position: relative; width: 100%; height: 0; padding-bottom: 75%; } .aspect-ratio iframe { position: absolute; width: 100%; height: 100%; left: 0; top: 0; } 一、集群架构 (1)所有的 Redis 节点彼此互联（PING-PONG 机制），内部使用二进制协议优化传</description>
-    </item>
-    
-    <item>
-      <title>Redis 持久化</title>
-      <link>https://qinry.github.io/posts/2021/07/redis-persistence/</link>
-      <pubDate>Wed, 14 Jul 2021 17:01:46 +0800</pubDate>
+      <item>
+        <title>在MySQL学习SQL</title>
+        <link>https://qinry.github.io/posts/2021/08/mysql-sql-statement/</link>
+        <pubDate>Thu, 26 Aug 2021 09:06:53 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Thu, 26 Aug 2021 09:06:53 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/08/mysql-sql-statement/</guid>
+        <description>概述 数据库（database） 保存有组织的数据的容器（通常是一个或一组文件） 数据库管理系统（DBMS，Database Management System） 一种软</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>sql</category>
+            
+          
+            
+              <category>mysql</category>
+            
+          
+        
+        
+          
+            
+              <category>数据库</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/07/redis-persistence/</guid>
-      <description>.aspect-ratio { position: relative; width: 100%; height: 0; padding-bottom: 75%; } .aspect-ratio iframe { position: absolute; width: 100%; height: 100%; left: 0; top: 0; } 一、Redis 持久化存储方式 由于 Redis 的值放在内存中，为防止突然断电等特殊情况的发生，需要对数</description>
-    </item>
-    
-    <item>
-      <title>Redis 入门</title>
-      <link>https://qinry.github.io/posts/2021/07/redis/</link>
-      <pubDate>Wed, 14 Jul 2021 16:54:53 +0800</pubDate>
+      <item>
+        <title>CSS 语法</title>
+        <link>https://qinry.github.io/posts/2021/08/css-grammar/</link>
+        <pubDate>Mon, 23 Aug 2021 20:16:46 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Mon, 23 Aug 2021 20:16:46 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/08/css-grammar/</guid>
+        <description>概述 CSS，即Cascading Style Sheets，中文意思层叠样式表。CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>css</category>
+            
+          
+        
+        
+          
+            
+              <category>web</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/07/redis/</guid>
-      <description>简单介绍Redis。它是一款键值数据库。它还是非关系型数据库（Nosql）。常常用作内存缓存，应用于频繁的读写场景中。 .aspect-ratio { position: relative; width: 100%; height: 0; padding-bottom: 75%; }</description>
-    </item>
-    
-    <item>
-      <title>JDBC的使用</title>
-      <link>https://qinry.github.io/posts/2021/04/java-jdbc/</link>
-      <pubDate>Fri, 02 Apr 2021 19:44:50 +0800</pubDate>
+      <item>
+        <title>HTML 语法</title>
+        <link>https://qinry.github.io/posts/2021/08/html-grammar/</link>
+        <pubDate>Mon, 23 Aug 2021 13:22:52 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Mon, 23 Aug 2021 13:22:52 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/08/html-grammar/</guid>
+        <description>概述 HTML，即Hyper Text Markup Language，中文是超文本标记语言 W3C标准： 结构化标准(HTML,XML) 表现标准语言(CSS) 行为标准</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>html</category>
+            
+          
+        
+        
+          
+            
+              <category>web</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/04/java-jdbc/</guid>
-      <description>什么是JDBC JDBC是执行SQL的java API，为关系型数据库提供访问。JDBC可以在更大平台使用像Windows、Mac、Unix等等</description>
-    </item>
-    
-    <item>
-      <title>MySQL事务与SQL优化</title>
-      <link>https://qinry.github.io/posts/2021/03/transaction/</link>
-      <pubDate>Mon, 01 Mar 2021 19:43:16 +0800</pubDate>
+      <item>
+        <title>Javascript 语法</title>
+        <link>https://qinry.github.io/posts/2021/08/javascript-grammar/</link>
+        <pubDate>Sat, 21 Aug 2021 10:08:07 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Sat, 21 Aug 2021 10:08:07 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/08/javascript-grammar/</guid>
+        <description>概述 Javascript 一种Web的编程语言，是互联网最流行的脚本语言。可以插入到HTML中，被所有的浏览器所执行。 ECMAScript 6，简称 ES6。ECMAScript 可以</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>javascript</category>
+            
+          
+        
+        
+          
+            
+              <category>web</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/03/transaction/</guid>
-      <description>一、事务的语法 非常简单 set autocommit = 0; -- 关闭自动提交 start tansaction; -- 事务开始，也可以换成begin; ... -- 一系列SQL语句完成一个操作 -- 当执行commit或ro</description>
-    </item>
-    
-    <item>
-      <title>JSON解析</title>
-      <link>https://qinry.github.io/posts/2021/02/java-json-parse/</link>
-      <pubDate>Mon, 08 Feb 2021 12:47:14 +0800</pubDate>
+      <item>
+        <title>Maven 入门</title>
+        <link>https://qinry.github.io/posts/2021/08/maven-basic/</link>
+        <pubDate>Fri, 20 Aug 2021 15:47:23 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Fri, 20 Aug 2021 15:47:23 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/08/maven-basic/</guid>
+        <description>什么是Maven Apache Maven 是一个软件项目管理工具。基于项目对象模型的概念，它可以通过配置信息来管理项目的构建、报告和文档这些行为。 其目标旨在： 使项</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>maven</category>
+            
+          
+        
+        
+          
+            
+              <category>构建工具</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/02/java-json-parse/</guid>
-      <description>一、JSON概述 JSON(JavaScriptObject Notation, JS 对象简谱) 是一种轻量级的数据交换格式。它基于 ECMAScript (欧洲计算机协会制定的js规范)的一个子集，采用完全独立于编程语言的文本</description>
-    </item>
-    
-    <item>
-      <title>多线程</title>
-      <link>https://qinry.github.io/posts/2021/02/java-concurrent/</link>
-      <pubDate>Fri, 05 Feb 2021 22:32:16 +0800</pubDate>
+      <item>
+        <title>Git 分支</title>
+        <link>https://qinry.github.io/posts/2021/08/git-branch/</link>
+        <pubDate>Wed, 18 Aug 2021 17:44:40 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Wed, 18 Aug 2021 17:44:40 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/08/git-branch/</guid>
+        <description>创建分支 git branch &amp;lt;分支名&amp;gt; git branch dev 查看分支 git branch # 等价于git branch -a，显示所有分支 效果： * 表示当前活跃的分支 切换分支 git checkout &amp;lt;分支名&amp;</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+          
+            
+              <category>git</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/02/java-concurrent/</guid>
-      <description>一、概述 进程：是一个内存中运行的应用程序，每个进程都有一个独立空间 线程：是进程中的一个执行路径，共享一个内存空间，线程之间可以自由切换，并发</description>
-    </item>
-    
-    <item>
-      <title>链表</title>
-      <link>https://qinry.github.io/posts/2021/01/algorithm-list/</link>
-      <pubDate>Sun, 31 Jan 2021 22:14:45 +0800</pubDate>
+      <item>
+        <title>Redis集群</title>
+        <link>https://qinry.github.io/posts/2021/07/redis-cluster/</link>
+        <pubDate>Wed, 14 Jul 2021 17:02:54 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Wed, 14 Jul 2021 17:02:54 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/07/redis-cluster/</guid>
+        <description>一、集群架构 (1)所有的 Redis 节点彼此互联（PING-PONG 机制），内部使用二进制协议优化传输速度和带宽. (2)节点的 fail 是通过集群中超过半数的</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>redis</category>
+            
+          
+        
+        
+          
+            
+              <category>数据库</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/01/algorithm-list/</guid>
-      <description>一、数组与链表 链表 [Linked List]：链表是由一组不必相连（不必相连：可以连续也可以不连续）的内 存结构（节点），按特定的顺序链接在一起的抽象数据类</description>
-    </item>
-    
-    <item>
-      <title>集合框架</title>
-      <link>https://qinry.github.io/posts/2021/01/java-collection/</link>
-      <pubDate>Sun, 31 Jan 2021 22:14:16 +0800</pubDate>
+      <item>
+        <title>Redis 持久化</title>
+        <link>https://qinry.github.io/posts/2021/07/redis-persistence/</link>
+        <pubDate>Wed, 14 Jul 2021 17:01:46 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Wed, 14 Jul 2021 17:01:46 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/07/redis-persistence/</guid>
+        <description>一、Redis 持久化存储方式 由于 Redis 的值放在内存中，为防止突然断电等特殊情况的发生，需要对数据进行持久化备份。即将内存数据保存 到硬盘。 1.1.RDB 持久化</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>redis</category>
+            
+          
+        
+        
+          
+            
+              <category>数据库</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/01/java-collection/</guid>
-      <description>集合框架图： 集合框架提供两个基本的接口：Collection和Map。Collection聚集的数据是独立的，没有关联值。Map聚集的数据是</description>
-    </item>
-    
-    <item>
-      <title>泛型</title>
-      <link>https://qinry.github.io/posts/2021/01/java-generics/</link>
-      <pubDate>Sun, 31 Jan 2021 17:09:15 +0800</pubDate>
+      <item>
+        <title>Redis 入门</title>
+        <link>https://qinry.github.io/posts/2021/07/redis/</link>
+        <pubDate>Wed, 14 Jul 2021 16:54:53 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Wed, 14 Jul 2021 16:54:53 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/07/redis/</guid>
+        <description>简单介绍Redis。它是一款键值数据库。它还是非关系型数据库（Nosql）。常常用作内存缓存，应用于频繁的读写场景中。 一、基本数据结构 Red</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>redis</category>
+            
+          
+        
+        
+          
+            
+              <category>数据库</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/01/java-generics/</guid>
-      <description>理解泛型 泛型是将类型参数化，类定义时一些成员变量和一些方法形式参数的类型成为变量，在使用时再传入一个具体类型，进一步抽象了变量的类型。好像是</description>
-    </item>
-    
-    <item>
-      <title>Java常用类库</title>
-      <link>https://qinry.github.io/posts/2021/01/java-common-class-library/</link>
-      <pubDate>Sun, 31 Jan 2021 17:08:58 +0800</pubDate>
+      <item>
+        <title>JDBC的使用</title>
+        <link>https://qinry.github.io/posts/2021/04/java-jdbc/</link>
+        <pubDate>Fri, 02 Apr 2021 19:44:50 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Fri, 02 Apr 2021 19:44:50 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/04/java-jdbc/</guid>
+        <description>什么是JDBC JDBC是执行SQL的java API，为关系型数据库提供访问。JDBC可以在更大平台使用像Windows、Mac、Unix等等</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>第三方类库</category>
+            
+          
+            
+              <category>mysql</category>
+            
+          
+        
+        
+          
+            
+              <category>java</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/01/java-common-class-library/</guid>
-      <description>一些常用类库的使用，没有列出完整代码，只有只有代码的主要部分 一、java.util.Objects java.lang.Objects是JDK</description>
-    </item>
-    
-    <item>
-      <title>面向对象编程</title>
-      <link>https://qinry.github.io/posts/2021/01/java-oriented-object/</link>
-      <pubDate>Thu, 21 Jan 2021 14:27:16 +0800</pubDate>
+      <item>
+        <title>MySQL事务与SQL优化</title>
+        <link>https://qinry.github.io/posts/2021/03/transaction/</link>
+        <pubDate>Mon, 01 Mar 2021 19:43:16 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Mon, 01 Mar 2021 19:43:16 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/03/transaction/</guid>
+        <description>一、事务的语法 非常简单 set autocommit = 0; -- 关闭自动提交 start tansaction; -- 事务开始，也可以换成begin; ... -- 一系列SQL语句完成一个操作 -- 当执行commit或ro</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>事务</category>
+            
+          
+            
+              <category>mysql</category>
+            
+          
+        
+        
+          
+            
+              <category>数据库</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/01/java-oriented-object/</guid>
-      <description>一、类和对象 面向对象是相对于面向过程来讲的，指的是把 相关的数据和方法组织为一个整体来看待。面向过程关注的是执行的过程，面向对象关注的是具备功</description>
-    </item>
-    
-    <item>
-      <title>Java基础语法</title>
-      <link>https://qinry.github.io/posts/2021/01/java-basic-grammar/</link>
-      <pubDate>Thu, 21 Jan 2021 14:26:51 +0800</pubDate>
+      <item>
+        <title>JSON解析</title>
+        <link>https://qinry.github.io/posts/2021/02/java-json-parse/</link>
+        <pubDate>Mon, 08 Feb 2021 12:47:14 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Mon, 08 Feb 2021 12:47:14 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/02/java-json-parse/</guid>
+        <description>一、JSON概述 JSON(JavaScriptObject Notation, JS 对象简谱) 是一种轻量级的数据交换格式。它基于 ECMAScript (欧洲计算机协会制定的js规范)的一个子集，采用完全独立于编程语言的文本</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>第三方类库</category>
+            
+          
+            
+              <category>json</category>
+            
+          
+        
+        
+          
+            
+              <category>java</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/01/java-basic-grammar/</guid>
-      <description>一、基本数据类型 Java的数据类型有基本数据类型（primitive）、类（包括枚举）、接口（包括注解）和数组，后三个类型有被称为引用类型（</description>
-    </item>
-    
-    <item>
-      <title>Java开发环境搭建与介绍</title>
-      <link>https://qinry.github.io/posts/2021/01/java-setup-development-environment/</link>
-      <pubDate>Sat, 16 Jan 2021 19:11:45 +0800</pubDate>
+      <item>
+        <title>多线程</title>
+        <link>https://qinry.github.io/posts/2021/02/java-concurrent/</link>
+        <pubDate>Fri, 05 Feb 2021 22:32:16 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Fri, 05 Feb 2021 22:32:16 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/02/java-concurrent/</guid>
+        <description>一、概述 进程：是一个内存中运行的应用程序，每个进程都有一个独立空间 线程：是进程中的一个执行路径，共享一个内存空间，线程之间可以自由切换，并发</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>并发编程</category>
+            
+          
+        
+        
+          
+            
+              <category>java</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2021/01/java-setup-development-environment/</guid>
-      <description>一、环境搭建 开发Java工程离不开JDK（Java Development Kit Java开发工具包），这个是最基本的必须下载和安装，还有为了方便开发者编写、运行和调试</description>
-    </item>
-    
-    <item>
-      <title>设计模式——单件模式</title>
-      <link>https://qinry.github.io/posts/2020/11/designpatterns-singleton/</link>
-      <pubDate>Mon, 16 Nov 2020 08:08:26 +0800</pubDate>
+      <item>
+        <title>链表</title>
+        <link>https://qinry.github.io/posts/2021/01/algorithm-list/</link>
+        <pubDate>Sun, 31 Jan 2021 22:14:45 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Sun, 31 Jan 2021 22:14:45 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/01/algorithm-list/</guid>
+        <description>一、数组与链表 链表 [Linked List]：链表是由一组不必相连（不必相连：可以连续也可以不连续）的内 存结构（节点），按特定的顺序链接在一起的抽象数据类</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>链表</category>
+            
+          
+        
+        
+          
+            
+              <category>算法</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2020/11/designpatterns-singleton/</guid>
-      <description>单件模式 什么是单件模式 单件模式是在设计模式中常用的一种需要为类只实例化唯一对象的设计方案。意思是说，对于某个类来说，其对象只能创建一个，且每</description>
-    </item>
-    
-    <item>
-      <title>优先队列的实现</title>
-      <link>https://qinry.github.io/posts/2020/08/algorithm-priority-queue/</link>
-      <pubDate>Thu, 06 Aug 2020 21:36:55 +0800</pubDate>
+      <item>
+        <title>泛型</title>
+        <link>https://qinry.github.io/posts/2021/01/java-generics/</link>
+        <pubDate>Sun, 31 Jan 2021 17:09:15 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Sun, 31 Jan 2021 17:09:15 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/01/java-generics/</guid>
+        <description>理解泛型 泛型是将类型参数化，类定义时一些成员变量和一些方法形式参数的类型成为变量，在使用时再传入一个具体类型，进一步抽象了变量的类型。好像是</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>泛型</category>
+            
+          
+        
+        
+          
+            
+              <category>java</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2020/08/algorithm-priority-queue/</guid>
-      <description>最大优先队列 API: public class MaxPQ&amp;lt;Key extends Comparable&amp;lt;Key&amp;gt;&amp;gt; 方法 功能描述 MaxPQ(int max) 创建一个初始容量为max的优先队列 void insert(Key x) 向优先队列插入一个元素 Key delMax() 删除最大元素并返回最大元素 boolean isEmpty() 返回</description>
-    </item>
-    
-    <item>
-      <title>排序</title>
-      <link>https://qinry.github.io/posts/2020/08/algorithm-sort/</link>
-      <pubDate>Thu, 06 Aug 2020 08:00:11 +0800</pubDate>
+      <item>
+        <title>Java常用类库</title>
+        <link>https://qinry.github.io/posts/2021/01/java-common-class-library/</link>
+        <pubDate>Sun, 31 Jan 2021 17:08:58 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Sun, 31 Jan 2021 17:08:58 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/01/java-common-class-library/</guid>
+        <description>一些常用类库的使用，没有列出完整代码，只有只有代码的主要部分 一、java.util.Objects java.lang.Objects是JDK</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>常用类库</category>
+            
+          
+        
+        
+          
+            
+              <category>java</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2020/08/algorithm-sort/</guid>
-      <description>排序算法类的模板 public class Example { public static void sort(Comparable[] a){ // ... 见下面详解 } private static boolean less(Comparable v, Comparable w) { return v.compareTo(w) &amp;lt; 0; } private static void exch(Comparable[] a, int i, int j) { Comparable t = a[i];a[i] = a[j];a[j] = t; } private static void show(Comparable[] a) { for(int i = 0; i &amp;lt; a.length;</description>
-    </item>
-    
-    <item>
-      <title>并查集的实现</title>
-      <link>https://qinry.github.io/posts/2020/07/algorithm-union-find/</link>
-      <pubDate>Mon, 06 Jul 2020 07:34:59 +0800</pubDate>
+      <item>
+        <title>面向对象编程</title>
+        <link>https://qinry.github.io/posts/2021/01/java-oriented-object/</link>
+        <pubDate>Thu, 21 Jan 2021 14:27:16 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Thu, 21 Jan 2021 14:27:16 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/01/java-oriented-object/</guid>
+        <description>一、类和对象 面向对象是相对于面向过程来讲的，指的是把 相关的数据和方法组织为一个整体来看待。面向过程关注的是执行的过程，面向对象关注的是具备功</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>面向对象编程</category>
+            
+          
+        
+        
+          
+            
+              <category>java</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2020/07/algorithm-union-find/</guid>
-      <description>问题描述：输入一对整数p、q，程序判断它们是否相连，如果相连，忽略这对数并处理下对数；否则将它们相连。p和q相连具有一种等价关系,说明： p和</description>
-    </item>
-    
-    <item>
-      <title>Java注解</title>
-      <link>https://qinry.github.io/posts/2020/05/java-annotation/</link>
-      <pubDate>Tue, 12 May 2020 22:06:42 +0800</pubDate>
+      <item>
+        <title>Java基础语法</title>
+        <link>https://qinry.github.io/posts/2021/01/java-basic-grammar/</link>
+        <pubDate>Thu, 21 Jan 2021 14:26:51 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Thu, 21 Jan 2021 14:26:51 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/01/java-basic-grammar/</guid>
+        <description>一、基本数据类型 Java的数据类型有基本数据类型（primitive）、类（包括枚举）、接口（包括注解）和数组，后三个类型有被称为引用类型（</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>基础语法</category>
+            
+          
+        
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2020/05/java-annotation/</guid>
-      <description>定义注解 import java.lang.annotation.*; @Target(ElementType.METHOND) @Retention(RetentionPolicy.RUNTIME) public @interface UseCase { int id(); String description() default &amp;quot;no description&amp;quot;; } 使用注解 import java.util.*; public class PasswordUtils { @UseCase(id = 47, description = &amp;quot;Passwords must contain at least one numeric&amp;quot;) public boolean validatePassword(String passwd) { return (passwd.matches(&amp;quot;\\w*\\d\\w*&amp;quot;)); } @UseCase(id = 48) public String encryptPassword(String passwd) { return new StringBuilder(passwd) .reverse().toString(); } @UseCase(id = 49, description = &amp;quot;New passwords</description>
-    </item>
-    
-    <item>
-      <title>背包、栈、队列实现</title>
-      <link>https://qinry.github.io/posts/2020/05/algorithm-basic-datastructure/</link>
-      <pubDate>Wed, 06 May 2020 08:24:50 +0800</pubDate>
+      <item>
+        <title>Java开发环境搭建与介绍</title>
+        <link>https://qinry.github.io/posts/2021/01/java-setup-development-environment/</link>
+        <pubDate>Sat, 16 Jan 2021 19:11:45 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Sat, 16 Jan 2021 19:11:45 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/01/java-setup-development-environment/</guid>
+        <description>一、环境搭建 开发Java工程离不开JDK（Java Development Kit Java开发工具包），这个是最基本的必须下载和安装，还有为了方便开发者编写、运行和调试</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+          
+            
+              <category>软件安装</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2020/05/algorithm-basic-datastructure/</guid>
-      <description>API: 背包 public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt; 方法 功能描述 Bag() 创建一个空包 void add(Item item) 添加一个元素 boolean isEmpty() 背包是否为空 int size() 背包中的元素数量 先进先出队列(FIFO) public class Queue&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt; 方法 功能描</description>
-    </item>
-    
-    <item>
-      <title>Java泛型</title>
-      <link>https://qinry.github.io/posts/2020/05/java-generics/</link>
-      <pubDate>Sun, 03 May 2020 23:29:33 +0800</pubDate>
+      <item>
+        <title>快速开始单件模式</title>
+        <link>https://qinry.github.io/posts/2020/11/designpatterns-singleton/</link>
+        <pubDate>Mon, 16 Nov 2020 08:08:26 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Mon, 16 Nov 2020 08:08:26 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2020/11/designpatterns-singleton/</guid>
+        <description>一、什么是单件模式 单件模式是在设计模式中常用的一种需要为类只实例化唯一对象的设计方案。意思是说，对于某个类来说，其对象只能创建一个，且每次使</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+          
+            
+              <category>设计模式</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2020/05/java-generics/</guid>
-      <description>有些一些方法处理不同类型，这些方法之间只有操作的类型的不同，方法名相同，方法的行为相似甚至相同，那么可以使用参数化类型，也叫泛型，用一个方法</description>
-    </item>
-    
-    <item>
-      <title>Java容器</title>
-      <link>https://qinry.github.io/posts/2020/05/java-containers/</link>
-      <pubDate>Sat, 02 May 2020 21:30:16 +0800</pubDate>
+      <item>
+        <title>Java 压缩文件的IO流</title>
+        <link>https://qinry.github.io/posts/2020/04/java-zip/</link>
+        <pubDate>Tue, 28 Apr 2020 14:50:00 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Tue, 28 Apr 2020 14:50:00 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2020/04/java-zip/</guid>
+        <description>Java I/O库提供压缩功能输入、输出流，这些类是按字节方式处理，常用的压缩类有DeflaterOutputStream和它的子类ZipOutpu</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>jar</category>
+            
+          
+            
+              <category>zip</category>
+            
+          
+            
+              <category>io</category>
+            
+          
+        
+        
+          
+            
+              <category>java</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2020/05/java-containers/</guid>
-      <description>留意 此文列出一些有可能常用的api，肯定没有文档列的全也没必要全面，还有旨在会用这些操作容器的方法即可，要了解更多回看《Thinking in J</description>
-    </item>
-    
-    <item>
-      <title>数组</title>
-      <link>https://qinry.github.io/posts/2020/05/java-arrays/</link>
-      <pubDate>Sat, 02 May 2020 21:27:15 +0800</pubDate>
+      <item>
+        <title>简简单单知道递归</title>
+        <link>https://qinry.github.io/posts/2020/04/algorithm-recursion/</link>
+        <pubDate>Mon, 27 Apr 2020 20:21:23 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Mon, 27 Apr 2020 20:21:23 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2020/04/algorithm-recursion/</guid>
+        <description>一、递归的含义 递归就是函数或方法通过调用自己本身来达到解决问题的目的，这种解法形式叫递归。用欧几里得算法的 Java 描述说明问题： 任意一对非负整数 p</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>递归</category>
+            
+          
+        
+        
+          
+            
+              <category>算法</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2020/05/java-arrays/</guid>
-      <description>数组的优势，在于它存储和执行的效率，支持随机访问元素。不过，数组对象使用前它的大小是固定，不可改变。这意味着创建固定大小的数组，以后要扩大其</description>
-    </item>
-    
-    <item>
-      <title>Java新I/O</title>
-      <link>https://qinry.github.io/posts/2020/04/java-newio/</link>
-      <pubDate>Tue, 28 Apr 2020 20:16:54 +0800</pubDate>
+      <item>
+        <title>git入门使用</title>
+        <link>https://qinry.github.io/posts/2019/10/git-simple-usage/</link>
+        <pubDate>Sun, 20 Oct 2019 08:50:01 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Sun, 20 Oct 2019 08:50:01 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2019/10/git-simple-usage/</guid>
+        <description>配置Git 提供Git用户名和邮箱 1 2 git config --global user.name &amp;#34;username&amp;#34; git config --global user.email &amp;#34;usernaem@example.com&amp;#34; 忽略文件 创建文件 .gitignore ，让Git忽略某目录中的所有文件(不跟踪这些文件)，使用它可以避免</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+          
+            
+              <category>git</category>
+            
+          
+        
+        
+      </item>
       
-      <guid>https://qinry.github.io/posts/2020/04/java-newio/</guid>
-      <description>通道是数据存储的地方，缓冲器充当着通道与外部数据交换的媒介 通道Channel FileChannel可以通过FileOutputStream、</description>
-    </item>
-    
-    <item>
-      <title>Java文件路径与I/O流</title>
-      <link>https://qinry.github.io/posts/2020/04/java-file-iostream/</link>
-      <pubDate>Tue, 28 Apr 2020 17:42:29 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2020/04/java-file-iostream/</guid>
-      <description>File类 File类作用和它的名字不太相符，File除了可以代表一个特定的文件，还可以表示一个目录（包含一组文件），最准确认为是“路径”。还</description>
-    </item>
-    
-    <item>
-      <title>Java对象序列化</title>
-      <link>https://qinry.github.io/posts/2020/04/java-serialize/</link>
-      <pubDate>Tue, 28 Apr 2020 16:01:24 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2020/04/java-serialize/</guid>
-      <description>持久性 如果对象能够在程序不运行还能保存其状态信息。可以通过将信息写入文件或数据库来达到程序下次执行时，对象重建后与上次拥有一致的信息。在Ja</description>
-    </item>
-    
-    <item>
-      <title>Java压缩文件的IO流</title>
-      <link>https://qinry.github.io/posts/2020/04/java-zip/</link>
-      <pubDate>Tue, 28 Apr 2020 14:50:00 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2020/04/java-zip/</guid>
-      <description>Java I/O库提供压缩功能输入、输出流，这些类是按字节方式处理，常用的压缩类有DeflaterOutputStream和它的子类ZipOutpu</description>
-    </item>
-    
-    <item>
-      <title>简简单单知道递归</title>
-      <link>https://qinry.github.io/posts/2020/04/algorithm-recursion/</link>
-      <pubDate>Mon, 27 Apr 2020 20:21:23 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2020/04/algorithm-recursion/</guid>
-      <description>递归的含义 递归就是函数或方法通过调用自己本身来达到解决问题的目的，这种解法形式叫递归。用欧几里得算法的Java描述说明问题： 任意一对非负整数</description>
-    </item>
-    
-    <item>
-      <title>Java类型信息</title>
-      <link>https://qinry.github.io/posts/2019/10/java-typeinfo/</link>
-      <pubDate>Thu, 28 Nov 2019 18:25:37 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2019/10/java-typeinfo/</guid>
-      <description>Class对象 每个类都存在包含类型信息的Class对象，Class对象属于Java类中Class类型。有两种方法获得某类型的Class 对象，</description>
-    </item>
-    
-    <item>
-      <title>Java字符串</title>
-      <link>https://qinry.github.io/posts/2019/10/java-strings/</link>
-      <pubDate>Mon, 25 Nov 2019 09:46:16 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2019/10/java-strings/</guid>
-      <description>String对象不可变 String对象被创建后不可修改，某些方法看似是修改源字符串，其实是重新创建新字符串来代替。 StringBuilder 在循环体中对String</description>
-    </item>
-    
-    <item>
-      <title>Java的异常处理</title>
-      <link>https://qinry.github.io/posts/2019/10/java-exceptions/</link>
-      <pubDate>Sun, 24 Nov 2019 08:47:23 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2019/10/java-exceptions/</guid>
-      <description>异常抛出 创建一个异常对象，然后从当前环境对象抛出，阻止当前方法或作用域的执行。 语法: throw new NullPointerException, 关键字throw之后，和创建普通对象一样创建异常对</description>
-    </item>
-    
-    <item>
-      <title>Java内部类</title>
-      <link>https://qinry.github.io/posts/2019/10/java-innerclass/</link>
-      <pubDate>Thu, 24 Oct 2019 16:48:18 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2019/10/java-innerclass/</guid>
-      <description>创建内部类 直接将内部类置于外围类中 // innerclasses/Parcel1.java // Creating inner classes public class Parcel1 { class Contents { private int i = 11; public int value() { return i; } } class Destination { private String label; Destination(String whereTo) { label = whereTo; } String readLabel() { return label; } } // Using inner classes looks just like</description>
-    </item>
-    
-    <item>
-      <title>Java接口</title>
-      <link>https://qinry.github.io/posts/2019/10/java-interfaces/</link>
-      <pubDate>Tue, 22 Oct 2019 16:29:48 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2019/10/java-interfaces/</guid>
-      <description>抽象类和抽象方法 抽象方法：仅有声明而没有方法体。 如： abstract void f(); 抽象类： 包含抽象方法的类。 如果一个类包含一个或多个抽象方法，该类必须限定为抽象的。</description>
-    </item>
-    
-    <item>
-      <title>Java多态</title>
-      <link>https://qinry.github.io/posts/2019/10/java-polymorphism/</link>
-      <pubDate>Mon, 21 Oct 2019 17:01:44 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2019/10/java-polymorphism/</guid>
-      <description>多态的作用 消除类型间的耦合关系 改善代码的组织结构和可读性，还能够创建可扩展程序 绑定 将一个方法调用同一个方法主体关联起来称为绑定。若在程序执行</description>
-    </item>
-    
-    <item>
-      <title>Java类复用</title>
-      <link>https://qinry.github.io/posts/2019/10/java-reuse/</link>
-      <pubDate>Mon, 21 Oct 2019 12:54:56 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2019/10/java-reuse/</guid>
-      <description>从现有类生成新类型 组合： 一般将现有类型作为新类型底层实现一部分来加以复用 继承：仅仅复用接口 用到 extends关键字 继承 继承中的初始化 在构造器</description>
-    </item>
-    
-    <item>
-      <title>Java的访问权限</title>
-      <link>https://qinry.github.io/posts/2019/10/java-access/</link>
-      <pubDate>Mon, 21 Oct 2019 09:06:40 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2019/10/java-access/</guid>
-      <description>访问权限控制 public （公共访问权限, 谁都可以访问） private （类内私有，用户无法访问） protected （继承访问权限，也提供包内访问） 包访问权限（没有关键词修饰，供包内</description>
-    </item>
-    
-    <item>
-      <title>Java初始化和清理</title>
-      <link>https://qinry.github.io/posts/2019/10/java-initialization/</link>
-      <pubDate>Sun, 20 Oct 2019 09:28:44 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2019/10/java-initialization/</guid>
-      <description>构造器确保初始化 构造器确保初始化，名字与类名一致，允许重载，且是特殊的无返回值(与void不同)的方法。 在Java中，初始化与创建绑定在一起</description>
-    </item>
-    
-    <item>
-      <title>git入门使用</title>
-      <link>https://qinry.github.io/posts/2019/10/git-simple-usage/</link>
-      <pubDate>Sun, 20 Oct 2019 08:50:01 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2019/10/git-simple-usage/</guid>
-      <description>配置Git 提供Git用户名和邮箱 git config --global user.name &amp;quot;username&amp;quot; git config --global user.email &amp;quot;usernaem@example.com&amp;quot; 忽略文件 创建文件 .gitignore ，让Git忽略某目录中的所有文件(不跟踪这些文件)，使用它可以避免项目</description>
-    </item>
-    
-    <item>
-      <title>Java的控制流程</title>
-      <link>https://qinry.github.io/posts/2019/10/java-control-flow/</link>
-      <pubDate>Sat, 19 Oct 2019 20:27:47 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2019/10/java-control-flow/</guid>
-      <description>关键词：if-else, while, do-while, for, return, break, continue, switch 条件判断 (if-else) 判断某个条件是否为真，若为真，则执行 if 后的语句;为假执行else后的语句 例如: int i = 47; if (i %</description>
-    </item>
-    
-    <item>
-      <title>Java操作符</title>
-      <link>https://qinry.github.io/posts/2019/10/java-operator/</link>
-      <pubDate>Fri, 18 Oct 2019 21:55:03 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2019/10/java-operator/</guid>
-      <description>静态导入 通过封装，自建类库已到达更简短语句答应字符串。可以静态导入（import static LibraryName）类库中静态对象 表达式 副作用：有些运</description>
-    </item>
-    
-    <item>
-      <title>Java对象</title>
-      <link>https://qinry.github.io/posts/2019/10/java-objects/</link>
-      <pubDate>Fri, 18 Oct 2019 20:41:27 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2019/10/java-objects/</guid>
-      <description>对象及内存分布 在Java中一切都被视为对象，但操纵的标识符实际上是对象的“引用” 字符串可以用带引号的初始值， 如： String s = &amp;quot;sdf&amp;quot;; 关键字 new 用来创建一个</description>
-    </item>
-    
-    <item>
-      <title>数据结构与算法分析(笔记) -- 开始</title>
-      <link>https://qinry.github.io/posts/2019/10/algorithm-beginning/</link>
-      <pubDate>Thu, 17 Oct 2019 23:29:10 +0800</pubDate>
-      
-      <guid>https://qinry.github.io/posts/2019/10/algorithm-beginning/</guid>
-      <description>递归使用的基本法则 基准情形：要有退出条件 不断推进：从初始条件趋向退出条件 设计准则 ：假设递归准确执行 合成效益法则：防止重复工作，比如生成斐波那</description>
-    </item>
+
     
   </channel>
 </rss>

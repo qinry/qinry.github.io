@@ -1,19 +1,56 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>MongoDB on 欢迎来到槎城小子的博客！</title>
+    <title>mongodb on 槎城小子</title>
     <link>https://qinry.github.io/tags/mongodb/</link>
-    <description>Recent content in MongoDB on 欢迎来到槎城小子的博客！</description>
+    <description>Recent content in mongodb on 槎城小子</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 26 Oct 2021 20:39:48 +0800</lastBuildDate><atom:link href="https://qinry.github.io/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Mongodb 快速开始</title>
-      <link>https://qinry.github.io/posts/2021/10/mongodb-crash/</link>
-      <pubDate>Tue, 26 Oct 2021 20:39:48 +0800</pubDate>
+    <language>zh</language>
+    <managingEditor>lixiaoqin490@gmail.com (槎城小子)</managingEditor>
+    <webMaster>lixiaoqin490@gmail.com (槎城小子)</webMaster>
+    <copyright>©2021, All Rights Reserved</copyright>
+    <lastBuildDate>Tue, 26 Oct 2021 20:39:48 +0800</lastBuildDate>
+    
+        <atom:link href="https://qinry.github.io/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+    
+
       
-      <guid>https://qinry.github.io/posts/2021/10/mongodb-crash/</guid>
-      <description>简介 MongoDB，是一款分布式文件存储数据库系统。是NoSQL类型（Not Only SQL）。旨在为WEB应用提供可扩展的高性能数据存储解决方案。</description>
-    </item>
+      <item>
+        <title>Mongodb 快速开始</title>
+        <link>https://qinry.github.io/posts/2021/10/mongodb-crash/</link>
+        <pubDate>Tue, 26 Oct 2021 20:39:48 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Tue, 26 Oct 2021 20:39:48 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/10/mongodb-crash/</guid>
+        <description>简介 MongoDB，是一款分布式文件存储数据库系统。是NoSQL类型（Not Only SQL）。旨在为WEB应用提供可扩展的高性能数据存储解决方案。</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>mongodb</category>
+            
+          
+        
+        
+          
+            
+              <category>数据库</category>
+            
+          
+        
+        
+      </item>
+      
+
     
   </channel>
 </rss>
