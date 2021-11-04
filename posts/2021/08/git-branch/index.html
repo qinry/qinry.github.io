@@ -1706,8 +1706,15 @@
 <h3 id="合并前的准备">合并前的准备</h3>
 <p>假如在master分支，新建了sample.txt并提交，提交信息维 &ldquo;init commit&rdquo;</p>
 <p>sample.txt内容如下：</p>
-<pre tabindex="0"><code>创建sample.txt
-</code></pre><p>用git log查看提交信息<br />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt:sample.txt" data-lang="txt:sample.txt">创建sample.txt
+</code></pre></td></tr></table>
+</div>
+</div><p>用git log查看提交信息<br />
 <img src="../../../../images/posts/2021/08/git-branch/4.png" alt="picture" /></p>
 <h3 id="模拟两个分支的并行操作">模拟两个分支的并行操作</h3>
 <p>切换到feature分支，在 sample.txt 追加新内容，并提交</p>
@@ -1729,8 +1736,8 @@ git merge dev
 <p>提示master和feature冲突发生在sample.txt</p>
 <p>查看 sample.txt</p>
 <p><img src="../../../../images/posts/2021/08/git-branch/10.png" alt="picture" /></p>
-<p>&ldquo;&laquo;&laquo;&laquo;&laquo;&lt;&ldquo;和&rdquo;===========&ldquo;之间表示当前分支的提交</p>
-<p>&ldquo;=========&ldquo;和&rdquo;&raquo;&raquo;&raquo;&raquo;&raquo;&gt;&ldquo;之间表示合并分支引入的提交</p>
+<p><code>&quot;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&quot;</code>和<code>&quot;===========&quot;</code>之间表示当前分支的提交</p>
+<p><code>&quot;=============&quot;</code>和<code>&quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;</code>之间表示合并分支引入的提交</p>
 <p>处理冲突后，效果：<br />
 <img src="../../../../images/posts/2021/08/git-branch/11.png" alt="picture" /></p>
 <h3 id="rebase合并分支">rebase合并分支</h3>
