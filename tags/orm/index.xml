@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>orm on 槎城小子</title>
+    <link>https://qinry.github.io/tags/orm/</link>
+    <description>Recent content in orm on 槎城小子</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <managingEditor>lixiaoqin490@gmail.com (槎城小子)</managingEditor>
+    <webMaster>lixiaoqin490@gmail.com (槎城小子)</webMaster>
+    <copyright>©2021, All Rights Reserved</copyright>
+    <lastBuildDate>Tue, 09 Nov 2021 09:46:00 +0800</lastBuildDate>
+    
+        <atom:link href="https://qinry.github.io/tags/orm/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>Mybatis 快速入门</title>
+        <link>https://qinry.github.io/posts/2021/11/mybatis-crash/</link>
+        <pubDate>Tue, 09 Nov 2021 09:46:00 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Tue, 09 Nov 2021 09:46:00 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/11/mybatis-crash/</guid>
+        <description>为Mybatis创建Gradle项目 使用idea创建gradle项目 项目结构： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 ├── build.gradle ├── gradle │ └── wrapper │</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>mybatis</category>
+            
+          
+            
+              <category>orm</category>
+            
+          
+        
+        
+          
+            
+              <category>java</category>
+            
+          
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

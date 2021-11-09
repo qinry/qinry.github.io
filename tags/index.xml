@@ -14,11 +14,47 @@
     <managingEditor>lixiaoqin490@gmail.com (槎城小子)</managingEditor>
     <webMaster>lixiaoqin490@gmail.com (槎城小子)</webMaster>
     <copyright>©2021, All Rights Reserved</copyright>
-    <lastBuildDate>Thu, 04 Nov 2021 21:37:57 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 09 Nov 2021 09:46:00 +0800</lastBuildDate>
     
         <atom:link href="https://qinry.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
 
+      
+      <item>
+        <title>mybatis</title>
+        <link>https://qinry.github.io/tags/mybatis/</link>
+        <pubDate>Tue, 09 Nov 2021 09:46:00 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/mybatis/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>orm</title>
+        <link>https://qinry.github.io/tags/orm/</link>
+        <pubDate>Tue, 09 Nov 2021 09:46:00 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/orm/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
       <item>
         <title>io</title>
