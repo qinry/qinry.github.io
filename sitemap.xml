@@ -3,33 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://qinry.github.io/</loc>
-    <lastmod>2021-11-11T10:00:16+08:00</lastmod>
+    <lastmod>2021-11-12T23:44:27+08:00</lastmod>
   </url><url>
     <loc>https://qinry.github.io/categories/</loc>
-    <lastmod>2021-11-11T10:00:16+08:00</lastmod>
+    <lastmod>2021-11-12T23:44:27+08:00</lastmod>
   </url><url>
     <loc>https://qinry.github.io/tags/gradle/</loc>
-    <lastmod>2021-11-11T10:00:16+08:00</lastmod>
+    <lastmod>2021-11-12T23:44:27+08:00</lastmod>
   </url><url>
     <loc>https://qinry.github.io/categories/java/</loc>
-    <lastmod>2021-11-11T10:00:16+08:00</lastmod>
+    <lastmod>2021-11-12T23:44:27+08:00</lastmod>
   </url><url>
     <loc>https://qinry.github.io/tags/mybatis/</loc>
-    <lastmod>2021-11-11T10:00:16+08:00</lastmod>
+    <lastmod>2021-11-12T23:44:27+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/posts/2021/11/mybatis-generator-crash/</loc>
+    <lastmod>2021-11-12T23:44:27+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/tags/orm/</loc>
+    <lastmod>2021-11-12T23:44:27+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/posts/</loc>
+    <lastmod>2021-11-12T23:44:27+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/tags/</loc>
+    <lastmod>2021-11-12T23:44:27+08:00</lastmod>
   </url><url>
     <loc>https://qinry.github.io/posts/2021/11/mybatis-spring-boot-starter-crash/</loc>
     <lastmod>2021-11-11T10:00:16+08:00</lastmod>
   </url><url>
-    <loc>https://qinry.github.io/tags/orm/</loc>
-    <lastmod>2021-11-11T10:00:16+08:00</lastmod>
-  </url><url>
-    <loc>https://qinry.github.io/posts/</loc>
-    <lastmod>2021-11-11T10:00:16+08:00</lastmod>
-  </url><url>
     <loc>https://qinry.github.io/tags/spring/</loc>
-    <lastmod>2021-11-11T10:00:16+08:00</lastmod>
-  </url><url>
-    <loc>https://qinry.github.io/tags/</loc>
     <lastmod>2021-11-11T10:00:16+08:00</lastmod>
   </url><url>
     <loc>https://qinry.github.io/posts/2021/11/mybatis-spring-crash/</loc>
