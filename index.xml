@@ -13,8 +13,8 @@
     <language>zh</language>
     <managingEditor>lixiaoqin490@gmail.com (槎城小子)</managingEditor>
     <webMaster>lixiaoqin490@gmail.com (槎城小子)</webMaster>
-    <copyright>©2021, All Rights Reserved</copyright>
-    <lastBuildDate>Tue, 07 Dec 2021 18:34:07 +0800</lastBuildDate>
+    <copyright>©2022, All Rights Reserved</copyright>
+    <lastBuildDate>Mon, 24 Jan 2022 09:24:21 +0800</lastBuildDate>
     
         <atom:link href="https://qinry.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -26,13 +26,13 @@
 
       
       <item>
-        <title>Docker 快速开始</title>
-        <link>https://qinry.github.io/posts/2021/12/docker-quickstart/</link>
-        <pubDate>Tue, 07 Dec 2021 18:34:07 +0800</pubDate>
+        <title>快速上手 Rocket MQ</title>
+        <link>https://qinry.github.io/posts/2022/01/quickstart-rocketmq/</link>
+        <pubDate>Mon, 24 Jan 2022 09:24:21 +0800</pubDate>
         <author>lixiaoqin490@gmail.com (槎城小子)</author>
-        <atom:modified>Tue, 07 Dec 2021 18:34:07 +0800</atom:modified>
-        <guid>https://qinry.github.io/posts/2021/12/docker-quickstart/</guid>
-        <description>Docker 概述 Docker 是一个用于开发、传送和运行应用程序的开放平台。使应用和基础设施隔离。像管理应用一样管理设施。 Docker 容器：打包和运行应用的隔离环境。 Doc</description>
+        <atom:modified>Mon, 24 Jan 2022 09:24:21 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2022/01/quickstart-rocketmq/</guid>
+        <description>一、简介 Apache RocketMQ 是一个统一的消息引擎，轻量级的数据处理平台 特点： 低延迟 以金融为导向，具有跟踪和审核功能的高可用性 行业可持续发展，万亿级消息容量保</description>
         
         <dc:creator>槎城小子</dc:creator>
         
@@ -41,14 +41,14 @@
         
           
             
-              <category>docker</category>
+              <category>rocketmq</category>
             
           
         
         
           
             
-              <category>容器化</category>
+              <category>mq</category>
             
           
         
@@ -518,7 +518,7 @@
         <author>lixiaoqin490@gmail.com (槎城小子)</author>
         <atom:modified>Fri, 20 Aug 2021 15:47:23 +0800</atom:modified>
         <guid>https://qinry.github.io/posts/2021/08/maven-basic/</guid>
-        <description>什么是 Maven Apache Maven 是一个软件项目管理工具。基于项目对象模型的概念，它可以通过配置信息来管理项目的构建、报告和生成文档这些行为。 其目标旨在： 使项目的</description>
+        <description>什么是Maven Apache Maven 是一个软件项目管理工具。基于项目对象模型的概念，它可以通过配置信息来管理项目的构建、报告和文档这些行为。 其目标旨在： 使项</description>
         
         <dc:creator>槎城小子</dc:creator>
         

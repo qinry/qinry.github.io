@@ -13,7 +13,7 @@
     <language>zh</language>
     <managingEditor>lixiaoqin490@gmail.com (槎城小子)</managingEditor>
     <webMaster>lixiaoqin490@gmail.com (槎城小子)</webMaster>
-    <copyright>©2021, All Rights Reserved</copyright>
+    <copyright>©2022, All Rights Reserved</copyright>
     <lastBuildDate>Fri, 20 Aug 2021 15:47:23 +0800</lastBuildDate>
     
         <atom:link href="https://qinry.github.io/tags/maven/index.xml" rel="self" type="application/rss+xml" />
@@ -27,7 +27,7 @@
         <author>lixiaoqin490@gmail.com (槎城小子)</author>
         <atom:modified>Fri, 20 Aug 2021 15:47:23 +0800</atom:modified>
         <guid>https://qinry.github.io/posts/2021/08/maven-basic/</guid>
-        <description>什么是 Maven Apache Maven 是一个软件项目管理工具。基于项目对象模型的概念，它可以通过配置信息来管理项目的构建、报告和生成文档这些行为。 其目标旨在： 使项目的</description>
+        <description>什么是Maven Apache Maven 是一个软件项目管理工具。基于项目对象模型的概念，它可以通过配置信息来管理项目的构建、报告和文档这些行为。 其目标旨在： 使项</description>
         
         <dc:creator>槎城小子</dc:creator>
         
