@@ -1644,7 +1644,7 @@
 <div class="single__infos">
   <time class="single__info" title="创建日期">📅&nbsp;2022年01月24日 </time>
   
-  &nbsp;&middot;&nbsp; <span class="single__info" title="阅读时长"> ☕&nbsp;3&nbsp;分钟 </span>
+  &nbsp;&middot;&nbsp; <span class="single__info" title="阅读时长"> ☕&nbsp;9&nbsp;分钟 </span>
   
   <span class="single__info">
     
@@ -1677,18 +1677,28 @@
     <li><a href="#一简介">一、简介</a></li>
     <li><a href="#二搭建-rocket-mq">二、搭建 Rocket MQ</a>
       <ul>
-        <li><a href="#21-用-docker-安装-rocket-mq">2.1 用 Docker 安装 Rocket MQ</a></li>
+        <li><a href="#21-用-docker-安装-rocke-tmq">2.1 用 Docker 安装 Rocke tMQ</a></li>
         <li><a href="#22-安装-rocketmq-dashboard">2.2 安装 rocketmq-dashboard</a></li>
       </ul>
     </li>
-    <li><a href="#三演示官网的-simple-example">三、演示官网的 simple example</a></li>
+    <li><a href="#三演示官网的简单示例">三、演示官网的简单示例</a></li>
+    <li><a href="#四顺序消息广播消息和调度消息">四、顺序消息、广播消息和调度消息</a>
+      <ul>
+        <li><a href="#41-顺序消息">4.1 顺序消息</a></li>
+        <li><a href="#42-广播消息">4.2 广播消息</a></li>
+        <li><a href="#43-调度消息">4.3 调度消息</a></li>
+      </ul>
+    </li>
+    <li><a href="#五消息的批处理">五、消息的批处理</a></li>
+    <li><a href="#六消息的过滤">六、消息的过滤</a></li>
+    <li><a href="#七rocket-mq-日志">七、Rocket MQ 日志</a></li>
   </ul>
 </nav>
   </div>
 </div>
 
       <h2 id="一简介">一、简介</h2>
-<p><strong>Apache RocketMQ</strong>  是一个统一的消息引擎，轻量级的数据处理平台</p>
+<p><strong>Apache RocketMQ</strong>  是一个统一的消息引擎，轻量级的数据处理平台。</p>
 <p>特点：</p>
 <ul>
 <li>低延迟</li>
@@ -1698,6 +1708,22 @@
 <li>大数据友好，批量转移，具有多功能集成，可实现淹没吞吐量。</li>
 <li>海量积累，不损失性能的情况下积累消息，前提是给足磁盘空间</li>
 </ul>
+<p>功能特性：</p>
+<ul>
+<li>同步发送</li>
+<li>异步发送</li>
+<li>one-way发送</li>
+<li>发送顺序消息</li>
+<li>批量发送</li>
+<li>发送事务消息</li>
+<li>发送延迟消息</li>
+<li>并发消费（广播/集群）</li>
+<li>顺序消费</li>
+<li>支持消息过滤（使用tag/sql）</li>
+<li>支持消息轨迹</li>
+<li>认证和授权</li>
+<li>request-reply模式</li>
+</ul>
 <h2 id="二搭建-rocket-mq">二、搭建 Rocket MQ</h2>
 <p>本文在 Linux 下搭建 Rocket MQ。</p>
 <p>前提：</p>
@@ -1706,7 +1732,7 @@
 <li>Docker 20.10.12</li>
 <li>Maven 3.8.4</li>
 </ul>
-<h3 id="21-用-docker-安装-rocket-mq">2.1 用 Docker 安装 Rocket MQ</h3>
+<h3 id="21-用-docker-安装-rocke-tmq">2.1 用 Docker 安装 Rocke tMQ</h3>
 <p>首先，用 git 克隆 rocketmq-docker 项目</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1740,7 +1766,7 @@ sh build-image.sh 4.5.0 alpine
 <span class="nb">cd</span> stages/4.5.0/templates
 </code></pre></td></tr></table>
 </div>
-</div><p>这里需要自定义 broker 的 ip 地址，将 brokerIP1 改成对应节点的IP地址就行了，可以通过 <code>ip addr</code> 查询。</p>
+</div><p>这里需要自定义 broker 的 ip 地址，将 brokerIP1 改成对应节点的IP地址就行了，可以通过 <code>ip addr</code> 查询。还有为下面的使用 SQL92 特性进行过滤，需要设置 <code>enablePropertyFilter=true</code>。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1749,7 +1775,19 @@ sh build-image.sh 4.5.0 alpine
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">vim data/broker/conf/broker.conf
 </code></pre></td></tr></table>
 </div>
-</div><p>接着修改 play-docker.sh 中 start_namesrv_broker() 里面 “# Start Broker” 下的一条命令，可以将他注释掉，然后添加以下内容：</p>
+</div><p>具体内容如下：</p>
+<pre tabindex="0"><code>brokerClusterName = DefaultCluster
+brokerName = broker-abc
+brokerId = 0
+deleteWhen = 04
+fileReservedTime = 48
+brokerRole = ASYNC_MASTER
+flushDiskType = ASYNC_FLUSH
+# 设置 `brokerIP1`
+brokerIP1 = 10.119.6.210
+# 启用属性过滤
+enablePropertyFilter=true
+</code></pre><p>接着修改 play-docker.sh 中 start_namesrv_broker() 里面 “# Start Broker” 下的一条命令，可以将他注释掉，然后添加以下内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1803,7 +1841,17 @@ nohup java -jar target/rocketmq-dashboard-1.0.1-SNAPSHOT.jar -Drmq.namesrv.addr=
 <p>注意：建议先打包再运行</p>
 </blockquote>
 <p>查看集群标签页下的默认集群中一个分片地址是否与节点的地址一致，而非 172.17.0.1。</p>
-<h2 id="三演示官网的-simple-example">三、演示官网的 simple example</h2>
+<p>rocketmq-dashboard 还提供 docker 镜像：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run -d --name rocketmq-dashboard -e <span class="s2">&#34;JAVA_OPTS=-Drocketmq.namesrv.addr=127.0.0.1:9876&#34;</span> -p 8080:8080 -t apacherocketmq/rocketmq-dashboard:latest
+</code></pre></td></tr></table>
+</div>
+</div><p>修改对应 name server 的 ip 地址和端口即可。还可以使用数据卷提供自己的 application.properties 来替换默认的配置。</p>
+<h2 id="三演示官网的简单示例">三、演示官网的简单示例</h2>
 <p>演示前，需要到 rocketmq-dashboard的网页，在主题标签页下添加所需的主题(topic)，例如：“TopicTest”，结果如下：</p>
 <img src="../../../../images/posts/2022/01/quickstart-rocketmq/1.png">
 <p>接着是创建官网的simple example。</p>
@@ -1939,7 +1987,7 @@ nohup java -jar target/rocketmq-dashboard-1.0.1-SNAPSHOT.jar -Drmq.namesrv.addr=
         <span class="c1">// 订阅消费多个主题
 </span><span class="c1"></span>        <span class="n">consumer</span><span class="o">.</span><span class="na">subscribe</span><span class="o">(</span><span class="s">&#34;TopicTest&#34;</span><span class="o">,</span> <span class="s">&#34;*&#34;</span><span class="o">);</span>
         <span class="c1">// 注册回调用于从 broker 执行拉取到达的消息.
-</span><span class="c1"></span>        <span class="n">consumer</span><span class="o">.</span><span class="na">registerMessageListener</span><span class="o">(</span><span class="k">new</span> <span class="n">MessageListenerConcurrently</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="c1"></span>        <span class="n">consumer</span><span class="o">.</span><span class="na">registerMessageListener</span><span class="o">(</span><span class="k">new</span> <span class="n">MessageListenerOrderly</span><span class="o">()</span> <span class="o">{</span>
 
             <span class="nd">@Override</span>
             <span class="kd">public</span> <span class="n">ConsumeConcurrentlyStatus</span> <span class="nf">consumeMessage</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">MessageExt</span><span class="o">&gt;</span> <span class="n">msgs</span><span class="o">,</span>
@@ -1957,7 +2005,7 @@ nohup java -jar target/rocketmq-dashboard-1.0.1-SNAPSHOT.jar -Drmq.namesrv.addr=
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>先运行Consumer 然后 运行 SyncProducer。</p>
+</div><p>先运行Consumer 然后 运行 SyncProducer。这里的消费者以并发模式消费。</p>
 <p>Consumer 的部分控制台消息如下：</p>
 <pre tabindex="0"><code>Consumer Started.
 ConsumeMessageThread_1 Receive New Messages: [MessageExt [queueId=10, storeSize=178, queueOffset=6, sysFlag=0, bornTimestamp=1643009838234, bornHost=/10.253.129.14:52001, storeTimestamp=1643009836266, storeHost=/10.119.6.210:10911, msgId=0A7706D200002A9F00000000000045E2, commitLogOffset=17890, bodyCRC=613185359, reconsumeTimes=0, preparedTransactionOffset=0, toString()=Message{topic='TopicTest', flag=0, properties={MIN_OFFSET=0, MAX_OFFSET=7, CONSUME_START_TIME=1643009838491, UNIQ_KEY=0200000115BC18B4AAC279CC649A0000, WAIT=true, TAGS=TagA}, body=[72, 101, 108, 108, 111, 32, 82, 111, 99, 107, 101, 116, 77, 81, 32, 48], transactionId='null'}]] 
@@ -1972,7 +2020,844 @@ SendResult [sendStatus=SEND_OK, msgId=0200000115BC18B4AAC279CC65960001, offsetMs
 ...
 ...
 
-</code></pre>
+</code></pre><p>以上是个同步发送的示例。Rocket MQ 还支持另外两种发送方式：异步发送和单向发送。</p>
+<p>异步发送：</p>
+<pre tabindex="0"><code class="language-java:AsyncProducer" data-lang="java:AsyncProducer">public class AsyncProducer {
+    public static void main(String[] args) throws Exception {
+        // 用组名实例化生产者
+        DefaultMQProducer producer = new DefaultMQProducer(&quot;asyncproducer&quot;);
+        // 指定 name server 地址
+        producer.setNamesrvAddr(&quot;10.119.6.210:9876&quot;);
+        //启动生产者
+        producer.start();
+        producer.setRetryTimesWhenSendAsyncFailed(0);
+
+        int messageCount = 100;
+        final CountDownLatch cdl = new CountDownLatch(messageCount);
+        for (int i = 0; i &lt; messageCount; i++) {
+            try {
+                final int index = i;
+                Message msg = new Message(&quot;Topic2&quot;,
+                        &quot;TagB&quot;,
+                        &quot;OrderID188&quot;,
+                        &quot;Hello world&quot;.getBytes(RemotingHelper.DEFAULT_CHARSET));
+                producer.send(msg, new SendCallback() {
+                    @Override
+                    public void onSuccess(SendResult sendResult) {
+                        cdl.countDown();
+                        System.out.printf(&quot;%-10d OK %s %n&quot;, index, sendResult.getMsgId());
+                    }
+
+                    @Override
+                    public void onException(Throwable e) {
+                        cdl.countDown();
+                        System.out.printf(&quot;%-10d Exception %s %n&quot;, index, e);
+                        e.printStackTrace();
+                    }
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        cdl.await(5, TimeUnit.SECONDS);
+        producer.shutdown();
+    }
+}
+</code></pre><p>单向发送：</p>
+<pre tabindex="0"><code class="language-java:OnewayProducer" data-lang="java:OnewayProducer">public class OnewayProducer {
+    public static void main(String[] args) throws Exception{
+        // 用组名实例化生产者
+        DefaultMQProducer producer = new DefaultMQProducer(&quot;onewayproducer&quot;);
+        // 指定 name server 地址
+        producer.setNamesrvAddr(&quot;10.119.6.210:9876&quot;);
+        //启动生产者.
+        producer.start();
+        for (int i = 0; i &lt; 100; i++) {
+            //创建消息实例, 指定主题、标签和消息体
+            Message msg = new Message(&quot;Topic3&quot; /* Topic */,
+                    &quot;TagC&quot; /* Tag */,
+                    (&quot;Hello RocketMQ &quot; +
+                            i).getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
+            );
+            //调用发送消息，分发消息给 broker
+            producer.sendOneway(msg);
+        }
+        // 等待发送完成
+        Thread.sleep(5000);
+        producer.shutdown();
+    }
+}
+</code></pre><p>消费者做相应更改即可。</p>
+<h2 id="四顺序消息广播消息和调度消息">四、顺序消息、广播消息和调度消息</h2>
+<p>顺序消息使用 FIFO 顺序发送消息。把上面提到消费者所注册的消息监听器由 <code>MessageListenerOrderly</code> 改成 <code>MessageListenerOrderly</code>。</p>
+<p>广播消息把消息发送给某个主题的所有订阅者。如果要所有订阅者都接受到关于某个主题的消息，拥抱广播吧。x需要在消费者修改消息模型为广播模式即可。</p>
+<p>调度消息可以延迟消息发送。</p>
+<h3 id="41-顺序消息">4.1 顺序消息</h3>
+<p>发送消息如上不再赘述，这里消费者使用了 MessageListenerOrderly 作为监听器。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:OrderedConsumer.java" data-lang="java:OrderedConsumer.java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OrderedConsumer</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">DefaultMQPushConsumer</span> <span class="n">consumer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultMQPushConsumer</span><span class="o">(</span><span class="s">&#34;orderedconsumer&#34;</span><span class="o">);</span>
+
+        <span class="n">consumer</span><span class="o">.</span><span class="na">setNamesrvAddr</span><span class="o">(</span><span class="s">&#34;10.119.6.210:9876&#34;</span><span class="o">);</span>
+
+        <span class="n">consumer</span><span class="o">.</span><span class="na">setConsumeFromWhere</span><span class="o">(</span><span class="n">ConsumeFromWhere</span><span class="o">.</span><span class="na">CONSUME_FROM_FIRST_OFFSET</span><span class="o">);</span>
+
+        <span class="n">consumer</span><span class="o">.</span><span class="na">subscribe</span><span class="o">(</span><span class="s">&#34;TopicTestjjj&#34;</span><span class="o">,</span> <span class="s">&#34;TagA || TagC || TagD&#34;</span><span class="o">);</span>
+        <span class="c1">// 使用消息顺序监听器，FIFO接受消息
+</span><span class="c1"></span>        <span class="n">consumer</span><span class="o">.</span><span class="na">registerMessageListener</span><span class="o">(</span><span class="k">new</span> <span class="n">MessageListenerOrderly</span><span class="o">()</span> <span class="o">{</span>
+
+            <span class="n">AtomicLong</span> <span class="n">consumeTimes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AtomicLong</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="n">ConsumeOrderlyStatus</span> <span class="nf">consumeMessage</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">MessageExt</span><span class="o">&gt;</span> <span class="n">msgs</span><span class="o">,</span>
+                                                       <span class="n">ConsumeOrderlyContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">context</span><span class="o">.</span><span class="na">setAutoCommit</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; Receive New Messages: &#34;</span> <span class="o">+</span> <span class="n">msgs</span> <span class="o">+</span> <span class="s">&#34;%n&#34;</span><span class="o">);</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">consumeTimes</span><span class="o">.</span><span class="na">incrementAndGet</span><span class="o">();</span>
+                <span class="k">if</span> <span class="o">((</span><span class="k">this</span><span class="o">.</span><span class="na">consumeTimes</span><span class="o">.</span><span class="na">get</span><span class="o">()</span> <span class="o">%</span> <span class="n">2</span><span class="o">)</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="n">ConsumeOrderlyStatus</span><span class="o">.</span><span class="na">SUCCESS</span><span class="o">;</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">((</span><span class="k">this</span><span class="o">.</span><span class="na">consumeTimes</span><span class="o">.</span><span class="na">get</span><span class="o">()</span> <span class="o">%</span> <span class="n">3</span><span class="o">)</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="n">ConsumeOrderlyStatus</span><span class="o">.</span><span class="na">ROLLBACK</span><span class="o">;</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">((</span><span class="k">this</span><span class="o">.</span><span class="na">consumeTimes</span><span class="o">.</span><span class="na">get</span><span class="o">()</span> <span class="o">%</span> <span class="n">4</span><span class="o">)</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="n">ConsumeOrderlyStatus</span><span class="o">.</span><span class="na">COMMIT</span><span class="o">;</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">((</span><span class="k">this</span><span class="o">.</span><span class="na">consumeTimes</span><span class="o">.</span><span class="na">get</span><span class="o">()</span> <span class="o">%</span> <span class="n">5</span><span class="o">)</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">context</span><span class="o">.</span><span class="na">setSuspendCurrentQueueTimeMillis</span><span class="o">(</span><span class="n">3000</span><span class="o">);</span>
+                    <span class="k">return</span> <span class="n">ConsumeOrderlyStatus</span><span class="o">.</span><span class="na">SUSPEND_CURRENT_QUEUE_A_MOMENT</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="k">return</span> <span class="n">ConsumeOrderlyStatus</span><span class="o">.</span><span class="na">SUCCESS</span><span class="o">;</span>
+
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">consumer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;Consumer Started.%n&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="42-广播消息">4.2 广播消息</h3>
+<p>同样修改消费者</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:BroadcastConsumer.java" data-lang="java:BroadcastConsumer.java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BroadcastConsumer</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">DefaultMQPushConsumer</span> <span class="n">consumer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultMQPushConsumer</span><span class="o">(</span><span class="s">&#34;broadcastconsumer&#34;</span><span class="o">);</span>
+        <span class="n">consumer</span><span class="o">.</span><span class="na">setNamesrvAddr</span><span class="o">(</span><span class="s">&#34;10.119.6.210:9876&#34;</span><span class="o">);</span>
+
+        <span class="n">consumer</span><span class="o">.</span><span class="na">setConsumeFromWhere</span><span class="o">(</span><span class="n">ConsumeFromWhere</span><span class="o">.</span><span class="na">CONSUME_FROM_FIRST_OFFSET</span><span class="o">);</span>
+
+        <span class="c1">// 消息模式设为广播
+</span><span class="c1"></span>        <span class="n">consumer</span><span class="o">.</span><span class="na">setMessageModel</span><span class="o">(</span><span class="n">MessageModel</span><span class="o">.</span><span class="na">BROADCASTING</span><span class="o">);</span>
+
+        <span class="n">consumer</span><span class="o">.</span><span class="na">subscribe</span><span class="o">(</span><span class="s">&#34;TopicTest&#34;</span><span class="o">,</span> <span class="s">&#34;TagA || TagC || TagD&#34;</span><span class="o">);</span>
+
+        <span class="n">consumer</span><span class="o">.</span><span class="na">registerMessageListener</span><span class="o">(</span><span class="k">new</span> <span class="n">MessageListenerConcurrently</span><span class="o">()</span> <span class="o">{</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="n">ConsumeConcurrentlyStatus</span> <span class="nf">consumeMessage</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">MessageExt</span><span class="o">&gt;</span> <span class="n">msgs</span><span class="o">,</span>
+                                                            <span class="n">ConsumeConcurrentlyContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; Receive New Messages: &#34;</span> <span class="o">+</span> <span class="n">msgs</span> <span class="o">+</span> <span class="s">&#34;%n&#34;</span><span class="o">);</span>
+                <span class="k">return</span> <span class="n">ConsumeConcurrentlyStatus</span><span class="o">.</span><span class="na">CONSUME_SUCCESS</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">consumer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;Broadcast Consumer Started.%n&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="43-调度消息">4.3 调度消息</h3>
+<p>调度消息需要在生产者中设置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:ScheduledMessageProducer.java" data-lang="java:ScheduledMessageProducer.java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScheduledMessageProducer</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">DefaultMQProducer</span> <span class="n">producer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultMQProducer</span><span class="o">(</span><span class="s">&#34;ScheduledMessageProducer&#34;</span><span class="o">);</span>
+        <span class="n">producer</span><span class="o">.</span><span class="na">setNamesrvAddr</span><span class="o">(</span><span class="s">&#34;10.119.6.210:9876&#34;</span><span class="o">);</span>
+        <span class="n">producer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">totalMessagesToSend</span> <span class="o">=</span> <span class="n">100</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">totalMessagesToSend</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">Message</span> <span class="n">message</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Message</span><span class="o">(</span><span class="s">&#34;TestTopic&#34;</span><span class="o">,</span> <span class="o">(</span><span class="s">&#34;Hello scheduled message &#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">).</span><span class="na">getBytes</span><span class="o">());</span>
+            <span class="c1">// 消息延迟10秒后分发
+</span><span class="c1"></span>            <span class="n">message</span><span class="o">.</span><span class="na">setDelayTimeLevel</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>
+            <span class="n">producer</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="n">producer</span><span class="o">.</span><span class="na">shutdown</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注意：试验时 检查name server 地址是否正确，producer 和 consumer 的主题是否对应</p>
+</blockquote>
+<h2 id="五消息的批处理">五、消息的批处理</h2>
+<p>批处理模式可以改善多而小消息的发送的性能。但它有要求同一批消息必须有相同的主题、相同的 waitStoreMsgOk，且不支持调度。同一批消息总体不超 1 MiB。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:BatchProducer.java" data-lang="java:BatchProducer.java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BatchProducer</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">MQClientException</span> <span class="o">{</span>
+        <span class="n">DefaultMQProducer</span> <span class="n">producer</span> <span class="o">=</span> <span class="k">new</span>
+                <span class="n">DefaultMQProducer</span><span class="o">(</span><span class="s">&#34;batchproducer&#34;</span><span class="o">);</span>
+        <span class="n">producer</span><span class="o">.</span><span class="na">setNamesrvAddr</span><span class="o">(</span><span class="s">&#34;10.119.6.210:9876&#34;</span><span class="o">);</span>
+        <span class="n">producer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="c1">// 一批消息不超过限定
+</span><span class="c1"></span>        <span class="n">String</span> <span class="n">topic</span> <span class="o">=</span> <span class="s">&#34;BatchTest&#34;</span><span class="o">;</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;</span> <span class="n">messages1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;</span> <span class="n">messages2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">messages1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Message</span><span class="o">(</span><span class="n">topic</span><span class="o">,</span> <span class="s">&#34;TagA&#34;</span><span class="o">,</span> <span class="s">&#34;OrderID001&#34;</span><span class="o">,</span> <span class="s">&#34;Hello world 0&#34;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">()));</span>
+        <span class="n">messages1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Message</span><span class="o">(</span><span class="n">topic</span><span class="o">,</span> <span class="s">&#34;TagA&#34;</span><span class="o">,</span> <span class="s">&#34;OrderID002&#34;</span><span class="o">,</span> <span class="s">&#34;Hello world 1&#34;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">()));</span>
+        <span class="n">messages1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Message</span><span class="o">(</span><span class="n">topic</span><span class="o">,</span> <span class="s">&#34;TagA&#34;</span><span class="o">,</span> <span class="s">&#34;OrderID003&#34;</span><span class="o">,</span> <span class="s">&#34;Hello world 2&#34;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">()));</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">producer</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">messages1</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="c1">//handle the error
+</span><span class="c1"></span>        <span class="o">}</span>
+
+        <span class="n">messages2</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Message</span><span class="o">(</span><span class="n">topic</span><span class="o">,</span> <span class="s">&#34;TagA&#34;</span><span class="o">,</span> <span class="s">&#34;OrderID004&#34;</span><span class="o">,</span> <span class="s">&#34;Hello world 4&#34;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">()));</span>
+        <span class="n">messages2</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Message</span><span class="o">(</span><span class="n">topic</span><span class="o">,</span> <span class="s">&#34;TagA&#34;</span><span class="o">,</span> <span class="s">&#34;OrderID005&#34;</span><span class="o">,</span> <span class="s">&#34;Hello world 5&#34;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">()));</span>
+        <span class="n">messages2</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Message</span><span class="o">(</span><span class="n">topic</span><span class="o">,</span> <span class="s">&#34;TagA&#34;</span><span class="o">,</span> <span class="s">&#34;OrderID006&#34;</span><span class="o">,</span> <span class="s">&#34;Hello world 6&#34;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">()));</span>
+
+        <span class="c1">//当许多而小的消息的列表时，可以分割
+</span><span class="c1"></span>        <span class="n">ListSplitter</span> <span class="n">splitter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListSplitter</span><span class="o">(</span><span class="n">messages2</span><span class="o">);</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">splitter</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;</span>  <span class="n">listItem</span> <span class="o">=</span> <span class="n">splitter</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+                <span class="n">producer</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">listItem</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="c1">//handle the error
+</span><span class="c1"></span>            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>发送一大批消息，不能确保一批不超过 1 MiB。故要最好的做法就是分割，即放在用同一批的消息进行分割。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:ListSplitter.java" data-lang="java:ListSplitter.java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListSplitter</span> <span class="kd">implements</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">SIZE_LIMIT</span> <span class="o">=</span> <span class="n">1000</span> <span class="o">*</span> <span class="n">1000</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;</span> <span class="n">messages</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">currIndex</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">ListSplitter</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;</span> <span class="n">messages</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">messages</span> <span class="o">=</span> <span class="n">messages</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasNext</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">currIndex</span> <span class="o">&lt;</span> <span class="n">messages</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;</span> <span class="nf">next</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">nextIndex</span> <span class="o">=</span> <span class="n">currIndex</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">totalSize</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(;</span> <span class="n">nextIndex</span> <span class="o">&lt;</span> <span class="n">messages</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">nextIndex</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">Message</span> <span class="n">message</span> <span class="o">=</span> <span class="n">messages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">nextIndex</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">tmpSize</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="na">getTopic</span><span class="o">().</span><span class="na">length</span><span class="o">()</span> <span class="o">+</span> <span class="n">message</span><span class="o">.</span><span class="na">getBody</span><span class="o">().</span><span class="na">length</span><span class="o">;</span>
+            <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">properties</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="na">getProperties</span><span class="o">();</span>
+            <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">properties</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">tmpSize</span> <span class="o">+=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">().</span><span class="na">length</span><span class="o">()</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">().</span><span class="na">length</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="n">tmpSize</span> <span class="o">=</span> <span class="n">tmpSize</span> <span class="o">+</span> <span class="n">20</span><span class="o">;</span> <span class="c1">// 对于日志开销
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">tmpSize</span> <span class="o">&gt;</span> <span class="n">SIZE_LIMIT</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 不期望时单个消息超过 SIZE_LIMIT 
+</span><span class="c1"></span>                <span class="c1">// 继续往下走, 否则会阻塞分割过程
+</span><span class="c1"></span>                <span class="k">if</span> <span class="o">(</span><span class="n">nextIndex</span> <span class="o">-</span> <span class="n">currIndex</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="c1">//如果下个子列表为空，自增1 ，不然直接 break 跳出
+</span><span class="c1"></span>                    <span class="n">nextIndex</span><span class="o">++;</span>
+                <span class="o">}</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">tmpSize</span> <span class="o">+</span> <span class="n">totalSize</span> <span class="o">&gt;</span> <span class="n">SIZE_LIMIT</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">totalSize</span> <span class="o">+=</span> <span class="n">tmpSize</span><span class="o">;</span>
+            <span class="o">}</span>
+
+        <span class="o">}</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;</span> <span class="n">subList</span> <span class="o">=</span> <span class="n">messages</span><span class="o">.</span><span class="na">subList</span><span class="o">(</span><span class="n">currIndex</span><span class="o">,</span> <span class="n">nextIndex</span><span class="o">);</span>
+        <span class="n">currIndex</span> <span class="o">=</span> <span class="n">nextIndex</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">subList</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="六消息的过滤">六、消息的过滤</h2>
+<p>有一个消息只能有一个标签，那么对于复杂过滤需求就能很好的满足。Rocket MQ 通过 SQL 特性对用户添加到消息的属性进行计算以达到灵活的过滤需求。只有 push consumer 才能使用 SQL92 这个特性。</p>
+<p>语法大致：</p>
+<p>数字比较：<code>&gt;</code>，<code>&gt;=</code>，<code>&lt;</code>，<code>&lt;=</code>，<code>BETWEEN</code>,<code>=</code>；</p>
+<p>字符比较：<code>=</code>，<code>&lt;&gt;</code>，<code>IN</code>；</p>
+<p>是否为空：<code>IS NULL</code> 还有 <code>IS NOT NULL</code>；</p>
+<p>逻辑运算符：<code>AND</code>，<code>OR</code>，<code>NOT</code>；</p>
+<p>常量举例：</p>
+<p>数字：<code>123</code>，<code>3.14</code>；</p>
+<p>字符：<code>'abc'</code>，不许是单引号；</p>
+<p>特殊常量：<code>NULL</code>；</p>
+<p>布尔：<code>TRUE</code>，<code>FALSE</code></p>
+<p>使用前确保 broker.conf 中设置 <code>enablePropertyFilter=true</code>，<a href="#21-%E7%94%A8-docker-%E5%AE%89%E8%A3%85-rocke-tmq">见这里</a></p>
+<p>生产者例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:FilterProducer.java" data-lang="java:FilterProducer.java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FilterProducer</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">DefaultMQProducer</span> <span class="n">producer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultMQProducer</span><span class="o">(</span><span class="s">&#34;filterproducer&#34;</span><span class="o">);</span>
+        <span class="n">producer</span><span class="o">.</span><span class="na">setNamesrvAddr</span><span class="o">(</span><span class="s">&#34;10.119.6.210:9876&#34;</span><span class="o">);</span>
+        <span class="n">producer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+        <span class="n">String</span> <span class="n">tag</span> <span class="o">=</span> <span class="s">&#34;TagA&#34;</span><span class="o">;</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">100</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">Message</span> <span class="n">msg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Message</span><span class="o">(</span><span class="s">&#34;TopicTest&#34;</span><span class="o">,</span>
+                    <span class="n">tag</span><span class="o">,</span>
+                    <span class="o">(</span><span class="s">&#34;Hello RocketMQ &#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">).</span><span class="na">getBytes</span><span class="o">(</span><span class="n">RemotingHelper</span><span class="o">.</span><span class="na">DEFAULT_CHARSET</span><span class="o">)</span>
+            <span class="o">);</span>
+            <span class="c1">// Set some properties.
+</span><span class="c1"></span>            <span class="n">msg</span><span class="o">.</span><span class="na">putUserProperty</span><span class="o">(</span><span class="s">&#34;a&#34;</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+
+            <span class="n">SendResult</span> <span class="n">sendResult</span> <span class="o">=</span> <span class="n">producer</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="n">producer</span><span class="o">.</span><span class="na">shutdown</span><span class="o">();</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>消费者例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:FilterConsumer.java" data-lang="java:FilterConsumer.java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FilterConsumer</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">MQClientException</span> <span class="o">{</span>
+        <span class="n">DefaultMQPushConsumer</span> <span class="n">consumer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultMQPushConsumer</span><span class="o">(</span><span class="s">&#34;filterconsumer&#34;</span><span class="o">);</span>
+        <span class="n">consumer</span><span class="o">.</span><span class="na">setNamesrvAddr</span><span class="o">(</span><span class="s">&#34;10.119.6.210:9876&#34;</span><span class="o">);</span>
+
+        <span class="c1">// set proerty enablePropertyFilter=true in broker
+</span><span class="c1"></span>        <span class="c1">// only subsribe messages have property a, also a &gt;=0 and a &lt;= 3
+</span><span class="c1"></span>        <span class="n">consumer</span><span class="o">.</span><span class="na">subscribe</span><span class="o">(</span><span class="s">&#34;TopicTest&#34;</span><span class="o">,</span> <span class="n">MessageSelector</span><span class="o">.</span><span class="na">bySql</span><span class="o">(</span><span class="s">&#34;a &gt;= 0 and a &lt;= 3&#34;</span><span class="o">));</span>
+
+        <span class="n">consumer</span><span class="o">.</span><span class="na">registerMessageListener</span><span class="o">(</span><span class="k">new</span> <span class="n">MessageListenerConcurrently</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="n">ConsumeConcurrentlyStatus</span> <span class="nf">consumeMessage</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">MessageExt</span><span class="o">&gt;</span> <span class="n">msgs</span><span class="o">,</span> <span class="n">ConsumeConcurrentlyContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;%s Receive New Messages: %s %n&#34;</span><span class="o">,</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">(),</span> <span class="n">msgs</span><span class="o">);</span>
+                <span class="k">return</span> <span class="n">ConsumeConcurrentlyStatus</span><span class="o">.</span><span class="na">CONSUME_SUCCESS</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+        <span class="n">consumer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="七rocket-mq-日志">七、Rocket MQ 日志</h2>
+<p>日志是仅追加的文件，用来记录应用的行为的。Rocket MQ 支持三种日志追加框架：logback、log4j2 和 log4j。</p>
+<p>由于 log4j 在 2015 不再维护，所以这里讨论 logback 和 log42 的日志采集。</p>
+<p>首先，添加依赖。</p>
+<p>对于 logback：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>ch.qos.logback<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>logback-classic<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.2.10<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>对于 log4j2：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.logging.log4j<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>log4j-api<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.17.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.logging.log4j<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>log4j-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.17.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.logging.log4j<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>log4j-slf4j-impl<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.17.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>使用 log4j2 的 slf4j 绑定实现，与 log4j2 的 slf4j 适配器(artifactiId:log4j-to-slf4j)相比，没有log4j2 消息格式化传入 slf4j 带来的性能损失。</p>
+<p>接着，添加日志配置。</p>
+<p>对于 logback：</p>
+<p>在 resources 文件夹下添加 logback.xml</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml:logback.xml" data-lang="xml:logback.xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class="nt">&lt;configuration</span> <span class="na">debug=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">&#34;mqAppender1&#34;</span> <span class="na">class=</span><span class="s">&#34;org.apache.rocketmq.logappender.logback.RocketmqLogbackAppender&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;tag&gt;</span>logbackTag<span class="nt">&lt;/tag&gt;</span>
+        <span class="nt">&lt;topic&gt;</span>logTopic<span class="nt">&lt;/topic&gt;</span>
+        <span class="nt">&lt;producerGroup&gt;</span>logGroup<span class="nt">&lt;/producerGroup&gt;</span>
+        <span class="nt">&lt;nameServerAddress&gt;</span>10.119.6.210:9876<span class="nt">&lt;/nameServerAddress&gt;</span>
+        <span class="nt">&lt;layout&gt;</span>
+            <span class="nt">&lt;pattern&gt;</span>%date %p %t - %m%n<span class="nt">&lt;/pattern&gt;</span>
+        <span class="nt">&lt;/layout&gt;</span>
+    <span class="nt">&lt;/appender&gt;</span>
+
+    <span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">&#34;mqAsyncAppender1&#34;</span> <span class="na">class=</span><span class="s">&#34;ch.qos.logback.classic.AsyncAppender&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;queueSize&gt;</span>1024<span class="nt">&lt;/queueSize&gt;</span>
+        <span class="nt">&lt;discardingThreshold&gt;</span>80<span class="nt">&lt;/discardingThreshold&gt;</span>
+        <span class="nt">&lt;maxFlushTime&gt;</span>2000<span class="nt">&lt;/maxFlushTime&gt;</span>
+        <span class="nt">&lt;neverBlock&gt;</span>true<span class="nt">&lt;/neverBlock&gt;</span>
+        <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">&#34;mqAppender1&#34;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/appender&gt;</span>
+    <span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">&#34;STDOUT&#34;</span> <span class="na">class=</span><span class="s">&#34;ch.qos.logback.core.ConsoleAppender&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;encoder&gt;</span>
+            <span class="nt">&lt;pattern&gt;</span>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n<span class="nt">&lt;/pattern&gt;</span>
+        <span class="nt">&lt;/encoder&gt;</span>
+    <span class="nt">&lt;/appender&gt;</span>
+
+    <span class="nt">&lt;root</span> <span class="na">level=</span><span class="s">&#34;debug&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">&#34;STDOUT&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">&#34;mqAsyncAppender1&#34;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/root&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>对于 log42：</p>
+<p>添加 log4j2.xml</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml:log4j2.xml" data-lang="xml:log4j2.xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class="nt">&lt;Configuration</span> <span class="na">status=</span><span class="s">&#34;error&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Appenders&gt;</span>
+        <span class="nt">&lt;Console</span> <span class="na">name=</span><span class="s">&#34;Console&#34;</span> <span class="na">target=</span><span class="s">&#34;SYSTEM_OUT&#34;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;PatternLayout</span> <span class="na">pattern=</span><span class="s">&#34;%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Console&gt;</span>
+        <span class="nt">&lt;RocketMQ</span> <span class="na">name=</span><span class="s">&#34;rocketmqAppender&#34;</span> <span class="na">producerGroup=</span><span class="s">&#34;logGroup&#34;</span> <span class="na">nameServerAddress=</span><span class="s">&#34;10.119.6.210:9876&#34;</span>
+                  <span class="na">topic=</span><span class="s">&#34;logTopic&#34;</span> <span class="na">tag=</span><span class="s">&#34;log4j2Tag&#34;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;PatternLayout</span> <span class="na">pattern=</span><span class="s">&#34;%date %p %t - %m%n&#34;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/RocketMQ&gt;</span>
+        <span class="nt">&lt;Async</span> <span class="na">name=</span><span class="s">&#34;mqAsyncAppender1&#34;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;AppenderRef</span> <span class="na">ref=</span><span class="s">&#34;rocketmqAppender&#34;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Async&gt;</span>
+    <span class="nt">&lt;/Appenders&gt;</span>
+    <span class="nt">&lt;Loggers&gt;</span>
+        <span class="nt">&lt;Root</span> <span class="na">level=</span><span class="s">&#34;DEBUG&#34;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;AppenderRef</span> <span class="na">ref=</span><span class="s">&#34;Console&#34;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;AppenderRef</span> <span class="na">ref=</span><span class="s">&#34;mqAsyncAppender1&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Root&gt;</span>
+    <span class="nt">&lt;/Loggers&gt;</span>
+<span class="nt">&lt;/Configuration&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>最后，针对 sl4j-api 的接口编写程序。</p>
+<p>生产者例程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:Producer.java" data-lang="java:Producer.java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Producer</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">Producer</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">DefaultMQProducer</span> <span class="n">producer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultMQProducer</span><span class="o">(</span><span class="s">&#34;logappenderproducer&#34;</span><span class="o">);</span>
+
+        <span class="n">producer</span><span class="o">.</span><span class="na">setNamesrvAddr</span><span class="o">(</span><span class="s">&#34;10.119.6.210:9876&#34;</span><span class="o">);</span>
+
+        <span class="n">producer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">Message</span> <span class="n">msg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Message</span><span class="o">(</span><span class="s">&#34;TopicTest&#34;</span> <span class="o">,</span>
+                    <span class="s">&#34;TagA&#34;</span><span class="o">,</span>
+                    <span class="o">(</span><span class="s">&#34;Hello RocketMQ &#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">).</span><span class="na">getBytes</span><span class="o">(</span><span class="n">RemotingHelper</span><span class="o">.</span><span class="na">DEFAULT_CHARSET</span><span class="o">)</span>
+            <span class="o">);</span>
+
+            <span class="n">SendResult</span> <span class="n">sendResult</span> <span class="o">=</span> <span class="n">producer</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="n">sendResult</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="o">}</span>
+
+        <span class="n">producer</span><span class="o">.</span><span class="na">shutdown</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>消费者例程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:Consumer.java" data-lang="java:Consumer.java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Consumer</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">Consumer</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">MQClientException</span> <span class="o">{</span>
+        <span class="n">DefaultMQPushConsumer</span> <span class="n">consumer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultMQPushConsumer</span><span class="o">(</span><span class="s">&#34;logappenderconsumer&#34;</span><span class="o">);</span>
+
+        <span class="n">consumer</span><span class="o">.</span><span class="na">setNamesrvAddr</span><span class="o">(</span><span class="s">&#34;10.119.6.210:9876&#34;</span><span class="o">);</span>
+
+        <span class="n">consumer</span><span class="o">.</span><span class="na">subscribe</span><span class="o">(</span><span class="s">&#34;TopicTest&#34;</span><span class="o">,</span> <span class="s">&#34;*&#34;</span><span class="o">);</span>
+
+        <span class="n">consumer</span><span class="o">.</span><span class="na">registerMessageListener</span><span class="o">(</span><span class="k">new</span> <span class="n">MessageListenerConcurrently</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="n">ConsumeConcurrentlyStatus</span> <span class="nf">consumeMessage</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">MessageExt</span><span class="o">&gt;</span> <span class="n">msgs</span><span class="o">,</span> <span class="n">ConsumeConcurrentlyContext</span> <span class="n">consumeConcurrentlyContext</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;Receive New Messages: {}&#34;</span><span class="o">,</span> <span class="n">msgs</span><span class="o">);</span>
+                <span class="k">return</span> <span class="n">ConsumeConcurrentlyStatus</span><span class="o">.</span><span class="na">CONSUME_SUCCESS</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">consumer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;Consumer Started.&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>运行二者，可以在 rocketmq-dashboard 中根据主题 logTopic，查找消息日志，具有标签 logbackTag，log4j2Tag。</p>
+
     </article>
     
     
@@ -2540,11 +3425,21 @@ document.addEventListener('DOMContentLoaded', function () {
     <li><a href="#一简介">一、简介</a></li>
     <li><a href="#二搭建-rocket-mq">二、搭建 Rocket MQ</a>
       <ul>
-        <li><a href="#21-用-docker-安装-rocket-mq">2.1 用 Docker 安装 Rocket MQ</a></li>
+        <li><a href="#21-用-docker-安装-rocke-tmq">2.1 用 Docker 安装 Rocke tMQ</a></li>
         <li><a href="#22-安装-rocketmq-dashboard">2.2 安装 rocketmq-dashboard</a></li>
       </ul>
     </li>
-    <li><a href="#三演示官网的-simple-example">三、演示官网的 simple example</a></li>
+    <li><a href="#三演示官网的简单示例">三、演示官网的简单示例</a></li>
+    <li><a href="#四顺序消息广播消息和调度消息">四、顺序消息、广播消息和调度消息</a>
+      <ul>
+        <li><a href="#41-顺序消息">4.1 顺序消息</a></li>
+        <li><a href="#42-广播消息">4.2 广播消息</a></li>
+        <li><a href="#43-调度消息">4.3 调度消息</a></li>
+      </ul>
+    </li>
+    <li><a href="#五消息的批处理">五、消息的批处理</a></li>
+    <li><a href="#六消息的过滤">六、消息的过滤</a></li>
+    <li><a href="#七rocket-mq-日志">七、Rocket MQ 日志</a></li>
   </ul>
 </nav>
   </div>
