@@ -14,19 +14,19 @@
     <managingEditor>lixiaoqin490@gmail.com (槎城小子)</managingEditor>
     <webMaster>lixiaoqin490@gmail.com (槎城小子)</webMaster>
     <copyright>©2022, All Rights Reserved</copyright>
-    <lastBuildDate>Mon, 24 Jan 2022 09:24:21 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 02 Feb 2022 10:05:33 +0800</lastBuildDate>
     
         <atom:link href="https://qinry.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
 
       
       <item>
-        <title>mq</title>
-        <link>https://qinry.github.io/categories/mq/</link>
-        <pubDate>Mon, 24 Jan 2022 09:24:21 +0800</pubDate>
+        <title>java</title>
+        <link>https://qinry.github.io/categories/java/</link>
+        <pubDate>Wed, 02 Feb 2022 10:05:33 +0800</pubDate>
         <author>lixiaoqin490@gmail.com (槎城小子)</author>
         
-        <guid>https://qinry.github.io/categories/mq/</guid>
+        <guid>https://qinry.github.io/categories/java/</guid>
         <description></description>
         
         <dc:creator>槎城小子</dc:creator>
@@ -45,24 +45,6 @@
         <author>lixiaoqin490@gmail.com (槎城小子)</author>
         
         <guid>https://qinry.github.io/categories/docker/</guid>
-        <description></description>
-        
-        <dc:creator>槎城小子</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>java</title>
-        <link>https://qinry.github.io/categories/java/</link>
-        <pubDate>Fri, 12 Nov 2021 23:44:27 +0800</pubDate>
-        <author>lixiaoqin490@gmail.com (槎城小子)</author>
-        
-        <guid>https://qinry.github.io/categories/java/</guid>
         <description></description>
         
         <dc:creator>槎城小子</dc:creator>

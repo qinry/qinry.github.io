@@ -14,11 +14,47 @@
     <managingEditor>lixiaoqin490@gmail.com (槎城小子)</managingEditor>
     <webMaster>lixiaoqin490@gmail.com (槎城小子)</webMaster>
     <copyright>©2022, All Rights Reserved</copyright>
-    <lastBuildDate>Mon, 24 Jan 2022 09:24:21 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 02 Feb 2022 10:05:33 +0800</lastBuildDate>
     
         <atom:link href="https://qinry.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
 
+      
+      <item>
+        <title>spring</title>
+        <link>https://qinry.github.io/tags/spring/</link>
+        <pubDate>Wed, 02 Feb 2022 10:05:33 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/spring/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>mq</title>
+        <link>https://qinry.github.io/tags/mq/</link>
+        <pubDate>Mon, 24 Jan 2022 09:24:21 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        
+        <guid>https://qinry.github.io/tags/mq/</guid>
+        <description></description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
       <item>
         <title>rocketmq</title>
@@ -99,24 +135,6 @@
         <author>lixiaoqin490@gmail.com (槎城小子)</author>
         
         <guid>https://qinry.github.io/tags/orm/</guid>
-        <description></description>
-        
-        <dc:creator>槎城小子</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>spring</title>
-        <link>https://qinry.github.io/tags/spring/</link>
-        <pubDate>Thu, 11 Nov 2021 10:00:16 +0800</pubDate>
-        <author>lixiaoqin490@gmail.com (槎城小子)</author>
-        
-        <guid>https://qinry.github.io/tags/spring/</guid>
         <description></description>
         
         <dc:creator>槎城小子</dc:creator>
