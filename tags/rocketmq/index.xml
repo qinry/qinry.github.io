@@ -27,7 +27,7 @@
         <author>lixiaoqin490@gmail.com (槎城小子)</author>
         <atom:modified>Mon, 24 Jan 2022 09:24:21 +0800</atom:modified>
         <guid>https://qinry.github.io/posts/2022/01/quickstart-rocketmq/</guid>
-        <description>一、简介 Apache RocketMQ 是一个统一的消息引擎，轻量级的数据处理平台。 特点： 低延迟 以金融为导向，具有跟踪和审核功能的高可用性 行业可持续发展，万亿级消息容量</description>
+        <description>一、简介 Apache RocketMQ 是一个统一的消息引擎，轻量级的数据处理平台 特点： 低延迟 以金融为导向，具有跟踪和审核功能的高可用性 行业可持续发展，万亿级消息容量保</description>
         
         <dc:creator>槎城小子</dc:creator>
         

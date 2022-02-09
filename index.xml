@@ -32,7 +32,7 @@
         <author>lixiaoqin490@gmail.com (槎城小子)</author>
         <atom:modified>Mon, 24 Jan 2022 09:24:21 +0800</atom:modified>
         <guid>https://qinry.github.io/posts/2022/01/quickstart-rocketmq/</guid>
-        <description>一、简介 Apache RocketMQ 是一个统一的消息引擎，轻量级的数据处理平台。 特点： 低延迟 以金融为导向，具有跟踪和审核功能的高可用性 行业可持续发展，万亿级消息容量</description>
+        <description>一、简介 Apache RocketMQ 是一个统一的消息引擎，轻量级的数据处理平台 特点： 低延迟 以金融为导向，具有跟踪和审核功能的高可用性 行业可持续发展，万亿级消息容量保</description>
         
         <dc:creator>槎城小子</dc:creator>
         
@@ -49,6 +49,36 @@
           
             
               <category>mq</category>
+            
+          
+        
+        
+      </item>
+      
+      <item>
+        <title>Docker 快速开始</title>
+        <link>https://qinry.github.io/posts/2021/12/docker-quickstart/</link>
+        <pubDate>Tue, 07 Dec 2021 10:55:26 +0800</pubDate>
+        <author>lixiaoqin490@gmail.com (槎城小子)</author>
+        <atom:modified>Tue, 07 Dec 2021 10:55:26 +0800</atom:modified>
+        <guid>https://qinry.github.io/posts/2021/12/docker-quickstart/</guid>
+        <description>Docker 概述 Docker 是一个用于开发、传送和运行应用程序的开放平台。使应用和基础设施隔离。像管理应用一样管理设施。 Docker 容器：打包和运行应用的隔离环境。 Doc</description>
+        
+        <dc:creator>槎城小子</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>docker</category>
+            
+          
+        
+        
+          
+            
+              <category>docker</category>
             
           
         

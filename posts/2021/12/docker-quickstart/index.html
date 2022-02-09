@@ -10,13 +10,13 @@
 
 
   
-  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
+  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
 
 
 
-<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
+<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
 
-<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
+<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
 
 <script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
 
@@ -1336,9 +1336,9 @@
 
 <meta name="keywords" content="docker">
 
-<meta name="created" content="2021-12-07T18:34:07&#43;0800">
-<meta name="modified" content="2021-12-07T18:34:07&#43;0800">
-<meta property="article:published_time" content="2021-12-07T18:34:07&#43;0800">
+<meta name="created" content="2021-12-07T10:55:26&#43;0800">
+<meta name="modified" content="2021-12-07T10:55:26&#43;0800">
+<meta property="article:published_time" content="2021-12-07T10:55:26&#43;0800">
 
 <meta name="author" content="槎城小子">
 
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="Docker 快速开始">
 
-<meta name="generator" content="Hugo 0.88.1" />
+<meta name="generator" content="Hugo 0.92.0" />
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1385,8 +1385,8 @@
     "@context": "https://schema.org",
     "@type": "WebPage",
     "headline": "Docker 快速开始",
-    "datePublished": "2021-12-07T18:34:07+08:00",
-    "dateModified": "2021-12-07T18:34:07+08:00",
+    "datePublished": "2021-12-07T10:55:26+08:00",
+    "dateModified": "2021-12-07T10:55:26+08:00",
     "url" : "https://qinry.github.io/posts/2021/12/docker-quickstart/",
     "description": "Docker 快速开始",
     "keywords": ["docker"],
@@ -1708,17 +1708,21 @@
 <li>当要部署应用时，可以为应用编排服务部署到生产环境的容器中。</li>
 </ul>
 <h2 id="docker-架构">Docker 架构</h2>
-<p><img src="../../../../images/posts/2021/12/docker-quickstart/1.png" /></p>
+<img src="../../../../images/posts/2021/12/docker-quickstart/1.png">
 <p>使用客户端-服务端的架构。客户端与服务端可在同一系统，也可以客户端连接远程服务端（Docker Host）。客户端发送命令，服务端接受命令后操作，比如构建、运行和发布等。</p>
 <p>还一种客户端是 Docker Compose ，使用它让一组容器来组成的应用程序，就是所谓的服务编排。</p>
 <ul>
 <li>Docker Daemon - 监听 Docker API 请求和管理 Docker 对象 如：镜像images，容器containers，网络networks，数据卷volumes</li>
-<li>Docker Client - 与 Docker 交互的主要工具，当运行 <code>docker run</code>时，客户端把命令发送 给 <code>dockerd</code>并执行</li>
-<li>Docker registries - 存储 Docker 镜像。Docker Hub 是官方镜像站点。使用<code>docker pull</code>从仓库获取镜像。<code>docker push</code>来上传镜像</li>
+<li>Docker Client - 与 Docker 交互的主要工具，当运行 <code>docker run</code> 时，客户端把命令发送 给 <code>dockerd</code> 并执行</li>
+<li>Docker registries - 存储 Docker 镜像。Docker Hub 是官方镜像站点。使用 <code>docker pull</code> 从仓库获取镜像。<code>docker push</code> 来上传镜像</li>
 <li>Docker objects
 <ul>
-<li>images - 用于创建容器说明的只读模版。<code>docker images</code>可查看已拉取的镜像</li>
-<li>containers - 正在运行的镜像实例。<code>docker ps</code>可查看运行中的容器</li>
+<li>
+<p>images - 用于创建容器说明的只读模版。<code>docker images</code> 可查看已拉取的镜像</p>
+</li>
+<li>
+<p>containers - 正在运行的镜像实例。docker ps可查看运行中的容器</p>
+</li>
 </ul>
 </li>
 <li>Docker Desktop - 包含了 Docker Daemon、Docker Client 和 Docker Compose等组件 在 Windows 和 Mac 下运行的桌面应用</li>
@@ -1840,6 +1844,7 @@ docker ps -a
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
+</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 创建并运行容器</span>
@@ -1850,6 +1855,7 @@ docker run -id <span class="se">\
 </span><span class="se"></span>-e <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>root <span class="se">\
 </span><span class="se"></span>mysql:5.7
 
+
 <span class="c1"># 连接容器, /bin/bash 是进入容器使用的命令</span>
 docker <span class="nb">exec</span> -it mysql /bin/bash
 docker <span class="nb">exec</span> -it mysql mysql -uroot -p
@@ -1859,11 +1865,11 @@ docker <span class="nb">exec</span> -it mysql mysql -uroot -p
 <li>-i - 保持容器运行。容器创建后，运行，再退出，不会删除容器。它可与d和t连用</li>
 <li>-d - 后台运行容器</li>
 <li>-t - 分配一个伪终端</li>
-<li>&ndash;name - 为容器命名</li>
+<li>–name - 为容器命名</li>
 <li>-p - 端口映射，容器与宿主机隔离的，要想从宿主机访问容器，需要做端口映射，前者是宿主端口，后者才是容器端口。使用数据卷也是先宿主后容器。</li>
 <li>-v - 使用数据卷，宿主机的目录与容器目录绑定。用于数据交互和持久化。如果宿主机目录未指定，就使用默认生成的目录。</li>
 <li>-e - 定义容器使用的环境变量。这里指定 MySQL root 用户密码。</li>
-<li>&ndash;volumes-from - 继承其他容器的数据卷。</li>
+<li>–volumes-from - 继承其他容器的数据卷。</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1918,9 +1924,9 @@ docker load -i mytomcat.tar
 </div>
 </div><h3 id="用dockerfile制作镜像">用Dockerfile制作镜像</h3>
 <p>Dockerfile 是文本文件，包含构建镜像说明。当执行 <code>docker build</code> 会读取这个文件的指令来帮助构建镜像。Dockerfile的默认文件名就是&quot;Dockerfile&quot;。<br />
-如果不使用默认名，则可命名为 <code>Dockerfile.&lt;something&gt;</code>/ <code>&lt;something&gt;.Dockerfile</code>，命令执行时用 &ndash;file（-f）指定它。项目的主Dockerfile建议使用默认的。</p>
+如果不使用默认名，则可命名为 <code>Dockerfile.&lt;something&gt;/ &lt;something&gt;.Dockerfile</code>，命令执行时用 –file（-f）指定它。项目的主Dockerfile建议使用默认的。</p>
 <p>按照官方的教程的构建第一个Java 应用镜像如下</p>
-<p>由于是在Linux下使用docker，运行<code>docker build</code> 设置环境变量来启用 BuildKit，例如：</p>
+<p>由于是在Linux下使用docker，运行 <code>docker build</code> 设置环境变量来启用 BuildKit，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1935,11 +1941,13 @@ docker load -i mytomcat.tar
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-json:/etc/docker/daemon.json" data-lang="json:/etc/docker/daemon.json"><span class="p">{</span>
   <span class="nt">&#34;features&#34;</span><span class="p">:{</span><span class="nt">&#34;buildkit&#34;</span> <span class="p">:</span> <span class="kc">true</span><span class="p">}</span>
 <span class="p">}</span>
+
 </code></pre></td></tr></table>
 </div>
 </div><p>然后重启 docker</p>
@@ -1965,7 +1973,7 @@ git clone https://github.com/spring-projects/spring-petclinic.git
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">./mvnw spring-boot:run
 </code></pre></td></tr></table>
 </div>
-</div><p>用浏览器打开http://localhost:8080，如果使用虚拟机 Linux 并从宿主机访问,localhost要改成虚拟机的ip即可。</p>
+</div><p>用浏览器打开 http://localhost:8080，如果使用虚拟机 Linux 并从宿主机访问,localhost 要改成虚拟机的ip即可。</p>
 <p>接着创建一个Dockerfile</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2002,14 +2010,14 @@ git clone https://github.com/spring-projects/spring-petclinic.git
 </div><p>第1行：告诉 docker 构建器所使用dockerfile的版本1语法。</p>
 <p>第3行：使用openjdk的镜像，它包含 Java JDK ，就能够运行 Java 程序</p>
 <p>第5行：设置镜像的工作目录。后续指令将在这个目录下进行。方便我们后续使用相对路径而非绝对路径</p>
-<p>第7、8行：为了后续执行 <code>./mvnw dependency</code>命令，需要将 Maven Wrapper 和 pom.xml文件放入镜像内。COPY指令有两个参数，第一个是要复制的文件，可以多个文件，第二个是复制到的目标。第7行目标是文件，第8行的目标是目录。注：最后空格后的肯定是第二个参数。</p>
+<p>第7、8行：为了后续执行 <code>./mvnw dependency</code> 命令，需要将 Maven Wrapper 和 pom.xml文件放入镜像内。COPY指令有两个参数，第一个是要复制的文件，可以多个文件，第二个是复制到的目标。第7行目标是文件，第8行的目标是目录。注：最后空格后的肯定是第二个参数。</p>
 <p>第9行：RUN 像在shell运行命令，这里会下载maven项目的依赖项到镜像</p>
 <p>第11行：将源代码复制到镜像</p>
 <p>第13行：CMD 指定当制作的镜像在容器内执行时，将会执行的操作。</p>
 <p>RUN是构建时执行的命令，而CMD运行时执行的命令。</p>
 <p>它由一些列命令构成。每个指令基于基础镜像构成一层文件系统，最终形成镜像。</p>
 <p><a href="https://docs.docker.com/engine/reference/builder/">其他更多的Dockerfile指令见</a></p>
-<p>再接着，创建 .dockeringnore 文件让 docker 构建时要忽略的文件或目录，以提高构建性能。这里 maven  测试这个 demo 会生成一个输出目录 target，可以忽略掉。</p>
+<p>再接着，创建 .dockeringnore 文件让 docker 构建时要忽略的文件或目录，以提高构建性能。这里 maven 测试这个 demo 会生成一个输出目录 target，可以忽略掉。</p>
 <p>.dockerignore的内容如下：</p>
 <pre tabindex="0"><code>target
 </code></pre><p>最后构建镜像</p>
@@ -2022,10 +2030,10 @@ git clone https://github.com/spring-projects/spring-petclinic.git
 </code></pre></td></tr></table>
 </div>
 </div><ul>
-<li><code>--tag</code> - 给镜像打标签 格式是 &ldquo;名号:版本标签&rdquo;，如：java-docker:v1.0.0。如果没指定标签，默认使用 latest</li>
-<li><code>.</code> - 命令最后的 <code>.</code> 是构建镜像的上下文。它是指定了路径所在文件集合，这里表示当前路径下的文件集。构建过程将会处理这些文件</li>
+<li><code>--tag</code> - 给镜像打标签 格式是 “名号:版本标签”，如：java-docker:v1.0.0。如果没指定标签，默认使用 latest</li>
+<li><code>.</code> - 命令最后的 . 是构建镜像的上下文。它是指定了路径所在文件集合，这里表示当前路径下的文件集。构建过程将会处理这些文件</li>
 </ul>
-<p>可以通过 <code>docker images</code> 查看所制作的镜像。还可以创建新的标签如： <code>docker tag java-docker:latest docker:v1.0.0</code></p>
+<p>可以通过 docker images 查看所制作的镜像。还可以创建新的标签如： <code>docker tag java-docker:latest docker:v1.0.0</code></p>
 <p>Dockerfile 的优点：</p>
 <ul>
 <li>保证开发人员可以为团队提供完全一致的开发环境</li>
@@ -2049,7 +2057,7 @@ curl --request GET <span class="se">\
 </div>
 </div><p>输出：</p>
 <pre tabindex="0"><code>{&quot;status&quot;:&quot;UP&quot;}
-</code></pre><p>在开发应用时，可能需要其他容器作为支持，比如  Spring Boot 应用容器需要 MySQL 数据库容器支持</p>
+</code></pre><p>在开发应用时，可能需要其他容器作为支持，比如 Spring Boot 应用容器需要 MySQL 数据库容器支持</p>
 <p>首先在容器中创建 MySQL 数据库，使用数据卷让多个容器共享数据和配置</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2062,7 +2070,7 @@ docker volume create mysql_config
 </code></pre></td></tr></table>
 </div>
 </div><p>创建 network 让应用和数据库共享此网络以互相通信。这里的 network 为用户定义的桥接网络。为了在后面的定义 jdbc url 的时候可以作为用服务名当作连接字符串来使用。<br />
-如：<code>jdbc:mysql://mysqlserver/petclinic</code></p>
+如：jdbc:mysql://mysqlserver/petclinic</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2148,7 +2156,7 @@ docker volume create mysql_config
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yml:docker-compose.dev.yml" data-lang="yml:docker-compose.dev.yml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.8&#39;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-txt:docker-compose.dev.yml" data-lang="txt:docker-compose.dev.yml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.8&#39;</span><span class="w">
 </span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="nt">petclinic</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w">
@@ -2207,7 +2215,7 @@ sudo chmod +x /usr/local/bin/docker-compose
     </article>
     
     
-<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
+<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2414,6 +2422,13 @@ sudo chmod +x /usr/local/bin/docker-compose
     
     <div class="grow"></div>
     
+      <a href="https://qinry.github.io/posts/2022/01/quickstart-rocketmq/" class="pagination-single__right">      
+        <div class="pagination-single__right-title">快速上手 Rocket MQ</div>
+        <div class="pagination-single__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M5 13h11.17l-4.88 4.88c-.39.39-.39 1.03 0 1.42.39.39 1.02.39 1.41 0l6.59-6.59c.39-.39.39-1.02 0-1.41l-6.58-6.6c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L16.17 11H5c-.55 0-1 .45-1 1s.45 1 1 1z"/></svg>
+        </div>
+      </a>
+    
   
 </nav>
     
@@ -2464,7 +2479,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 </div>
 
 
-<script defer src="/js/swipe.min.989e074dfb92ce7f57a92c1df7027f88b53c50a54fd9ad450a673a64aa91bfa4.js"></script>
+<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -3398,7 +3413,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2021, All Rights Reserved
+                    ©2022, All Rights Reserved
                 
             </p>
         
