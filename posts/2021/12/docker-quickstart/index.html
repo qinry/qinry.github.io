@@ -2115,7 +2115,7 @@ docker volume create mysql_config
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run --rm -d <span class="se">\
 </span><span class="se"></span>--name springboot-server <span class="se">\
 </span><span class="se"></span>--network mysqlnet <span class="se">\
-</span><span class="se"></span>-e <span class="nv">MYSQL_URL</span><span class="o">=</span>jdbc://mysqlserver/petclinic <span class="se">\
+</span><span class="se"></span>-e <span class="nv">MYSQL_URL</span><span class="o">=</span>jdbc:mysql://mysqlserver/petclinic <span class="se">\
 </span><span class="se"></span>-p 8080:8080 java-docker
 </code></pre></td></tr></table>
 </div>

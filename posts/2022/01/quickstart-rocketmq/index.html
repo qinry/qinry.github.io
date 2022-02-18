@@ -1644,7 +1644,7 @@
 <div class="single__infos">
   <time class="single__info" title="创建日期">📅&nbsp;2022年01月24日 </time>
   
-  &nbsp;&middot;&nbsp; <span class="single__info" title="阅读时长"> ☕&nbsp;16&nbsp;分钟 </span>
+  &nbsp;&middot;&nbsp; <span class="single__info" title="阅读时长"> ☕&nbsp;22&nbsp;分钟 </span>
   
   <span class="single__info">
     
@@ -1714,7 +1714,15 @@
     <li><a href="#七rocket-mq-日志">七、Rocket MQ 日志</a></li>
     <li><a href="#八openmessaging">八、OpenMessaging</a></li>
     <li><a href="#九事务消息">九、事务消息</a></li>
-    <li><a href="#十总结">十、总结</a></li>
+    <li><a href="#十rocketmq-整合-spring">十、RocketMQ 整合 Spring</a>
+      <ul>
+        <li><a href="#101-设置生产者属性">10.1 设置生产者属性</a></li>
+        <li><a href="#102-生产者用例">10.2 生产者用例</a></li>
+        <li><a href="#103-设置消费者属性">10.3 设置消费者属性</a></li>
+        <li><a href="#104-消费者示例">10.4 消费者示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#十一总结">十一、总结</a></li>
     <li><a href="#参考">参考</a></li>
   </ul>
 </nav>
@@ -3509,11 +3517,705 @@ SendResult [sendStatus=SEND_OK, msgId=0200000115BC18B4AAC279CC65960001, offsetMs
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="十总结">十、总结</h2>
+</div><h2 id="十rocketmq-整合-spring">十、RocketMQ 整合 Spring</h2>
+<p>需要创建两个项目，一个生产者和一个消费者。</p>
+<p>首先，它们都要 Maven 引入依赖，在 Spring Boot 起步依赖的基础上，添加 <code>rocketmq-spring-boot-starter</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml:pom.xml" data-lang="xml:pom.xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.rocketmq<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>rocketmq-spring-boot-starter<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.0.3<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="101-设置生产者属性">10.1 设置生产者属性</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yml:application.yml" data-lang="yml:application.yml"><span class="nt">rocketmq</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># 名称服务器的地址</span><span class="w">
+</span><span class="w">  </span><span class="nt">name-server</span><span class="p">:</span><span class="w"> </span><span class="m">10.119.6.210</span><span class="p">:</span><span class="m">9876</span><span class="l">;127.0.0.1:9876</span><span class="w">
+</span><span class="w">  </span><span class="nt">producer</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># 生产者组</span><span class="w">
+</span><span class="w">    </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l">my-group1</span><span class="w">
+</span><span class="w">    </span><span class="c"># 发送消息超时时间</span><span class="w">
+</span><span class="w">    </span><span class="nt">sendMessageTimeout</span><span class="p">:</span><span class="w"> </span><span class="m">300000</span><span class="w">
+</span><span class="w">    </span><span class="c"># 如果有安全认证需要，使用AK/SK对称加密</span><span class="w">
+</span><span class="w">    </span><span class="nt">access-key</span><span class="p">:</span><span class="w"> </span><span class="l">AK</span><span class="w"> </span><span class="c"># 标识用户</span><span class="w">
+</span><span class="w">    </span><span class="nt">secret-key</span><span class="p">:</span><span class="w"> </span><span class="l">SK</span><span class="w"> </span><span class="c"># 认证密钥</span><span class="w">
+</span><span class="w"></span><span class="c"># 应用代码自定义的属性</span><span class="w">
+</span><span class="w"></span><span class="nt">demo</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">rocketmq</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># 生产者要发送的主题</span><span class="w">
+</span><span class="w">    </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="l">string-topic</span><span class="w">
+</span><span class="w">    </span><span class="nt">orderTopic</span><span class="p">:</span><span class="w"> </span><span class="l">order-paid-topic</span><span class="w">
+</span><span class="w">    </span><span class="nt">msgExtTopic</span><span class="p">:</span><span class="w"> </span><span class="l">message-ext-topic</span><span class="w">
+</span><span class="w">    </span><span class="nt">transTopic</span><span class="p">:</span><span class="w"> </span><span class="l">spring-transaction-topic</span><span class="w">
+</span><span class="w">    </span><span class="c"># 额外的名称服务器地址</span><span class="w">
+</span><span class="w">    </span><span class="nt">extNameServer</span><span class="p">:</span><span class="w"> </span><span class="m">10.119.6.210</span><span class="p">:</span><span class="m">9876</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="102-生产者用例">10.2 生产者用例</h3>
+<p>编写一个业务领域对象，作为业务要做消息发送和接受的例子</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:OrderPaidEvent.java" data-lang="java:OrderPaidEvent.java"><span class="nd">@Data</span>
+<span class="nd">@AllArgsConstructor</span>
+<span class="nd">@NoArgsConstructor</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">OrderPaidEvent</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">orderId</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="n">BigDecimal</span> <span class="n">paidMoney</span><span class="o">;</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>编写一个自定义的RocketMQTemplate，模拟使用扩展的名称服务器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:ExtRocketMQTemplate.java" data-lang="java:ExtRocketMQTemplate.java"><span class="nd">@ExtRocketMQTemplateConfiguration</span><span class="o">(</span><span class="n">nameServer</span> <span class="o">=</span> <span class="s">&#34;${demo.rocketmq.extNameServer}&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExtRocketMQTemplate</span> <span class="kd">extends</span> <span class="n">RocketMQTemplate</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>使用 RocketMQTemplate 发送消息的方法有：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="err">#</span> <span class="n">同步发送</span>
+<span class="err">#</span> <span class="n">String</span> <span class="n">消息</span> <span class="err">#</span>
+<span class="n">syncSend</span><span class="o">(</span><span class="n">String</span> <span class="n">topic</span><span class="o">,</span> <span class="n">String</span> <span class="n">msg</span><span class="o">);</span>
+<span class="err">#</span> <span class="n">Message</span> <span class="n">携带的</span> <span class="n">String</span> <span class="n">消息</span> <span class="err">#</span>
+<span class="n">syncSend</span><span class="o">(</span><span class="n">String</span> <span class="n">topic</span><span class="o">,</span> <span class="n">Message</span> <span class="n">msg</span><span class="o">);</span>
+<span class="err">#</span> <span class="n">异步发送</span>
+<span class="err">#</span> <span class="n">自定义类型消息</span> <span class="err">#</span>
+<span class="n">asyncSend</span><span class="o">(</span><span class="n">String</span> <span class="n">topic</span><span class="o">,</span> <span class="n">Object</span> <span class="n">msg</span><span class="o">,</span> <span class="n">SendCallback</span><span class="o">);</span>
+<span class="err">#</span> <span class="n">带标签发送</span>
+<span class="nf">convertAndSend</span><span class="o">(</span><span class="n">String</span> <span class="n">tag</span><span class="o">,</span> <span class="n">String</span> <span class="n">msg</span><span class="o">);</span>
+<span class="err">#</span> <span class="n">批量发送</span>
+<span class="nf">syncSend</span><span class="o">(</span><span class="n">String</span> <span class="n">topic</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;</span> <span class="n">msgs</span><span class="o">,</span> <span class="kt">int</span> <span class="n">timeout</span><span class="o">);</span>
+<span class="err">#</span> <span class="n">事务发送</span>
+<span class="nf">sendMessageInTransaction</span><span class="o">(</span><span class="n">String</span> <span class="n">group</span><span class="o">,</span> <span class="n">String</span> <span class="n">tag</span><span class="o">,</span> <span class="n">Message</span> <span class="n">msg</span><span class="o">,</span> <span class="n">Object</span> <span class="n">args</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>更多的方法参见，RocketMQTemplate 的源代码。</p>
+<p>返回的结果类型为 <code>SendResult</code>。</p>
+<p>如何创建 Message 对象，使用 MessageBuilder 类的静态方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 消息体是泛型，这里举了String的例子
+</span><span class="c1"></span><span class="n">MessageBuilder</span><span class="o">.</span><span class="na">withPayload</span><span class="o">(</span><span class="s">&#34;消息体&#34;</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="n">RocketMQHeaders</span><span class="o">.</span><span class="na">KEYS</span><span class="o">,</span> <span class="s">&#34;KEY_1&#34;</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>更具体的发送实例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 设置事务消息生产组
+</span><span class="c1"></span><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TX_PGROUP_NAME</span> <span class="o">=</span> <span class="s">&#34;myTxProducerGroup&#34;</span><span class="o">;</span>
+<span class="c1">// 默认 RocketMQTemplate 实例
+</span><span class="c1"></span><span class="nd">@Resource</span>
+<span class="kd">private</span> <span class="n">RocketMQTemplate</span> <span class="n">rocketMQTemplate</span><span class="o">;</span>
+<span class="c1">// 以下是主题
+</span><span class="c1"></span><span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${demo.rocketmq.transTopic}&#34;</span><span class="o">)</span>
+<span class="kd">private</span> <span class="n">String</span> <span class="n">springTransTopic</span><span class="o">;</span>
+<span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${demo.rocketmq.topic}&#34;</span><span class="o">)</span>
+<span class="kd">private</span> <span class="n">String</span> <span class="n">springTopic</span><span class="o">;</span>
+<span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${demo.rocketmq.orderTopic}&#34;</span><span class="o">)</span>
+<span class="kd">private</span> <span class="n">String</span> <span class="n">orderPaidTopic</span><span class="o">;</span>
+<span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${demo.rocketmq.msgExtTopic}&#34;</span><span class="o">)</span>
+<span class="kd">private</span> <span class="n">String</span> <span class="n">msgExtTopic</span><span class="o">;</span>
+<span class="c1">// 自定义的 RocketMQTemplate
+</span><span class="c1"></span><span class="nd">@Resource</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;extRocketMQTemplate&#34;</span><span class="o">)</span>
+<span class="kd">private</span> <span class="n">RocketMQTemplate</span> <span class="n">extRocketMQTemplate</span><span class="o">;</span>
+
+
+<span class="c1">// 使用默认 RocketMQTemplate 发送字符串
+</span><span class="c1"></span><span class="n">SendResult</span> <span class="n">sendResult</span> <span class="o">=</span> <span class="n">rocketMQTemplate</span><span class="o">.</span><span class="na">syncSend</span><span class="o">(</span><span class="n">springTopic</span><span class="o">,</span> <span class="s">&#34;Hello, World!&#34;</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;syncSend1 to topic %s sendResult=%s %n&#34;</span><span class="o">,</span> <span class="n">springTopic</span><span class="o">,</span> <span class="n">sendResult</span><span class="o">);</span>
+
+<span class="c1">// 使用自定义的 RocketMQTemplate
+</span><span class="c1"></span><span class="n">sendResult</span> <span class="o">=</span> <span class="n">extRocketMQTemplate</span><span class="o">.</span><span class="na">syncSend</span><span class="o">(</span><span class="n">springTopic</span><span class="o">,</span> <span class="s">&#34;Hello, World!&#34;</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;extRocketMQTemplate.syncSend1 to topic %s sendResult=%s %n&#34;</span><span class="o">,</span> <span class="n">springTopic</span><span class="o">,</span> <span class="n">sendResult</span><span class="o">);</span>
+
+<span class="c1">// 发送 Message 对象
+</span><span class="c1"></span><span class="n">sendResult</span> <span class="o">=</span> <span class="n">rocketMQTemplate</span><span class="o">.</span><span class="na">syncSend</span><span class="o">(</span><span class="n">springTopic</span><span class="o">,</span> <span class="n">MessageBuilder</span><span class="o">.</span><span class="na">withPayload</span><span class="o">(</span><span class="s">&#34;Hello, World! I&#39;m from spring message&#34;</span><span class="o">).</span><span class="na">build</span><span class="o">());</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;syncSend2 to topic %s sendResult=%s %n&#34;</span><span class="o">,</span> <span class="n">springTopic</span><span class="o">,</span> <span class="n">sendResult</span><span class="o">);</span>
+
+<span class="c1">// 发送用户自定义对象
+</span><span class="c1"></span><span class="n">rocketMQTemplate</span><span class="o">.</span><span class="na">asyncSend</span><span class="o">(</span><span class="n">orderPaidTopic</span><span class="o">,</span> <span class="k">new</span> <span class="n">OrderPaidEvent</span><span class="o">(</span><span class="s">&#34;T_001&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;88.00&#34;</span><span class="o">)),</span> <span class="k">new</span> <span class="n">SendCallback</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="n">SendResult</span> <span class="n">var1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;async onSucess SendResult=%s %n&#34;</span><span class="o">,</span> <span class="n">var1</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onException</span><span class="o">(</span><span class="n">Throwable</span> <span class="n">var1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;async onException Throwable=%s %n&#34;</span><span class="o">,</span> <span class="n">var1</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="o">});</span>
+
+<span class="c1">// 发送标签消息
+</span><span class="c1"></span><span class="n">rocketMQTemplate</span><span class="o">.</span><span class="na">convertAndSend</span><span class="o">(</span><span class="n">msgExtTopic</span> <span class="o">+</span> <span class="s">&#34;:tag0&#34;</span><span class="o">,</span> <span class="s">&#34;I&#39;m from tag0&#34;</span><span class="o">);</span>  <span class="c1">// tag0 不会被消费者选中
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;syncSend topic %s tag %s %n&#34;</span><span class="o">,</span> <span class="n">msgExtTopic</span><span class="o">,</span> <span class="s">&#34;tag0&#34;</span><span class="o">);</span>
+<span class="n">rocketMQTemplate</span><span class="o">.</span><span class="na">convertAndSend</span><span class="o">(</span><span class="n">msgExtTopic</span> <span class="o">+</span> <span class="s">&#34;:tag1&#34;</span><span class="o">,</span> <span class="s">&#34;I&#39;m from tag1&#34;</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;syncSend topic %s tag %s %n&#34;</span><span class="o">,</span> <span class="n">msgExtTopic</span><span class="o">,</span> <span class="s">&#34;tag1&#34;</span><span class="o">);</span>
+
+
+<span class="c1">// 批量发送
+</span><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;</span> <span class="n">msgs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;();</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">msgs</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">MessageBuilder</span><span class="o">.</span><span class="na">withPayload</span><span class="o">(</span><span class="s">&#34;Hello RocketMQ Batch Msg#&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">).</span>
+            <span class="n">setHeader</span><span class="o">(</span><span class="n">RocketMQHeaders</span><span class="o">.</span><span class="na">KEYS</span><span class="o">,</span> <span class="s">&#34;KEY_&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">).</span><span class="na">build</span><span class="o">());</span>
+<span class="o">}</span>
+
+<span class="n">SendResult</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">rocketMQTemplate</span><span class="o">.</span><span class="na">syncSend</span><span class="o">(</span><span class="n">springTopic</span><span class="o">,</span> <span class="n">msgs</span><span class="o">,</span> <span class="n">60000</span><span class="o">);</span>
+
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;--- Batch messages send result :&#34;</span> <span class="o">+</span> <span class="n">sr</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>发送事务消息，还需要编写事务消息监听器：</p>
+<p>消息监听器做两件事：执行当前事务和回查当前事务，都要返回事务的状态。</p>
+<p>事务状态有：1.提交 2.回滚 3.未知</p>
+<blockquote>
+<p>提交和回滚状态的消息不会在检查事务方法中被检查。事务未知状态，需要调用事务状态回查，确定此消息是提交还是回滚。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 事务发送消息
+</span><span class="c1"></span><span class="n">String</span><span class="o">[]</span> <span class="n">tags</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">&#34;TagA&#34;</span><span class="o">,</span> <span class="s">&#34;TagB&#34;</span><span class="o">,</span> <span class="s">&#34;TagC&#34;</span><span class="o">,</span> <span class="s">&#34;TagD&#34;</span><span class="o">,</span> <span class="s">&#34;TagE&#34;</span><span class="o">};</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+
+        <span class="n">Message</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">MessageBuilder</span><span class="o">.</span><span class="na">withPayload</span><span class="o">(</span><span class="s">&#34;Hello RocketMQ &#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">).</span>
+                <span class="n">setHeader</span><span class="o">(</span><span class="n">RocketMQHeaders</span><span class="o">.</span><span class="na">KEYS</span><span class="o">,</span> <span class="s">&#34;KEY_&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+        <span class="n">SendResult</span> <span class="n">sendResult</span> <span class="o">=</span> <span class="n">rocketMQTemplate</span><span class="o">.</span><span class="na">sendMessageInTransaction</span><span class="o">(</span><span class="n">TX_PGROUP_NAME</span><span class="o">,</span>
+                <span class="n">springTransTopic</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">tags</span><span class="o">[</span><span class="n">i</span> <span class="o">%</span> <span class="n">tags</span><span class="o">.</span><span class="na">length</span><span class="o">],</span> <span class="n">msg</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;------ send Transactional msg body = %s , sendResult=%s %n&#34;</span><span class="o">,</span>
+                <span class="n">msg</span><span class="o">.</span><span class="na">getPayload</span><span class="o">(),</span> <span class="n">sendResult</span><span class="o">.</span><span class="na">getSendStatus</span><span class="o">());</span>
+
+        <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">10</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 事务监听器
+</span><span class="c1"></span> <span class="nd">@RocketMQTransactionListener</span><span class="o">(</span>
+   <span class="n">txProducerGroup</span> <span class="o">=</span> <span class="n">TX_PGROUP_NAME</span><span class="o">,</span>
+   <span class="n">accessKey</span> <span class="o">=</span> <span class="s">&#34;AK&#34;</span><span class="o">,</span> <span class="c1">// 该属性未设置，访问application中 &#34;rocketmq.producer.access-key&#34;
+</span><span class="c1"></span>   <span class="n">secretKey</span> <span class="o">=</span> <span class="s">&#34;SK&#34;</span> <span class="c1">// 该属性未设置，访问application中 &#34;rocketmq.producer.secret-key&#34;
+</span><span class="c1"></span><span class="o">)</span>
+<span class="kd">class</span> <span class="nc">TransactionListenerImpl</span> <span class="kd">implements</span> <span class="n">RocketMQLocalTransactionListener</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">AtomicInteger</span> <span class="n">transactionIndex</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AtomicInteger</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+
+    <span class="kd">private</span> <span class="n">ConcurrentHashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">localTrans</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConcurrentHashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;();</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">RocketMQLocalTransactionState</span> <span class="nf">executeLocalTransaction</span><span class="o">(</span><span class="n">Message</span> <span class="n">msg</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">transId</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span><span class="n">msg</span><span class="o">.</span><span class="na">getHeaders</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="n">RocketMQHeaders</span><span class="o">.</span><span class="na">PREFIX</span> <span class="o">+</span> <span class="n">RocketMQHeaders</span><span class="o">.</span><span class="na">TRANSACTION_ID</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;#### executeLocalTransaction is executed, msgTransactionId=%s %n&#34;</span><span class="o">,</span>
+                <span class="n">transId</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">transactionIndex</span><span class="o">.</span><span class="na">getAndIncrement</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">status</span> <span class="o">=</span> <span class="n">value</span> <span class="o">%</span> <span class="n">3</span><span class="o">;</span>
+        <span class="n">localTrans</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">transId</span><span class="o">,</span> <span class="n">status</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">status</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;    # COMMIT # Simulating msg %s related local transaction exec succeeded! ### %n&#34;</span><span class="o">,</span> <span class="n">msg</span><span class="o">.</span><span class="na">getPayload</span><span class="o">());</span>
+            <span class="k">return</span> <span class="n">RocketMQLocalTransactionState</span><span class="o">.</span><span class="na">COMMIT</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">status</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;    # ROLLBACK # Simulating %s related local transaction exec failed! %n&#34;</span><span class="o">,</span> <span class="n">msg</span><span class="o">.</span><span class="na">getPayload</span><span class="o">());</span>
+            <span class="k">return</span> <span class="n">RocketMQLocalTransactionState</span><span class="o">.</span><span class="na">ROLLBACK</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;    # UNKNOW # Simulating %s related local transaction exec UNKNOWN! \n&#34;</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">RocketMQLocalTransactionState</span><span class="o">.</span><span class="na">UNKNOWN</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">RocketMQLocalTransactionState</span> <span class="nf">checkLocalTransaction</span><span class="o">(</span><span class="n">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">transId</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span><span class="n">msg</span><span class="o">.</span><span class="na">getHeaders</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="n">RocketMQHeaders</span><span class="o">.</span><span class="na">PREFIX</span> <span class="o">+</span> <span class="n">RocketMQHeaders</span><span class="o">.</span><span class="na">TRANSACTION_ID</span><span class="o">);</span>
+        <span class="n">RocketMQLocalTransactionState</span> <span class="n">retState</span> <span class="o">=</span> <span class="n">RocketMQLocalTransactionState</span><span class="o">.</span><span class="na">COMMIT</span><span class="o">;</span>
+        <span class="n">Integer</span> <span class="n">status</span> <span class="o">=</span> <span class="n">localTrans</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">transId</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">status</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">switch</span> <span class="o">(</span><span class="n">status</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">case</span> <span class="n">0</span><span class="o">:</span>
+                    <span class="n">retState</span> <span class="o">=</span> <span class="n">RocketMQLocalTransactionState</span><span class="o">.</span><span class="na">UNKNOWN</span><span class="o">;</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">1</span><span class="o">:</span>
+                    <span class="n">retState</span> <span class="o">=</span> <span class="n">RocketMQLocalTransactionState</span><span class="o">.</span><span class="na">COMMIT</span><span class="o">;</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">2</span><span class="o">:</span>
+                    <span class="n">retState</span> <span class="o">=</span> <span class="n">RocketMQLocalTransactionState</span><span class="o">.</span><span class="na">ROLLBACK</span><span class="o">;</span>
+                    <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;------ !!! checkLocalTransaction is executed once,&#34;</span> <span class="o">+</span>
+                        <span class="s">&#34; msgTransactionId=%s, TransactionState=%s status=%s %n&#34;</span><span class="o">,</span>
+                <span class="n">transId</span><span class="o">,</span> <span class="n">retState</span><span class="o">,</span> <span class="n">status</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">retState</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="103-设置消费者属性">10.3 设置消费者属性</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yml:application.yml" data-lang="yml:application.yml"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">application</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># 设置应用名称</span><span class="w">
+</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">rocketmq-consume-demo</span><span class="w">
+</span><span class="w"></span><span class="nt">rocketmq</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># 设置名称服务器地址</span><span class="w">
+</span><span class="w">  </span><span class="nt">name-server</span><span class="p">:</span><span class="w"> </span><span class="m">10.119.6.210</span><span class="p">:</span><span class="m">9876</span><span class="w">
+</span><span class="w">  </span><span class="nt">consumer</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">access-key</span><span class="p">:</span><span class="w"> </span><span class="l">AK</span><span class="w">
+</span><span class="w">    </span><span class="nt">secret-key</span><span class="p">:</span><span class="w"> </span><span class="l">SK</span><span class="w">
+</span><span class="w"></span><span class="c"># 应用代码自定义的属性</span><span class="w">
+</span><span class="w"></span><span class="nt">demo</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">rocketmq</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># 消息主题</span><span class="w">
+</span><span class="w">    </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="l">string-topic</span><span class="w">
+</span><span class="w">    </span><span class="nt">orderTopic</span><span class="p">:</span><span class="w"> </span><span class="l">order-paid-topic</span><span class="w">
+</span><span class="w">    </span><span class="nt">msgExtTopic</span><span class="p">:</span><span class="w"> </span><span class="l">message-ext-topic</span><span class="w">
+</span><span class="w">    </span><span class="nt">transTopic</span><span class="p">:</span><span class="w"> </span><span class="l">spring-transaction-topic</span><span class="w">
+</span><span class="w">    </span><span class="c"># 另一个不同的全局名称服务器地址设置，但出于演示这里和上面的一致</span><span class="w">
+</span><span class="w">    </span><span class="nt">myNameServer</span><span class="p">:</span><span class="w"> </span><span class="m">10.119.6.210</span><span class="p">:</span><span class="m">9876</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="104-消费者示例">10.4 消费者示例</h3>
+<p>消费者大致需要实现 <code>RocketMQListener</code> 接口，使用注解 <code>@RocketMQMessageListener</code> 设置消费组和主题，还有标签等等。</p>
+<p>接受 String 消息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:StringConsumer.java" data-lang="java:StringConsumer.java"><span class="nd">@Service</span>
+<span class="nd">@RocketMQMessageListener</span><span class="o">(</span>
+  <span class="n">topic</span> <span class="o">=</span> <span class="s">&#34;${demo.rocketmq.topic}&#34;</span><span class="o">,</span> 
+  <span class="n">consumerGroup</span> <span class="o">=</span> <span class="s">&#34;string_consumer&#34;</span><span class="o">,</span>
+  <span class="n">accessKey</span> <span class="o">=</span> <span class="s">&#34;AK&#34;</span><span class="o">,</span> <span class="c1">// 该属性未设置，访问application中 &#34;rocketmq.producer.access-key&#34;
+</span><span class="c1"></span>  <span class="n">secretKey</span> <span class="o">=</span> <span class="s">&#34;SK&#34;</span> <span class="c1">// 该属性未设置，访问application中 &#34;rocketmq.producer.secret-key&#34;
+</span><span class="c1"></span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringConsumer</span> <span class="kd">implements</span> <span class="n">RocketMQListener</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMessage</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;------- StringConsumer received: %s \n&#34;</span><span class="o">,</span> <span class="n">message</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里消费是简单打印出来。</p>
+<p>接受 Message 携带的 String 消息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:MessageExtConsumer.java" data-lang="java:MessageExtConsumer.java"><span class="nd">@Service</span>
+<span class="nd">@RocketMQMessageListener</span><span class="o">(</span>
+  <span class="n">topic</span> <span class="o">=</span> <span class="s">&#34;message-ext-topic&#34;</span><span class="o">,</span>
+  <span class="n">selectorExpression</span> <span class="o">=</span> <span class="s">&#34;tag1&#34;</span><span class="o">,</span> <span class="c1">// 选中 tag1，不选 tag0
+</span><span class="c1"></span>  <span class="n">consumerGroup</span> <span class="o">=</span> <span class="s">&#34;${spring.application.name}-message-ext-consumer&#34;</span><span class="o">,</span>
+  <span class="n">accessKey</span> <span class="o">=</span> <span class="s">&#34;AK&#34;</span><span class="o">,</span> <span class="c1">// 该属性未设置，访问application中 &#34;rocketmq.producer.access-key&#34;
+</span><span class="c1"></span>  <span class="n">secretKey</span> <span class="o">=</span> <span class="s">&#34;SK&#34;</span> <span class="c1">// 该属性未设置，访问application中 &#34;rocketmq.producer.secret-key&#34;
+</span><span class="c1"></span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MessageExtConsumer</span> <span class="kd">implements</span> <span class="n">RocketMQListener</span><span class="o">&lt;</span><span class="n">MessageExt</span><span class="o">&gt;,</span> <span class="n">RocketMQPushConsumerLifecycleListener</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMessage</span><span class="o">(</span><span class="n">MessageExt</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;------- MessageExtConsumer received message, msgId: %s, body:%s \n&#34;</span><span class="o">,</span> <span class="n">message</span><span class="o">.</span><span class="na">getMsgId</span><span class="o">(),</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">message</span><span class="o">.</span><span class="na">getBody</span><span class="o">()));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">prepareStart</span><span class="o">(</span><span class="n">DefaultMQPushConsumer</span> <span class="n">consumer</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 从当前时间开始消费
+</span><span class="c1"></span>        <span class="n">consumer</span><span class="o">.</span><span class="na">setConsumeFromWhere</span><span class="o">(</span><span class="n">ConsumeFromWhere</span><span class="o">.</span><span class="na">CONSUME_FROM_TIMESTAMP</span><span class="o">);</span>
+        <span class="c1">// 从指定的时间戳开始消费，默认为消费者启动之前的30分钟处开始消费。这里指定了当前时间
+</span><span class="c1"></span>        <span class="n">consumer</span><span class="o">.</span><span class="na">setConsumeTimestamp</span><span class="o">(</span><span class="n">UtilAll</span><span class="o">.</span><span class="na">timeMillisToHumanString3</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里的消息是主动从 broker 推送到消费者。</p>
+<p>接受自定义类型的消息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:OrderPaidEventConsumer.java" data-lang="java:OrderPaidEventConsumer.java"><span class="nd">@Service</span>
+<span class="nd">@RocketMQMessageListener</span><span class="o">(</span>
+  <span class="n">topic</span> <span class="o">=</span> <span class="s">&#34;${demo.rocketmq.orderTopic}&#34;</span><span class="o">,</span> 
+  <span class="n">consumerGroup</span> <span class="o">=</span> <span class="s">&#34;order-paid-consumer&#34;</span><span class="o">,</span>
+  <span class="n">accessKey</span> <span class="o">=</span> <span class="s">&#34;AK&#34;</span><span class="o">,</span> <span class="c1">// 该属性未设置，访问application中 &#34;rocketmq.producer.access-key&#34;
+</span><span class="c1"></span>  <span class="n">secretKey</span> <span class="o">=</span> <span class="s">&#34;SK&#34;</span> <span class="c1">// 该属性未设置，访问application中 &#34;rocketmq.producer.secret-key&#34;
+</span><span class="c1"></span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">OrderPaidEventConsumer</span> <span class="kd">implements</span> <span class="n">RocketMQListener</span><span class="o">&lt;</span><span class="n">OrderPaidEvent</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMessage</span><span class="o">(</span><span class="n">OrderPaidEvent</span> <span class="n">orderPaidEvent</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;------- OrderPaidEventConsumer received: %s \n&#34;</span><span class="o">,</span> <span class="n">orderPaidEvent</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>从指定名称服务器接收消息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:StringConsumerNewNS.java" data-lang="java:StringConsumerNewNS.java"><span class="nd">@Service</span>
+<span class="nd">@RocketMQMessageListener</span><span class="o">(</span>
+  <span class="n">nameServer</span> <span class="o">=</span> <span class="s">&#34;${demo.rocketmq.myNameServer}&#34;</span><span class="o">,</span> 
+  <span class="n">topic</span> <span class="o">=</span> <span class="s">&#34;${demo.rocketmq.topic}&#34;</span><span class="o">,</span> 
+  <span class="n">consumerGroup</span> <span class="o">=</span> <span class="s">&#34;string_consumer&#34;</span><span class="o">,</span>
+  <span class="n">accessKey</span> <span class="o">=</span> <span class="s">&#34;AK&#34;</span><span class="o">,</span> <span class="c1">// 该属性未设置，访问application中 &#34;rocketmq.producer.access-key&#34;
+</span><span class="c1"></span>  <span class="n">secretKey</span> <span class="o">=</span> <span class="s">&#34;SK&#34;</span> <span class="c1">// 该属性未设置，访问application中 &#34;rocketmq.producer.secret-key&#34;
+</span><span class="c1"></span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringConsumerNewNS</span> <span class="kd">implements</span> <span class="n">RocketMQListener</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMessage</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;------- StringConsumerNewNS received: %s \n&#34;</span><span class="o">,</span> <span class="n">message</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>接受事务消息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java:StringTransactionalConsumer.java" data-lang="java:StringTransactionalConsumer.java"><span class="nd">@Service</span>
+<span class="nd">@RocketMQMessageListener</span><span class="o">(</span>
+  <span class="n">topic</span> <span class="o">=</span> <span class="s">&#34;${demo.rocketmq.transTopic}&#34;</span><span class="o">,</span> 
+  <span class="n">consumerGroup</span> <span class="o">=</span> <span class="s">&#34;string_trans_consumer&#34;</span><span class="o">,</span>
+  <span class="n">accessKey</span> <span class="o">=</span> <span class="s">&#34;AK&#34;</span><span class="o">,</span> <span class="c1">// 该属性未设置，访问application中 &#34;rocketmq.producer.access-key&#34;
+</span><span class="c1"></span>  <span class="n">secretKey</span> <span class="o">=</span> <span class="s">&#34;SK&#34;</span> <span class="c1">// 该属性未设置，访问application中 &#34;rocketmq.producer.secret-key&#34;
+</span><span class="c1"></span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTransactionalConsumer</span> <span class="kd">implements</span> <span class="n">RocketMQListener</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMessage</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;------- StringTransactionalConsumer received: %s \n&#34;</span><span class="o">,</span> <span class="n">message</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="十一总结">十一、总结</h2>
 <p>Rocket MQ 重点在它的核心概念，生产者和消费者由应用代码完成消息发送和接受。</p>
 <p>而broker 也就是消息代理，负责转发和存储，常常是异步消费的情况较多。</p>
 <p>消费者和生产者通过组名进行分类。一般一个生产组只要一个生产者实例就够了。而且同一个消费组的消费者实例必须有相同的主题订阅。消息大致由主题、标签和消息体和其他键值对属性构成。</p>
 <p>本文演示单节点 Rocket MQ 实例的 Docker 容器搭建，以及 web 控制台的搭建（rocketmq-dashboard）。还有常用功能快速上手，比如同步、异步和单向发送，广播消息，消息过滤，消息日志，事务消息，延迟调度消息，普通顺序消息，拉取和推送消息消费，以及消息批处理。</p>
+<p>RocketMQ整合Spring。生产者的核心是 <code>RocketMQTemplate</code>，结合主题、标签还有消息体来发送消息。</p>
+<p>消费者的核心是 实现 <code>RocketMQListener</code> 接口和 使用注解 <code>@RocketMQMessageListener</code>，在接口的方法写消费的行为，在注解设置消费需要的组名，主题名还有标签等。</p>
+<p>事务消息重点在生产者，需要实现 <code>RocketMQLocalTransactionListener</code> 接口和使用注解<code>@RocketMQTransactionListener</code>，在接口 <code>executeLocalTransaction</code> 方法中执行事务，需要返回事务状态 <code>RocketMQLocalTransactionState</code>，消息正确事务执行，返回 COMMIT；遇到错误需要中止，返回 ROLLBACK；处于 UNKNOWN 状态，需要调用 <code>checkLocalTransaction</code> 来回查。</p>
+<p>示例代码放在 <a href="https://github.com/qinry/rocketmq-learning.git">github</a></p>
 <h2 id="参考">参考</h2>
 <ul>
 <li><a href="https://rocketmq.apache.org/">Rocket MQ 官网</a></li>
@@ -4131,7 +4833,15 @@ document.addEventListener('DOMContentLoaded', function () {
     <li><a href="#七rocket-mq-日志">七、Rocket MQ 日志</a></li>
     <li><a href="#八openmessaging">八、OpenMessaging</a></li>
     <li><a href="#九事务消息">九、事务消息</a></li>
-    <li><a href="#十总结">十、总结</a></li>
+    <li><a href="#十rocketmq-整合-spring">十、RocketMQ 整合 Spring</a>
+      <ul>
+        <li><a href="#101-设置生产者属性">10.1 设置生产者属性</a></li>
+        <li><a href="#102-生产者用例">10.2 生产者用例</a></li>
+        <li><a href="#103-设置消费者属性">10.3 设置消费者属性</a></li>
+        <li><a href="#104-消费者示例">10.4 消费者示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#十一总结">十一、总结</a></li>
     <li><a href="#参考">参考</a></li>
   </ul>
 </nav>
