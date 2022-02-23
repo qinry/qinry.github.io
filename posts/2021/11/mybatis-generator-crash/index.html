@@ -1334,7 +1334,7 @@
 <meta name="description" content="Mybatis 代码生成插件，加快开发" />
 
 
-<meta name="keywords" content="mybatis,orm,gradle">
+<meta name="keywords" content="mybatis,orm">
 
 <meta name="created" content="2021-11-12T23:44:27&#43;0800">
 <meta name="modified" content="2021-11-12T23:44:27&#43;0800">
@@ -1389,7 +1389,7 @@
     "dateModified": "2021-11-12T23:44:27+08:00",
     "url" : "https://qinry.github.io/posts/2021/11/mybatis-generator-crash/",
     "description": "Mybatis 代码生成插件，加快开发",
-    "keywords": ["mybatis","orm","gradle"],
+    "keywords": ["mybatis","orm"],
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://qinry.github.io/"
@@ -1661,8 +1661,6 @@
 
   <li><a href="https://qinry.github.io/tags/orm/" class="single__tag" title="orm">#orm</a></li>
 
-  <li><a href="https://qinry.github.io/tags/gradle/" class="single__tag" title="gradle">#gradle</a></li>
-
 </ul>
 
     </div>
@@ -1678,7 +1676,7 @@
   <div class="expand__content expand__content--toc">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#创建gradle项目">创建Gradle项目</a></li>
+    <li><a href="#引入依赖">引入依赖</a></li>
     <li><a href="#编写-generatorconfigxml">编写 generatorConfig.xml</a></li>
     <li><a href="#创建数据库表">创建数据库表</a></li>
     <li><a href="#执行生成任务">执行生成任务</a></li>
@@ -1690,7 +1688,24 @@
   </div>
 </div>
 
-      <h2 id="创建gradle项目">创建Gradle项目</h2>
+      <h2 id="引入依赖">引入依赖</h2>
+<p>创建 spring boot 项目后，引入额外的依赖</p>
+<p>gradle:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gradle:build.gradle" data-lang="gradle:build.gradle"><span class="n">dependencies</span> <span class="o">{</span>
+    <span class="n">implementation</span> <span class="nl">group:</span> <span class="s1">&#39;org.mybatis.generator&#39;</span><span class="o">,</span> <span class="nl">name:</span> <span class="s1">&#39;mybatis-generator-core&#39;</span><span class="o">,</span> <span class="nl">version:</span> <span class="s1">&#39;1.4.0&#39;</span>
+    <span class="n">runtimeOnly</span> <span class="s1">&#39;mysql:mysql-connector-java&#39;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>maven:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1703,52 +1718,22 @@
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-gradle:build.gradle" data-lang="gradle:build.gradle"><span class="n">plugins</span> <span class="o">{</span>
-    <span class="n">id</span> <span class="s1">&#39;org.springframework.boot&#39;</span> <span class="n">version</span> <span class="s1">&#39;2.5.6&#39;</span>
-    <span class="n">id</span> <span class="s2">&#34;com.thinkimi.gradle.MybatisGenerator&#34;</span> <span class="n">version</span> <span class="s2">&#34;2.4&#34;</span>
-<span class="o">}</span>
-
-<span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">&#39;java&#39;</span>
-<span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">&#39;io.spring.dependency-management&#39;</span>
-
-<span class="n">group</span> <span class="s1">&#39;io.github.qinry&#39;</span>
-<span class="n">version</span> <span class="s1">&#39;1.0-SNAPSHOT&#39;</span>
-<span class="n">sourceCompatibility</span> <span class="o">=</span> <span class="n">JavaVersion</span><span class="o">.</span><span class="na">VERSION_11</span>
-
-<span class="n">repositories</span> <span class="o">{</span>
-    <span class="n">mavenCentral</span><span class="o">()</span>
-<span class="o">}</span>
-
-<span class="n">dependencies</span> <span class="o">{</span>
-    <span class="n">implementation</span> <span class="s1">&#39;org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0&#39;</span>
-    <span class="n">runtimeOnly</span> <span class="s1">&#39;mysql:mysql-connector-java&#39;</span>
-    <span class="n">testImplementation</span> <span class="s1">&#39;org.springframework.boot:spring-boot-starter-test&#39;</span>
-<span class="o">}</span>
-
-<span class="n">test</span> <span class="o">{</span>
-    <span class="n">useJUnitPlatform</span><span class="o">()</span>
-<span class="o">}</span>
+<pre tabindex="0" class="chroma"><code class="language-xml:pom.xml" data-lang="xml:pom.xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.mybatis.generator<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>mybatis-generator-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.4.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>mysql<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>mysql-connector-java<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="编写-generatorconfigxml">编写 generatorConfig.xml</h2>
-<p>在项目根路径下创建generatorConfig.xml文件</p>
+<p>在resources路径下创建generatorConfig.xml文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1794,7 +1779,7 @@
 </span><span class="lnt">41
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml:generatorConfig.xml" data-lang="xml:generatorConfig.xml"><span class="cp">&lt;!DOCTYPE generatorConfiguration PUBLIC
+<pre tabindex="0" class="chroma"><code class="language-xml:src/main/resources/generatorConfig.xml" data-lang="xml:src/main/resources/generatorConfig.xml"><span class="cp">&lt;!DOCTYPE generatorConfiguration PUBLIC
 </span><span class="cp">        &#34;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&#34;
 </span><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&#34;&gt;</span>
 <span class="nt">&lt;generatorConfiguration&gt;</span>
@@ -1880,16 +1865,38 @@
 </span></code></pre></td></tr></table>
 </div>
 </div><h2 id="执行生成任务">执行生成任务</h2>
+<p>编写下面的Java程序，运行即可</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">gradle mbGenerator
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MBGenerator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">warnings</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">boolean</span> <span class="n">overwrite</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="n">File</span> <span class="n">configFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&#34;src/main/resources/generatorConfig.xml&#34;</span><span class="o">);</span>
+        <span class="n">ConfigurationParser</span> <span class="n">cp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConfigurationParser</span><span class="o">(</span><span class="n">warnings</span><span class="o">);</span>
+        <span class="n">Configuration</span> <span class="n">config</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="na">parseConfiguration</span><span class="o">(</span><span class="n">configFile</span><span class="o">);</span>
+        <span class="n">DefaultShellCallback</span> <span class="n">callback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultShellCallback</span><span class="o">(</span><span class="n">overwrite</span><span class="o">);</span>
+        <span class="n">MyBatisGenerator</span> <span class="n">myBatisGenerator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyBatisGenerator</span><span class="o">(</span><span class="n">config</span><span class="o">,</span> <span class="n">callback</span><span class="o">,</span> <span class="n">warnings</span><span class="o">);</span>
+        <span class="n">myBatisGenerator</span><span class="o">.</span><span class="na">generate</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>保证包 <code>com.owk</code> 提前创建好，这个插件默认配置不会创建层级超过一的目录。有IDE支持就更加方便。<br />
-生成代码如下：</p>
+</div><p>生成代码如下：</p>
 <pre tabindex="0"><code>src/main
 ├── java
 │   └── com
@@ -2798,7 +2805,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="toc " data-dir="ltr" data-folding="true" data-ani="true">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#创建gradle项目">创建Gradle项目</a></li>
+    <li><a href="#引入依赖">引入依赖</a></li>
     <li><a href="#编写-generatorconfigxml">编写 generatorConfig.xml</a></li>
     <li><a href="#创建数据库表">创建数据库表</a></li>
     <li><a href="#执行生成任务">执行生成任务</a></li>

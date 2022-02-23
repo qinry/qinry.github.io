@@ -41,9 +41,6 @@
     <loc>https://qinry.github.io/posts/2021/12/docker-quickstart/</loc>
     <lastmod>2021-12-07T10:55:26+08:00</lastmod>
   </url><url>
-    <loc>https://qinry.github.io/tags/gradle/</loc>
-    <lastmod>2021-11-12T23:44:27+08:00</lastmod>
-  </url><url>
     <loc>https://qinry.github.io/tags/mybatis/</loc>
     <lastmod>2021-11-12T23:44:27+08:00</lastmod>
   </url><url>
@@ -52,6 +49,9 @@
   </url><url>
     <loc>https://qinry.github.io/tags/orm/</loc>
     <lastmod>2021-11-12T23:44:27+08:00</lastmod>
+  </url><url>
+    <loc>https://qinry.github.io/tags/gradle/</loc>
+    <lastmod>2021-11-11T10:00:16+08:00</lastmod>
   </url><url>
     <loc>https://qinry.github.io/posts/2021/11/mybatis-spring-boot-starter-crash/</loc>
     <lastmod>2021-11-11T10:00:16+08:00</lastmod>
