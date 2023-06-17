@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="学习JavaScript 语法和 jQuery">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1773,7 +1773,7 @@ ECMAScript 6，简称 ES6。ECMAScript 可以理解是 Javascript 的标准化�
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
-        &lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&#34;main.js&#34;&gt;&lt;/script&gt;
     &lt;/head&gt;
     &lt;body&gt;
     &lt;/body&gt;
@@ -1803,7 +1803,7 @@ let 局部变量 = 值;
 <li>undefined 表示未定义，说明变量未声明或声明但未初始化，依然为未定义</li>
 </ul>
 <h3 id="严格检查模式">严格检查模式</h3>
-<pre tabindex="0"><code>'user strict'; // 严格检查模式，必须写在第一行
+<pre tabindex="0"><code>&#39;user strict&#39;; // 严格检查模式，必须写在第一行
 </code></pre><h3 id="数字">数字</h3>
 <p>不区分小数和整数，例如：</p>
 <pre tabindex="0"><code>123 // 整数
@@ -1814,21 +1814,21 @@ NaN // Not a Number
 Infinity // 无穷大
 </code></pre><h3 id="字符串">字符串</h3>
 <p>用单引号或双引号表示，例如：</p>
-<pre tabindex="0"><code>&quot;abc&quot;
-'abc'
+<pre tabindex="0"><code>&#34;abc&#34;
+&#39;abc&#39;
 </code></pre><h3 id="布尔">布尔</h3>
 <p>有两个值true或false</p>
 <h3 id="数组">数组</h3>
 <p>使用中括号[]表示。这里数组，每个元素可以不相同，但建议保持使用一样的数据类型</p>
 <p>例如：</p>
 <pre tabindex="0"><code>var ia = [ 1,2,3,4 ];
-var sa = [ &quot;hello&quot;, &quot;world&quot; ];
+var sa = [ &#34;hello&#34;, &#34;world&#34; ];
 var ba = [ true, false ];
 var matrix = [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ];
 </code></pre><h3 id="对象">对象</h3>
 <p>使用大括号{}表示，对象的属性以 <code>属性名:值</code> 格式表示，属性之间用逗号隔开，最后的属性不加逗号</p>
 <pre tabindex="0"><code>var person = {
-    name: &quot;zhangsan&quot;,
+    name: &#34;zhangsan&#34;,
     age: 13
 }
 var personName = person.name
@@ -1864,8 +1864,8 @@ var personAge = person.age
 <h3 id="字符串-1">字符串</h3>
 <p>1、转义字符</p>
 <pre tabindex="0"><code>\\ 反斜杠
-\' 单引号
-\&quot; 双引号
+\&#39; 单引号
+\&#34; 双引号
 \n 换行符
 \t 制表符
 \u4e2d unicode字符 \u0000~\uffff 十六进制
@@ -1874,23 +1874,23 @@ var personAge = person.age
 <pre tabindex="0"><code>var str = `hello
 world`;
 </code></pre><p>3、模式字符串</p>
-<pre tabindex="0"><code>var world = &quot;world!&quot;;
-var str = `hello, ${world}`; // 结果：&quot;hello, world!&quot;
+<pre tabindex="0"><code>var world = &#34;world!&#34;;
+var str = `hello, ${world}`; // 结果：&#34;hello, world!&#34;
 </code></pre><p>4、字符串长度</p>
-<pre tabindex="0"><code>var str = &quot;hello, javascript&quot;;
+<pre tabindex="0"><code>var str = &#34;hello, javascript&#34;;
 var len = str.length;
 </code></pre><p>5、字符串可变性与否</p>
 <p>字符串可通过下标取出包含的字符，如：<code>str[0]</code>。字符串不可变，即使 <code>str[0] = 'b';</code> ，也不能改变 str里面的值。</p>
 <p>6、大小写转换</p>
-<pre tabindex="0"><code>var str = &quot;student&quot;;
+<pre tabindex="0"><code>var str = &#34;student&#34;;
 str.toUpperCase();
 str.toLowerCase();
 </code></pre><p>7、子字符串</p>
-<pre tabindex="0"><code>var str = &quot;student&quot;;
+<pre tabindex="0"><code>var str = &#34;student&#34;;
 var sub = str.substring(0, 3);
 </code></pre><p>8、索引</p>
-<pre tabindex="0"><code>var str = &quot;student&quot;;
-var idx = str.indexOf('t');
+<pre tabindex="0"><code>var str = &#34;student&#34;;
+var idx = str.indexOf(&#39;t&#39;);
 </code></pre><h3 id="数组-1">数组</h3>
 <p>1、长度</p>
 <pre tabindex="0"><code>var arr = [ 1, 2, 3, 4, 5 ];
@@ -1923,7 +1923,7 @@ arr.concat([ 6, 7, 8] );
 </code></pre><p>9、连接</p>
 <p>将数组元素连接成字符串，参数为连接符，默认为&quot;,&quot;</p>
 <pre tabindex="0"><code>var arr = [ 1, 2, 3, 4, 5 ];
-var str = arr.join(&quot;-&quot;); // 结果：1-2-3-4-5
+var str = arr.join(&#34;-&#34;); // 结果：1-2-3-4-5
 </code></pre><p>10、多维数组</p>
 <p>取值</p>
 <pre tabindex="0"><code>var matrix = [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ];
@@ -1931,14 +1931,14 @@ var value = matrix[1][1];
 </code></pre><h3 id="对象-1">对象</h3>
 <p>以对象person为例：</p>
 <pre tabindex="0"><code>var person = {
-    name: &quot;张三&quot;,
+    name: &#34;张三&#34;,
     age: 18,
-    email: &quot;zhangsan@163.com&quot;,
+    email: &#34;zhangsan@163.com&#34;,
     score: 0
 };
 </code></pre><p>1、设置属性</p>
-<pre tabindex="0"><code>person.name = &quot;李四&quot;;
-person.gender = &quot;男&quot;; // 设置不存在属性，对象增添该属性
+<pre tabindex="0"><code>person.name = &#34;李四&#34;;
+person.gender = &#34;男&#34;; // 设置不存在属性，对象增添该属性
 </code></pre><p>2、获得属性值</p>
 <pre tabindex="0"><code>var personName = person.name;
 var gender = person.gender; // 不存在属性，返回undefined，没有报错
@@ -1946,28 +1946,28 @@ var gender = person.gender; // 不存在属性，返回undefined，没有报错
 <pre tabindex="0"><code>var flag = delete person.gender; // 删除该属性，若属性存在，返回true，否则返回undefined
 </code></pre><p>4、判断对象包含的属性</p>
 <p>可以是<code>&quot;属性名&quot; in 对象名</code> 来判断，也可以是<code>对象名.hasOwnProperty(属性名)</code>。</p>
-<pre tabindex="0"><code>var exists = &quot;age&quot; in person; // 存在返回true，否则返回false
-exists = person.hasOwnProperty(&quot;name&quot;); // 与上行类似
+<pre tabindex="0"><code>var exists = &#34;age&#34; in person; // 存在返回true，否则返回false
+exists = person.hasOwnProperty(&#34;name&#34;); // 与上行类似
 </code></pre><p>他们区别，in还可以判断某个方法是否在这个对象，hasOwnProperty方法显然不行。<br />
 例如：</p>
-<pre tabindex="0"><code>&quot;toString&quot; in person; // 结果：true
-person.hasOwnProperty(&quot;toString&quot;); // 结果： false
+<pre tabindex="0"><code>&#34;toString&#34; in person; // 结果：true
+person.hasOwnProperty(&#34;toString&#34;); // 结果： false
 </code></pre><h2 id="流程控制">流程控制</h2>
 <h3 id="if分支">if分支</h3>
 <pre tabindex="0"><code>var score = 88;
 if (score &lt; 0 || score &gt; 100) {
-    alert(&quot;分数在不合理范围&quot;);
+    alert(&#34;分数在不合理范围&#34;);
 }
 if (score &gt;= 90) {
-    console.log(&quot;优秀&quot;);
+    console.log(&#34;优秀&#34;);
 } else if (score &gt;= 80) {
-    console.log(&quot;良好&quot;);
+    console.log(&#34;良好&#34;);
 } else if (score &gt;= 70) {
-    console.log(&quot;中等&quot;);
+    console.log(&#34;中等&#34;);
 } else if (score &gt;= 60) {
-    console.log(&quot;及格&quot;);
+    console.log(&#34;及格&#34;);
 } else {
-    console.log(&quot;不及格&quot;);
+    console.log(&#34;不及格&#34;);
 }
 </code></pre><p>console.log(&hellip;) 在浏览器控制台输出消息。alert(&hellip;) 浏览器弹窗显示消息</p>
 <h3 id="while循环">while循环</h3>
@@ -1997,9 +1997,9 @@ for (let val of arr) {
 }
 
 var person = {
-    name: &quot;张三&quot;,
+    name: &#34;张三&#34;,
     age: 18,
-    email: &quot;zhangsan@163.com&quot;,
+    email: &#34;zhangsan@163.com&#34;,
     score: 0
 };
 
@@ -2011,16 +2011,16 @@ for (let key in person) {
 <blockquote>
 <p>map增删改查</p>
 </blockquote>
-<pre tabindex="0"><code>var map = new Map([ [&quot;jack&quot;, 90],[&quot;rocco&quot;, 88] ]); // 新建Map 可传参：二维数组 表示键值对
-map.set(&quot;tom&quot;, 100); // 增
-map.delete(&quot;tom&quot;); // 删：成功返回true，否则返回false
-map.set(&quot;rocco&quot;, 100); // 改
-map.get(&quot;jack&quot;); // 查
+<pre tabindex="0"><code>var map = new Map([ [&#34;jack&#34;, 90],[&#34;rocco&#34;, 88] ]); // 新建Map 可传参：二维数组 表示键值对
+map.set(&#34;tom&#34;, 100); // 增
+map.delete(&#34;tom&#34;); // 删：成功返回true，否则返回false
+map.set(&#34;rocco&#34;, 100); // 改
+map.get(&#34;jack&#34;); // 查
 </code></pre><blockquote>
 <p>遍历map</p>
 </blockquote>
 <pre tabindex="0"><code>for (let x of map) {
-    console.log(x[0] + &quot; =&gt; &quot; + x[1]);
+    console.log(x[0] + &#34; =&gt; &#34; + x[1]);
 }
 </code></pre><h3 id="set">set</h3>
 <blockquote>
@@ -2047,8 +2047,8 @@ set.has(2); // 查
 }
 
 function abs(x) {
-    if (typeof x !== &quot;number&quot;) {
-        throw &quot;arg x not a number&quot;;
+    if (typeof x !== &#34;number&#34;) {
+        throw &#34;arg x not a number&#34;;
     }
     return x &gt;= 0 ? x : -x;
 }
@@ -2062,8 +2062,8 @@ var val = abs(-2);
 }
 
 var abs = function(x) {
-    if (typeof x !== &quot;Number&quot;) {
-        throw &quot;arg x not a number&quot;;
+    if (typeof x !== &#34;Number&#34;) {
+        throw &#34;arg x not a number&#34;;
     }
     return x &gt;= 0 ? x : -x;
 }
@@ -2072,8 +2072,8 @@ var val = abs(-2);
 <h3 id="arguments关键字">arguments关键字</h3>
 <p>arguments包含函数的所有参数，其实是数组</p>
 <pre tabindex="0"><code>function log(str) {
-    if (typeof str !== &quot;String&quot;) {
-        throw &quot;arg str not a String&quot;;
+    if (typeof str !== &#34;String&#34;) {
+        throw &#34;arg str not a String&#34;;
     }
     if (arguments.length == 1) {
         console.log(str);
@@ -2085,18 +2085,18 @@ var val = abs(-2);
     }
     
 }
-log(&quot;hello&quot;, &quot;world&quot;, &quot;!&quot;);
+log(&#34;hello&#34;, &#34;world&#34;, &#34;!&#34;);
 </code></pre><h3 id="可变参数">可变参数</h3>
 <pre tabindex="0"><code>function log(str, ...rest) {
-    if (typeof str !== &quot;String&quot;) {
-        throw &quot;arg str not a String&quot;;
+    if (typeof str !== &#34;String&#34;) {
+        throw &#34;arg str not a String&#34;;
     }
     console.log(str);
     for (let msg of rest) {
         console.log(msg);
     }
 }
-log(&quot;hello&quot;, &quot;world&quot;, &quot;!&quot;);
+log(&#34;hello&#34;, &#34;world&#34;, &#34;!&#34;);
 </code></pre><h3 id="作用域">作用域</h3>
 <p>在函数内部声明的局部变量，只能在其函数内部使用。</p>
 <pre tabindex="0"><code>function f1() {
@@ -2135,15 +2135,15 @@ for (let i = 0; i &lt; 5; i++) {
 // console.log(i+1);// ! let声明的i不会在for循环外生效，而var会
 </code></pre><h3 id="const关键字">const关键字</h3>
 <p>定义常量，使用关键字const</p>
-<pre tabindex="0"><code>const PI = &quot;3.1415&quot;;
-// PI = &quot;123&quot;; // ! 常量PI只读，不能修改
+<pre tabindex="0"><code>const PI = &#34;3.1415&#34;;
+// PI = &#34;123&#34;; // ! 常量PI只读，不能修改
 </code></pre><h3 id="方法">方法</h3>
 <p>对象包含的变量为属性，对象包含的函数为方法</p>
 <blockquote>
 <p>方式1</p>
 </blockquote>
 <pre tabindex="0"><code>var person = {
-    name: &quot;zhangsan&quot;,
+    name: &#34;zhangsan&#34;,
     birth: 1999,
     age: function() {
         var now = new Date().getFullYear();
@@ -2161,7 +2161,7 @@ person.age();
 }
 
 var person = {
-    name: &quot;zhangsan&quot;,
+    name: &#34;zhangsan&#34;,
     birth: 1999,
     age: getAge
 }
@@ -2174,7 +2174,7 @@ person.age();
 }
 
 var person = {
-    name: &quot;zhangsan&quot;,
+    name: &#34;zhangsan&#34;,
     birth: 1999,
     age: getAge
 }
@@ -2182,17 +2182,17 @@ getAge.apply(person, []);
 </code></pre><h2 id="内部对象">内部对象</h2>
 <h3 id="标准对象">标准对象</h3>
 <pre tabindex="0"><code>typeof 123;
-&quot;number&quot;
-typeof &quot;123&quot;;
-&quot;string&quot;
+&#34;number&#34;
+typeof &#34;123&#34;;
+&#34;string&#34;
 typeof true;
-&quot;boolean&quot;
+&#34;boolean&#34;
 typeof NaN;
-&quot;number&quot;
+&#34;number&#34;
 typeof [];
-&quot;object&quot;
+&#34;object&#34;
 typeof {};
-&quot;object&quot;
+&#34;object&#34;
 </code></pre><h3 id="date">Date</h3>
 <blockquote>
 <p>常用方法</p>
@@ -2215,15 +2215,15 @@ now.toLocaleString();
 </code></pre><h3 id="json">JSON</h3>
 <p>对象转JSON字符串</p>
 <pre tabindex="0"><code>var person = {
-    name: &quot;张三&quot;,
+    name: &#34;张三&#34;,
     age: 18,
-    email: &quot;zhangsan@163.com&quot;,
+    email: &#34;zhangsan@163.com&#34;,
     score: 0
 };
 var jsonPerson = JSON.stringify(person);
 console.log(jsonPerson);
 </code></pre><p>JSON字符串转对象</p>
-<pre tabindex="0"><code>var person = JSON.parse('{&quot;name&quot;:&quot;张三&quot;,&quot;age&quot;:18,&quot;email&quot;:&quot;zhangsan@163.com&quot;,&quot;score&quot;:0}');
+<pre tabindex="0"><code>var person = JSON.parse(&#39;{&#34;name&#34;:&#34;张三&#34;,&#34;age&#34;:18,&#34;email&#34;:&#34;zhangsan@163.com&#34;,&#34;score&#34;:0}&#39;);
 console.log(person.name)
 </code></pre><h2 id="面向对象">面向对象</h2>
 <blockquote>
@@ -2234,7 +2234,7 @@ console.log(person.name)
 }
 
 Student.prototype.hello = function(){
-    alert('hello');
+    alert(&#39;hello&#39;);
 };
 
 
@@ -2246,10 +2246,10 @@ function Pupil(name, age) {
 }
 
 Pupil.prototype.showAge = function() {
-    alert('age:'+this.age);
+    alert(&#39;age:&#39;+this.age);
 }
-var pu = new Pupil('lisi', 8);
-var stu = new Student(&quot;zhangsan&quot;);
+var pu = new Pupil(&#39;lisi&#39;, 8);
+var stu = new Student(&#34;zhangsan&#34;);
 pu.showAge();
 stu.hello();
 </code></pre><blockquote>
@@ -2260,7 +2260,7 @@ stu.hello();
         this.name = name;
     }
     hello() {
-        alert('hello');
+        alert(&#39;hello&#39;);
     }
 }
 // 继承
@@ -2270,11 +2270,11 @@ class Pupil extends Student {
         this.age = age;
     }
     showAge() {
-        alert(&quot;age:&quot;+this.age);
+        alert(&#34;age:&#34;+this.age);
     }
 }
-var p = new Pupil('lisi', 8);
-var s = new Student('zhangsan');
+var p = new Pupil(&#39;lisi&#39;, 8);
+var s = new Student(&#39;zhangsan&#39;);
 p.showAge();
 s.hello();
 </code></pre><h2 id="操作bom对象">操作BOM对象</h2>
@@ -2290,7 +2290,7 @@ s.hello();
 <p>window</p>
 </blockquote>
 <p>代表浏览器的窗口</p>
-<pre tabindex="0"><code>window.alert('..')
+<pre tabindex="0"><code>window.alert(&#39;..&#39;)
 window.innerHeight
 window.innerWidth
 window.outerHeight
@@ -2319,7 +2319,7 @@ location.protocol // https
 location.href
 location.hostname
 location.reload() // 刷新
-location.assign('..') // 重定向
+location.assign(&#39;..&#39;) // 重定向
 </code></pre><blockquote>
 <p>history<br />
 表示历史记录</p>
@@ -2332,7 +2332,7 @@ history.forward()
 </blockquote>
 <p>表示当前页面，就是HTML 文档树</p>
 <pre tabindex="0"><code>document.title
-document.getElementById('..'); // id选择文档树结点
+document.getElementById(&#39;..&#39;); // id选择文档树结点
 document.cookie // cookie不安全，服务端需要设置cookie httpOnly属性，那么document.cookie无法访问设置该属性的cookie
 </code></pre><h2 id="操作dom对象">操作DOM对象</h2>
 <p>DOM，即 Document Object Model，中文为文档对象模型。</p>
@@ -2347,9 +2347,9 @@ document.cookie // cookie不安全，服务端需要设置cookie httpOnly属性�
 <p>假如有这么一个html文件：</p>
 <pre tabindex="0"><code>&lt;html&gt;
     &lt;head&gt;
-        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;meta charset=&#34;utf-8&#34;&gt;
         &lt;title&gt;操作DOM对象&lt;/title&gt;
-        &lt;style type=&quot;text/css&quot;&gt;
+        &lt;style type=&#34;text/css&#34;&gt;
             .p2 {
                 color: red;
                 font-size: 100px;   
@@ -2357,10 +2357,10 @@ document.cookie // cookie不安全，服务端需要设置cookie httpOnly属性�
         &lt;/style&gt;
     &lt;/head&gt;
     &lt;body&gt;
-        &lt;div id=&quot;father&quot;&gt;
+        &lt;div id=&#34;father&#34;&gt;
             &lt;h1&gt;一级标题&lt;/h1&gt;
-            &lt;p id=&quot;p1&quot;&gt;p1&lt;/p&gt;
-            &lt;p class=&quot;p2&quot;&gt;p2&lt;/p&gt;
+            &lt;p id=&#34;p1&#34;&gt;p1&lt;/p&gt;
+            &lt;p class=&#34;p2&#34;&gt;p2&lt;/p&gt;
         &lt;/div&gt;
         &lt;script&gt;
             // ... 操作DOM节点
@@ -2369,10 +2369,10 @@ document.cookie // cookie不安全，服务端需要设置cookie httpOnly属性�
 &lt;/html&gt;
 </code></pre><h3 id="查找节点">查找节点</h3>
 <pre tabindex="0"><code>// 根据选择器选择元素节点
-var h1 = document.getElementsByTagName('h1').item(0);
-var p1 = document.getElementById('p1');
-var p2 = document.getElementsByClassName('p2').item(0);
-var father = document.getElementById('father');
+var h1 = document.getElementsByTagName(&#39;h1&#39;).item(0);
+var p1 = document.getElementById(&#39;p1&#39;);
+var p2 = document.getElementsByClassName(&#39;p2&#39;).item(0);
+var father = document.getElementById(&#39;father&#39;);
 
 // 获取所有子元素节点
 var children = father.children;
@@ -2385,14 +2385,13 @@ var last= father.lastElementChild;
 var next = first.nextElementSibling;
 // 上一个相邻元素节点
 var prev = last.previousElementSibling;
-
 </code></pre><h3 id="更新节点">更新节点</h3>
-<pre tabindex="0"><code>h1.innerText = 'h1'; // 修改文本内容
-h1.innerHTML = '&lt;strong&gt;h1&lt;/strong&gt;'; // 修改超文本内容，可以解析HTML
+<pre tabindex="0"><code>h1.innerText = &#39;h1&#39;; // 修改文本内容
+h1.innerHTML = &#39;&lt;strong&gt;h1&lt;/strong&gt;&#39;; // 修改超文本内容，可以解析HTML
 // 修改元素的css
-h1.style.color = 'red';
-h1.style.fontSize = '20px';
-h1.style.padding = '2em';
+h1.style.color = &#39;red&#39;;
+h1.style.fontSize = &#39;20px&#39;;
+h1.style.padding = &#39;2em&#39;;
 </code></pre><h3 id="删除节点">删除节点</h3>
 <p>步骤：首先查找删除节点的父节点，再通过父节点删除</p>
 <pre tabindex="0"><code>father.removeChild(p1);
@@ -2405,42 +2404,42 @@ father2.removechild(p2);
 <p>append<br />
 在父节点内部追加一个子节点到尾部</p>
 </blockquote>
-<pre tabindex="0"><code>var p3 = document.createElement('p');
-p3.setAttribute('id', 'p3');
-// p3.id = 'p3'; // 与上行等效
-p3.innerText = 'p3';
+<pre tabindex="0"><code>var p3 = document.createElement(&#39;p&#39;);
+p3.setAttribute(&#39;id&#39;, &#39;p3&#39;);
+// p3.id = &#39;p3&#39;; // 与上行等效
+p3.innerText = &#39;p3&#39;;
 father.append(p3); 
 </code></pre><blockquote>
 <p>insertBefore<br />
 在父节点内部的目标子节点前插入一个节点</p>
 </blockquote>
-<pre tabindex="0"><code>var p3 = document.createElement('p');
-p3.setAttribute('id', 'p3');
-p3.innerText = 'p3';
+<pre tabindex="0"><code>var p3 = document.createElement(&#39;p&#39;);
+p3.setAttribute(&#39;id&#39;, &#39;p3&#39;);
+p3.innerText = &#39;p3&#39;;
 father.insertBefore(p3, p2); // father内部的目标p2前插入p3
 </code></pre><blockquote>
 <p>prepend<br />
 在父节点内部追加一个子节点到头部部</p>
 </blockquote>
-<pre tabindex="0"><code>var p3 = document.createElement('p');
-p3.setAttribute('id', 'p3');
-p3.innerText = 'p3';
+<pre tabindex="0"><code>var p3 = document.createElement(&#39;p&#39;);
+p3.setAttribute(&#39;id&#39;, &#39;p3&#39;);
+p3.innerText = &#39;p3&#39;;
 father.prepend(p3);
 </code></pre><blockquote>
 <p>before<br />
 在目标节点前面插入新节点</p>
 </blockquote>
-<pre tabindex="0"><code>var p3 = document.createElement('p');
-p3.setAttribute('id', 'p3');
-p3.innerText = 'p3';
+<pre tabindex="0"><code>var p3 = document.createElement(&#39;p&#39;);
+p3.setAttribute(&#39;id&#39;, &#39;p3&#39;);
+p3.innerText = &#39;p3&#39;;
 p2.before(p3);
 </code></pre><blockquote>
 <p>after</p>
 </blockquote>
 <p>在目标节点后面插入新节点</p>
-<pre tabindex="0"><code>var p3 = document.createElement('p');
-p3.setAttribute('id', 'p3');
-p3.innerText = 'p3';
+<pre tabindex="0"><code>var p3 = document.createElement(&#39;p&#39;);
+p3.setAttribute(&#39;id&#39;, &#39;p3&#39;);
+p3.innerText = &#39;p3&#39;;
 p2.after(p3);
 </code></pre><h2 id="验证表单">验证表单</h2>
 <blockquote>
@@ -2450,26 +2449,26 @@ p2.after(p3);
 <pre tabindex="0"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
-        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;meta charset=&#34;utf-8&#34;&gt;
         &lt;title&gt;验证表单&lt;/title&gt;
-        &lt;script src=&quot;https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&#34;https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js&#34;&gt;&lt;/script&gt;
     &lt;/head&gt;
     &lt;body&gt;
         &lt;div&gt;
-            &lt;form action=&quot;#&quot; method=&quot;post&quot; onsubmit=&quot;return checkForm()&quot;&gt;
+            &lt;form action=&#34;#&#34; method=&#34;post&#34; onsubmit=&#34;return checkForm()&#34;&gt;
                 &lt;label&gt;用户名:&lt;/label&gt;
-                &lt;input type=&quot;text&quot; id=&quot;uname&quot; name=&quot;uname&quot;&gt; &lt;br&gt;
+                &lt;input type=&#34;text&#34; id=&#34;uname&#34; name=&#34;uname&#34;&gt; &lt;br&gt;
                 &lt;label&gt;密码:&lt;/label&gt;
-                &lt;input type=&quot;password&quot; id=&quot;input-pwd&quot;&gt; &lt;br&gt;
-                &lt;input type=&quot;hidden&quot; id=&quot;md5-pwd&quot; name=&quot;pwd&quot;&gt; &lt;br&gt;
-                &lt;button type=&quot;submit&quot; &gt;提交&lt;/button&gt;
+                &lt;input type=&#34;password&#34; id=&#34;input-pwd&#34;&gt; &lt;br&gt;
+                &lt;input type=&#34;hidden&#34; id=&#34;md5-pwd&#34; name=&#34;pwd&#34;&gt; &lt;br&gt;
+                &lt;button type=&#34;submit&#34; &gt;提交&lt;/button&gt;
             &lt;/form&gt;
         &lt;/div&gt;
         &lt;script&gt;
             function checkForm() {
-                var uname = document.getElementById('uname').value;
-                var pwd = document.getElementById('input-pwd').value;
-                var md5_pwd_elem = document.getElementById('md5-pwd');
+                var uname = document.getElementById(&#39;uname&#39;).value;
+                var pwd = document.getElementById(&#39;input-pwd&#39;).value;
+                var md5_pwd_elem = document.getElementById(&#39;md5-pwd&#39;);
                 md5_pwd_elem.value = md5(pwd);
                 return true;
             }
@@ -2489,26 +2488,26 @@ p2.after(p3);
 <pre tabindex="0"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
-        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;meta charset=&#34;utf-8&#34;&gt;
         &lt;title&gt;验证表单&lt;/title&gt;
     &lt;/head&gt;
     &lt;body&gt;
         &lt;div&gt;
-            &lt;form action=&quot;#&quot; method=&quot;post&quot; onsubmit=&quot;return checkForm()&quot;&gt;
+            &lt;form action=&#34;#&#34; method=&#34;post&#34; onsubmit=&#34;return checkForm()&#34;&gt;
                 &lt;label&gt;性别&lt;/label&gt;
-                &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;male&quot;&gt; 男
-                &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;female&quot;&gt; 女 &lt;br&gt;
+                &lt;input type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;male&#34;&gt; 男
+                &lt;input type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;female&#34;&gt; 女 &lt;br&gt;
                 &lt;label&gt;爱好&lt;/label&gt;
-                &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;movie&quot;&gt; 电影
-                &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;song&quot;&gt; 听歌
-                &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;game&quot;&gt; 游戏 &lt;br&gt;
+                &lt;input type=&#34;checkbox&#34; name=&#34;hobby&#34; value=&#34;movie&#34;&gt; 电影
+                &lt;input type=&#34;checkbox&#34; name=&#34;hobby&#34; value=&#34;song&#34;&gt; 听歌
+                &lt;input type=&#34;checkbox&#34; name=&#34;hobby&#34; value=&#34;game&#34;&gt; 游戏 &lt;br&gt;
                 &lt;label&gt;选择编程语言&lt;/label&gt;
-                &lt;select name=&quot;language&quot; id=&quot;language&quot;&gt;
-                    &lt;option value=&quot;C&quot;&gt;C&lt;/option&gt;
-                    &lt;option value=&quot;Java&quot;&gt;Java&lt;/option&gt;
-                    &lt;option value=&quot;JavaScript&quot;&gt;JavaScript&lt;/option&gt;
+                &lt;select name=&#34;language&#34; id=&#34;language&#34;&gt;
+                    &lt;option value=&#34;C&#34;&gt;C&lt;/option&gt;
+                    &lt;option value=&#34;Java&#34;&gt;Java&lt;/option&gt;
+                    &lt;option value=&#34;JavaScript&#34;&gt;JavaScript&lt;/option&gt;
                 &lt;/select&gt;&lt;br&gt;
-                &lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;
+                &lt;button type=&#34;submit&#34;&gt;提交&lt;/button&gt;
             &lt;/form&gt;
         &lt;/div&gt;
         &lt;script&gt;
@@ -2521,15 +2520,15 @@ p2.after(p3);
     &lt;/body&gt;
 &lt;/html&gt;
 </code></pre><p>判断选项框是否选中</p>
-<pre tabindex="0"><code>document.getElementById('boy').checked; // 结果： true/false
-document.getElementById('girl').checked;
+<pre tabindex="0"><code>document.getElementById(&#39;boy&#39;).checked; // 结果： true/false
+document.getElementById(&#39;girl&#39;).checked;
 
-var hobby = document.getElementsByName('hobby');
+var hobby = document.getElementsByName(&#39;hobby&#39;);
 hobby[0].checked; // 结果：true / false
 hobby[1].checked;
 hobby[2].checked;
 
-var lang = document.getElementById('language');
+var lang = document.getElementById(&#39;language&#39;);
 var idx = lang.selectedIndex; // 结果： 0 ~ lang.length - 1
 lang[idx].selected; // 结果： true / false
 </code></pre><h2 id="jquery">jQuery</h2>
@@ -2540,8 +2539,8 @@ lang[idx].selected; // 结果： true / false
 <pre tabindex="0"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
-        &lt;meta charset=&quot;utf-8&quot;&gt;
-        &lt;script src=&quot;https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js&quot;&gt;&lt;/script&gt;
+        &lt;meta charset=&#34;utf-8&#34;&gt;
+        &lt;script src=&#34;https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js&#34;&gt;&lt;/script&gt;
     &lt;/head&gt;
     &lt;body&gt;
         &lt;div&gt;
@@ -2558,8 +2557,8 @@ lang[idx].selected; // 结果： true / false
 <pre tabindex="0"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
-        &lt;meta charset=&quot;utf-8&quot;&gt;
-        &lt;script src=&quot;./jquery-3.6.0.js&quot;&gt;&lt;/script&gt;
+        &lt;meta charset=&#34;utf-8&#34;&gt;
+        &lt;script src=&#34;./jquery-3.6.0.js&#34;&gt;&lt;/script&gt;
 
     &lt;/head&gt;
     &lt;body&gt;
@@ -2695,15 +2694,15 @@ lang[idx].selected; // 结果： true / false
 <p>样例：</p>
 <pre tabindex="0"><code>&lt;script&gt;
     $(function(){ // 文档就绪时触发的事件
-        $(':input').blur();
+        $(&#39;:input&#39;).blur();
     });
 &lt;/script&gt;
 </code></pre><h3 id="jquery操作dom">jQuery操作DOM</h3>
 <p>更新DOM</p>
 <pre tabindex="0"><code>$(selector).html(); // 获取超文本内容
-$(selector).html('..'); // 设置超文本内容
+$(selector).html(&#39;..&#39;); // 设置超文本内容
 $(selector).text(); // 获取文本内容
-$(selector).text('..'); // 设置文本内容
+$(selector).text(&#39;..&#39;); // 设置文本内容
 </code></pre><p>CSS操作</p>
 <pre tabindex="0"><code>$(selector).css({key:value});
 </code></pre><p>元素的显示与隐藏</p>
@@ -2714,10 +2713,10 @@ $(selector).show(); // 显示元素
 $(window).width();
 </code></pre><h3 id="ajax异步请求">ajax异步请求</h3>
 <pre tabindex="0"><code>$.ajax({
-    type: 'GET', /* GET/POST 请求方式 */
-    url: 'url', /* 请求地址 */
+    type: &#39;GET&#39;, /* GET/POST 请求方式 */
+    url: &#39;url&#39;, /* 请求地址 */
     data: {key:value}, /* 传入的数据 */
-    dataType: &quot;JSON&quot;, /* 接受的数据格式 */
+    dataType: &#34;JSON&#34;, /* 接受的数据格式 */
     async: true, /* true/false 是否异步 */
     success: function(data) { // 请求成功后的响应事件
 
@@ -2734,7 +2733,7 @@ $(window).width();
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2998,7 +2997,7 @@ $(window).width();
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -3995,7 +3994,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         

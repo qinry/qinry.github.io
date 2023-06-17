@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1347,7 +1347,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="快速开始Java8函数式编程">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1692,13 +1692,13 @@ interface Body {
 interface Multi {
   String twoArg(String head, Double d);
 }
-</code></pre><pre tabindex="0"><code>Body bod = h -&gt; h + &quot;No Parens&quot;;
-Body bod2 = (h) -&gt; h + &quot;More details&quot;;
-Description desc = () -&gt; &quot;Short info&quot;;
+</code></pre><pre tabindex="0"><code>Body bod = h -&gt; h + &#34;No Parens&#34;;
+Body bod2 = (h) -&gt; h + &#34;More details&#34;;
+Description desc = () -&gt; &#34;Short info&#34;;
 Multi mult = (h, n) -&gt; h + n;
 Description moreLines = () -&gt; {
-    System.out.println(&quot;moreLines&quot;);
-    return &quot;from moreLines&quot;;
+    System.out.println(&#34;moreLines&#34;);
+    return &#34;from moreLines&#34;;
 };
 </code></pre><p>lambda表示有三个部分，第一部分就是参数，第二部分是箭头<code>-&gt;</code>，第三部分就是方法体。</p>
 <blockquote>
@@ -1740,13 +1740,13 @@ class Describe {
 }
 public class MethodReferences {
   static void hello(String name) { // [3]
-    System.out.println(&quot;Hello, &quot; + name);
+    System.out.println(&#34;Hello, &#34; + name);
   }
   static class Description {
     String about;
     Description(String desc) { about = desc; }
     void help(String msg) { // [4]
-      System.out.println(about + &quot; &quot; + msg);
+      System.out.println(about + &#34; &#34; + msg);
     }
   }
   static class Helper {
@@ -1757,19 +1757,19 @@ public class MethodReferences {
   public static void main(String[] args) {
     Describe d = new Describe();
     Callable c = d::show; // [6] 实例方法引用
-    c.call(&quot;call()&quot;); // [7]
+    c.call(&#34;call()&#34;); // [7]
     c = MethodReferences::hello; // [8] 外部类的静态方法引用
-    c.call(&quot;Bob&quot;);
-    c = new Description(&quot;valuable&quot;)::help; // [9] 静态内部类对象的实例方法引用
-    c.call(&quot;information&quot;);
+    c.call(&#34;Bob&#34;);
+    c = new Description(&#34;valuable&#34;)::help; // [9] 静态内部类对象的实例方法引用
+    c.call(&#34;information&#34;);
     c = Helper::assist; // [10] 静态内部类的静态方法引用
-    c.call(&quot;Help!&quot;);
+    c.call(&#34;Help!&#34;);
   }
 }
 </code></pre><p>方法引用的方法签名符合要赋值的接口方法的方法签名，例如Describe的show()与Callable的call()，对已实例化对象的方法的引用，有时称为绑定方法引用。</p>
 <p>未绑定的方法引用是指没有关联对象的普通（非静态）方法。</p>
 <pre tabindex="0"><code>class X {
-  String f() { return &quot;X::f()&quot;; }
+  String f() { return &#34;X::f()&#34;; }
 }
 interface MakeString {
   String make();
@@ -1792,8 +1792,8 @@ public class UnboundMethodReference {
 <p>构造器的方法引用，形如：<code>String::new</code>，<code>String[]::new</code>，构造器有分无参和有参构造器，赋值给参数不同方法的接口，对应使用相应参数数量的构造器。</p>
 <pre tabindex="0"><code>class Dog {
   String name;
-  int age = -1; // For &quot;unknown&quot;
-  Dog() { name = &quot;stray&quot;; }
+  int age = -1; // For &#34;unknown&#34;
+  Dog() { name = &#34;stray&#34;; }
   Dog(String nm) { name = nm; }
   Dog(String nm, int yrs) { name = nm; age = yrs; }
 }
@@ -1812,8 +1812,8 @@ public class CtorReference {
     Make1Arg m1a = Dog::new;   // [2]
     Make2Args m2a = Dog::new;  // [3]
     Dog dn = mna.make();
-    Dog d1 = m1a.make(&quot;Comet&quot;);
-    Dog d2 = m2a.make(&quot;Ralph&quot;, 4);
+    Dog d1 = m1a.make(&#34;Comet&#34;);
+    Dog d2 = m2a.make(&#34;Ralph&#34;, 4);
   }
 }
 </code></pre><h2 id="函数式接口">函数式接口</h2>
@@ -1866,11 +1866,11 @@ Java1.8引入了<code>java.util.function</code>这个包，里面包含大量的
 }
 </code></pre><pre tabindex="0"><code>class I {
   @Override
-  public String toString() { return &quot;I&quot;; }
+  public String toString() { return &#34;I&#34;; }
 }
 class O {
   @Override
-  public String toString() { return &quot;O&quot;; }
+  public String toString() { return &#34;O&#34;; }
 }
 public class TransformFunction {
   static Function&lt;I,O&gt; transform(Function&lt;I,O&gt; in) {
@@ -2042,14 +2042,14 @@ O
   static Function&lt;String, String&gt;
     f1 = s -&gt; {
       System.out.println(s);
-      return s.replace('A', '_');
+      return s.replace(&#39;A&#39;, &#39;_&#39;);
     },
     f2 = s -&gt; s.substring(3),
     f3 = s -&gt; s.toLowerCase(),
     f4 = f1.compose(f2).andThen(f3);
   public static void main(String[] args) {
     System.out.println(
-      f4.apply(&quot;GO AFTER ALL AMBULANCES&quot;));
+      f4.apply(&#34;GO AFTER ALL AMBULANCES&#34;));
   }
 }
 </code></pre><p>输出：</p>
@@ -2058,12 +2058,12 @@ _fter _ll _mbul_nces
 </code></pre><p>Predicate调用negate、and和or的例子：</p>
 <pre tabindex="0"><code>public class PredicateComposition {
   static Predicate&lt;String&gt;
-    p1 = s -&gt; s.contains(&quot;bar&quot;),
+    p1 = s -&gt; s.contains(&#34;bar&#34;),
     p2 = s -&gt; s.length() &lt; 5,
-    p3 = s -&gt; s.contains(&quot;foo&quot;),
+    p3 = s -&gt; s.contains(&#34;foo&#34;),
     p4 = p1.negate().and(p2).or(p3);
   public static void main(String[] args) {
-    Stream.of(&quot;bar&quot;, &quot;foobar&quot;, &quot;foobaz&quot;, &quot;fongopuckey&quot;)
+    Stream.of(&#34;bar&#34;, &#34;foobar&#34;, &#34;foobaz&#34;, &#34;fongopuckey&#34;)
       .filter(p4)
       .forEach(System.out::println);
   }
@@ -2089,15 +2089,15 @@ foobaz
       // 柯里化的函数:
       Function&lt;String, Function&lt;String, String&gt;&gt; sum =
          a -&gt; b -&gt; a + b; // [1]
-      System.out.println(uncurried(&quot;Hi &quot;, &quot;Ho&quot;));
+      System.out.println(uncurried(&#34;Hi &#34;, &#34;Ho&#34;));
       Function&lt;String, String&gt;
-        hi = sum.apply(&quot;Hi &quot;); // [2]
-      System.out.println(hi.apply(&quot;Ho&quot;));
+        hi = sum.apply(&#34;Hi &#34;); // [2]
+      System.out.println(hi.apply(&#34;Ho&#34;));
       // 部分应用:
       Function&lt;String, String&gt; sumHi =
-        sum.apply(&quot;Hup &quot;);
-      System.out.println(sumHi.apply(&quot;Ho&quot;));
-      System.out.println(sumHi.apply(&quot;Hey&quot;));
+        sum.apply(&#34;Hup &#34;);
+      System.out.println(sumHi.apply(&#34;Ho&#34;));
+      System.out.println(sumHi.apply(&#34;Hey&#34;));
    }
 }
 </code></pre><p>输出：</p>
@@ -2117,10 +2117,10 @@ public class Curry3Args {
             a -&gt; b -&gt; c -&gt; a + b + c;
       Function&lt;String,
         Function&lt;String, String&gt;&gt; hi =
-          sum.apply(&quot;Hi &quot;);
+          sum.apply(&#34;Hi &#34;);
       Function&lt;String, String&gt; ho =
-        hi.apply(&quot;Ho &quot;);
-      System.out.println(ho.apply(&quot;Hup&quot;));
+        hi.apply(&#34;Ho &#34;);
+      System.out.println(ho.apply(&#34;Hup&#34;));
    }
 }
 </code></pre><p>输出：</p>
@@ -2138,15 +2138,15 @@ public class Curry3Args {
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CurriedIntAdd</span> <span class="o">{</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">IntFunction</span><span class="o">&lt;</span><span class="n">IntUnaryOperator</span><span class="o">&gt;</span>
-      <span class="n">curriedIntAdd</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">b</span> <span class="o">-&gt;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">;</span>
-    <span class="n">IntUnaryOperator</span> <span class="n">add4</span> <span class="o">=</span> <span class="n">curriedIntAdd</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="n">4</span><span class="o">);</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">add4</span><span class="o">.</span><span class="na">applyAsInt</span><span class="o">(</span><span class="n">5</span><span class="o">));</span>
-      <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CurriedIntAdd</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IntFunction</span><span class="o">&lt;</span><span class="n">IntUnaryOperator</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">curriedIntAdd</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">b</span> <span class="o">-&gt;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IntUnaryOperator</span> <span class="n">add4</span> <span class="o">=</span> <span class="n">curriedIntAdd</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">add4</span><span class="o">.</span><span class="na">applyAsInt</span><span class="o">(</span><span class="mi">5</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>输出：</p>
 <pre tabindex="0"><code>9
@@ -2154,7 +2154,7 @@ public class Curry3Args {
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2418,7 +2418,7 @@ public class Curry3Args {
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -3340,7 +3340,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         

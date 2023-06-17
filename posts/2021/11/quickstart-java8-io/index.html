@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="快速开始 Java8 文件IO">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1708,10 +1708,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt:~/demo.txt" data-lang="txt:~/demo.txt">Hi, I&#39;m qinry!
-I am learning java8.
-Files and Paths are new untilty classes for input/output.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt:~/demo.txt" data-lang="txt:~/demo.txt"><span class="line"><span class="cl">Hi, I&#39;m qinry!
+</span></span><span class="line"><span class="cl">I am learning java8.
+</span></span><span class="line"><span class="cl">Files and Paths are new untilty classes for input/output.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>创建demo.txt的符号链接demo.link</p>
 <div class="highlight"><div class="chroma">
@@ -1719,14 +1719,14 @@ Files and Paths are new untilty classes for input/output.
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ln -s demo.txt demo.link
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ln -s demo.txt demo.link
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>以上命令在MacOS运行，Windows可通过创建快捷方式，效果类似。</p>
 <p>查看三种路径的常用信息：这里所遇到方法，都能见名知意，就不解释了，获取路径的惯用静态方法<code>Paths.get(&quot;demo.txt&quot;)</code>。</p>
 <p>重点是toRealPath()和toAbsolutePath()的不同。</p>
 
-<div id="3db12d2cd9e408b1" class="codetab">
+<div id="637e0297b4141815" class="codetab">
   <div class="codetab__links">
     
       <button class="codetab__link" aria-label="Tab link">相对路径</button>
@@ -1738,7 +1738,7 @@ Files and Paths are new untilty classes for input/output.
   </div>
   
 
-<div id="1fe714a14f8b14ca" class="codetab__content">
+<div id="74e821da241cdb21" class="codetab__content">
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1752,21 +1752,21 @@ Files and Paths are new untilty classes for input/output.
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Path</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;demo.txt&#34;</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;toString: &#34;</span> <span class="o">+</span> <span class="n">path</span><span class="o">);</span> 
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Exists: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">path</span><span class="o">));</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;RegularFile: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">isRegularFile</span><span class="o">(</span><span class="n">path</span><span class="o">));</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Directory: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">(</span><span class="n">path</span><span class="o">));</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Absolute: &#34;</span> <span class="o">+</span> <span class="n">path</span><span class="o">.</span><span class="na">isAbsolute</span><span class="o">());</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;FileName: &#34;</span> <span class="o">+</span> <span class="n">path</span><span class="o">.</span><span class="na">getFileName</span><span class="o">());</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Parent: &#34;</span> <span class="o">+</span> <span class="n">path</span><span class="o">.</span><span class="na">getParent</span><span class="o">());</span> <span class="c1">// [1] 父路径
-</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Root: &#34;</span> <span class="o">+</span> <span class="n">path</span><span class="o">.</span><span class="na">getRoot</span><span class="o">());</span> <span class="c1">// [2 ]根路径
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;demo.txt&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;toString: &#34;</span> <span class="o">+</span> <span class="n">path</span><span class="o">);</span> 
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Exists: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">path</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;RegularFile: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">isRegularFile</span><span class="o">(</span><span class="n">path</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Directory: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">(</span><span class="n">path</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Absolute: &#34;</span> <span class="o">+</span> <span class="n">path</span><span class="o">.</span><span class="na">isAbsolute</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;FileName: &#34;</span> <span class="o">+</span> <span class="n">path</span><span class="o">.</span><span class="na">getFileName</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Parent: &#34;</span> <span class="o">+</span> <span class="n">path</span><span class="o">.</span><span class="na">getParent</span><span class="o">());</span> <span class="c1">// [1] 父路径
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Root: &#34;</span> <span class="o">+</span> <span class="n">path</span><span class="o">.</span><span class="na">getRoot</span><span class="o">());</span> <span class="c1">// [2 ]根路径
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
-<div id="1b6591c6f2382496" class="codetab__content">
+<div id="711b80ffa402203b" class="codetab__content">
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1781,22 +1781,22 @@ Files and Paths are new untilty classes for input/output.
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Path</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;demo.txt&#34;</span><span class="o">);</span>
-<span class="n">Path</span> <span class="n">absPath</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="na">toAbsolutePath</span><span class="o">();</span> <span class="c1">// [1]
-</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;toString: &#34;</span> <span class="o">+</span> <span class="n">absPath</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Exists: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">absPath</span><span class="o">));</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;RegularFile: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">isRegularFile</span><span class="o">(</span><span class="n">absPath</span><span class="o">));</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Directory: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">(</span><span class="n">absPath</span><span class="o">));</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Absolute: &#34;</span> <span class="o">+</span> <span class="n">absPath</span><span class="o">.</span><span class="na">isAbsolute</span><span class="o">());</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;FileName: &#34;</span> <span class="o">+</span> <span class="n">absPath</span><span class="o">.</span><span class="na">getFileName</span><span class="o">());</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Parent: &#34;</span> <span class="o">+</span> <span class="n">absPath</span><span class="o">.</span><span class="na">getParent</span><span class="o">());</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Root: &#34;</span> <span class="o">+</span> <span class="n">absPath</span><span class="o">.</span><span class="na">getRoot</span><span class="o">());</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;demo.txt&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">absPath</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="na">toAbsolutePath</span><span class="o">();</span> <span class="c1">// [1]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;toString: &#34;</span> <span class="o">+</span> <span class="n">absPath</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Exists: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">absPath</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;RegularFile: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">isRegularFile</span><span class="o">(</span><span class="n">absPath</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Directory: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">(</span><span class="n">absPath</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Absolute: &#34;</span> <span class="o">+</span> <span class="n">absPath</span><span class="o">.</span><span class="na">isAbsolute</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;FileName: &#34;</span> <span class="o">+</span> <span class="n">absPath</span><span class="o">.</span><span class="na">getFileName</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Parent: &#34;</span> <span class="o">+</span> <span class="n">absPath</span><span class="o">.</span><span class="na">getParent</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Root: &#34;</span> <span class="o">+</span> <span class="n">absPath</span><span class="o">.</span><span class="na">getRoot</span><span class="o">());</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
-<div id="4a2f7c569d450b61" class="codetab__content">
+<div id="0bb8553499b1481d" class="codetab__content">
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1814,26 +1814,24 @@ Files and Paths are new untilty classes for input/output.
 </span><span class="lnt">13
 </span><span class="lnt">14
 </span><span class="lnt">15
-</span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Path</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;demo.link&#34;</span><span class="o">);</span> <span class="c1">// [1]
-</span><span class="c1"></span><span class="n">Path</span> <span class="n">realPath</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-<span class="k">try</span> <span class="o">{</span>
-    <span class="n">realPath</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="na">toRealPath</span><span class="o">();</span> <span class="c1">// [2]
-</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;toString: &#34;</span> <span class="o">+</span> <span class="n">realPath</span><span class="o">);</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Exists: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">realPath</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;RegularFile: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">isRegularFile</span><span class="o">(</span><span class="n">realPath</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Directory: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">(</span><span class="n">realPath</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Absolute: &#34;</span> <span class="o">+</span> <span class="n">realPath</span><span class="o">.</span><span class="na">isAbsolute</span><span class="o">());</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;FileName: &#34;</span> <span class="o">+</span> <span class="n">realPath</span><span class="o">.</span><span class="na">getFileName</span><span class="o">());</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Parent: &#34;</span> <span class="o">+</span> <span class="n">realPath</span><span class="o">.</span><span class="na">getParent</span><span class="o">());</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Root: &#34;</span> <span class="o">+</span> <span class="n">realPath</span><span class="o">.</span><span class="na">getRoot</span><span class="o">());</span>
-<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
-<span class="o">}</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;demo.link&#34;</span><span class="o">);</span> <span class="c1">// [1]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Path</span> <span class="n">realPath</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">realPath</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="na">toRealPath</span><span class="o">();</span> <span class="c1">// [2]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;toString: &#34;</span> <span class="o">+</span> <span class="n">realPath</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Exists: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">realPath</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;RegularFile: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">isRegularFile</span><span class="o">(</span><span class="n">realPath</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Directory: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">(</span><span class="n">realPath</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Absolute: &#34;</span> <span class="o">+</span> <span class="n">realPath</span><span class="o">.</span><span class="na">isAbsolute</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;FileName: &#34;</span> <span class="o">+</span> <span class="n">realPath</span><span class="o">.</span><span class="na">getFileName</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Parent: &#34;</span> <span class="o">+</span> <span class="n">realPath</span><span class="o">.</span><span class="na">getParent</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Root: &#34;</span> <span class="o">+</span> <span class="n">realPath</span><span class="o">.</span><span class="na">getRoot</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
@@ -1843,7 +1841,7 @@ Files and Paths are new untilty classes for input/output.
 <script>
   'use strict';
 
-  var containerId = JSON.parse("\"3db12d2cd9e408b1\"");
+  var containerId = JSON.parse("\"637e0297b4141815\"");
   var containerElem = document.getElementById(containerId);
   var codetabLinks = null;
   var codetabContents = null;
@@ -1879,7 +1877,7 @@ Files and Paths are new untilty classes for input/output.
 </script>
 <p>输出：<br />
 
-<div id="e7abcd0eb47fdf10" class="codetab">
+<div id="ed5a5fe1e8583522" class="codetab">
   <div class="codetab__links">
     
       <button class="codetab__link" aria-label="Tab link">相对路径</button>
@@ -1891,7 +1889,7 @@ Files and Paths are new untilty classes for input/output.
   </div>
   
 
-<div id="d26db996e3086d0c" class="codetab__content">
+<div id="d73356260740680c" class="codetab__content">
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1904,20 +1902,20 @@ Files and Paths are new untilty classes for input/output.
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">toString: demo.txt
-Exists: true
-RegularFile: true
-Directory: false
-Absolute: false
-FileName: demo.txt
-Parent: null
-Root: null
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">toString: demo.txt
+</span></span><span class="line"><span class="cl">Exists: true
+</span></span><span class="line"><span class="cl">RegularFile: true
+</span></span><span class="line"><span class="cl">Directory: false
+</span></span><span class="line"><span class="cl">Absolute: false
+</span></span><span class="line"><span class="cl">FileName: demo.txt
+</span></span><span class="line"><span class="cl">Parent: null
+</span></span><span class="line"><span class="cl">Root: null
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
-<div id="5934647f8205bf0d" class="codetab__content">
+<div id="eeff527f25ed63e5" class="codetab__content">
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1930,20 +1928,20 @@ Root: null
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">toString: /Users/qinry/demo.txt
-Exists: true
-RegularFile: true
-Directory: false
-Absolute: true
-FileName: demo.txt
-Parent: /Users/qinry
-Root: /
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">toString: /Users/qinry/demo.txt
+</span></span><span class="line"><span class="cl">Exists: true
+</span></span><span class="line"><span class="cl">RegularFile: true
+</span></span><span class="line"><span class="cl">Directory: false
+</span></span><span class="line"><span class="cl">Absolute: true
+</span></span><span class="line"><span class="cl">FileName: demo.txt
+</span></span><span class="line"><span class="cl">Parent: /Users/qinry
+</span></span><span class="line"><span class="cl">Root: /
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
-<div id="5934647f8205bf0d" class="codetab__content">
+<div id="eeff527f25ed63e5" class="codetab__content">
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1956,15 +1954,15 @@ Root: /
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">toString: /Users/qinry/demo.txt
-Exists: true
-RegularFile: true
-Directory: false
-Absolute: true
-FileName: demo.txt
-Parent: /Users/qinry
-Root: /
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">toString: /Users/qinry/demo.txt
+</span></span><span class="line"><span class="cl">Exists: true
+</span></span><span class="line"><span class="cl">RegularFile: true
+</span></span><span class="line"><span class="cl">Directory: false
+</span></span><span class="line"><span class="cl">Absolute: true
+</span></span><span class="line"><span class="cl">FileName: demo.txt
+</span></span><span class="line"><span class="cl">Parent: /Users/qinry
+</span></span><span class="line"><span class="cl">Root: /
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
@@ -1974,7 +1972,7 @@ Root: /
 <script>
   'use strict';
 
-  var containerId = JSON.parse("\"e7abcd0eb47fdf10\"");
+  var containerId = JSON.parse("\"ed5a5fe1e8583522\"");
   var containerElem = document.getElementById(containerId);
   var codetabLinks = null;
   var codetabContents = null;
@@ -2029,12 +2027,12 @@ Root: /
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Path</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;demo.txt&#34;</span><span class="o">).</span><span class="na">toAbsolutePath</span><span class="o">();</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">);</span>
-<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">p</span><span class="o">.</span><span class="na">getNameCount</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">getName</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;demo.txt&#34;</span><span class="o">).</span><span class="na">toAbsolutePath</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">p</span><span class="o">.</span><span class="na">getNameCount</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">getName</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>输出：</p>
 <div class="highlight"><div class="chroma">
@@ -2045,11 +2043,11 @@ Root: /
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">/Users/qinry/demo.txt
-Users
-qinry
-demo.txt
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">/Users/qinry/demo.txt
+</span></span><span class="line"><span class="cl">Users
+</span></span><span class="line"><span class="cl">qinry
+</span></span><span class="line"><span class="cl">demo.txt
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="路径分析">路径分析</h2>
 <p>其实就是查看文件属性</p>
@@ -2083,33 +2081,33 @@ demo.txt
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">try</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">&#34;os.name&#34;</span><span class="o">));</span>
-    <span class="n">Path</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;demo.txt&#34;</span><span class="o">).</span><span class="na">toAbsolutePath</span><span class="o">();</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;存在：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;目录：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;可执行：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">isExecutable</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;可读：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">isReadable</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;普通文件：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">isRegularFile</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;可写&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">isWritable</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;不存在&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">notExists</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;隐藏：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">isHidden</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;大小：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;文件存储：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">getFileStore</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;上次修改时间：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">getLastModifiedTime</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;拥有者：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">getOwner</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;内容类型：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">probeContentType</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;符号链接：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">isSymbolicLink</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">Files</span><span class="o">.</span><span class="na">isSymbolicLink</span><span class="o">(</span><span class="n">p</span><span class="o">))</span> <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;符号链接：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">readSymbolicLink</span><span class="o">(</span><span class="n">p</span><span class="o">));</span> <span class="c1">// 读取链接的目标
-</span><span class="c1"></span>    <span class="o">}</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">FileSystems</span><span class="o">.</span><span class="na">getDefault</span><span class="o">().</span><span class="na">supportedFileAttributeViews</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="s">&#34;posix&#34;</span><span class="o">))</span> <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Posix文件权限：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">getPosixFilePermissions</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-    <span class="o">}</span>
-<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">&#34;os.name&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Path</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;demo.txt&#34;</span><span class="o">).</span><span class="na">toAbsolutePath</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;存在：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;目录：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;可执行：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">isExecutable</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;可读：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">isReadable</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;普通文件：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">isRegularFile</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;可写&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">isWritable</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;不存在&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">notExists</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;隐藏：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">isHidden</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;大小：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;文件存储：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">getFileStore</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;上次修改时间：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">getLastModifiedTime</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;拥有者：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">getOwner</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;内容类型：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">probeContentType</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;符号链接：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">isSymbolicLink</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">Files</span><span class="o">.</span><span class="na">isSymbolicLink</span><span class="o">(</span><span class="n">p</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;符号链接：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">readSymbolicLink</span><span class="o">(</span><span class="n">p</span><span class="o">));</span> <span class="c1">// 读取链接的目标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">FileSystems</span><span class="o">.</span><span class="na">getDefault</span><span class="o">().</span><span class="na">supportedFileAttributeViews</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="s">&#34;posix&#34;</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Posix文件权限：&#34;</span><span class="o">+</span><span class="n">Files</span><span class="o">.</span><span class="na">getPosixFilePermissions</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>输出：</p>
 <div class="highlight"><div class="chroma">
@@ -2132,23 +2130,23 @@ demo.txt
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">Mac OS X
-存在：true
-目录：false
-可执行：false
-可读：true
-普通文件：true
-可写true
-不存在false
-隐藏：false
-大小：94
-文件存储：/System/Volumes/Data (/dev/disk2s1)
-上次修改时间：2021-11-04T13:50:51.559655Z
-拥有者：qinry
-内容类型：text/plain
-符号链接：false
-Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">Mac OS X
+</span></span><span class="line"><span class="cl">存在：true
+</span></span><span class="line"><span class="cl">目录：false
+</span></span><span class="line"><span class="cl">可执行：false
+</span></span><span class="line"><span class="cl">可读：true
+</span></span><span class="line"><span class="cl">普通文件：true
+</span></span><span class="line"><span class="cl">可写true
+</span></span><span class="line"><span class="cl">不存在false
+</span></span><span class="line"><span class="cl">隐藏：false
+</span></span><span class="line"><span class="cl">大小：94
+</span></span><span class="line"><span class="cl">文件存储：/System/Volumes/Data (/dev/disk2s1)
+</span></span><span class="line"><span class="cl">上次修改时间：2021-11-04T13:50:51.559655Z
+</span></span><span class="line"><span class="cl">拥有者：qinry
+</span></span><span class="line"><span class="cl">内容类型：text/plain
+</span></span><span class="line"><span class="cl">符号链接：false
+</span></span><span class="line"><span class="cl">Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="路径的增删修改">路径的增删修改</h2>
 <p><code>resolve()</code>添加尾路径，<code>normalize()</code>可以去除冗余的路径片段。</p>
@@ -2159,10 +2157,10 @@ Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Path</span> <span class="n">base</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;.&#34;</span><span class="o">).</span><span class="na">toAbsolutePath</span><span class="o">().</span><span class="na">normalize</span><span class="o">();</span>
-<span class="n">Path</span> <span class="n">p</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="na">resolve</span><span class="o">(</span><span class="s">&#34;files&#34;</span><span class="o">).</span><span class="na">resolve</span><span class="o">(</span><span class="s">&#34;demo.txt&#34;</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">base</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;.&#34;</span><span class="o">).</span><span class="na">toAbsolutePath</span><span class="o">().</span><span class="na">normalize</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">p</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="na">resolve</span><span class="o">(</span><span class="s">&#34;files&#34;</span><span class="o">).</span><span class="na">resolve</span><span class="o">(</span><span class="s">&#34;demo.txt&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>输出：</p>
 <div class="highlight"><div class="chroma">
@@ -2170,8 +2168,8 @@ Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">/Users/qinry/files/demo.txt
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">/Users/qinry/files/demo.txt
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>&quot;.&quot;</code>表示当前的工作目录，<code>&quot;..&quot;</code>表示当前的工作目录的父路目录</p>
 <p><code>relativize(()</code>去除基部路径</p>
@@ -2182,10 +2180,10 @@ Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Path</span> <span class="n">base</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;files&#34;</span><span class="o">);</span>
-<span class="n">Path</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;files/demo.txt&#34;</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">base</span><span class="o">.</span><span class="na">relativize</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">base</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;files&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;files/demo.txt&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">base</span><span class="o">.</span><span class="na">relativize</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>输出：</p>
 <div class="highlight"><div class="chroma">
@@ -2193,14 +2191,14 @@ Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">demo.txt
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">demo.txt
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="目录和文件增删">目录和文件增删</h2>
 <h3 id="删除目录和文件">删除目录和文件</h3>
 <p>假如工作目录下有目录<code>test</code>，删除目录有两个方法：<code>delete(path)</code>和<code>deleteIfExists(path)</code>。第一个如果路径不存在这个目录，则抛出异常；第二个只有存在该路径才删除</p>
 
-<div id="e6efcd508af2706a" class="codetab">
+<div id="4fa6fa466273b08e" class="codetab">
   <div class="codetab__links">
     
       <button class="codetab__link" aria-label="Tab link">delete</button>
@@ -2210,7 +2208,7 @@ Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
   </div>
   
 
-<div id="89c09c94e295f8de" class="codetab__content">
+<div id="2bf4162dc7f5b3ce" class="codetab__content">
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2221,19 +2219,19 @@ Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Path</span> <span class="n">dir</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">);</span>
-<span class="k">try</span> <span class="o">{</span>
-    <span class="n">Files</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">dir</span><span class="o">);</span>
-<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">dir</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Files</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">dir</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
 
-<div id="a106a6c8a3935fbe" class="codetab__content">
+<div id="9e7f5ca8ade10e23" class="codetab__content">
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2244,13 +2242,13 @@ Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Path</span> <span class="n">dir</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">);</span>
-<span class="k">try</span> <span class="o">{</span>
-    <span class="n">Files</span><span class="o">.</span><span class="na">deleteIfExists</span><span class="o">(</span><span class="n">dir</span><span class="o">);</span>
-<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">dir</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Files</span><span class="o">.</span><span class="na">deleteIfExists</span><span class="o">(</span><span class="n">dir</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
@@ -2260,7 +2258,7 @@ Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
 <script>
   'use strict';
 
-  var containerId = JSON.parse("\"e6efcd508af2706a\"");
+  var containerId = JSON.parse("\"4fa6fa466273b08e\"");
   var containerElem = document.getElementById(containerId);
   var codetabLinks = null;
   var codetabContents = null;
@@ -2306,13 +2304,13 @@ Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Path</span> <span class="n">file</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;readme.txt&#34;</span><span class="o">);</span>
-<span class="k">try</span> <span class="o">{</span>
-    <span class="n">Files</span><span class="o">.</span><span class="na">deleteIfExists</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
-<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrack</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">file</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;readme.txt&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Files</span><span class="o">.</span><span class="na">deleteIfExists</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrack</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="notices warning" data-title="Warning">
   如果目录的内容不为空，则删除目录是会抛出异常的。意味着Java标准库没有删除目录树的方法，需要自己实现。见下！
@@ -2335,21 +2333,21 @@ Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">rmdir</span><span class="o">(</span><span class="n">Path</span> <span class="n">dir</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-    <span class="n">Files</span><span class="o">.</span><span class="na">walkFileTree</span><span class="o">(</span><span class="n">dir</span><span class="o">,</span> <span class="k">new</span> <span class="n">SimpleFileVisitor</span><span class="o">&lt;</span><span class="n">Path</span><span class="o">&gt;(){</span>
-        <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="n">FileVisitResult</span> <span class="nf">visitFile</span><span class="o">(</span><span class="n">Path</span> <span class="n">file</span><span class="o">,</span> <span class="n">BasicFileAttributes</span> <span class="n">attrs</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-            <span class="n">Files</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
-            <span class="k">return</span> <span class="n">FileVisitResult</span><span class="o">.</span><span class="na">CONTINUE</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="n">FileVisitResult</span> <span class="nf">postVisitDirectory</span><span class="o">(</span><span class="n">Path</span> <span class="n">dir</span><span class="o">,</span> <span class="n">IOException</span> <span class="n">exc</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-            <span class="n">Files</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">dir</span><span class="o">);</span>
-            <span class="k">return</span> <span class="n">FileVisitResult</span><span class="o">.</span><span class="na">CONTINUE</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">});</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">rmdir</span><span class="o">(</span><span class="n">Path</span> <span class="n">dir</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Files</span><span class="o">.</span><span class="na">walkFileTree</span><span class="o">(</span><span class="n">dir</span><span class="o">,</span> <span class="k">new</span> <span class="n">SimpleFileVisitor</span><span class="o">&lt;</span><span class="n">Path</span><span class="o">&gt;(){</span>
+</span></span><span class="line"><span class="cl">        <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">FileVisitResult</span> <span class="nf">visitFile</span><span class="o">(</span><span class="n">Path</span> <span class="n">file</span><span class="o">,</span> <span class="n">BasicFileAttributes</span> <span class="n">attrs</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Files</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">FileVisitResult</span><span class="o">.</span><span class="na">CONTINUE</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">FileVisitResult</span> <span class="nf">postVisitDirectory</span><span class="o">(</span><span class="n">Path</span> <span class="n">dir</span><span class="o">,</span> <span class="n">IOException</span> <span class="n">exc</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Files</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">dir</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">FileVisitResult</span><span class="o">.</span><span class="na">CONTINUE</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">});</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>Files.walkFileTree</code>访问目录下的文件树，即遍历该目录下所有的文件及其子目录。在遍历过程中，提供一个访问者的机制对访问的文件和目录执行操作。</p>
 <p><code>FileVistor</code>有四个抽象方法：</p>
@@ -2372,14 +2370,14 @@ Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Path</span> <span class="n">dir</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">,</span><span class="s">&#34;a&#34;</span><span class="o">);</span>
-<span class="k">try</span> <span class="o">{</span>
-    <span class="c1">//Files.createDirectory(dir);
-</span><span class="c1"></span>    <span class="n">Files</span><span class="o">.</span><span class="na">createDirectories</span><span class="o">(</span><span class="n">dir</span><span class="o">);</span>
-<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;不能正常工作&#34;</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">dir</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">,</span><span class="s">&#34;a&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//Files.createDirectory(dir);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Files</span><span class="o">.</span><span class="na">createDirectories</span><span class="o">(</span><span class="n">dir</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;不能正常工作&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>createDirectory(dir)不能创建多级目录，只可单级目录，故会抛出异常；createDirectories(dir)可以创建完整的目录。</p>
 <p>创建文件：</p>
@@ -2400,20 +2398,20 @@ Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Path</span> <span class="n">dir</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">);</span>
-<span class="n">Path</span> <span class="n">file</span> <span class="o">=</span> <span class="n">dir</span><span class="o">.</span><span class="na">resolve</span><span class="o">(</span><span class="s">&#34;hello.txt&#34;</span><span class="o">);</span>
-<span class="k">try</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">dir</span><span class="o">))</span> <span class="o">{</span>
-        <span class="n">Files</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">dir</span><span class="o">);</span>
-    <span class="o">}</span>
-    <span class="k">if</span> <span class="o">(!</span><span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">dir</span><span class="o">))</span> <span class="o">{</span>
-        <span class="n">Files</span><span class="o">.</span><span class="na">createDirectory</span><span class="o">(</span><span class="n">dir</span><span class="o">);</span>
-    <span class="o">}</span>
-    <span class="n">Files</span><span class="o">.</span><span class="na">createFile</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
-<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">dir</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">file</span> <span class="o">=</span> <span class="n">dir</span><span class="o">.</span><span class="na">resolve</span><span class="o">(</span><span class="s">&#34;hello.txt&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">dir</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Files</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">dir</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(!</span><span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">dir</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Files</span><span class="o">.</span><span class="na">createDirectory</span><span class="o">(</span><span class="n">dir</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Files</span><span class="o">.</span><span class="na">createFile</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="创建临时的文件和目录">创建临时的文件和目录</h3>
 <div class="highlight"><div class="chroma">
@@ -2433,20 +2431,20 @@ Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Path</span> <span class="n">test</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">);</span>
-<span class="k">try</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">test</span><span class="o">))</span> <span class="o">{</span>
-        <span class="n">Files</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">test</span><span class="o">);</span>
-    <span class="o">}</span>
-    <span class="k">if</span> <span class="o">(!</span><span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">test</span><span class="o">))</span> <span class="o">{</span>
-        <span class="n">Files</span><span class="o">.</span><span class="na">createDirectory</span><span class="o">(</span><span class="n">test</span><span class="o">);</span>
-    <span class="o">}</span>
-    <span class="n">Path</span> <span class="n">tempDir</span> <span class="o">=</span> <span class="n">Files</span><span class="o">.</span><span class="na">createTempDirectory</span><span class="o">(</span><span class="n">test</span><span class="o">,</span> <span class="s">&#34;DIR_&#34;</span><span class="o">);</span>
-    <span class="n">Files</span><span class="o">.</span><span class="na">createTempFile</span><span class="o">(</span><span class="n">tempDir</span><span class="o">,</span> <span class="s">&#34;pre&#34;</span><span class="o">,</span> <span class="s">&#34;.non&#34;</span><span class="o">);</span>
-<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">test</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">test</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Files</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">test</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(!</span><span class="n">Files</span><span class="o">.</span><span class="na">exists</span><span class="o">(</span><span class="n">test</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Files</span><span class="o">.</span><span class="na">createDirectory</span><span class="o">(</span><span class="n">test</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Path</span> <span class="n">tempDir</span> <span class="o">=</span> <span class="n">Files</span><span class="o">.</span><span class="na">createTempDirectory</span><span class="o">(</span><span class="n">test</span><span class="o">,</span> <span class="s">&#34;DIR_&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Files</span><span class="o">.</span><span class="na">createTempFile</span><span class="o">(</span><span class="n">tempDir</span><span class="o">,</span> <span class="s">&#34;pre&#34;</span><span class="o">,</span> <span class="s">&#34;.non&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>创建前缀为<code>DIR_</code>的临时目录，创建前缀为<code>pre</code>，后缀为<code>.non</code>的临时文件。</p>
 <h2 id="文件系统">文件系统</h2>
@@ -2469,21 +2467,21 @@ Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">&#34;os.name&#34;</span><span class="o">));</span>
-<span class="n">FileSystem</span> <span class="n">fsys</span> <span class="o">=</span> <span class="n">FileSystems</span><span class="o">.</span><span class="na">getDefault</span><span class="o">();</span>
-<span class="k">for</span> <span class="o">(</span><span class="n">FileStore</span> <span class="n">fileStore</span> <span class="o">:</span> <span class="n">fsys</span><span class="o">.</span><span class="na">getFileStores</span><span class="o">())</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;File Store:&#34;</span><span class="o">+</span><span class="n">fileStore</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="k">for</span> <span class="o">(</span><span class="n">Path</span> <span class="n">rd</span> <span class="o">:</span> <span class="n">fsys</span><span class="o">.</span><span class="na">getRootDirectories</span><span class="o">())</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Root Directory:&#34;</span><span class="o">+</span><span class="n">rd</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Separator:&#34;</span><span class="o">+</span><span class="n">fsys</span><span class="o">.</span><span class="na">getSeparator</span><span class="o">());</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;UserPrincipalLookupService:&#34;</span><span class="o">+</span><span class="n">fsys</span><span class="o">.</span><span class="na">getUserPrincipalLookupService</span><span class="o">());</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;isOpen:&#34;</span><span class="o">+</span><span class="n">fsys</span><span class="o">.</span><span class="na">isOpen</span><span class="o">());</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;isReadOnly:&#34;</span><span class="o">+</span><span class="n">fsys</span><span class="o">.</span><span class="na">isReadOnly</span><span class="o">());</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;FileSystemProvider:&#34;</span><span class="o">+</span><span class="n">fsys</span><span class="o">.</span><span class="na">provider</span><span class="o">());</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;File Attribute Views:&#34;</span><span class="o">+</span><span class="n">fsys</span><span class="o">.</span><span class="na">supportedFileAttributeViews</span><span class="o">());</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">&#34;os.name&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl"><span class="n">FileSystem</span> <span class="n">fsys</span> <span class="o">=</span> <span class="n">FileSystems</span><span class="o">.</span><span class="na">getDefault</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="n">FileStore</span> <span class="n">fileStore</span> <span class="o">:</span> <span class="n">fsys</span><span class="o">.</span><span class="na">getFileStores</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;File Store:&#34;</span><span class="o">+</span><span class="n">fileStore</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="n">Path</span> <span class="n">rd</span> <span class="o">:</span> <span class="n">fsys</span><span class="o">.</span><span class="na">getRootDirectories</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Root Directory:&#34;</span><span class="o">+</span><span class="n">rd</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Separator:&#34;</span><span class="o">+</span><span class="n">fsys</span><span class="o">.</span><span class="na">getSeparator</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;UserPrincipalLookupService:&#34;</span><span class="o">+</span><span class="n">fsys</span><span class="o">.</span><span class="na">getUserPrincipalLookupService</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;isOpen:&#34;</span><span class="o">+</span><span class="n">fsys</span><span class="o">.</span><span class="na">isOpen</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;isReadOnly:&#34;</span><span class="o">+</span><span class="n">fsys</span><span class="o">.</span><span class="na">isReadOnly</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;FileSystemProvider:&#34;</span><span class="o">+</span><span class="n">fsys</span><span class="o">.</span><span class="na">provider</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;File Attribute Views:&#34;</span><span class="o">+</span><span class="n">fsys</span><span class="o">.</span><span class="na">supportedFileAttributeViews</span><span class="o">());</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>输出：</p>
 <div class="highlight"><div class="chroma">
@@ -2504,25 +2502,25 @@ Posix文件权限：[OWNER_READ, GROUP_READ, OTHERS_READ, OWNER_WRITE]
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">Mac OS X
-File Store:/ (/dev/disk2s5)
-File Store:/dev (devfs)
-File Store:/System/Volumes/Data (/dev/disk2s1)
-File Store:/private/var/vm (/dev/disk2s4)
-File Store:/System/Volumes/Data/home (map auto_home)
-File Store:/Volumes/share (/dev/disk0s1)
-Root Directory:/
-Separator:/
-UserPrincipalLookupService:sun.nio.fs.UnixFileSystem$LookupService$1@7852e922
-isOpen:true
-isReadOnly:false
-FileSystemProvider:sun.nio.fs.MacOSXFileSystemProvider@4e25154f
-File Attribute Views:[owner, basic, posix, unix]
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">Mac OS X
+</span></span><span class="line"><span class="cl">File Store:/ (/dev/disk2s5)
+</span></span><span class="line"><span class="cl">File Store:/dev (devfs)
+</span></span><span class="line"><span class="cl">File Store:/System/Volumes/Data (/dev/disk2s1)
+</span></span><span class="line"><span class="cl">File Store:/private/var/vm (/dev/disk2s4)
+</span></span><span class="line"><span class="cl">File Store:/System/Volumes/Data/home (map auto_home)
+</span></span><span class="line"><span class="cl">File Store:/Volumes/share (/dev/disk0s1)
+</span></span><span class="line"><span class="cl">Root Directory:/
+</span></span><span class="line"><span class="cl">Separator:/
+</span></span><span class="line"><span class="cl">UserPrincipalLookupService:sun.nio.fs.UnixFileSystem$LookupService$1@7852e922
+</span></span><span class="line"><span class="cl">isOpen:true
+</span></span><span class="line"><span class="cl">isReadOnly:false
+</span></span><span class="line"><span class="cl">FileSystemProvider:sun.nio.fs.MacOSXFileSystemProvider@4e25154f
+</span></span><span class="line"><span class="cl">File Attribute Views:[owner, basic, posix, unix]
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="文件查找">文件查找</h2>
-<pre tabindex="0"><code>Path dir = Paths.get(&quot;test&quot;);
-PathMatcher matcher = FileSystems.getDefault().getPathMatcher(&quot;glob:**/*.{tmp,txt}&quot;);
+<pre tabindex="0"><code>Path dir = Paths.get(&#34;test&#34;);
+PathMatcher matcher = FileSystems.getDefault().getPathMatcher(&#34;glob:**/*.{tmp,txt}&#34;);
 try {
     Files.walk(dir)
             .filter(matcher::matches)
@@ -2544,13 +2542,13 @@ try {
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt:cheese.txt" data-lang="txt:cheese.txt">// cheese.txt
-Not much of a cheese shop really, is it?
-Finest in the district, sir.
-And what leads you to that conclusion?
-Well, it&#39;s so clean.
-It&#39;s certainly uncontaminated by cheese.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt:cheese.txt" data-lang="txt:cheese.txt"><span class="line"><span class="cl">// cheese.txt
+</span></span><span class="line"><span class="cl">Not much of a cheese shop really, is it?
+</span></span><span class="line"><span class="cl">Finest in the district, sir.
+</span></span><span class="line"><span class="cl">And what leads you to that conclusion?
+</span></span><span class="line"><span class="cl">Well, it&#39;s so clean.
+</span></span><span class="line"><span class="cl">It&#39;s certainly uncontaminated by cheese.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2565,16 +2563,16 @@ It&#39;s certainly uncontaminated by cheese.
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">try</span> <span class="o">{</span>
-    <span class="n">Files</span><span class="o">.</span><span class="na">readAllLines</span><span class="o">(</span>
-                    <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;cheese.txt&#34;</span><span class="o">))</span>
-            <span class="o">.</span><span class="na">stream</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="o">!</span><span class="n">s</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&#34;//&#34;</span><span class="o">))</span>
-            <span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
-<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Files</span><span class="o">.</span><span class="na">readAllLines</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;cheese.txt&#34;</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">            <span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">            <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="o">!</span><span class="n">s</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&#34;//&#34;</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">            <span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>输出：</p>
 <div class="highlight"><div class="chroma">
@@ -2586,17 +2584,17 @@ It&#39;s certainly uncontaminated by cheese.
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">Not much of a cheese shop really, is it?
-Finest in the district, sir.
-And what leads you to that conclusion?
-Well, it&#39;s so clean.
-It&#39;s certainly uncontaminated by cheese.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">Not much of a cheese shop really, is it?
+</span></span><span class="line"><span class="cl">Finest in the district, sir.
+</span></span><span class="line"><span class="cl">And what leads you to that conclusion?
+</span></span><span class="line"><span class="cl">Well, it&#39;s so clean.
+</span></span><span class="line"><span class="cl">It&#39;s certainly uncontaminated by cheese.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="写文件">写文件</h3>
 <p><code>Files.write(path, bytes)</code>或<code>Files.write(path, lines)</code>。写完文件可写入byte数组或String列表的内容。<br />
 
-<div id="7b95dfe55d96243d" class="codetab">
+<div id="75fedd54f3ba45ea" class="codetab">
   <div class="codetab__links">
     
       <button class="codetab__link" aria-label="Tab link">bytes</button>
@@ -2606,7 +2604,7 @@ It&#39;s certainly uncontaminated by cheese.
   </div>
   
 
-<div id="952e309dfa255f7e" class="codetab__content">
+<div id="97120d2c38d2e764" class="codetab__content">
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2620,21 +2618,21 @@ It&#39;s certainly uncontaminated by cheese.
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Path</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;bytes.dat&#34;</span><span class="o">);</span>
-<span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1024</span><span class="o">];</span>
-<span class="k">new</span> <span class="n">Random</span><span class="o">(</span><span class="n">47</span><span class="o">).</span><span class="na">nextBytes</span><span class="o">(</span><span class="n">bytes</span><span class="o">);</span>
-<span class="k">try</span> <span class="o">{</span>
-    <span class="n">Files</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">path</span><span class="o">,</span> <span class="n">bytes</span><span class="o">);</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;bytes.dat: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="n">path</span><span class="o">));</span>
-<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;bytes.dat&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">1024</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl"><span class="k">new</span> <span class="n">Random</span><span class="o">(</span><span class="mi">47</span><span class="o">).</span><span class="na">nextBytes</span><span class="o">(</span><span class="n">bytes</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Files</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">path</span><span class="o">,</span> <span class="n">bytes</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;bytes.dat: &#34;</span> <span class="o">+</span> <span class="n">Files</span><span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="n">path</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
-<div id="775fd3c78489bbe5" class="codetab__content">
+<div id="dbe8257478aafdb1" class="codetab__content">
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2646,14 +2644,14 @@ It&#39;s certainly uncontaminated by cheese.
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Path</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;cheese.txt&#34;</span><span class="o">);</span>
-<span class="k">try</span> <span class="o">{</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">Files</span><span class="o">.</span><span class="na">lines</span><span class="o">(</span><span class="n">path</span><span class="o">).</span><span class="na">filter</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="o">!</span><span class="n">s</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&#34;//&#34;</span><span class="o">)).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
-    <span class="n">Files</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;hello.txt&#34;</span><span class="o">),</span> <span class="n">lines</span><span class="o">);</span>
-<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Path</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;cheese.txt&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">Files</span><span class="o">.</span><span class="na">lines</span><span class="o">(</span><span class="n">path</span><span class="o">).</span><span class="na">filter</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="o">!</span><span class="n">s</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&#34;//&#34;</span><span class="o">)).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Files</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;hello.txt&#34;</span><span class="o">),</span> <span class="n">lines</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
@@ -2663,7 +2661,7 @@ It&#39;s certainly uncontaminated by cheese.
 <script>
   'use strict';
 
-  var containerId = JSON.parse("\"7b95dfe55d96243d\"");
+  var containerId = JSON.parse("\"75fedd54f3ba45ea\"");
   var containerElem = document.getElementById(containerId);
   var codetabLinks = null;
   var codetabContents = null;
@@ -2749,61 +2747,61 @@ It&#39;s certainly uncontaminated by cheese.
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TreeWatcher</span> <span class="o">{</span>
-    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">watchDir</span><span class="o">(</span><span class="n">Path</span> <span class="n">dir</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">try</span> <span class="o">{</span>
-            <span class="n">WatchService</span> <span class="n">watcher</span> <span class="o">=</span>
-            <span class="n">FileSystems</span><span class="o">.</span><span class="na">getDefault</span><span class="o">().</span><span class="na">newWatchService</span><span class="o">();</span>
-            <span class="n">dir</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">watcher</span><span class="o">,</span> <span class="n">ENTRY_DELETE</span><span class="o">);</span>
-            <span class="n">Executors</span><span class="o">.</span><span class="na">newSingleThreadExecutor</span><span class="o">().</span><span class="na">submit</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
-                <span class="k">try</span> <span class="o">{</span>
-                    <span class="n">WatchKey</span> <span class="n">key</span> <span class="o">=</span> <span class="n">watcher</span><span class="o">.</span><span class="na">take</span><span class="o">();</span>
-                    <span class="k">for</span><span class="o">(</span><span class="n">WatchEvent</span> <span class="n">evt</span> <span class="o">:</span> <span class="n">key</span><span class="o">.</span><span class="na">pollEvents</span><span class="o">())</span> <span class="o">{</span>
-                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span>
-                        <span class="s">&#34;evt.context(): &#34;</span> <span class="o">+</span> <span class="n">evt</span><span class="o">.</span><span class="na">context</span><span class="o">()</span> <span class="o">+</span>
-                        <span class="s">&#34;\nevt.count(): &#34;</span> <span class="o">+</span> <span class="n">evt</span><span class="o">.</span><span class="na">count</span><span class="o">()</span> <span class="o">+</span>
-                        <span class="s">&#34;\nevt.kind(): &#34;</span> <span class="o">+</span> <span class="n">evt</span><span class="o">.</span><span class="na">kind</span><span class="o">());</span>
-                        <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
-                    <span class="o">}</span>
-                <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="k">return</span><span class="o">;</span>
-                <span class="o">}</span>
-            <span class="o">});</span>
-        <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-       <span class="k">try</span> <span class="o">{</span>
-            <span class="n">Files</span><span class="o">.</span><span class="na">walk</span><span class="o">(</span><span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">))</span>
-                    <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">Files</span><span class="o">::</span><span class="n">isDirectory</span><span class="o">)</span>
-                    <span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">TreeWatcher</span><span class="o">::</span><span class="n">watchDir</span><span class="o">);</span>
-            
-            <span class="n">Files</span><span class="o">.</span><span class="na">walk</span><span class="o">(</span><span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">))</span>
-                    <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">f</span> <span class="o">-&gt;</span>
-                            <span class="n">f</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span>
-                                    <span class="o">.</span><span class="na">endsWith</span><span class="o">(</span><span class="s">&#34;.txt&#34;</span><span class="o">))</span>
-                    <span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">f</span> <span class="o">-&gt;</span> <span class="o">{</span>
-                        <span class="k">try</span> <span class="o">{</span>
-                            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;deleting &#34;</span> <span class="o">+</span> <span class="n">f</span><span class="o">);</span>
-                            <span class="n">Files</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">f</span><span class="o">);</span>
-                        <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-                            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
-                        <span class="o">}</span>
-                    <span class="o">});</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TreeWatcher</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">watchDir</span><span class="o">(</span><span class="n">Path</span> <span class="n">dir</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">WatchService</span> <span class="n">watcher</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">            <span class="n">FileSystems</span><span class="o">.</span><span class="na">getDefault</span><span class="o">().</span><span class="na">newWatchService</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">dir</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">watcher</span><span class="o">,</span> <span class="n">ENTRY_DELETE</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Executors</span><span class="o">.</span><span class="na">newSingleThreadExecutor</span><span class="o">().</span><span class="na">submit</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">WatchKey</span> <span class="n">key</span> <span class="o">=</span> <span class="n">watcher</span><span class="o">.</span><span class="na">take</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">for</span><span class="o">(</span><span class="n">WatchEvent</span> <span class="n">evt</span> <span class="o">:</span> <span class="n">key</span><span class="o">.</span><span class="na">pollEvents</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">                        <span class="s">&#34;evt.context(): &#34;</span> <span class="o">+</span> <span class="n">evt</span><span class="o">.</span><span class="na">context</span><span class="o">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                        <span class="s">&#34;\nevt.count(): &#34;</span> <span class="o">+</span> <span class="n">evt</span><span class="o">.</span><span class="na">count</span><span class="o">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                        <span class="s">&#34;\nevt.kind(): &#34;</span> <span class="o">+</span> <span class="n">evt</span><span class="o">.</span><span class="na">kind</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">});</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">       <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Files</span><span class="o">.</span><span class="na">walk</span><span class="o">(</span><span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">                    <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">Files</span><span class="o">::</span><span class="n">isDirectory</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">TreeWatcher</span><span class="o">::</span><span class="n">watchDir</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="n">Files</span><span class="o">.</span><span class="na">walk</span><span class="o">(</span><span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">                    <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">f</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">f</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">.</span><span class="na">endsWith</span><span class="o">(</span><span class="s">&#34;.txt&#34;</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">                    <span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">f</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;deleting &#34;</span> <span class="o">+</span> <span class="n">f</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">Files</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">f</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="o">});</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在 watchDir() 方法中给 WatchSevice 提供参数 ENTRY_DELETE，并启动一个独立的线程来监视该WatchService。这里是监听删除事件。还有其他的：ENTRY_CREATE，ENTRY_MODIFY(其中创建和删除不属于修改)。</p>
 
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -3086,7 +3084,7 @@ It&#39;s certainly uncontaminated by cheese.
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -4021,7 +4019,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         

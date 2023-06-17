@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="Redis 两种持久化方式，主从复制和哨兵模式">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1706,9 +1706,9 @@
 <p>RDB 是以二进制文件，是在某个时间点将数据写入一个临时文件，持久化结束后，用这个临时文件替换上次持久化的文件，达到数据恢复。</p>
 <p>Redis 默认启用 RDB 存储，redis.conf 中的具体配置参数如下：</p>
 <pre tabindex="0"><code>#dbfilename:持久化数据存储在本地的文件
-dbfilename &quot;dump.rdb&quot;
+dbfilename &#34;dump.rdb&#34;
 #dir:持久化数据存储在本地的路径，如果是在/usr/local/redis/redis-5.0.5/src下启动的redis-cli，则数据会存储在当前src目录下
-dir &quot;/var/lib/redis/6379&quot;
+dir &#34;/var/lib/redis/6379&#34;
 ##snapshot触发的时机，save
 ##如下为900秒后，至少有一个变更操作，才会snapshot
 ##对于此值的设置，需要谨慎，评估系统的变更操作密集程度
@@ -1733,12 +1733,12 @@ rdbcompression yes
 appendonly yes
 
 ##指定aof文件名称 
-appendfilename &quot;appendonly.aof&quot;
+appendfilename &#34;appendonly.aof&#34;
 
 ##指定aof操作中文件同步策略，有三个合法值:always everysec no,默认为everysec
 appendfsync everysec 
 
-##在aof-rewrite期间，appendfsync是否暂缓文件同步，&quot;no&quot;表示「不暂缓」，“yes”表示「暂缓」，默认为“no” 
+##在aof-rewrite期间，appendfsync是否暂缓文件同步，&#34;no&#34;表示「不暂缓」，“yes”表示「暂缓」，默认为“no” 
 no-appendfsync-on-rewrite no
 ##aof文件rewrite触发的最小文件尺寸(mb,gb),只有aof文件大于此尺寸是才会触发rewrite，默认“64mb”，建议“512mb”
 auto-aof-rewrite-min-size 64mb
@@ -1820,7 +1820,7 @@ auto-aof-rewrite-percentage 100
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2099,7 +2099,7 @@ auto-aof-rewrite-percentage 100
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -3035,7 +3035,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         

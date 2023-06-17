@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="Docker 快速开始">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1743,17 +1743,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 更新包</span>
-yum update
-<span class="c1"># 安装依赖</span>
-yum install -y yum-utils device-mapper-persistent-data lvm2
-<span class="c1"># 设置 docker 的 yum 源</span>
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-<span class="c1"># 安装</span>
-yum install -y docker-ce
-<span class="c1"># 完成后，检查</span>
-docker -v
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 更新包</span>
+</span></span><span class="line"><span class="cl">yum update
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装依赖</span>
+</span></span><span class="line"><span class="cl">yum install -y yum-utils device-mapper-persistent-data lvm2
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置 docker 的 yum 源</span>
+</span></span><span class="line"><span class="cl">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装</span>
+</span></span><span class="line"><span class="cl">yum install -y docker-ce
+</span></span><span class="line"><span class="cl"><span class="c1"># 完成后，检查</span>
+</span></span><span class="line"><span class="cl">docker -v
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>最终显示：</p>
 <pre tabindex="0"><code>Docker version 20.10.11, build dea9396
@@ -1773,17 +1773,17 @@ docker -v
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 启动 docker daemon</span>
-systemctl start docker
-<span class="c1"># 关闭</span>
-systemctl stop docker
-<span class="c1"># 重启</span>
-systemctl restart docker
-<span class="c1"># 查看进程信息</span>
-systemctl status docker
-<span class="c1"># 允许开机自启</span>
-systemctl <span class="nb">enable</span> docker
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 启动 docker daemon</span>
+</span></span><span class="line"><span class="cl">systemctl start docker
+</span></span><span class="line"><span class="cl"><span class="c1"># 关闭</span>
+</span></span><span class="line"><span class="cl">systemctl stop docker
+</span></span><span class="line"><span class="cl"><span class="c1"># 重启</span>
+</span></span><span class="line"><span class="cl">systemctl restart docker
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看进程信息</span>
+</span></span><span class="line"><span class="cl">systemctl status docker
+</span></span><span class="line"><span class="cl"><span class="c1"># 允许开机自启</span>
+</span></span><span class="line"><span class="cl">systemctl <span class="nb">enable</span> docker
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="镜像管理">镜像管理</h3>
 <div class="highlight"><div class="chroma">
@@ -1802,19 +1802,19 @@ systemctl <span class="nb">enable</span> docker
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 查看本地所有镜像</span>
-docker images
-<span class="c1"># 查看所有镜像id</span>
-docker images -q
-<span class="c1"># 从仓库搜索镜像，这里 mysql 指 镜像名称</span>
-docker search mysql
-<span class="c1"># 拉取/下载镜像，可以指定镜像 mysql 版本</span>
-docker pull mysql:5.7
-<span class="c1"># 使用 CONTAINER ID(容器ID) 删除镜像，具体ID具体查看</span>
-docker rmi 59b80c0eb775
-<span class="c1"># 删除所有</span>
-docker rmi <span class="sb">`</span>docker images -q<span class="sb">`</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 查看本地所有镜像</span>
+</span></span><span class="line"><span class="cl">docker images
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看所有镜像id</span>
+</span></span><span class="line"><span class="cl">docker images -q
+</span></span><span class="line"><span class="cl"><span class="c1"># 从仓库搜索镜像，这里 mysql 指 镜像名称</span>
+</span></span><span class="line"><span class="cl">docker search mysql
+</span></span><span class="line"><span class="cl"><span class="c1"># 拉取/下载镜像，可以指定镜像 mysql 版本</span>
+</span></span><span class="line"><span class="cl">docker pull mysql:5.7
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用 CONTAINER ID(容器ID) 删除镜像，具体ID具体查看</span>
+</span></span><span class="line"><span class="cl">docker rmi 59b80c0eb775
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除所有</span>
+</span></span><span class="line"><span class="cl">docker rmi <span class="sb">`</span>docker images -q<span class="sb">`</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="容器管理">容器管理</h3>
 <div class="highlight"><div class="chroma">
@@ -1825,11 +1825,11 @@ docker rmi <span class="sb">`</span>docker images -q<span class="sb">`</span>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 查看运行的容器</span>
-docker ps
-<span class="c1"># 查看所有容器，包括运行的和运行退出的</span>
-docker ps -a
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 查看运行的容器</span>
+</span></span><span class="line"><span class="cl">docker ps
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看所有容器，包括运行的和运行退出的</span>
+</span></span><span class="line"><span class="cl">docker ps -a
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1847,19 +1847,19 @@ docker ps -a
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 创建并运行容器</span>
-docker run -id <span class="se">\
-</span><span class="se"></span>-p 3306:3306  <span class="se">\
-</span><span class="se"></span>--name mysql <span class="se">\
-</span><span class="se"></span>-v ~/docker-data/mysql/data:/data <span class="se">\
-</span><span class="se"></span>-e <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>root <span class="se">\
-</span><span class="se"></span>mysql:5.7
-
-
-<span class="c1"># 连接容器, /bin/bash 是进入容器使用的命令</span>
-docker <span class="nb">exec</span> -it mysql /bin/bash
-docker <span class="nb">exec</span> -it mysql mysql -uroot -p
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 创建并运行容器</span>
+</span></span><span class="line"><span class="cl">docker run -id <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-p 3306:3306  <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--name mysql <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v ~/docker-data/mysql/data:/data <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-e <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>root <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>mysql:5.7
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 连接容器, /bin/bash 是进入容器使用的命令</span>
+</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -it mysql /bin/bash
+</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -it mysql mysql -uroot -p
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>-i - 保持容器运行。容器创建后，运行，再退出，不会删除容器。它可与d和t连用</li>
@@ -1883,15 +1883,15 @@ docker <span class="nb">exec</span> -it mysql mysql -uroot -p
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 停止容器</span>
-docker stop mysql
-<span class="c1"># 启动容器</span>
-docker start mysql
-<span class="c1"># 删除容器</span>
-docker rm mysql
-<span class="c1"># 查看容器信息</span>
-docker inspect mysql
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 停止容器</span>
+</span></span><span class="line"><span class="cl">docker stop mysql
+</span></span><span class="line"><span class="cl"><span class="c1"># 启动容器</span>
+</span></span><span class="line"><span class="cl">docker start mysql
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除容器</span>
+</span></span><span class="line"><span class="cl">docker rm mysql
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看容器信息</span>
+</span></span><span class="line"><span class="cl">docker inspect mysql
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>数据卷就是宿主机下的目录或文件，可以被多个容器挂载。容器可以挂载多个数据卷</p>
@@ -1914,13 +1914,13 @@ docker inspect mysql
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 容器49842ef82091 转镜像 mytomcat:1.0</span>
-docker commit 49842ef82091 mytomcat:1.0
-<span class="c1"># 压缩镜像</span>
-docker save -o mytomcat.tar mytomcat:1.0
-<span class="c1"># 从压缩文件导入镜像</span>
-docker load -i mytomcat.tar
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 容器49842ef82091 转镜像 mytomcat:1.0</span>
+</span></span><span class="line"><span class="cl">docker commit 49842ef82091 mytomcat:1.0
+</span></span><span class="line"><span class="cl"><span class="c1"># 压缩镜像</span>
+</span></span><span class="line"><span class="cl">docker save -o mytomcat.tar mytomcat:1.0
+</span></span><span class="line"><span class="cl"><span class="c1"># 从压缩文件导入镜像</span>
+</span></span><span class="line"><span class="cl">docker load -i mytomcat.tar
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="用dockerfile制作镜像">用Dockerfile制作镜像</h3>
 <p>Dockerfile 是文本文件，包含构建镜像说明。当执行 <code>docker build</code> 会读取这个文件的指令来帮助构建镜像。Dockerfile的默认文件名就是&quot;Dockerfile&quot;。<br />
@@ -1932,8 +1932,8 @@ docker load -i mytomcat.tar
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">DOCKER_BUILDKIT</span><span class="o">=</span><span class="m">1</span> docker build .
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">DOCKER_BUILDKIT</span><span class="o">=</span><span class="m">1</span> docker build .
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以配置文件来默认启用</p>
 <div class="highlight"><div class="chroma">
@@ -1941,14 +1941,12 @@ docker load -i mytomcat.tar
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json:/etc/docker/daemon.json" data-lang="json:/etc/docker/daemon.json"><span class="p">{</span>
-  <span class="nt">&#34;features&#34;</span><span class="p">:{</span><span class="nt">&#34;buildkit&#34;</span> <span class="p">:</span> <span class="kc">true</span><span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-json:/etc/docker/daemon.json" data-lang="json:/etc/docker/daemon.json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;features&#34;</span><span class="p">:{</span><span class="nt">&#34;buildkit&#34;</span> <span class="p">:</span> <span class="kc">true</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后重启 docker</p>
 <p>从github克隆一个demo</p>
@@ -1959,10 +1957,10 @@ docker load -i mytomcat.tar
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~
-git clone https://github.com/spring-projects/spring-petclinic.git
-<span class="nb">cd</span> spring-petclinic
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ~
+</span></span><span class="line"><span class="cl">git clone https://github.com/spring-projects/spring-petclinic.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> spring-petclinic
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以去测试一下这个demo是否能正常运行</p>
 <div class="highlight"><div class="chroma">
@@ -1970,8 +1968,8 @@ git clone https://github.com/spring-projects/spring-petclinic.git
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">./mvnw spring-boot:run
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./mvnw spring-boot:run
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>用浏览器打开 http://localhost:8080，如果使用虚拟机 Linux 并从宿主机访问,localhost 要改成虚拟机的ip即可。</p>
 <p>接着创建一个Dockerfile</p>
@@ -1992,20 +1990,20 @@ git clone https://github.com/spring-projects/spring-petclinic.git
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="c"># syntax=docker/dockerfile:1</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">FROM</span><span class="s"> openjdk:16-alpine3.13</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">COPY</span> .mvn/ .mvn<span class="err">
-</span><span class="err"></span><span class="k">COPY</span> mvnw pom.xml ./<span class="err">
-</span><span class="err"></span><span class="k">RUN</span> ./mvnw dependency:go-offline<span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">COPY</span> src ./src<span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;./mvnw&#34;</span><span class="p">,</span> <span class="s2">&#34;spring-boot:run&#34;</span><span class="p">]</span><span class="err">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="line"><span class="cl"><span class="c"># syntax=docker/dockerfile:1</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> openjdk:16-alpine3.13</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> .mvn/ .mvn<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> mvnw pom.xml ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> ./mvnw dependency:go-offline<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> src ./src<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;./mvnw&#34;</span><span class="p">,</span> <span class="s2">&#34;spring-boot:run&#34;</span><span class="p">]</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>第1行：告诉 docker 构建器所使用dockerfile的版本1语法。</p>
 <p>第3行：使用openjdk的镜像，它包含 Java JDK ，就能够运行 Java 程序</p>
@@ -2026,8 +2024,8 @@ git clone https://github.com/spring-projects/spring-petclinic.git
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker build --tag java-docker .
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker build --tag java-docker .
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>--tag</code> - 给镜像打标签 格式是 “名号:版本标签”，如：java-docker:v1.0.0。如果没指定标签，默认使用 latest</li>
@@ -2049,14 +2047,14 @@ git clone https://github.com/spring-projects/spring-petclinic.git
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run -dp 8080:8080 --name springboot-server java-docker
-curl --request GET <span class="se">\
-</span><span class="se"></span>--url http://localhost:8080/actuator/health <span class="se">\
-</span><span class="se"></span>--header <span class="s1">&#39;content-type: application/json&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -dp 8080:8080 --name springboot-server java-docker
+</span></span><span class="line"><span class="cl">curl --request GET <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--url http://localhost:8080/actuator/health <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--header <span class="s1">&#39;content-type: application/json&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>输出：</p>
-<pre tabindex="0"><code>{&quot;status&quot;:&quot;UP&quot;}
+<pre tabindex="0"><code>{&#34;status&#34;:&#34;UP&#34;}
 </code></pre><p>在开发应用时，可能需要其他容器作为支持，比如 Spring Boot 应用容器需要 MySQL 数据库容器支持</p>
 <p>首先在容器中创建 MySQL 数据库，使用数据卷让多个容器共享数据和配置</p>
 <div class="highlight"><div class="chroma">
@@ -2065,9 +2063,9 @@ curl --request GET <span class="se">\
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker volume create mysql_data
-docker volume create mysql_config
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker volume create mysql_data
+</span></span><span class="line"><span class="cl">docker volume create mysql_config
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>创建 network 让应用和数据库共享此网络以互相通信。这里的 network 为用户定义的桥接网络。为了在后面的定义 jdbc url 的时候可以作为用服务名当作连接字符串来使用。<br />
 如：jdbc:mysql://mysqlserver/petclinic</p>
@@ -2076,8 +2074,8 @@ docker volume create mysql_config
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker network create mysqlnet
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker network create mysqlnet
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>运行mysql容器</p>
 <div class="highlight"><div class="chroma">
@@ -2091,17 +2089,17 @@ docker volume create mysql_config
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run -it --rm -d -v mysql_data:/var/lib/mysql <span class="se">\
-</span><span class="se"></span>-v mysql_config:/etc/mysql/conf.d <span class="se">\
-</span><span class="se"></span>--network mysqlnet <span class="se">\
-</span><span class="se"></span>--name mysqlserver <span class="se">\
-</span><span class="se"></span>-e <span class="nv">MYSQL_USER</span><span class="o">=</span>petclinic -e <span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>petclinic <span class="se">\
-</span><span class="se"></span>-e <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>root -e <span class="nv">MYSQL_DATABASE</span><span class="o">=</span>petclinic <span class="se">\
-</span><span class="se"></span>-p 3306:3306 mysql
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -it --rm -d -v mysql_data:/var/lib/mysql <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v mysql_config:/etc/mysql/conf.d <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--network mysqlnet <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--name mysqlserver <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-e <span class="nv">MYSQL_USER</span><span class="o">=</span>petclinic -e <span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>petclinic <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-e <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>root -e <span class="nv">MYSQL_DATABASE</span><span class="o">=</span>petclinic <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-p 3306:3306 mysql
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上一节中的 springboot-server 容器想要使用 MySQL ，就要修改 Dockerfile 文件，将 CMD 的修改为：</p>
-<pre tabindex="0"><code>CMD [&quot;./mvnw&quot;, &quot;spring-boot:run&quot;, &quot;-Dspring-boot.run.profiles=mysql&quot;, &quot;-Dmaven.test.skip&quot;]
+<pre tabindex="0"><code>CMD [&#34;./mvnw&#34;, &#34;spring-boot:run&#34;, &#34;-Dspring-boot.run.profiles=mysql&#34;, &#34;-Dmaven.test.skip&#34;]
 </code></pre><p>使这个 demo 从 H2 内存数据库切换为 MySQL 数据库，重新新构建一次。然后启动容器连接 mysqlserver。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2112,12 +2110,12 @@ docker volume create mysql_config
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run --rm -d <span class="se">\
-</span><span class="se"></span>--name springboot-server <span class="se">\
-</span><span class="se"></span>--network mysqlnet <span class="se">\
-</span><span class="se"></span>-e <span class="nv">MYSQL_URL</span><span class="o">=</span>jdbc:mysql://mysqlserver/petclinic <span class="se">\
-</span><span class="se"></span>-p 8080:8080 java-docker
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --rm -d <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--name springboot-server <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--network mysqlnet <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-e <span class="nv">MYSQL_URL</span><span class="o">=</span>jdbc:mysql://mysqlserver/petclinic <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-p 8080:8080 java-docker
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="docker-compose-借助容器开发应用">Docker Compose 借助容器开发应用</h2>
 <p>编写第一个compose文件</p>
@@ -2156,38 +2154,38 @@ docker volume create mysql_config
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt:docker-compose.dev.yml" data-lang="txt:docker-compose.dev.yml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.8&#39;</span><span class="w">
-</span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">petclinic</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
-</span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="m">8000</span><span class="p">:</span><span class="m">8000</span><span class="w">
-</span><span class="w">      </span>- <span class="m">8080</span><span class="p">:</span><span class="m">8080</span><span class="w">
-</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="l">SERVER_PORT=8080</span><span class="w">
-</span><span class="w">      </span>- <span class="l">MYSQL_URL=jdbc:mysql://mysqlserver/petclinic</span><span class="w">
-</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="l">./:/app</span><span class="w">
-</span><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">./mvnw spring-boot:run -Dmaven.test.skip -Dspring-boot.run.profiles=mysql -Dspring-boot.run.jvmArguments=&#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000&#34;</span><span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="nt">mysqlserver</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">mysql:latest</span><span class="w">
-</span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="m">3306</span><span class="p">:</span><span class="m">3306</span><span class="w">
-</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="l">MYSQL_ROOT_PASSWORD=</span><span class="w">
-</span><span class="w">      </span>- <span class="l">MYSQL_ALLOW_EMPTY_PASSWORD=true</span><span class="w">
-</span><span class="w">      </span>- <span class="l">MYSQL_USER=petclinic</span><span class="w">
-</span><span class="w">      </span>- <span class="l">MYSQL_PASSWORD=petclinic</span><span class="w">
-</span><span class="w">      </span>- <span class="l">MYSQL_DATABASE=petclinic</span><span class="w">
-</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="l">mysql_data:/var/lib/mysql</span><span class="w">
-</span><span class="w">      </span>- <span class="l">mysql_config:/etc/mysql/conf.d</span><span class="w">
-</span><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">mysql_data</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">mysql_config</span><span class="p">:</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt:docker-compose.dev.yml" data-lang="txt:docker-compose.dev.yml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.8&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">petclinic</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">8000</span><span class="p">:</span><span class="m">8000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">8080</span><span class="p">:</span><span class="m">8080</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">SERVER_PORT=8080</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">MYSQL_URL=jdbc:mysql://mysqlserver/petclinic</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./:/app</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">./mvnw spring-boot:run -Dmaven.test.skip -Dspring-boot.run.profiles=mysql -Dspring-boot.run.jvmArguments=&#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mysqlserver</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">mysql:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">3306</span><span class="p">:</span><span class="m">3306</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">MYSQL_ROOT_PASSWORD=</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">MYSQL_ALLOW_EMPTY_PASSWORD=true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">MYSQL_USER=petclinic</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">MYSQL_PASSWORD=petclinic</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">MYSQL_DATABASE=petclinic</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">mysql_data:/var/lib/mysql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">mysql_config:/etc/mysql/conf.d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mysql_data</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mysql_config</span><span class="p">:</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>启动应用前安装 docker compose</p>
 <div class="highlight"><div class="chroma">
@@ -2196,9 +2194,9 @@ docker volume create mysql_config
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo curl -L <span class="s2">&#34;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span class="k">$(</span>uname -s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname -m<span class="k">)</span><span class="s2">&#34;</span> -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo curl -L <span class="s2">&#34;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span class="k">$(</span>uname -s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname -m<span class="k">)</span><span class="s2">&#34;</span> -o /usr/local/bin/docker-compose
+</span></span><span class="line"><span class="cl">sudo chmod +x /usr/local/bin/docker-compose
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>接着编译镜像并运行</p>
 <div class="highlight"><div class="chroma">
@@ -2206,8 +2204,8 @@ sudo chmod +x /usr/local/bin/docker-compose
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker-compose -f docker-compose.dev.yml up --build
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose -f docker-compose.dev.yml up --build
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Dockerfile和docker-compose.yml区别</p>
 <p>前者是制作自定义镜像的说明，后者是容器集群做快速编排，用于部署分布式应用。</p>
@@ -2215,7 +2213,7 @@ sudo chmod +x /usr/local/bin/docker-compose
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2479,7 +2477,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -3413,7 +3411,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         

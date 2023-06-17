@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="Mybatis 快速入门">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1721,24 +1721,24 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">├── build.gradle
-├── gradle
-│   └── wrapper
-│       ├── gradle-wrapper.jar
-│       └── gradle-wrapper.properties
-├── gradlew
-├── gradlew.bat
-├── settings.gradle
-└── src
-    ├── main
-    │   ├── java
-    │   └── resources
-    └── test
-        ├── java
-        └── resources
-
-9 directories, 6 files
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">├── build.gradle
+</span></span><span class="line"><span class="cl">├── gradle
+</span></span><span class="line"><span class="cl">│   └── wrapper
+</span></span><span class="line"><span class="cl">│       ├── gradle-wrapper.jar
+</span></span><span class="line"><span class="cl">│       └── gradle-wrapper.properties
+</span></span><span class="line"><span class="cl">├── gradlew
+</span></span><span class="line"><span class="cl">├── gradlew.bat
+</span></span><span class="line"><span class="cl">├── settings.gradle
+</span></span><span class="line"><span class="cl">└── src
+</span></span><span class="line"><span class="cl">    ├── main
+</span></span><span class="line"><span class="cl">    │   ├── java
+</span></span><span class="line"><span class="cl">    │   └── resources
+</span></span><span class="line"><span class="cl">    └── test
+</span></span><span class="line"><span class="cl">        ├── java
+</span></span><span class="line"><span class="cl">        └── resources
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">9 directories, 6 files
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="编写buildgradle">编写build.gradle</h3>
 <div class="highlight"><div class="chroma">
@@ -1768,36 +1768,34 @@
 </span><span class="lnt">23
 </span><span class="lnt">24
 </span><span class="lnt">25
-</span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-gradle:build.gradle" data-lang="gradle:build.gradle"><span class="n">plugins</span> <span class="o">{</span>
-    <span class="n">id</span> <span class="s1">&#39;java&#39;</span>
-<span class="o">}</span>
-
-<span class="n">group</span> <span class="s1">&#39;io.github.qinry&#39;</span>
-<span class="n">version</span> <span class="s1">&#39;1.0-SNAPSHOT&#39;</span>
-
-<span class="n">jar</span> <span class="o">{</span>
-    <span class="n">archivesBaseName</span> <span class="o">=</span> <span class="s1">&#39;mybatis-sample&#39;</span>
-<span class="o">}</span>
-
-<span class="n">repositories</span> <span class="o">{</span>
-    <span class="n">mavenCentral</span><span class="o">()</span>
-<span class="o">}</span>
-
-<span class="n">dependencies</span> <span class="o">{</span>
-    <span class="n">implementation</span> <span class="s1">&#39;org.mybatis:mybatis:3.5.7&#39;</span>
-    <span class="n">runtimeOnly</span> <span class="s1">&#39;mysql:mysql-connector-java:8.0.27&#39;</span>
-    <span class="n">testImplementation</span> <span class="s1">&#39;org.junit.jupiter:junit-jupiter-api:5.7.0&#39;</span>
-    <span class="n">testRuntimeOnly</span> <span class="s1">&#39;org.junit.jupiter:junit-jupiter-engine:5.7.0&#39;</span>
-<span class="o">}</span>
-
-<span class="n">test</span> <span class="o">{</span>
-    <span class="n">useJUnitPlatform</span><span class="o">()</span>
-<span class="o">}</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-gradle:build.gradle" data-lang="gradle:build.gradle"><span class="line"><span class="cl"><span class="n">plugins</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">id</span> <span class="s1">&#39;java&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">group</span> <span class="s1">&#39;io.github.qinry&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">version</span> <span class="s1">&#39;1.0-SNAPSHOT&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">jar</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">archivesBaseName</span> <span class="o">=</span> <span class="s1">&#39;mybatis-sample&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">repositories</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mavenCentral</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">dependencies</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">implementation</span> <span class="s1">&#39;org.mybatis:mybatis:3.5.7&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">runtimeOnly</span> <span class="s1">&#39;mysql:mysql-connector-java:8.0.27&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">testImplementation</span> <span class="s1">&#39;org.junit.jupiter:junit-jupiter-api:5.7.0&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">testRuntimeOnly</span> <span class="s1">&#39;org.junit.jupiter:junit-jupiter-engine:5.7.0&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">test</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">useJUnitPlatform</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>添加依赖<code>org.mybatis:mybatis:3.5.7</code>和<code>mysql:mysql-connector-java:8.0.27</code>，mybatis编译和运行都使用，作用域设置为<code>implement</code>，mysql-connector-java在运行时有效设置为<code>runtimeOnly</code>。设置打包的jar的文档基名为<code>mybatis-sample</code>。</p>
 <h3 id="编写settingsgradle">编写settings.gradle</h3>
@@ -1806,8 +1804,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-gradle:settings.gradle" data-lang="gradle:settings.gradle"><span class="n">rootProject</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s1">&#39;mybatis-sample&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-gradle:settings.gradle" data-lang="gradle:settings.gradle"><span class="line"><span class="cl"><span class="n">rootProject</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s1">&#39;mybatis-sample&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>根项目名为 <code>mybatis-sample</code>，如果有子项目，要使用<code>include</code>后跟子项目的名称，把子项目声明在这里让gradle知道。</p>
 <h2 id="mybatis配置">Mybatis配置</h2>
@@ -1844,35 +1842,35 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml:src/main/resources/mybatis/mybatis-config.xml" data-lang="xml:src/main/resources/mybatis/mybatis-config.xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
-<span class="cp">&lt;!DOCTYPE configuration
-</span><span class="cp">        PUBLIC &#34;-//mybatis.org//DTD Config 3.0//EN&#34;
-</span><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-3-config.dtd&#34;&gt;</span>
-<span class="nt">&lt;configuration&gt;</span>
-    <span class="nt">&lt;properties</span> <span class="na">resource=</span><span class="s">&#34;/db.properties&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/properties&gt;</span>
-     <span class="nt">&lt;settings&gt;</span>
-        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&#34;mapUnderscoreToCamelCase&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&#34;lazyLoadingEnabled&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&#34;aggressiveLazyLoading&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;/settings&gt;</span>
-    <span class="nt">&lt;environments</span> <span class="na">default=</span><span class="s">&#34;development&#34;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;environment</span> <span class="na">id=</span><span class="s">&#34;development&#34;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;transactionManager</span> <span class="na">type=</span><span class="s">&#34;JDBC&#34;</span><span class="nt">/&gt;</span>
-            <span class="nt">&lt;dataSource</span> <span class="na">type=</span><span class="s">&#34;POOLED&#34;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;driver&#34;</span> <span class="na">value=</span><span class="s">&#34;${driver}&#34;</span><span class="nt">/&gt;</span>
-                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;url&#34;</span> <span class="na">value=</span><span class="s">&#34;${url}&#34;</span><span class="nt">/&gt;</span>
-                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;username&#34;</span> <span class="na">value=</span><span class="s">&#34;${username}&#34;</span><span class="nt">/&gt;</span>
-                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;password&#34;</span> <span class="na">value=</span><span class="s">&#34;${password}&#34;</span><span class="nt">/&gt;</span>
-            <span class="nt">&lt;/dataSource&gt;</span>
-        <span class="nt">&lt;/environment&gt;</span>
-    <span class="nt">&lt;/environments&gt;</span>
-    <span class="nt">&lt;mappers&gt;</span>
-        <span class="nt">&lt;mapper</span> <span class="na">resource=</span><span class="s">&#34;io/github/qinry/mapper/StudentMapper.xml&#34;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;mapper</span> <span class="na">resource=</span><span class="s">&#34;io/github/qinry/mapper/GradeMapper.xml&#34;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;/mappers&gt;</span>
-<span class="nt">&lt;/configuration&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml:src/main/resources/mybatis/mybatis-config.xml" data-lang="xml:src/main/resources/mybatis/mybatis-config.xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE configuration
+</span></span></span><span class="line"><span class="cl"><span class="cp">        PUBLIC &#34;-//mybatis.org//DTD Config 3.0//EN&#34;
+</span></span></span><span class="line"><span class="cl"><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-3-config.dtd&#34;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;configuration&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;properties</span> <span class="na">resource=</span><span class="s">&#34;/db.properties&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/properties&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&lt;settings&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&#34;mapUnderscoreToCamelCase&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&#34;lazyLoadingEnabled&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&#34;aggressiveLazyLoading&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/settings&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;environments</span> <span class="na">default=</span><span class="s">&#34;development&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;environment</span> <span class="na">id=</span><span class="s">&#34;development&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;transactionManager</span> <span class="na">type=</span><span class="s">&#34;JDBC&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;dataSource</span> <span class="na">type=</span><span class="s">&#34;POOLED&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;driver&#34;</span> <span class="na">value=</span><span class="s">&#34;${driver}&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;url&#34;</span> <span class="na">value=</span><span class="s">&#34;${url}&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;username&#34;</span> <span class="na">value=</span><span class="s">&#34;${username}&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;password&#34;</span> <span class="na">value=</span><span class="s">&#34;${password}&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/dataSource&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/environment&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/environments&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;mappers&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;mapper</span> <span class="na">resource=</span><span class="s">&#34;io/github/qinry/mapper/StudentMapper.xml&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;mapper</span> <span class="na">resource=</span><span class="s">&#34;io/github/qinry/mapper/GradeMapper.xml&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/mappers&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/configuration&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><pre tabindex="0"><code># src/main/resources/db.properties
 driver=com.mysql.jdbc.Driver
@@ -1893,13 +1891,13 @@ password=123456
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="w">
-</span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">bigint</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="n">auto_increment</span><span class="p">,</span><span class="w">
-</span><span class="w">    </span><span class="n">stu_name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w">
-</span><span class="w">    </span><span class="n">grade_id</span><span class="w"> </span><span class="nb">bigint</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w">
-</span><span class="w">    </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
-</span><span class="w"></span><span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span><span class="w">  </span><span class="k">default</span><span class="w"> </span><span class="n">charset</span><span class="o">=</span><span class="n">utf8mb4</span><span class="p">;</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">bigint</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="n">auto_increment</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">stu_name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">grade_id</span><span class="w"> </span><span class="nb">bigint</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span><span class="w">  </span><span class="k">default</span><span class="w"> </span><span class="n">charset</span><span class="o">=</span><span class="n">utf8mb4</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1910,12 +1908,12 @@ password=123456
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">grade</span><span class="p">(</span><span class="w">
-</span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">bigint</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="n">auto_increment</span><span class="p">,</span><span class="w">
-</span><span class="w">    </span><span class="n">grade_name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w">
-</span><span class="w">    </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
-</span><span class="w"></span><span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span><span class="w">  </span><span class="k">default</span><span class="w"> </span><span class="n">charset</span><span class="o">=</span><span class="n">utf8mb4</span><span class="p">;</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">grade</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">bigint</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="n">auto_increment</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">grade_name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span><span class="w">  </span><span class="k">default</span><span class="w"> </span><span class="n">charset</span><span class="o">=</span><span class="n">utf8mb4</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>测试数据：<br />
 为grade表插入三条数据</p>
@@ -1927,11 +1925,11 @@ password=123456
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">grade</span><span class="p">(</span><span class="n">grade_name</span><span class="p">)</span><span class="w"> </span><span class="k">values</span><span class="w">
-</span><span class="w"></span><span class="p">(</span><span class="s1">&#39;一年级&#39;</span><span class="p">),</span><span class="w">
-</span><span class="w"></span><span class="p">(</span><span class="s1">&#39;二年级&#39;</span><span class="p">),</span><span class="w">
-</span><span class="w"></span><span class="p">(</span><span class="s1">&#39;三年级&#39;</span><span class="p">);</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">grade</span><span class="p">(</span><span class="n">grade_name</span><span class="p">)</span><span class="w"> </span><span class="k">values</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="s1">&#39;一年级&#39;</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="s1">&#39;二年级&#39;</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="s1">&#39;三年级&#39;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>为student表插入三条数据</p>
 <div class="highlight"><div class="chroma">
@@ -1942,11 +1940,11 @@ password=123456
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="n">stu_name</span><span class="p">,</span><span class="w"> </span><span class="n">grade_id</span><span class="p">)</span><span class="w"> </span><span class="k">values</span><span class="w">
-</span><span class="w"></span><span class="p">(</span><span class="s1">&#39;王二&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w">
-</span><span class="w"></span><span class="p">(</span><span class="s1">&#39;张三&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w">
-</span><span class="w"></span><span class="p">(</span><span class="s1">&#39;李四&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="n">stu_name</span><span class="p">,</span><span class="w"> </span><span class="n">grade_id</span><span class="p">)</span><span class="w"> </span><span class="k">values</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="s1">&#39;王二&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="s1">&#39;张三&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="s1">&#39;李四&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="创建实体pojo">创建实体pojo</h2>
 <p>创建Student类</p>
@@ -2021,74 +2019,74 @@ password=123456
 </span><span class="lnt">67
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java:src/main/java/io/github/qinry/pojo/Student.java" data-lang="java:src/main/java/io/github/qinry/pojo/Student.java"><span class="kn">package</span> <span class="nn">io.github.qinry.pojo</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="n">1L</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">stuName</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Long</span> <span class="n">gradeId</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="n">Grade</span> <span class="n">grade</span><span class="o">;</span>
-
-    <span class="kd">public</span> <span class="nf">Student</span><span class="o">()</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="n">Long</span> <span class="n">id</span><span class="o">,</span> <span class="n">String</span> <span class="n">stuName</span><span class="o">,</span> <span class="n">Long</span> <span class="n">gradeId</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">stuName</span> <span class="o">=</span> <span class="n">stuName</span><span class="o">;</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">gradeId</span> <span class="o">=</span> <span class="n">gradeId</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="n">String</span> <span class="n">stuName</span><span class="o">,</span> <span class="n">Long</span> <span class="n">gradeId</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">stuName</span> <span class="o">=</span> <span class="n">stuName</span><span class="o">;</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">gradeId</span> <span class="o">=</span> <span class="n">gradeId</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="n">Long</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">Long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getStuName</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">stuName</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setStuName</span><span class="o">(</span><span class="n">String</span> <span class="n">stuName</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">stuName</span> <span class="o">=</span> <span class="n">stuName</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="n">Long</span> <span class="nf">getGradeId</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">gradeId</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGradeId</span><span class="o">(</span><span class="n">Long</span> <span class="n">gradeId</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">gradeId</span> <span class="o">=</span> <span class="n">gradeId</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="n">Grade</span> <span class="nf">getGrade</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">grade</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGrade</span><span class="o">(</span><span class="n">Grade</span> <span class="n">grade</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">grade</span> <span class="o">=</span> <span class="n">grade</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="s">&#34;Student{&#34;</span> <span class="o">+</span>
-                <span class="s">&#34;id=&#34;</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span>
-                <span class="s">&#34;, stuName=&#39;&#34;</span> <span class="o">+</span> <span class="n">stuName</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
-                <span class="s">&#34;, gradeId=&#34;</span> <span class="o">+</span> <span class="n">gradeId</span> <span class="o">+</span>
-                <span class="s">&#34;, grade=&#34;</span> <span class="o">+</span> <span class="n">grade</span> <span class="o">+</span>
-                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java:src/main/java/io/github/qinry/pojo/Student.java" data-lang="java:src/main/java/io/github/qinry/pojo/Student.java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">io.github.qinry.pojo</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">stuName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Long</span> <span class="n">gradeId</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Grade</span> <span class="n">grade</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="nf">Student</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="n">Long</span> <span class="n">id</span><span class="o">,</span> <span class="n">String</span> <span class="n">stuName</span><span class="o">,</span> <span class="n">Long</span> <span class="n">gradeId</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">stuName</span> <span class="o">=</span> <span class="n">stuName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">gradeId</span> <span class="o">=</span> <span class="n">gradeId</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="n">String</span> <span class="n">stuName</span><span class="o">,</span> <span class="n">Long</span> <span class="n">gradeId</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">stuName</span> <span class="o">=</span> <span class="n">stuName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">gradeId</span> <span class="o">=</span> <span class="n">gradeId</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Long</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">Long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getStuName</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">stuName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setStuName</span><span class="o">(</span><span class="n">String</span> <span class="n">stuName</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">stuName</span> <span class="o">=</span> <span class="n">stuName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Long</span> <span class="nf">getGradeId</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">gradeId</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGradeId</span><span class="o">(</span><span class="n">Long</span> <span class="n">gradeId</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">gradeId</span> <span class="o">=</span> <span class="n">gradeId</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Grade</span> <span class="nf">getGrade</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">grade</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGrade</span><span class="o">(</span><span class="n">Grade</span> <span class="n">grade</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">grade</span> <span class="o">=</span> <span class="n">grade</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;Student{&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;id=&#34;</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;, stuName=&#39;&#34;</span> <span class="o">+</span> <span class="n">stuName</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;, gradeId=&#34;</span> <span class="o">+</span> <span class="n">gradeId</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;, grade=&#34;</span> <span class="o">+</span> <span class="n">grade</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Student类属性为id、stuName、gradeId，还有关联属性grade。</p>
 <p>创建Grade类</p>
@@ -2151,68 +2149,66 @@ password=123456
 </span><span class="lnt">55
 </span><span class="lnt">56
 </span><span class="lnt">57
-</span><span class="lnt">58
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java:src/main/java/io/github/qinry/pojo/Grade.java" data-lang="java:src/main/java/io/github/qinry/pojo/Grade.java"><span class="kn">package</span> <span class="nn">io.github.qinry.pojo</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Grade</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="n">2L</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">gradeName</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">students</span><span class="o">;</span>
-
-    <span class="kd">public</span> <span class="nf">Grade</span><span class="o">()</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="nf">Grade</span><span class="o">(</span><span class="n">String</span> <span class="n">gradeName</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">gradeName</span> <span class="o">=</span> <span class="n">gradeName</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="nf">Grade</span><span class="o">(</span><span class="n">Long</span> <span class="n">id</span><span class="o">,</span> <span class="n">String</span> <span class="n">gradeName</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">gradeName</span> <span class="o">=</span> <span class="n">gradeName</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="n">Long</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">Long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getGradeName</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">gradeName</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGradeName</span><span class="o">(</span><span class="n">String</span> <span class="n">gradeName</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">gradeName</span> <span class="o">=</span> <span class="n">gradeName</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="nf">getStudents</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">students</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setStudents</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">students</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">students</span> <span class="o">=</span> <span class="n">students</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="s">&#34;Grade{&#34;</span> <span class="o">+</span>
-                <span class="s">&#34;id=&#34;</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span>
-                <span class="s">&#34;, gradeName=&#39;&#34;</span> <span class="o">+</span> <span class="n">gradeName</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
-                <span class="s">&#34;, students=&#34;</span> <span class="o">+</span> <span class="n">students</span> <span class="o">+</span>
-                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java:src/main/java/io/github/qinry/pojo/Grade.java" data-lang="java:src/main/java/io/github/qinry/pojo/Grade.java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">io.github.qinry.pojo</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Grade</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">2L</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">gradeName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">students</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="nf">Grade</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="nf">Grade</span><span class="o">(</span><span class="n">String</span> <span class="n">gradeName</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">gradeName</span> <span class="o">=</span> <span class="n">gradeName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="nf">Grade</span><span class="o">(</span><span class="n">Long</span> <span class="n">id</span><span class="o">,</span> <span class="n">String</span> <span class="n">gradeName</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">gradeName</span> <span class="o">=</span> <span class="n">gradeName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Long</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">Long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getGradeName</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">gradeName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGradeName</span><span class="o">(</span><span class="n">String</span> <span class="n">gradeName</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">gradeName</span> <span class="o">=</span> <span class="n">gradeName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="nf">getStudents</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">students</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setStudents</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">students</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">students</span> <span class="o">=</span> <span class="n">students</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;Grade{&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;id=&#34;</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;, gradeName=&#39;&#34;</span> <span class="o">+</span> <span class="n">gradeName</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;, students=&#34;</span> <span class="o">+</span> <span class="n">students</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Grade类的属性id、gradeName，还有关联属性grades。</p>
 <p>Student和Grade两表之间关系是一对多。</p>
@@ -2238,23 +2234,23 @@ password=123456
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml:mybatis/mybatis-config.xml" data-lang="xml:mybatis/mybatis-config.xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
-<span class="cp">&lt;!DOCTYPE configuration
-</span><span class="cp">        PUBLIC &#34;-//mybatis.org//DTD Config 3.0//EN&#34;
-</span><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-3-config.dtd&#34;&gt;</span>
-<span class="nt">&lt;configuration&gt;</span>
-    ...
-    <span class="nt">&lt;typeAliases&gt;</span>
-        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;io.github.qinry.pojo&#34;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/typeAliases&gt;</span>
-    <span class="nt">&lt;environments</span> <span class="na">default=</span><span class="s">&#34;development&#34;</span><span class="nt">&gt;</span>
-        ...
-    <span class="nt">&lt;/environments&gt;</span>
-    <span class="nt">&lt;mappers&gt;</span>
-        ...
-    <span class="nt">&lt;/mappers&gt;</span>
-<span class="nt">&lt;/configuration&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml:mybatis/mybatis-config.xml" data-lang="xml:mybatis/mybatis-config.xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE configuration
+</span></span></span><span class="line"><span class="cl"><span class="cp">        PUBLIC &#34;-//mybatis.org//DTD Config 3.0//EN&#34;
+</span></span></span><span class="line"><span class="cl"><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-3-config.dtd&#34;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;configuration&gt;</span>
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;typeAliases&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;io.github.qinry.pojo&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/typeAliases&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;environments</span> <span class="na">default=</span><span class="s">&#34;development&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        ...
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/environments&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;mappers&gt;</span>
+</span></span><span class="line"><span class="cl">        ...
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/mappers&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/configuration&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在编写xml映射文件时，使用pojo类型时可以直接使用类名（如<code>Student</code>），无须完全限定名（如<code>io.github.qinry.pojo.Student</code>）。</p>
 <p>编写StudentMapper.xml</p>
@@ -2278,23 +2274,23 @@ password=123456
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml:src/main/resources/io/github/qinry/mapper/StudentMapper.xml" data-lang="xml:src/main/resources/io/github/qinry/mapper/StudentMapper.xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
-<span class="cp">&lt;!DOCTYPE mapper
-</span><span class="cp">        PUBLIC &#34;-//mybatis.org//DTD Mapper 3.0//EN&#34;
-</span><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-3-mapper.dtd&#34;&gt;</span>
-<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&#34;io.github.qinry.mapper.StudentMapper&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;cache&gt;&lt;/cache&gt;</span>
-
-    <span class="nt">&lt;sql</span> <span class="na">id=</span><span class="s">&#34;column_list&#34;</span><span class="nt">&gt;</span>
-        id,stu_name,grade_id
-    <span class="nt">&lt;/sql&gt;</span>
-    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findAll&#34;</span> <span class="nt">&gt;</span>
-        select
-        <span class="nt">&lt;include</span> <span class="na">refid=</span><span class="s">&#34;column_list&#34;</span> <span class="nt">/&gt;</span>
-        from student
-    <span class="nt">&lt;/select&gt;</span>
-<span class="nt">&lt;/mapper&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml:src/main/resources/io/github/qinry/mapper/StudentMapper.xml" data-lang="xml:src/main/resources/io/github/qinry/mapper/StudentMapper.xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE mapper
+</span></span></span><span class="line"><span class="cl"><span class="cp">        PUBLIC &#34;-//mybatis.org//DTD Mapper 3.0//EN&#34;
+</span></span></span><span class="line"><span class="cl"><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-3-mapper.dtd&#34;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&#34;io.github.qinry.mapper.StudentMapper&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;cache&gt;&lt;/cache&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;sql</span> <span class="na">id=</span><span class="s">&#34;column_list&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        id,stu_name,grade_id
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/sql&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findAll&#34;</span> <span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        select
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;include</span> <span class="na">refid=</span><span class="s">&#34;column_list&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        from student
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/select&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/mapper&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>编写GradeMapper.xml</p>
 <div class="highlight"><div class="chroma">
@@ -2317,23 +2313,23 @@ password=123456
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml:src/main/resources/io/github/qinry/mapper/GradeMapper.xml" data-lang="xml:src/main/resources/io/github/qinry/mapper/GradeMapper.xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
-<span class="cp">&lt;!DOCTYPE mapper
-</span><span class="cp">        PUBLIC &#34;-//mybatis.org//DTD Mapper 3.0//EN&#34;
-</span><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-3-mapper.dtd&#34;&gt;</span>
-<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&#34;io.github.qinry.mapper.GradeMapper&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;cache&gt;&lt;/cache&gt;</span>
-
-    <span class="nt">&lt;sql</span> <span class="na">id=</span><span class="s">&#34;column_list&#34;</span><span class="nt">&gt;</span>
-        id,grade_name
-    <span class="nt">&lt;/sql&gt;</span>
-    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findAll&#34;</span> <span class="na">resultType=</span><span class="s">&#34;Grade&#34;</span><span class="nt">&gt;</span>
-        select
-        <span class="nt">&lt;include</span> <span class="na">refid=</span><span class="s">&#34;column_list&#34;</span> <span class="nt">/&gt;</span>
-        from grade
-    <span class="nt">&lt;/select&gt;</span>
-<span class="nt">&lt;/mapper&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml:src/main/resources/io/github/qinry/mapper/GradeMapper.xml" data-lang="xml:src/main/resources/io/github/qinry/mapper/GradeMapper.xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE mapper
+</span></span></span><span class="line"><span class="cl"><span class="cp">        PUBLIC &#34;-//mybatis.org//DTD Mapper 3.0//EN&#34;
+</span></span></span><span class="line"><span class="cl"><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-3-mapper.dtd&#34;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&#34;io.github.qinry.mapper.GradeMapper&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;cache&gt;&lt;/cache&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;sql</span> <span class="na">id=</span><span class="s">&#34;column_list&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        id,grade_name
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/sql&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findAll&#34;</span> <span class="na">resultType=</span><span class="s">&#34;Grade&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        select
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;include</span> <span class="na">refid=</span><span class="s">&#34;column_list&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        from grade
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/select&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/mapper&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>update、insert、delete的编写类似，就不重复描述。</p>
 <h2 id="编写测试">编写测试</h2>
@@ -2360,25 +2356,25 @@ password=123456
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java:src/test/java/io/github/qinry/mapper/StudentMapperTests.java" data-lang="java:src/test/java/io/github/qinry/mapper/StudentMapperTests.java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StudentMapperTests</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="n">SqlSessionFactory</span> <span class="n">sqlSessionFactory</span><span class="o">;</span>
-    <span class="nd">@BeforeEach</span>
-    <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="n">InputStream</span> <span class="n">inputStream</span> <span class="o">=</span> <span class="n">Resources</span><span class="o">.</span><span class="na">getResourceAsStream</span><span class="o">(</span><span class="s">&#34;mybatis/mybatis-config.xml&#34;</span><span class="o">);</span>
-        <span class="n">sqlSessionFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SqlSessionFactoryBuilder</span><span class="o">().</span><span class="na">build</span><span class="o">(</span><span class="n">inputStream</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Test</span>
-    <span class="kt">void</span> <span class="nf">findAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="k">try</span> <span class="o">(</span><span class="n">SqlSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">sqlSessionFactory</span><span class="o">.</span><span class="na">openSession</span><span class="o">())</span> <span class="o">{</span>
-            <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">students</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="s">&#34;io.github.qinry.mapper.StudentMapper.findAll&#34;</span><span class="o">);</span>
-            <span class="n">students</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
-        <span class="o">}</span>
-
-
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java:src/test/java/io/github/qinry/mapper/StudentMapperTests.java" data-lang="java:src/test/java/io/github/qinry/mapper/StudentMapperTests.java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StudentMapperTests</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">SqlSessionFactory</span> <span class="n">sqlSessionFactory</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@BeforeEach</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">InputStream</span> <span class="n">inputStream</span> <span class="o">=</span> <span class="n">Resources</span><span class="o">.</span><span class="na">getResourceAsStream</span><span class="o">(</span><span class="s">&#34;mybatis/mybatis-config.xml&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sqlSessionFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SqlSessionFactoryBuilder</span><span class="o">().</span><span class="na">build</span><span class="o">(</span><span class="n">inputStream</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">findAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span> <span class="o">(</span><span class="n">SqlSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">sqlSessionFactory</span><span class="o">.</span><span class="na">openSession</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">students</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="s">&#34;io.github.qinry.mapper.StudentMapper.findAll&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">students</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>输出：</p>
 <div class="highlight"><div class="chroma">
@@ -2388,10 +2384,10 @@ password=123456
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">Student{id=1, stuName=&#39;王二&#39;, gradeId=1, grade=null}
-Student{id=2, stuName=&#39;张三&#39;, gradeId=2, grade=null}
-Student{id=3, stuName=&#39;李四&#39;, gradeId=3, grade=null}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">Student{id=1, stuName=&#39;王二&#39;, gradeId=1, grade=null}
+</span></span><span class="line"><span class="cl">Student{id=2, stuName=&#39;张三&#39;, gradeId=2, grade=null}
+</span></span><span class="line"><span class="cl">Student{id=3, stuName=&#39;李四&#39;, gradeId=3, grade=null}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>测试GradeMapper</p>
 <div class="highlight"><div class="chroma">
@@ -2414,23 +2410,23 @@ Student{id=3, stuName=&#39;李四&#39;, gradeId=3, grade=null}
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java:src/test/java/io/github/qinry/mapper/GradeMapper.java" data-lang="java:src/test/java/io/github/qinry/mapper/GradeMapper.java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GradeMapperTests</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="n">SqlSessionFactory</span> <span class="n">sqlSessionFactory</span><span class="o">;</span>
-    <span class="nd">@BeforeEach</span>
-    <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="n">InputStream</span> <span class="n">inputStream</span> <span class="o">=</span> <span class="n">Resources</span><span class="o">.</span><span class="na">getResourceAsStream</span><span class="o">(</span><span class="s">&#34;mybatis/mybatis-config.xml&#34;</span><span class="o">);</span>
-        <span class="n">sqlSessionFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SqlSessionFactoryBuilder</span><span class="o">().</span><span class="na">build</span><span class="o">(</span><span class="n">inputStream</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Test</span>
-    <span class="kt">void</span> <span class="nf">findAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="k">try</span> <span class="o">(</span><span class="n">SqlSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">sqlSessionFactory</span><span class="o">.</span><span class="na">openSession</span><span class="o">())</span> <span class="o">{</span>
-            <span class="n">List</span><span class="o">&lt;</span><span class="n">Grade</span><span class="o">&gt;</span> <span class="n">grades</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="s">&#34;io.github.qinry.mapper.GradeMapper.findAll&#34;</span><span class="o">);</span>
-            <span class="n">grades</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java:src/test/java/io/github/qinry/mapper/GradeMapper.java" data-lang="java:src/test/java/io/github/qinry/mapper/GradeMapper.java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GradeMapperTests</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">SqlSessionFactory</span> <span class="n">sqlSessionFactory</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@BeforeEach</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">InputStream</span> <span class="n">inputStream</span> <span class="o">=</span> <span class="n">Resources</span><span class="o">.</span><span class="na">getResourceAsStream</span><span class="o">(</span><span class="s">&#34;mybatis/mybatis-config.xml&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sqlSessionFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SqlSessionFactoryBuilder</span><span class="o">().</span><span class="na">build</span><span class="o">(</span><span class="n">inputStream</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">findAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span> <span class="o">(</span><span class="n">SqlSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">sqlSessionFactory</span><span class="o">.</span><span class="na">openSession</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">List</span><span class="o">&lt;</span><span class="n">Grade</span><span class="o">&gt;</span> <span class="n">grades</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="s">&#34;io.github.qinry.mapper.GradeMapper.findAll&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">grades</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>输出：</p>
 <div class="highlight"><div class="chroma">
@@ -2440,10 +2436,10 @@ Student{id=3, stuName=&#39;李四&#39;, gradeId=3, grade=null}
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">Grade{id=1, gradeName=&#39;一年级&#39;, students=null}
-Grade{id=2, gradeName=&#39;二年级&#39;, students=null}
-Grade{id=3, gradeName=&#39;三年级&#39;, students=null}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">Grade{id=1, gradeName=&#39;一年级&#39;, students=null}
+</span></span><span class="line"><span class="cl">Grade{id=2, gradeName=&#39;二年级&#39;, students=null}
+</span></span><span class="line"><span class="cl">Grade{id=3, gradeName=&#39;三年级&#39;, students=null}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="添加映射器接口">添加映射器接口</h2>
 <p>接口名与xml映射文件命名空间一致，方法名与映射文件的与sql相关标签的id一致，比如<code>select</code>标签</p>
@@ -2455,10 +2451,10 @@ Grade{id=3, gradeName=&#39;三年级&#39;, students=null}
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java:src/main/java/io/github/qinry/mapper/StudentMapper.java" data-lang="java:src/main/java/io/github/qinry/mapper/StudentMapper.java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">StudentMapper</span> <span class="o">{</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="nf">findAll</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java:src/main/java/io/github/qinry/mapper/StudentMapper.java" data-lang="java:src/main/java/io/github/qinry/mapper/StudentMapper.java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">StudentMapper</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="nf">findAll</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>添加接口与GradeMapper</p>
 <div class="highlight"><div class="chroma">
@@ -2468,10 +2464,10 @@ Grade{id=3, gradeName=&#39;三年级&#39;, students=null}
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java:src/main/java/io/github/qinry/mapper/GradeMapper.java" data-lang="java:src/main/java/io/github/qinry/mapper/GradeMapper.java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">GradeMapper</span> <span class="o">{</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">Grade</span><span class="o">&gt;</span> <span class="nf">findAll</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java:src/main/java/io/github/qinry/mapper/GradeMapper.java" data-lang="java:src/main/java/io/github/qinry/mapper/GradeMapper.java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">GradeMapper</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Grade</span><span class="o">&gt;</span> <span class="nf">findAll</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>修改<code>mybatis-config.xml</code>的<code>mappers</code>标签</p>
 <div class="highlight"><div class="chroma">
@@ -2481,10 +2477,10 @@ Grade{id=3, gradeName=&#39;三年级&#39;, students=null}
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;mappers&gt;</span>
-    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;io.github.qinry.mapper&#34;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/mappers&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;mappers&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;io.github.qinry.mapper&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/mappers&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>修改测试用例</p>
 <div class="highlight"><div class="chroma">
@@ -2498,14 +2494,14 @@ Grade{id=3, gradeName=&#39;三年级&#39;, students=null}
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java:StudentMapperTests.java" data-lang="java:StudentMapperTests.java"> <span class="nd">@Test</span>
-<span class="kt">void</span> <span class="nf">findAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-    <span class="k">try</span> <span class="o">(</span><span class="n">SqlSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">sqlSessionFactory</span><span class="o">.</span><span class="na">openSession</span><span class="o">())</span> <span class="o">{</span>
-        <span class="n">StudentMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="n">StudentMapper</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-        <span class="n">mapper</span><span class="o">.</span><span class="na">findAll</span><span class="o">().</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java:StudentMapperTests.java" data-lang="java:StudentMapperTests.java"><span class="line"><span class="cl"> <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">findAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span> <span class="o">(</span><span class="n">SqlSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">sqlSessionFactory</span><span class="o">.</span><span class="na">openSession</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">StudentMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="n">StudentMapper</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mapper</span><span class="o">.</span><span class="na">findAll</span><span class="o">().</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2518,14 +2514,14 @@ Grade{id=3, gradeName=&#39;三年级&#39;, students=null}
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java:GradeMapperTests.java" data-lang="java:GradeMapperTests.java"><span class="nd">@Test</span>
-<span class="kt">void</span> <span class="nf">findAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-    <span class="k">try</span> <span class="o">(</span><span class="n">SqlSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">sqlSessionFactory</span><span class="o">.</span><span class="na">openSession</span><span class="o">())</span> <span class="o">{</span>
-        <span class="n">GradeMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="n">GradeMapper</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-        <span class="n">mapper</span><span class="o">.</span><span class="na">findAll</span><span class="o">().</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java:GradeMapperTests.java" data-lang="java:GradeMapperTests.java"><span class="line"><span class="cl"><span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">findAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span> <span class="o">(</span><span class="n">SqlSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">sqlSessionFactory</span><span class="o">.</span><span class="na">openSession</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">GradeMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="n">GradeMapper</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mapper</span><span class="o">.</span><span class="na">findAll</span><span class="o">().</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>得到输出结果与未修改一样，不这种方式（getMapper），使用SqlSession相对简洁。</p>
 <h2 id="编写高级结果集映射">编写高级结果集映射</h2>
@@ -2553,26 +2549,26 @@ Grade{id=3, gradeName=&#39;三年级&#39;, students=null}
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">&#34;studentResult&#34;</span> <span class="na">type=</span><span class="s">&#34;Student&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">&#34;id&#34;</span> <span class="na">column=</span><span class="s">&#34;stu_id&#34;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">&#34;stuName&#34;</span> <span class="na">column=</span><span class="s">&#34;stu_name&#34;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">&#34;gradeId&#34;</span> <span class="na">column=</span><span class="s">&#34;grade_id&#34;</span><span class="nt">&gt;&lt;/result&gt;</span>
-    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">&#34;grade&#34;</span> <span class="na">column=</span><span class="s">&#34;grade_id&#34;</span> <span class="na">resultMap=</span><span class="s">&#34;gradeResult&#34;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/resultMap&gt;</span>
-<span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">&#34;gradeResult&#34;</span> <span class="na">type=</span><span class="s">&#34;Grade&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">&#34;id&#34;</span> <span class="na">column=</span><span class="s">&#34;grade_id&#34;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">&#34;gradeName&#34;</span> <span class="na">column=</span><span class="s">&#34;grade_name&#34;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/resultMap&gt;</span>
-<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findAll&#34;</span> <span class="na">resultMap=</span><span class="s">&#34;studentResult&#34;</span><span class="nt">&gt;</span>
-    select
-    s.id as stu_id,
-    s.stu_name as stu_name,
-    g.id as grade_id,
-    g.grade_name as grade_name
-    from student s
-    left outer join grade g on s.grade_id = g.id
-<span class="nt">&lt;/select&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">&#34;studentResult&#34;</span> <span class="na">type=</span><span class="s">&#34;Student&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">&#34;id&#34;</span> <span class="na">column=</span><span class="s">&#34;stu_id&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">&#34;stuName&#34;</span> <span class="na">column=</span><span class="s">&#34;stu_name&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">&#34;gradeId&#34;</span> <span class="na">column=</span><span class="s">&#34;grade_id&#34;</span><span class="nt">&gt;&lt;/result&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">&#34;grade&#34;</span> <span class="na">column=</span><span class="s">&#34;grade_id&#34;</span> <span class="na">resultMap=</span><span class="s">&#34;gradeResult&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/resultMap&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">&#34;gradeResult&#34;</span> <span class="na">type=</span><span class="s">&#34;Grade&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">&#34;id&#34;</span> <span class="na">column=</span><span class="s">&#34;grade_id&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">&#34;gradeName&#34;</span> <span class="na">column=</span><span class="s">&#34;grade_name&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/resultMap&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findAll&#34;</span> <span class="na">resultMap=</span><span class="s">&#34;studentResult&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    select
+</span></span><span class="line"><span class="cl">    s.id as stu_id,
+</span></span><span class="line"><span class="cl">    s.stu_name as stu_name,
+</span></span><span class="line"><span class="cl">    g.id as grade_id,
+</span></span><span class="line"><span class="cl">    g.grade_name as grade_name
+</span></span><span class="line"><span class="cl">    from student s
+</span></span><span class="line"><span class="cl">    left outer join grade g on s.grade_id = g.id
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/select&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>测试用例输出：</p>
 <div class="highlight"><div class="chroma">
@@ -2582,10 +2578,10 @@ Grade{id=3, gradeName=&#39;三年级&#39;, students=null}
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">Student{id=1, stuName=&#39;王二&#39;, gradeId=1, grade=Grade{id=1, gradeName=&#39;一年级&#39;, students=null}}
-Student{id=2, stuName=&#39;张三&#39;, gradeId=2, grade=Grade{id=2, gradeName=&#39;二年级&#39;, students=null}}
-Student{id=3, stuName=&#39;李四&#39;, gradeId=3, grade=Grade{id=3, gradeName=&#39;三年级&#39;, students=null}}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">Student{id=1, stuName=&#39;王二&#39;, gradeId=1, grade=Grade{id=1, gradeName=&#39;一年级&#39;, students=null}}
+</span></span><span class="line"><span class="cl">Student{id=2, stuName=&#39;张三&#39;, gradeId=2, grade=Grade{id=2, gradeName=&#39;二年级&#39;, students=null}}
+</span></span><span class="line"><span class="cl">Student{id=3, stuName=&#39;李四&#39;, gradeId=3, grade=Grade{id=3, gradeName=&#39;三年级&#39;, students=null}}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>修改GradeMapper.xml</p>
 <div class="highlight"><div class="chroma">
@@ -2610,25 +2606,25 @@ Student{id=3, stuName=&#39;李四&#39;, gradeId=3, grade=Grade{id=3, gradeName=&
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">&#34;gradeResult&#34;</span> <span class="na">type=</span><span class="s">&#34;Grade&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">&#34;id&#34;</span> <span class="na">column=</span><span class="s">&#34;grade_id&#34;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">&#34;gradeName&#34;</span> <span class="na">column=</span><span class="s">&#34;grade_name&#34;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;collection</span> <span class="na">property=</span><span class="s">&#34;students&#34;</span> <span class="na">ofType=</span><span class="s">&#34;Student&#34;</span>  <span class="na">resultMap=</span><span class="s">&#34;studentResult&#34;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/resultMap&gt;</span>
-<span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">&#34;studentResult&#34;</span> <span class="na">type=</span><span class="s">&#34;Student&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">&#34;id&#34;</span> <span class="na">column=</span><span class="s">&#34;stu_id&#34;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">&#34;stuName&#34;</span> <span class="na">column=</span><span class="s">&#34;stu_name&#34;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/resultMap&gt;</span>
-<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findAll&#34;</span> <span class="na">resultMap=</span><span class="s">&#34;gradeResult&#34;</span><span class="nt">&gt;</span>
-    select
-    g.id as grade_id,
-    g.grade_name as grade_name,
-    s.id as stu_id,
-    s.stu_name as stu_name
-    from grade g
-    left outer join student s on g.id = s.grade_id
-<span class="nt">&lt;/select&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">&#34;gradeResult&#34;</span> <span class="na">type=</span><span class="s">&#34;Grade&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">&#34;id&#34;</span> <span class="na">column=</span><span class="s">&#34;grade_id&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">&#34;gradeName&#34;</span> <span class="na">column=</span><span class="s">&#34;grade_name&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;collection</span> <span class="na">property=</span><span class="s">&#34;students&#34;</span> <span class="na">ofType=</span><span class="s">&#34;Student&#34;</span>  <span class="na">resultMap=</span><span class="s">&#34;studentResult&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/resultMap&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">&#34;studentResult&#34;</span> <span class="na">type=</span><span class="s">&#34;Student&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">&#34;id&#34;</span> <span class="na">column=</span><span class="s">&#34;stu_id&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">&#34;stuName&#34;</span> <span class="na">column=</span><span class="s">&#34;stu_name&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/resultMap&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findAll&#34;</span> <span class="na">resultMap=</span><span class="s">&#34;gradeResult&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    select
+</span></span><span class="line"><span class="cl">    g.id as grade_id,
+</span></span><span class="line"><span class="cl">    g.grade_name as grade_name,
+</span></span><span class="line"><span class="cl">    s.id as stu_id,
+</span></span><span class="line"><span class="cl">    s.stu_name as stu_name
+</span></span><span class="line"><span class="cl">    from grade g
+</span></span><span class="line"><span class="cl">    left outer join student s on g.id = s.grade_id
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/select&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>测试用例输出：</p>
 <div class="highlight"><div class="chroma">
@@ -2638,10 +2634,10 @@ Student{id=3, stuName=&#39;李四&#39;, gradeId=3, grade=Grade{id=3, gradeName=&
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">Grade{id=1, gradeName=&#39;一年级&#39;, students=[Student{id=1, stuName=&#39;王二&#39;, gradeId=null, grade=null}]}
-Grade{id=2, gradeName=&#39;二年级&#39;, students=[Student{id=2, stuName=&#39;张三&#39;, gradeId=null, grade=null}]}
-Grade{id=3, gradeName=&#39;三年级&#39;, students=[Student{id=3, stuName=&#39;李四&#39;, gradeId=null, grade=null}]}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">Grade{id=1, gradeName=&#39;一年级&#39;, students=[Student{id=1, stuName=&#39;王二&#39;, gradeId=null, grade=null}]}
+</span></span><span class="line"><span class="cl">Grade{id=2, gradeName=&#39;二年级&#39;, students=[Student{id=2, stuName=&#39;张三&#39;, gradeId=null, grade=null}]}
+</span></span><span class="line"><span class="cl">Grade{id=3, gradeName=&#39;三年级&#39;, students=[Student{id=3, stuName=&#39;李四&#39;, gradeId=null, grade=null}]}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="notices warning" data-title="Warning">
   高级结果集映射，使用级联查询（联表查询），实体必须实现Serializable接口。
@@ -2656,7 +2652,7 @@ Grade{id=3, gradeName=&#39;三年级&#39;, students=[Student{id=3, stuName=&#39;
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2920,7 +2916,7 @@ Grade{id=3, gradeName=&#39;三年级&#39;, students=[Student{id=3, stuName=&#39;
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -3849,7 +3845,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         

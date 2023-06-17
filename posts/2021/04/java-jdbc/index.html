@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="使用JDBC连接MySQL数据库，创建SQL以及执行，批处理还有开启事务，入门c3p0和druid连接池">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1644,7 +1644,7 @@
 <div class="single__infos">
   <time class="single__info" title="创建日期">📅&nbsp;2021年04月02日 </time>
   
-  &nbsp;&middot;&nbsp; <span class="single__info" title="阅读时长"> ☕&nbsp;5&nbsp;分钟 </span>
+  &nbsp;&middot;&nbsp; <span class="single__info" title="阅读时长"> ☕&nbsp;4&nbsp;分钟 </span>
   
   <span class="single__info">
     
@@ -1695,8 +1695,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">&#34;com.mysql.jdbc.cj.Driver&#34;</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">&#34;com.mysql.jdbc.cj.Driver&#34;</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>数据库配置</li>
@@ -1708,10 +1708,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;jdbc:mysql://localhost:3306/demodb?ServerTimezone=UTC&#34;</span><span class="o">;</span>
-<span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="s">&#34;mysql&#34;</span><span class="o">;</span>
-<span class="n">String</span> <span class="n">password</span> <span class="o">=</span>  <span class="s">&#34;password&#34;</span><span class="o">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;jdbc:mysql://localhost:3306/demodb?ServerTimezone=UTC&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="s">&#34;mysql&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">password</span> <span class="o">=</span>  <span class="s">&#34;password&#34;</span><span class="o">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>假定mysql服务器监听3306端口，数据库为demodb，服务器时区为UTC。用户名为username，密码为password。</p>
 <ol start="3">
@@ -1722,8 +1722,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">username</span><span class="o">,</span> <span class="n">password</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">username</span><span class="o">,</span> <span class="n">password</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>打开连接用到上面的三个配置信息</p>
 <ol start="4">
@@ -1734,14 +1734,14 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">createStatement</span><span class="o">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">createStatement</span><span class="o">();</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="5">
 <li>
 <p>执行语句<br />
 
-<div id="636243d05accdb7d" class="codetab">
+<div id="523900674fc2c3d9" class="codetab">
   <div class="codetab__links">
     
       <button class="codetab__link" aria-label="Tab link">query</button>
@@ -1751,21 +1751,21 @@
   </div>
   
 
-<div id="6b0f0ce3cc87c8e2" class="codetab__content">
+<div id="04b2205fc382f2fb" class="codetab__content">
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&#34;select id,name from user&#34;</span><span class="o">;</span>
-<span class="n">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&#34;select id,name from user&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
-<div id="2a2abf0149699571" class="codetab__content">
+<div id="e88e3fd0870fcccb" class="codetab__content">
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1773,10 +1773,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&#34;xiaoming&#34;</span><span class="o">;</span>
-<span class="n">String</span> <span class="n">sql2</span> <span class="o">=</span> <span class="s">&#34;insert into user(name) values(&#34;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&#34;)&#34;</span><span class="o">;</span>
-<span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">(</span><span class="n">sql2</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&#34;xiaoming&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">sql2</span> <span class="o">=</span> <span class="s">&#34;insert into user(name) values(&#34;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&#34;)&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">(</span><span class="n">sql2</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
@@ -1786,7 +1786,7 @@
 <script>
   'use strict';
 
-  var containerId = JSON.parse("\"636243d05accdb7d\"");
+  var containerId = JSON.parse("\"523900674fc2c3d9\"");
   var containerElem = document.getElementById(containerId);
   var codetabLinks = null;
   var codetabContents = null;
@@ -1825,7 +1825,7 @@ select语句使用executeQuery，update、insert、delete语句使用executeUpda
 <li>
 <p>得到结果<br />
 
-<div id="2103206c9ea532c3" class="codetab">
+<div id="a364b9964f1618f0" class="codetab">
   <div class="codetab__links">
     
       <button class="codetab__link" aria-label="Tab link">query</button>
@@ -1835,7 +1835,7 @@ select语句使用executeQuery，update、insert、delete语句使用executeUpda
   </div>
   
 
-<div id="df36b9c55e1343b1" class="codetab__content">
+<div id="399ddc05ffa3084b" class="codetab__content">
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1845,24 +1845,24 @@ select语句使用executeQuery，update、insert、delete语句使用executeUpda
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">while</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">);</span>
-    <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">);</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">id</span> <span class="o">+</span> <span class="s">&#34; - &#34;</span> <span class="o">+</span> <span class="n">name</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">while</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">id</span> <span class="o">+</span> <span class="s">&#34; - &#34;</span> <span class="o">+</span> <span class="n">name</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
-<div id="2cf3801fafd74656" class="codetab__content">
+<div id="e9d2b01984e20048" class="codetab__content">
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;改变的行数：&#34;</span><span class="o">+</span><span class="n">count</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;改变的行数：&#34;</span><span class="o">+</span><span class="n">count</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
@@ -1872,7 +1872,7 @@ select语句使用executeQuery，update、insert、delete语句使用executeUpda
 <script>
   'use strict';
 
-  var containerId = JSON.parse("\"2103206c9ea532c3\"");
+  var containerId = JSON.parse("\"a364b9964f1618f0\"");
   var containerElem = document.getElementById(containerId);
   var codetabLinks = null;
   var codetabContents = null;
@@ -1938,29 +1938,29 @@ select语句使用executeQuery，update、insert、delete语句使用executeUpda
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-<span class="n">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-<span class="n">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-<span class="k">try</span> <span class="o">{</span>
-    <span class="c1">//...
-</span><span class="c1"></span><span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-    <span class="c1">//...
-</span><span class="c1"></span><span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
-    <span class="k">try</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="o">}</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">stmt</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">stmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="o">}</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">conn</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="o">}</span>
-    <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e1</span><span class="o">)</span> <span class="o">{</span>
-
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">rs</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">stmt</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">stmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">conn</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e1</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="使用预状态通道避免sql注入">使用预状态通道避免SQL注入</h3>
 <p>PreparedStatement是Statement的子类，支持参数化查询，来防止SQL注入攻击。PreparedStatement还可以预编译SQL语句，使执行SQL的效率更高点</p>
@@ -1973,12 +1973,12 @@ select语句使用executeQuery，update、insert、delete语句使用executeUpda
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span>
-<span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&#34;select id, name from user where id=?&#34;</span><span class="o">;</span>
-<span class="n">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-<span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
-<span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&#34;select id, name from user where id=?&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="jdbc的事务">JDBC的事务</h3>
 <p>事务常常见于转账</p>
@@ -1990,8 +1990,8 @@ select语句使用executeQuery，update、insert、delete语句使用executeUpda
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">conn</span><span class="o">.</span><span class="na">setAutoCommit</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">conn</span><span class="o">.</span><span class="na">setAutoCommit</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>关闭自动提交</p>
 <ol start="2">
@@ -2008,13 +2008,13 @@ select语句使用executeQuery，update、insert、delete语句使用executeUpda
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">conn</span><span class="o">.</span><span class="na">rollback</span><span class="o">();</span>
-<span class="c1">// 或 设置安全点
-</span><span class="c1">// Savepoint s1 = conn.setSavepoint(&#34;s1&#34;);
-</span><span class="c1">// ...
-</span><span class="c1">// 归滚到安全点
-</span><span class="c1">// conn.rollback(s1);
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">conn</span><span class="o">.</span><span class="na">rollback</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 或 设置安全点
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Savepoint s1 = conn.setSavepoint(&#34;s1&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="c1">// ...
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 归滚到安全点
+</span></span></span><span class="line"><span class="cl"><span class="c1">// conn.rollback(s1);
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>提交</li>
@@ -2024,8 +2024,8 @@ select语句使用executeQuery，update、insert、delete语句使用executeUpda
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">conn</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">conn</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="jdbc批处理">JDBC批处理</h3>
 <p>一次请求，执行多条语句，使用批处理效率更高</p>
@@ -2046,17 +2046,17 @@ select语句使用executeQuery，update、insert、delete语句使用executeUpda
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">createStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-<span class="n">conn</span><span class="o">.</span><span class="na">setAutoCommit</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
-
-<span class="n">stmt</span><span class="o">.</span><span class="na">addBatch</span><span class="o">(</span><span class="n">INSERT_SQL</span><span class="o">);</span>
-
-<span class="n">stmt</span><span class="o">.</span><span class="na">addBatch</span><span class="o">(</span><span class="n">INSERT_SQL_2</span><span class="o">);</span>
-
-<span class="kt">int</span><span class="o">[]</span> <span class="n">count</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="na">executeBatch</span><span class="o">();</span>
-
-<span class="n">conn</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">createStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">conn</span><span class="o">.</span><span class="na">setAutoCommit</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">stmt</span><span class="o">.</span><span class="na">addBatch</span><span class="o">(</span><span class="n">INSERT_SQL</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">stmt</span><span class="o">.</span><span class="na">addBatch</span><span class="o">(</span><span class="n">INSERT_SQL_2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span><span class="o">[]</span> <span class="n">count</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="na">executeBatch</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">conn</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>PreparedStatement的批处理</li>
@@ -2078,20 +2078,20 @@ select语句使用executeQuery，update、insert、delete语句使用executeUpda
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">conn</span><span class="o">.</span><span class="na">setAutoCommit</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
-<span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&#34;insert into user(name) values(?)&#34;</span><span class="o">;</span>
-<span class="n">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
-
-<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;xiaohong&#34;</span><span class="o">);</span>
-<span class="n">pstmt</span><span class="o">.</span><span class="na">addBatch</span><span class="o">();</span>
-
-<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="n">1</span><span class="o">,</span><span class="s">&#34;xiaolei&#34;</span><span class="o">);</span>
-<span class="n">pstmt</span><span class="o">.</span><span class="na">addBatch</span><span class="o">();</span>
-
-<span class="n">pstmt</span><span class="o">.</span><span class="na">executeBatch</span><span class="o">();</span>
-
-<span class="n">conn</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">conn</span><span class="o">.</span><span class="na">setAutoCommit</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&#34;insert into user(name) values(?)&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">&#34;xiaohong&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">pstmt</span><span class="o">.</span><span class="na">addBatch</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="s">&#34;xiaolei&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">pstmt</span><span class="o">.</span><span class="na">addBatch</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">pstmt</span><span class="o">.</span><span class="na">executeBatch</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">conn</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="数据库连接池">数据库连接池</h2>
 <p>连接池：系统初始化，将连接作为对象存储在内存中，当有用户需要连接数据库时，第一时间不是创建连接，而是查看连接池是否由空闲的连接，如果有直接使用。使用连接完毕，不是马上关闭资源，而是暂时放回连接池，以便下一次请求使用。</p>
@@ -2151,40 +2151,40 @@ c3p0-0.9.1.2.jar</p>
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
-<span class="nt">&lt;c3p0-config&gt;</span>
-    <span class="c">&lt;!-- 默认配置，如果没有指定则使用这个配置 --&gt;</span>
-    <span class="nt">&lt;default-config&gt;</span> <span class="c">&lt;!-- 基本配置 --&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;driverClass&#34;</span><span class="nt">&gt;</span>com.mysql.jdbc.Driver<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;jdbcUrl&#34;</span><span class="nt">&gt;</span>jdbc:mysql://localhost:3306/lxq?serverTimezone=UTC<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;user&#34;</span><span class="nt">&gt;</span>root<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;password&#34;</span><span class="nt">&gt;</span>password<span class="nt">&lt;/property&gt;</span>
-        <span class="c">&lt;!--扩展配置--&gt;</span> <span class="c">&lt;!-- 连接超过30秒报错--&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;checkoutTimeout&#34;</span><span class="nt">&gt;</span>30000<span class="nt">&lt;/property&gt;</span>
-        <span class="c">&lt;!--30秒检查空闲连接 --&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;idleConnectionTestPeriod&#34;</span><span class="nt">&gt;</span>30<span class="nt">&lt;/property&gt;</span> <span class="c">&lt;!-- 30秒不使用丢弃--&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;initialPoolSize&#34;</span><span class="nt">&gt;</span>10<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;maxIdleTime&#34;</span><span class="nt">&gt;</span>30<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;maxPoolSize&#34;</span><span class="nt">&gt;</span>100<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;minPoolSize&#34;</span><span class="nt">&gt;</span>10<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;maxStatements&#34;</span><span class="nt">&gt;</span>200<span class="nt">&lt;/property&gt;</span>
-    <span class="nt">&lt;/default-config&gt;</span>
-    <span class="c">&lt;!-- 命名的配置 --&gt;</span>
-    <span class="nt">&lt;named-config</span> <span class="na">name=</span><span class="s">&#34;abc&#34;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;driverClass&#34;</span><span class="nt">&gt;</span>com.mysql.jdbc.Driver<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;jdbcUrl&#34;</span><span class="nt">&gt;</span>jdbc:mysql://localhost:3306/lxq?serverTimezone=UTC<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;user&#34;</span><span class="nt">&gt;</span>root<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;password&#34;</span><span class="nt">&gt;</span>111<span class="nt">&lt;/property&gt;</span>
-        <span class="c">&lt;!-- 如果池中数据连接不够时一次增长多少个 --&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;acquireIncrement&#34;</span><span class="nt">&gt;</span>5<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;initialPoolSize&#34;</span><span class="nt">&gt;</span>20<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;minPoolSize&#34;</span><span class="nt">&gt;</span>10<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;maxPoolSize&#34;</span><span class="nt">&gt;</span>40<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;maxStatements&#34;</span><span class="nt">&gt;</span>20<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;maxStatementsPerConnection&#34;</span><span class="nt">&gt;</span>5<span class="nt">&lt;/property&gt;</span>
-    <span class="nt">&lt;/named-config&gt;</span>
-<span class="nt">&lt;/c3p0-config&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;c3p0-config&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- 默认配置，如果没有指定则使用这个配置 --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;default-config&gt;</span> <span class="c">&lt;!-- 基本配置 --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;driverClass&#34;</span><span class="nt">&gt;</span>com.mysql.jdbc.Driver<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;jdbcUrl&#34;</span><span class="nt">&gt;</span>jdbc:mysql://localhost:3306/lxq?serverTimezone=UTC<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;user&#34;</span><span class="nt">&gt;</span>root<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;password&#34;</span><span class="nt">&gt;</span>password<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!--扩展配置--&gt;</span> <span class="c">&lt;!-- 连接超过30秒报错--&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;checkoutTimeout&#34;</span><span class="nt">&gt;</span>30000<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!--30秒检查空闲连接 --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;idleConnectionTestPeriod&#34;</span><span class="nt">&gt;</span>30<span class="nt">&lt;/property&gt;</span> <span class="c">&lt;!-- 30秒不使用丢弃--&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;initialPoolSize&#34;</span><span class="nt">&gt;</span>10<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;maxIdleTime&#34;</span><span class="nt">&gt;</span>30<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;maxPoolSize&#34;</span><span class="nt">&gt;</span>100<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;minPoolSize&#34;</span><span class="nt">&gt;</span>10<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;maxStatements&#34;</span><span class="nt">&gt;</span>200<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/default-config&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- 命名的配置 --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;named-config</span> <span class="na">name=</span><span class="s">&#34;abc&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;driverClass&#34;</span><span class="nt">&gt;</span>com.mysql.jdbc.Driver<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;jdbcUrl&#34;</span><span class="nt">&gt;</span>jdbc:mysql://localhost:3306/lxq?serverTimezone=UTC<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;user&#34;</span><span class="nt">&gt;</span>root<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;password&#34;</span><span class="nt">&gt;</span>111<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- 如果池中数据连接不够时一次增长多少个 --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;acquireIncrement&#34;</span><span class="nt">&gt;</span>5<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;initialPoolSize&#34;</span><span class="nt">&gt;</span>20<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;minPoolSize&#34;</span><span class="nt">&gt;</span>10<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;maxPoolSize&#34;</span><span class="nt">&gt;</span>40<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;maxStatements&#34;</span><span class="nt">&gt;</span>20<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;maxStatementsPerConnection&#34;</span><span class="nt">&gt;</span>5<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/named-config&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/c3p0-config&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>加载配置文件</p>
 <div class="highlight"><div class="chroma">
@@ -2193,15 +2193,13 @@ c3p0-0.9.1.2.jar</p>
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 加载c3p0-config.xml中的default-config
-</span><span class="c1"></span><span class="n">ComboPooledDataSource</span> <span class="n">dataSource</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ComboPooledDataSource</span><span class="o">();</span>
-<span class="c1">// 加载c3p0-config.xml中的named-config
-</span><span class="c1">// ComboPooledDataSource dataSource = new ComboPooledDataSource(&#34;abc&#34;);
-</span><span class="c1"></span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 加载c3p0-config.xml中的default-config
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">ComboPooledDataSource</span> <span class="n">dataSource</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ComboPooledDataSource</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 加载c3p0-config.xml中的named-config
+</span></span></span><span class="line"><span class="cl"><span class="c1">// ComboPooledDataSource dataSource = new ComboPooledDataSource(&#34;abc&#34;);
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>从数据源中获取连接</p>
 <div class="highlight"><div class="chroma">
@@ -2209,8 +2207,8 @@ c3p0-0.9.1.2.jar</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">dataSource</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">dataSource</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其他与JDBC操作无差别</p>
 <h3 id="druid">druid</h3>
@@ -2245,17 +2243,17 @@ testWhileIdle = false
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="n">JDBCUtils</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getClassLoader</span><span class="o">().</span><span class="na">getResourceAsStream</span><span class="o">(</span><span class="s">&#34;db.properties&#34;</span><span class="o">);</span>
-<span class="n">Properties</span> <span class="n">properties</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Properties</span><span class="o">();</span>
-<span class="n">properties</span><span class="o">.</span><span class="na">load</span><span class="o">(</span><span class="n">in</span><span class="o">);</span>
-<span class="n">DruidDataSource</span> <span class="n">dataSource</span> <span class="o">=</span> <span class="n">DruidDataSourceFactory</span><span class="o">.</span><span class="na">createDataSource</span><span class="o">(</span><span class="n">properties</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="n">JDBCUtils</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getClassLoader</span><span class="o">().</span><span class="na">getResourceAsStream</span><span class="o">(</span><span class="s">&#34;db.properties&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Properties</span> <span class="n">properties</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Properties</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">properties</span><span class="o">.</span><span class="na">load</span><span class="o">(</span><span class="n">in</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">DruidDataSource</span> <span class="n">dataSource</span> <span class="o">=</span> <span class="n">DruidDataSourceFactory</span><span class="o">.</span><span class="na">createDataSource</span><span class="o">(</span><span class="n">properties</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2538,7 +2536,7 @@ testWhileIdle = false
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -3469,7 +3467,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         

@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="JSON在Java中的使用，将Java对象转换为JSON用于语言无关的数据交换在网络传输中帮助非常大">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1702,12 +1702,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;约翰克里斯托夫&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;info&#34;</span><span class="p">:</span> <span class="s2">&#34;德国批判主义音乐家的一生&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;price&#34;</span><span class="p">:</span> <span class="mi">102</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;约翰克里斯托夫&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;info&#34;</span><span class="p">:</span> <span class="s2">&#34;德国批判主义音乐家的一生&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;price&#34;</span><span class="p">:</span> <span class="mi">102</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>一对<code>{}</code>表示一个对象，对象里面可以有很多属性，用键值对表示。键必须是用<code>&quot;&quot;</code>包围的字符串，值可以是字符串、对象、数字、布尔值（true/false）、null和数组。</p>
 <p>一对<code>[]</code>表示一个数组，里面可以包含任何类型，比如字符串、数字、对象、布尔值、null，还可以内嵌一个数组，它们之间用<code>,</code>分开就可以了，例如：</p>
@@ -1716,8 +1716,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">[</span><span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">{</span> <span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;zhangsan&#34;</span><span class="p">,</span> <span class="nt">&#34;age&#34;</span><span class="p">:</span><span class="mi">18</span> <span class="p">},</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span><span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">{</span> <span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;zhangsan&#34;</span><span class="p">,</span> <span class="nt">&#34;age&#34;</span><span class="p">:</span><span class="mi">18</span> <span class="p">},</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>特殊地，单独的数组、数字、字符串都是合法的。例如：</p>
 <div class="highlight"><div class="chroma">
@@ -1729,12 +1729,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">[</span><span class="s2">&#34;佳得乐&#34;</span><span class="p">,</span> <span class="s2">&#34;可乐&#34;</span><span class="p">,</span> <span class="s2">&#34;尖叫&#34;</span><span class="p">]</span>
-<span class="mf">3.14</span>
-<span class="mi">3</span>
-<span class="kc">true</span>
-<span class="s2">&#34;hello json&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span><span class="s2">&#34;佳得乐&#34;</span><span class="p">,</span> <span class="s2">&#34;可乐&#34;</span><span class="p">,</span> <span class="s2">&#34;尖叫&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="mf">3.14</span>
+</span></span><span class="line"><span class="cl"><span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;hello json&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="三解析">三、解析</h2>
 <p>Java由于官方没有提供解析JSON的类库，但有两个知名的第三方库，Gson和Fastjson。Gson 是 Google 提供的用来在 Java 对象和 JSON 数据之间进行映射的 Java 类库。Fastjson 是一个性能很好的 Java 语言实现的 JSON 解析器和生成器，来自阿里巴巴的工程师开发。</p>
@@ -1779,11 +1779,11 @@ public class Book {
 
     @Override
     public String toString() {
-        return &quot;Book{&quot; +
-                &quot;id='&quot; + id + '\'' +
-                &quot;, name='&quot; + name + '\'' +
-                &quot;, info='&quot; + info + '\'' +
-                '}';
+        return &#34;Book{&#34; +
+                &#34;id=&#39;&#34; + id + &#39;\&#39;&#39; +
+                &#34;, name=&#39;&#34; + name + &#39;\&#39;&#39; +
+                &#34;, info=&#39;&#34; + info + &#39;\&#39;&#39; +
+                &#39;}&#39;;
     }
 
     public Book(String id, String name, String info) {
@@ -1834,7 +1834,6 @@ public class Book {
         return Objects.hash(id, name, info);
     }
 }
-
 </code></pre><hr />
 <p>解析json，生成对象</p>
 <pre tabindex="0"><code>import com.google.gson.Gson;
@@ -1849,13 +1848,13 @@ import java.util.HashMap;
 public class ResolveJSONByGson {
     public static void main(String[] args) {
         Gson g = new Gson();
-        // {&quot;id&quot;:&quot;1001&quot;,&quot;info&quot;:&quot;德国批判主义音乐家的一生&quot;,&quot;name&quot;:&quot;约翰克里斯托弗&quot;}
-        // {&quot;drink&quot;: [&quot;佳得乐&quot;, &quot;可乐&quot;, &quot;尖叫&quot;]}
-        Book book = g.fromJson(&quot;{\&quot;id\&quot;:\&quot;1001\&quot;,\&quot;info\&quot;:\&quot;德国批判主义音乐家的一生\&quot;,\&quot;name\&quot;:\&quot;约翰克里斯托弗\&quot;}&quot;, Book.class);
+        // {&#34;id&#34;:&#34;1001&#34;,&#34;info&#34;:&#34;德国批判主义音乐家的一生&#34;,&#34;name&#34;:&#34;约翰克里斯托弗&#34;}
+        // {&#34;drink&#34;: [&#34;佳得乐&#34;, &#34;可乐&#34;, &#34;尖叫&#34;]}
+        Book book = g.fromJson(&#34;{\&#34;id\&#34;:\&#34;1001\&#34;,\&#34;info\&#34;:\&#34;德国批判主义音乐家的一生\&#34;,\&#34;name\&#34;:\&#34;约翰克里斯托弗\&#34;}&#34;, Book.class);
         System.out.println(book.getId());
 
-        HashMap hashMap = g.fromJson(&quot;{\&quot;drink\&quot;: [\&quot;佳得乐\&quot;, \&quot;可乐\&quot;, \&quot;尖叫\&quot;]}&quot;, HashMap.class);
-        System.out.println(hashMap.get(&quot;drink&quot;).getClass());
+        HashMap hashMap = g.fromJson(&#34;{\&#34;drink\&#34;: [\&#34;佳得乐\&#34;, \&#34;可乐\&#34;, \&#34;尖叫\&#34;]}&#34;, HashMap.class);
+        System.out.println(hashMap.get(&#34;drink&#34;).getClass());
 
     }
 }
@@ -1873,14 +1872,14 @@ class java.util.ArrayList
  */
 public class CreateSJONByGson {
     public static void main(String[] args) {
-        Book book = new Book(&quot;1001&quot;, &quot;约翰克里斯托弗&quot;, &quot;德国批判主义音乐家的一生&quot;);
+        Book book = new Book(&#34;1001&#34;, &#34;约翰克里斯托弗&#34;, &#34;德国批判主义音乐家的一生&#34;);
         Gson g = new Gson();
         String json = g.toJson(book);
         System.out.println(json);
     }
 }
 </code></pre><p>输出：</p>
-<pre tabindex="0"><code>{&quot;id&quot;:&quot;1001&quot;,&quot;name&quot;:&quot;约翰克里斯托弗&quot;,&quot;info&quot;:&quot;德国批判主义音乐家的一生&quot;}
+<pre tabindex="0"><code>{&#34;id&#34;:&#34;1001&#34;,&#34;name&#34;:&#34;约翰克里斯托弗&#34;,&#34;info&#34;:&#34;德国批判主义音乐家的一生&#34;}
 </code></pre><hr />
 <h3 id="fastjson的使用">Fastjson的使用</h3>
 <p><a href="https://github.com/alibaba/fastjson">Fastjson</a>的用法与Gson类似，下载和导包如上所述，这里就不过多赘述。</p>
@@ -1896,13 +1895,13 @@ import java.util.List;
  */
 public class ResolveJSONByFastJson {
     public static void main(String[] args) {
-        // {&quot;id&quot;:&quot;1001&quot;,&quot;info&quot;:&quot;德国批判主义音乐家的一生&quot;,&quot;name&quot;:&quot;约翰克里斯托弗&quot;}
-        // {&quot;drink&quot;: [&quot;佳得乐&quot;, &quot;可乐&quot;, &quot;尖叫&quot;]}
+        // {&#34;id&#34;:&#34;1001&#34;,&#34;info&#34;:&#34;德国批判主义音乐家的一生&#34;,&#34;name&#34;:&#34;约翰克里斯托弗&#34;}
+        // {&#34;drink&#34;: [&#34;佳得乐&#34;, &#34;可乐&#34;, &#34;尖叫&#34;]}
 
-        Book book = JSON.parseObject(&quot;{\&quot;id\&quot;:\&quot;1001\&quot;,\&quot;info\&quot;:\&quot;德国批判主义音乐家的一生\&quot;,\&quot;name\&quot;:\&quot;约翰克里斯托弗\&quot;}&quot;, Book.class);
+        Book book = JSON.parseObject(&#34;{\&#34;id\&#34;:\&#34;1001\&#34;,\&#34;info\&#34;:\&#34;德国批判主义音乐家的一生\&#34;,\&#34;name\&#34;:\&#34;约翰克里斯托弗\&#34;}&#34;, Book.class);
         System.out.println(book.getId());
 
-        List&lt;String&gt; strings = JSON.parseArray(&quot;[\&quot;佳得乐\&quot;, \&quot;可乐\&quot;, \&quot;尖叫\&quot;]&quot;, String.class);
+        List&lt;String&gt; strings = JSON.parseArray(&#34;[\&#34;佳得乐\&#34;, \&#34;可乐\&#34;, \&#34;尖叫\&#34;]&#34;, String.class);
         System.out.println(strings);
     }
 }
@@ -1921,18 +1920,18 @@ public class ResolveJSONByFastJson {
  */
 public class CreateJSONByFastJson {
     public static void main(String[] args) {
-        Book book = new Book(&quot;1001&quot;, &quot;约翰克里斯托弗&quot;, &quot;德国批判主义音乐家的一生&quot;);
+        Book book = new Book(&#34;1001&#34;, &#34;约翰克里斯托弗&#34;, &#34;德国批判主义音乐家的一生&#34;);
         String json = JSON.toJSONString(book);
         System.out.println(json);
     }
 }
 </code></pre><p>输出：</p>
-<pre tabindex="0"><code>{&quot;id&quot;:&quot;1001&quot;,&quot;info&quot;:&quot;德国批判主义音乐家的一生&quot;,&quot;name&quot;:&quot;约翰克里斯托弗&quot;}
+<pre tabindex="0"><code>{&#34;id&#34;:&#34;1001&#34;,&#34;info&#34;:&#34;德国批判主义音乐家的一生&#34;,&#34;name&#34;:&#34;约翰克里斯托弗&#34;}
 </code></pre>
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2196,7 +2195,7 @@ public class CreateJSONByFastJson {
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -3119,7 +3118,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         

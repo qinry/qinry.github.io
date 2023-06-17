@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="MySQL的SQL基础">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1644,7 +1644,7 @@
 <div class="single__infos">
   <time class="single__info" title="创建日期">📅&nbsp;2021年08月26日 </time>
   
-  &nbsp;&middot;&nbsp; <span class="single__info" title="阅读时长"> ☕&nbsp;13&nbsp;分钟 </span>
+  &nbsp;&middot;&nbsp; <span class="single__info" title="阅读时长"> ☕&nbsp;14&nbsp;分钟 </span>
   
   <span class="single__info">
     
@@ -1942,13 +1942,13 @@ DROP DATABASE IF NOT EXISTS `crashcourse`;
 </tbody>
 </table>
 <pre tabindex="0"><code>CREATE TABLE IF NOT EXISTS `student` (
-    `id` INT(4) NOT NULL AUTO_INCREMENT COMMENT '学号',
-    `name` VARCHAR(3) NOT NULL DEFAULT '匿名' COMMENT '姓名',
-    `pwd` VARCHAR(20) NOT NULL DEFAULT '123456' COMMENT '密码',
-    `gender` VARCHAR(2) NOT NULL DEFAULT '男' COMMENT '性别',
-    `birth` DATETIME DEFAULT NULL COMMENT '出生日期',
-    `address` VARCHAR(100) DEFAULT NULL COMMENT '家庭住址',
-    `email` VARCHAR(50) DEFAULT NULL COMMENT '电子邮箱',
+    `id` INT(4) NOT NULL AUTO_INCREMENT COMMENT &#39;学号&#39;,
+    `name` VARCHAR(3) NOT NULL DEFAULT &#39;匿名&#39; COMMENT &#39;姓名&#39;,
+    `pwd` VARCHAR(20) NOT NULL DEFAULT &#39;123456&#39; COMMENT &#39;密码&#39;,
+    `gender` VARCHAR(2) NOT NULL DEFAULT &#39;男&#39; COMMENT &#39;性别&#39;,
+    `birth` DATETIME DEFAULT NULL COMMENT &#39;出生日期&#39;,
+    `address` VARCHAR(100) DEFAULT NULL COMMENT &#39;家庭住址&#39;,
+    `email` VARCHAR(50) DEFAULT NULL COMMENT &#39;电子邮箱&#39;,
     PRIMARY KEY(`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=UTF8;
 </code></pre><p>输出：</p>
@@ -2033,14 +2033,14 @@ RENAME TABLE `旧表名` TO `新表名`;
 RENAME TABLE `student` TO `stu`;
 </code></pre><p>新增字段</p>
 <pre tabindex="0"><code>ALTER TABLE `表名` ADD `字段名` 数据类型 属性;
-ALTER TABLE `student` ADD  `gradeId` INT(11) NOT NULL COMMENT '班级';
+ALTER TABLE `student` ADD  `gradeId` INT(11) NOT NULL COMMENT &#39;班级&#39;;
 </code></pre><p>修改字段(重命名，约束)</p>
 <p>change 字段名、数据类型、属性都能修改</p>
 <p>modify 除了字段名不能更改和change一样</p>
 <pre tabindex="0"><code>ALTER TABLE `表名` CHANGE `旧字段名` `新字段名` 数据类型;
-ALTER TABLE `student` CHANGE `name` `stuName` VARCHAR(10) NOT NULL DEFAULT '匿名' COMMENT '学生姓名';
+ALTER TABLE `student` CHANGE `name` `stuName` VARCHAR(10) NOT NULL DEFAULT &#39;匿名&#39; COMMENT &#39;学生姓名&#39;;
 ALTER TABLE `表名` MODIFY `字段名` 新数据类型 属性;
-ALTER TABLE `student` MODIFY `stuName` VARCHAR(30) NOT NULL DEFAULT '匿名' COMMENT '学生姓名';
+ALTER TABLE `student` MODIFY `stuName` VARCHAR(30) NOT NULL DEFAULT &#39;匿名&#39; COMMENT &#39;学生姓名&#39;;
 </code></pre><p>删除字段</p>
 <pre tabindex="0"><code>ALTER TABLE `表名` DROP `字段名`;
 </code></pre><h3 id="删除表">删除表</h3>
@@ -2049,7 +2049,7 @@ ALTER TABLE `student` MODIFY `stuName` VARCHAR(30) NOT NULL DEFAULT '匿名' COM
 <h3 id="外键">外键</h3>
 <pre tabindex="0"><code>CREATE TABLE IF NOT EXISTS `grade` (
     `gradeId` INT(11) NOT NULL AUTO_INCREMENT,
-    `gradeName` VARCHAR(10) NOT NULL DEFAULT '未知',
+    `gradeName` VARCHAR(10) NOT NULL DEFAULT &#39;未知&#39;,
     PRIMARY KEY(`gradeId`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8
 </code></pre><pre tabindex="0"><code>ALTER TABLE `表名` ADD CONSTRAINT `约束名` FOREIGN KEY(`外键名`) REFERENCES `引用表名`(`关联外键的字段名`);
@@ -2060,18 +2060,18 @@ ALTER TABLE `student` ADD CONSTRAINT `fk_student_grade` FOREIGN KEY(`gradeId`) R
 VALUES (值1,值2,值N) [,(值1,值2,值N)];
 
 INSERT INTO `grade`(`gradeName`) 
-VALUES('一年级'),('二年级'),('三年级');
+VALUES(&#39;一年级&#39;),(&#39;二年级&#39;),(&#39;三年级&#39;);
 
 INSERT INTO `student` 
-VALUES(NULL,'张三','123456','男','1999-08-08','广东广州','zhangsan@163.com',1), 
-(NULL,'李四','123456','男','1999-08-08','广东广州','lisi@163.com',2),
-(NULL,'王二','123456','男','1999-08-08','广东广州','wanger@163.com',3);
+VALUES(NULL,&#39;张三&#39;,&#39;123456&#39;,&#39;男&#39;,&#39;1999-08-08&#39;,&#39;广东广州&#39;,&#39;zhangsan@163.com&#39;,1), 
+(NULL,&#39;李四&#39;,&#39;123456&#39;,&#39;男&#39;,&#39;1999-08-08&#39;,&#39;广东广州&#39;,&#39;lisi@163.com&#39;,2),
+(NULL,&#39;王二&#39;,&#39;123456&#39;,&#39;男&#39;,&#39;1999-08-08&#39;,&#39;广东广州&#39;,&#39;wanger@163.com&#39;,3);
 </code></pre><blockquote>
 <p>注意：若字段省略，VALUES之后的值和顺序必须与表一一对应</p>
 </blockquote>
 <h3 id="更新">更新</h3>
 <pre tabindex="0"><code>UPDATE `表名` SET `字段1`=值1,`字段2`=值2,`字段N`=值N WHERE 条件；
-UPDATE `student` SET `stuName`='张三三',`stuEmail`='zhangsansan@163.com' WHERE `stuId`=1;
+UPDATE `student` SET `stuName`=&#39;张三三&#39;,`stuEmail`=&#39;zhangsansan@163.com&#39; WHERE `stuId`=1;
 </code></pre><p>WHERE子句在SELECT详细说明，用于过滤数据，这里表示选择stuId为1的行，进行更新stuName和stuEmail字段。</p>
 <h3 id="删除">删除</h3>
 <pre tabindex="0"><code>DELETE FROM `表名` WHERE 条件;
@@ -2103,10 +2103,10 @@ TRUNCATE `grade`;
     [FOR UPDATE | LOCK IN SHARE MODE]
 
 into_option: {
-    INTO OUTFILE 'file_name'
+    INTO OUTFILE &#39;file_name&#39;
         [CHARACTER SET charset_name]
         export_options
-  | INTO DUMPFILE 'file_name'
+  | INTO DUMPFILE &#39;file_name&#39;
   | INTO var_name [, var_name] ...
 }
 </code></pre><h3 id="基本查询">基本查询</h3>
@@ -2194,7 +2194,7 @@ SELECT `字段1`,`字段2`,`字段N` FORM `表名` LIMIT 起始偏移, 行数;
 <p>注意：逻辑运算执行顺序 NOT &gt; AND &gt; OR。使用圆括号()，优先执行。</p>
 </blockquote>
 <pre tabindex="0"><code>SELECT * FROM `student` WHERE `stuId`=1;
-SELECT * FROM `student` WHERE `stuName`='张三';
+SELECT * FROM `student` WHERE `stuName`=&#39;张三&#39;;
 SELECT * FROM `student` WHERE `stuId`!=1;
 SELECT * FROM `student` WHERE `stuId`&lt;&gt;=1;
 SELECT * FROM `student` WHERE `stuId`&lt;3;
@@ -2203,7 +2203,7 @@ SELECT * FROM `student` WHERE `stuId`&gt;3;
 SELECT * FROM `student` WHERE `stuId`&gt;=3;
 SELECT * FROM `student` WHERE `stuId` BETWEEN ;
 </code></pre><h3 id="模糊查询">模糊查询</h3>
-<pre tabindex="0"><code>SELECT `字段1`,`字段2`,`字段N` FROM `表名` WHERE `字段` LIKE '%值%';
+<pre tabindex="0"><code>SELECT `字段1`,`字段2`,`字段N` FROM `表名` WHERE `字段` LIKE &#39;%值%&#39;;
 </code></pre><h3 id="计算字段">计算字段</h3>
 <h4 id="拼接字段">拼接字段</h4>
 <pre tabindex="0"><code>CONCAT(a,b)
@@ -2603,7 +2603,7 @@ CREATE TABLE `表名` (
 </code></pre><p>建表后增加索引</p>
 <pre tabindex="0"><code>ALTER TABLE `表名` ADD FULLTEXT INDEX `属性1` (`属性1`);
 </code></pre><p>索引搜索</p>
-<pre tabindex="0"><code>SELECT `属性` FROM `表名` WHERE MATCH(`属性1`) AGAINST('值');
+<pre tabindex="0"><code>SELECT `属性` FROM `表名` WHERE MATCH(`属性1`) AGAINST(&#39;值&#39;);
 </code></pre><h3 id="索引其他命令">索引其他命令</h3>
 <pre tabindex="0"><code># 显示所有索引信息
 SHOW INDEX FROM `表名`;
@@ -2618,9 +2618,9 @@ EXPLAIN SQL语句;
 </ul>
 <h2 id="用户权限管理">用户权限管理</h2>
 <p>新建一个用户</p>
-<pre tabindex="0"><code>CREATE USER `用户名` IDENTIFIED BY '密码';
+<pre tabindex="0"><code>CREATE USER `用户名` IDENTIFIED BY &#39;密码&#39;;
 </code></pre><p>更改用户密码</p>
-<pre tabindex="0"><code>ALTER USER `用户名` IDENTIFIED BY '密码';
+<pre tabindex="0"><code>ALTER USER `用户名` IDENTIFIED BY &#39;密码&#39;;
 </code></pre><p>重命名</p>
 <pre tabindex="0"><code>RENAME USER `原名` TO `新名`
 </code></pre><p>用户授权</p>
@@ -2689,7 +2689,7 @@ SOURCE /path/to/data.sql
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2972,7 +2972,7 @@ SOURCE /path/to/data.sql
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -3981,7 +3981,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         

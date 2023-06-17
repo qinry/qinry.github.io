@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="了解NIO网络编程，与BIO的区别">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1721,13 +1721,13 @@
         try {
             ExecutorService exec = Executors.newFixedThreadPool(10);
             ServerSocket server = new ServerSocket(10086);
-            System.out.println(&quot;服务端端口号--10086&quot;);
+            System.out.println(&#34;服务端端口号--10086&#34;);
             while (true) {
                 Socket client = server.accept();
-                System.out.println(&quot;客户端连接成功&quot;);
+                System.out.println(&#34;客户端连接成功&#34;);
                 exec.submit(()-&gt;{
-                    System.out.println(&quot;线程ID:&quot;+Thread.currentThread().getId());
-                    System.out.println(&quot;线程名称:&quot;+Thread.currentThread().getName());
+                    System.out.println(&#34;线程ID:&#34;+Thread.currentThread().getId());
+                    System.out.println(&#34;线程名称:&#34;+Thread.currentThread().getName());
                     try {
                         InputStream in = client.getInputStream();
                         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -1736,7 +1736,7 @@
                             if (!msg.isPresent()) {
                                 break;
                             }
-                            System.out.println(&quot;客户端消息:&quot;+msg);
+                            System.out.println(&#34;客户端消息:&#34;+msg);
                         }
 
                     } catch (IOException e) {
@@ -1757,11 +1757,11 @@
 </ol>
 <pre tabindex="0"><code>public class BIOClient {
     public static void main(String[] args) {
-        try (Socket socket = new Socket(&quot;127.0.0.1&quot;, 10086)) {
+        try (Socket socket = new Socket(&#34;127.0.0.1&#34;, 10086)) {
             OutputStream out = socket.getOutputStream();
-            System.out.println(&quot;客户端连接成功&quot;);
+            System.out.println(&#34;客户端连接成功&#34;);
             PrintWriter writer = new PrintWriter(out, true);
-            writer.println(&quot;hello&quot;);
+            writer.println(&#34;hello&#34;);
             System.in.read();
         } catch (UnknownHostException e) {
             e.printStackTrace();
@@ -1805,7 +1805,7 @@
             server.register(selector, SelectionKey.OP_ACCEPT);
             while (true) {
                 if (selector.select(3000) == 0) {
-                    System.out.println(&quot;Server: 等待接受连接中。。。先忙别的&quot;);
+                    System.out.println(&#34;Server: 等待接受连接中。。。先忙别的&#34;);
                     continue;
                 }
                 Set&lt;SelectionKey&gt; selectionKeys = selector.selectedKeys();
@@ -1815,7 +1815,7 @@
                     if (key.isAcceptable()) {
                         SocketChannel client = server.accept();
                         client.configureBlocking(false);
-                        System.out.println(&quot;有客户端连接了-&quot;+client.hashCode());
+                        System.out.println(&#34;有客户端连接了-&#34;+client.hashCode());
                         client.register(selector, SelectionKey.OP_READ, ByteBuffer.allocate(1024));
                     } else if (key.isReadable()) {
                         SocketChannel client =  (SocketChannel) key.channel();
@@ -1823,7 +1823,7 @@
                         int read = client.read(buffer);
                         if (read &gt; 0) {
                             buffer.flip();
-                            System.out.println(&quot;客户端消息：&quot; + new String(buffer.array(), 0, buffer.limit(), StandardCharsets.UTF_8));
+                            System.out.println(&#34;客户端消息：&#34; + new String(buffer.array(), 0, buffer.limit(), StandardCharsets.UTF_8));
                         } else if (read == -1){
                             client.close();
                         }
@@ -1846,13 +1846,13 @@
     public static void main(String[] args) {
         try (SocketChannel client = SocketChannel.open()) {
             client.configureBlocking(false);
-            InetSocketAddress address = new InetSocketAddress(&quot;127.0.0.1&quot;, 10086);
+            InetSocketAddress address = new InetSocketAddress(&#34;127.0.0.1&#34;, 10086);
             if (!client.connect(address)) {
                 while (!client.finishConnect()) {
-                    System.out.println(&quot;连接服务端中。。。可先忙别的&quot;);
+                    System.out.println(&#34;连接服务端中。。。可先忙别的&#34;);
                 }
             }
-            String msg = &quot;hi&quot;;
+            String msg = &#34;hi&#34;;
             ByteBuffer buf = ByteBuffer.wrap(msg.getBytes(StandardCharsets.UTF_8));
             client.write(buf);
             System.in.read();
@@ -1868,7 +1868,7 @@
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2147,7 +2147,7 @@
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -3065,7 +3065,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         

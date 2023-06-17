@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="java多线程编程基础，内容线程的创建启动与终止，休眠，死锁，线程间协作，线程池等">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1714,7 +1714,7 @@
     @Override
     public void run() {
         for (int i = 0; i &lt; 10; i++) {
-           System.out.println(Thread.currentThread().getName()+&quot;:&quot;+(i+i+i));
+           System.out.println(Thread.currentThread().getName()+&#34;:&#34;+(i+i+i));
         }
     }
 }
@@ -1723,7 +1723,7 @@
     @Override
     public void run() {
         for (int i = 0; i &lt; 10; i++) {
-            System.out.println(Thread.currentThread().getName()+&quot;:&quot;+(i*i));
+            System.out.println(Thread.currentThread().getName()+&#34;:&#34;+(i*i));
         }
     }
 }
@@ -1764,7 +1764,7 @@ class Runner implements Runnable {
             try {
                   Thread.sleep(1000);
             } catch(InterruptedException e) {
-                System.out.println(Thread.currentThread().getName()+&quot;提前结束&quot;);
+                System.out.println(Thread.currentThread().getName()+&#34;提前结束&#34;);
 				return;
             }
             System.out.println(i);
@@ -1787,7 +1787,6 @@ public class Threading {
         }
     }
 }
-
 </code></pre><p>休眠可能引发InterruptedException，要做异常的捕获。</p>
 <h2 id="四线程阻塞">四、线程阻塞</h2>
 <p>线程阻塞不只有线程休眠，还有可能是线程进行IO操作时，比如读取一个文件，线程等待输入完才会进入下一步。可以把线程阻塞，简单理解为线程中所有比较耗时的步骤。</p>
@@ -1818,7 +1817,7 @@ class Runner implements Runnable {
             try {
                   Thread.sleep(1000);
             } catch(InterruptedException e) {
-                System.out.println(Thread.currentThread().getName()+&quot;提前结束&quot;);
+                System.out.println(Thread.currentThread().getName()+&#34;提前结束&#34;);
 				return;
             }
             System.out.println(i);
@@ -1836,14 +1835,14 @@ class Runner implements Runnable {
             public void run() {
                 for (;;) {
                     if (count &gt; 0) {
-                        System.out.println(&quot;开始买票&quot;);
+                        System.out.println(&#34;开始买票&#34;);
                     	try {
                         	Thread.sleep(1000);
                     	} catch(InterruptedException e) {
                         	e.printStackTrace();
                     	}
                     	count = count  - 1;
-                   		System.out.println(Thread.currentThread().getName() + &quot;出票完成，余票：&quot; + count);
+                   		System.out.println(Thread.currentThread().getName() + &#34;出票完成，余票：&#34; + count);
                     } else {
                         break;
                     }
@@ -1869,14 +1868,14 @@ class Runner implements Runnable {
                 for (;;) {
                     synchronized (this) {
                         if (count &gt; 0) {
-                            System.out.println(&quot;开始卖票&quot;);
+                            System.out.println(&#34;开始卖票&#34;);
                             try {
                                 Thread.sleep(1000);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
                             count--;
-                            System.out.println(Thread.currentThread().getName() + &quot;出票完成，余票：&quot; + count);
+                            System.out.println(Thread.currentThread().getName() + &#34;出票完成，余票：&#34; + count);
                         } else {
                             break;
                         }
@@ -1909,14 +1908,14 @@ class Runner implements Runnable {
             }
             public synchronized boolean sale() {
                 if (count &gt; 0) {
-                	System.out.println(&quot;开始买票&quot;);
+                	System.out.println(&#34;开始买票&#34;);
                     try {
                         Thread.sleep(1000);
                    	} catch(InterruptedException e) {
                         e.printStackTrace();
                     }
                     count = count  - 1;
-                   	System.out.println(Thread.currentThread().getName() + &quot;出票完成，余票：&quot; + count);
+                   	System.out.println(Thread.currentThread().getName() + &#34;出票完成，余票：&#34; + count);
                     return true;
                 }
                 return false;
@@ -1946,14 +1945,14 @@ public class Threading {
                     lock.lock();
                     try {
                         if (count &gt; 0) {
-                            System.out.println(&quot;开始卖票&quot;);
+                            System.out.println(&#34;开始卖票&#34;);
                             try {
                                 Thread.sleep(1000);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
                             count--;
-                            System.out.println(Thread.currentThread().getName() + &quot;出票完成，余票：&quot; + count);
+                            System.out.println(Thread.currentThread().getName() + &#34;出票完成，余票：&#34; + count);
                         } else {
                             break;
                         }
@@ -2006,21 +2005,21 @@ public class Threading {
 <p>以下示例，有可能死锁。</p>
 <pre tabindex="0"><code>class Culprit {
     public synchronized void say(Police p) {
-        System.out.println(&quot;罪犯：你放了我，我放了人质&quot;);
+        System.out.println(&#34;罪犯：你放了我，我放了人质&#34;);
         p.fun();
     }
     public synchronized void fun() {
-        System.out.println(&quot;罪犯放了人质，自己跑了&quot;);
+        System.out.println(&#34;罪犯放了人质，自己跑了&#34;);
     }
 }
 
 class Police {
     public synchronized void say(Culprit c) {
-        System.out.println(&quot;警察：你放了人质，我放过你&quot;);
+        System.out.println(&#34;警察：你放了人质，我放过你&#34;);
         c.fun();
     }
     public synchronized void fun() {
-        System.out.println(&quot;警察救了人质，罪犯跑了&quot;);
+        System.out.println(&#34;警察救了人质，罪犯跑了&#34;);
     }
 }
 
@@ -2093,7 +2092,7 @@ public class Communiticate {
 
         public synchronized void cost() {
             if (!flag) {
-                System.out.println(&quot;服务员端菜，菜品是&quot;+name+&quot;，味道是&quot;+taste);
+                System.out.println(&#34;服务员端菜，菜品是&#34;+name+&#34;，味道是&#34;+taste);
                 flag = true;
                 notifyAll();
                 try {
@@ -2116,9 +2115,9 @@ public class Communiticate {
         public void run() {
             for (int i = 0; i &lt; 10; i++) {
                 if ((i &amp; 1) == 0) {
-                    food.produce(&quot;扬州炒饭&quot;, &quot;咸的&quot;);
+                    food.produce(&#34;扬州炒饭&#34;, &#34;咸的&#34;);
                 } else {
-                    food.produce(&quot;水煮鱼&quot;, &quot;麻辣的&quot;);
+                    food.produce(&#34;水煮鱼&#34;, &#34;麻辣的&#34;);
                 }
             }
         }
@@ -2191,7 +2190,7 @@ public class Communiticate {
         if (future.isDone()) {
             System.out.println(future.get());
         } else {
-            System.out.println(&quot;中断&quot;);
+            System.out.println(&#34;中断&#34;);
             future.cancel(true);
         }
     }
@@ -2216,19 +2215,19 @@ public class UseCachedThreadPool {
         exec.execute(new Runnable(){
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName()+&quot; Hello World&quot;);
+                System.out.println(Thread.currentThread().getName()+&#34; Hello World&#34;);
             }
         });
         exec.execute(new Runnable(){
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName()+&quot; Hello World&quot;);
+                System.out.println(Thread.currentThread().getName()+&#34; Hello World&#34;);
             }
         });
         exec.execute(new Runnable(){
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName()+&quot; Hello World&quot;);
+                System.out.println(Thread.currentThread().getName()+&#34; Hello World&#34;);
             }
         });
         try {
@@ -2239,7 +2238,7 @@ public class UseCachedThreadPool {
         exec.execute(new Runnable(){
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName()+&quot; Hello World&quot;);
+                System.out.println(Thread.currentThread().getName()+&#34; Hello World&#34;);
             }
         });
         exec.shutdown();
@@ -2261,7 +2260,7 @@ public class UseFixedThreadPool {
         exec.execute(new Runnable(){
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName()+&quot; Hello World&quot;);
+                System.out.println(Thread.currentThread().getName()+&#34; Hello World&#34;);
                 try {
                     TimeUnit.SECONDS.sleep(3);
                 } catch (InterruptedException e) {
@@ -2273,7 +2272,7 @@ public class UseFixedThreadPool {
         exec.execute(new Runnable(){
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName()+&quot; Hello World&quot;);
+                System.out.println(Thread.currentThread().getName()+&#34; Hello World&#34;);
                 try {
                     TimeUnit.SECONDS.sleep(3);
                 } catch (InterruptedException e) {
@@ -2285,14 +2284,13 @@ public class UseFixedThreadPool {
         exec.execute(new Runnable(){
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName()+&quot; Hello World&quot;);
+                System.out.println(Thread.currentThread().getName()+&#34; Hello World&#34;);
             }
         });
 
         exec.shutdown();
     }
 }
-
 </code></pre><p>输出：</p>
 <pre tabindex="0"><code>pool-1-thread-1 Hello World
 pool-1-thread-2 Hello World
@@ -2307,25 +2305,25 @@ public class UseSingleThreadPool {
         exec.execute(new Runnable(){
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName()+&quot; Hello World&quot;);
+                System.out.println(Thread.currentThread().getName()+&#34; Hello World&#34;);
             }
         });
         exec.execute(new Runnable(){
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName()+&quot; Hello World&quot;);
+                System.out.println(Thread.currentThread().getName()+&#34; Hello World&#34;);
             }
         });
         exec.execute(new Runnable(){
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName()+&quot; Hello World&quot;);
+                System.out.println(Thread.currentThread().getName()+&#34; Hello World&#34;);
             }
         });
         exec.execute(new Runnable(){
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName()+&quot; Hello World&quot;);
+                System.out.println(Thread.currentThread().getName()+&#34; Hello World&#34;);
             }
         });
         exec.shutdown();
@@ -2336,7 +2334,6 @@ public class UseSingleThreadPool {
 pool-1-thread-1 Hello World
 pool-1-thread-1 Hello World
 pool-1-thread-1 Hello World
-
 </code></pre><p>周期性定长线程池</p>
 <pre tabindex="0"><code>import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -2349,7 +2346,7 @@ public class UseScheduledThreadPool {
         exec.schedule(new Runnable(){
             @Override
             public void run() {
-                System.out.println(&quot;Hello World&quot;);
+                System.out.println(&#34;Hello World&#34;);
             }
         }, 5, TimeUnit.SECONDS);
 
@@ -2357,7 +2354,7 @@ public class UseScheduledThreadPool {
         exec.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-                System.out.println(&quot;Write once, Run Anywhere&quot;);
+                System.out.println(&#34;Write once, Run Anywhere&#34;);
             }
         }, 5, 1, TimeUnit.SECONDS);
         exec.shutdown();
@@ -2384,7 +2381,7 @@ Write once, Run Anywhere
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2648,7 +2645,7 @@ Write once, Run Anywhere
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -3574,7 +3571,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         

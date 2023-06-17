@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="一些常用类库的使用，如日期和时间，字符串处理，数组处理等">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1761,8 +1761,8 @@
 <h4 id="111-使用equals">1.1.1 使用equals</h4>
 <p>例如：</p>
 <pre tabindex="0"><code>String s1 = null;
-String s2 = &quot;123&quot;;
-String s3 = &quot;456&quot;;
+String s2 = &#34;123&#34;;
+String s3 = &#34;456&#34;;
 // 由于s1为空，调用equals方法会引发NullPointerException
 System.out.println(s1.equals(s2));
 System.out.println(Objects.equals(s1, s2));
@@ -1780,8 +1780,8 @@ false
 <h4 id="121-使用isnull和nonnull">1.2.1 使用isNull和nonNull</h4>
 <p>例如：</p>
 <pre tabindex="0"><code>String s1 = null;
-String s2 = &quot;123&quot;;
-String s3 = &quot;456&quot;;
+String s2 = &#34;123&#34;;
+String s3 = &#34;456&#34;;
 
 System.out.println(Objects.isNull(s1));
 System.out.println(Objects.nonNull(s1));
@@ -1804,7 +1804,7 @@ public static boolean nonNull(Object obj) {
 
 System.out.println(Objects.requireNonNull(s1));
 </code></pre><p>输出：</p>
-<pre tabindex="0"><code>Exception in thread &quot;main&quot; java.lang.NullPointerException
+<pre tabindex="0"><code>Exception in thread &#34;main&#34; java.lang.NullPointerException
 	at java.base/java.util.Objects.requireNonNull(Objects.java:221)
 	at com.github.qinry.utils.UseObjects.main(UseObjects.java:18)
 </code></pre><p>与isNull和nonNull都是检测空对象，但是如果对象是空的，requireNonNull会实例化NullPointerException对象抛出异常。常常用在某些方法的流程中，要求传入的参数须具备有值，可以在调用该方法前，使用requireNonNull判断是否为空，来保证数据有效，若为空中断方法的调用，须做异常的处理。</p>
@@ -1880,18 +1880,18 @@ System.out.println(Arrays.toString(a));
 <p>toString源码：</p>
 <pre tabindex="0"><code>public static String toString(int[] a) {
     if (a == null)
-        return &quot;null&quot;;
+        return &#34;null&#34;;
     int iMax = a.length - 1;
     if (iMax == -1)
-        return &quot;[]&quot;;
+        return &#34;[]&#34;;
 
     StringBuilder b = new StringBuilder();
-    b.append('[');
+    b.append(&#39;[&#39;);
     for (int i = 0; ; i++) {
         b.append(a[i]);
         if (i == iMax)
-            return b.append(']').toString();
-        b.append(&quot;, &quot;);
+            return b.append(&#39;]&#39;).toString();
+        b.append(&#34;, &#34;);
     }
 }
 </code></pre><p>使用了StringBuilder类，遍历数组每一个元素，把元素拼接为一个字符串，最后返回。</p>
@@ -1995,8 +1995,8 @@ System.out.println(Arrays.compare(a, b));
 <p>还有获取绝对值的方法abs，与同类型的val求两数最大值的max，与同类型的val求两数最小值的min。</p>
 <p>创建BigDecimal，可以使用构造方法和传入long或double参数的静态valueOf。常用的构造方法是传入字符串参数的构造方法,即BigDecimal(String val)。创建的BigDecimal对象是不可变的，可以认为是常量，所以像b1.add(b2)，不会改变b1和b2，而是会返回BigDecimal的结果。</p>
 <p>例如：</p>
-<pre tabindex="0"><code>BigDecimal b1 = new BigDecimal(&quot;0.1&quot;);
-BigDecimal b2 = new BigDecimal(&quot;0.2&quot;);
+<pre tabindex="0"><code>BigDecimal b1 = new BigDecimal(&#34;0.1&#34;);
+BigDecimal b2 = new BigDecimal(&#34;0.2&#34;);
 BigDecimal b3 = null;
 
 System.out.println(b1);
@@ -2019,8 +2019,8 @@ float f = b3.floatValue();
 int i = b3.intValue();
 long l = b3.longValue();
 
-System.out.println(d+&quot;\n&quot;+i);
-System.out.println(f+&quot;\n&quot;+l);
+System.out.println(d+&#34;\n&#34;+i);
+System.out.println(f+&#34;\n&#34;+l);
 </code></pre><p>输出：</p>
 <pre tabindex="0"><code>0.1
 0.2
@@ -2055,7 +2055,7 @@ System.out.println(date.getTime());
 </code></pre><p>通过时间戳可以计算，两时间点所经历的时间长度。例如：</p>
 <pre tabindex="0"><code>Date old = new Date(1611581144493L);
 Date date = new Date();
-System.out.println((date.getTime()-old.getTime())/1000/60+&quot;分钟&quot;);
+System.out.println((date.getTime()-old.getTime())/1000/60+&#34;分钟&#34;);
 </code></pre><p>输出：</p>
 <pre tabindex="0"><code>14分钟
 </code></pre><h4 id="513-比较时间">5.1.3 比较时间</h4>
@@ -2072,15 +2072,15 @@ false
 <p>Date对象默认输出的格式，例如：Mon Jan 25 21:25:44 CST 2021。Java提供了java.text.DateFormat接口，可以自定义日期的字符串表示, 实现这个接口的类有SimpleDateFormat。</p>
 <h4 id="521-格式化日期字符串表示">5.2.1 格式化日期字符串表示</h4>
 <p>例如：</p>
-<pre tabindex="0"><code>SimpleDateFormat format = new SimpleDateFormat(&quot;yyyy年MM月dd日 HH:mm ss&quot;);
+<pre tabindex="0"><code>SimpleDateFormat format = new SimpleDateFormat(&#34;yyyy年MM月dd日 HH:mm ss&#34;);
 String text = format.format(new Date());
 System.out.println(text);
 </code></pre><p>输出：</p>
 <pre tabindex="0"><code>2021年01月25日 21:51 18
 </code></pre><h4 id="522-解析日期字符串表示">5.2.2 解析日期字符串表示</h4>
-<pre tabindex="0"><code>String s = &quot;1999年01月22日 05:50 30&quot;;
+<pre tabindex="0"><code>String s = &#34;1999年01月22日 05:50 30&#34;;
 Date date = format.parse(s);
-System.out.println(date + &quot; ~ &quot; +date.getTime());
+System.out.println(date + &#34; ~ &#34; +date.getTime());
 </code></pre><p>输出：</p>
 <pre tabindex="0"><code>Fri Jan 22 05:50:30 CST 1999 ~ 916955430000
 </code></pre><h4 id="523-日期和时间的模式">5.2.3 日期和时间的模式</h4>
@@ -2154,9 +2154,9 @@ System.out.println(Arrays.toString(b));
 <p>字符串最常用的创建方式，使用双引号包起一段文字。第一次出现的字符串，才会创建并保存在字符串常量池（在运行时常量池内）。可以赋值给String引用，如：<code>String s = &amp;quot;hello&amp;quot;;</code></p>
 <p>第二次出现相同的字符串赋值给新的字符串引用，是不会重复创建，而是共享了第一次创建的字符串的内存地址。不过，把这个字符串传入构造器，使用new表达式是会在内存中重新创建字符串。</p>
 <p>例如：</p>
-<pre tabindex="0"><code>String s1 = &quot;123&quot;;
-String s2 = &quot;123&quot;;
-String s3 = new String(&quot;123&quot;);
+<pre tabindex="0"><code>String s1 = &#34;123&#34;;
+String s2 = &#34;123&#34;;
+String s3 = new String(&#34;123&#34;);
 System.out.println(s1 == s2);
 System.out.println(s1 == s3);
 </code></pre><p>输出：</p>
@@ -2232,7 +2232,7 @@ String substring(int beginIndex, int endIndex) 返回一个字符串，该字符
 char[] toCharArray() 将此字符串转换为新的字符数组。  
 String toLowerCase() 使用默认语言环境的规则将此 String所有字符转换为小写。  
 String toUpperCase() 使用默认语言环境的规则将此 String所有字符转换为大写。  
-String trim() 返回一个字符串，其值为此字符串，删除了所有前导和尾随空格，其中space被定义为其代码点小于或等于 'U+0020' （空格字符）的任何字符。  
+String trim() 返回一个字符串，其值为此字符串，删除了所有前导和尾随空格，其中space被定义为其代码点小于或等于 &#39;U+0020&#39; （空格字符）的任何字符。  
 </code></pre><h3 id="72-javalangstringbuilder">7.2 java.lang.StringBuilder</h3>
 <p>可认为是线程不安全的字符串变量，拼接字符串更加高效。</p>
 <pre tabindex="0"><code>StringBuilder sb = new StringBuilder();
@@ -2362,7 +2362,7 @@ void trimToSize() 尝试减少用于字符序列的存储空间。
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2626,7 +2626,7 @@ void trimToSize() 尝试减少用于字符序列的存储空间。
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -3616,7 +3616,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         

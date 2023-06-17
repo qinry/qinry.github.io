@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="压缩和解压文件的IO">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1730,44 +1730,44 @@
 </span><span class="lnt">37
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.zip.*</span><span class="o">;</span> <span class="c1">// 导入压缩格式的数据流类
-</span><span class="c1"></span><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GZIPcompress</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>
-    <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="k">if</span><span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span>
-            <span class="s">&#34;Usage: \nGZIPcompress file\n&#34;</span> <span class="o">+</span>
-            <span class="s">&#34;\tUses GZIP compression to compress &#34;</span> <span class="o">+</span>
-            <span class="s">&#34;the file to test.gz&#34;</span><span class="o">);</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="c1">// 读取要压缩的文件数据
-</span><span class="c1"></span>        <span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
-        <span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="n">0</span><span class="o">]));</span>
-        <span class="c1">// 创建压缩文件
-</span><span class="c1"></span>        <span class="n">BufferedOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedOutputStream</span><span class="o">(</span>
-            <span class="k">new</span> <span class="n">GZIPOutputStream</span><span class="o">(</span>
-                <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;test.gz&#34;</span><span class="o">)));</span>
-
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Writing file&#34;</span><span class="o">);</span>
-        <span class="kt">int</span> <span class="n">c</span><span class="o">;</span>
-        <span class="k">while</span><span class="o">((</span><span class="n">c</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">())</span> <span class="o">!=</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
-        <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Reading file&#34;</span><span class="o">);</span>
-        <span class="n">BufferedReader</span> <span class="n">in2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
-            <span class="k">new</span> <span class="n">InputStreamReader</span><span class="o">(</span><span class="k">new</span> <span class="n">GZIPInputStream</span><span class="o">(</span>
-                <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;test.gz&#34;</span><span class="o">))));</span>
-        <span class="n">String</span> <span class="n">s</span><span class="o">;</span>
-        <span class="k">while</span><span class="o">((</span><span class="n">s</span> <span class="o">=</span> <span class="n">in2</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.zip.*</span><span class="o">;</span> <span class="c1">// 导入压缩格式的数据流类
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GZIPcompress</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;Usage: \nGZIPcompress file\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;\tUses GZIP compression to compress &#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;the file to test.gz&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 读取要压缩的文件数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">        <span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]));</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 创建压缩文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">BufferedOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedOutputStream</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">            <span class="k">new</span> <span class="n">GZIPOutputStream</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">                <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;test.gz&#34;</span><span class="o">)));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Writing file&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">c</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span><span class="o">((</span><span class="n">c</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">())</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Reading file&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">BufferedReader</span> <span class="n">in2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">            <span class="k">new</span> <span class="n">InputStreamReader</span><span class="o">(</span><span class="k">new</span> <span class="n">GZIPInputStream</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">                <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;test.gz&#34;</span><span class="o">))));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">s</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span><span class="o">((</span><span class="n">s</span> <span class="o">=</span> <span class="n">in2</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>GZIPOutputStream</code>的构造器的参数类型是<code>FileOutputStream</code>，还可用<code>BufferedOutputStream</code>类包装。<code>GZIPOutputStream</code>的构造器只能接受<code>OutputStream</code>对象，不接受<code>Writer</code>对象。打开文件时,<code>GZIPInputStream</code>会转换为<code>Reader</code>。</p>
 <h2 id="多文件压缩保存">多文件压缩保存</h2>
@@ -1843,74 +1843,74 @@
 </span><span class="lnt">67
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.zip.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ZipCompress</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// 压缩:
-</span><span class="c1"></span>        <span class="c1">//1 创建压缩输出流，输出流套四层 T_T
-</span><span class="c1"></span>        <span class="n">FileOutputStream</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;test.zip&#34;</span><span class="o">);</span>
-        <span class="n">CheckedOutputStream</span> <span class="n">csum</span> <span class="o">=</span>
-            <span class="k">new</span> <span class="n">CheckedOutputStream</span><span class="o">(</span><span class="n">f</span><span class="o">,</span> <span class="k">new</span> <span class="n">Adler32</span><span class="o">())</span>
-        <span class="n">ZipOutputStream</span> <span class="n">zos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ZipOutputStream</span><span class="o">(</span><span class="n">csum</span><span class="o">);</span>
-        <span class="n">BufferedOutputStream</span> <span class="n">out</span> <span class="o">=</span>
-            <span class="k">new</span> <span class="n">BufferedOutputStream</span><span class="o">(</span><span class="n">zos</span><span class="o">);</span>
-        <span class="c1">// 为文件设置注释
-</span><span class="c1"></span>        <span class="n">zos</span><span class="o">.</span><span class="na">setComment</span><span class="o">(</span><span class="s">&#34;测试Java压缩文件&#34;</span><span class="o">);</span>
-
-        <span class="kt">int</span> <span class="n">ch</span><span class="o">;</span>
-        <span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">));</span>
-        <span class="c1">//2 压缩条目添加到压缩输出流
-</span><span class="c1"></span>        <span class="n">zos</span><span class="o">.</span><span class="na">putNextEntry</span><span class="o">(</span><span class="k">new</span> <span class="n">ZipEntry</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">));</span>
-        <span class="c1">//3 往缓冲输出流写入压缩文件数据
-</span><span class="c1"></span>        <span class="k">while</span><span class="o">((</span><span class="n">ch</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">())</span> <span class="o">!=</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">ch</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span> <span class="c1">// 注意读完一个文件刷新缓冲区
-</span><span class="c1"></span>
-        <span class="c1">//4 重复2，3步骤，添加第二个文件，如果压缩更多文件采用循环
-</span><span class="c1"></span>        <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="s">&#34;b.txt&#34;</span><span class="o">));</span>
-        <span class="c1">//2 压缩条目添加到压缩输出流
-</span><span class="c1"></span>        <span class="n">zos</span><span class="o">.</span><span class="na">putNextEntry</span><span class="o">(</span><span class="k">new</span> <span class="n">ZipEntry</span><span class="o">(</span><span class="s">&#34;b.txt&#34;</span><span class="o">));</span>
-        <span class="c1">//3 往缓冲输出流写入压缩文件数据
-</span><span class="c1"></span>        <span class="k">while</span><span class="o">((</span><span class="n">ch</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">())</span> <span class="o">!=</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">ch</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-
-        <span class="c1">// 读取压缩文件
-</span><span class="c1"></span>        <span class="c1">//1 创建解压缩输入流，又套四层 T_T
-</span><span class="c1"></span>        <span class="n">FileInputStream</span> <span class="n">fi</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;test.zip&#34;</span><span class="o">);</span>
-        <span class="n">CheckedInputStream</span> <span class="n">csumi</span> <span class="o">=</span>
-            <span class="k">new</span> <span class="n">CheckedInputStream</span><span class="o">(</span><span class="n">f</span><span class="o">,</span> <span class="k">new</span> <span class="n">Adler32</span><span class="o">())</span>
-        <span class="n">ZipInputStream</span> <span class="n">zi</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ZipInputStream</span><span class="o">(</span><span class="n">csum</span><span class="o">);</span>
-        <span class="n">BufferedInputStream</span> <span class="n">bis</span> <span class="o">=</span>
-            <span class="k">new</span> <span class="n">BufferedInputStream</span><span class="o">(</span><span class="n">zos</span><span class="o">);</span>
-
-        <span class="n">ZipEntry</span> <span class="n">ze</span><span class="o">;</span>
-        <span class="k">while</span><span class="o">((</span><span class="n">ze</span> <span class="o">=</span> <span class="n">zi</span><span class="o">.</span><span class="na">getNextEntry</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;File: &#34;</span> <span class="o">+</span> <span class="n">ze</span><span class="o">);</span>
-            <span class="k">while</span><span class="o">((</span><span class="n">ch</span> <span class="o">=</span> <span class="n">bis</span><span class="o">.</span><span class="na">read</span><span class="o">())</span> <span class="o">!=</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span>
-                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">ch</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="n">bis</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="cm">/* 另一种读取压缩文件
-</span><span class="cm">        ZipFile zf = new ZipFile(&#34;test.zip&#34;);
-</span><span class="cm">        Enumeration e = zf.entries();
-</span><span class="cm">        while(e.hasMoreElement()) {
-</span><span class="cm">            ZipEntry ze2 = (ZipEntry)e.nextElement();
-</span><span class="cm">            System.out.println(&#34;File: &#34; + ze2);
-</span><span class="cm">            while((ch = bis.read()) != -1)
-</span><span class="cm">                System.out.write(ch);
-</span><span class="cm">        }
-</span><span class="cm">        */</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.zip.*</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ZipCompress</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 压缩:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//1 创建压缩输出流，输出流套四层 T_T
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">FileOutputStream</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;test.zip&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">CheckedOutputStream</span> <span class="n">csum</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">            <span class="k">new</span> <span class="n">CheckedOutputStream</span><span class="o">(</span><span class="n">f</span><span class="o">,</span> <span class="k">new</span> <span class="n">Adler32</span><span class="o">())</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ZipOutputStream</span> <span class="n">zos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ZipOutputStream</span><span class="o">(</span><span class="n">csum</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">BufferedOutputStream</span> <span class="n">out</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">            <span class="k">new</span> <span class="n">BufferedOutputStream</span><span class="o">(</span><span class="n">zos</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 为文件设置注释
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">zos</span><span class="o">.</span><span class="na">setComment</span><span class="o">(</span><span class="s">&#34;测试Java压缩文件&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">ch</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//2 压缩条目添加到压缩输出流
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">zos</span><span class="o">.</span><span class="na">putNextEntry</span><span class="o">(</span><span class="k">new</span> <span class="n">ZipEntry</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//3 往缓冲输出流写入压缩文件数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">while</span><span class="o">((</span><span class="n">ch</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">())</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">ch</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span> <span class="c1">// 注意读完一个文件刷新缓冲区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//4 重复2，3步骤，添加第二个文件，如果压缩更多文件采用循环
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="s">&#34;b.txt&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//2 压缩条目添加到压缩输出流
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">zos</span><span class="o">.</span><span class="na">putNextEntry</span><span class="o">(</span><span class="k">new</span> <span class="n">ZipEntry</span><span class="o">(</span><span class="s">&#34;b.txt&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//3 往缓冲输出流写入压缩文件数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">while</span><span class="o">((</span><span class="n">ch</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">())</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">ch</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 读取压缩文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//1 创建解压缩输入流，又套四层 T_T
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">FileInputStream</span> <span class="n">fi</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;test.zip&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">CheckedInputStream</span> <span class="n">csumi</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">            <span class="k">new</span> <span class="n">CheckedInputStream</span><span class="o">(</span><span class="n">f</span><span class="o">,</span> <span class="k">new</span> <span class="n">Adler32</span><span class="o">())</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ZipInputStream</span> <span class="n">zi</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ZipInputStream</span><span class="o">(</span><span class="n">csum</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">BufferedInputStream</span> <span class="n">bis</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">            <span class="k">new</span> <span class="n">BufferedInputStream</span><span class="o">(</span><span class="n">zos</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">ZipEntry</span> <span class="n">ze</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span><span class="o">((</span><span class="n">ze</span> <span class="o">=</span> <span class="n">zi</span><span class="o">.</span><span class="na">getNextEntry</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;File: &#34;</span> <span class="o">+</span> <span class="n">ze</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">while</span><span class="o">((</span><span class="n">ch</span> <span class="o">=</span> <span class="n">bis</span><span class="o">.</span><span class="na">read</span><span class="o">())</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">ch</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bis</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/* 另一种读取压缩文件
+</span></span></span><span class="line"><span class="cl"><span class="cm">        ZipFile zf = new ZipFile(&#34;test.zip&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="cm">        Enumeration e = zf.entries();
+</span></span></span><span class="line"><span class="cl"><span class="cm">        while(e.hasMoreElement()) {
+</span></span></span><span class="line"><span class="cl"><span class="cm">            ZipEntry ze2 = (ZipEntry)e.nextElement();
+</span></span></span><span class="line"><span class="cl"><span class="cm">            System.out.println(&#34;File: &#34; + ze2);
+</span></span></span><span class="line"><span class="cl"><span class="cm">            while((ch = bis.read()) != -1)
+</span></span></span><span class="line"><span class="cl"><span class="cm">                System.out.write(ch);
+</span></span></span><span class="line"><span class="cl"><span class="cm">        }
+</span></span></span><span class="line"><span class="cl"><span class="cm">        */</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="jar工具打包和解压">jar工具打包和解压</h2>
 <p>Java项目常常要打包成文件名后缀为<code>.jar</code>的压缩格式，类似于zip格式。<br />
@@ -1921,8 +1921,8 @@ jar常用命令:</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">jar cf myJar.jar *.class
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jar cf myJar.jar *.class
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>2.类文件，用户自建清单文件打包</p>
 <div class="highlight"><div class="chroma">
@@ -1930,8 +1930,8 @@ jar常用命令:</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">jar cfm myJar.jar *.class MANIFEST.MF
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jar cfm myJar.jar *.class MANIFEST.MF
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>3.多目录打包</p>
 <div class="highlight"><div class="chroma">
@@ -1939,8 +1939,8 @@ jar常用命令:</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">jar cf myApp.jar audio classes image
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jar cf myApp.jar audio classes image
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>4.jar文件解压</p>
 <div class="highlight"><div class="chroma">
@@ -1948,14 +1948,14 @@ jar常用命令:</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">jar xf myApp.jar
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jar xf myApp.jar
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2219,7 +2219,7 @@ jar常用命令:</p>
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -3137,7 +3137,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         

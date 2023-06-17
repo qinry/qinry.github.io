@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="MongoDB快速开始使用">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1786,10 +1786,10 @@ emacs -nw mongod.conf
 </code></pre><p>编辑mongod.conf</p>
 <pre tabindex="0"><code>systemLog:
    destination: file
-   path: &quot;/var/log/mongodb/mongod.log&quot;
+   path: &#34;/var/log/mongodb/mongod.log&#34;
    logAppend: true
 storage:
-   dbPath: &quot;/var/lib/mongo&quot;
+   dbPath: &#34;/var/lib/mongo&#34;
    journal:
       enabled: true
 processManagement:
@@ -1807,17 +1807,17 @@ net:
 <p>在shell中输入命令mongo就可以进入客户端交互界面。</p>
 <pre tabindex="0"><code>mongo 127.0.0.1 # shell没有指定ip，默认使用127.0.0.1
 </code></pre><h2 id="常见数据类型">常见数据类型</h2>
-<pre tabindex="0"><code>{&quot;x&quot;: null} # null类型
-{&quot;x&quot;: true}  # 布尔类型
-{&quot;x&quot;: 2.32} # 默认数字类型为64位浮点数
-{&quot;x&quot;: NumberInt(2)} # 32整数
-{&quot;x&quot;: NumberLong(2)} # 64位整数
-{&quot;x&quot;: &quot;string&quot;} # 字符串
-{&quot;x&quot;: new Date()} # 日期
-{&quot;x&quot;: [&quot;hello&quot;,&quot;world&quot;]} # 数组
-{&quot;x&quot;: /mongodb/i} # 正则表达式
-{&quot;x&quot;:{&quot;name&quot;: &quot;zhangsan&quot;}} # 内嵌文档
-{&quot;_id&quot;: ObjectId()} # _id和ObjectId，_id可以是任何类型；不指定_id时，会生成ObjectId对象
+<pre tabindex="0"><code>{&#34;x&#34;: null} # null类型
+{&#34;x&#34;: true}  # 布尔类型
+{&#34;x&#34;: 2.32} # 默认数字类型为64位浮点数
+{&#34;x&#34;: NumberInt(2)} # 32整数
+{&#34;x&#34;: NumberLong(2)} # 64位整数
+{&#34;x&#34;: &#34;string&#34;} # 字符串
+{&#34;x&#34;: new Date()} # 日期
+{&#34;x&#34;: [&#34;hello&#34;,&#34;world&#34;]} # 数组
+{&#34;x&#34;: /mongodb/i} # 正则表达式
+{&#34;x&#34;:{&#34;name&#34;: &#34;zhangsan&#34;}} # 内嵌文档
+{&#34;_id&#34;: ObjectId()} # _id和ObjectId，_id可以是任何类型；不指定_id时，会生成ObjectId对象
 </code></pre><p>ObjectId是12字节（24个十六进制数）存储空间，数据组织：</p>
 <pre tabindex="0"><code>0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 
     时间戳     |   机器码   |进程PID| 计数器
@@ -1828,31 +1828,31 @@ db # 当前所在数据库
 show collections # 查看所有数据集
 db.dropDatabase() # 删除当前数据库
 
-db.createCollection(&quot;users&quot;) # 创建数据集
+db.createCollection(&#34;users&#34;) # 创建数据集
 db.users.drop() # db.&lt;collection name&gt;.drop()删除数据集
-db.users.renameCollection(&quot;user&quot;) # db.&lt;old collection name&gt;.renameCollection(&quot;new name&quot;) 改数据集名称
+db.users.renameCollection(&#34;user&#34;) # db.&lt;old collection name&gt;.renameCollection(&#34;new name&#34;) 改数据集名称
 
-db.user.insert({&quot;name&quot;: &quot;zhangsan&quot;, age: 18}) # db.&lt;collection name&gt;.insert({&quot;key&quot;: value}) 新增数据
-db.user.save({&quot;name&quot;: &quot;zhangsan&quot;, age: 18}) # db.&lt;collection name&gt;.save({&quot;key&quot;: value}) 新增数据
+db.user.insert({&#34;name&#34;: &#34;zhangsan&#34;, age: 18}) # db.&lt;collection name&gt;.insert({&#34;key&#34;: value}) 新增数据
+db.user.save({&#34;name&#34;: &#34;zhangsan&#34;, age: 18}) # db.&lt;collection name&gt;.save({&#34;key&#34;: value}) 新增数据
 
 db.user.find() # db.&lt;collection name&gt;.find() 全查
 # db.&lt;collection name&gt;.find(condition) 条件查询
-db.user.find({&quot;age&quot;: 18}) # 等于18
-db.user.find({&quot;age&quot;: {$gt:14}}) # 大于14
-db.user.find({&quot;age&quot;: {$gte:14}}) # 大于等于14
-db.user.find({&quot;age&quot;: {$lt:14}}) # 小于14
-db.user.find({&quot;age&quot;: {$lte:14}}) # 小于等于14
+db.user.find({&#34;age&#34;: 18}) # 等于18
+db.user.find({&#34;age&#34;: {$gt:14}}) # 大于14
+db.user.find({&#34;age&#34;: {$gte:14}}) # 大于等于14
+db.user.find({&#34;age&#34;: {$lt:14}}) # 小于14
+db.user.find({&#34;age&#34;: {$lte:14}}) # 小于等于14
 db.user.find().pretty() # 人性化格式化输出
 
 # or关系：{$or:[{k1:v1},{k2:v2}]}
-db.user.find({$or: [{&quot;name&quot;: &quot;zhangsan&quot;},{&quot;age&quot;: {$gt:12}}]}) # name等于zhangsan或者age大于12
+db.user.find({$or: [{&#34;name&#34;: &#34;zhangsan&#34;},{&#34;age&#34;: {$gt:12}}]}) # name等于zhangsan或者age大于12
 
 # db.&lt;collection name&gt;.remove(condition) 条件删除
-db.user.remove({&quot;age&quot;: {$lt:12}}) 
+db.user.remove({&#34;age&#34;: {$lt:12}}) 
 
 db.user.findOne() # db.&lt;collection name&gt;.findOne() 查询一条数据
 db.user.find({},{name:1}) # 查询指定字段，1表示只包含该字段，0表示排除该字段
-db.user.distinct('name') # db.&lt;collection name&gt;.distinct('field name') 查询指定字段，并去重
+db.user.distinct(&#39;name&#39;) # db.&lt;collection name&gt;.distinct(&#39;field name&#39;) 查询指定字段，并去重
 
 db.user.find().sort({name:1}) # 升序， -1则表示降序
 db.user.find().count() # 查询条数
@@ -1862,11 +1862,11 @@ db.user.find().limit(3).skip(5) # 先跳过前5个，再查询3个
 # db.&lt;collection name&gt;.update(query, update, upsert, multi) query查询条件，update更新的字段，
 # upsert为true，不存在值插入，默认为false不插入
 # multi为true，更新所有查询的数据，为false更新第一条数据
-db.user.update({name:'tom'},{$set:{age: 21}},false, true)
+db.user.update({name:&#39;tom&#39;},{$set:{age: 21}},false, true)
 </code></pre><h2 id="索引">索引</h2>
 <p>创建索引</p>
 <pre tabindex="0"><code># db.&lt;collection name&gt;.createIndex(keys, options)
-db.users.createIndex({&quot;name&quot;: 1}) # 1表示升序，-1表示降序
+db.users.createIndex({&#34;name&#34;: 1}) # 1表示升序，-1表示降序
 </code></pre><p>options含义：</p>
 <table>
 <thead>
@@ -1939,8 +1939,8 @@ db.users.createIndex({&quot;name&quot;: 1}) # 1表示升序，-1表示降序
 <li>TTL索引：例如{&ldquo;createAt&rdquo;:1},{expireAfterSeconds:3600}</li>
 </ol>
 <p>删除索引</p>
-<pre tabindex="0"><code># db.&lt;collection name&gt;.dropIndex(&quot;index name&quot;)
-db.users.dropIndex(&quot;name&quot;)
+<pre tabindex="0"><code># db.&lt;collection name&gt;.dropIndex(&#34;index name&#34;)
+db.users.dropIndex(&#34;name&#34;)
 db.users.dropIndexes() 
 </code></pre><blockquote>
 <p>用remove删除集合数据不会删除索引，drop又删除集合数据又删除索引</p>
@@ -1978,10 +1978,10 @@ dump
 <pre tabindex="0"><code>emacs -nw /usr/local/mongodb/bin/mongod.conf
 </code></pre><pre tabindex="0"><code>systemLog:
    destination: file
-   path: &quot;/var/log/mongodb/mongod.log&quot;
+   path: &#34;/var/log/mongodb/mongod.log&#34;
    logAppend: true
 storage:
-   dbPath: &quot;/var/lib/mongo&quot;
+   dbPath: &#34;/var/lib/mongo&#34;
    journal:
       enabled: true
 processManagement:
@@ -1991,10 +1991,10 @@ net:
    port: 27017
 # 添加副本集，名为rs0
 replication:
-   replSetName: &quot;rs0&quot;
+   replSetName: &#34;rs0&#34;
 </code></pre><p>初始化副本集</p>
 <pre tabindex="0"><code>mongo
-&gt; rs.initiate({_id:'rs0'},members:[{_id:1,host:'192.168.123.181:27017'},{_id:2,host:'192.168.123.182:27017'},{_id:3,host:'192.168.123.183:27017'}])
+&gt; rs.initiate({_id:&#39;rs0&#39;},members:[{_id:1,host:&#39;192.168.123.181:27017&#39;},{_id:2,host:&#39;192.168.123.182:27017&#39;},{_id:3,host:&#39;192.168.123.183:27017&#39;}])
 </code></pre><p>查看状态</p>
 <pre tabindex="0"><code>rs0.PRIMARY&gt; rs.status()
 
@@ -2002,18 +2002,18 @@ replication:
 {
    # ...
    members: [{
-         &quot;_id&quot; : 1,
-         &quot;name&quot; : &quot;192.168.123.181:27017&quot;,
-         &quot;health&quot; : 1,
-         &quot;state&quot; : 1,
-         &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+         &#34;_id&#34; : 1,
+         &#34;name&#34; : &#34;192.168.123.181:27017&#34;,
+         &#34;health&#34; : 1,
+         &#34;state&#34; : 1,
+         &#34;stateStr&#34; : &#34;PRIMARY&#34;,
          # ...
       },{
-         &quot;_id&quot; : 2,
-         &quot;name&quot; : &quot;192.168.123.182:27017&quot;,
-         &quot;health&quot; : 1,
-         &quot;state&quot; : 2,
-         &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+         &#34;_id&#34; : 2,
+         &#34;name&#34; : &#34;192.168.123.182:27017&#34;,
+         &#34;health&#34; : 1,
+         &#34;state&#34; : 2,
+         &#34;stateStr&#34; : &#34;SECONDARY&#34;,
       },
       # ...
    ],
@@ -2021,22 +2021,22 @@ replication:
 </code></pre><p>要在从机查询数据，需要调用secondaryOK()方法</p>
 <pre tabindex="0"><code>rs0.SECONDARY&gt; rs.secondaryOk()
 </code></pre><p>删除节点</p>
-<pre tabindex="0"><code>rs0.PRIMARY&gt; rs.remove(&quot;192.168.123.183:27017&quot;) # rs.remove(&quot;ip:port&quot;)
+<pre tabindex="0"><code>rs0.PRIMARY&gt; rs.remove(&#34;192.168.123.183:27017&#34;) # rs.remove(&#34;ip:port&#34;)
 {
-   &quot;ok&quot; : 1,
-   &quot;$clusterTime&quot; : {
-      &quot;clusterTime&quot; : Timestamp(1635336751, 1),
-      &quot;signature&quot; : {
-            &quot;hash&quot; : BinData(0,&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;),
-            &quot;keyId&quot; : NumberLong(0)
+   &#34;ok&#34; : 1,
+   &#34;$clusterTime&#34; : {
+      &#34;clusterTime&#34; : Timestamp(1635336751, 1),
+      &#34;signature&#34; : {
+            &#34;hash&#34; : BinData(0,&#34;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&#34;),
+            &#34;keyId&#34; : NumberLong(0)
       }
    },
-   &quot;operationTime&quot; : Timestamp(1635336751, 1)
+   &#34;operationTime&#34; : Timestamp(1635336751, 1)
 }
 </code></pre><p>添加节点与删除节点类似，rs.add(&ldquo;ip:port&rdquo;)</p>
 <p>添加仲裁者</p>
-<pre tabindex="0"><code>rs0.PRIMARY&gt; db.adminCommand({setDefaultRWConcern:1,defaultWriteConcern:{&quot;w&quot;:1}})
-rs0.PRIMARY&gt; rs.addArb(&quot;192.168.123.183:27017&quot;)
+<pre tabindex="0"><code>rs0.PRIMARY&gt; db.adminCommand({setDefaultRWConcern:1,defaultWriteConcern:{&#34;w&#34;:1}})
+rs0.PRIMARY&gt; rs.addArb(&#34;192.168.123.183:27017&#34;)
 </code></pre><blockquote>
 <p>添加仲裁者之前需要强制修改Default Write Concern，从5.0开始。<br />
 注：仲裁者对偶数集群有效。在一主一从关系中，任意节点宕机都无法选举出主节点，无法提供写操作。此时需要加入仲裁者节点即可。</p>
@@ -2045,7 +2045,7 @@ rs0.PRIMARY&gt; rs.addArb(&quot;192.168.123.183:27017&quot;)
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2309,7 +2309,7 @@ rs0.PRIMARY&gt; rs.addArb(&quot;192.168.123.183:27017&quot;)
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -3233,7 +3233,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         

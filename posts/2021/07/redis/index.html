@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="Redis 常用命令；jedis 连接 Redis；缓存雪崩、缓存击穿、缓存穿透问题；分布式锁">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1644,7 +1644,7 @@
 <div class="single__infos">
   <time class="single__info" title="创建日期">📅&nbsp;2021年07月14日 </time>
   
-  &nbsp;&middot;&nbsp; <span class="single__info" title="阅读时长"> ☕&nbsp;9&nbsp;分钟 </span>
+  &nbsp;&middot;&nbsp; <span class="single__info" title="阅读时长"> ☕&nbsp;8&nbsp;分钟 </span>
   
   <span class="single__info">
     
@@ -1839,11 +1839,11 @@ publish channel message
 <p>最后编写代码，核心代码如下：</p>
 <pre tabindex="0"><code>Jedis jedis = null;
 try {
-    jedis = new Jedis(&quot;192.168.123.181&quot;,6379);
-//  jedis.auth(&quot;password&quot;);
-    jedis.set(&quot;foo&quot;, &quot;bar&quot;);
-    String bar = jedis.get(&quot;foo&quot;);
-    System.out.println(&quot;foo:&quot;+bar);
+    jedis = new Jedis(&#34;192.168.123.181&#34;,6379);
+//  jedis.auth(&#34;password&#34;);
+    jedis.set(&#34;foo&#34;, &#34;bar&#34;);
+    String bar = jedis.get(&#34;foo&#34;);
+    System.out.println(&#34;foo:&#34;+bar);
 } catch (Exception e) {
     e.printStackTrace();
 } finally {
@@ -1859,12 +1859,12 @@ config.setMaxTotal(20);
 JedisPool pool = null;
 Jedis jedis = null;
 try {
-    pool = new JedisPool(config, &quot;192.168.123.181&quot;,6379);
+    pool = new JedisPool(config, &#34;192.168.123.181&#34;,6379);
     jedis = pool.getResource();
-//  jedis.auth(&quot;password&quot;);
-    jedis.set(&quot;foo&quot;, &quot;bar&quot;);
-    String foo = jedis.get(&quot;foo&quot;);
-    System.out.println(&quot;foo=&quot;+foo);
+//  jedis.auth(&#34;password&#34;);
+    jedis.set(&#34;foo&#34;, &#34;bar&#34;);
+    String foo = jedis.get(&#34;foo&#34;);
+    System.out.println(&#34;foo=&#34;+foo);
 } catch (Exception e) {
     e.printStackTrace();
 } finally {
@@ -1895,8 +1895,8 @@ java狭义一些的缓存，主要是指三大类</p>
 <p>代码示例说明：</p>
 <pre tabindex="0"><code>public Users getByUsers(Long id) {
     // 1.先查询redis
-    String key = this.getClass().getName() + &quot;-&quot; + Thread.currentThread().getStackTrace() [1].getMethodName()
-    + &quot;-id:&quot; + id;
+    String key = this.getClass().getName() + &#34;-&#34; + Thread.currentThread().getStackTrace() [1].getMethodName()
+    + &#34;-id:&#34; + id;
     String userJson = redisService.getString(key);
     if (!StringUtils.isEmpty(userJson)) {
         Users users = JSONObject.parseObject(userJson, Users.class);
@@ -1914,7 +1914,6 @@ java狭义一些的缓存，主要是指三大类</p>
     }
     return user;
 }
-
 </code></pre><ol start="2">
 <li>分析用户的行为，不同的key，设置不同的过期时间，让缓存失效的时间点尽量均匀。</li>
 </ol>
@@ -1940,17 +1939,17 @@ java狭义一些的缓存，主要是指三大类</p>
 <p>代码示例说明：</p>
 <pre tabindex="0"><code>public String getByUsers2(Long id) {
     // 1.先查询redis
-    String key = this.getClass().getName() + &quot;-&quot; + Thread.currentThread().getStackTrace()[1].getMethodName()+ &quot;-id:&quot; + id;
+    String key = this.getClass().getName() + &#34;-&#34; + Thread.currentThread().getStackTrace()[1].getMethodName()+ &#34;-id:&#34; + id;
     String userName = redisService.getString(key);
     if (!StringUtils.isEmpty(userName)) {
         return userName;
     } 
-    System.out.println(&quot;######开始发送数据库DB请求########&quot;); 
+    System.out.println(&#34;######开始发送数据库DB请求########&#34;); 
     Users user = userMapper.getUser(id);
     String value = null;
     if (user == null) {
         // 标识为null
-        value = &quot;&quot;; // 设置默认值
+        value = &#34;&#34;; // 设置默认值
     } else {
         value = user.getName();
     } 
@@ -2006,12 +2005,12 @@ getset key value
 <pre tabindex="0"><code>public static boolean lock(String lockName) {
     Jedis jedis = RedisPool.getJedis(); 
     //lockName可以为共享变量名，也可以为方法名，主要是用于模拟锁信息 
-    System.out.println(Thread.currentThread() + &quot;开始尝试加锁!&quot;);
+    System.out.println(Thread.currentThread() + &#34;开始尝试加锁!&#34;);
     Long result = jedis.setnx(lockName, String.valueOf(System.currentTimeMillis() + 5000)); 
     if (result != null &amp;&amp; result.intValue() == 1){
-        System.out.println(Thread.currentThread() + &quot;加锁成功!&quot;); 
+        System.out.println(Thread.currentThread() + &#34;加锁成功!&#34;); 
         jedis.expire(lockName, 5);
-        System.out.println(Thread.currentThread() + &quot;执行业务逻辑!&quot;);
+        System.out.println(Thread.currentThread() + &#34;执行业务逻辑!&#34;);
         jedis.del(lockName);
         return true;
     } else {
@@ -2022,9 +2021,9 @@ getset key value
             String lockValueB = jedis.getSet(lockName,
             String.valueOf(System.currentTimeMillis() + 5000)); //这里返回的值是旧值，如果有的话。之前没有值就返回null,设置的是新超时。
             if (lockValueB == null || lockValueB.equals(lockValueA)){ 
-                System.out.println(Thread.currentThread() + &quot;加锁成功!&quot;); 
+                System.out.println(Thread.currentThread() + &#34;加锁成功!&#34;); 
                 jedis.expire(lockName, 5); 
-                System.out.println(Thread.currentThread() + &quot;执行业务逻辑!&quot;); 
+                System.out.println(Thread.currentThread() + &#34;执行业务逻辑!&#34;); 
                 jedis.del(lockName);
                 return true;
             } else {
@@ -2039,7 +2038,7 @@ getset key value
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2303,7 +2302,7 @@ getset key value
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -3252,7 +3251,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         

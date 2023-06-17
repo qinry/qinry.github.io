@@ -13,42 +13,12 @@
     <language>zh</language>
     <managingEditor>lixiaoqin490@gmail.com (槎城小子)</managingEditor>
     <webMaster>lixiaoqin490@gmail.com (槎城小子)</webMaster>
-    <copyright>©2022, All Rights Reserved</copyright>
-    <lastBuildDate>Wed, 02 Feb 2022 10:05:33 +0800</lastBuildDate>
+    <copyright>©2023, All Rights Reserved</copyright>
+    <lastBuildDate>Thu, 11 Nov 2021 10:00:16 +0800</lastBuildDate>
     
         <atom:link href="https://qinry.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
     
 
-      
-      <item>
-        <title>Spring 容器基础</title>
-        <link>https://qinry.github.io/posts/2022/02/spring-container-basic/</link>
-        <pubDate>Wed, 02 Feb 2022 10:05:33 +0800</pubDate>
-        <author>lixiaoqin490@gmail.com (槎城小子)</author>
-        <atom:modified>Wed, 02 Feb 2022 10:05:33 +0800</atom:modified>
-        <guid>https://qinry.github.io/posts/2022/02/spring-container-basic/</guid>
-        <description>一、控制反转和 Bean Spring 框架的控制反转（IoC）容器，简称 IoC 容器。IoC 也称依赖注入（DI）。 对象仅通过构造方法参数，工厂方法参数，或对象实例的属</description>
-        
-        <dc:creator>槎城小子</dc:creator>
-        
-        
-        
-        
-          
-            
-              <category>spring</category>
-            
-          
-        
-        
-          
-            
-              <category>java</category>
-            
-          
-        
-        
-      </item>
       
       <item>
         <title>Mybatis-Spring-Boot-Starter 快速开始</title>

@@ -10,17 +10,17 @@
 
 
   
-  <script defer src="/js/fuse.min.8dfbf8696f107ab8b55732efbb04c5c51576692a4a2cce6effef9f6e92d341a7.js"></script>
+  <script defer src="/js/fuse.min.32195737929df2c8096e855a5789cbb3f1331224d9169e8705493e7008f47df8.js"></script>
 
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
 
-<script defer src="/js/lazysizes.min.498676c34eb225e85357ab0ce19c3c1244f3bd0bf595e5684d1b9d50ea4fbc42.js"></script>
+<script defer src="/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+<script defer src="/js/helper/getParents.min.086022fb02d7a1517e33c2670bffb976b3e80bcacd9caeee0c6a586064f20e42.js"></script>
 
-<script defer src="/js/helper/fadeinout.min.1d13d3e810c3940e80cbba6216a1c76fbf42b5431fc83537ea6997863802362b.js"></script>
+<script defer src="/js/helper/fadeinout.min.3ce954c8aea3b69cc5e6f734d8273ba4cd48d3a7987dbdca145849bc4b8fc296.js"></script>
 
 <script defer src="/js/helper/closest.min.js"></script>
   
@@ -1334,7 +1334,7 @@
 <meta name="description" content="Mybatis 代码生成插件，加快开发" />
 
 
-<meta name="keywords" content="mybatis,orm">
+<meta name="keywords" content="mybatis,orm,gradle">
 
 <meta name="created" content="2021-11-12T23:44:27&#43;0800">
 <meta name="modified" content="2021-11-12T23:44:27&#43;0800">
@@ -1349,7 +1349,7 @@
 <meta property="og:type" content="article">
 <meta property="og:description" content="Mybatis 代码生成插件，加快开发">
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.113.0">
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1389,7 +1389,7 @@
     "dateModified": "2021-11-12T23:44:27+08:00",
     "url" : "https://qinry.github.io/posts/2021/11/mybatis-generator-crash/",
     "description": "Mybatis 代码生成插件，加快开发",
-    "keywords": ["mybatis","orm"],
+    "keywords": ["mybatis","orm","gradle"],
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://qinry.github.io/"
@@ -1644,7 +1644,7 @@
 <div class="single__infos">
   <time class="single__info" title="创建日期">📅&nbsp;2021年11月12日 </time>
   
-  &nbsp;&middot;&nbsp; <span class="single__info" title="阅读时长"> ☕&nbsp;6&nbsp;分钟 </span>
+  &nbsp;&middot;&nbsp; <span class="single__info" title="阅读时长"> ☕&nbsp;7&nbsp;分钟 </span>
   
   <span class="single__info">
     
@@ -1661,6 +1661,8 @@
 
   <li><a href="https://qinry.github.io/tags/orm/" class="single__tag" title="orm">#orm</a></li>
 
+  <li><a href="https://qinry.github.io/tags/gradle/" class="single__tag" title="gradle">#gradle</a></li>
+
 </ul>
 
     </div>
@@ -1676,7 +1678,7 @@
   <div class="expand__content expand__content--toc">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#引入依赖">引入依赖</a></li>
+    <li><a href="#创建gradle项目">创建Gradle项目</a></li>
     <li><a href="#编写-generatorconfigxml">编写 generatorConfig.xml</a></li>
     <li><a href="#创建数据库表">创建数据库表</a></li>
     <li><a href="#执行生成任务">执行生成任务</a></li>
@@ -1688,24 +1690,7 @@
   </div>
 </div>
 
-      <h2 id="引入依赖">引入依赖</h2>
-<p>创建 spring boot 项目后，引入额外的依赖</p>
-<p>gradle:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-gradle:build.gradle" data-lang="gradle:build.gradle"><span class="n">dependencies</span> <span class="o">{</span>
-    <span class="n">implementation</span> <span class="nl">group:</span> <span class="s1">&#39;org.mybatis.generator&#39;</span><span class="o">,</span> <span class="nl">name:</span> <span class="s1">&#39;mybatis-generator-core&#39;</span><span class="o">,</span> <span class="nl">version:</span> <span class="s1">&#39;1.4.0&#39;</span>
-    <span class="n">runtimeOnly</span> <span class="s1">&#39;mysql:mysql-connector-java&#39;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>maven:</p>
+      <h2 id="创建gradle项目">创建Gradle项目</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1718,22 +1703,52 @@
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml:pom.xml" data-lang="xml:pom.xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.mybatis.generator<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>mybatis-generator-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>1.4.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>mysql<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>mysql-connector-java<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-gradle:build.gradle" data-lang="gradle:build.gradle"><span class="line"><span class="cl"><span class="n">plugins</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">id</span> <span class="s1">&#39;org.springframework.boot&#39;</span> <span class="n">version</span> <span class="s1">&#39;2.5.6&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">id</span> <span class="s2">&#34;com.thinkimi.gradle.MybatisGenerator&#34;</span> <span class="n">version</span> <span class="s2">&#34;2.4&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">&#39;java&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">&#39;io.spring.dependency-management&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">group</span> <span class="s1">&#39;io.github.qinry&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">version</span> <span class="s1">&#39;1.0-SNAPSHOT&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sourceCompatibility</span> <span class="o">=</span> <span class="n">JavaVersion</span><span class="o">.</span><span class="na">VERSION_11</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">repositories</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mavenCentral</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">dependencies</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">implementation</span> <span class="s1">&#39;org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">runtimeOnly</span> <span class="s1">&#39;mysql:mysql-connector-java&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">testImplementation</span> <span class="s1">&#39;org.springframework.boot:spring-boot-starter-test&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">test</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">useJUnitPlatform</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="编写-generatorconfigxml">编写 generatorConfig.xml</h2>
-<p>在resources路径下创建generatorConfig.xml文件</p>
+<p>在项目根路径下创建generatorConfig.xml文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1779,48 +1794,48 @@
 </span><span class="lnt">41
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml:src/main/resources/generatorConfig.xml" data-lang="xml:src/main/resources/generatorConfig.xml"><span class="cp">&lt;!DOCTYPE generatorConfiguration PUBLIC
-</span><span class="cp">        &#34;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&#34;
-</span><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&#34;&gt;</span>
-<span class="nt">&lt;generatorConfiguration&gt;</span>
-    <span class="nt">&lt;context</span> <span class="na">id=</span><span class="s">&#34;Mysql&#34;</span> <span class="na">targetRuntime=</span><span class="s">&#34;Mybatis3&#34;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;plugin</span> <span class="na">type=</span><span class="s">&#34;org.mybatis.generator.plugins.SerializablePlugin&#34;</span><span class="nt">&gt;&lt;/plugin&gt;</span>
-        <span class="nt">&lt;plugin</span> <span class="na">type=</span><span class="s">&#34;org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin&#34;</span><span class="nt">&gt;&lt;/plugin&gt;</span>
-        <span class="nt">&lt;plugin</span> <span class="na">type=</span><span class="s">&#34;org.mybatis.generator.plugins.FluentBuilderMethodsPlugin&#34;</span><span class="nt">&gt;&lt;/plugin&gt;</span>
-        <span class="nt">&lt;plugin</span> <span class="na">type=</span><span class="s">&#34;org.mybatis.generator.plugins.ToStringPlugin&#34;</span><span class="nt">&gt;&lt;/plugin&gt;</span>
-
-        <span class="c">&lt;!-- 生成的代码没有注释       --&gt;</span>
-        <span class="nt">&lt;commentGenerator&gt;</span>
-            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;suppressAllComments&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/commentGenerator&gt;</span>
-
-        <span class="nt">&lt;jdbcConnection</span> <span class="na">driverClass=</span><span class="s">&#34;com.mysql.cj.jdbc.Driver&#34;</span>
-                        <span class="na">connectionURL=</span><span class="s">&#34;jdbc:mysql://localhost:3306/testdb&#34;</span>
-                        <span class="na">userId=</span><span class="s">&#34;springuser&#34;</span>
-                        <span class="na">password=</span><span class="s">&#34;123456&#34;</span><span class="nt">/&gt;</span>
-
-        <span class="c">&lt;!--  不强制使用BigDecimal字段，使数据库为NUMBERIC或DECIMAL字段被整型类型替换，会更易于使用      --&gt;</span>
-        <span class="nt">&lt;javaTypeResolver&gt;</span>
-            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;forceBigDecimals&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/javaTypeResolver&gt;</span>
-
-        <span class="nt">&lt;javaModelGenerator</span> <span class="na">targetPackage=</span><span class="s">&#34;com.owk.domain&#34;</span> <span class="na">targetProject=</span><span class="s">&#34;src/main/java&#34;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;trimStrings&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/javaModelGenerator&gt;</span>
-
-        <span class="nt">&lt;sqlMapGenerator</span> <span class="na">targetPackage=</span><span class="s">&#34;com.owk.mapper&#34;</span> <span class="na">targetProject=</span><span class="s">&#34;src/main/resources&#34;</span><span class="nt">/&gt;</span>
-
-        <span class="nt">&lt;javaClientGenerator</span> <span class="na">type=</span><span class="s">&#34;XMLMAPPER&#34;</span> <span class="na">targetPackage=</span><span class="s">&#34;com.owk.mapper&#34;</span> <span class="na">targetProject=</span><span class="s">&#34;src/main/java&#34;</span><span class="nt">/&gt;</span>
-
-        <span class="nt">&lt;table</span> <span class="na">tableName=</span><span class="s">&#34;student&#34;</span> <span class="na">domainObjectName=</span><span class="s">&#34;Student&#34;</span> <span class="nt">&gt;</span>
-            <span class="nt">&lt;generatedKey</span> <span class="na">column=</span><span class="s">&#34;ID&#34;</span> <span class="na">sqlStatement=</span><span class="s">&#34;MySql&#34;</span> <span class="na">identity=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/table&gt;</span>
-        <span class="nt">&lt;table</span> <span class="na">tableName=</span><span class="s">&#34;grade&#34;</span> <span class="na">domainObjectName=</span><span class="s">&#34;Grade&#34;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;generatedKey</span> <span class="na">column=</span><span class="s">&#34;ID&#34;</span> <span class="na">sqlStatement=</span><span class="s">&#34;MySql&#34;</span> <span class="na">identity=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/table&gt;</span>
-    <span class="nt">&lt;/context&gt;</span>
-<span class="nt">&lt;/generatorConfiguration&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml:generatorConfig.xml" data-lang="xml:generatorConfig.xml"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE generatorConfiguration PUBLIC
+</span></span></span><span class="line"><span class="cl"><span class="cp">        &#34;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&#34;
+</span></span></span><span class="line"><span class="cl"><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&#34;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;generatorConfiguration&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;context</span> <span class="na">id=</span><span class="s">&#34;Mysql&#34;</span> <span class="na">targetRuntime=</span><span class="s">&#34;Mybatis3&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;plugin</span> <span class="na">type=</span><span class="s">&#34;org.mybatis.generator.plugins.SerializablePlugin&#34;</span><span class="nt">&gt;&lt;/plugin&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;plugin</span> <span class="na">type=</span><span class="s">&#34;org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin&#34;</span><span class="nt">&gt;&lt;/plugin&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;plugin</span> <span class="na">type=</span><span class="s">&#34;org.mybatis.generator.plugins.FluentBuilderMethodsPlugin&#34;</span><span class="nt">&gt;&lt;/plugin&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;plugin</span> <span class="na">type=</span><span class="s">&#34;org.mybatis.generator.plugins.ToStringPlugin&#34;</span><span class="nt">&gt;&lt;/plugin&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- 生成的代码没有注释       --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;commentGenerator&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;suppressAllComments&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/commentGenerator&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;jdbcConnection</span> <span class="na">driverClass=</span><span class="s">&#34;com.mysql.cj.jdbc.Driver&#34;</span>
+</span></span><span class="line"><span class="cl">                        <span class="na">connectionURL=</span><span class="s">&#34;jdbc:mysql://localhost:3306/testdb&#34;</span>
+</span></span><span class="line"><span class="cl">                        <span class="na">userId=</span><span class="s">&#34;springuser&#34;</span>
+</span></span><span class="line"><span class="cl">                        <span class="na">password=</span><span class="s">&#34;123456&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!--  不强制使用BigDecimal字段，使数据库为NUMBERIC或DECIMAL字段被整型类型替换，会更易于使用      --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;javaTypeResolver&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;forceBigDecimals&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/javaTypeResolver&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;javaModelGenerator</span> <span class="na">targetPackage=</span><span class="s">&#34;com.owk.domain&#34;</span> <span class="na">targetProject=</span><span class="s">&#34;src/main/java&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;trimStrings&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/javaModelGenerator&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;sqlMapGenerator</span> <span class="na">targetPackage=</span><span class="s">&#34;com.owk.mapper&#34;</span> <span class="na">targetProject=</span><span class="s">&#34;src/main/resources&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;javaClientGenerator</span> <span class="na">type=</span><span class="s">&#34;XMLMAPPER&#34;</span> <span class="na">targetPackage=</span><span class="s">&#34;com.owk.mapper&#34;</span> <span class="na">targetProject=</span><span class="s">&#34;src/main/java&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;table</span> <span class="na">tableName=</span><span class="s">&#34;student&#34;</span> <span class="na">domainObjectName=</span><span class="s">&#34;Student&#34;</span> <span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;generatedKey</span> <span class="na">column=</span><span class="s">&#34;ID&#34;</span> <span class="na">sqlStatement=</span><span class="s">&#34;MySql&#34;</span> <span class="na">identity=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/table&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;table</span> <span class="na">tableName=</span><span class="s">&#34;grade&#34;</span> <span class="na">domainObjectName=</span><span class="s">&#34;Grade&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;generatedKey</span> <span class="na">column=</span><span class="s">&#34;ID&#34;</span> <span class="na">sqlStatement=</span><span class="s">&#34;MySql&#34;</span> <span class="na">identity=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/table&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/context&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/generatorConfiguration&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol>
 <li><code>org.mybatis.generator.plugins.SerializablePlugin</code> 生成的模型类实现<code>Serializable</code>接口</li>
@@ -1850,53 +1865,31 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="w">
-</span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">bigint</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="n">auto_increment</span><span class="p">,</span><span class="w">
-</span><span class="w">    </span><span class="n">stu_name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w">
-</span><span class="w">    </span><span class="n">grade_id</span><span class="w"> </span><span class="nb">bigint</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w">
-</span><span class="w">    </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
-</span><span class="w"></span><span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span><span class="w">  </span><span class="k">default</span><span class="w"> </span><span class="n">charset</span><span class="o">=</span><span class="n">utf8mb4</span><span class="p">;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">grade</span><span class="p">(</span><span class="w">
-</span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">bigint</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="n">auto_increment</span><span class="p">,</span><span class="w">
-</span><span class="w">    </span><span class="n">grade_name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w">
-</span><span class="w">    </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
-</span><span class="w"></span><span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span><span class="w">  </span><span class="k">default</span><span class="w"> </span><span class="n">charset</span><span class="o">=</span><span class="n">utf8mb4</span><span class="p">;</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">bigint</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="n">auto_increment</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">stu_name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">grade_id</span><span class="w"> </span><span class="nb">bigint</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span><span class="w">  </span><span class="k">default</span><span class="w"> </span><span class="n">charset</span><span class="o">=</span><span class="n">utf8mb4</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">grade</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">bigint</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="n">auto_increment</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">grade_name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span><span class="w">  </span><span class="k">default</span><span class="w"> </span><span class="n">charset</span><span class="o">=</span><span class="n">utf8mb4</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="执行生成任务">执行生成任务</h2>
-<p>编写下面的Java程序，运行即可</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MBGenerator</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">warnings</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
-        <span class="kt">boolean</span> <span class="n">overwrite</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-        <span class="n">File</span> <span class="n">configFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&#34;src/main/resources/generatorConfig.xml&#34;</span><span class="o">);</span>
-        <span class="n">ConfigurationParser</span> <span class="n">cp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConfigurationParser</span><span class="o">(</span><span class="n">warnings</span><span class="o">);</span>
-        <span class="n">Configuration</span> <span class="n">config</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="na">parseConfiguration</span><span class="o">(</span><span class="n">configFile</span><span class="o">);</span>
-        <span class="n">DefaultShellCallback</span> <span class="n">callback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultShellCallback</span><span class="o">(</span><span class="n">overwrite</span><span class="o">);</span>
-        <span class="n">MyBatisGenerator</span> <span class="n">myBatisGenerator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyBatisGenerator</span><span class="o">(</span><span class="n">config</span><span class="o">,</span> <span class="n">callback</span><span class="o">,</span> <span class="n">warnings</span><span class="o">);</span>
-        <span class="n">myBatisGenerator</span><span class="o">.</span><span class="na">generate</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gradle mbGenerator
+</span></span></code></pre></td></tr></table>
 </div>
-</div><p>生成代码如下：</p>
+</div><p>保证包 <code>com.owk</code> 提前创建好，这个插件默认配置不会创建层级超过一的目录。有IDE支持就更加方便。<br />
+生成代码如下：</p>
 <pre tabindex="0"><code>src/main
 ├── java
 │   └── com
@@ -1931,18 +1924,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yml:application.yml" data-lang="yml:application.yml"><span class="nt">spring</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">jdbc:mysql://localhost:3306/testdb?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=UTF-8</span><span class="w">
-</span><span class="w">    </span><span class="nt">driver-class-name</span><span class="p">:</span><span class="w"> </span><span class="l">com.mysql.cj.jdbc.Driver</span><span class="w">
-</span><span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">springuser</span><span class="w">
-</span><span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="m">123456</span><span class="w">
-</span><span class="w"></span><span class="nt">mybatis</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">config-location</span><span class="p">:</span><span class="w"> </span><span class="l">classpath:mybatis-config.xml</span><span class="w">
-</span><span class="w"></span><span class="nt">logging</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">level</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">com.owk.mapper</span><span class="p">:</span><span class="w"> </span><span class="l">trace</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yml:application.yml" data-lang="yml:application.yml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">jdbc:mysql://localhost:3306/testdb?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=UTF-8</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">driver-class-name</span><span class="p">:</span><span class="w"> </span><span class="l">com.mysql.cj.jdbc.Driver</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">springuser</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="m">123456</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">mybatis</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">config-location</span><span class="p">:</span><span class="w"> </span><span class="l">classpath:mybatis-config.xml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">logging</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">level</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">com.owk.mapper</span><span class="p">:</span><span class="w"> </span><span class="l">trace</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>设置数据源还有设置mybatis配置文件位置。</p>
 <h2 id="编写mybatis-configxml">编写mybatis-config.xml</h2>
@@ -1962,19 +1955,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml:mybatis-config.xml" data-lang="xml:mybatis-config.xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
-<span class="cp">&lt;!DOCTYPE configuration
-</span><span class="cp">        PUBLIC &#34;-//mybatis.org//DTD Config 3.0//EN&#34;
-</span><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-3-config.dtd&#34;&gt;</span>
-<span class="nt">&lt;configuration&gt;</span>
-    <span class="nt">&lt;settings&gt;</span>
-        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&#34;mapUnderscoreToCamelCase&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&#34;lazyLoadingEnabled&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&#34;aggressiveLazyLoading&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&#34;logImpl&#34;</span> <span class="na">value=</span><span class="s">&#34;SLF4J&#34;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;/settings&gt;</span>
-<span class="nt">&lt;/configuration&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml:mybatis-config.xml" data-lang="xml:mybatis-config.xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE configuration
+</span></span></span><span class="line"><span class="cl"><span class="cp">        PUBLIC &#34;-//mybatis.org//DTD Config 3.0//EN&#34;
+</span></span></span><span class="line"><span class="cl"><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-3-config.dtd&#34;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;configuration&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;settings&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&#34;mapUnderscoreToCamelCase&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&#34;lazyLoadingEnabled&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&#34;aggressiveLazyLoading&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&#34;logImpl&#34;</span> <span class="na">value=</span><span class="s">&#34;SLF4J&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/settings&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/configuration&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>设置mybatis，开启数据库字段的下划线写法映射为驼峰写法。开启延迟加载，取消积极加载。指定映射器路径。</p>
 <h2 id="使用生成的代码">使用生成的代码</h2>
@@ -2091,122 +2084,120 @@
 </span><span class="lnt">109
 </span><span class="lnt">110
 </span><span class="lnt">111
-</span><span class="lnt">112
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java:StudentMapperTests.java" data-lang="java:StudentMapperTests.java">
-<span class="cm">/**
-</span><span class="cm"> * 测试前请先清空表数据 &lt;code&gt;truncate student&lt;/code&gt;
-</span><span class="cm"> */</span>
-
-<span class="nd">@SpringBootTest</span>
-<span class="nd">@TestMethodOrder</span><span class="o">(</span><span class="n">MethodOrderer</span><span class="o">.</span><span class="na">OrderAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StudentMapperTests</span> <span class="o">{</span>
-
-    <span class="nd">@Resource</span>
-    <span class="kd">private</span> <span class="n">StudentMapper</span> <span class="n">studentMapper</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">ids</span><span class="o">;</span>
-
-    <span class="nd">@BeforeEach</span>
-    <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m****************测试开始******************\033[0m&#34;</span><span class="o">);</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m***************填充三行数据**************\033[0m&#34;</span><span class="o">);</span>
-        <span class="n">studentMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;张三&#34;</span><span class="o">).</span><span class="na">withGradeId</span><span class="o">(</span><span class="n">1L</span><span class="o">));</span>
-        <span class="n">studentMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;李四&#34;</span><span class="o">).</span><span class="na">withGradeId</span><span class="o">(</span><span class="n">2L</span><span class="o">));</span>
-        <span class="n">studentMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;王五&#34;</span><span class="o">).</span><span class="na">withGradeId</span><span class="o">(</span><span class="n">3L</span><span class="o">));</span>
-        <span class="n">ids</span> <span class="o">=</span> <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByExample</span><span class="o">(</span><span class="kc">null</span><span class="o">).</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">Student</span><span class="o">::</span><span class="n">getId</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 增
-</span><span class="cm">     */</span>
-    <span class="nd">@Test</span>
-    <span class="nd">@Order</span><span class="o">(</span><span class="n">1</span><span class="o">)</span>
-    <span class="kt">void</span> <span class="nf">create</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m***************插入两行行数据**************\033[0m&#34;</span><span class="o">);</span>
-        <span class="c1">// 使用流畅建造者，动态插入字段值
-</span><span class="c1"></span>        <span class="n">studentMapper</span><span class="o">.</span><span class="na">insertSelective</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;赵六&#34;</span><span class="o">).</span><span class="na">withGradeId</span><span class="o">(</span><span class="n">1L</span><span class="o">));</span> <span class="c1">// [1]
-</span><span class="c1"></span>        <span class="c1">// 除了主键外，所有字段值插入
-</span><span class="c1"></span>        <span class="n">studentMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;武七&#34;</span><span class="o">).</span><span class="na">withGradeId</span><span class="o">(</span><span class="n">2L</span><span class="o">));</span> <span class="c1">// [2]
-</span><span class="c1"></span>        <span class="n">StudentExample</span> <span class="n">example</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StudentExample</span><span class="o">();</span>
-        <span class="n">StudentExample</span><span class="o">.</span><span class="na">Criteria</span> <span class="n">criteria</span> <span class="o">=</span> <span class="n">example</span><span class="o">.</span><span class="na">createCriteria</span><span class="o">();</span>
-        <span class="n">criteria</span><span class="o">.</span><span class="na">andStuNameIn</span><span class="o">(</span><span class="n">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">&#34;赵六&#34;</span><span class="o">,</span> <span class="s">&#34;武七&#34;</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*****************查询刚插入的数据****************\033[0m&#34;</span><span class="o">);</span>
-        <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByExample</span><span class="o">(</span><span class="n">example</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 查
-</span><span class="cm">     */</span>
-    <span class="nd">@Test</span>
-    <span class="nd">@Order</span><span class="o">(</span><span class="n">2</span><span class="o">)</span>
-    <span class="kt">void</span> <span class="nf">read</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*************查询学生姓名包含李*************\033[0m&#34;</span><span class="o">);</span>
-        <span class="n">StudentExample</span> <span class="n">example</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StudentExample</span><span class="o">();</span>
-        <span class="n">StudentExample</span><span class="o">.</span><span class="na">Criteria</span> <span class="n">criteria</span> <span class="o">=</span> <span class="n">example</span><span class="o">.</span><span class="na">createCriteria</span><span class="o">();</span>
-        <span class="n">criteria</span><span class="o">.</span><span class="na">andStuNameLike</span><span class="o">(</span><span class="s">&#34;%李%&#34;</span><span class="o">);</span>
-        <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">students</span> <span class="o">=</span> <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByExample</span><span class="o">(</span><span class="n">example</span><span class="o">);</span> <span class="c1">// [3]
-</span><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">ids</span> <span class="o">=</span> <span class="n">students</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">Student</span><span class="o">::</span><span class="n">getId</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
-        <span class="n">ids</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">id</span> <span class="o">-&gt;</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m********查询主键&#34;</span><span class="o">+</span><span class="n">id</span><span class="o">+</span><span class="s">&#34;的数据********\033[0m&#34;</span><span class="o">);</span>
-            <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByPrimaryKey</span><span class="o">(</span><span class="n">id</span><span class="o">);</span> <span class="c1">// [4]
-</span><span class="c1"></span>        <span class="o">});</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 改
-</span><span class="cm">     */</span>
-
-    <span class="nd">@Test</span>
-    <span class="nd">@Order</span><span class="o">(</span><span class="n">3</span><span class="o">)</span>
-    <span class="kt">void</span> <span class="nf">update</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*******************更新id为&#34;</span><span class="o">+</span><span class="n">ids</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">)+</span><span class="s">&#34;********************\033[0m&#34;</span><span class="o">);</span>
-        <span class="c1">// 动态更新字段值
-</span><span class="c1"></span>        <span class="n">studentMapper</span><span class="o">.</span><span class="na">updateByPrimaryKeySelective</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withId</span><span class="o">(</span><span class="n">ids</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">)).</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;杨开&#34;</span><span class="o">).</span><span class="na">withGradeId</span><span class="o">(</span><span class="n">2L</span><span class="o">));</span> <span class="c1">// [5]
-</span><span class="c1"></span>        <span class="c1">// 更新所有字段值
-</span><span class="c1"></span>        <span class="n">studentMapper</span><span class="o">.</span><span class="na">updateByPrimaryKey</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withId</span><span class="o">(</span><span class="n">ids</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">1</span><span class="o">)).</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;苏颜&#34;</span><span class="o">).</span><span class="na">withGradeId</span><span class="o">(</span><span class="n">3L</span><span class="o">));</span> <span class="c1">// [6]
-</span><span class="c1"></span> 
-        <span class="n">StudentExample</span> <span class="n">example</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StudentExample</span><span class="o">();</span>
-        <span class="n">StudentExample</span><span class="o">.</span><span class="na">Criteria</span> <span class="n">criteria</span> <span class="o">=</span> <span class="n">example</span><span class="o">.</span><span class="na">createCriteria</span><span class="o">();</span> <span class="c1">// 
-</span><span class="c1"></span>        <span class="n">criteria</span><span class="o">.</span><span class="na">andStuNameLike</span><span class="o">(</span><span class="s">&#34;%王%&#34;</span><span class="o">);</span>
-        <span class="n">studentMapper</span><span class="o">.</span><span class="na">updateByExampleSelective</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withGradeId</span><span class="o">(</span><span class="n">1L</span><span class="o">),</span> <span class="n">example</span><span class="o">);</span> <span class="c1">// [7]
-</span><span class="c1"></span>
-        <span class="n">Student</span> <span class="n">student</span> <span class="o">=</span> <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByPrimaryKey</span><span class="o">(</span><span class="n">ids</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">2</span><span class="o">));</span>
-        <span class="n">studentMapper</span><span class="o">.</span><span class="na">updateByExample</span><span class="o">(</span><span class="n">student</span><span class="o">.</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;夏霓裳&#34;</span><span class="o">),</span> <span class="n">example</span><span class="o">);</span> <span class="c1">// [8]
-</span><span class="c1"></span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*****************查询更新后的数据****************\033[0m&#34;</span><span class="o">);</span>
-        <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByExample</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 删
-</span><span class="cm">     */</span>
-    <span class="nd">@Test</span>
-    <span class="nd">@Order</span><span class="o">(</span><span class="n">4</span><span class="o">)</span>
-    <span class="kt">void</span> <span class="nf">delete</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">students</span> <span class="o">=</span> <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByExample</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-        <span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">ids</span> <span class="o">=</span> <span class="n">students</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">Student</span><span class="o">::</span><span class="n">getId</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*******************删除主键&#34;</span><span class="o">+</span><span class="n">ids</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">)+</span><span class="s">&#34;********************\033[0m&#34;</span><span class="o">);</span>
-        <span class="n">studentMapper</span><span class="o">.</span><span class="na">deleteByPrimaryKey</span><span class="o">(</span><span class="n">ids</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">));</span> <span class="c1">// [9]
-</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*******************删除年级id为3********************\033[0m&#34;</span><span class="o">);</span>
-        <span class="n">StudentExample</span> <span class="n">example</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StudentExample</span><span class="o">();</span>
-        <span class="n">StudentExample</span><span class="o">.</span><span class="na">Criteria</span> <span class="n">criteria</span> <span class="o">=</span> <span class="n">example</span><span class="o">.</span><span class="na">createCriteria</span><span class="o">();</span>
-        <span class="n">criteria</span><span class="o">.</span><span class="na">andGradeIdEqualTo</span><span class="o">(</span><span class="n">3L</span><span class="o">);</span>
-        <span class="n">studentMapper</span><span class="o">.</span><span class="na">deleteByExample</span><span class="o">(</span><span class="n">example</span><span class="o">);</span> <span class="c1">// [10]
-</span><span class="c1"></span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*****************查询删除后的数据****************\033[0m&#34;</span><span class="o">);</span>
-        <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByExample</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@AfterEach</span>
-    <span class="kt">void</span> <span class="nf">tearDown</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*******************测试结束********************\033[0m&#34;</span><span class="o">);</span>
-        <span class="n">studentMapper</span><span class="o">.</span><span class="na">deleteByExample</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java:StudentMapperTests.java" data-lang="java:StudentMapperTests.java"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * 测试前请先清空表数据 &lt;code&gt;truncate student&lt;/code&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@SpringBootTest</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@TestMethodOrder</span><span class="o">(</span><span class="n">MethodOrderer</span><span class="o">.</span><span class="na">OrderAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StudentMapperTests</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Resource</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">StudentMapper</span> <span class="n">studentMapper</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">ids</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@BeforeEach</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m****************测试开始******************\033[0m&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m***************填充三行数据**************\033[0m&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">studentMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;张三&#34;</span><span class="o">).</span><span class="na">withGradeId</span><span class="o">(</span><span class="mi">1L</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">studentMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;李四&#34;</span><span class="o">).</span><span class="na">withGradeId</span><span class="o">(</span><span class="mi">2L</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">studentMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;王五&#34;</span><span class="o">).</span><span class="na">withGradeId</span><span class="o">(</span><span class="mi">3L</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ids</span> <span class="o">=</span> <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByExample</span><span class="o">(</span><span class="kc">null</span><span class="o">).</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">Student</span><span class="o">::</span><span class="n">getId</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 增
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Order</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">create</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m***************插入两行行数据**************\033[0m&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 使用流畅建造者，动态插入字段值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">studentMapper</span><span class="o">.</span><span class="na">insertSelective</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;赵六&#34;</span><span class="o">).</span><span class="na">withGradeId</span><span class="o">(</span><span class="mi">1L</span><span class="o">));</span> <span class="c1">// [1]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 除了主键外，所有字段值插入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">studentMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;武七&#34;</span><span class="o">).</span><span class="na">withGradeId</span><span class="o">(</span><span class="mi">2L</span><span class="o">));</span> <span class="c1">// [2]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">StudentExample</span> <span class="n">example</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StudentExample</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">StudentExample</span><span class="o">.</span><span class="na">Criteria</span> <span class="n">criteria</span> <span class="o">=</span> <span class="n">example</span><span class="o">.</span><span class="na">createCriteria</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">criteria</span><span class="o">.</span><span class="na">andStuNameIn</span><span class="o">(</span><span class="n">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">&#34;赵六&#34;</span><span class="o">,</span> <span class="s">&#34;武七&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*****************查询刚插入的数据****************\033[0m&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByExample</span><span class="o">(</span><span class="n">example</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 查
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Order</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">read</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*************查询学生姓名包含李*************\033[0m&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">StudentExample</span> <span class="n">example</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StudentExample</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">StudentExample</span><span class="o">.</span><span class="na">Criteria</span> <span class="n">criteria</span> <span class="o">=</span> <span class="n">example</span><span class="o">.</span><span class="na">createCriteria</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">criteria</span><span class="o">.</span><span class="na">andStuNameLike</span><span class="o">(</span><span class="s">&#34;%李%&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">students</span> <span class="o">=</span> <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByExample</span><span class="o">(</span><span class="n">example</span><span class="o">);</span> <span class="c1">// [3]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">ids</span> <span class="o">=</span> <span class="n">students</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">Student</span><span class="o">::</span><span class="n">getId</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ids</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">id</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m********查询主键&#34;</span><span class="o">+</span><span class="n">id</span><span class="o">+</span><span class="s">&#34;的数据********\033[0m&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByPrimaryKey</span><span class="o">(</span><span class="n">id</span><span class="o">);</span> <span class="c1">// [4]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="o">});</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 改
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Order</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">update</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*******************更新id为&#34;</span><span class="o">+</span><span class="n">ids</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)+</span><span class="s">&#34;********************\033[0m&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 动态更新字段值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">studentMapper</span><span class="o">.</span><span class="na">updateByPrimaryKeySelective</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withId</span><span class="o">(</span><span class="n">ids</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)).</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;杨开&#34;</span><span class="o">).</span><span class="na">withGradeId</span><span class="o">(</span><span class="mi">2L</span><span class="o">));</span> <span class="c1">// [5]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 更新所有字段值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">studentMapper</span><span class="o">.</span><span class="na">updateByPrimaryKey</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withId</span><span class="o">(</span><span class="n">ids</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)).</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;苏颜&#34;</span><span class="o">).</span><span class="na">withGradeId</span><span class="o">(</span><span class="mi">3L</span><span class="o">));</span> <span class="c1">// [6]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> 
+</span></span><span class="line"><span class="cl">        <span class="n">StudentExample</span> <span class="n">example</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StudentExample</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">StudentExample</span><span class="o">.</span><span class="na">Criteria</span> <span class="n">criteria</span> <span class="o">=</span> <span class="n">example</span><span class="o">.</span><span class="na">createCriteria</span><span class="o">();</span> <span class="c1">// 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">criteria</span><span class="o">.</span><span class="na">andStuNameLike</span><span class="o">(</span><span class="s">&#34;%王%&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">studentMapper</span><span class="o">.</span><span class="na">updateByExampleSelective</span><span class="o">(</span><span class="k">new</span> <span class="n">Student</span><span class="o">().</span><span class="na">withGradeId</span><span class="o">(</span><span class="mi">1L</span><span class="o">),</span> <span class="n">example</span><span class="o">);</span> <span class="c1">// [7]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="n">Student</span> <span class="n">student</span> <span class="o">=</span> <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByPrimaryKey</span><span class="o">(</span><span class="n">ids</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">studentMapper</span><span class="o">.</span><span class="na">updateByExample</span><span class="o">(</span><span class="n">student</span><span class="o">.</span><span class="na">withStuName</span><span class="o">(</span><span class="s">&#34;夏霓裳&#34;</span><span class="o">),</span> <span class="n">example</span><span class="o">);</span> <span class="c1">// [8]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*****************查询更新后的数据****************\033[0m&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByExample</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 删
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Order</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">delete</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">students</span> <span class="o">=</span> <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByExample</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">ids</span> <span class="o">=</span> <span class="n">students</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">Student</span><span class="o">::</span><span class="n">getId</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*******************删除主键&#34;</span><span class="o">+</span><span class="n">ids</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)+</span><span class="s">&#34;********************\033[0m&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">studentMapper</span><span class="o">.</span><span class="na">deleteByPrimaryKey</span><span class="o">(</span><span class="n">ids</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span> <span class="c1">// [9]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*******************删除年级id为3********************\033[0m&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">StudentExample</span> <span class="n">example</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StudentExample</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">StudentExample</span><span class="o">.</span><span class="na">Criteria</span> <span class="n">criteria</span> <span class="o">=</span> <span class="n">example</span><span class="o">.</span><span class="na">createCriteria</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">criteria</span><span class="o">.</span><span class="na">andGradeIdEqualTo</span><span class="o">(</span><span class="mi">3L</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">studentMapper</span><span class="o">.</span><span class="na">deleteByExample</span><span class="o">(</span><span class="n">example</span><span class="o">);</span> <span class="c1">// [10]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*****************查询删除后的数据****************\033[0m&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">studentMapper</span><span class="o">.</span><span class="na">selectByExample</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@AfterEach</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">tearDown</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\033[0;92m*******************测试结束********************\033[0m&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">studentMapper</span><span class="o">.</span><span class="na">deleteByExample</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个测试用例，展示了增删改查的使用，条件查询如何创建动态的条件。更多的用法细节可以查看生成映射器接口和xml映射文件。</p>
 <p>更多参见<a href="https://mybatis.org/generator/">官方文档</a></p>
@@ -2214,7 +2205,7 @@
     </article>
     
     
-<script defer src="/js/clipboard.min.c168d3a04c45a631be76437054619a4a3b30107960cb9730be96012fef5762b0.js"></script>
+<script defer src="/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js"></script>
 
 <script defer src="/js/helper/prev.min.js"></script>
 
@@ -2501,7 +2492,7 @@
 </div>
 
 
-<script defer src="/js/swipe.min.d2e020e2d405fafaa45c0a10d2af949627bf554a9366c31a905af38f8cc30c30.js"></script>
+<script defer src="/js/swipe.min.feb438efb7ca009ecd7fc2ac3ad2fced4840990b2798d81f87137f2dc6281f05.js"></script>
 
 <script defer src="/js/micromodal.min.de01b44b2f383056bbcaf6ee921fd385d79108ec1129afd0eb2f3f5a07e11f45.js"></script>
 
@@ -2805,7 +2796,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="toc " data-dir="ltr" data-folding="true" data-ani="true">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#引入依赖">引入依赖</a></li>
+    <li><a href="#创建gradle项目">创建Gradle项目</a></li>
     <li><a href="#编写-generatorconfigxml">编写 generatorConfig.xml</a></li>
     <li><a href="#创建数据库表">创建数据库表</a></li>
     <li><a href="#执行生成任务">执行生成任务</a></li>
@@ -3423,7 +3414,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
             <p class="caption">
                 
-                    ©2022, All Rights Reserved
+                    ©2023, All Rights Reserved
                 
             </p>
         
